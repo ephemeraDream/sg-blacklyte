@@ -231,7 +231,8 @@
       ],
       "custom_css": [
         ".img_with_text_box_simplicity {padding: 7.29167vw 8.33vw 8.33vw;}",
-        ".img_with_text_box_simplicity_maintitle {font-family: DIN-BlackItalic; font-weight: 500; letter-spacing: 0%; -webkit-text-fill-color:#fff;}"
+        ".img_with_text_box_simplicity_maintitle {font-family: DIN-BlackItalic; font-weight: 500; letter-spacing: 0%; -webkit-text-fill-color: #fff; margin-bottom: 4.1145833vw;}",
+        ".img_with_text_box_simplicity_filebox_image {border-radius: 0; aspect-ratio: 1.0285;}"
       ],
       "name": "file box simplicity",
       "settings": {
