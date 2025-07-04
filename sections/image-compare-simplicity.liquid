@@ -1,0 +1,110 @@
+{{ 'section-image-compare-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="image_compare_simplicity">
+  <div class="image_compare_simplicity_title">{{ section.settings.title }}</div>
+  <div class="image_compare_simplicity_contain">
+    <div class="image_compare_simplicity_wrapper image_compare_simplicity_left">
+      <img src="{{ section.settings.left_image | image_url }}" alt="Left Image">
+    </div>
+    <div class="image_compare_simplicity_wrapper image_compare_simplicity_right">
+      <img src="{{ section.settings.right_image | image_url }}" alt="Right Image">
+    </div>
+    <div class="image_compare_simplicity_divider">
+      <svg xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 67 67" fill="none">
+        <circle cx="33.5" cy="33.5" r="33.5" fill="white" fill-opacity="0.5"/>
+        <path d="M52.4177 31.8227C53.6318 32.6113 53.6318 34.3887 52.4177 35.1773L40.0894 43.1847C38.7589 44.0489 37 43.094 37 41.5075L37 25.4925C37 23.906 38.7589 22.9511 40.0894 23.8153L52.4177 31.8227Z" fill="white"/>
+        <path d="M14.5823 35.1773C13.3682 34.3887 13.3682 32.6113 14.5823 31.8227L26.9106 23.8153C28.2411 22.9511 30 23.906 30 25.4925L30 41.5075C30 43.094 28.2411 44.0489 26.9106 43.1847L14.5823 35.1773Z" fill="white"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.image_compare_simplicity');
+    const divider = document.querySelector('.image_compare_simplicity_divider');
+    const leftImage = document.querySelector('.image_compare_simplicity_left');
+    const rightImage = document.querySelector('.image_compare_simplicity_right');
+
+    let isDragging = false;
+
+    divider.addEventListener('mousedown', () => {
+      isDragging = true;
+      document.body.style.cursor = 'ew-resize';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      handleMove(e.clientX);
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      document.body.style.cursor = 'default';
+    });
+
+    divider.addEventListener('touchstart', () => {
+      isDragging = true;
+    });
+
+    document.addEventListener(
+      'touchmove',
+      (e) => {
+        if (!isDragging) return;
+        if (e.touches.length > 0) {
+          handleMove(e.touches[0].clientX);
+        }
+      },
+      { passive: false }
+    );
+
+    document.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    function handleMove(clientX) {
+      const rect = container.getBoundingClientRect();
+      const offsetX = clientX - rect.left;
+      const percentage = (offsetX / rect.width) * 100;
+
+      if (percentage > 1 && percentage < 98) {
+        leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+        rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+        divider.style.left = `${percentage}%`;
+      }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Image Compare Simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Compare Simplicity"
+    }
+  ]
+}
+{% endschema %}
