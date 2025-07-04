@@ -1,0 +1,42 @@
+{%- liquid 
+    assign id_block = block.settings.id_block
+    assign text = block.settings.text
+    assign text_icon = block.settings.text_icon
+    assign text_description = block.settings.text_description
+    assign fontsize_text = block.settings.fontsize_text
+    assign color_title = block.settings.color_title
+    assign show_link_text = block.settings.show_link_text
+    assign link_text = block.settings.link_text
+    assign link_url = block.settings.link_url
+    assign show_link_button = block.settings.show_link_button
+    assign link_btn_text1 = block.settings.link_btn_text1
+    assign link_btn_text2 = block.settings.link_btn_text2
+    assign link_btn_url = block.settings.link_btn_url
+-%}
+{%- if text != blank or text_icon != blank -%}
+    <p class="product__text title" {{ block.shopify_attributes }} 
+        style="--fontsize-text:{{ fontsize_text | append: 'px' }};
+        --color-title: {{ color_title }}"
+       id="{{ id_block }}"
+    >
+        {{- text -}}
+        {{- text_icon -}}
+        {%- if show_link_text and link_text != blank -%}
+          <a role="link" aria-disabled="true" href="{{ link_url }}" style="cursor: pointer;color: var(--swatch-border-active);">{{ link_text }}</a>
+        {%- endif -%}
+        {%- if show_link_button and link_btn_text1 != blank and link_btn_text2 != blank -%}
+          <a role="link" class="black_firday_link_btn" aria-disabled="true" href="{{ link_btn_url }}">
+            <span style="color: #F4002C;display: inline-block;padding-right: 30px;">{{ link_btn_text1 }}</span>
+            <span style="color: #FFFFFF;display: inline-block;">{{ link_btn_text2 }}</span>
+          </a>
+        {%- endif -%}
+    </p>
+{%- endif -%}
+{%- if text_description != blank -%}
+    <p class="product__text" {{ block.shopify_attributes }} 
+        style="--fontsize-text:{{ fontsize_text | append: 'px' }};
+        --color-title: {{ color_title }}"
+    >
+        {{- text_description -}}
+    </p>
+{%- endif -%}

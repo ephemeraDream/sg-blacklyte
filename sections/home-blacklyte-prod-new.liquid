@@ -1,0 +1,356 @@
+{% comment %}
+  3.0版展示产品模块, 点击展示一个modal, 展示产品信息
+{% endcomment %}
+<style>
+  .home-blacklyte-prod{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #F5F5F5;
+  }
+  .home-blacklyte-prod .container-1570{
+    max-width: 68%;
+  }
+  .home-blacklyte-prod .section_title{
+    font: 600 40px "Roboto";
+    line-height: 1.4;
+    color: #262629;
+    text-align: center;
+    margin: 0;
+  }
+  .home-blacklyte-prod .section_desc{
+    font: 400 16px "Roboto";
+    line-height: 1.4;
+    color: #76767F;
+    text-align: center;
+    margin-top: 6px;
+  }
+  .home-blacklyte-prod .prod_cont{
+    margin-top: 40px;
+    display: flex;
+    gap: 22px;
+  }
+  .home-blacklyte-prod .prod_cont .item{
+    flex: 0 0 calc((100% - 22px) / 2);
+    border-radius: 24px;
+    background-color: #fff;
+    padding-bottom: 28px;
+  }
+  .home-blacklyte-prod .prod_cont .item .inner_image{
+    border-radius: 24px 24px 0 0;
+  }
+  .home-blacklyte-prod .prod_cont .item:nth-of-type(1) .inner_image video{
+    transform: scale(1.3);
+    object-fit: cover;
+    object-position: 0 -160px;
+  }
+  .home-blacklyte-prod .prod_cont .item:nth-of-type(2) .inner_image video{
+    object-fit: cover;
+    object-position: 0 -64px;
+  }
+  .home-blacklyte-prod .prod_cont .item .inner_image video{
+    /* max-height: 379px; */
+    max-height: 34.26vh;
+    width: 100%;
+    background-color: #c1c1c1;
+  }
+  .home-blacklyte-prod .prod_cont .item .prod_item-pc{
+    display: block;
+    height: auto;
+  }
+  .home-blacklyte-prod .prod_cont .item .prod_item-mb{
+    display: none;
+  }
+  .home-blacklyte-prod .prod_cont .item .inner_title{
+    font: 600 22px "Roboto";
+    line-height: 1.2;
+    color: #262629;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: 22px 0 4px;
+  }
+  .home-blacklyte-prod .prod_cont .item .inner_descripe{
+    font: 400 16px "Roboto";
+    line-height: 1.4;
+    color: #76767F;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .home-blacklyte-prod .prod_cont .item .inner_icon{
+    border: 1px solid #262629;
+    width: 42px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0 0 40px;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .home-blacklyte-prod .prod_cont .item .inner_icon svg{
+    fill: none;
+    stroke: none;
+    width: 12px;
+    height: 12px;
+    transition: all ease .3s;
+  }
+  .home-blacklyte-prod .prod_cont .item .inner_icon:hover svg {
+    transform: rotate(180deg);
+  }
+  body.home-modal-show,
+  body.home-prolevel-modal-show{
+    overflow: hidden;
+    padding-inline-end: 0;
+  }
+  
+  /* IPhone */
+  @media(max-width: 767px){
+    .home-blacklyte-prod{
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .home-blacklyte-prod .container-1570{
+      max-width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .home-blacklyte-prod .section_title{
+      font-size: 24px;
+    }
+    .home-blacklyte-prod .section_desc{
+      font-size: 16px;
+    }
+    .home-blacklyte-prod .prod_cont{
+      flex-wrap: wrap;
+    }
+    .home-blacklyte-prod .prod_cont .item{
+      flex: 0 0 100%;
+      border-radius: 20px;
+    }
+    
+    .home-blacklyte-prod .prod_cont .item .prod_item-pc{
+      display: none;
+    }
+    .home-blacklyte-prod .prod_cont .item .prod_item-mb{
+      display: block;
+      height: auto;
+    }
+    .home-blacklyte-prod .prod_cont .item .inner_title{
+      font-size: 16px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .home-blacklyte-prod .prod_cont .item .inner_descripe{
+      font-size: 14px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .home-blacklyte-prod .prod_cont .item .inner_icon {
+      margin-left: 15px;
+    }
+    .home-blacklyte-prod .prod_cont .item .inner_image{
+      border-radius: 20px 20px 0 0;
+    }
+    .home-blacklyte-prod .prod_cont .item .inner_image video{
+      max-height: 280px;
+    }
+    .home-blacklyte-prod .prod_cont .item:nth-of-type(1) .inner_image video{
+      object-position: 0 -58px;
+    }
+    .home-blacklyte-prod .prod_cont .item:nth-of-type(2) .inner_image video{
+      object-position: 0 -30px;
+    }
+  }
+  /* IPad */
+  @media(min-width: 768px) and (max-width: 1024px){
+    .home-blacklyte-prod .container-1570{
+      max-width: 100%;
+    }
+    .home-blacklyte-prod .prod_cont .item .inner_image video{
+      max-height: 27vh;
+    }
+  }
+  /* small screen */
+  @media(min-width: 1025px) and (max-width: 1500px) {
+    .home-blacklyte-prod .prod_cont .item .inner_image video{
+      max-height: 208px;
+    }
+  }
+   @media(min-width: 1025px) and (max-width: 1480px){
+     .home-blacklyte-prod .container-1570{
+       max-width: calc(100% - (var(--margin-left-1) * 2));
+       padding-left: 0;
+       padding-right: 0;
+     }
+     .home-blacklyte-prod .prod_cont .item .inner_image video{
+       max-height: 330px;
+     }
+   }
+  /* small screen */
+  @media(min-width: 1025px) and (max-width: 1900px){}
+  /* large screen */
+  @media(min-width: 2000px){}
+  
+</style>
+<section class="home-blacklyte-prod">
+  <div class="container-1570">
+    {% if section.settings.section_title != blank or section.settings.section_descripe != blank %}
+      <h3 class="section_title text-center">{{ section.settings.section_title }}</h3>
+      <div class="section_desc text-center">{{ section.settings.section_descripe }}</div>
+    {% endif %}
+    
+    <div class="prod_cont">
+      {% for block in section.blocks %}
+        {% if block.type == 'largeImage' %}
+          <div class="item">
+            <div class="inner_image image-zoom">
+              {% if block.settings.video_link != blank %}
+                <video autoplay loop muted playsinline width="100%" height="100%">
+                  <source src="{{ block.settings.video_link }}" />
+                </video>
+              {% else %}
+                {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.styles_max_width }}px, 100vw){% endif %}{%- endcapture -%}
+                {{- block.settings.item_image | image_url: width: block.settings.item_image.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'prod_item-pc' -}}
+                {{- block.settings.item_image_mb | image_url: width: block.settings.item_image_mb.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'prod_item-mb' -}}
+              {% endif %}
+            </div>
+            <h3 class="inner_title">{{ block.settings.item_title }}</h3>
+            <div class="inner_descripe">{{ block.settings.item_desc }}</div>
+            <div class="inner_icon">
+              <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.600098 6H12.6001" stroke="#262629" stroke-width="1.6"/>
+                <path d="M6.6001 0.166016L6.6001 11.8327" stroke="#262629" stroke-width="1.6"/>
+              </svg>
+            </div>
+          </div>
+        {% elsif block.type == 'ErgonomicModal' %}
+          <!-- 弹窗 -->
+          {% render 'home-prod-modal', block: block %}
+        {% elsif block.type == 'proLevelModal' %}
+          {% render 'home-proLevel-modal', block: block %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+ 
+</section>
+<script>
+  $('.home-blacklyte-prod .prod_cont .item:nth-of-type(1) .inner_icon').on('click', function(){
+    $('body').addClass('home-modal-show')
+  })
+  $('.prod-modal .prod-modal-title .close-icon').on('click', function(){
+    $('body').removeClass('home-modal-show')
+  })
+  $('.home-blacklyte-prod .prod_cont .item:nth-of-type(2) .inner_icon').on('click', function(){
+    $('body').addClass('home-prolevel-modal-show')
+  })
+  $('.pro-level-modal .header .header-icon').on('click', function(){
+    $('body').removeClass('home-prolevel-modal-show')
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "HOME PROD NEW",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "Why Blacklyte?"
+      },
+      {
+        "type": "textarea",
+        "id": "section_descripe",
+        "label": "Section Descripe",
+        "default": "Ultimate comfort and performance in every Blacklyte product"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "largeImage",
+        "name": "largeImage",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "item_image",
+            "label": "Item Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "item_image_mb",
+            "label": "Item Image Mobile"
+          },
+          {
+            "type": "text",
+            "id": "video_link",
+            "label": "Video LINK"
+          },
+          {
+            "type": "text",
+            "id": "item_title",
+            "label": "Item Title",
+            "default": "Ergonomic Excellence & Comfort Engineered"
+          },
+          {
+            "type": "textarea",
+            "id": "item_desc",
+            "label": "Item Descripe",
+            "default": "Crafted with ergonomics in mind, so you can sit better, longer."
+          }
+        ]
+      },
+      {
+        "type": "ErgonomicModal",
+        "name": "ErgonomicModal",
+        "settings": [
+          {
+            "type": "text",
+            "id": "item_title",
+            "label": "Item Section Title",
+            "info": "About Ergonomic Modal",
+            "default": "Ergonomic Excellence & Comfort Engineered"
+          },
+          {
+            "type": "textarea",
+            "id": "item-desc-1",
+            "label": "Item Section Desc 1",
+            "info": "About Ergonomic Modal",
+            "default": "To deliver them in actual products and use, we design with excessive research on ergonomics and posture, seeking the most natural alignment between the chair and your body."
+          },
+          {
+            "type": "textarea",
+            "id": "item-desc-2",
+            "label": "Item Section Desc 2",
+            "info": "About Ergonomic Modal",
+            "default": "On top of that, to support different body types and sitting preferences, we invest thousands of hours experimenting with adjustable features like adaptive lumbar support, multidimensional armrests, magnetic headrest, and more"
+          },
+        ]
+      },
+      {
+        "type": "proLevelModal",
+        "name": "proLevelModal",
+        "settings": [
+          {
+            "type": "text",
+            "id": "item-title",
+            "label": "Pro Level Modal Title",
+            "info": "about pro level modal",
+            "default": "Pro-Level Endurance"
+          },
+          {
+            "type": "textarea",
+            "id": "item-desc",
+            "label": "Pro Level Modal Title",
+            "info": "about pro level modal",
+            "default": "Every product of Blacklyte is built to meet the high demands of esports arenas and everyday warriors alike."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "HOME PROD NEW"
+      }
+    ]
+  }
+{% endschema %}

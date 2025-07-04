@@ -1,0 +1,409 @@
+{% comment %}
+  联盟自定义表单
+{% endcomment %}
+
+<style>
+  .needs-validation {
+    margin-top: 40px;
+  }
+  .needs-validation label:not(.checkbox__label){
+    display: inline-block;
+    font: 500 18px var(--font-family-1);
+    color: #262629;
+    margin-bottom: 8px;
+  }
+  .needs-validation input[type=checkbox]{
+    display: inline-block;
+    position: static;
+    vertical-align: middle;
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #262629;
+    appearance: auto;
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+  }
+  .needs-validation .invalid-feedback{
+    color: #a72a2f;
+  }
+  .needs-validation .text-primary{ }
+  .needs-validation .form-control{
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #262629;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-clip: padding-box;
+    border: 1px solid #999999;
+    border-radius: 1px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  }
+  .needs-validation .form-control#form_country_based{
+    background-color: transparent;
+  }
+  .needs-validation select {
+      background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3e%3cpath stroke=%27%236b7280%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27M6 8l4 4 4-4%27/%3e%3c/svg%3e');
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+      print-color-adjust: exact;
+  }
+  .needs-validation .mb-2{
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .needs-validation .mb-2.text-end.m-0{
+    text-align: right;
+  }
+  .needs-validation .mb-2.text-end.m-0 .btn{
+    font: 500 18px var(--font-family-1);
+    color: #fff;
+    border: none;
+    padding: 20px 90px;
+    background: linear-gradient(270deg, #8DE0FC 0%, #2672EB 100%);
+    border-radius: 50px;
+  }
+  .needs-validation .row{
+    --bs-gutter-x: 30px;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+  }
+  .needs-validation .row > * {
+    --bs-gutter-x: 30px;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+  }
+  .needs-validation .mb-2 .col-6{
+    width: 50%;
+  }
+  .needs-validation .pointer{
+    cursor: pointer;
+  }
+  .needs-validation .pointer svg{
+    width: 15px;
+    height: 15px;
+  }
+  @media(max-width: 1024px) {
+    .needs-validation .mb-2 .col-6{
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .needs-validation label:not(.checkbox__label){
+      font-size: 14px;
+    }
+    .needs-validation .form-control{
+      height: 40px;
+      font-size: 12px;
+    }
+    .needs-validation .mb-2.row{
+      margin-bottom: 0;
+    }
+    .needs-validation .mb-2.text-end.m-0{
+      text-align: center;
+    }
+    .needs-validation .mb-2.text-end.m-0 .btn{
+      font-size: 14px;
+      padding: 10px 50px;
+    }
+  }
+</style>
+
+<div id="application_main_form" class="needs-validation" lang="en">
+  <div class="mb-2 row">
+      <div class="col-6">
+          <label for="form_name">First Name <span class="text-primary">*</span></label>
+          <input class="form-control" type="text" placeholder="e.g. John" name="first_name" id="form_first_name" required="">
+          <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+      </div>
+      <div class="col-6">
+          <label for="form_name">Last Name <span class="text-primary">*</span></label>
+          <input class="form-control" type="text" placeholder="e.g. Smith" name="last_name" id="form_last_name" required="">
+          <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+      </div>
+  </div>
+  <div class="mb-2">
+      <label for="form_email">Email Address <span class="text-primary">*</span></label>
+      <input class="form-control" type="email" placeholder="e.g. johnsmith@gmail.com" name="email" id="form_email" required="">
+      <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+  </div>
+  <div class="mb-2">
+      <label for="form_phone">Phone Number <span class="text-primary">*</span></label>
+      <input class="form-control" type="tel" name="phone" id="form_phone" required="">
+      <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+  </div>
+  <div class="mb-2">
+      <label for="form_website">PayPal Email <span class="text-primary">*</span></label>
+      <input class="form-control" type="email" name="paypal_email" id="form_paypal_email" required="">
+      <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+  </div>
+  <div class="mb-2">
+      <label for="form_country_based">Which country are you based in? <span class="text-primary">*</span></label>
+      <select id="form_country_based" name="country_based" class="form-control" required=""><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AR">Argentina</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="BD">Bangladesh</option><option value="BE">Belgium</option><option value="BA">Bosnia and Herzegovina</option><option value="BR">Brazil</option><option value="BG">Bulgaria</option><option value="CA">Canada</option><option value="CL">Chile</option><option value="CN">China</option><option value="CO">Colombia</option><option value="CR">Costa Rica</option><option value="HR">Croatia</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="SV">El Salvador</option><option value="EE">Estonia</option><option value="FO">Faroe Islands</option><option value="FI">Finland</option><option value="FR">France</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GR">Greece</option><option value="GU">Guam</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IE">Ireland</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="KR">Korea, Republic of</option><option value="KW">Kuwait</option><option value="LV">Latvia</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MK">Macedonia, the Former Yugosalv Republic of</option><option value="MY">Malaysia</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MX">Mexico</option><option value="FM">Micronesia, Federated States of</option><option value="MA">Morocco</option><option value="NL">Netherlands</option><option value="NZ">New Zealand</option><option value="NG">Nigeria</option><option value="MP">Northern Mariana Islands</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RO">Romania</option><option value="RU">Russian Federation</option><option value="WS">Samoa</option><option value="SA">Saudi Arabia</option><option value="RS">Serbia and Montenegro</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="ZA">South Africa</option><option value="ES">Spain</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan, Province of China</option><option value="TZ">Tanzania, United Republic of</option><option value="TH">Thailand</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="UY">Uruguay</option><option value="VN">Viet Nam</option><option value="VG">Virgin Islands, British</option><option value="VI">Virgin Islands, U.S.</option></select>
+      <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+  </div>
+  <div class="mb-2">
+      <label for="form_field_address">Which category best describes you? <span class="text-primary">*</span></label>
+      <div id="form_field_address">
+          <input type="checkbox" name="form_field_address_checkbox" id="affiliate_network" value="Affiliate Network">
+          <label for="affiliate_network">Affiliate Network</label><br>
+          <input type="checkbox" name="form_field_address_checkbox" id="youTuber" value="YouTuber">
+          <label for="youTuber">YouTuber</label><br>
+          <input type="checkbox" name="form_field_address_checkbox" id="streamer" value="Twitch Streamer">
+          <label for="streamer">Twitch Streamer</label><br>
+          <input type="checkbox" name="form_field_address_checkbox" id="publications" value="Publication/Website">
+          <label for="publications">Publication/Website</label><br>
+          <div class="d-flex gap-2">
+              <input for="others" class="form-control d-inline" type="text" name="others" id="category_others" placeholder="Others">
+          </div>
+      </div>
+      <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+  </div>
+  <div class="mb-2">
+      <label for="form_chair_brand_variant">Which chair do you currently use? (Brand and variant) <span class="text-primary">*</span></label>
+      <input class="form-control" type="text" name="chair_brand_variant" id="form_chair_brand_variant" required="">
+      <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+  </div>
+  <div class="mb-2">
+      <label for="form_urls">Twitch/YouTube/Website URLs <span class="text-primary">*</span></label>
+      <input class="form-control" type="text" name="urls" id="form_urls" required="">
+      <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+  </div>
+  <div class="mb-2 row">
+      <div class="col-6">
+          <label for="form_name">Create new password for your affiliate account: 
+            <span class="pointer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="At least 9 characters, not more than 72 characters, at least 1 upper case character, at least 1 lower case character, at least 1 numerical character, at least 1 special character, Password does NOT match the email of the user." data-bs-original-title="At least 9 characters, not more than 72 characters, at least 1 upper case character, at least 1 lower case character, at least 1 numerical character, at least 1 special character, Password does NOT match the email of the user." aria-label="At least 9 characters, not more than 72 characters, at least 1 upper case character, at least 1 lower case character, at least 1 numerical character, at least 1 special character, Password does NOT match the email of the user.">
+              <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                <path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+              </svg>
+            </span>
+            <span class="text-primary">*</span></label>
+          <input type="password" class="form-control" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^a-zA-Z0-9])[\S]{9,72}$" name="password" id="form_password" required="">
+          <div class="invalid-feedback" style="display: none;">Please fill out this field accurately.</div>
+      </div>
+      <div class="col-6">
+          <label for="form_name">Confirm Password <span class="text-primary">*</span></label>
+          <input type="password" class="form-control" name="confirm-password" id="form_confirm_password" required="">
+          <div class="invalid-feedback" style="display: none;">Passwords do not match.</div>
+      </div>
+  </div>
+
+  <!-- <div class="mb-2">
+      <label for="form_tnc_checkbox">
+          <input type="checkbox" name="form_field_tnc_checkbox" id="form_tnc_checkbox" value="Agreed with T&amp;Cs">
+          I agree to the terms of the program
+      </label>
+      <div class="invalid-feedback" style="display: none;">Passwords do not match.</div>
+  </div> -->
+  <div class="mb-2 text-end m-0">
+      <button class="btn btn-primary btn-lg" id="form_submit">
+        Submit
+        <svg id="submit_spinner" class="svg-inline--fa fa-spinner fa-w-16 fa-spin" style="display: none;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+          <path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"></path>
+        </svg>
+      </button>
+  </div>
+</div>
+
+<script>
+  
+document.addEventListener("DOMContentLoaded", function () {
+  const formSubmit = document.getElementById("form_submit");
+  const form = document.querySelector('#application_main_form')
+
+  formSubmit.addEventListener("click", function (e) {
+    e.preventDefault(); // 防止默认提交
+    let isValid = true;
+
+    // 重置错误提示
+    form.querySelectorAll(".invalid-feedback").forEach(el => el.style.display = "none");
+
+    // First Name
+    const firstName = document.getElementById("form_first_name");
+    if (firstName.value.trim() === "") {
+      markInvalid(firstName, "Please enter your first name.");
+    }
+
+    // Last Name
+    const lastName = document.getElementById("form_last_name");
+    if (lastName.value.trim() === "") {
+      markInvalid(lastName, "Please enter your last name.");
+    }
+
+    // Email
+    const email = document.getElementById("form_email");
+    if (!validateEmail(email.value)) {
+      markInvalid(email, "Please enter a valid email address.");
+    }
+
+    // Phone
+    const phone = document.getElementById("form_phone");
+    if (phone.value.trim().length < 5) {
+      markInvalid(phone, "Please enter a valid phone number.");
+    }
+
+    // PayPal Email
+    const paypal = document.getElementById("form_paypal_email");
+    if (!validateEmail(paypal.value)) {
+      markInvalid(paypal, "Please enter a valid PayPal email.");
+    }
+
+    // Country
+    const country = document.getElementById("form_country_based");
+    if (!country.value) {
+      markInvalid(country, "Please select a country.");
+    }
+
+    // Category Checkboxes / Others
+    const categoryInputs = document.querySelectorAll("#form_field_address input[type='checkbox']");
+    const categoryOther = document.getElementById("category_others");
+    let selectedCategories = []
+    
+    const categoryChecked = Array.from(categoryInputs).some(cb => cb.checked) || categoryOther.value.trim() !== "";
+   
+    
+    if (!categoryChecked) {
+      markInvalid(categoryOther, "Please select or enter a category.");
+    } else {
+      // 获取选中的 checkbox 值
+      selectedCategories = Array.from(categoryInputs)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+      
+      // 获取 "Others" 文本框的值
+      const otherCategory = categoryOther.value.trim();
+      
+      // 如果填写了 others，也加入
+      if (otherCategory !== "") {
+        selectedCategories.push(otherCategory);
+      }
+    }
+
+
+    // Chair
+    const chair = document.getElementById("form_chair_brand_variant");
+    if (chair.value.trim() === "") {
+      markInvalid(chair, "Please enter your chair brand.");
+    }
+
+    // URLs
+    const urls = document.getElementById("form_urls");
+    if (urls.value.trim().length < 5) {
+      markInvalid(urls, "Please enter your URL(s).");
+    }
+
+    // Password
+    const password = document.getElementById("form_password");
+    const confirmPassword = document.getElementById("form_confirm_password");
+    const pwRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^a-zA-Z0-9])[\S]{9,72}$/;
+    
+    
+    if (!pwRegex.test(password.value)) {
+      markInvalid(password, "Password does not meet requirements.");
+    }
+    if (password.value !== confirmPassword.value) {
+      markInvalid(confirmPassword, "Passwords do not match.");
+    }
+
+    // T&C Checkbox
+    // const tnc = document.getElementById("form_tnc_checkbox");
+    // if (!tnc.checked) {
+    //   markInvalid(tnc, "You must agree to the terms.");
+    // }
+
+    if (isValid) {
+        fetch('https://api.blacklyte.au/zhihua-api/auth/getToken',{
+          method: 'POST',
+          headers: {
+            'App-Id': 'api_X7kP9mN3vL2tR5jQ',
+            'App-Secret': 'sec_aB4nY6wZ8cD1fH9x'
+          }
+        }).then(res => res.json())
+        .then(data => {
+          if(data.recode == 200) {
+            fetch('https://api.blacklyte.au/zhihua-api/affiliate/register', {
+              method: 'POST',
+              headers: {
+                'Authorization': `zhihua-${data.data.token}`,
+                'Content-Type': 'application/json'
+              },
+              body:JSON.stringify({
+                'firstName': firstName.value.trim(),
+                'lastName': lastName.value.trim(),
+                'email': email.value,
+                'phone': phone.value.trim(),
+                'paypal_email': paypal.value,
+                'country': country.value,
+                'address1': selectedCategories.join(','),
+                'address2': chair.value,
+                'company': urls.value,
+                'password': password.value,
+                'send_welcome': 'TRUE',
+                'status': 'PENDING'
+              })
+            }).then(res => res.json())
+            .then(data=>{
+              if(data.error) {
+                alert(data.error)
+              } else {
+                $('.affiliate-regi-resu').css({
+                  'opacity': 1,
+                  'display': 'flex'
+                })
+                $('.affiliate-content').css({
+                  'display': 'none'
+                })
+                firstName.value = ''
+                lastName.value = ''
+                email.value = ''
+                phone.value = ''
+                paypal.value = ''
+                country.value = ''
+                selectedCategories = []
+                chair.value = ''
+                urls.value = ''
+                password.value = ''
+                confirmPassword.value = ''
+                $('#form_field_address input[type="checkbox"]').prop('checked', false)
+                $('#category_others').val('')
+              }
+            }).catch(error => { })
+          }
+        })
+        .catch(error => {})
+    }
+
+    // 辅助函数
+    function markInvalid(input, message) {
+      isValid = false;
+      const feedback = input.closest(".mb-2, .col-6")?.querySelector(".invalid-feedback");
+      if (feedback) {
+        feedback.textContent = message;
+        feedback.style.display = "block";
+      }
+    }
+
+    function validateEmail(email) {
+      const re = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/
+      return re.test(String(email).toLowerCase());
+    }
+  });
+});
+</script>
+
+

@@ -1,0 +1,207 @@
+<div id="product-360-viewer" class="product-360-viewer">
+  <div id="loading-spinner" class="loading-spinner"></div>
+  <div class="product-360-images">
+    {% for img in images %}
+      {% if img %}
+        {% comment %}
+          <img
+            src="{{ img | image_url }}"
+            data-index="{{ forloop.index0 }}"
+            class="product-360-image"
+            alt="360-image"
+          >
+        {% endcomment %}
+        {% assign srcset_1x = img | image_url: width: 1120 | append: ' 1x, ' %}
+        {% assign srcset_2x = img | image_url: width: 768 | append: ' 2x, ' %}
+        {% assign srcset_3x = img | image_url: width: 768 | append: ' 3x, ' %}
+        {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+        {{-
+          img
+          | image_url: width: img.width
+          | image_tag:
+            sizes: '(min-width:769px) 58.33vw, 100vw',
+            srcset: srcset_init,
+            class: 'product-360-image',
+            alt: '360-image',
+            preload: true
+        -}}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  {% comment %} #product-360-viewer div:empty {
+    display: block;
+  } {% endcomment %}
+
+  .product-360-viewer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    cursor: grab;
+  }
+
+  .product-360-images {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    opacity: 1;
+    background-color: #f9f9f9;
+  }
+
+  .product-360-image {
+    position: absolute;
+    top: -4%;
+    left: 0;
+    width: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0s ease-out;
+    height: 110% !important;
+  }
+
+  .product-360-images .product-360-image:first-child{
+    opacity: 1;
+  }
+
+  .loading-spinner {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 46%;
+    transform: translate(-50%, -50%);
+    display: none;
+    border: 5px solid #f6f6f6;
+    border-radius: 50%;
+    border-top: 5px solid var(--spinner-top-color);
+    border-right: 5px solid var(--spinner-right-color);
+    border-bottom: 5px solid var(--spinner-bottom-color);
+    border-left: 5px solid var(--spinner-left-color);
+    width: 50px;
+    height: 50px;
+    animation: spin-icon 1.4s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    {% comment %} .product-360-image {
+      top: -14%;
+      object-fit: cover;
+      height: 134% !important;
+    } {% endcomment %}
+  }
+</style>
+
+<script>
+  {% comment %} document.addEventListener('DOMContentLoaded', async function () { {% endcomment %}
+    const viewer = document.getElementById('product-360-viewer');
+    const imagesContainer = document.querySelector('.product_infor_simplicity_left_contain');
+    const images = document.querySelectorAll('.product-360-image');
+    const loadingSpinner = document.getElementById('product_infor_simplicity_left_loading');
+    let currentIndex = 0;
+    let imageCount = images.length;
+    let animationFrameId = null;
+
+    // **等待所有图片加载完成**
+    waitForFirstImages().then(() => {
+        // **图片加载完成，隐藏 loading，并显示 360° 视图**
+        {% comment %} loadingSpinner.style.display = 'none'; {% endcomment %}
+        imagesContainer.style.opacity = '1';
+        updateImage(currentIndex);
+    });
+
+    {% comment %} function waitForImages() {
+      return new Promise((resolve) => {
+        const images = document.querySelectorAll('.product-360-image');
+        let loadedCount = 0;
+        const totalImages = images.length;
+
+        if (totalImages === 0) {
+          resolve(); // 如果没有图片，直接 resolve
+          return;
+        }
+
+        images.forEach((img) => {
+          const onLoad = () => {
+            loadedCount++;
+            if (loadedCount === totalImages) resolve(); // 所有图片加载完成
+          };
+
+          img.onload = onLoad;
+          img.onerror = onLoad; // 即使加载失败，也继续执行
+
+          if (img.complete) {
+            onLoad(); // 处理缓存图片
+          }
+        });
+      });
+    } {% endcomment %}
+    function waitForFirstImages() {
+      return new Promise((resolve) => {
+        const images = document.querySelectorAll('.product-360-image');
+        let loadedCount = 0;
+        const totalImages = images.length;
+
+        if (totalImages === 0) {
+          resolve(); // 如果没有图片，直接 resolve
+          return;
+        }
+        const firstImage = images[0]
+        const onLoad = () => {
+          loadedCount++;
+          if (loadedCount === 1) resolve(); // 所有图片加载完成
+        };
+
+        firstImage.onload = onLoad;
+        firstImage.onerror = onLoad; // 即使加载失败，也继续执行
+
+        if (firstImage.complete) {
+          onLoad(); // 处理缓存图片
+        }
+      });
+    }
+
+    // **更新图片显示**
+    function updateImage(index) {
+      images.forEach((img, i) => {
+        img.style.opacity = i === index ? '1' : '0';
+      });
+    }
+
+    // **鼠标移动事件，根据 X 坐标计算图片索引**
+    function handleMouseMove(event) {
+      let mouseX = event.clientX || event.touches?.[0]?.clientX || 0;
+      let viewerRect = viewer.getBoundingClientRect();
+      let relativeX = mouseX - viewerRect.left; // 计算鼠标相对 `viewer` 左边的偏移
+      let newIndex = Math.floor((relativeX / viewerRect.width) * imageCount); // 计算索引
+
+      newIndex = Math.max(0, Math.min(newIndex, imageCount - 1)); // 限制索引范围
+
+      if (newIndex !== currentIndex) {
+        currentIndex = newIndex;
+        updateImage(currentIndex);
+        // // **取消上一帧的动画，防止卡顿**
+        // if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+        // animationFrameId = requestAnimationFrame(() => {
+        //   updateImage(currentIndex);
+        // });
+      }
+    }
+
+    // **监听鼠标和触摸事件**
+    viewer.addEventListener('mousemove', handleMouseMove);
+    viewer.addEventListener('touchmove', handleMouseMove);
+  {% comment %} }); {% endcomment %}
+</script>

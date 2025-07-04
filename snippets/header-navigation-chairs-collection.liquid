@@ -1,0 +1,227 @@
+{% comment %}
+ header navigation chairs list
+ menu item chair hover show
+{% endcomment %}
+<style>
+  .header-navigation-chairs {
+    /* min-width: calc(775px + 5vw); */
+    min-width: calc(470px + 5vw);
+    max-height: 0;
+    overflow: hidden; 
+    height: auto;
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 4px 0px #0000001A;
+    border-radius: 2px;
+    position: absolute;
+    left: calc(30% - 20px);
+    top: 60px;
+    opacity: 1;
+    transition: max-height 0.5s ease, opacity 0.4s ease;
+  }
+  .header-navigation-chairs_left {
+    border-right: 1px solid #A1A1AA;
+    padding-top: 16px;
+    padding-bottom: 30px;
+    width: 100%;
+    /* width: 50%; */
+  }
+  .header-navigation-chairs_left .header-navi_title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #666666;
+    margin-left: 30px;
+  }
+  .header-navigation-chairs_left .bottom_line_menu_navi {
+    height: 1px;
+    width: 100%;
+    background-color: #A1A1AA;
+  }
+  .header-navigation-chairs_left .link_button {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333333;
+    padding-left: 30px;
+    padding-top: 20px;
+  }
+  .header-navigation-chairs_left .item_image {
+    width: 84px;
+    height: 81px;
+  }
+  .header_navigation_product_list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .header_navigation_product_list .item {
+    display: flex;
+    cursor: pointer;
+    list-style-type: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+  }
+  .header_navigation_product_list .item .product_item {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transfrom: translateY(-8px);
+  }
+  .header_navigation_product_list .item .product_item .product_item_title {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #333333;
+    display: block;
+  }
+  .header_navigation_product_list .item .product_item .product_item_title_lightningdeals:after {
+    content: 'LIGHTNING DEALS';
+    display: inline-block;
+    font-size: 12px;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 2px 5px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .header_navigation_product_list .item .product_item .product_item_title_athenax:after {
+    content: 'BEST SELLER';
+    display: inline-block;
+    font-size: 12px;
+    background-color: #676CFE;
+    color: #fff;
+    padding: 2px 5px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .header_navigation_product_list .item .product_item .product_item_title:hover {
+    text-decoration: underline;
+  }
+  .header-navigation-chairs_left .product_item_desc {
+    font-size: 16px;
+    font-weight: 500;
+    color: #666666;
+    margin-top: 8px;
+    display: block;
+    white-space: nowrap;
+    margin-right: 30px;
+  }
+  .header-navigation-chairs_right {
+    width: 50%;
+  }
+  .header-navigation-chairs_right_img {
+    width: 380px;
+    height: auto;
+    margin-top: 30px;
+    margin-left: 20px;
+  }
+  @media (min-width: 1500px) and (max-width: 1900px) {
+    .header-navigation-chairs {
+      left: calc(50% - 6px);
+      transform: translateX(calc(-50% - 6px));
+    }
+  }
+  @media(min-width: 2000px) {
+    .header-navigation-chairs {
+      left: calc(300px + 14%);
+      /* min-width: calc(450px + 10vw); */
+    }
+    /* .header-navigation-chairs_right,.header-navigation-chairs_left {
+      width: 50%;
+    }
+    .header-navigation-chairs_right_img {
+      width: 450px;
+    } */
+  }
+</style>
+<div class="header-navigation-chairs">
+  <div class="header-navigation-chairs_left">
+    <div class="header-navi_title">Gaming Chairs</div>
+    <ul class="header_navigation_product_list">
+      <a href="/products/blacklyte-kraken-pro-gaming-chair" class="item">
+        <img class="item_image" src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/menu_naviga_chairs_KrakenPro.png?v=1731573468" />
+        <div class="product_item">
+          <span class="product_item_title">Kraken Pro</span>
+          <span class="product_item_desc">Official Chair of 2024 Premier, R6 Major, Red Bull Homeground.</span>
+        </div>
+      </a>
+      <a href="/products/blacklyte-kraken-gaming-chair" class="item">
+        <img class="item_image" src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/menu_naviga_chairs_Kraken.png?v=1731573462" />
+        <div class="product_item">
+          <span class="product_item_title">Kraken</span>
+          <span class="product_item_desc">Built for pro gamers and enthusiasts.</span>
+        </div>
+      </a>
+      <li class="bottom_line_menu_navi"></li>
+      <a href="/products/blacklyte-athena-pro-gaming-chair" class="item">
+        <img class="item_image" src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/menu_naviga_chairs_athenaPro.png?v=1731570220" />
+        <div class="product_item">
+          <span class="product_item_title">Athena Pro</span>
+          <span class="product_item_desc">Ergonomic design with built-in 4-way adjustability.</span>
+        </div>
+      </a>
+      <a href="/products/blacklyte-athena-gaming-chair" class="item">
+        <img class="item_image" src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/header-menu-athena.png?v=1749117598" />
+        <div class="product_item">
+          <span class="product_item_title product_item_title_athenax">Athena</span>
+          <span class="product_item_desc">Pro-grade ergonomics,the choice of champions.</span>
+        </div>
+      </a>
+      <a href="/products/blacklyte-athena-x-gaming-chair-pink-1" class="item">
+        <img class="item_image" src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/menu_naviga_chairs_athenax.png?v=1731570220" />
+        <div class="product_item">
+          <span class="product_item_title">Athena X</span>
+          <span class="product_item_desc">Engineered for stability and support.</span>
+        </div>
+      </a>
+      <li class="bottom_line_menu_navi"></li>
+      <a class="link_button" href="/collections/all">All Chairs</a>
+    </ul>
+  </div>
+  <!-- <div class="header-navigation-chairs_right">
+    <img class="header-navigation-chairs_right_img" src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/menu_naviga_chairs_collec_R.png?v=1731561057" />
+  </div> -->
+</div>
+
+<script>
+  (function ($) {
+    // 当鼠标悬停在 .menu-lv-item 且文字为 'chairs' 时，显示 .header-navigation-chairs
+    $('.header-navigation .menu-lv-item').on('mouseenter', function() {
+        if ($(this).text().toLowerCase().trim() === 'chairs') {
+            $('.header-navigation-chairs').css({
+              'opacity': '1',
+              'max-height': '590px',
+              'border-top': '1px solid #A1A1AA'
+            });
+        }
+    });
+    
+    // 当鼠标离开 .menu-lv-item 时，隐藏 .header-navigation-chairs（除非鼠标移到 .header-navigation-chairs 上）
+    $('.header-navigation .menu-lv-item').on('mouseleave', function() {
+        if ($(this).text().toLowerCase().trim() === 'chairs' && !$('.header-navigation-chairs:hover').length) {
+            // 检查 .header-navigation-chairs 的当前 opacity
+            let chairsOpacity = $('.header-navigation-chairs').css('opacity');
+            
+            // 只有在 opacity 为 1 时才执行操作
+            if (chairsOpacity === '1') {
+                $('.header-navigation-chairs').css({
+                    'opacity': '0',
+                    'max-height': '0',
+                    'border-top': 'none'
+                });
+            }
+        }
+    });
+
+    
+    // 当鼠标离开 .header-navigation-chairs 时隐藏
+    $('.header-navigation-chairs').on('mouseleave', function() {
+        $(this).css({
+          'opacity': '0',
+          'max-height': '0',
+          'border-top': 'none'
+        });
+    });
+
+  })(jQuery)
+</script>

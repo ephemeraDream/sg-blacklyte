@@ -1,0 +1,13 @@
+.jdgm-widget.jdgm-widget{
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+.jdgm-widget.jdgm-widget{
+  width: 75vw;
+}
+@media screen and (max-width: 768px) {
+    .jdgm-widget.jdgm-widget {
+        width: 90vw;
+        max-width: 90vw;
+    }
+}

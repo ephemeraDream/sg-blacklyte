@@ -1,0 +1,164 @@
+{{ 'section-compare-simplicity.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.product != blank %}
+  {% assign product = section.settings.product %}
+{% endif %}
+{% assign product_compare = product.metafields.custom.product_compare.value %}
+{% assign active_index = 0 %}
+
+<div class="compare_simplicity" id="compare">
+  {% if product_compare != blank and section.settings.show_compare %}
+    <div class="compare_simplicity_title">{{ section.settings.title }}</div>
+    {% if section.settings.description != blank %}
+      <div class="compare_simplicity_desc">{{ section.settings.description }}</div>
+    {% endif %}
+    <div class="compare_simplicity_product">
+      <div class="compare_simplicity_product_item pc_show"></div>
+      {% for item in product_compare.product_list.value %}
+        {% if item.metafields.custom.series_name == product.metafields.custom.series_name %}
+          {% assign active_index = forloop.index0 %}
+        {% endif %}
+        <div class="compare_simplicity_product_item">
+          <img
+            src="{{ item.featured_image | image_url: width:180 }}"
+            alt="{{ item.title }}"
+            loading="lazy"
+          >
+          <div>
+            <div class="compare_simplicity_product_item_name">{{ item.metafields.custom.series_name }}</div>
+            {% comment %} <div class="compare_simplicity_product_item_desc">{{ item.description }}</div> {% endcomment %}
+            <div class="compare_simplicity_product_item_price">
+              {{ 'products.product.text.from' | t -}}
+              {{- item.price | money_without_trailing_zeros }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% for data in product_compare.compare_data.value.data %}
+      <div class="compare_simplicity_item">
+        <div class="compare_simplicity_item_pmdbox pmd_show">
+          {% for value in data.value %}
+            <div class="compare_simplicity_item_title">{{ data.label }}</div>
+          {% endfor %}
+        </div>
+        <div class="compare_simplicity_item_pmdbox">
+          <div class="compare_simplicity_item_title pc_show">{{ data.label }}</div>
+          {% for value in data.value %}
+            <div class="compare_simplicity_item_text{% if active_index != forloop.index0 %} light_word{% endif %}">
+              {{ value }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+  <div class="compare_simplicity_contact{% if product_compare != blank and section.settings.show_compare %} compare_simplicity_contact_top{% endif %}">
+    <div class="compare_simplicity_contact_logo">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/compare_chat_head.webp?v=1743671629"
+        alt="customer service"
+        loading="lazy"
+      >
+    </div>
+    <div class="compare_simplicity_contact_title">{{ 'products.product.text.not_sure' | t }}</div>
+    <div class="compare_simplicity_contact_box">
+      <div class="compare_simplicity_contact_box_item">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="41"
+          height="40"
+          viewBox="0 0 41 40"
+          fill="none"
+        >
+          <rect width="40" height="40" transform="translate(0.5)" fill="url(#pattern0_13258_3814)"/>
+          <defs>
+          <pattern id="pattern0_13258_3814" patternContentUnits="objectBoundingBox" width="1" height="1">
+          <use xlink:href="#image0_13258_3814" transform="scale(0.0125)"/>
+          </pattern>
+          <image id="image0_13258_3814" width="80" height="80" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA6BJREFUeF7tnIFx1DAQRXcrgBJIB9ABqQCoAKgAqICkAkIFpAOgAkIHoQJSQqhg8c/IjK2TZFl7Y+zz10wmM7HXp33+0sqK/6mwuQioK5rBQoBOERAgAToJOMOpQAJ0EnCGVynQzJ6IyHMRwe89tFsRuVXVu6lkiwDNDNA+BnhT1zrF4zci8rYEMgvQzADu4hSpNOR0oaqXqbgkQMJLIk5CPAAY5rvfDXdpDyHnqoph/a+lAP7IzHkI/CUi9ydO6rGIvMgUzBtVPc8CLKjvUlV3NR+aGfJFHYjb2bCojBRoZi9F5GsUcaeqZyeuumR6ZpYajajK131ADDBF/bOqvt8pwCsReRflPhqNNQB3N3x7YJlhTIC1o4kAa0llziNAAnQScIZTgQToJOAMpwIJ0EnAGb6IArutL3P2c1Z4ty9XtYs+66L/cxlDgAP6NZKNbxYBEmB2tNcIyr2ZQAU6FXiMyXqt11hEgWtN/hj9IkAnRQIkQCcBZzgVSIBOAs7wRRQYPmR2V7fwf+alADZtJiy5KTD77oYAAmwlR4BOcgS4LYBNLx2xiBznJq/6KosUkVUTcHaOAAnQScAZTgUSoJOAM5wKXAnAPb/im3rlufiG6hsR+RLduINX+503djPhZga/TOwPfKWq3/ok4n9r4uSUySZrddoMjZkdLbi18jYHfEbm1X4cgtHm+0qMNvdDFcxhY2Yw0sDOkWu90QZGy7jBwfls+MeUUwmB8EesvcGSiuE0aUntEwlGIuTWatsdDV9cN2c2zLl01gYV8OBfq4LYqS/l+6jNKWn3KNldtwIR3j0kBzjF1ikQDqPXU+cljme9MlOGa1Rl+MVaJd/Q1+aQyULXABDzPuCNHJrFOTDV/eBcfxpAPmpO8TiBpa8ewPICXrakozQD8Ge08vgjIpgSUDCy4PpUFnvb8zjsHlYJGA2lQpCdFzMAR+bBuf3cHEAkGJYimKNjI2CfPyACzEhBBBjJo+Dp7c8czYsEmBhfweOMx08sgFPtSlU/BOWmqvD+hnBMqWJefFh0d3EY9vEyhgCDulBcoMTUIxhOwbyIn/g4AQ4VWTEvxgImwMSQxlcUfKpckhBgZvGPhT++QGPqKYoAc0qrKC4IJcDSUK1YdBNgzVxXKC4He3w119vss/Cc5BLFBTvRw0W3+0uFNvks7ISIooJtOuzYXOd2bmo/Y3cAa8HUnkeAtaQy5xEgAToJOMOpQAJ0EnCGU4FOgH8BGK+Ib99ZXMIAAAAASUVORK5CYII="/>
+          </defs>
+        </svg>
+        <div class="compare_simplicity_contact_box_item_text">{{ 'products.product.text.chat_with' | t }}</div>
+        <a class="compare_chat chat_now">
+          {{- 'products.product.text.chat' | t }}
+          {{ section.settings.arrow_icon }}
+        </a>
+      </div>
+      <div class="compare_simplicity_contact_box_item">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+        >
+          <rect width="40" height="40" fill="url(#pattern0_13258_3820)"/>
+          <defs>
+          <pattern id="pattern0_13258_3820" patternContentUnits="objectBoundingBox" width="1" height="1">
+          <use xlink:href="#image0_13258_3820" transform="scale(0.0125)"/>
+          </pattern>
+          <image id="image0_13258_3820" width="80" height="80" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAx1JREFUeF7t3P1x1DAQBfDdDlICqQBKIBUAFRAqCB2QdAAVQAdABaSEUAEpgQ6WvBk7c2MsW7rnD53ueYbhj/Pa1s8ryV8bNy2UgFPRCjYBkkkgQAGSAmS4MlCApAAZrgwUIClAhisDBUgKkOHKQAGSAmR4UQZGxAsze21m+L+l5cHMHtz9sbRRWYARAbRPHV7pPk5p/Xsz+1ACOQsYEYC7PSWFBY711t3vcrYzCXimeL1bFmISsBvv/uSchYbXuXJ3dOvkMgX4KzHmYYO/zexvI3AXZvYmMTHeu/tVMeBE9t25e5PjYUSgXRjvh8vl1KQymoER8dbMvg+29Ojul41k3WgzImKs12FW/pZqdwpw7Gx8cfePjQN+NrObQRsne10JYLPdtwdLdGMB5vYaAeZKJdbbFDAirqcGV7Itq4dHBC5fbg7vOLYGDDPDzTfGiOQstbpE4Q56uKfrWEyIF0+Az/PAHoD94VcPOYTrD7wWwGohU3C1AlYDOQdXO+BukLlwNQDiqTTuWN5njOOrj5GlcE8PSvBQBBPg89OWTSeRg6v3XSGXgKviTqR7grNZRi4JVwXgVhm5BlxVgGtBrglXJeBSkFvAVQ1IQOJdLV4b4OEu7lvnlv9m1bmA4e+7zMJHHGTJrJ2zeRruJDJw5GyzkIvBnSTgkV0bYYvDnTRgJiTGQsDhvczke9qcPp9a5yTGwLkGdrPuq4P3tLgNxIc/q7+HbgJwDnjN3wVI6gpQgKQAGa4MFCApQIYrAwVICpDhykABkgJkuDJQgKQAGa4MFCApQIYrAwVICpDhysDKAVXmMHKCUmUO12b2dbD+bNkTmQC7h0cEagOHtdDv3P1H6uBSgNjIWKFhVgXj7hJHHMBEZWp5qRf2nyh7wk94yfOzsWLDl6nCyqOKDTtAVKmjduycl8nsA8xcwXWqgvEcULNK23JK/s8RMQtvNgP7NOu+PsWsjG7d8lL82chsBh5qdZD4agD/WlowMeIybZ0/e9KS1NJtKcrApXfewvYESJ5FAQqQFCDDlYECJAXIcGWgAEkBMlwZKEBSgAz/B6Q3qG8ZrKTAAAAAAElFTkSuQmCC"/>
+          </defs>
+        </svg>
+        <div class="compare_simplicity_contact_box_item_text">{{ 'products.product.text.drop_us' | t }}</div>
+        <a href="/pages/contact">
+          {{- 'products.product.text.email' | t }}
+          {{ section.settings.arrow_icon }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelector('.compare_chat').addEventListener('click', () => {
+    zE('messenger', 'open');
+  });
+</script>
+
+{% schema %}
+{
+  "name": "compare simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "description"
+    },
+    {
+      "type": "textarea",
+      "id": "arrow_icon",
+      "label": "arrow icon"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "product"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_compare",
+      "label": "show compare",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "compare simplicity"
+    }
+  ]
+}
+{% endschema %}

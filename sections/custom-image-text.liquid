@@ -1,0 +1,215 @@
+ {% liquid
+          assign sid = section.id
+          assign se_blocks = section.blocks
+      %}
+
+<div class="spx_iwt-margin ">
+  <div class="spx_iwt-inner">
+    <img loading="lazy" class="slide-pc" src="{{ section.settings.image | img_url: 'master' }}" /> 
+    <img loading="lazy" class="slide-mobile" src="{{ section.settings.image_mb | img_url: 'master' }}" /> 
+      
+          <div class="spx_iwt-position" style="justify-content: center; align-items: start;">
+          
+              <div class="Text_blocks">
+                <div style="">
+                  {% if section.settings.Product_block_heading != blank  %}
+                    <div class="text_block_heading" style=" --character-title-85:{{ section.settings.Product_block_heading-color }}">{{ section.settings.Product_block_heading }}</div>
+                  {% endif %}
+                
+                  {% if section.settings.Product_block_text != blank  %}
+                    <div class="text_block_text" style="--black-black:{{ section.settings.Product_block_text-color }}">{{ section.settings.Product_block_text }}</div>
+                  {% endif %}
+                  
+                </div>
+              </div>
+          
+          </div>
+
+
+   
+     
+  </div>
+</div>
+<style>
+  #shopify-section-{{ sid }} .spx_iwt-inner{
+     position: relative;
+    width:100%;
+    margin: 0 auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    align-content: center;
+    justify-content: space-between;
+  }
+
+  #shopify-section-{{ sid }} .spx_iwt-margin{
+     margin:{{section.settings.margin}};
+  }
+  #shopify-section-{{ sid }} .spx_iwt-position{
+     position: absolute;
+     top:0;
+     left: 0;
+     width:100%;
+     height:100%;
+     display: flex;
+  }
+   #shopify-section-{{ sid }} .spx_iwt-content{            
+     margin-top:16px;
+     overflow: hidden;
+   }
+  #shopify-section-{{ sid }} .spx_iwt-content img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+  #shopify-section-{{ sid }} .Text_block{
+    width:50%;
+    height:auto;
+   
+  }
+  #shopify-section-{{ sid }} .Text_blocks{
+    width:100%;
+    height:auto;
+  }
+  #shopify-section-{{ sid }} .Text_blocks>div{
+    max-width: 932px;margin: 0 auto; padding:0 16px;
+  }
+  #shopify-section-{{ sid }} .text_block_heading{
+    color: var(--character-title-85, rgba(0, 0, 0, 0.85));
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top:72px;
+    margin-bottom:24px;
+  }
+  #shopify-section-{{ sid }} .text_block_text{
+    color: var(--black-black, #000);
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom:32px;
+  }
+  
+  @media only screen and (min-width: 2000px){
+    #shopify-section-{{ sid }} .text_block_heading{
+      font-size: 2.08vw;
+    }
+    #shopify-section-{{ sid }} .text_block_text{
+      font-size: 1.04vw;
+    }
+    #shopify-section-{{ sid }} .Text_blocks>div{
+      max-width:64%;
+    }
+  }
+  @media only screen and (max-width: 1440px){
+    #shopify-section-{{ sid }} .text_block_heading{
+      margin-top:40px;
+    }
+  }
+
+  @media only screen and (max-width: 1080px){
+    #shopify-section-{{ sid }} .spx_iwt-margin{
+       margin:{{section.settings.mbmargin}};
+    }
+    #shopify-section-{{ sid }} .text_block_heading{
+      margin-top:32px;
+      margin-bottom:8px;
+      
+    }
+    
+    #shopify-section-{{ sid }} .spx_iwt-position{
+      /* position: static; */
+      height: unset;
+    }
+    #shopify-section-{{ sid }} .text_block_heading{
+      font-size: 28px;
+    }
+    #shopify-section-{{ sid }} .text_block_text{
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+  }
+  
+
+
+
+</style>
+{% schema %}
+{
+  "name": "Image text",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Custom liquid"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom classes"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "image"
+     },
+      {
+        "type": "image_picker",
+        "id": "image_mb",
+        "label": "image mobile"
+     },
+    {
+        "type": "text",
+        "id": "Product_block_heading",
+        "label": "heading",
+      "default": "heading"
+     },
+    {
+      "type": "color",
+      "id": "Product_block_heading-color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+        "type": "text",
+        "id": "Product_block_text",
+        "label": "text",
+         "default": "text"
+     },
+    {
+      "type": "color",
+      "id": "Product_block_text-color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Section margin"
+    },
+     {
+      "type": "text",
+      "id": "margin",
+      "label": "PC margin",
+      "default": "0"
+    },
+    {
+      "type": "text",
+      "id": "mbmargin",
+      "label": "mb margin",
+      "default": "0px,"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom image text"
+    }
+  ]
+}
+{% endschema %}

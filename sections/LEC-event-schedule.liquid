@@ -1,0 +1,211 @@
+<style>
+  .blavklyte-guarantees {
+    background-color: #000000;
+    padding: 100px 0;
+  }
+  .event_schedule_title {
+    font-size: 60px;
+    line-height: 70px;
+    color: #fff;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 60px;
+    font-family: 'DINCond-Bold';
+  }
+  .event_schedule_list {
+    padding: 70px 61px;
+    background-color: #0E0E0E;
+  }
+  .event_schedule_list .event_schedule_item {
+    display: flex;
+    align-items: center;
+    background-color: #1C1C1C;
+    border: 1px solid #343434;
+    padding-left: 37px;
+    padding-right: 65px;
+    margin-bottom: 26px;
+    justify-content: space-between;
+  }
+  .event_schedule_list .event_schedule_item .event_schedule_item_all_text {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: space-between;
+  }
+  .event_schedule_list .event_schedule_item .title_texts {
+    font-size: 24px;
+    color: #FFFFFF;
+    font-weight: 500;
+    line-height: 1.1;
+    font-family: 'DINCond-Bold';
+  }
+  .event_schedule_list .event_schedule_item .desc_texts {
+    font-size: 18px;
+    color: #A0A0A0;
+    font-weight: 500;
+    line-height: 1.1;
+    font-family: 'DINCond-Bold';
+  }
+  .event_schedule_list .event_schedule_item .event_schedule_imgs {
+    display: flex;
+  }
+  .event_schedule_list .event_schedule_item .event_schedule_imgs .logo_center_line {
+    display: inline-block;
+    margin-left: 36px;
+    margin-right: 31px;
+    color: #343434;
+    height: 100%;
+    font-size: 36px;
+    line-height: 36px;
+  }
+  .event_schedule_list .event_schedule_item .event_schedule_imgs .logos {
+    display: inline-block;
+    max-width: 36px;
+    height: 36px;
+  }
+  .event_schedule_list .event_schedule_item .event_schedule_imgs .logos img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  @media(max-width: 767px) {
+    .blavklyte-guarantees {
+      padding: 50px 0;
+    }
+    .event_schedule_title {
+      font-size: 30px;
+      line-height: 30px;
+    }
+    .event_schedule_list {
+      padding: 24px 10px;
+    }
+    .event_schedule_list .event_schedule_item {
+      padding: 8px;
+    }
+    .event_schedule_list .event_schedule_item .event_schedule_item_all_text {
+      display: flex;
+      align-items: normal;
+      width: 70%;
+      justify-content: normal;
+      flex-direction: column;
+    }
+    .event_schedule_list .event_schedule_item .event_schedule_imgs .logo_center_line {
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 20px;
+      line-height: 20px;
+    }
+    .event_schedule_list .event_schedule_item .title_texts, .event_schedule_list .event_schedule_item .desc_texts {
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+    .event_schedule_list .event_schedule_item .desc_texts {
+      margin-top: 10px;
+      font-weight: 400;
+    }
+    .event_schedule_list .event_schedule_item .event_schedule_imgs .logos {
+      max-width: 20px;
+      height: 20px;
+    }
+  }
+</style>
+<section class="blavklyte-guarantees">
+  <div class="container-1570 event_schedule_container">
+    {% if section.settings.title != blank %}
+      <h3 class='event_schedule_title'>{{ section.settings.title }}</h3>
+    {% endif %}
+    <div class="event_schedule_list">
+      {% for block in section.blocks %}
+        <div class="event_schedule_item">
+          <div class="event_schedule_item_all_text">
+            <p class="title_texts">{{ block.settings.item_title }}</p>
+            <p class="desc_texts">{{ block.settings.item_desc }}</p>
+          </div>
+          <div class="event_schedule_imgs">
+            <span class="logos">
+              {% if block.settings.team_logo != blank %}
+                {{-
+                  block.settings.team_logo
+                  | image_url: width: block.settings.team_logo.width
+                  | image_tag:
+                    is: 'loess-image',
+                    loading: 'lazy',
+                    sizes: '100vw',
+                    widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                    class: ''
+                -}}
+              {% else %}
+                <img src="" loading="lazy">
+              {% endif %}
+            </span>
+            <span class="logo_center_line">/</span>
+            <span class="logos">
+              {% if block.settings.team_logo2 != blank %}
+                {{-
+                  block.settings.team_logo2
+                  | image_url: width: block.settings.team_logo2.width
+                  | image_tag:
+                    is: 'loess-image',
+                    loading: 'lazy',
+                    sizes: '100vw',
+                    widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                    class: ''
+                -}}
+              {% else %}
+                <img src="" loading="lazy">
+              {% endif %}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "LEC Event Schedule",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Section title",
+        "default": "UPCOMING GAMES"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "blcok",
+        "name": "item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "item_title",
+            "label": "Item Title",
+          },
+          {
+            "type": "text",
+            "id": "item_desc",
+            "label": "Item Desc"
+          },
+          {
+            "type": "image_picker",
+            "id": "team_logo",
+            "label": "Tema Logo"
+          },
+          {
+            "type": "image_picker",
+            "id": "team_logo2",
+            "label": "Team Logo2"
+          }
+        ]
+      }
+    ],
+    "presets": [
+          {
+              "name": "LEC Event Schedule"
+          }
+      ]
+  }
+{% endschema %}

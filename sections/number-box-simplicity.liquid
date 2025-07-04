@@ -1,0 +1,100 @@
+{{ 'section-number-box-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="number_box_simplicity">
+  <div class="number_box_simplicity_title">{{ section.settings.title }}</div>
+  <div class="number_box_simplicity_subtitle">{{ section.settings.subtitle }}</div>
+  <div class="number_box_simplicity_contain">
+    {% for block in section.blocks %}
+      <div class="number_box_simplicity_item">
+        <div class="number_box_simplicity_item_num" data-target="{{ block.settings.number }}">0</div>
+        <div class="number_box_simplicity_item_text">{{ block.settings.text }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  function animateCount(el, target, duration = 2000) {
+    let start = 0;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.floor(progress * target);
+      el.textContent = value.toLocaleString();
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target, 10);
+          animateCount(el, target);
+          observer.unobserve(el);
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  document.querySelectorAll('.number_box_simplicity_item_num').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "number box simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "subtitle"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "number",
+          "id": "number",
+          "label": "number"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "number box simplicity"
+    }
+  ]
+}
+{% endschema %}

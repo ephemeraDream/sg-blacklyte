@@ -1,0 +1,81 @@
+{{ 'athena-series.css' | asset_url | stylesheet_tag }}
+
+<div id="root" 
+     data-title="{{ section.settings.title }}"
+     data-background-color="{{ section.settings.background_color }}"
+     data-show-header="{{ section.settings.show_header }}">
+</div>
+
+
+<!-- 这里包含您的React应用的JS文件 -->
+{{ 'athena-series.js' | asset_url | script_tag }}
+<script type="text/javascript">
+  window.reactAppSettings = {
+    title: {{ section.settings.title | json }},
+    backgroundColor: {{ section.settings.background_color | json }},
+    showHeader: {{ section.settings.show_header | json }}
+  };
+  
+</script>
+
+<script>
+  $(document).ready(function() {
+    // 监听第一个按钮的点击事件
+    $('button[id=":r0:"]').on('click', function() {
+      window.location.href = '/products/blacklyte-athena-gaming-chair';
+    });
+    
+    $('button[id=":r2:"]').on('click', function() {
+      window.location.href = '/products/blacklyte-athena-gaming-chair';
+    });
+
+    // 监听第二个按钮的点击事件
+    $('button[id=":r1:"]').on('click', function() {
+      window.location.href = '/products/blacklyte-athena-pro-gaming-chair';
+    });
+
+    $('button[id=":r3:"]').on('click', function() {
+      window.location.href = '/products/blacklyte-athena-pro-gaming-chair';
+    });
+    
+  });
+
+</script>
+
+{% schema %}
+{
+  "name": "Athena Series dtl",
+  "settings": [
+    {
+      "type": "text",
+      "id": "reactAppText",
+      "label": "App Title",
+      "default": "My React App"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show Header",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Athena Series dtl",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

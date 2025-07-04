@@ -1,0 +1,295 @@
+/* collection all css */
+  div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper {
+    margin-left: 58px !important;
+    padding-bottom: 24px !important;
+  }
+  div.all-gaming-chairs-new-collections .toolbar {
+    padding-right: 58px;
+  }
+  div.all-gaming-chairs-new-collections .container-full .collection {
+    padding-left: 58px;
+    padding-right: 58px;
+    padding-top: 20px;
+  }
+  div.all-gaming-chairs-new-collections .container-full .all_product_toolbar_container {
+    /* background-color: #EDEDED; */
+    background-color: #fff;
+    margin-top: 0;
+    padding-top: 10px;
+  }
+  div.all-gaming-chairs-new-collections .container-full .all_product_toolbar_container:after {
+    content: '';
+    width: 100vw;
+    height: 1px;
+    background-color: rgba(153, 153, 153, 0.5);
+  }
+  div.all-gaming-chairs-new-collections .all_product_toolbar_container::after {
+    top: auto;
+    bottom: 0;
+  }
+  div.all-gaming-chairs-new-collections .sidebarBlock-heading,
+  div.all-gaming-chairs-new-collections .results-count {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+  
+  div.all-gaming-chairs-new-collections .toolbar .toolbar-dropdown li .text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+  }
+  div.all-gaming-chairs-new-collections .collection {
+    background-color: #d4d4d4d4;
+  }
+  div.all-gaming-chairs-new-collections .card-product {
+    background-color: #EDEDED;
+    /* border: 1px solid #999999; */
+  }
+  div.all-gaming-chairs-new-collections .card-media {
+    padding-bottom: 100% !important;
+  }
+  div.all-gaming-chairs-new-collections .collection .productGrid.column-4 .product {
+    margin-top: 20px !important;
+  }
+  div.all-gaming-chairs-new-collections .wrapper-item-size.card-product__group .sizes-list {
+    display: none;
+  }
+  div.all-gaming-chairs-new-collections .collection_all_variant_name {
+    color: #666666;
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+  div.all-gaming-chairs-new-collections .card-title {
+    font-size: 18px;
+    color: #333333;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+  div.all-gaming-chairs-new-collections .card-information {
+    padding-top: 20px;
+    padding-left: 1px;
+  }
+  div.all-gaming-chairs-new-collections .price-item {
+    font-size: 18px;
+    font-weight: 500;
+    color: #C00F0C;
+  }
+  div.all-gaming-chairs-new-collections .collection .card-action {
+    display: none !important;
+  }
+  div.all-gaming-chairs-new-collections .collection .card-information {
+    box-shadow: none;
+  }
+  div.all-gaming-chairs-new-collections .filter-display-scroll .facets__list {
+    max-height: fit-content;
+    margin-top: 0px;
+  }
+  div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper .sidebarBlock.js-filter .sidebarBlock-contentWrapper {
+    top: 29px;
+    background-color: #ededed;
+    border: 1px solid #999;
+  }
+  div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper .sidebarBlock {
+    margin: 0;
+  }
+  div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper .sidebarBlock.js-filter {
+    top: 5px;
+  }
+  div.all-gaming-chairs-new-collections .facets__item label {
+    font-size: 14px;
+    line-height: 32px;
+  }
+  div.all-gaming-chairs-new-collections .facets__item input[type=checkbox]+.form-label--checkbox:before {
+    top: 8px;
+    border-color: #999999;
+  }
+  div.all-gaming-chairs-new-collections .facets__item input[type=checkbox]+.form-label--checkbox:after {
+    top: 10px;
+  }
+  div.all-gaming-chairs-new-collections .facets__list--refined .active-facets__button {
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #333333;
+    color: #fff;
+    padding: 8px 30px 8px 12px;
+  }
+  div.all-gaming-chairs-new-collections .facets__list--refined .close:before,
+  div.all-gaming-chairs-new-collections .facets__list--refined .close:after {
+    top: 12px;
+    height: 16px;
+    background-color: #999999;
+  }
+  div.all-gaming-chairs-new-collections .facets__list--refined .close:before {
+    transform: rotate(45deg);
+  }
+  div.all-gaming-chairs-new-collections .facets__list--refined .close:after {
+    transform: rotate(-45deg);
+  }
+  div.all-gaming-chairs-new-collections .facets__list--refined li {
+    margin-right: 12px;
+  }
+  div.all-gaming-chairs-new-collections .toolbar .toolbar-dropdown [aria-expanded=true]+.dropdown-menu {
+    top: 49px;
+    border: 1px solid #999;
+    box-shadow: none;
+    background-color: #ededed;
+  }
+  div.all-gaming-chairs-new-collections .sidebarBlock.refined-widgets {
+    width: 100vw;
+    padding-left: 58px;
+    padding-right: 80px;
+    background-color: #d4d4d4d4;
+  }
+  div.all-gaming-chairs-new-collections #CollectionFiltersForm .sidebarBlock-content {
+    margin-bottom: 0;
+  }
+  div.all-gaming-chairs-new-collections .facets__list--refined {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 22px;
+  }
+  div.all-gaming-chairs-new-collections #CollectionFiltersForm .refined-widgets .sidebarBlock-heading {
+    padding-top: 22px;
+  }
+  div.all-gaming-chairs-new-collections .sidebarBlock-headingWrapper .sidebarBlock-heading {
+    margin: 0;
+    padding: 0;
+  }
+  div.all-gaming-chairs-new-collections .sidebar--layout_1 .sidebarBlock-headingWrapper .sidebarBlock-heading:after {
+    top: 50%;
+  }
+  div.all-gaming-chairs-new-collections .facets__price--slider .form-actions .button {
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #333;
+    border: 1px solid #EDEDED;
+    color: #fff;
+    border-radius: 2px;
+  }
+  div.all-gaming-chairs-new-collections .facets__price--slider .form-actions .button:hover {
+    background-color: #EDEDED;
+    color: #333;
+    border-color: #333;
+  }
+  
+  
+  /* 1025px ~ 1900px */
+  @media(min-width: 1025px) and (max-width: 1910px) {
+    div.all-gaming-chairs-new-collections .card-information {
+      padding-top: 5px;
+    }
+    div.all-gaming-chairs-new-collections .card-title {
+      font-size: 14px;
+    }
+    div.all-gaming-chairs-new-collections .collection_all_variant_name {
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
+  /* iPad */
+  @media(min-width: 768px) and (max-width: 1024px) {
+    div.all-gaming-chairs-new-collections .toolbar {
+      padding-left: 58px;
+    }
+    div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper {
+      margin-left: 0 !important;
+    }
+    div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper .sidebarBlock.js-filter .sidebarBlock-contentWrapper {
+      background: none;
+      border: none;
+    }
+    div.all-gaming-chairs-new-collections .sidebarBlock.refined-widgets {
+      background: none;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+      margin-top: 20px;
+    }
+    div.all-gaming-chairs-new-collections .sidebar--layout_1 .sidebarBlock-heading {
+        border-bottom: 1px solid #787878;
+        padding-bottom: 9px;
+        margin-bottom: 5px;
+    }
+    div.all-gaming-chairs-new-collections #CollectionFiltersForm .sidebarBlock {
+        margin-bottom: 40px;
+    }
+    div.all-gaming-chairs-new-collections #CollectionFiltersForm .refined-widgets .sidebarBlock-heading {
+      border-bottom: none;
+    }
+  }
+/* Iphone */
+  @media(max-width: 767px) {
+    div.all-gaming-chairs-new-collections .container-full .collection {
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 0px;
+    }
+    div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper {
+      margin-left: 0 !important;
+    }
+    div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper .sidebarBlock.js-filter .sidebarBlock-contentWrapper {
+      background: none;
+      border: none;
+    }
+    div.all-gaming-chairs-new-collections .toolbar {
+      padding: 0 10px;
+    }
+    .toolbar-wrapper.toolbar-mobile {
+      align-items: center;
+    }
+    div.all-gaming-chairs-new-collections .collection .card-title {
+      -webkit-line-clamp: none;
+    }
+    div.all-gaming-chairs-new-collections .card-price {
+      margin-bottom: 0px;
+    }
+    div.all-gaming-chairs-new-collections .card-information {
+      padding-top: 10px;
+    }
+    
+    div.all-gaming-chairs-new-collections .card-title,
+    div.all-gaming-chairs-new-collections .price-item {
+      font-size: 14px;
+    }
+    div.all-gaming-chairs-new-collections .toolbar.show-sticky {
+      padding: 10px 15px;
+    }
+    div.all-gaming-chairs-new-collections .halo-sidebar-header .title {
+      font-weight: 500;
+    }
+    div.all-gaming-chairs-new-collections .page-sidebar .halo-sidebar-header {
+      padding: 24px 20px 0;
+    }
+    div.all-gaming-chairs-new-collections .page-sidebar .halo-sidebar-wrapper {
+      padding-top: 40px;
+    }
+    div.all-gaming-chairs-new-collections .facets__price--slider .form-actions .button {
+      font-size: 15px;
+    }
+    body.open-mobile-sidebar div.all-gaming-chairs-new-collections .page-sidebar,
+    div.all-gaming-chairs-new-collections .halo-sidebar-header {
+      background-color: #EDEDED;
+    }
+    div.all-gaming-chairs-new-collections .toolbar .dropdown-menu.hidden-on-desktop {
+      background-color: #EDEDED;
+    }
+    div.all-gaming-chairs-new-collections .toolbar .dropdown-menu.hidden-on-desktop .dropdown-menu-header .dropdown-menu-title {
+      font-weight: 500;
+    }
+    div.all-gaming-chairs-new-collections .toolbar .dropdown-menu.hidden-on-desktop .dropdown-menu-body li {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 26px;
+    }
+    div.all-gaming-chairs-new-collections .toolbar .dropdown-menu.hidden-on-desktop .dropdown-menu-body li.is-active {
+      background-color: #fff;
+    }
+    div.all-gaming-chairs-new-collections .sidebarBlock.refined-widgets {
+      background: none;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+  }

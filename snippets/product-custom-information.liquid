@@ -1,0 +1,66 @@
+{%- comment -%}
+    Renders a list of product's price (regular, sale)
+
+    Accepts:
+    - product: {Object} Product Liquid object (optional)
+    - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
+    - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
+    - price_class: {String} Adds a price class to the price element (optional)
+
+    Usage:
+    {% render 'price', product: product %}
+{%- endcomment -%}
+
+{%- liquid 
+    assign icon = block.settings.icon
+    assign text = block.settings.text
+    assign text_description = block.settings.text_description
+    assign color_title = block.settings.color_title
+    assign color_des = block.settings.color_des
+    assign fontsize_text = block.settings.fontsize_text
+    assign content_popup = block.settings.content_popup
+    assign show_link_text = block.settings.show_link_text
+    assign link_text = block.settings.link_text
+    assign link_url = block.settings.link_url
+-%}
+{% if block.settings.html != blank %}
+  <style>{{ block.settings.html }}</style>
+{% endif %} 
+<div class="product-customInformation text-left{%if content_popup == blank and link_url == blank %} disabled{% endif %}"  {%if block.settings.id_section != blank %} id="{{ block.settings.id_section }}" {% endif %} data-custom-information>
+    {%- if icon != blank -%}
+        <div class="product-customInformation__icon">
+            {{ icon }}
+        </div>
+    {%- endif -%}
+    {%- if text != blank or text_icon != blank -%}
+        <div class="product-customInformation__content">
+            {%- if text != blank -%}
+                <div class="product__text title" {{ block.shopify_attributes }} 
+                    style="--fontsize-text:{{ fontsize_text | append: 'px' }};
+                    --color-title: {{ color_title }}"
+                >
+                    <h2 class="title">{{ text }}</h2>
+                    {%- if content_popup != blank -%}
+                        {% render 'icon-info-note' %}
+                    {%- endif -%}
+                    {%- if show_link_text and link_text != blank -%}
+                      <a role="link" aria-disabled="true" href="{{ link_url }}" style="cursor: pointer;color: var(--swatch-border-active);">{{ link_text }}</a>
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
+            {%- if text_description != blank -%}
+                <div class="product__text des" {{ block.shopify_attributes }} 
+                    style="--fontsize-text:{{ fontsize_text | append: 'px' }};
+                    --color-des: {{ color_des }}"
+                >
+                    {{ text_description }}
+                </div>
+            {%- endif -%}
+        </div>
+    {%- endif -%}
+    {%- if content_popup != blank -%}
+        <div class="product-customInformation__popup hidden">
+            {{ content_popup }}
+        </div>
+    {%- endif -%}
+</div>

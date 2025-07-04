@@ -1,0 +1,1129 @@
+{% comment %}
+  展示不同的资源
+{% endcomment %}
+<link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+  .image_mb {
+    display: none;
+  }
+  .container_image {
+    max-height: 700px;
+  }
+  .container_image img {
+    height: 100%;
+    max-height: 100%;
+  }
+  .image_pc {
+    display: block;
+  }
+  .resource_container_module .resource_container {
+    position: relative;
+  }
+
+  .resource_container_module .container_content {
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .resource_container_module .container_content .container_title {
+    font-family: 'Roboto';
+    font-size: 30px;
+    line-height: 50px;
+    color: #fff;
+  }
+  .resource_container_module .container_content .container_desc {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 26px;
+    color: #fff;
+  }
+  .recommend_container,
+  .resource_container_section {
+    background-color: #e9e9e9;
+  }
+  .recommend_container .recommend_container_title {
+    font-family: 'Roboto';
+    font-size: 38px;
+    line-height: 58px;
+    color: #18181b;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 100px;
+    margin-bottom: 70px;
+  }
+  .recommend_container .container_center_line {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #999999;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    transform: scaleY(0.5);
+  }
+  .recommend_container .recommend_container_box {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .recommend_container .recommend_container_box .container_sizes_box,
+  .recommend_container .resources_box_container {
+    display: flex;
+    justify-content: space-around;
+  }
+  .recommend_container .recommend_container_box .container_sizes_box .sizes_image {
+    width: 600px;
+    height: 600px;
+    max-width: 600px;
+    max-height: 600px;
+    margin-right: 150px;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex: 0 0 600px;
+  }
+  .recommend_container .resources_box_container .box_content_image {
+    width: 600px;
+    height: 400px;
+    max-width: 600px;
+    max-height: 400px;
+  }
+  .recommend_container .recommend_container_box .container_sizes_box .sizes_image img,
+  .recommend_container .resources_box_container .box_content_image img {
+    height: 100%;
+    object-fit: contain;
+  }
+  .recommend_container .recommend_container_box .container_sizes_box .sizes_container {
+    flex: auto;
+  }
+  .recommend_container .recommend_container_box .container_sizes_box .sizes_container .size_title,
+  .recommend_container .resources_box_container .box_container_content .size_title {
+    font-family: 'Roboto';
+    font-size: 20px;
+    line-height: 39px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 14px;
+  }
+  .recommend_container .recommend_container_box .container_sizes_box .sizes_container .size_desc {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #333333;
+  }
+  .recommend_container .recommend_container_box .container_sizes_box .component_items span {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #333;
+    display: inline-block;
+    vertical-align: text-top;
+  }
+  .recommend_container .recommend_container_box .container_sizes_box .component_items span.component_value {
+    color: #666;
+    width: 45%;
+  }
+  .recommend_container .recommend_container_box .container_sizes_box .component_items .component_key {
+    width: 45%;
+  }
+  .recommend_container
+    .recommend_container_box
+    .container_sizes_box
+    .sizes_container_box3_desk
+    .component_items
+    .component_key {
+    display: block;
+  }
+  .recommend_container
+    .recommend_container_box
+    .container_sizes_box
+    .sizes_container_box3_desk
+    .component_items
+    .component_value {
+    width: 100%;
+  }
+  .recommend_container .resources_box_container {
+    margin-top: 40px;
+  }
+  .recommend_container .resources_box_container .box_container_content {
+    flex: auto;
+  }
+  .recommend_container .resources_box_container .box_contents_lists {
+    display: flex;
+    justify-content: space-between;
+  }
+  .recommend_container .resources_box_container .box_contents_lists.box_contents_lists_mobile {
+    display: none;
+  }
+  .recommend_container .resources_box_container .box_contents_lists .column {
+    display: flex;
+    flex-direction: column;
+    width: 45%; /* 可以调整宽度，避免太宽 */
+  }
+
+  .recommend_container .resources_box_container .box_contents_lists .column div {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #333333;
+  }
+  .recommend_container .resources_box_container_bottom_line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #999999;
+    margin-top: 20px;
+    transform: scaleY(0.5);
+  }
+  .resource_container_module .bottom_line_recommend_container {
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    height: 1px;
+    background-color: #999999;
+    transform: scaleY(0.5);
+  }
+  .recommend_container .resources_box_container .size_title.size_title_mb {
+    display: none;
+  }
+
+  .resources_video_usermanual {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 100px;
+    padding-bottom: 120px;
+  }
+  .resources_video_usermanual .title {
+    font-family: 'Roboto';
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 500;
+    color: #333333;
+  }
+  .resources_video_usermanual .desc {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 500;
+    color: #999999;
+  }
+  .resources_video_usermanual .play_button .play_button_text {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    color: #bd1b21;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-left: 4px;
+  }
+
+  .resources_video_usermanual .play_button .play_button_icon svg {
+    fill: none;
+    stroke: none;
+    width: 14px;
+    height: 14px;
+  }
+
+  .resources_video_usermanual .resources_video,
+  .resources_video_usermanual .resources_usermanual {
+    display: flex;
+    flex-basis: 50%;
+  }
+  .resources_video_usermanual .resources_usermanual.driver_download_box {
+    display: none;
+    margin-top: 30px;
+  }
+  .resources_video_usermanual .resources_video_image .resources_video_image_bgImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+  }
+  .resources_video_usermanual .resources_video_image .logo_image {
+    z-index: 1;
+  }
+  .resources_video_usermanual .resources_video_image,
+  .resources_video_usermanual .resources_usermanual_image {
+    width: 260px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  }
+  .resources_video_usermanual .resources_usermanual_image {
+    border: 0.5px solid #333333;
+    border-radius: 2px;
+  }
+  .resources_video_usermanual .resources_video_image img {
+    height: 100%;
+    max-height: 100%;
+  }
+  .resources_video_usermanual .resources_video_content,
+  .resources_video_usermanual .resources_usermanual_content {
+    margin-left: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .resources_usermanual_product_text {
+    font-family: 'Roboto';
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .resources_usermanual_product_text_video {
+    color: #ffffff;
+    z-index: 1;
+  }
+  .resources_usermanual_image .logo_image {
+    width: 30px;
+    height: 22px;
+  }
+  .resources_usermanual_image .logo_image img {
+    height: 100%;
+    max-height: 100%;
+  }
+  /* FAQ 模块 */
+  #resources-container-sectionID .container-full {
+    width: 70%;
+    margin: 0 auto;
+  }
+  #resources-container-sectionID .halo-block-header .title .text {
+    font-family: 'Roboto';
+    font-size: 30px;
+    font-weight: 500;
+    color: #18181b;
+  }
+  #resources-container-sectionID .collapsible-grid .faqs-item .title {
+    font-family: 'Roboto';
+    font-size: 18px;
+    font-weight: 500;
+    color: #18181b;
+    background-color: #f2f2f2;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: flex;
+  }
+  #resources-container-sectionID .faqs .faqs-item .card-header:not(.collapsed) + .collapse {
+    border: 0.5px solid #d4d4d8;
+  }
+  #resources-container-sectionID .collapsible-grid .faqs-item {
+    margin-bottom: 6px;
+  }
+  #resources-container-sectionID .collapsible-grid .faqs-item .card-body {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #52525b;
+    padding-left: 54px;
+    padding-right: 54px;
+  }
+  #resources-container-sectionID .icon_before_title {
+    margin-left: 19px;
+    margin-right: 19px;
+    display: block;
+  }
+  #resources-container-sectionID .icon_before_title svg {
+    width: 16px;
+    height: 16px;
+  }
+  #resources-container-sectionID .collapsible-content {
+    width: 90%;
+  }
+
+  /* 2000px+ */
+  @media (min-width: 2000px) {
+    .container_image {
+      max-height: fit-content;
+    }
+  }
+
+  /* 1025px ~ 1900px */
+  @media (min-width: 1025px) and (max-width: 1900px) {
+    .recommend_container .recommend_container_box,
+    #resources-container-sectionID .container-full,
+    .resource_container_module .bottom_line_recommend_container {
+      width: 90%;
+    }
+  }
+
+  /* 768px ~ 1024px */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .recommend_container .recommend_container_box,
+    #resources-container-sectionID .container-full {
+      width: 90%;
+    }
+    .recommend_container .recommend_container_box .container_sizes_box .sizes_image {
+      width: 300px;
+      height: 360px;
+      max-width: 300px;
+      max-height: 360px;
+      margin-right: 50px;
+      padding: 0 20px;
+    }
+  }
+
+  /* iPhone */
+  @media (max-width: 767px) {
+    .image_pc {
+      display: none;
+    }
+    .image_mb {
+      display: block;
+    }
+    .resource_container_module .container_content {
+      width: 100%;
+    }
+    .resource_container_module .container_content .container_title {
+      font-size: 20px;
+      line-height: 26px;
+      padding-bottom: 10px;
+    }
+    .resource_container_module .container_content .container_desc {
+      font-size: 11px;
+      line-height: 14px;
+    }
+    .recommend_container .recommend_container_box .container_sizes_box {
+      justify-content: normal;
+      flex-direction: column;
+    }
+    .recommend_container .recommend_container_title {
+      padding-top: 30px;
+      font-size: 20px;
+      line-height: 38px;
+      margin-bottom: 20px;
+    }
+    .recommend_container .recommend_container_box {
+      width: 100%;
+    }
+    .recommend_container .recommend_container_box .container_sizes_box .sizes_container,
+    .recommend_container .recommend_container_box .container_sizes_box .sizes_image,
+    .recommend_container .resources_box_container .box_container_content,
+    .resources_video_usermanual {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .recommend_container .recommend_container_box .container_sizes_box .sizes_image {
+      width: 100%;
+      height: 400px;
+      max-width: 100%;
+      max-height: 400px;
+    }
+    .recommend_container .resources_box_container {
+      justify-content: flex-start;
+      flex-direction: column-reverse;
+      margin-top: 0px;
+    }
+    .recommend_container .resources_box_container .box_content_image {
+      width: 100%;
+      height: 350px;
+      max-width: 100%;
+      max-height: 350px;
+      padding: 0 20px;
+    }
+    .recommend_container .resources_box_container .box_content_image img {
+      object-fit: contain;
+    }
+    .recommend_container .resources_box_container .box_container_content .size_title {
+      font-size: 0px;
+      display: none;
+    }
+    .recommend_container .resources_box_container .size_title.size_title_mb {
+      display: block;
+      font-family: 'Roboto';
+      font-size: 20px;
+      line-height: 39px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .resources_video_usermanual {
+      flex-direction: column;
+      padding-top: 20px;
+      padding-bottom: 50px;
+    }
+    .resources_video_usermanual .resources_video_image {
+      position: relative;
+      width: 180px;
+      height: 140px;
+    }
+    .resources_video_usermanual .resources_video_image .resources_video_image_bgImg {
+      width: 100%;
+      height: 100%;
+    }
+    .resources_video_usermanual .resources_usermanual_image {
+      width: 180px;
+      height: 130px;
+    }
+    .resources_video_usermanual .resources_video_image .image.image-adapt {
+      width: 100%;
+    }
+    .resources_video_usermanual .resources_usermanual {
+      margin-top: 30px;
+    }
+    .resources_video_usermanual .resources_video_content,
+    .resources_video_usermanual .resources_usermanual_content {
+      margin-left: 19px;
+    }
+    .resources_video_usermanual .title {
+      font-size: 14px;
+      line-height: 26px;
+    }
+    .resources_video_usermanual .desc {
+      font-size: 12px;
+      line-height: 16px;
+    }
+    .resources_video_usermanual .play_button {
+      font-size: 12px;
+      line-height: 34px;
+    }
+    .resources_usermanual_product_text {
+      font-size: 16px;
+      line-height: 26px;
+    }
+    .resources_usermanual_tag_text {
+      font-size: 12px;
+    }
+    .resources_video_usermanual .resources_usermanual.driver_download_box {
+      display: none;
+    }
+    /* FAQS */
+    #resources-container-sectionID .container-full {
+      width: 90%;
+    }
+    #resources-container-sectionID .collapsible-content {
+      width: 100%;
+    }
+    #resources-container-sectionID .halo-block-header .title .text {
+      font-size: 24px;
+    }
+    #resources-container-sectionID .collapsible-grid .faqs-item .title {
+      font-size: 14px;
+    }
+    #resources-container-sectionID .collapsible-grid .faqs-item .card-body {
+      font-size: 12px;
+      padding-left: 14px;
+      line-height: 18px;
+      padding-right: 14px;
+    }
+    #resources-container-sectionID .icon_before_title {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .resource_container_module .bottom_line_recommend_container {
+      width: 100%;
+    }
+    .recommend_container .resources_box_container .box_contents_lists.box_contents_lists_web {
+      display: none;
+    }
+    .recommend_container .resources_box_container .box_contents_lists.box_contents_lists_mobile{
+      display: flex;
+    }
+  }
+</style>
+
+<section id="{{ section.settings.sectionId }}" class="resource_container_section">
+  <div class="resource_container_module">
+    <div class="recommend_container">
+      <div class="recommend_container_title">{{ section.settings.recommendContainerTitle }}</div>
+      <div class="recommend_container_box">
+        <div class="container_sizes_box">
+          <div class="sizes_image">
+            {%- if section.settings.sizesImage != blank -%}
+              <a class="image image-adapt" role="link" aria-disabled="false">
+                {%- assign height_img = section.settings.sizesImage.width
+                  | divided_by: section.settings.sizesImage.aspect_ratio
+                  | round
+                -%}
+                {{
+                  section.settings.sizesImage
+                  | image_url: width: 3840
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'lazyload',
+                    height: height_img,
+                    sizes: '100vw',
+                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                }}
+              </a>
+            {%- endif -%}
+          </div>
+          <div class="sizes_container">
+            <div class="sizes_container_box1">
+              <div class="size_title">{{ section.settings.RecommendedSizeTitle }}</div>
+              {%- if section.settings.RecommendedSizeHTML != blank -%}
+                <div>{{ section.settings.RecommendedSizeHTML }}</div>
+              {%- else -%}
+                <div class="size_desc1 size_desc">{{ section.settings.RecommendedSizeDesc1 }}</div>
+                <div class="size_desc2 size_desc">{{ section.settings.RecommendedSizeDesc2 }}</div>
+              {%- endif -%}
+            </div>
+            <div class="container_center_line"></div>
+            <div class="sizes_container_box2">
+              <div class="size_title">{{ section.settings.RecommendedComponentTitle }}</div>
+              {%- if section.settings.RecommendedComponentHTML != blank -%}
+                <div>{{ section.settings.RecommendedComponentHTML }}</div>
+              {%- else -%}
+                {%- if section.settings.HeadrestValue != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Head Pillow :</span>
+                    <span class="component_value">{{ section.settings.HeadrestValue }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.WaistAdjustmentValue != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Lumbar Support :</span>
+                    <span class="component_value">{{ section.settings.WaistAdjustmentValue }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.SkeletonValue != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Frame Construction :</span>
+                    <span class="component_value">{{ section.settings.SkeletonValue }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.HandrailValue != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Armrests :</span>
+                    <span class="component_value">{{ section.settings.HandrailValue }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.TrayValue != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Tilt Mechanism :</span>
+                    <span class="component_value">{{ section.settings.TrayValue }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.AirBarValue != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Hydraulic Gas Piston :</span>
+                    <span class="component_value">{{ section.settings.AirBarValue }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.FiveStarFeetValue != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Wheelbase :</span>
+                    <span class="component_value">{{ section.settings.FiveStarFeetValue }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.ContactRollerValue != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Caster :</span>
+                    <span class="component_value">{{ section.settings.ContactRollerValue }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.AngleAdjustmentValue != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Reclining Angle :</span>
+                    <span class="component_value">{{ section.settings.AngleAdjustmentValue }}</span>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+            <div class="container_center_line"></div>
+            <!-- ElectricalSpecifications for Atlas Desk -->
+            {%- if section.settings.ElectricalSpecificationsTitle != blank -%}
+              <div class="Specification_container_box4">
+                <div class="size_title">{{ section.settings.ElectricalSpecificationsTitle }}</div>
+                {%- if section.settings.DeskInputVoltage != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Desk Input Voltage:</span>
+                    <span class="component_value">{{ section.settings.DeskInputVoltage }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.NumberOfMotors != blank -%}
+                  <div class="component_items component_headrest">
+                    <span class="component_key">Number of Motors:</span>
+                    <span class="component_value">{{ section.settings.NumberOfMotors }}</span>
+                  </div>
+                {%- endif -%}
+              </div>
+              <div class="container_center_line"></div>
+            {%- endif -%}
+            <div class="sizes_container_box3 {% if section.settings.ElectricalSpecificationsTitle != blank %}sizes_container_box3_desk{% endif %}">
+              <div class="size_title">{{ section.settings.PackagingTitle }}</div>
+              {%- if section.settings.PackageSizeValue != blank -%}
+                <div class="component_items component_headrest">
+                  <span class="component_key">Package size :</span>
+                  <span class="component_value">{{ section.settings.PackageSizeValue }}</span>
+                </div>
+              {%- endif -%}
+              {%- if section.settings.NetWeightValue != blank -%}
+                <div class="component_items component_headrest">
+                  <span class="component_key">Net weight :</span>
+                  <span class="component_value">{{ section.settings.NetWeightValue }}</span>
+                </div>
+              {%- endif -%}
+              {%- if section.settings.GrossWeightValue != blank -%}
+                <div class="component_items component_headrest">
+                  <span class="component_key">Gross weight :</span>
+                  <span class="component_value">{{ section.settings.GrossWeightValue }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="container_center_line"></div>
+          </div>
+        </div>
+        <!-- What‘s in the box -->
+        <div class="resources_box_container">
+          <div class="box_container_content">
+            <div class="size_title">{{ section.settings.boxContentsTitle }}</div>
+            <div class="box_contents_lists box_contents_lists_web">
+              {{ section.settings.boxLists }}
+            </div>
+            <div class="box_contents_lists box_contents_lists_mobile">
+              {{ section.settings.boxLists_mobile }}
+            </div>
+          </div>
+          <div class="box_content_image">
+            {%- if section.settings.boxContentsImage != blank -%}
+              <a class="image image-adapt" role="link" aria-disabled="false">
+                {%- assign height_img = section.settings.boxContentsImage.width
+                  | divided_by: section.settings.boxContentsImage.aspect_ratio
+                  | round
+                -%}
+                {{
+                  section.settings.boxContentsImage
+                  | image_url: width: 3840
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'lazyload',
+                    height: height_img,
+                    sizes: '100vw',
+                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                }}
+              </a>
+            {%- endif -%}
+          </div>
+          <div class="size_title size_title_mb">{{ section.settings.boxContentsTitle }}</div>
+        </div>
+        <div class="resources_box_container_bottom_line"></div>
+        <!-- 安装视频 & 说明书 -->
+        <div class="resources_video_usermanual">
+          <div class="resources_video">
+            <div class="resources_video_image" data-fancybox="video-gallery" href="{{ section.settings.resourcesVideoLink }}">
+              <div class="logo_image">
+                <a class="image image-adapt" role="link" aria-disabled="false">
+                    {%- assign height_imgs = section.settings.resourcesVideoImageLogo.width | divided_by: section.settings.resourcesVideoImageLogo.aspect_ratio | round -%}
+                    {{ section.settings.resourcesVideoImageLogo | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'lazyload', height: height_imgs, sizes: "100vw", widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                </a>
+              </div>
+              <div class="resources_usermanual_product_text resources_usermanual_product_text_video">{{ section.settings.productTitle }}</div>
+              <div class="resources_usermanual_tag_text resources_usermanual_product_text_video">Assembly Guide</div>
+              <div class="resources_video_image_bgImg">
+                <a class="image image-adapt" role="link" aria-disabled="false">
+                    {%- assign height_imgs = section.settings.resourcesVideoImage.width | divided_by: section.settings.resourcesVideoImage.aspect_ratio | round -%}
+                    {{ section.settings.resourcesVideoImage | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'lazyload', height: height_imgs, sizes: "100vw", widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                </a>
+              </div>
+            </div>
+            <div class="resources_video_content">
+              <div class="title">{{ section.settings.resourcesVideoTitle }}</div>
+              <div class="desc">{{ section.settings.resourcesVideoDesc }}</div>
+              <div class="play_button" data-fancybox="video-gallery" href="{{ section.settings.resourcesVideoLink }}">
+                <span class="play_button_icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="7" cy="7" r="6.5" stroke="#BD1B21"/>
+                    <path d="M10.7695 7.00019L5.11569 10.2644L5.11569 3.73594L10.7695 7.00019Z" fill="#BD1B21"/>
+                  </svg>
+                </span>
+                <span class="play_button_text">{{ section.settings.resourcesVideoButton }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="resources_usermanual">
+            <div class="resources_usermanual_image">
+              <div class="logo_image">
+                <a class="image image-adapt" role="link" aria-disabled="false">
+                  {%- assign height_img = section.settings.resourcesUserManualImage.width
+                    | divided_by: section.settings.resourcesUserManualImage.aspect_ratio
+                    | round
+                  -%}
+                  {{
+                    section.settings.resourcesUserManualImage
+                    | image_url: width: 3840
+                    | image_tag:
+                      loading: 'lazy',
+                      class: 'lazyload',
+                      height: height_img,
+                      sizes: '100vw',
+                      widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                  }}
+                </a>
+              </div>
+              <div class="resources_usermanual_product_text">{{ section.settings.productTitle }}</div>
+              <div class="resources_usermanual_tag_text">User Manual</div>
+            </div>
+            <div class="resources_usermanual_content">
+              <div class="title">{{ section.settings.resourcesUserManualTitle }}</div>
+              <div class="desc">{{ section.settings.resourcesUserManualDesc }}</div>
+              <div class="play_button" data-url="{{ section.settings.resourcesUserManualLink }}">
+                <span class="play_button_icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.02539 0H2.1875C1.70488 0 1.3125 0.392383 1.3125 0.875V13.125C1.3125 13.6076 1.70488 14 2.1875 14H11.8125C12.2951 14 12.6875 13.6076 12.6875 13.125V4.66211C12.6875 4.19863 12.5029 3.75293 12.1748 3.4248L9.2627 0.512695C8.93457 0.18457 8.48887 0 8.02539 0ZM8.75 1.2373L11.4502 3.9375H9.625C9.14238 3.9375 8.75 3.54512 8.75 3.0625V1.2373ZM11.375 13.125H2.625C2.38301 13.125 2.1875 12.9295 2.1875 12.6875V1.3125C2.1875 1.07051 2.38301 0.875 2.625 0.875H7.875V3.0625C7.875 4.0291 8.6584 4.8125 9.625 4.8125H11.8125V12.6875C11.8125 12.9295 11.617 13.125 11.375 13.125Z" fill="#C51119"/>
+                  </svg>
+                </span>
+                <span class="play_button_text">{{ section.settings.resourcesUserManualButton }}</span>
+              </div>
+            </div>
+          </div>
+          {%- if section.settings.showDriverDownload -%}
+            <div class="resources_usermanual driver_download_box" {%- if section.settings.showDriverDownload -%}style="display: flex"{% endif %}>
+              <div class="resources_usermanual_image">
+                <div class="logo_image">
+                  <a class="image image-adapt" role="link" aria-disabled="false">
+                    {%- assign height_img = section.settings.resourcesUserManualImage.width
+                      | divided_by: section.settings.resourcesUserManualImage.aspect_ratio
+                      | round
+                    -%}
+                    {{
+                      section.settings.resourcesUserManualImage
+                      | image_url: width: 3840
+                      | image_tag:
+                        loading: 'lazy',
+                        class: 'lazyload',
+                        height: height_img,
+                        sizes: '100vw',
+                        widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                    }}
+                  </a>
+                </div>
+                <div class="resources_usermanual_product_text">{{ section.settings.driverDownloadTitle }}</div>
+              </div>
+              <div class="resources_usermanual_content">
+                <div class="title">{{ section.settings.driverDownloadTitle }}</div>
+                <div class="play_button" data-url="{{ section.settings.driverDownloadLink }}">
+                  <span class="play_button_icon">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M12.0767 3.3692L10.5987 1.4585H3.40431L1.92188 3.3692" stroke="#C51119"/>
+                      <path d="M1.75 3.79183C1.75 3.46965 2.01117 3.2085 2.33333 3.2085H11.6667C11.9888 3.2085 12.25 3.46965 12.25 3.79183V11.6668C12.25 12.1501 11.8583 12.5418 11.375 12.5418H2.625C2.14175 12.5418 1.75 12.1501 1.75 11.6668V3.79183Z" stroke="#C51119"/>
+                      <path d="M9.33464 7.875L7.0013 10.2083L4.66797 7.875" stroke="#C51119"/>
+                      <path d="M6.99609 5.5415V10.2082" stroke="#C51119"/>
+                    </svg>
+                  </span>
+                  <span class="play_button_text">{{ section.settings.driverDownloadButton }}</span>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    <div class="bottom_line_recommend_container"></div>
+  </div>
+</section>
+<script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    $('.resources_video_usermanual .play_button').on('click', function () {
+      // 获取当前点击 .item 的 data-url 值
+      var dataUrl = $(this).data('url');
+      if (dataUrl) {
+        window.open(dataUrl);
+      }
+    });
+  
+    // 安装桌子应用
+    $('.driver_download_box .resources_usermanual_content .play_button').on('click', function () {
+      // 获取当前点击 .item 的 data-url 值
+      var downloadUrl = $(this).data('url')
+      if(downloadUrl) {
+        $.ajax({
+          url: downloadUrl,
+          method: 'GET',
+          success: function(data) { },
+          error: function(error) {
+            console.error('Download error:', error);
+          }
+        });
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "A Resources Container",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sectionId",
+      "label": "Section ID"
+    },
+    {
+      "type": "text",
+      "id": "recommendContainerTitle",
+      "label": "Recommend Container Title",
+      "info": "Recommend Container Title Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "sizesImage",
+      "label": "Sizes Image",
+      "info": "Resources and Specifications Left Image"
+    },
+    {
+      "type": "html",
+      "id": "RecommendedSizeHTML",
+      "label": "Recommended Size HTML",
+      "info": "use only on Atlas Desk"
+    },
+    {
+      "type": "text",
+      "id": "RecommendedSizeTitle",
+      "label": "Recommended Size title",
+      "info": "Resources and Specifications Right Recommended size"
+    },
+    {
+      "type": "text",
+      "id": "RecommendedSizeDesc1",
+      "label": "Recommended Size Desc1",
+      "info": "Resources and Specifications Right Recommended size Desc1"
+    },
+    {
+      "type": "text",
+      "id": "RecommendedSizeDesc2",
+      "label": "Recommended Size Desc2",
+      "info": "Resources and Specifications Right Recommended size Desc2"
+    },
+    {
+      "type": "html",
+      "id": "RecommendedComponentHTML",
+      "label": "Recommended Component HTML"
+    },
+    {
+      "type": "text",
+      "id": "RecommendedComponentTitle",
+      "label": "Recommended Component Title",
+      "info": "Recommended Main Component Title",
+      "default": "Main components"
+    },
+    {
+      "type": "text",
+      "id": "HeadrestValue",
+      "label": "Head Pillow"
+    },
+    {
+      "type": "text",
+      "id": "WaistAdjustmentValue",
+      "label": "Lumbar Support"
+    },
+    {
+      "type": "text",
+      "id": "SkeletonValue",
+      "label": "Frame Construction"
+    },
+    {
+      "type": "text",
+      "id": "HandrailValue",
+      "label": "Armrests"
+    },
+    {
+      "type": "text",
+      "id": "TrayValue",
+      "label": "Tilt Mechanism"
+    },
+    {
+      "type": "text",
+      "id": "AirBarValue",
+      "label": "Hydraulic Gas Piston"
+    },
+    {
+      "type": "text",
+      "id": "FiveStarFeetValue",
+      "label": "Wheelbase"
+    },
+    {
+      "type": "text",
+      "id": "ContactRollerValue",
+      "label": "Caster"
+    },
+    {
+      "type": "text",
+      "id": "AngleAdjustmentValue",
+      "label": "Reclining Angle"
+    },
+    {
+      "type": "text",
+      "id": "ElectricalSpecificationsTitle",
+      "label": "Electrical Specifications Title"
+    },
+    {
+      "type": "text",
+      "id": "DeskInputVoltage",
+      "label": "Desk Input Voltage"
+    },
+    {
+      "type": "text",
+      "id": "NumberOfMotors",
+      "label": "Number of Motors"
+    },
+    {
+      "type": "text",
+      "id": "PackagingTitle",
+      "label": "Recommended Package Title",
+      "info": "Recommended Package Title"
+    },
+    {
+      "type": "html",
+      "id": "PackageSizeValue",
+      "label": "Recommended Package size Value",
+      "info": "Resources and Specifications Right Package Package Size Value"
+    },
+    {
+      "type": "text",
+      "id": "NetWeightValue",
+      "label": "Recommended Package Net weight Value",
+      "info": "Resources and Specifications Right Package Net weight Value"
+    },
+    {
+      "type": "html",
+      "id": "GrossWeightValue",
+      "label": "Recommended Package Gross weight Value",
+      "info": "Resources and Specifications Right Package Gross weight Value"
+    },
+    {
+      "type": "image_picker",
+      "id": "boxContentsImage",
+      "label": "Box Contents Image",
+      "info": "Product Box Content"
+    },
+    {
+      "type": "text",
+      "id": "boxContentsTitle",
+      "label": "Box Contents Title",
+      "info": "Product Box Content Title",
+      "default": "What‘s in the box"
+    },
+    {
+      "type": "html",
+      "id": "boxLists",
+      "label": "Box Contents Box Lists html",
+      "info": "Product Box Content Lists"
+    },
+    {
+      "type": "html",
+      "id": "boxLists_mobile",
+      "label": "Box Contents Box Lists html(mobile)",
+      "info": "Product Box Content Lists"
+    },
+    {
+      "type": "image_picker",
+      "id": "resourcesVideoImage",
+      "label": "Resources Video Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "resourcesVideoImageLogo",
+      "label": "Resources Video Image Logo"
+    },
+    {
+      "type": "text",
+      "id": "resourcesVideoTitle",
+      "label": "Resources Video Title",
+      "info": "Resources Video Title",
+      "default": "Usage Guide"
+    },
+    {
+      "type": "text",
+      "id": "resourcesVideoDesc",
+      "label": "Resources Video Descripe",
+      "info": "Resources Video Descripe",
+      "default": "For Blacklyte Kraken Pro"
+    },
+    {
+      "type": "text",
+      "id": "resourcesVideoLink",
+      "label": "Resources Video Link",
+      "default": "https://cdn.shopify.com/videos/c/o/v/c9e16ef555424df8b58e007118a792ae.mp4"
+    },
+    {
+      "type": "text",
+      "id": "resourcesVideoButton",
+      "label": "Resources Video Button",
+      "info": "Resources Video Button",
+      "default": "View Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "resourcesUserManualImage",
+      "label": "Resources User Manual Image"
+    },
+    {
+      "type": "text",
+      "id": "productTitle",
+      "label": "Resources User Manual Product Title",
+      "default": "Kraken Pro"
+    },
+    {
+      "type": "text",
+      "id": "resourcesUserManualTitle",
+      "label": "Resources User Manual Title",
+      "default": "User Manual"
+    },
+    {
+      "type": "text",
+      "id": "resourcesUserManualDesc",
+      "label": "Resources User Manual Descipe",
+      "default": "For Blacklyte Kraken Pro"
+    },
+    {
+      "type": "text",
+      "id": "resourcesUserManualButton",
+      "label": "Resources User Manual Button",
+      "default": "View Guide"
+    },
+    {
+      "type": "text",
+      "id": "resourcesUserManualLink",
+      "label": "Resources User Manual Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "showDriverDownload",
+      "label": "show Driver Download"
+    },
+    {
+      "type": "text",
+      "id": "driverDownloadTitle",
+      "label": "Driver Download Title"
+    },
+    {
+      "type": "text",
+      "id": "driverDownloadDesc",
+      "label": "Driver Download Desc"
+    },
+    {
+      "type": "text",
+      "id": "driverDownloadLink",
+      "label": "Driver Download Link"
+    },
+    {
+      "type": "text",
+      "id": "driverDownloadButton",
+      "label": "Driver Download Button",
+      "default": "View Guide"
+    }
+  ],
+  "presets": [
+    {
+      "name": "A Resources Container"
+    }
+  ]
+}
+{% endschema %}

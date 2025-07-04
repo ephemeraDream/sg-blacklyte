@@ -1,0 +1,200 @@
+{% comment %}
+  3.0 修改版 What makes us different 模块
+  暂定点击跳转about us 页面
+  pc端1 1 布局
+  移动端上下布局
+{% endcomment %}
+<style>
+  .about-section{
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .about-section .container-1570{
+    max-width: 68%;
+  }
+  .about-section .section-title{
+    font: 600 40px "Roboto";
+    color: #262629;
+    text-align: center;
+    margin-bottom: 45px;
+  }
+  .about-section .section-desc{
+    font: 400 16px "Roboto";
+    color: #272727;
+  }
+  .about-section .cont{
+    display: flex;
+    gap: 22px;
+  }
+  .about-section .cont .cont-item{
+    flex: 0 0 calc((100% - 22px) / 2);
+    border-radius: 24px;
+    cursor: pointer;
+  }
+  .about-section .cont .cont-item .cont-item-image {
+    border-radius: 24px 24px 0 0;
+  }
+  .about-section .cont .cont-item .cont-item-image img{
+    border-radius: 24px 24px 0 0;
+    height: auto;
+  }
+  .about-section .cont .cont-item .cont-container{
+    border-left: 1px solid #EDEFF2;
+    border-right: 1px solid #EDEFF2;
+    border-bottom: 1px solid #EDEFF2;
+    border-top: none;
+    border-radius: 0 0 24px 24px;
+  }
+  .about-section .cont .cont-item .cont-item-title{
+    font: 600 22px "Roboto";
+    color: #262629;
+    line-height: 1.4;
+    padding-top: 20px;
+    margin: 0 30px;
+  }
+  .about-section .cont .cont-item .cont-item-desc{
+    font: 400 16px "Roboto";
+    color: #76767F;
+    line-height: 1.4;
+    margin: 12px 30px 64px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+  }
+  
+  /* IPhone */
+  @media(max-width: 767px) {
+    .about-section .container-1570{
+      max-width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .about-section{
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .about-section .section-title{
+      font-size: 24px;
+    }
+    .about-section .section-desc{
+      font-size: 14px;
+    }
+    .about-section .cont .cont-item{
+      flex: 0 0 100%;
+    }
+    .about-section .cont{
+      flex-wrap: wrap;
+    }
+    .about-section .cont .cont-item .cont-item-title{
+      font-size: 18px;
+      margin: 20px 20px 0;
+    }
+    .about-section .cont .cont-item .cont-item-desc{
+      font-size: 14px;
+      margin: 12px 20px 40px;
+    }
+    .about-section .cont .cont-item{
+      border-radius: 20px;
+    }
+    .about-section .cont .cont-item .cont-item-image,
+    .about-section .cont .cont-item .cont-item-image img {
+      border-radius: 20px 20px 0 0;
+    }
+  }
+  /* IPad */
+  @media(min-width: 768px) and (max-width: 1024px) {
+    .about-section .container-1570{
+      max-width: 100%;
+    }
+  }
+  /* small screen */
+  @media(min-width: 1025px) and (max-width: 1900px) {
+    .about-section .cont .cont-item .cont-item-title{
+      min-height: calc(22px * 1.4 * 2 + 20px);
+    }
+    .about-section .cont .cont-item .cont-item-desc{
+      min-height: calc(16px * 1.4 * 3);
+    }
+  }
+  /* large screen */
+  @media(min-width: 2000px) { }
+  
+</style>
+<div class="about-section">
+  <div class="container-1570">
+    {% if section.settings.title != blank %}
+      <div class="section-title">{{ section.settings.title }}</div>
+    {% endif %}
+    {% if section.settings.descripe != blank %}
+      <div class="section-desc">{{ section.settings.descripe }}</div>
+    {% endif %}
+    <div class="cont">
+      {% for block in section.blocks %}
+        <a role="link" {% if block.settings.item_link != blank %} href="{{ block.settings.item_link }}" {% else %} aria-disabled="true" {% endif %} class="cont-item">
+          <div class="cont-item-image image-zoom">
+            {% if block.settings.item_image != blank %}
+              {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.styles_max_width }}px, 100vw){% endif %}{%- endcapture -%}
+              {{- block.settings.item_image | image_url: width: block.settings.item_image.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'item-image' -}}
+            {% endif %}
+          </div>
+          <div class="cont-container">
+            <div class="cont-item-title">{{ block.settings.item_title }}</div>
+            <div class="cont-item-desc">{{ block.settings.item_desc }}</div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "HOME About US NEW",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title"
+      },
+      {
+        "type": "text",
+        "id": "descripe",
+        "label": "Section Descripe"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "largeImage",
+        "name": "largeImage",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "item_image",
+            "label": "Item Image"
+          },
+          {
+            "type": "text",
+            "id": "item_title",
+            "label": "Item Title"
+          },
+          {
+            "type": "text",
+            "id": "item_desc",
+            "label": "Item Descripe"
+          },
+          {
+            "type": "url",
+            "id": "item_link",
+            "label": "Item LINK"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "HOME About US NEW"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,175 @@
+{{ 'section-img-with-text-box-simple.css' | asset_url | stylesheet_tag }}
+
+<div class="imgwithtextbox_simple" id="{{ section.settings.specId }}">
+  <div class="imgwithtextbox_simple_title">{{ section.settings.title }}</div>
+  <div class="imgwithtextbox_simple_text">{{ section.settings.text }}</div>
+  <div class="imgwithtextbox_simple_contain">
+    {% for block in section.blocks %}
+      <div class="imgwithtextbox_simple_item">
+        <div class="imgwithtextbox_simple_item_filebox">
+          {% if block.settings.file_type == 'image' %}
+            {% assign srcset_1x = block.settings.file_image | image_url: width: 1090 | append: ' 1x, ' %}
+            {% assign srcset_2x = block.settings.file_image | image_url: width: 670 | append: ' 2x, ' %}
+            {% assign srcset_3x = block.settings.file_image | image_url: width: 670 | append: ' 3x, ' %}
+            {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+            {{-
+              block.settings.file_image
+              | image_url: width: block.settings.file_image.width
+              | image_tag:
+                sizes: '(min-width:769px) 18vw, 100vw',
+                srcset: srcset_init,
+                alt: block.settings.title,
+                class: 'imgwithtextbox_simple_item_filebox_image'
+            -}}
+          {% else %}
+            {% assign poster_image = blank %}
+            {% if block.settings.cover_image != blank %}
+              {% assign poster_image = block.settings.cover_image | image_url: width: 1090 %}
+            {% endif %}
+            {% if block.settings.video_url != blank %}
+              <video
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="none"
+                class="imgwithtextbox_simple_item_filebox_video"
+                {% if poster_image != blank %}
+                  poster="{{ poster_image }}"
+                {% endif %}
+                src="{{ block.settings.video_url }}"
+              ></video>
+            {% else %}
+              {{
+                block.settings.url_upload
+                | video_tag:
+                  class: 'imgwithtextbox_simple_item_filebox_video',
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  preload: 'none',
+                  poster: poster_image
+              }}
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="imgwithtextbox_simple_item_info">
+          <div class="imgwithtextbox_simple_item_title">{{ block.settings.title }}</div>
+          <div class="imgwithtextbox_simple_item_desc">{{ block.settings.description }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="imgwithtextbox_simple_btn_box">
+    <a
+      class="imgwithtextbox_simple_btn"
+      {% if section.settings.link != blank %}
+        href="{{ section.settings.link }}"
+      {% endif %}
+    >
+      {{ section.settings.link_text }}
+      <svg xmlns="http://www.w3.org/2000/svg" width="42" height="28" viewBox="0 0 42 28" fill="none">
+        <rect x="0.8" y="0.8" width="40.4" height="26.4" rx="1.2" fill="white" stroke="#3173E8" stroke-width="1.6"/>
+        <path d="M19 9L23.907 13.907L19 18.814" stroke="#3173E8" stroke-width="1.6"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "imgwithtextbox simple",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "link text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "description"
+        },
+        {
+          "type": "radio",
+          "id": "file_type",
+          "label": "file type",
+          "default": "image",
+          "options": [
+            {
+              "value": "image",
+              "label": "image"
+            },
+            {
+              "value": "video",
+              "label": "video"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "file_image",
+          "label": "file image"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "cover image"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "video url"
+        },
+        {
+          "type": "video",
+          "id": "url_upload",
+          "label": "video upload"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "imgwithtextbox simple"
+    }
+  ]
+}
+{% endschema %}

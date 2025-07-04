@@ -1,0 +1,192 @@
+{% comment %}
+联盟页面可折叠的FAQ区域
+{% endcomment %}
+<style>
+  .affiliate-faq{
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .affiliate-faq .affiliate-header{
+    font: 700 32px var(--font-family-1);
+    color: #000;
+    text-align: center;
+  }
+  .affiliate-faq .affiliate-content{
+    /* max-width: 80%; */
+    margin: 40px auto 0;
+    border-top: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
+  }
+  .affiliate-faq .affiliate-content .affiliate-item .item-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    cursor: pointer;
+  }
+  .affiliate-faq .affiliate-content .affiliate-item:not(:last-of-type).active{
+    border-bottom: 1px solid #E6E6E6;
+  }
+  .affiliate-faq .affiliate-content .affiliate-item:not(:last-of-type) .item-header{
+    border-bottom: 1px solid #E6E6E6;
+  }
+  .affiliate-faq .affiliate-content .affiliate-item .item-header.active{
+    border-bottom: none;
+  }
+  .affiliate-faq .affiliate-content .affiliate-item .item-header-text{
+    font: 500 20px var(--font-family-1);
+    color: #262629;
+    vertical-align: middle;
+  }
+  .affiliate-faq .affiliate-content .affiliate-item .item-header-right-icon{
+    position: relative;
+  }
+  .affiliate-faq .affiliate-content .affiliate-item .item-header-right-icon:before{
+    display: inline-block;
+    content: '';
+    width: 16px;
+    height: 2px;
+    background-color: #262629;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transition: var(--anchor-transition);
+  }
+  .affiliate-faq .affiliate-content .affiliate-item .item-header-right-icon:after{
+    display: inline-block;
+    content: '';
+    width: 16px;
+    height: 2px;
+    background-color: #262629;
+    transform: rotate(90deg);
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transition: var(--anchor-transition);
+  }
+  .affiliate-faq .affiliate-content .affiliate-item .item-header.active .item-header-right-icon:before{
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .affiliate-faq .affiliate-content .affiliate-item .item-header.active .item-header-right-icon:after{
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .affiliate-faq .affiliate-content .affiliate-item .item-cont{
+    font: 400 18px var(--font-family-1);
+    color: #262629;
+    line-height: 1.4;
+    max-width: 90%;
+    padding: 10px 0 20px;
+  }
+  
+  /* IPhone */
+  @media(max-width: 767px) {
+    .affiliate-faq{
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    /* .affiliate-faq .affiliate-content{
+      max-width: 95%;
+    } */
+    .affiliate-faq .affiliate-content .affiliate-item .item-header-text{
+      display: inline-block;
+      max-width: 90%;
+      font-size: 16px;
+    }
+    .affiliate-faq .affiliate-content .affiliate-item .item-cont{
+      font-size: 14px;
+      max-width: 100%;
+    }
+    
+    .affiliate-faq .affiliate-content .affiliate-item .item-header-right-icon:before,
+    .affiliate-faq .affiliate-content .affiliate-item .item-header-right-icon:after{
+      width: 12px;
+    }
+    
+  }
+</style>
+
+<section class="affiliate-faq">
+  <div class="container-1570">
+    <div class="affiliate-header">
+      <span>{{ section.settings.sectionTitle }}</span>
+    </div>
+    <div class="affiliate-content">
+      {% for block in section.blocks %}
+        <div class="affiliate-item">
+          <div class="item-header">
+            <span class="item-header-text">{{ block.settings.title }}</span>
+            <span class="item-header-right-icon"></span>
+          </div>
+          <div class="item-cont">
+            <span>{{ block.settings.descripe }}</span>
+          </div>
+        </div>  
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function () {
+    $('.affiliate-item .item-cont').hide(); // 初始全部折叠
+  
+    $('.affiliate-item .item-header').on('click', function () {
+      const $currentItem = $(this).closest('.affiliate-item');
+      const $currentBody = $currentItem.find('.item-cont');
+  
+      if ($currentBody.is(':visible')) {
+        // 当前是打开状态，点击后收起
+        $currentBody.slideUp(200);
+        $(this).removeClass('active');
+        $currentItem.removeClass('active')
+      } else {
+        // 收起所有其他项
+        $('.affiliate-item .item-cont').slideUp(200);
+        $('.affiliate-item .item-header').removeClass('active');
+        $('.affiliate-item').removeClass('active');
+  
+        // 展开当前项
+        $currentBody.slideDown(200);
+        $(this).addClass('active');
+        $currentItem.addClass('active');
+      }
+    });
+  });
+
+</script>
+
+{% schema %}
+  {
+    "name": "Affiliate FAQ Collapsible",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sectionTitle",
+        "label": "Section Title",
+        "default": "FAQ"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Item Title"
+          },
+          {
+            "type": "textarea",
+            "id": "descripe",
+            "label": "Item Descripe"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Affiliate FAQ Collapsible"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,303 @@
+{% comment %}
+  {% assign itemCount = section.blocks.size %}
+  <!-- 获取总项目数 -->
+  {% assign colCount = itemCount | divided_by: 3 %}
+{% endcomment %}
+
+{% assign item_three_count = 0 %}
+{% for item in section.blocks %}
+  {% if item.type == 'item3' %}
+    {% assign item_three_count = item_three_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% assign item_three_count_half = item_three_count | divided_by: 2 %}
+
+<div class="oy-icon-grid">
+  <div class="oy-in">
+    <div class="oy-title">
+      <p>{{ section.settings.title }}</p>
+    </div>
+
+    <!-- pc -->
+    <div class="oy-icon-grid-main pc-show">
+      <div class="oy-icon-grid-main-col">
+        {% for item in section.blocks %}
+          {% if item.type == 'item1' %}
+            <div class="oy-icon-grid-main-col-row">
+              <div class="oy-icon-grid-main-col-row-in">
+                <div class="imgg">
+                  {% if item.settings.img != blank
+                    and item.settings.priority == '文件'
+                    or item.settings.img != blank
+                    and item.settings.img_code == blank
+                  %}
+                    <img width="" height="" src="{{ item.settings.img | image_url  }}">
+                  {% endif %}
+
+                  {% if item.settings.img_code != blank
+                    and item.settings.priority == '代码'
+                    or item.settings.img_code != blank
+                    and item.settings.img == blank
+                  %}
+                    {{ item.settings.img_code }}
+                  {% endif %}
+                </div>
+                <div class="titlee">{{ item.settings.text }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="oy-icon-grid-main-col">
+        {% for item in section.blocks %}
+          {% if item.type == 'item2' %}
+            <div class="oy-icon-grid-main-col-row">
+              <div class="oy-icon-grid-main-col-row-in">
+                <div class="imgg">
+                  {% if item.settings.img != blank
+                    and item.settings.priority == '文件'
+                    or item.settings.img != blank
+                    and item.settings.img_code == blank
+                  %}
+                    <img width="" height="" src="{{ item.settings.img | image_url  }}">
+                  {% endif %}
+
+                  {% if item.settings.img_code != blank
+                    and item.settings.priority == '代码'
+                    or item.settings.img_code != blank
+                    and item.settings.img == blank
+                  %}
+                    {{ item.settings.img_code }}
+                  {% endif %}
+                </div>
+                <div class="titlee">{{ item.settings.text }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="oy-icon-grid-main-col">
+        {% for item in section.blocks %}
+          {% if item.type == 'item3' %}
+            <div class="oy-icon-grid-main-col-row">
+              <div class="oy-icon-grid-main-col-row-in">
+                <div class="imgg">
+                  {% if item.settings.img != blank
+                    and item.settings.priority == '文件'
+                    or item.settings.img != blank
+                    and item.settings.img_code == blank
+                  %}
+                    <img width="" height="" src="{{ item.settings.img | image_url  }}">
+                  {% endif %}
+
+                  {% if item.settings.img_code != blank
+                    and item.settings.priority == '代码'
+                    or item.settings.img_code != blank
+                    and item.settings.img == blank
+                  %}
+                    {{ item.settings.img_code }}
+                  {% endif %}
+                </div>
+                <div class="titlee">{{ item.settings.text }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- pe -->
+    <!-- 移动端 -->
+    <div class="oy-icon-grid-main pe-show">
+      <!-- 左侧 col-1 (item1 + 前半部分 item3) -->
+      <div class="oy-icon-grid-main-col">
+        {% assign item3_counter = 0 %}
+        {% for item in section.blocks %}
+          {% if item.type == 'item1' or item.type == 'item3' %}
+            {% if item.type == 'item3' and item3_counter < item_three_count_half %}
+              {% assign item3_counter = item3_counter | plus: 1 %}
+            {% elsif item.type == 'item3' %}
+              {% continue %}
+            {% endif %}
+            <div class="oy-icon-grid-main-col-row">
+              <div class="oy-icon-grid-main-col-row-in">
+                <div class="imgg">
+                  {% if item.settings.img != blank
+                    and item.settings.priority == '文件'
+                    or item.settings.img != blank
+                    and item.settings.img_code == blank
+                  %}
+                    <img width="" height="" src="{{ item.settings.img | image_url  }}">
+                  {% endif %}
+                  {% if item.settings.img_code != blank
+                    and item.settings.priority == '代码'
+                    or item.settings.img_code != blank
+                    and item.settings.img == blank
+                  %}
+                    {{ item.settings.img_code }}
+                  {% endif %}
+                </div>
+                <div class="titlee">{{ item.settings.text }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- 右侧 col-2 (item2 + 后半部分 item3) -->
+      <div class="oy-icon-grid-main-col">
+        {% assign item3_counter = 0 %}
+        {% for item in section.blocks %}
+          {% if item.type == 'item2' or item.type == 'item3' %}
+            {% if item.type == 'item3' %}
+              {% assign item3_counter = item3_counter | plus: 1 %}
+              {% if item3_counter <= item_three_count_half %}
+                {% continue %}
+              {% endif %}
+            {% endif %}
+            <div class="oy-icon-grid-main-col-row">
+              <div class="oy-icon-grid-main-col-row-in">
+                <div class="imgg">
+                  {% if item.settings.img != blank
+                    and item.settings.priority == '文件'
+                    or item.settings.img != blank
+                    and item.settings.img_code == blank
+                  %}
+                    <img width="" height="" src="{{ item.settings.img | image_url  }}">
+                  {% endif %}
+                  {% if item.settings.img_code != blank
+                    and item.settings.priority == '代码'
+                    or item.settings.img_code != blank
+                    and item.settings.img == blank
+                  %}
+                    {{ item.settings.img_code }}
+                  {% endif %}
+                </div>
+                <div class="titlee">{{ item.settings.text }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    .oy-icon-grid{
+      padding-top:{{ section.settings.p_t}}px;
+      padding-bottom:{{ section.settings.p_m}}px;
+      background:#111111;
+    }
+
+
+
+
+
+  .oy-icon-grid-main-col-row-in {
+
+          text-align: center;
+      }
+  /* .oy-icon-grid-main-col-row-in>.titlee{
+          height: 40px;
+          display: inline-block;
+          overflow: hidden;
+          margin: 0 auto;
+          text-align: center;
+      }
+   */
+</style>
+
+{% schema %}
+{
+  "name": "A Icon Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "range",
+      "id": "p_t",
+      "label": "Padding Top",
+      "max": 300,
+      "min": 0,
+      "default": 30,
+      "unit": "px",
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "p_m",
+      "label": "Padding Bottom",
+      "max": 300,
+      "min": 0,
+      "default": 30,
+      "unit": "px",
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item1",
+      "name": "col-1",
+      "settings": [
+        { "type": "image_picker", "id": "img", "label": "Icon文件" },
+        {
+          "type": "select",
+          "id": "priority",
+          "label": "优先级",
+          "options": [
+            { "label": "文件", "value": "文件" },
+            { "label": "代码", "value": "代码" }
+          ]
+        },
+        { "type": "textarea", "id": "img_code", "label": "Icon代码", "info": "可用的SVG标签整体" },
+
+        { "type": "text", "id": "text", "label": "文本" }
+      ]
+    },
+    {
+      "type": "item2",
+      "name": "col-2",
+      "settings": [
+        { "type": "image_picker", "id": "img", "label": "Icon文件" },
+        {
+          "type": "select",
+          "id": "priority",
+          "label": "优先级",
+          "options": [
+            { "label": "文件", "value": "文件" },
+            { "label": "代码", "value": "代码" }
+          ]
+        },
+        { "type": "textarea", "id": "img_code", "label": "Icon代码", "info": "可用的SVG标签整体" },
+
+        { "type": "text", "id": "text", "label": "文本" }
+      ]
+    },
+    {
+      "type": "item3",
+      "name": "col-3",
+      "settings": [
+        { "type": "image_picker", "id": "img", "label": "Icon文件" },
+        {
+          "type": "select",
+          "id": "priority",
+          "label": "优先级",
+          "options": [
+            { "label": "文件", "value": "文件" },
+            { "label": "代码", "value": "代码" }
+          ]
+        },
+        { "type": "textarea", "id": "img_code", "label": "Icon代码", "info": "可用的SVG标签整体" },
+
+        { "type": "text", "id": "text", "label": "文本" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "A Icon Grid" }]
+}
+{% endschema %}

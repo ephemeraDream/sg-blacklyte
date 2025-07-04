@@ -1,0 +1,468 @@
+<!doctype html>
+{%- liquid
+  if settings.list_iso_rtl != blank
+    assign locale_iso_code = request.locale.iso_code
+    assign arr_list_rtl = settings.list_iso_rtl | remove: ' ' | split: ','
+    if arr_list_rtl contains locale_iso_code
+      assign enable_iso_rtl = true
+    else
+      assign enable_iso_rtl = false
+    endif
+  endif
+-%}
+<html
+  class="no-js"
+  lang="{{ request.locale.iso_code }}"
+  {% if settings.enable_layout_rtl and enable_iso_rtl %}
+    dir="rtl"
+  {% endif %}
+>
+  <head>
+    {{ shop.metafields.CCR.shopat_script }}
+    <!-- Google tag (gtag.js) -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16482182477"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-16482182477');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PTS5G478');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- shareaSale -->
+    <script src="https://www.dwin1.com/99001.js" type="text/javascript" defer="defer"></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-K6BRLRF2');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F5TX2P3W9Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-F5TX2P3W9Z');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16660981027"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-16660981027');
+    </script>
+
+    <!-- Zoominfo 埋点 -->
+    <script>
+      window[(function(_qRE,_D8){var _Fz='';for(var _dM=0;_dM<_qRE.length;_dM++){var _DD=_qRE[_dM].charCodeAt();_DD-=_D8;_D8>3;_DD!=_dM;_DD+=61;_DD%=94;_DD+=33;_Fz==_Fz;_Fz+=String.fromCharCode(_DD)}return _Fz})(atob('cWBnKygjfHotYnwy'), 23)] = '733e60d2b71679946527';     var zi = document.createElement('script');     (zi.type = 'text/javascript'),     (zi.async = true),     (zi.src = (function(_Z3w,_xI){var _tO='';for(var _nt=0;_nt<_Z3w.length;_nt++){_xI>5;var _Cw=_Z3w[_nt].charCodeAt();_Cw-=_xI;_Cw+=61;_Cw%=94;_Cw+=33;_Cw!=_nt;_tO==_tO;_tO+=String.fromCharCode(_Cw)}return _tO})(atob('b3t7d3pBNjZxejUjcDR6anlwd3t6NWp2dDYjcDR7aG41cXo='), 7)),     document.readyState === 'complete'?document.body.appendChild(zi):     window.addEventListener('load', function(){         document.body.appendChild(zi)     });
+    </script>
+
+    <!-- Begin Linktree conversion tracking code -->
+    <script>
+      (function (l, i, n, k, t, r, ee) {
+        l[t] = l[t] || function () { (l[t].q = l[t].q || []).push(arguments) },
+        l[t].l = 1 * new Date(); r = i.createElement(n); ee = i.getElementsByTagName(n)[0];
+        r.async = 1; r.src = k; ee.parentNode.insertBefore(r, ee)
+      })
+      (window, document, 'script', 'https://assets.production.linktr.ee/ltpixel/ltpix.min.js?t=' + 864e5*Math.ceil(new Date/864e5), 'lti')
+    </script>
+    <script>
+      lti('init', 'LTU-53dece5f-dc88-4493-8302-d20ae66c3a99')
+      lti('pageloaded')
+    </script>
+    <!-- End Linktree conversion tracking code -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="">
+    <!-- google ads -->
+    <meta name="google-site-verification" content="uPUWOeQ5DgfeN5oNCjsAAwvUBBxVJWjOVXhks9DBrvw">
+    <!-- Google Developer Verificate -->
+    <meta name="google-site-verification" content="ulO7zsLw2YSzqKfGEEFEF23TubCx6uoqsaBaSqd7deY">
+    <link rel="canonical" href="{{ canonical_url }}" canonical-shop-url="{{ shop.url }}/">
+    {%- if settings.favicon != blank -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {%- endif -%}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="alternate" href="https://www.blacklyte.com" hreflang="en-us" />
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+    {% render 'meta-tags' %}
+    {{ content_for_header }}
+    {% render 'variable' %}
+    {% render 'global-style' %}
+    {% render 'global-script' %}
+    {% if request.path == '/pages/review' %}
+      {{ 'judgeme-custom.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {% if request.path == '/pages/warranty-extension' %}
+      {{ 'warranty-extension.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+
+    {%- liquid
+      if settings.layout_body == 'full'
+        assign layout_body = 'body-full-width'
+      elsif settings.layout_body == 'boxed'
+        assign layout_body = 'body-boxed'
+      elsif settings.layout_body == 'custom_width'
+        assign layout_body = 'body-custom-width'
+      endif
+
+      if settings.style_dots == '02'
+        assign style_dots = 'style-dots-2'
+      endif
+
+      if settings.style_arrows == '02'
+        assign style_arrows = 'style-arrows-2'
+      elsif settings.style_arrows == '05'
+        assign style_arrows = 'style-arrows-5'
+      endif
+
+      if settings.product_card_layout == '02'
+        assign product_card_layout = 'product-card-layout-02'
+      elsif settings.product_card_layout == '03'
+        assign product_card_layout = 'product-card-layout-03'
+      elsif settings.product_card_layout == '04'
+        assign product_card_layout = 'product-card-layout-04'
+      elsif settings.product_card_layout == '05'
+        assign product_card_layout = 'product-card-layout-05'
+      elsif settings.product_card_layout == '06'
+        assign product_card_layout = 'product-card-layout-06'
+      elsif settings.product_card_layout == '07'
+        assign product_card_layout = 'product-card-layout-07'
+      elsif settings.product_card_layout == '08'
+        assign product_card_layout = 'product-card-layout-08'
+      else
+        assign product_card_layout = 'product-card-layout-01'
+      endif
+
+      if settings.quick_shop_type == '2'
+        assign quick_shop_type = 'quick_shop_option_2'
+      elsif settings.quick_shop_type == '3'
+        assign quick_shop_type = 'quick_shop_option_3'
+      endif
+
+      if settings.style_text_size_varriant == '02'
+        assign style_text_size_varriant = 'size_varriant_style_2'
+      endif
+    -%}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16450299413"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-16450299413');
+    </script>
+
+    <!-- SlideRule Script Start -->
+    {% include 'sliderule-data' %}
+
+    {% if request.page_type == 'product' %}
+      {{ 'oy-main.css' | asset_url | stylesheet_tag }}
+      {{ 'oy-main-max.css' | asset_url | stylesheet_tag }}
+      {{ 'oy-main-min.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+
+    <style>
+      img[src*="lantern.roeye.com/track.php"] {
+        display: none !important;
+      }
+    </style>
+
+    <!-- Bing UET Tag -->
+    <script>
+      (function(w,d,t,r,u){
+        var f,n,i;
+        w[u]=w[u]||[],f=function(){
+          var o={ti:"97183538"};  // 你的 Tag ID
+          o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+        },
+        n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){
+          var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+        },
+        i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+      })(window,document,"script","https://bat.bing.com/bat.js","uetq");
+    </script>
+    <script>
+       // Add this script right after your base UET tag code
+       window.uetq = window.uetq || [];
+       window.uetq.push('set', { 'pid': { 
+          'em': 'contoso@example.com', // Replace with the variable that holds the user's email address. 
+          'ph': '+14250000000', // Replace with the variable that holds the user's phone number. 
+       } });
+    </script>
+    <!-- end Bing UET Tag -->
+    
+  </head>
+
+  <body class="template-{{ request.page_type }} {{layout_body}} {{style_dots}} {{style_text_size_varriant}} {{style_arrows}} {{product_card_layout}} {% if settings.enable_button_disable_arrows %} enable_button_disable_arrows{% endif %}{% if settings.display_text_color_title %} enable_text_color_title{% if settings.style_text_color_varriant == '02' %} style_2_text_color_varriant{% endif %}{% endif %}{% if settings.hide_compare_homepage %} hide_compare_homepage{% endif %} {{ quick_shop_type }}{% if settings.show_image_loading %} show_image_loading{% endif %}{% if settings.show_effect_close %} show_effect_close{% endif %}{% if settings.enable_layout_rtl and enable_iso_rtl %} layout_rtl{% endif %}{% if request.design_mode %} shopify-design-mode{% endif %}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if settings.enable_following_cursor and settings.following_cursor_style == 'default' %} cursor-fixed__show{% endif %}{% unless settings.enable_currencies %} disable_currencies{% endunless %}{% if settings.enable_button_1_border_outside %} btn_1_br_outside{% endif %}{% if settings.enable_button_2_border_outside %} btn_2_br_outside{% endif %}{% if settings.enable_button_3_border_outside %} btn_3_br_outside{% endif %}{% if settings.show_price_percent %} show_price_percent{% endif %}{% if settings.show_wishlist_full_icon %} icon_wishlist_full{% endif %}">
+    <div class="body-content-wrapper">
+      {% if request.path == '/pages/athena-gaming-chair' %}
+        <div class="details_page_header_container">
+          <style>
+             .details_page_header_container {
+              width: 100%;
+              height: 67px;
+              line-height: 67px;
+              background-color: #ffffff;
+              position: fixed;
+              top: 0;
+              border-bottom: 1px solid #A1A1AA;
+              display: none;
+              transition: display .64s ease;
+              z-index: 99999;
+            }
+            .details_page_header_container .details_page_header_container_box {
+              width: 80%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-left: auto;
+              margin-right: auto;
+            }
+            .details_page_header_container .details_page_header_container_text {
+              font-size: 20px;
+              font-weight: 600;
+              color: #1F1F1F;
+            }
+            .details_page_header_container .details_page_header_container_btn {
+              display: inline-block;
+              width: 184px;
+              height: 50px;
+              line-height: 50px;
+              background-color: #676CFE;
+              color: #ffffff;
+              text-align: center;
+              border-radius: 60px;
+              font-size: 18px;
+            }
+            @media (max-width: 768px) {
+              .details_page_header_container .details_page_header_container_text {
+                font-size: 16px;
+              }
+              .details_page_header_container .details_page_header_container_btn {
+                font-size: 16px;
+                width: 120px;
+                height: 45px;
+                line-height: 45px;
+              }
+            }
+            @media (min-width: 1500px) {
+              .details_page_header_container .details_page_header_container_box {
+                max-width: 66%;
+                margin-left: auto;
+                margin-right: auto;
+              }
+            }
+            @media (min-width: 1025px) and (max-width: 1265px) {
+              .details_page_header_container .details_page_header_container_box {
+                max-width: 100%;
+              }
+            }
+          </style>
+          <div class="details_page_header_container_box">
+            <div class="details_page_header_container_text">Blacklyte Athena Chair</div>
+            <a
+              href="/products/blacklyte-athena-gaming-chairs"
+              role="link"
+              aria-disabled="true"
+              class="details_page_header_container_btn"
+            >
+              {{- 'general.common.buy_now_btn' | t -}}
+            </a>
+          </div>
+        </div>
+      {% endif %}
+      <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+        {{- 'accessibility.skip_to_text' | t -}}
+      </a>
+      {% render 'preload-screen' %}
+      {% unless request.path contains 'warranty-qr' or request.path contains 'warranty-reg' or request.path contains 'warranty-resetw' %}
+        {% sections 'header-group' %}
+        {% render 'wrapper-header' %}
+      {% endunless %}
+
+      {%- if settings.layout_body == 'boxed' -%}
+        <div class="wrapper-hasbanner-adv">
+      {%- endif -%}
+      {% render 'halo-banner-adv-left' %}
+      {% render 'halo-banner-adv-right' %}
+      <main id="MainContent" class="wrapper-body content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+      {%- if settings.layout_body == 'boxed' -%}
+        </div>
+      {%- endif -%}
+
+      {% unless request.path contains 'warranty-qr' or request.path contains 'warranty-reg' or request.path contains 'warranty-resetw' %}
+          <div class="wrapper-footer">{% sections 'footer-group' %}</div>
+          {% section 'halo-toolbar-mobile' %}
+        
+        <ul hidden>
+          <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+        </ul>
+        
+        {% render 'global-script-2' %}
+      {% endunless %}
+    </div>
+    {% unless request.path contains 'warranty-qr' or request.path contains 'warranty-reg' or request.path contains 'warranty-resetw' %}
+      {% render 'halo-popup' %}
+    {% endunless %}
+
+    {%- if settings.enable_view_documentation -%}
+      {% render 'theme-editor-notification' %}
+    {%- endif -%}
+
+    {%- if settings.use_custom_js -%}
+      {{ 'custom.js' | asset_url | script_tag }}
+    {%- endif -%}
+
+    <div class="background-overlay">
+      {%- if settings.show_effect_close -%}
+        <div class="background-cursor-wrapper">
+          <div class="background-cursor-wrapper_outer">
+            <div class="background-cursor-wrapper_inner">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20" height="20">
+                <g class="nc-icon-wrapper" fill="#ffffff" transform="translate(0.5, 0.5)"><line fill="none" stroke-width="6" x1="46" y1="2" x2="2" y2="46"/> <line fill="none" stroke-width="6" x1="46" y1="46" x2="2" y2="2"/></g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {% render 'halo-sidebar' %}
+
+    {%- if settings.enable_following_cursor -%}
+      {% render 'cursor-fixed', style_cursor: settings.following_cursor_style %}
+    {%- endif -%}
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-K6BRLRF2"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PTS5G478"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Start of arcushome Zendesk Widget script -->
+    <script
+      id="ze-snippet"
+      src="https://static.zdassets.com/ekr/snippet.js?key=6856ecae-0aa6-4f39-aea5-ffac195d4597"
+    ></script>
+    <!-- End of arcushome Zendesk Widget script -->
+    <div id="conversation-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+        <path d="M15.53 2.98119C13.3088 2.98059 11.1276 3.57221 9.21112 4.69512C7.29465 5.81802 5.71223 7.43159 4.62689 9.36957C3.54155 11.3076 2.99254 13.4999 3.03643 15.7206C3.08032 17.9414 3.71552 20.1103 4.87658 22.0039L5.25328 22.6176L2.90272 28.1011L8.38624 25.7505L8.99988 26.1255C10.8935 27.2866 13.0624 27.9218 15.2831 27.9657C17.5039 28.0095 19.6962 27.4605 21.6342 26.3752C23.5722 25.2899 25.1858 23.7074 26.3087 21.791C27.4316 19.8745 28.0232 17.6933 28.0226 15.4721C28.0224 13.8315 27.699 12.2071 27.071 10.6915C26.443 9.17592 25.5226 7.79887 24.3624 6.63898C23.2022 5.4791 21.8249 4.55908 20.3091 3.93148C18.7934 3.30387 17.1688 2.98096 15.5283 2.98119H15.53ZM0.260672 15.4755C0.261286 12.1282 1.36179 8.87389 3.39284 6.21323C5.4239 3.55257 8.27297 1.63302 11.5017 0.749946C14.7304 -0.133129 18.1598 0.0691984 21.2622 1.3258C24.3647 2.5824 26.9683 4.82364 28.6724 7.70466C30.3765 10.5857 31.0867 13.9469 30.6937 17.271C30.3007 20.5951 28.8263 23.698 26.4974 26.1023C24.1684 28.5065 21.114 30.0788 17.8041 30.5773C14.4941 31.0759 11.1121 30.4729 8.17829 28.8613L3.99704 30.6528C1.69249 31.6414 -0.635919 29.3113 0.349308 27.0068L2.14249 22.8255C0.904615 20.5731 0.257223 18.0439 0.260672 15.4738V15.4755ZM8.58908 12.6971C8.58908 11.9301 9.21124 11.3096 9.97658 11.3096H14.1408C14.5006 11.3222 14.8414 11.474 15.0915 11.733C15.3416 11.992 15.4813 12.3379 15.4813 12.6979C15.4813 13.058 15.3416 13.4039 15.0915 13.6629C14.8414 13.9219 14.5006 14.0737 14.1408 14.0863H9.97658C9.60844 14.0858 9.25552 13.9393 8.99537 13.6788C8.73521 13.4183 8.58908 13.0652 8.58908 12.6971ZM8.58908 18.2505C8.58908 17.4835 9.21124 16.863 9.97658 16.863H21.0834C21.4395 16.8807 21.7752 17.0346 22.0209 17.2928C22.2667 17.5511 22.4038 17.894 22.4038 18.2505C22.4038 18.607 22.2667 18.9499 22.0209 19.2082C21.7752 19.4665 21.4395 19.6204 21.0834 19.638H9.97658C9.60873 19.6376 9.25608 19.4912 8.99597 19.2311C8.73586 18.971 8.58953 18.6184 8.58908 18.2505Z" fill="white"/>
+      </svg>
+    </div>
+    {% include 'mkq_script' %}
+  </body>
+
+  <script>
+    // 改进后的事件监听
+    window.onload = function () {
+        document.addEventListener('touchstart', function (event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, {
+            passive: false  // 关闭被动监听
+        });
+        var lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            var now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    };
+  </script>
+  <script>
+    (function ($) {
+        var currentPageUrl = window.location.href.toLocaleLowerCase()
+
+        // 检查当前页面的URL是否包含特定字符串（例如"/pages/Athena-Gaming-Chair"）
+        if(currentPageUrl.indexOf("/pages/athena-gaming-chair") !== -1) {
+            $('sticky-header.header-navigation-wrapper').attr('data-sticky-type', 'none')
+            $('#shopify-section-sections--17951220957433__announcement-bar').css('position', 'static')
+        } else {
+          $('.header-navigation-wrapper').attr('data-sticky-type', 'always')
+          $('#shopify-section-sections--17951220957433__announcement-bar').css('position', 'sticky')
+        }
+
+
+        $('#customer_logout_link').on('click', function() {
+          sessionStorage.clear()
+        })
+
+    })(jQuery);
+  </script>
+  <script>
+    const conversationBadge = document.querySelector('#conversation-badge');
+    // on page load always close widget
+    zE('messenger', 'close');
+
+    conversationBadge.onclick = () => {
+     zE('messenger', 'open');
+    };
+  </script>
+  <!-- 监听到鼠标滚动事件被禁止后, 将事件打开 -->
+  <script>
+    (function ($) {
+      window.addEventListener('wheel', function(e) {
+        $('html, body').css('overflow', '');
+        e.stopImmediatePropagation && e.stopImmediatePropagation();
+      }, true)
+    })(jQuery)
+
+  </script>
+</html>

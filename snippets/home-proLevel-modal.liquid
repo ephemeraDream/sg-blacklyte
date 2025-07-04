@@ -1,0 +1,404 @@
+{% comment %}
+3.0 修改版弹窗pro-level
+{% endcomment %}
+<style>
+  .pro-level-modal{
+    width: 800px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: #ffffff;
+    transform: translate(0, -6%);
+    opacity: 0;
+    display: none;
+    transition: all .5s ease;
+  }
+  body.home-prolevel-modal-show .home-prolevel-background-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #0009;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+  }
+  body.home-prolevel-modal-show .pro-level-modal {
+    transition: all .5s ease;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(0, 6%);
+    animation: slowShow .55s ease-in forwards;
+  }
+  .pro-level-modal .header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F8F9FC;
+    padding: 27px 42px;
+    border-radius: 20px 20px 0 0;
+    font: 500 26px "Roboto";
+    color: #262629;
+  }
+  .pro-level-modal .header .header-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: none;
+    cursor: pointer;
+  }
+  .pro-level-modal .modal-container {
+    padding: 48px 42px 84px;
+    max-height: 84vh;
+    overflow-y: scroll;
+  }
+  .pro-level-modal .modal-container .content-line-bxo {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #F3F3F3;
+    margin: 60px 0;
+  }
+  .pro-level-modal .modal-container-fi .descripe-cont {
+    line-height: 1.4 !important;
+    font: 400 16px "Roboto";
+    color: #76767F;
+  }
+  .pro-level-modal .prolevel-modal-cont-container .cont-title{
+    font: 500 26px "Roboto";
+    color: #262629;
+    padding-bottom: 25px;
+  }
+  .pro-level-modal .prolevel-modal-cont-container .cont-info{
+    font: 400 16px "Roboto";
+    color: #76767F;
+    line-height: 1.6;
+  }
+  .pro-level-modal .prolevel-modal-cont-container .prolevel-modal-item{
+    display: flex;
+    gap: 17px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .pro-level-modal .modal-container-sec .item-image-box{
+    width: 60px;
+    height: auto;
+  }
+  .pro-level-modal .prolevel-modal-cont-container .item-cont-title{
+    display: block;
+    font: 500 16px "Roboto";
+    color: #262629;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .pro-level-modal .prolevel-modal-cont-container .item-cont-desc{
+    display: block;
+    font: 400 16px "Roboto";
+    color: #76767F;
+    line-height: 1.4;
+  }
+  .pro-level-modal .modal-container-thi .item-image-box{
+    width: 106px;
+    height: auto;
+  }
+  .pro-level-modal .modal-container-thi .item-cont{
+    width: calc(100% - 123px);
+  }
+  .pro-level-modal .modal-container-fou .cont-inner-item{
+    padding: 27px 0 27px 32px;
+    background-color: #F5F5F5;
+  }
+  .pro-level-modal .modal-container-fou .cont-inner-item:not(:first-child) {
+    margin-top: 20px;
+  }
+  .pro-level-modal .modal-container-fou .cont-inner-item .title-text{
+    display: block;
+    font: 500 16px "Roboto";
+    color: #262629;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .pro-level-modal .modal-container-fou .cont-inner-item .desc-text {
+    display: block;
+    font: 400 16px "Roboto";
+    color: #76767F;
+    line-height: 1.4;
+  }
+  .pro-level-modal .modal-container-fou .cont-inner-item .desc-text-info {
+    font: 400 16px "Roboto";
+    color: #76767F;
+    line-height: 1.6;
+    padding-left: 14px;
+    margin: 0;
+  }
+  .pro-level-modal .modal-container-fou .cont-inner-item-nodisc .desc-text-info{
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .pro-level-modal .modal-container-six .cont-container-lists{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 83px;
+  }
+  .pro-level-modal .modal-container-six .cont-container-lists .item-cont{
+    flex: 0 0 calc(50% - 83px);
+  }
+  .pro-level-modal .modal-container-six .cont-container-lists .item-cont .item-cont-image{
+    width: 60px;
+    height: auto;
+    margin: auto;
+  }
+  .pro-level-modal .modal-container-six .cont-container-lists .item-cont .item-cont-text {
+    font: 400 16px "Roboto";
+    line-height: 1.625;
+    color: #76767F;
+    text-align: center;
+    margin-top: 6px;
+  }
+  
+  
+  /* IPhone */
+  @media(max-width: 767px) {
+    .pro-level-modal{
+      width: 90%;
+    }
+    .pro-level-modal .header{
+      font-size: 20px;
+      padding: 20px 24px;
+    }
+    .pro-level-modal .modal-container{
+      padding: 30px 24px 60px 24px;
+      max-height: 72vh;
+    }
+    .pro-level-modal .modal-container .content-line-bxo{
+      margin: 30px 0;
+    }
+    .pro-level-modal .prolevel-modal-cont-container .cont-title{
+      font-size: 20px;
+      padding-bottom: 10px;
+    }
+    .pro-level-modal .modal-container-sec .item-image-box,
+    .pro-level-modal .modal-container-six .cont-container-lists .item-cont .item-cont-image {
+      width: 40px;
+    }
+    .pro-level-modal .prolevel-modal-cont-container .cont-info,
+    .pro-level-modal .prolevel-modal-cont-container .item-cont-desc,
+    .pro-level-modal .prolevel-modal-cont-container .item-cont-title,
+    .pro-level-modal .modal-container-fi .descripe-cont,
+    .pro-level-modal .modal-container-fou .cont-inner-item .title-text,
+    .pro-level-modal .modal-container-fou .cont-inner-item .desc-text,
+    .pro-level-modal .modal-container-fou .cont-inner-item .desc-text-info,
+    .pro-level-modal .modal-container-six .cont-container-lists .item-cont .item-cont-text {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .pro-level-modal .modal-container-thi .item-image-box{
+      width: 80px;
+    }
+    .pro-level-modal .modal-container-fou .cont-inner-item{
+      padding: 20px;
+    }
+    .pro-level-modal .modal-container-six .cont-container-lists{
+      gap: 20px;
+    }
+    .pro-level-modal .modal-container-six .cont-container-lists .item-cont{
+      flex: 0 0 calc(50% - 20px);
+    }
+  }
+  /* IPad */
+  @media(min-width: 768px) and (max-width: 1024px) { }
+  /* small screen */
+  @media(min-width: 1025px) and (max-width: 1900px) { }
+  /* large screen */
+  @media(min-width: 2000px) {
+    .pro-level-modal{
+      width: 1000px;
+    }
+    .pro-level-modal .modal-container-fi .descripe-cont,
+    .pro-level-modal .prolevel-modal-cont-container .cont-info,
+    .pro-level-modal .prolevel-modal-cont-container .item-cont-desc,
+    .pro-level-modal .prolevel-modal-cont-container .item-cont-title,
+    .pro-level-modal .prolevel-modal-cont-container .item-cont-desc,
+    .pro-level-modal .modal-container-fou .cont-inner-item .title-text,
+    .pro-level-modal .modal-container-fou .cont-inner-item .desc-text,
+    .pro-level-modal .prolevel-modal-cont-container .cont-info,
+    .pro-level-modal .modal-container-six .cont-container-lists .item-cont .item-cont-text{
+      font-size: 20px;
+    }
+  }
+  
+</style>
+
+<section class="home-prolevel-background-overlay">
+  <div class="pro-level-modal">
+    <div class="header">
+      <span class="title">{{ block.settings.item-title }}</span>
+      <span class="header-icon">
+        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.00293 2L19.3156 19.3126" stroke="#76767F" stroke-width="3"/>
+          <path d="M19.3125 2L1.99986 19.3126" stroke="#76767F" stroke-width="3"/>
+        </svg>
+      </span>
+    </div>
+    <div class="modal-container">
+      <div class="modal-container-fi prolevel-modal-cont-container">
+        <div class="descripe-cont">{{ block.settings.item-desc }}</div>
+      </div>
+      <div class="content-line-bxo"></div>
+      <div class="modal-container-sec prolevel-modal-cont-container">
+        <div class="cont-title">Testing Beyond Limits</div>
+        <div class="cont-info">Pursuing ergonomic comfort and advanced features leads us to explore more robust materials both inside and outside.</div>
+        <div class="cont-container">
+          <div class="prolevel-modal-item">
+            <div class="item-image-box">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-10.png?v=1745376098" width="100%" height="100%" />
+            </div>
+            <div class="item-cont">
+              <span class="item-cont-desc">2,000+ hours of biomechanical research with posture specialists</span>
+            </div>
+          </div>
+          <div class="prolevel-modal-item">
+            <div class="item-image-box">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-11.png?v=1745376098" width="100%" height="100%" />
+            </div>
+            <div class="item-cont">
+              <span class="item-cont-desc">Motion capture technology analyzing 50+ sitting positions</span>
+            </div>
+          </div>
+          <div class="prolevel-modal-item">
+            <div class="item-image-box">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-12.png?v=1745376098" width="100%" height="100%" />
+            </div>
+            <div class="item-cont">
+              <span class="item-cont-desc">Pressure mapping to eliminate discomfort points</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-line-bxo"></div>
+      <div class="modal-container-thi prolevel-modal-cont-container">
+        <div class="cont-title">Component Breakdown</div>
+        <div class="cont-container">
+          <div class="prolevel-modal-item">
+            <div class="item-image-box">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-13.png?v=1745377473" width="100%" height="100%" />
+            </div>
+            <div class="item-cont">
+              <span class="item-cont-title">Solid Metal Base</span>
+              <span class="item-cont-desc">2865lbs(1300kg) load capacity (tested to destruction)</span>
+            </div>
+          </div>
+          <div class="prolevel-modal-item">
+            <div class="item-image-box">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-14.png?v=1745377473" width="100%" height="100%" />
+            </div>
+            <div class="item-cont">
+              <span class="item-cont-title">Gas Piston</span>
+              <span class="item-cont-desc">120000 cycle rotation, 100000 up-down movement, and 300lbs(136kg) drop test.</span>
+            </div>
+          </div>
+          <div class="prolevel-modal-item">
+            <div class="item-image-box">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-15.png?v=1745377473" width="100%" height="100%" />
+            </div>
+            <div class="item-cont">
+              <span class="item-cont-title">Super Quiet and Smooth-rolling Casters</span>
+              <span class="item-cont-desc">30miles(50km) rolling test on abrasive surfaces</span>
+            </div>
+          </div>
+          <div class="prolevel-modal-item">
+            <div class="item-image-box">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-16.png?v=1745377473" width="100%" height="100%" />
+            </div>
+            <div class="item-cont">
+              <span class="item-cont-title">Reinforced Steel Frame</span>
+              <span class="item-cont-desc">For life time warranty</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-line-bxo"></div>
+      <!-- Extreme Flex Endurance 模块 -->
+      <div class="modal-container-fou prolevel-modal-cont-container">
+        <div class="cont-title">Extreme Flex Endurance</div>
+        <div class="cont-container">
+          <div class="cont-inner-item">
+            <span class="title-text">100,000+ Fold Cycles</span>
+            <span class="desc-text">Withstands equivalent of 8 years daily use without fiber/leatherette breakage</span>
+          </div>
+          <div class="cont-inner-item">
+            <span class="title-text">Colorfast Performance</span>
+            <span class="desc-text">
+              Zero visible fading after:
+            </span>
+            <ul class="desc-text-info">
+              <li>4,000+ machine abrasion cycles</li>
+              <li>500+ wet/dry friction tests</li>
+              <li>Acid/sweat immersion (pH 3.5-9.5)</li>
+            </ul>
+          </div>
+          <div class="cont-inner-item cont-inner-item-nodisc">
+            <span class="title-text">Chemical Resistance</span>
+            <ul class="desc-text-info">
+              <li>Caustic Solution Immersion</li>
+              <li>10% NaOH exposure → 70°C/95% RH humidity chamber for 96 hours</li>
+              <li>Pass Criteria: No cracking, powdering, or tensile strength loss</li>
+            </ul>
+          </div>
+          <div class="cont-inner-item cont-inner-item-nodisc">
+            <span class="title-text">UV Stability</span>
+            <ul class="desc-text-info">
+              <li>300+ Hour Xenon Arc Testing</li>
+              <li>∆E < 1.5 (Imperceptible color shift per ASTM D7869)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- 分割线 -->
+      <div class="content-line-bxo"></div>
+      <!-- Crafted for Champions模块 -->
+      <div class="modal-container-fif prolevel-modal-cont-container">
+        <div class="cont-title">Crafted for Champions</div>
+        <div class="cont-info">
+          We’re the official chair of global esports events like BLAST Premier,
+          RLCS World Championship, and the Six Invitational—not just for show,
+          but because pros demand the best.
+        </div>
+      </div>
+      <!-- 分割线 -->
+      <div class="content-line-bxo"></div>
+      <!-- Our Manufacturing Edge模块 -->
+      <div class="modal-container-six prolevel-modal-cont-container">
+        <div class="cont-title">Our Manufacturing Edge</div>
+        <div class="cont-container-lists">
+          <div class="item-cont">
+            <div class="item-cont-image">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-17.png?v=1745377473" width="100%" height="100%" />
+            </div>
+            <div class="item-cont-text">0.01mm Precision CNC machining tolerance</div>
+          </div>
+          <div class="item-cont">
+            <div class="item-cont-image">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-18.png?v=1745377473" width="100%" height="100%" />
+            </div>
+            <div class="item-cont-text">72-Point Quality Checklist per unit</div>
+          </div>
+          <div class="item-cont">
+            <div class="item-cont-image">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-19.png?v=1745377473" width="100%" height="100%" />
+            </div>
+            <div class="item-cont-text">100% Stress Testing before shipping</div>
+          </div>
+          <div class="item-cont">
+            <div class="item-cont-image">
+              <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-20.png?v=1745377473" width="100%" height="100%" />
+            </div>
+            <div class="item-cont-text">5-Year Accelerated Aging Simulation on all materials</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

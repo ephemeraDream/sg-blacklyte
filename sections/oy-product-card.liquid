@@ -1,0 +1,189 @@
+
+    <div class="oy-product-card-wrap">
+    <div class="oy-product-card">
+      {% for product_card in section.blocks %}
+        
+
+        <div class="oy-product-card-in">
+            <div class="oy-product-card-img">
+                {%if product_card.settings.img_back != blank %}
+                    <img width="" height="" src="{{ product_card.settings.img_back | image_url }}" alt="">
+                    {% elsif product_card.settings.product_selector != blank %}
+                   <img width="" height="" src="{{ product_card.settings.product_selector.featured_image.src | image_url }}" alt="">    
+                  {% else %}
+                     <!-- <img width="" height="" src="https://dummyimage.com/1200x430" alt=""> -->
+                {% endif %}
+              
+            </div>
+            <div class="oy-product-card-text">
+                <div class="oy-title">
+                     {%if product_card.settings.title != blank %}
+                        <p>{{ product_card.settings.title }}</p>
+                        {% elsif product_card.settings.product_selector.title != blank %}
+                        <p>{{ product_card.settings.product_selector.title }}</p> 
+                      {% else %}
+                         <p>Product Name</p> 
+                    {% endif %}
+                </div>
+                <div class="oy-title-b">
+                    {%if product_card.settings.text != blank %}
+                        <p>{{ product_card.settings.title }}</p>
+                        {% elsif product_card.settings.product_selector.description != blank %}
+                        <p>{{ product_card.settings.product_selector.description }}</p> 
+                      {% else %}
+                         <p>Product Description</p> 
+                    {% endif %}
+                </div>
+                <div class="oy-link pe-show">
+                    <a href="#">Learn more</a>
+                </div>
+            </div>
+            <div class="oy-product-card-card pc-show">
+                <div class="oy-product-card-card-in">
+                    <div class="oy-product-card-card-img">
+                           {%if product_card.settings.img != blank %}
+                              <img width="" height="" src="{{ product_card.settings.img | image_url }}" alt="">
+                              {% elsif product_card.settings.product_selector != blank %}
+                             <img width="" height="" src="{{ product_card.settings.product_selector.featured_image.src | image_url }}" alt="">    
+                            {% else %}
+                               <!-- <img width="" height="" src="https://dummyimage.com/300/C9CCD0/fff.png&text=img" alt=""> -->
+                          {% endif %}
+                    </div>
+                    <div class="oy-product-card-card-text">
+                        <div class="oy-title">
+                              {%if product_card.settings.title != blank %}
+                                  <p>{{ product_card.settings.title }}</p>
+                                  {% elsif product_card.settings.product_selector.title != blank %}
+                                  <p>{{ product_card.settings.product_selector.title }}</p> 
+                                {% else %}
+                                   <p>Product Name</p> 
+                              {% endif %}
+                        </div>
+                        <div class="oy-title-b">
+                            {%if product_card.settings.coll != blank %}
+                                  <p>{{ product_card.settings.coll }}</p>
+                                  {% elsif product_card.settings.product_selector.category != blank %}
+                                  <p>{{ product_card.settings.product_selector.category }}</p> 
+                                {% else %}
+                                   <p>Product Category</p> 
+                              {% endif %}
+                        </div>
+                        <div class="oy-link">
+                          <a href="{{ product_card.settings.link }}">
+                            {%if product_card.settings.link_text != blank %}
+                                  {{ product_card.settings.link_text }}
+                                {% else %}
+                                   VIEW PRODUCT
+                              {% endif %}
+                          </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     {% endfor %}
+    </div>
+
+</div>
+
+<style>
+    .oy-product-card-wrap{
+      padding-top:{{section.settings.p_t}}px;
+        padding-bottom:{{section.settings.p_m}}px;
+    }
+</style>
+{% schema %}
+  {
+    "name": "A Product Card List",
+    "settings": [
+
+         {
+        "type":"range",
+        "id": "p_t",
+        "label": "Padding Top",
+        "max":300,
+        "min": 0,
+        "default":30,
+        "unit": "px",
+        "step": 5,
+      },
+            {
+        "type":"range",
+        "id": "p_m",
+        "label": "Padding Bottom",
+        "max":300,
+        "min": 0,
+        "default":30,
+        "unit": "px",
+        "step": 5,
+      },
+    ],
+    "blocks": [
+      {
+        "type": "product_card",
+        "name":"product",
+        "settings": [
+            {
+            "type": "product",
+            "id": "product_selector",
+            "label": "选择产品"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_back",
+            "label": "背景图"
+          },
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "产品图"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "产品名称"
+          },
+            {
+            "type":"textarea",
+            "id": "text",
+            "label": "产品描述"
+          },
+               {
+            "type":"textarea",
+            "id": "coll",
+            "label": "产品分类"
+          },
+               {
+            "type":"text",
+            "id": "link_text",
+            "label": "链接文本"
+          },
+               {
+            "type":"url",
+            "id": "link",
+            "label": "链接地址"
+          },
+        ]
+      }
+    ],
+    "presets": [
+    {
+      "name":   "A Product Card List",
+      "blocks": [
+        {
+          "type": "product_card",
+          "settings": {
+
+                "title": "Default product name",
+                "text": "Default product description",
+                "coll": "Default product category",
+                "link_text": "VIEW PRODUCT",
+                "link": "shopify://collections/all"
+          }
+        }
+      ]
+    },
+      
+    ]
+  }
+{% endschema %}

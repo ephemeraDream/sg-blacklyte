@@ -1,0 +1,43 @@
+.imgwall_simplicity {
+  max-width: 75vw;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.imgwall_simplicity .imgwall_simplicity_image_box {
+  width: calc(100% / 4);
+  aspect-ratio: 1.63;
+  overflow: hidden;
+  display: flex;
+}
+
+.imgwall_simplicity .imgwall_simplicity_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform .4s ease-in-out;
+}
+
+.imgwall_simplicity .imgwall_simplicity_image:hover {
+  transform: scale(1.2);
+}
+
+@media screen and (max-width: 1000px) {
+  .imgwall_simplicity .imgwall_simplicity_image_box {
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .imgwall_simplicity {
+    max-width: 100vw;
+  }
+
+  .imgwall_simplicity .imgwall_simplicity_image_box:nth-child(7),
+  .imgwall_simplicity .imgwall_simplicity_image_box:nth-child(8) {
+    display: none;
+  }
+}

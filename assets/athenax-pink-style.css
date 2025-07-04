@@ -1,0 +1,112 @@
+/* Athena x pink */
+#ProductSection-template--18341574476007__main .productView-thumbnail .productView-thumbnail-link {
+  border: 1px solid #FFB7C8;
+}
+#ProductSection-template--18341574476007__main #product-price-9077399519463 .ergonomics {
+  background-color: #FFA19F;
+  border-color: #FF9290;
+}
+#ProductSection-template--18341574476007__main #product-price-9077399519463 .ergonomics_left_bag_svg svg {
+  fill: none;
+}
+#ProductSection-template--18341574476007__main #product-price-9077399519463 .ergonomics_left_bag_svg svg path {
+  fill: #ffa19f;
+}
+#ProductSection-template--18341574476007__main #product-price-9077399519463 .ergonomics_right_remarks {
+  color: #54545D;
+}
+#ProductSection-template--18341574476007__main #product-price-9077399519463 .bottom_line {
+  background-color: #FFB7C8;
+}
+#ProductSection-template--18341574476007__main .product-form__radio:checked+.product-form__label .text,
+#ProductSection-template--18341574476007__main .product-form__swatch .product-form__radio:checked+.product-form__label {
+  border-color: #FFA19F;
+  box-shadow: 0px 0px 5.5px 1px #FFA19F;
+}
+#ProductSection-template--18341574476007__main .complementary-products-description {
+  background-color: #ffffff !important;
+}
+#ProductSection-template--18341574476007__main .afterpay_info_text {
+  color: #54545D !important;
+}
+#ProductSection-template--18341574476007__main #complementary-product-data .product-item {
+  border-color: #FFA19F !important;
+}
+#ProductSection-template--18341574476007__main .product-item:before {
+  background-color: #F6A800;
+}
+#ProductSection-template--18341574476007__main .add-ons-products_in_details .product-item {
+  border-color: #FFCDD9 !important;
+}
+#ProductSection-template--18341574476007__main .vari_selected_info {
+  border-bottom: 1px solid #FFCDD9 !important;
+}
+#ProductSection-template--18341574476007__main #halloween_settings {
+  text-decoration-line: line-through;
+}
+#ProductSection-template--18341574476007__main #product-add-to-cart {
+  background-color: #FF5A57;
+  border-color: #FF5A57;
+  color: #18181B;
+}
+#ProductSection-template--18341574476007__main #product-add-to-cart:hover {
+  background-color: #CA0400;
+  border-color: #CA0400;
+  color: #fff;
+}
+#ProductSection-template--18341574476007__main #product-buy-it-now {
+  border-color: #FF5A57;
+  color: #FF5A57;
+}
+#ProductSection-template--18341574476007__main #product-buy-it-now:hover {
+  border-color: #CA0400;
+  color: #CA0400;
+}
+#ProductSection-template--18341574476007__main #product_custom_ID {
+  background-color: #fff;
+}
+#ProductSection-template--18341574476007__main #product_custom_ID .product__text.title .title,
+#ProductSection-template--18341574476007__main #product_custom_ID .product__text.des {
+  color: #18181B;
+}
+#ProductSection-template--18341574476007__main #product_custom_ID #product_installment_price,
+#ProductSection-template--18341574476007__main #product_custom_ID #product_installment_price_12 {
+  color: #A72A2F !important;
+  font-weight: 600;
+}
+#ProductSection-template--18341574476007__main #product-price-9077399519463 .price__last,
+#ProductSection-template--18341574476007__main #product-price-9077399519463.productView-price #checkout_price {
+  color: #A72A2F !important;
+}
+#shopify-section-template--18341574476007__main #ProductSection-template--18341574476007__main #product-price-9077399519463 .ergonomics_right_price {
+  color: #18181B;
+  font-size: 28px;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+/* end Athena x pink */
+/* Athena X pink */
+#shopify-section-template--17695867109607__main #ProductSection-template--17695867109607__main #product-price-8562365432039 .athenax_pink_price.ergonomics_right_price {
+  text-decoration: line-through;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+#shopify-section-template--18341574476007__main #ProductSection-template--18341574476007__main #product-price-9077399519463 .ergonomics_right_price:before {
+  content: '$299';
+  display: inline-block;
+  font-size: 40px;
+  color: #a72a2f;
+  margin-right: 10px;
+  font-weight: 700;
+}
+@media(max-width: 767px) {
+  #shopify-section-template--17695867109607__main #ProductSection-template--17695867109607__main #product-price-8562365432039 .athenax_pink_price.ergonomics_right_price{
+    font-size: 22px;
+  }
+  #shopify-section-template--17695867109607__main #ProductSection-template--17695867109607__main #product-price-8562365432039 .athenax_pink_price.ergonomics_right_price:before{
+    font-size: 34px;
+    margin-left: 4px;
+  }
+}
+

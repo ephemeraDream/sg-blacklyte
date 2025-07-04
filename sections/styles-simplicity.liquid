@@ -1,0 +1,149 @@
+{{ 'section-styles-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="styles_simplicity">
+  <div class="styles_simplicity_title">{{ section.settings.main_title }}</div>
+  <div class="styles_simplicity_text">{{ section.settings.main_text }}</div>
+  <div class="styles_simplicity_swiper_pagination"></div>
+  <div class="styles_simplicity_swiper swiper">
+    <div class="swiper-wrapper">
+      {% for item in section.blocks %}
+        <div class="swiper-slide">
+          <div class="img_left_box">
+            {% assign srcset_1x = item.settings.img_left | image_url: width: 852 | append: ' 1x, ' %}
+            {% assign srcset_2x = item.settings.img_left | image_url: width: 670 | append: ' 2x, ' %}
+            {% assign srcset_3x = item.settings.img_left | image_url: width: 670 | append: ' 3x, ' %}
+            {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+            {{-
+              item.settings.img_left
+              | image_url: width: item.settings.img_left.width
+              | image_tag:
+                sizes: '(min-width:769px) 58.33vw, 100vw',
+                srcset: srcset_init,
+                alt: section.settings.main_title,
+                class: 'img_left'
+            -}}
+          </div>
+          <div>
+            <div class="img_right_top_box">
+              {% assign srcset_1x = item.settings.img_right_top | image_url: width: 832 | append: ' 1x, ' %}
+              {% assign srcset_2x = item.settings.img_right_top | image_url: width: 670 | append: ' 2x, ' %}
+              {% assign srcset_3x = item.settings.img_right_top | image_url: width: 670 | append: ' 3x, ' %}
+              {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+              {{-
+                item.settings.img_right_top
+                | image_url: width: item.settings.img_right_top.width
+                | image_tag:
+                  sizes: '(min-width:769px) 58.33vw, 100vw',
+                  srcset: srcset_init,
+                  alt: section.settings.main_title,
+                  class: 'img_right_top'
+              -}}
+            </div>
+            <div class="img_right_bottom_box">
+              {% assign srcset_1x = item.settings.img_right_bottom | image_url: width: 832 | append: ' 1x, ' %}
+              {% assign srcset_2x = item.settings.img_right_bottom | image_url: width: 670 | append: ' 2x, ' %}
+              {% assign srcset_3x = item.settings.img_right_bottom | image_url: width: 670 | append: ' 3x, ' %}
+              {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+              {{-
+                item.settings.img_right_bottom
+                | image_url: width: item.settings.img_right_bottom.width
+                | image_tag:
+                  sizes: '(min-width:769px) 58.33vw, 100vw',
+                  srcset: srcset_init,
+                  alt: section.settings.main_title,
+                  class: 'img_right_bottom'
+              -}}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  const style_colors = [
+    {% for block in section.blocks %}
+      {
+        color_name: "{{ block.settings.color_name | escape }}",
+        color_value: "{{ block.settings.color_value | escape }}"
+      }{% if forloop.last == false %},{% endif %}
+    {% endfor %}
+  ];
+  new Swiper(".styles_simplicity_swiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    allowTouchMove: false,
+    pagination: {
+      el: ".styles_simplicity_swiper_pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        const item = style_colors[index];
+        const color = item.color_value || '#000000';
+
+        return `<div class="${className}"><div class="color_circle" style="background-color: ${color};"></div><div class="color_name">${item.color_name}</div></div>`;
+      },
+    },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "styles simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "title"
+    },
+    {
+      "type": "text",
+      "id": "main_text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "style_item",
+      "name": "style item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "color_name",
+          "label": "color name"
+        },
+        {
+          "type": "color",
+          "id": "color_value",
+          "label": "color value"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_left",
+          "label": "img left"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_right_top",
+          "label": "img right top"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_right_bottom",
+          "label": "img right bottom"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "styles simplicity"
+    }
+  ]
+}
+{% endschema %}

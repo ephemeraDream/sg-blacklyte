@@ -1,0 +1,827 @@
+{{ 'oy-main.css' | asset_url | stylesheet_tag }}
+{{ 'oy-main-min.css' | asset_url | stylesheet_tag }}
+<link
+  rel="stylesheet"
+  href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.css?v=1702624065"
+>
+<script src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.js?v=1702624149"></script>
+<link rel="preload" as="image" href="{{ product.images[0].src | image_url }}" type="image/webp">
+
+{%- assign color_groups = '|' -%}
+{%- assign grouped_images = '' -%}
+
+{%- comment -%}
+  第一步：提取去重的颜色名称
+{%- endcomment -%}
+{%- for image in product.images -%}
+  {%- assign color_name = image.alt | strip | downcase -%}
+  {%- assign color_groups_array = color_groups | split: '|' -%}
+
+  {%- unless color_groups_array contains color_name -%}
+    {%- capture color_groups -%}{{ color_groups }}|{{ color_name }}{%- endcapture -%}
+  {%- endunless -%}
+{%- endfor -%}
+
+{%- comment -%}
+  第二步：按颜色分组图片
+{%- endcomment -%}
+{%- assign color_array = color_groups | split: '|' | compact -%}
+{%- for color in color_array -%}
+  {%- assign images_in_color = '' -%}
+
+  {%- for image in product.images -%}
+    {%- assign processed_alt = image.alt | strip | downcase -%}
+    {%- if processed_alt == color -%}
+      {%- capture images_in_color -%}{{ images_in_color }}{{ image | json }}||{%- endcapture -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if images_in_color != '' -%}
+    {%- assign image_list = images_in_color | split: '||' | compact -%}
+    {%- capture grouped_images -%}{{ grouped_images }}'{{ color }}':[{{ image_list | join: ',' }}],{%- endcapture -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%}
+  最终生成JSON格式的分组数据
+{%- endcomment -%}
+{%- assign final_group = grouped_images | split: ',' | compact -%}
+
+{% for currency in shop.enabled_currencies %}
+  {% if currency.iso_code == shop.currency %}
+    {%- assign currency_symbol = currency.symbol -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign target_color = product.selected_or_first_available_variant.option2 %}
+
+{% assign variants_quantity_object = '' %}
+
+{% for variant in product.variants %}
+  {% if forloop.first %}
+    {% assign variants_quantity_object = variants_quantity_object | append: '{' %}
+  {% else %}
+    {% assign variants_quantity_object = variants_quantity_object | append: ', ' %}
+  {% endif %}
+
+  {% assign variants_quantity_object = variants_quantity_object | append: '"' %}
+  {% assign variants_quantity_object = variants_quantity_object | append: variant.id %}
+  {% assign variants_quantity_object = variants_quantity_object | append: '": ' %}
+  {% assign variants_quantity_object = variants_quantity_object | append: variant.inventory_quantity %}
+
+  {% if forloop.last %}
+    {% assign variants_quantity_object = variants_quantity_object | append: '}' %}
+  {% endif %}
+{% endfor %}
+<script>
+  const colorImages = {
+    {{ final_group | join: ',' }}
+  }
+  const variantsQuantity = JSON.parse({{ variants_quantity_object | json }});
+  const productData =  {{ product | json }}
+  const selectableProductAttachJson = {{ product.metafields.custom.selectable_product_attach.value | json }}
+</script>
+<script src="{{ 'oy-main-swiper.js' | asset_url  }}"></script>
+
+<div class="product-main">
+  <div class="oy-in product-main-in">
+    <div class="pe-title pe-show">
+      <div class="oy-title pe-show">
+        <h2 class="h2">{{ product.title }}</h2>
+      </div>
+      <div>
+        <div class="text-describe">{{ product.description }}</div>
+      </div>
+      <div class="oy-right pe-show">
+        <div class="oy-right sale_price_item">
+          <span class="symbol">{{ currency_symbol }}</span>
+          <span class="num compare_at_price sale_prices">{{ product.price | money_without_currency }}</span>
+        </div>
+        <div class="oy-right sale_price_underlined">
+          <span class="symbol">{{ currency_symbol }}</span>
+          <span class="num compare_at_price">{{ product.price | money_without_currency }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="oy-left">
+      <div id="oy-left-loading-spinner" class="loading-spinner"></div>
+      <div class="img-shop oy-in pc-suspend">
+        <div class="shop-main">
+          <div class="swiper imgbox-swiper">
+            <div class="swiper-wrapper"></div>
+
+            <div id="productMainBtnPrev" class="oy-cut-btn oy-prev oy-in">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="61" viewBox="0 0 60 61" fill="none">
+                <path d="M38 10.4419L18 30.5088L38 50.5757" stroke="#B5B5B5" stroke-width="3"/>
+              </svg>
+            </div>
+            <div id="productMainBtnNext" class=" oy-cut-btn oy-next oy-in">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="61" viewBox="0 0 60 61" fill="none">
+                <path d="M22 50.5752L42 30.5083L22 10.4414" stroke="#B5B5B5" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="icon-360">
+              {% assign matched_image = null %}
+
+              {% for image in product.images %}
+                {% if image.alt == target_color and matched_image == null %}
+                  {% assign matched_image = image %}
+                {% endif %}
+              {% endfor %}
+
+              <img src="{{ matched_image.src | image_url: width: 80 }}" alt="{{ matched_image.alt }}" loading="lazy">
+              <svg
+                width="80"
+                height="81"
+                viewBox="0 0 80 81"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_134_10)">
+                    <path
+                        d="M44.4919 62.6332L45.4971 59.221C43.4022 59.3436 41.4294 59.4096 39.5035 59.4284C29.1792 59.5509 19.4278 58.5518 12.0627 56.6101C4.20901 54.5364 0.0379228 51.6616 0.000345443 48.2872C-0.0466263 44.6488 4.69752 41.5006 13.6973 39.1819L14.9937 38.8614L14.928 40.2941C14.9373 40.7937 15.0689 41.3027 15.3131 41.8022L15.8486 42.905L14.6743 43.2161C7.75068 44.9693 5.30815 47.0053 5.32694 48.2212C5.33633 49.456 7.89159 51.4731 15.0501 53.066C21.7388 54.5553 30.6071 55.3188 40.0296 55.2057C41.5797 55.1868 43.1955 55.1397 44.9241 55.0643L43.3834 52.2554L55.9906 56.1294L44.4919 62.6332ZM58.8465 58.0145L58.7525 56.94C58.7056 56.4216 58.2922 56.0069 57.954 55.7524L56.0658 54.3291L58.4049 53.9803C63.7879 53.2074 68.2972 52.1329 71.4443 50.8698C75.4463 49.258 75.8596 47.9196 75.8596 47.42C75.8408 46.0815 72.9756 43.9513 64.9622 42.3207L63.9194 42.1039L64.2013 41.0859C64.267 40.822 64.3046 40.5392 64.3046 40.2753C64.3046 40.0679 64.2764 39.8605 64.2294 39.6155V39.606L63.9194 38.1168L65.4037 38.4278C69.7157 39.3704 73.295 40.6052 75.7657 41.9907C78.584 43.5837 80.0307 45.3934 80.0589 47.3823C80.0777 49.0035 79.0725 51.4259 74.1874 53.7635C70.6927 55.4319 65.7513 56.8363 59.8987 57.826L58.8465 58.0145ZM67.9872 19.8591C66.0144 19.8591 64.4079 21.4614 64.4079 23.4503C64.4079 25.4297 66.0144 27.0415 67.9872 27.0415C69.96 27.0415 71.5664 25.4391 71.5664 23.4503C71.5664 21.4614 69.9506 19.8591 67.9872 19.8591ZM67.9872 25.4391C66.888 25.4391 65.9956 24.5437 65.9956 23.4409C65.9956 22.338 66.888 21.4426 67.9872 21.4426C69.0863 21.4426 69.9788 22.338 69.9788 23.4409C69.9788 24.5437 69.0863 25.4391 67.9872 25.4391ZM45.375 35.1005C44.0974 33.7903 42.4815 33.1211 40.5651 33.1211C40.3208 33.1211 40.0484 33.14 39.7478 33.1682C39.6069 33.1871 39.466 33.1965 39.3157 33.2248L45.375 24.1572H41.5233L34.9379 34.5444C34.2427 35.6472 33.7354 36.6746 33.4254 37.6078C33.106 38.5503 32.9557 39.5118 32.9557 40.4543C32.9557 42.5092 33.6133 44.2058 34.9285 45.4877C36.2343 46.7602 37.9629 47.4106 40.086 47.4106C41.1382 47.4106 42.1527 47.1938 43.1016 46.7602C44.0598 46.3266 44.8865 45.7139 45.5535 44.9316C46.1359 44.2718 46.5775 43.5177 46.8781 42.6977C47.1693 41.8871 47.3196 40.9916 47.3196 40.0585C47.3008 38.0791 46.6526 36.4107 45.375 35.1005ZM42.8949 43.2915C42.1621 44.0738 41.2415 44.4509 40.0766 44.4509C38.8835 44.4509 37.9629 44.0927 37.2677 43.3481C36.5725 42.6129 36.2249 41.5949 36.2249 40.3507C36.2249 39.0876 36.5913 38.0602 37.3241 37.2779C38.0568 36.4861 38.9681 36.0997 40.1142 36.0997C41.3166 36.0997 42.2749 36.4767 42.9701 37.2119C43.6652 37.9471 44.0128 38.9934 44.0128 40.2941C44.0034 41.5006 43.6371 42.5186 42.8949 43.2915Z"
+                        fill="#999999" />
+                    <path
+                        d="M23.1292 44.4509C22.3213 44.4509 21.5697 44.2153 20.8933 43.7534C20.2075 43.2821 19.6345 42.6035 19.1836 41.7269L19.0708 41.5101L16.1868 43.1124L16.2995 43.3198C17.0417 44.6583 18.0093 45.6762 19.1554 46.3549C20.3109 47.0336 21.6731 47.3823 23.2043 47.3823C25.4402 47.3823 27.3191 46.6471 28.7752 45.1861C30.2407 43.7345 30.9735 41.8588 30.9735 39.6343C30.9735 37.6266 30.344 35.9583 29.0946 34.6858C27.9391 33.4982 26.4454 32.8384 24.6511 32.7158L30.6071 24.1478H17.455V27.3149L24.9799 27.1735L18.3944 36.2034L19.2399 36.7783L19.3714 36.6841C19.9915 36.2316 20.6115 35.8829 21.2221 35.6567C21.8234 35.4304 22.4434 35.3079 23.0446 35.3079C24.4162 35.3079 25.5529 35.7415 26.4172 36.5898C27.2721 37.4381 27.7136 38.5598 27.7136 39.9077C27.7136 41.1896 27.2721 42.2735 26.3984 43.1407C25.5247 44.0173 24.4256 44.4509 23.1292 44.4509ZM62.9612 40.0679V31.3397C62.9612 28.9832 62.3412 27.1358 61.1387 25.8256C59.9174 24.5154 58.1983 23.8462 56.0188 23.8462C53.9896 23.8462 52.308 24.5343 51.021 25.8822C49.734 27.23 49.0857 29.0115 49.0857 31.1794V40.0773C49.0857 42.2453 49.734 44.0173 51.021 45.3746C52.308 46.7225 53.9802 47.4106 56.0188 47.4106C58.0667 47.4106 59.7483 46.7225 61.0353 45.3746C62.313 44.0079 62.9612 42.2264 62.9612 40.0679ZM52.3644 32.1503C52.3644 30.3405 52.6838 28.9644 53.2944 28.0878C53.905 27.2112 54.7975 26.787 56.0188 26.787C57.24 26.787 58.1325 27.2112 58.7337 28.0784C59.3444 28.9644 59.6544 30.3311 59.6544 32.1503V39.1159C59.6544 40.9351 59.3444 42.2924 58.7431 43.169C58.1513 44.0267 57.2588 44.4509 56.0188 44.4509C54.7787 44.4509 53.8863 44.0267 53.285 43.1596C52.665 42.2736 52.3644 40.9162 52.3644 39.1159V32.1503Z"
+                        fill="#999999" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_134_10">
+                        <rect width="80" height="80.2676" fill="white"
+                            transform="translate(0 0.287598)" />
+                    </clipPath>
+                </defs>
+              </svg>
+            </div>
+
+            <div class="spin-360">
+              {% assign spin_images = '' %}
+
+              {% for item in product.metafields.custom.color_style.value %}
+                {% if item.color == target_color %}
+                  {% assign spin_images = item.spin_images %}
+                {% endif %}
+              {% endfor %}
+
+              {% render 'product-360', images: spin_images.value %}
+            </div>
+          </div>
+
+          <div class="swiper imgthumb-swiper">
+            <div class="swiper-wrapper"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="oy-right .oy-in">
+      <!-- <form id="productForm"> -->
+      <div class="describe-main pc-show oy-pad">
+        <div class="describe-main-top  oy-in ">
+          <div class="oy-left">
+            <div class="title">
+              <h2 class="h2 ">{{ product.title }}</h2>
+            </div>
+            <a href="#stamped-main-widget" class="star-html">
+              {%- assign app_rendered = false -%}
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when '@app' -%}
+                    {%- unless app_rendered -%}
+                      {% render block %}
+                      {%- assign app_rendered = true -%}
+                    {%- endunless -%}
+                  {%- when 'starBlock' -%}
+                    <div>{{ block.settings.starHtml }}</div>
+                {%- endcase -%}
+              {%- endfor -%}
+            </a>
+            <div>
+              <div class="text-describe" style="margin-top:1rem;">{{ product.description }}</div>
+            </div>
+          </div>
+          <div class="oy-right flex-wrap">
+            <div class="oy-right sale_price_item">
+              <span class="symbol">{{ currency_symbol }}</span>
+              <span class="num compare_at_price sale_prices">{{ product.price | money_without_currency }}</span>
+            </div>
+            <div class="oy-right sale_price_underlined">
+              <span class="symbol">{{ currency_symbol }}</span>
+              <span class="num compare_at_price">{{ product.price | money_without_currency }}</span>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="describe-main-btm">
+          <div class="text-describe">{{ 'products.product.features_heading' | t }}</div>
+          <div class="text-main">
+            {{ product.metafields.custom.product_features }}
+          </div>
+        </div>
+      </div>
+      <div class="product-sku">
+        <div class="product-sku-fold">
+          <!-- Color -->
+          <div class="oy-item">
+            {% for item in product.metafields.custom.color_style.value %}
+              {% if forloop.index == 1 %}
+                <div class="oy-item-main oy-pad">
+                  <div class="oy-title">{{ 'products.product.choose_your_color' | t }}</div>
+                  <div class="oy-value">{{ item.color }}</div>
+                  <!-- <div class="oy-explain">4.9/5 rating | 2780 Customer Reviews</div> -->
+
+                  <div class="oy-icon">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3.33317 7.33295L9.99984 13.9996L16.6665 7.33295" stroke="#333333"
+                          stroke-width="2" />
+                    </svg>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+            <div class="oy-item-fold-color oy-item-content oy-in oy-pad">
+              {% for item in product.metafields.custom.color_style.value %}
+                <div class="oy-item oy-in {% if forloop.index==0 %}active{% endif %}" data-value="{{ item.color }}">
+                  <img
+                    width=""
+                    height=""
+                    src="{{ item.img | image_url: width:136, height:199 }}"
+                    alt="color"
+                    loading="lazy"
+                  >
+                  <p class="oy-value-title">{{ item.color }}</p>
+                </div>
+              {% endfor %}
+            </div>
+            <select id="colorSelect" class="oy-hideForm oy-sku-input">
+              {% for item in product.metafields.custom.color_style.value %}
+                <option value="{{ item.color }}">{{ item.color }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <!-- endColor -->
+          <!-- Size -->
+
+          {% comment %}
+                           <div class="oy-item">
+              {% for item in product.metafields.custom.product_size.value %}
+                {% if forloop.index == 1 %}
+                  <div class="oy-item-main oy-pad">
+                    <div class="oy-title">{{ 'products.product.choose_your_size' | t }}</div>
+                    <div class="oy-value">{{ item.name }}</div>
+                    <div class="oy-explain">{{ item.remark }}</div>
+
+                    <div class="oy-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M3.33317 7.33295L9.99984 13.9996L16.6665 7.33295" stroke="#333333"
+                            stroke-width="2" />
+                      </svg>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+              {% for item in product.metafields.custom.product_size.value %}
+                <div
+                  class="oy-item-fold-size oy-item oy-item-content oy-in oy-pad  {% if forloop.index == 0 %}active{% endif %}"
+                  data-value="{{ item.name }}"
+                  data-remark="{{ item.remark }}"
+                >
+                  <div class="oy-item">
+                    <div class="oy-value oy-value-title">{{ item.name }}</div>
+                    <div class="oy-explain">{{ item.remark }}</div>
+                  </div>
+                  <div class="oy-icon oy-in">
+                    <svg
+                      width="21"
+                      height="15"
+                      viewBox="0 0 21 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          d="M1.47835 6.92182L0 8.35822L6.86726 15L21 1.44185L19.5286 0L6.87357 12.1407L1.47835 6.92182Z"
+                          fill="#B80000" />
+                    </svg>
+                  </div>
+                </div>
+              {% endfor %}
+              <select id="sizeSelect" class="oy-hideForm oy-sku-input">
+                {% for item in product.metafields.custom.product_size.value %}
+                  <option value="{{ item.name }}">{{ item.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endcomment %}
+          <!-- endSize -->
+
+          <!-- material -->
+          <div class="oy-item">
+            {% for item in product.metafields.custom.product_material.value %}
+              {% if forloop.index == 1 %}
+                <div class="oy-item-main oy-pad">
+                  <div class="oy-title">{{ 'products.product.choose_your_material' | t }}</div>
+                  <div class="oy-value">{{ item.name }}</div>
+                  <!-- <div class="oy-explain">4.9/5 rating | 2780 Customer Reviews</div> -->
+
+                  <div class="oy-icon">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3.33317 7.33295L9.99984 13.9996L16.6665 7.33295" stroke="#333333"
+                          stroke-width="2" />
+                    </svg>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            <div class="oy-item-fold-material oy-item-content oy-in oy-pad active">
+              {% for item in product.metafields.custom.product_material.value %}
+                <div class="oy-item oy-in {% if forloop.index==0 %}active{% endif %}" data-value="{{ item.name }}">
+                  <img width="" height="" src="{{ item.img | image_url }}" alt="material" loading="lazy">
+                  <p class="oy-value-title">{{ item.name }}</p>
+                </div>
+              {% endfor %}
+              <br>
+              <select id="materialSelect" class="oy-hideForm oy-sku-input">
+                {% for item in product.metafields.custom.product_material.value %}
+                  <option value="{{ item.name }}">{{ item.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <!-- endMaterial -->
+          <div class="product-sku-attach">
+            <div class="oy-title">
+              <p>{{ 'products.product.choose_your_add-Ons' | t }}</p>
+            </div>
+
+            <!-- Product Attach -->
+            {% for item in product.metafields.custom.product_attach.value %}
+              {% for variant in item.variants %}
+                <div
+                  class="product-sku-attach-main oy-in{% if product.title contains "Blacklyte Athena X Gaming Chair" %} spec_product_attach_item{% endif %}"
+                  data-color="{{ variant.option2 }}"
+                >
+                  <div class="oy-left">
+                    <img
+                      width=""
+                      height=""
+                      src="{{ variant.featured_image | image_url  }}"
+                      alt="add-ons"
+                      loading="lazy"
+                    >
+                  </div>
+                  <div class="oy-right">
+                    <div class="oy-top">
+                      <span class="oy-title">{{ item.title }}</span>
+                      <span class="oy-nameplate">
+                        <span class="nameplate-box">
+                          <svg
+                            width="10"
+                            height="8"
+                            viewBox="0 0 10 8"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                                d="M0.703974 3.86977L0 4.54233L3.27012 7.65219L10 1.3039L9.29936 0.628784L3.27313 6.31338L0.703974 3.86977Z"
+                                fill="white" />
+                          </svg>
+                        </span>
+                        <span class="oy-text">{{ 'products.product.include_text' | t }}</span>
+                      </span>
+                    </div>
+                    <div class="oy-btm">
+                      <div class="oy-text">
+                        {{ item.description }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endfor %}
+            <!-- end Product Attach -->
+
+            <!-- Selectable Product Attach -->
+            {% comment %}
+              {% for item in product.metafields.custom.selectable_product_attach.value %}
+                <div class="product-sku-attach-option oy-in">
+                  <div class="oy-checkbox oy-in">
+                    <input id="check{{ item.id }}" type="checkbox">
+                  </div>
+                  <div class="oy-left oy-in">
+                    <img width="" height="" src="{{ item.featured_image | image_url  }}" alt="">
+                  </div>
+                  <div class="oy-right">
+                    <div class="oy-title">
+                      <span class="oy-title-in">{{ item.title }}</span>
+                    </div>
+                    <div class="oy-text">
+                      <div class="oy-text-in">{{ item.category }}</div>
+                    </div>
+                    <div class="oy-price">
+                      <span class="oy-price-in"> +{{ item.price | money_without_trailing_zeros }}</span>
+                      <!-- <span class="oy-price-in"> +${{ item.price }}</span> -->
+                    </div>
+                    <div class="oy-count-input">
+                      <button disabled class="minus oy-cut">-</button
+                      ><input
+                        id="count{{ item.id }}"
+                        value="1"
+                        oninput="value=value.replace(/[^\d]/g,'')"
+                        maxlength="3"
+                        class="oy-count-ipt"
+                        type="text"
+                        max="999"
+                        min="1"
+
+                      ><button class="oy-cut plus">+</button>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endcomment %}
+            <!-- end Selectable Product Attach -->
+          </div>
+
+          <div class="settlement-detail">
+            <div class="oy-p1">{{ product.title }}</div>
+            <div class="oy-p2">
+              <span id="endSKU1"></span
+              ><span>
+                {{ currency_symbol -}}
+                <span class="compare_at_price">{{ product.price | money_without_currency }} </span></span
+              >
+            </div>
+            <div class="oy-p2"><span id="endSKU2"></span></div>
+            <div class="oy-p2"><span id="endSKU3"></span></div>
+            <div class="settlement-detail-line"></div>
+            <div class="oy-p2">Leather Material</div>
+            {% assign total_price = product.price %}
+            {% for item in product.metafields.custom.product_attach.value %}
+              {% assign total_price = total_price | plus: item.price %}
+              <div class="oy-p2 product_attach_item" data-value="{{item.price}}">
+                <span>{{ item.title }}</span
+                ><span>
+                  {{ currency_symbol -}}
+                  {{- item.price | money_without_currency }}
+                </span>
+              </div>
+            {% endfor %}
+            <div class="settlement-detail-line"></div>
+            <div class="oy-p6">
+              <span>{{ 'products.product.list_price' | t }}</span
+              ><span id="originalTotalPrice" class="oy-del">
+                {{ currency_symbol -}}
+                <span class="add_attach_price">{{ total_price | money_without_currency }} </span></span
+              >
+            </div>
+            <div class="oy-p6 oy-p5">
+              <span>{{ 'products.product.selling_price' | t }}</span>
+              <div id="totalPrices_item">
+                <span class="oy-total">
+                  {{- currency_symbol -}}
+                  <span id="totalPrices" class="oy-total compare_at_price">
+                    {{- product.price | money_without_currency -}}
+                  </span></span
+                >
+              </div>
+            </div>
+            <div class="oy-p6 sale_price_item">
+              <span>{{ 'products.product.text.activity_title' | t }}</span
+              ><span class="oy-total">
+                {{- currency_symbol -}}
+                <span class="oy-total sale_prices">{{ product.price | money_without_currency }}</span></span
+              >
+            </div>
+          </div>
+          <div class="settle-accounts">
+            <div class="oy-top">
+              <div class="oy-p1">{{ 'products.product.financing_available' | t }}</div>
+              <div class="oy-p2">
+                <span class="redd">
+                  {{ currency_symbol -}}
+                  <span id="financing_twelve" class="redd">
+                    {{- product.price | money_without_currency | divided_by: 12.0 | round: 2 }}
+                  </span></span
+                >
+                <span>{{ 'products.product.text.affirmtext' | t }}</span>
+                <span class="redd">
+                  {{- currency_symbol -}}
+                  <span id="financing_four" class="redd">
+                    {{- product.price | money_without_currency | divided_by: 6.0 | round: 2 -}}
+                  </span></span
+                >
+                <span>{{ 'products.product.text.mowith' | t }}</span>
+                <span
+                  ><img
+                    class="imgg"
+                    width=""
+                    height=""
+                    src="{{ section.settings.financing_logo | image_url }}"
+                    alt="financing available"
+                    loading="lazy"
+                ></span>
+              </div>
+            </div>
+            <hr class="hrr">
+            <div class="oy-cet" id="product-add-to-cart">
+              <button
+                id="addCart"
+                class="buyy"
+                {% if product.title contains 'Blacklyte Kraken R6 Siege X Edition' %}
+                  style="display: none"
+                {% endif %}
+              >
+                {% comment %}
+                  <svg
+                    width="24"
+                    height="25"
+                    viewBox="0 0 24 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                        d="M10.25 23.0766C11.2165 23.0766 12 22.2905 12 21.3208C12 20.3511 11.2165 19.5649 10.25 19.5649C9.2835 19.5649 8.5 20.3511 8.5 21.3208C8.5 22.2905 9.2835 23.0766 10.25 23.0766Z"
+                        fill="white" />
+                    <path
+                        d="M18.75 23.0766C19.7165 23.0766 20.5 22.2905 20.5 21.3208C20.5 20.3511 19.7165 19.5649 18.75 19.5649C17.7835 19.5649 17 20.3511 17 21.3208C17 22.2905 17.7835 23.0766 18.75 23.0766Z"
+                        fill="white" />
+                    <path d="M2.5 3.51147L7 6.52151L9.5 17.5583H19.5L22 9.02987H12.5" stroke="white"
+                        stroke-width="2" />
+                    <path d="M12.5 13.5449H16.1364H20.5" stroke="white" stroke-width="2" />
+                  </svg>
+                {% endcomment %}
+                &nbsp;
+                <span>
+                  {% if product.selected_or_first_available_variant.inventory_quantity == 0 %}
+                    {% if product.selected_or_first_available_variant.available %}
+                      {{ 'products.product.pre_order' | t }}
+                    {% else %}
+                      {{ 'products.product.out_of_stock' | t }}
+                    {% endif %}
+                  {% else %}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {% endif %}
+                </span>
+              </button>
+
+              <button id="buyNow" class="subcart">
+                {% if product.title contains 'Blacklyte Kraken R6 Siege X Edition' %}
+                  {{ 'products.product.pre_order' | t }}
+                {% else %}
+                  {{ 'products.product.buy_it_now' | t }}
+                {% endif %}
+              </button>
+            </div>
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'productCoupons' -%}
+                  {% render 'product-coupons', block: block %}
+              {%- endcase -%}
+            {%- endfor -%}
+
+            <div class="oy-btm">
+              <div class="oy-p1">
+                <svg
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M7.99992 15.0103C9.84085 15.0103 11.5075 14.2616 12.714 13.0511C13.9204 11.8406 14.6666 10.1684 14.6666 8.32129C14.6666 6.4742 13.9204 4.80196 12.714 3.59147C11.5075 2.38101 9.84085 1.63232 7.99992 1.63232C6.15899 1.63232 4.49232 2.38101 3.28587 3.59147C2.07945 4.80196 1.33325 6.4742 1.33325 8.32129C1.33325 10.1684 2.07945 11.8406 3.28587 13.0511C4.49232 14.2616 6.15899 15.0103 7.99992 15.0103Z"
+                      fill="#999999" />
+                  <path d="M5.33325 8.32114L7.33325 10.3278L11.3333 6.31445" stroke="#D9D9D9" />
+                </svg>
+                {{ 'products.product.3-year_warranty_text' | t }}
+              </div>
+              <div class="oy-p2">
+                <svg
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M7.99992 15.0103C9.84085 15.0103 11.5075 14.2616 12.714 13.0511C13.9204 11.8406 14.6666 10.1684 14.6666 8.32129C14.6666 6.4742 13.9204 4.80196 12.714 3.59147C11.5075 2.38101 9.84085 1.63232 7.99992 1.63232C6.15899 1.63232 4.49232 2.38101 3.28587 3.59147C2.07945 4.80196 1.33325 6.4742 1.33325 8.32129C1.33325 10.1684 2.07945 11.8406 3.28587 13.0511C4.49232 14.2616 6.15899 15.0103 7.99992 15.0103Z"
+                      fill="#999999" />
+                  <path d="M5.33325 8.32114L7.33325 10.3278L11.3333 6.31445" stroke="#D9D9D9" />
+                </svg>
+                {{ 'products.product.30-day_refund_text' | t -}}
+                <span
+                  ><a href="/pages/return-refund-policy">{{ 'products.product.view_return_policy_text' | t }}</a></span
+                >
+              </div>
+              <div class="oy-p3">
+                <svg
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M7.99992 15.0103C9.84085 15.0103 11.5075 14.2616 12.714 13.0511C13.9204 11.8406 14.6666 10.1684 14.6666 8.32129C14.6666 6.4742 13.9204 4.80196 12.714 3.59147C11.5075 2.38101 9.84085 1.63232 7.99992 1.63232C6.15899 1.63232 4.49232 2.38101 3.28587 3.59147C2.07945 4.80196 1.33325 6.4742 1.33325 8.32129C1.33325 10.1684 2.07945 11.8406 3.28587 13.0511C4.49232 14.2616 6.15899 15.0103 7.99992 15.0103Z"
+                      fill="#999999" />
+                  <path d="M5.33325 8.32114L7.33325 10.3278L11.3333 6.31445" stroke="#D9D9D9" />
+                </svg>
+                {{ 'products.product.easy_safe_installation_text' | t }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </form> -->
+    </div>
+  </div>
+</div>
+
+{{ 'section-product-information-simplicity.css' | asset_url | stylesheet_tag }}
+{{ 'section-product-information-simplicity-fitter.css' | asset_url | stylesheet_tag }}
+<style>
+    .product_infor_simplicity {
+      padding: 0;
+  }
+    .product_infor_simplicity .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_btns_btn {
+    border: 1px solid #6E6BF6;
+    color: #6E6BF6;
+    border-radius: 6px;
+  }
+
+  .product_infor_simplicity .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_btns_btn[type="submit"] {
+    background: #6E6BF6;
+    color: #fff;
+  }
+
+  .product_infor_simplicity .product_infor_simplicity_right_buybox_price_info_save,.product_infor_simplicity  .product_infor_simplicity_right_buybox_price_info_op{
+    display: none;
+  }
+
+  .product_infor_simplicity .product_infor_simplicity_right_buybox_price_info_save.show,.product_infor_simplicity  .product_infor_simplicity_right_buybox_price_info_op.show{
+    display: block;
+  }
+</style>
+<div class="product_infor_simplicity">
+  <div class="simplicity_bottom_bar">
+    <div class="simplicity_bottom_bar_contain">
+      <div class="pc_show">
+        <div class="product_infor_simplicity_right_select_title">{{ product.title }}</div>
+        <div class="product_infor_simplicity_right_product_desc">{{ product.description }}</div>
+      </div>
+      <div class="simplicity_bottom_bar_contain_right">
+        <div class="product_infor_simplicity_right_buybox_price">
+          <div class="product_infor_simplicity_right_buybox_price_info">
+            <span
+              class="product_infor_simplicity_right_buybox_price_info_discount"
+              data-value="{{ sale_price | money_without_currency }}"
+            >
+              {{ currency_symbol -}}
+              <span class="sale_prices">{{ sale_price | money_without_trailing_zeros }}</span>
+            </span>
+            <span
+              class="product_infor_simplicity_right_buybox_price_info_save"
+              data-value="{{ save_price | money_without_currency }}"
+            >
+              {{ 'products.product.text.save' | t -}}
+              {{ currency_symbol -}}
+              <span>{{ sale_price | money_without_trailing_zeros }}</span>
+            </span>
+            <span class="product_infor_simplicity_right_buybox_price_info_op">
+              <span>{{- product.selected_or_first_available_variant.price | money_without_trailing_zeros -}}</span>
+            </span>
+          </div>
+          <div class="product_infor_simplicity_right_buybox_price_afterpay pc_show">
+            <span class="redd">
+              {{ currency_symbol -}}
+              <span id="financing_twelve" class="financing_twelve">
+                {{- product.price | money_without_currency | divided_by: 12.0 | round: 2 }}
+              </span></span
+            >
+            <span>{{ 'products.product.text.affirmtext' | t }}</span>
+            <span class="redd">
+              {{- currency_symbol -}}
+              <span id="financing_four" class="financing_four">
+                {{- product.price | money_without_currency | divided_by: 6.0 | round: 2 -}}
+              </span></span
+            >
+            <span>{{ 'products.product.text.mowith' | t }}</span>
+            <span
+              ><img
+                class="imgg"
+                width=""
+                height=""
+                src="{{ section.settings.financing_logo | image_url }}"
+                alt="financing available"
+                loading="lazy"
+            ></span>
+          </div>
+          <div class="product_infor_simplicity_right_buybox_goods_options pmd_show">
+            <div class="product_infor_simplicity_right_select_title">{{ product.title }}</div>
+          </div>
+        </div>
+        <div class="product_infor_simplicity_right_buybox_btns">
+          <button
+            class="product_infor_simplicity_right_buybox_btns_btn"
+            data-type="add_to_cart"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {% if product.selected_or_first_available_variant.inventory_quantity <= 0 %}
+              {% if product.selected_or_first_available_variant.available %}
+                {{ 'products.product.pre_order' | t }}
+              {% else %}
+                {{ 'products.product.out_of_stock' | t }}
+              {% endif %}
+            {% else %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% endif %}
+          </button>
+          <button
+            data-type="buy_it_now"
+            type="submit"
+            class="product_infor_simplicity_right_buybox_btns_btn pc_show"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {{ 'products.product.buy_it_now' | t }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ 'oy-main.js' | asset_url  }}" defer></script>
+{% schema %}
+{
+  "name": "A Product Main New",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "financing_logo",
+      "label": "Financing Logo"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "productCoupons",
+      "name": "productCoupons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "couponsTitle",
+          "label": "Product Coupons Title"
+        },
+        {
+          "type": "html",
+          "id": "couponsHTML",
+          "label": "Product Coupons List"
+        }
+      ]
+    },
+    {
+      "type": "starBlock",
+      "name": "starBlock",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "html",
+          "id": "starHtml",
+          "label": "Star HTML"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "A Product Main New" }]
+}
+{% endschema %}

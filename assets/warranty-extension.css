@@ -1,0 +1,124 @@
+.globo-formbuilder {
+  background-color: #f2f2f2;
+}
+.globo-form-control input, .globo-form-control textarea, .globo-form-control select {
+  background-color: #fff !important;
+  box-shadow: none !important;
+  height: 46px !important;
+  border: 1px solid #999999 !important;
+  border-radius: 5px !important;
+}
+.globo-form-control.layout-1-column:nth-of-type(1) label::before {
+  content: "1. ";
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.globo-form-control.layout-1-column:nth-of-type(2) label::before {
+  content: "2. ";
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.globo-form-control.layout-1-column:nth-of-type(3) label::before {
+  content: "3. ";
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.globo-form-control.layout-1-column:nth-of-type(4) label::before {
+  content: "4. ";
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.globo-form-control.layout-1-column:nth-of-type(5) label::before {
+  content: "5. ";
+  margin-right: 4px;
+  display: inline-block;
+}
+.wizard__content .panels + p {
+  opacity: 0 !important;
+  display: none !important;
+}
+.globo-form-control label .text-danger {
+  display: none;
+}
+
+@media(max-width: 767px) {
+  .globo-form-app.default-layout.gfb-style-classic.gfb-font-size-medium {
+    padding-left: 14px;
+    padding-right: 14px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #f2f2f2;
+  }
+}
+@media(min-width: 768px) {
+  .globo-form-app.default-layout.gfb-style-classic.gfb-font-size-medium {
+    max-width: 50%;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #f2f2f2;
+  }
+  div.globo-form-control {
+    margin-bottom: 3rem;
+  }
+  .globo-form-control:nth-last-of-type(1) .globo-form-input .checkbox-wrapper {
+    text-align: right;
+  }
+  .globo-form-control .globo-label {
+    display: inline-block;
+    width: 33%;
+    color: #333333;
+    font-size: 20px;
+  }
+  .globo-form-control .globo-form-input {
+    display: inline-block !important;
+    width: 66%;
+  }
+  .globo-form-control .help-block.error {
+    width: 66%;
+    margin-left: 33%;
+  }
+  .globo-form-control .help-text.globo-description {
+    width: 66%;
+    margin-left: 33%;
+    margin-top: 4px;
+  }
+  .globo-form-control:nth-last-of-type(3) {
+    width: 66%;
+    margin-left: 33%;
+    display: flex;
+    flex-direction: column;
+  }
+  .globo-form-control:nth-last-of-type(3) .globo-form-input {
+    width: 100%;
+  }
+  .globo-form-control:nth-last-of-type(3) .help-text.globo-description {
+    width: 100%;
+    margin-left: 0;
+  }
+  .globo-form-control:nth-last-of-type(3) .help-block.error {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .globo-form-app .header .title.globo-heading {
+    color: #333333;
+    font-weight: 500;
+    font-size: 30px;
+  }
+  .globo-form-app .header .description {
+    margin-bottom: 60px;
+  }
+  .globo-form-app .header .description p {
+    font-family: 'Poppins';
+    color: #333333;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+

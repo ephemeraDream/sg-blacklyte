@@ -1,0 +1,335 @@
+{% comment %}
+菜单配件显示的内容
+{% endcomment %}
+
+<style>
+  .header-nav-accessories-sections{
+    width: 100%;
+    max-width: 100%;
+    background-color: #f2f2f2;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.4s ease;
+    position: absolute;
+    top: 59px;
+    left: 0;
+  }
+  .header-nav-accessories-sections .header-nav-accessories-title,
+  .header-nav-accessories-sections .accessories-collection-footer{
+    display: none;
+  }
+  .header-nav-accessories-sections .accessories-cont{
+    position: relative;
+    width: calc(100% - 32%);
+    margin: 0 auto;
+  }
+  .header-nav-accessories-sections .accessories-cont .nav-accessories-left{
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .header-nav-accessories-sections .accessories-cont .nav-accessories-right{
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .header-nav-accessories-sections .accessories-container{
+    width: calc(100% - 80px);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 29px 0 48px;
+    overflow: hidden;
+  }
+  .header-nav-accessories-sections .nav-accessories-left,
+  .header-nav-accessories-sections .nav-accessories-right {
+    width: 40px;
+    height: 40px;
+  }
+  .header-nav-accessories-sections .nav-accessories-left svg,
+  .header-nav-accessories-sections .nav-accessories-right svg {
+    fill: none;
+    stroke: none;
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in-out;
+  }
+  .header-nav-accessories-sections .nav-accessories-left svg:hover path,
+  .header-nav-accessories-sections .nav-accessories-right svg:hover path {
+      stroke: #3173E8;
+  }
+  
+  .header-nav-accessories-sections .accessories-container .nav-accessories-items{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  .header-nav-accessories-sections .accessories-container .item-main-image{
+    width: 120px;
+    height: auto;
+  }
+  .header-nav-accessories-sections .accessories-container .item-title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+  }
+  .header-nav-accessories-sections .accessories-container .item-btns .item-btn-buynow{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  /* IPhone */
+  @media(max-width: 1024px) {
+    .header-nav-accessories-sections{
+      height: 100vh;
+      width: 100%;
+      max-height: 100vh;
+      max-width: 100%;
+      overflow: hidden;
+      transition: .5s;
+      position: absolute;
+      top: 0;
+      left: 100vw;
+      opacity: 0;
+      background-color: #fff;
+      z-index: 999;
+    }
+    .header-nav-accessories-sections .nav-accessories-left,
+    .header-nav-accessories-sections .nav-accessories-right{
+      display: none;
+    }
+    .header-nav-accessories-sections.menu_open_accessories_mb_active{
+      left: 0;
+      opacity: 1 !important;
+      max-height: 100vh !important;
+    }
+    .header-nav-accessories-sections.menu_open_accessories_mb_active .accessories-cont{
+      height: 100%;
+      width: 100%;
+    }
+    .header-nav-accessories-sections .header-nav-accessories-title{
+      display: block;
+      padding: 20px;
+      border: 1px solid #f2f2f2;
+      display: flex;
+      align-items: center;
+    }
+    .header-nav-accessories-sections .header-nav-accessories-title.scrolled{
+      position: relative;
+      z-index: 100;
+    }
+    .header-nav-accessories-sections .header-nav-accessories-title svg{
+      width: 20px;
+      height: 20px;
+    }
+    .header-nav-accessories-sections .header-nav-accessories-title.header-nav-accessories-title_sticky {
+      position: sticky !important;
+      top: 0;
+      transition: opacity .1s, visibility .2s, transform .2s, -webkit-transform .2s, top .2s;
+    }
+    .header-nav-accessories-sections .header-nav-accessories-title .accessories_collections_title_text{
+      font-size: 20px;
+      color: #333333;
+      font-weight: 500;
+      flex: 1;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .header-nav-accessories-sections .accessories-container{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 50px 20px 30px 20px;
+      width: 100%;
+      max-height: calc(100% - 100px);
+      overflow-y: scroll;
+    }
+    .header-nav-accessories-sections .accessories-container .swiper-wrapper{
+      flex-wrap: wrap;
+    }
+    .header-nav-accessories-sections .accessories-container .nav-accessories-items{
+      width: 50%;
+      height: auto;
+      border-radius: 10px;
+      cursor: pointer;
+      padding-bottom: 20px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .header-nav-accessories-sections .accessories-collection-footer{
+      display: block;
+    }
+    .header-nav-accessories-sections .accessories-collection-footer .accessories_collections_other_item{
+      display: flex;
+      padding: 0 30px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-nav-accessories-sections .accessories-collection-footer .accessories_collections_other_item.accessories_collections_other_addonsitems{
+      margin-top: 30px;
+    }
+    .header-nav-accessories-sections .accessories-collection-footer .accessories_collections_other_item .name_text{
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+      letter-spacing: 0;
+    }
+    .header-nav-accessories-sections .accessories-collection-footer .accessories_collections_other_item .icons svg{
+      width: 10px;
+      height: 10px;
+      fill: none;
+      stroke: none;
+    }
+  }
+  @media (min-width: 1025px) and (max-width: 1480px) {
+    .header-nav-accessories-sections .accessories-cont{
+      width: calc(100% - 120px);
+    }
+  }
+</style>
+<section class="header-nav-accessories-sections">
+  <div class="header-nav-accessories-title">
+    <span class="accessories_collections_title_icon">
+      <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M26.8323 9.04137C27.4995 9.70852 27.4995 10.7902 26.8323 11.4573L17.7903 20.4993L26.8323 29.5414C27.4995 30.2085 27.4995 31.2902 26.8323 31.9573C26.1652 32.6245 25.0835 32.6245 24.4164 31.9573L14.1664 21.7073C13.4992 21.0402 13.4992 19.9585 14.1664 19.2914L24.4164 9.04137C25.0835 8.37423 26.1652 8.37423 26.8323 9.04137Z" fill="black"/>
+      </svg>
+    </span>
+    <span class="accessories_collections_title_text">Accessories</span>
+  </div>
+  <div class="accessories-cont">
+    <div class="nav-accessories-left">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" transform="matrix(-1 0 0 1 40 0)" fill="#BABABA" fill-opacity="0.3"/>
+        <path d="M22 25L17.1415 20.1415C17.0634 20.0634 17.0633 19.9367 17.1415 19.8586L22 15.0001" stroke="#A2A2A2" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="accessories-container">
+      <div class="swiper-wrapper">
+        <div class="nav-accessories-items swiper-slide" data-url="/products/blacklyte-64-x-64-pixel-art-led-display">
+          <div class="item-main-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/pixelLedArt.webp?v=1750230886" width="100%" height="100%" >
+          </div>
+          <div class="item-title">64 x 64 Pixel Art LED Display</div>
+          <div class="item-btns">
+            <span class="item-btn-buynow">Buy</span>
+          </div>
+        </div>
+        <div class="nav-accessories-items swiper-slide" data-url="/products/austin-major-legacy-kit">
+          <div class="item-main-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/Legacy-Kit.webp?v=1750228257" width="100%" height="100%" >
+          </div>
+          <div class="item-title">Austin Major Legacy Kit</div>
+          <div class="item-btns">
+            <span class="item-btn-buynow">Buy</span>
+          </div>
+        </div>
+        <div class="nav-accessories-items swiper-slide" data-url="/products/blacklyte-daily-set">
+          <div class="item-main-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/Daily-Set.webp?v=1750228257" width="100%" height="100%" >
+          </div>
+          <div class="item-title">Blacklyte Daily Set</div>
+          <div class="item-btns">
+            <span class="item-btn-buynow">Buy</span>
+          </div>
+        </div>
+        <div class="nav-accessories-items swiper-slide" data-url="/products/blacklyte-gaming-chair-magnetic-head-pillow">
+          <div class="item-main-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/HeadPillow.webp?v=1750228257" width="100%" height="100%" >
+          </div>
+          <div class="item-title">Magnetic Head Pillow</div>
+          <div class="item-btns">
+            <span class="item-btn-buynow">Buy</span>
+          </div>
+        </div>
+        <div class="nav-accessories-items swiper-slide" data-url="/products/blacklyte-athena-gaming-chair-magnetic-lumbar-pillow">
+          <div class="item-main-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/LumbarPillow.webp?v=1750228257" width="100%" height="100%" >
+          </div>
+          <div class="item-title">Lumbar Pillow</div>
+          <div class="item-btns">
+            <span class="item-btn-buynow">Buy</span>
+          </div>
+        </div>
+        <div class="nav-accessories-items swiper-slide" data-url="/products/blacklyte-lockable-blade-wheels">
+          <div class="item-main-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/Blade-Wheels.webp?v=1750228257" width="100%" height="100%" >
+          </div>
+          <div class="item-title">Lockable Blade Wheels</div>
+          <div class="item-btns">
+            <span class="item-btn-buynow">Buy</span>
+          </div>
+        </div>
+        <div class="nav-accessories-items swiper-slide" data-url="/products/blacklyte-key-chain">
+          <div class="item-main-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/Key-Chain.webp?v=1750228257" width="100%" height="100%" >
+          </div>
+          <div class="item-title">Key Chain</div>
+          <div class="item-btns">
+            <span class="item-btn-buynow">Buy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-accessories-right">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#BABABA" fill-opacity="0.3"/>
+        <path d="M18 25L22.8585 20.1415C22.9366 20.0634 22.9367 19.9367 22.8585 19.8586L18 15.0001" stroke="#A2A2A2" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+<script>
+  if(window.innerWidth > 1024) {
+    // swiper
+    let accessoriesSwiper = new Swiper('.header-nav-accessories-sections .accessories-container', {
+      loop: true,
+      grabCursor : true,
+      simulateTouch: true,
+      slidesPerView : 4
+    })
+    $('.nav-accessories-left').click(function(){
+      accessoriesSwiper.slidePrev();
+    })
+    $('.nav-accessories-right').click(function(){
+      accessoriesSwiper.slideNext();
+    })
+  }
+  
+  
+  $('.header-nav-accessories-sections .accessories-container .nav-accessories-items').on('click', function(event){
+      event.preventDefault()
+      event.stopPropagation()
+      const url = $(this).data('url')
+      if(!url) return false
+      window.location.href = url
+  })
+
+  // 当鼠标离开 .header-nav-accessories-sections 时隐藏
+  $('.header-nav-accessories-sections').on('mouseleave', function() {
+      $(this).css({
+        'opacity': '0',
+        'max-height': '0',
+        'border-top': 'none',
+        'border-bottom': 'none'
+      });
+  })
+
+  // 回退上一步
+  $('.header-nav-accessories-sections .header-nav-accessories-title .accessories_collections_title_icon').on('click', function() {
+      $('.header-nav-accessories-sections').removeClass('menu_open_accessories_mb_active')
+      $('body').removeClass('menu_open_mb')
+  })
+</script>

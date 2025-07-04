@@ -1,0 +1,253 @@
+{% assign sid = section.id %}
+<style>
+  #shopify-section-{{ sid }} .event_section-container{
+    background:{{section.settings.bg}};
+    padding:{{section.settings.margin}};
+  }
+  #shopify-section-{{ sid }} .text_block_heading{
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom:48px;
+  }
+  #shopify-section-{{ sid }} .block-img {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  #shopify-section-{{ sid }} .block-img>div {
+    flex:1;
+  }
+  #shopify-section-{{ sid }} .block-img>div img{
+    width:100%;
+  }
+  #shopify-section-{{ sid }} .block-video{
+    position:relative;
+    border-radius:16px;
+    overflow:hidden;
+    margin: 48px 0 0;
+  }
+  #shopify-section-{{ sid }} .block-video .play_btn{
+   position:absolute;
+   top:50%;
+   left:50%;
+    transform:translate(-50%,-50%);
+    width:50px;
+    z-index:2;
+    cursor:pointer;
+  }
+  #shopify-section-{{ sid }} .block-video .play_btn svg{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  #shopify-section-{{ sid }} .block-video img{
+   position:absolute;
+   top:0;
+   left:0;
+   object-fit:cover;
+    width:100%;
+    height:100%;
+    z-index:1;
+  }
+  #shopify-section-{{ sid }} .block-video video{
+    /* max-width:100%; */
+    width:100%;
+  }
+  @media only screen and (min-width: 2000px){
+    #shopify-section-{{ sid }} .text_block_heading{
+      font-size: 2.08vw;
+      margin-bottom:2.5vw;
+    }
+    #shopify-section-{{ sid }} .block-img {
+      gap:1.25vw;
+      /* margin-bottom: 2.5vw; */
+    }
+    #shopify-section-{{ sid }} .block-video .play_btn{
+    width:2.6vw;
+    }
+  }
+  @media only screen and (max-width: 991px){
+    #shopify-section-{{ sid }} .event_section-container{
+      padding:{{section.settings.mbmargin}};
+    }
+    #shopify-section-{{ sid }} .text_block_heading{
+      margin-bottom:16px;
+      font-size:24px;
+      
+    }
+    #shopify-section-{{ sid }} .block-video {
+        margin: 16px 0 0;
+    }
+    #shopify-section-{{ sid }} .block-img {
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+   
+  }
+</style>
+<div class="event_section-container">
+  <div class="container-1570">
+    <div class="event_section-wrapper" style="{% if section.settings.img_bg != blank %}background:url({{ section.settings.img_bg | img_url:'master' }}) no-repeat center; background-size:cover; {% else %}background:{{ section.settings.content_bg }}{% endif %}">
+      {% if section.settings.Product_block_heading != blank  %}
+        <div class="text_block_heading" style=" color:{{ section.settings.Product_block_heading-color }}">{{ section.settings.Product_block_heading }}</div>
+      {% endif %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'img' %}
+            <div class="event-section-block block-img">
+              {% for i in (1..3) %}
+                {% assign b_img_key = 'img0' | append: i %}
+                {% assign b_img = block.settings[b_img_key] %}
+                {% assign b_img_m_key = 'img_m0' | append: i %}
+                {% assign b_img_m = block.settings[b_img_m_key] %}
+                <div class="block_item">
+                  {% if b_img != blank %}
+                    {{ b_img | image_url: width: '2048' | image_tag:class:"slide-pc" }}
+                    {% endif %}
+                    {% if b_img_m != blank %}
+                    {{ b_img_m | image_url: width: '1000' | image_tag:class:"slide-mobile" }}
+                    {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          {% when 'video' %}
+            <div class="event-section-block block-video">
+              {% if block.settings.img != blank or block.settings.image_mb != blank %}
+                <div class="play_btn"><svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M32.5 65C50.4493 65 65 50.4493 65 32.5C65 14.5507 50.4493 0 32.5 0C14.5507 0 0 14.5507 0 32.5C0 50.4493 14.5507 65 32.5 65ZM25.125 46.1399L48 32.933C48.3333 32.7406 48.3333 32.2594 48 32.067L25.125 18.8601C24.7917 18.6677 24.375 18.9082 24.375 19.2931V45.7069C24.375 46.0918 24.7917 46.3324 25.125 46.1399Z" fill="white"/></svg></div>
+              {% endif %}
+              {% if block.settings.img != blank %}
+              {{ block.settings.img | image_url: width: '2048' | image_tag:class:"slide-pc" }}
+              {% endif %}
+              {% if block.settings.image_mb != blank %}
+              {{ block.settings.image_mb | image_url: width: '1000' | image_tag:class:"slide-mobile" }}
+              {% endif %}
+              {{ block.settings.video | video_tag:class:"", controls: true, image_size:'master' }}
+            </div>
+            
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    $('#shopify-section-{{ sid }} .play_btn').on('click',function(){
+      $(this).hide();
+      $('#shopify-section-{{ sid }} .block-video img').hide();
+      $(this).siblings('video').get(0).play();
+    })
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Event section",
+    "settings": [
+      {
+        "type": "color_background",
+        "id": "bg",
+        "label": "Background color of the section"
+      },
+       {
+            "type": "image_picker",
+            "id":"img_bg",
+            "label":"Background image"
+        },
+      {
+          "type": "text",
+          "id": "Product_block_heading",
+          "label": "heading",
+        "default": "heading"
+       },
+      {
+        "type": "color",
+        "id": "Product_block_heading-color",
+        "label": "Heading Color",
+        "default": "#ffffff"
+      },
+       {
+        "type": "text",
+        "id": "margin",
+        "label": "PC margin",
+        "default": "100px 0 100px 0"
+      },
+      {
+        "type": "text",
+        "id": "mbmargin",
+        "label": "mb margin",
+        "default": "50px,,50px,"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "img",
+        "limit":1,
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id":"img01",
+            "label":"Image"
+          },
+          {
+            "type": "image_picker",
+            "id":"img02",
+            "label":"Image"
+          },
+          {
+            "type": "image_picker",
+            "id":"img03",
+            "label":"Image"
+          },
+          {
+            "type": "image_picker",
+            "id":"img_m01",
+            "label":"Image (mobile)"
+          },
+          {
+            "type": "image_picker",
+            "id":"img_m02",
+            "label":"Image (mobile)"
+          },
+          {
+            "type": "image_picker",
+            "id":"img_m03",
+            "label":"Image (mobile)"
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "name":"Video",
+        "limit":1,
+        "settings": [
+          {
+            "type": "video",
+            "id": "video",
+            "label": "Video"
+          },
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mb",
+            "label": "Image (mobile)"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Event section"
+      }
+    ]
+  }
+{% endschema %}

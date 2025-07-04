@@ -1,0 +1,148 @@
+.desk_swiper_simplicity {
+  max-width: 75vw;
+  margin: 0 auto;
+  padding-left: 15vw;
+  padding-bottom: 6.45833vw;
+  background-color: #000000;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_info {
+  padding-right: 15vw;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_subtitle {
+  font-family: DIN-BoldItalic;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  background: linear-gradient(91.49deg, #1C5FEE -15.55%, #9BEFFF 122.08%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_title {
+  font-family: DIN-BlackItalic;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 0.4167vw;
+  text-align: center;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_desc {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.32px;
+  vertical-align: middle;
+  color: #fff;
+  margin-top: 0.9375vw;
+  opacity: .7;
+  text-align: center;
+  width: 34.6354167vw;
+  margin: 0 auto;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_swiper .swiper-slide {
+  overflow: hidden;
+  border-radius: 1.25vw;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_swiper_image {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.25vw;
+  object-fit: cover;
+  transition: transform .4s ease-in-out;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_swiper_image:hover {
+  transform: scale(1.2);
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_swiper {
+  width: 100%;
+  margin-top: 1.5625vw;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_swiper .swiper-slide {
+  width: 45vw;
+  height: 25.3125vw;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_swiper_navigation {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 8.33vw 0 1.5625vw;
+}
+
+.desk_swiper_simplicity .desk_swiper_simplicity_swiper_navigation svg {
+  width: 2.083vw;
+  height: 2.083vw;
+}
+
+@media screen and (max-width: 768px) {
+  .desk_swiper_simplicity {
+    max-width: 100vw;
+    padding: 6.67vw 5.33vw !important;
+  }
+
+  .desk_swiper_simplicity .desk_swiper_simplicity_subtitle {
+    font-size: 16px;
+  }
+
+  .desk_swiper_simplicity .desk_swiper_simplicity_title {
+    font-size: 26px;
+    line-height: 30px;
+    margin-top: 1.067vw;
+  }
+
+  .desk_swiper_simplicity .desk_swiper_simplicity_desc {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 3.2vw;
+    width: 100%;
+  }
+
+  .desk_swiper_simplicity .desk_swiper_simplicity_swiper {
+    margin-top: 8vw;
+  }
+
+  .desk_swiper_simplicity .desk_swiper_simplicity_swiper .swiper-slide {
+    width: 100%;
+    height: 66.67vw;
+  }
+
+  .desk_swiper_simplicity .desk_swiper_simplicity_swiper_image {
+    border-radius: 6.4vw;
+  }
+
+  .desk_swiper_simplicity .desk_swiper_simplicity_swiper_navigation {
+    padding: 0 5.33vw;
+  }
+
+  .desk_swiper_simplicity .desk_swiper_simplicity_swiper_navigation svg {
+    width: 10.667vw;
+    height: 10.667vw;
+  }
+
+  .desk_swiper_simplicity .desk_swiper_simplicity_info {
+    padding-right: 0;
+  }
+}

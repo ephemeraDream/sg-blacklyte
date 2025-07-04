@@ -1,0 +1,266 @@
+{% comment %}
+ 3.0 设计首页赛事集合
+{% endcomment %}
+<style>
+  .gaming_collection {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    position: relative;
+  }
+  .gaming_collection .container-1570{
+    max-width: 68%;
+  }
+  .gaming_collection .title {
+    font-family: "Roboto";
+    font-size: 40px;
+    color: #262629;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .gaming_collection .gaming_content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 16%;
+  }
+   
+  .gaming_content .gaming-item {
+    height: auto;
+    max-height: auto;
+    position: relative;
+  }
+  
+  .gaming_content .pc-cont{
+    display: block !important;
+  }
+  .gaming_content .gaming-item-pc {
+    display: block !important;
+    height: 100%;
+    border-radius: 24px;
+  }
+  .gaming_content .mb-cont{
+    display: none !important;
+  }
+  .gaming_content .gaming-item-mb {
+    display: none !important;
+    border-radius: 24px;
+  }
+  .gaming_collection .swiper-pagination{
+    bottom: 80px;
+  }
+  .gaming_collection .swiper-pagination .swiper-pagination-bullet{
+    width: 30px;
+    height: 3px;
+    display: inline-block;
+    border-radius: 0;
+    background: #EDEFF2;
+    opacity: 1;
+  }
+  .gaming_collection .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: #262629;
+  }
+  /* 非移动端 */
+  @media(min-width: 1024px) {
+    .gaming_content .swiper-slide.gaming-item:not(.swiper-slide-active)::before{
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 24px;
+      z-index: 1;
+    }
+    .gaming_content .gaming-item .gaming-logo-item-pc{
+      width: 220px;
+      height: auto;
+      position: absolute;
+      left: 40px;
+      bottom: 40px;
+      transition: all .3s ease-in-out;
+    }
+    
+    .gaming_content .gaming-item.swiper-slide-active .gaming-logo-item-pc{
+      transform: scale(1.5);
+      left: 96px;
+    }
+  }
+  /* IPhone */
+  @media(max-width: 767px) {
+    .gaming_collection {
+      padding: 50px 10px 50px 10px;
+    }
+    .gaming_collection .container-1570{
+      max-width: 100%;
+    }
+    .gaming_collection .gaming_content {
+      margin-top: 30px;
+      margin-left: 0;
+      margin-bottom: 0;
+    }
+    .gaming_collection .gaming_content .swiper-wrapper{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .gaming_collection .title {
+      font-size: 24px;
+    }
+    .gaming_content .gaming-item {
+        height: auto;
+        max-height: max-content;
+        width: 96%;
+        margin: auto;
+    }
+    .gaming_content .gaming-item-pc,
+    .gaming_content .pc-cont {
+      display: none !important;
+    }
+    .gaming_content .mb-cont{
+      display: block !important;
+    }
+    .gaming_content .gaming-item-mb {
+      border-radius: 20px;
+      display: block !important;
+      height: 100%;
+    }
+    .gaming_content .slick-dots {
+      bottom: -30px;
+    }
+    .gaming_content .slick-dots li button {
+      height: 3px;
+      width: 20px;
+    }
+    .gaming_collection .swiper-pagination{
+      bottom: 54px;
+    }
+    .gaming_content .gaming-item .gaming-logo-item-pc{
+      opacity: 0;
+      display: none;
+    }
+  }
+  /* IPad */
+  @media(min-width: 768px) and (max-width: 1024px) {
+    .gaming_collection .container-1570{
+      max-width: 100%;
+      padding-left: 0;
+    }
+    .gaming_collection .gaming_content{
+      margin-left: 0;
+    }
+  }
+  /* small screen */
+  @media(min-width: 1025px) and (max-width: 1480px){
+    .gaming_collection .container-1570{
+      max-width: calc(100% - (var(--margin-left-1) * 2));
+      padding-left: 0;
+    }
+    .gaming_collection .gaming_content {
+      margin-left: var(--margin-left-1);
+    }
+  }
+  /* large screen */
+  @media(min-width: 2000px) {}
+  
+  
+</style>
+<div class="gaming_collection">
+  <div class="container-full">
+    <div class="container-1570">
+      <span class="title">{{ section.settings.section_title }}</span>
+    </div>
+    <div style="position: relative;">
+      <div class="gaming_content swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="gaming-item swiper-slide">
+              <a class="pc-cont adaptive_height" style="padding-top: {% unless block.settings.item-image.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.item-image.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.item-image.aspect_ratio | times: 100 }}%{% endunless %}">
+                {{- block.settings.item-image | image_url: width: block.settings.item-image.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'gaming-item-pc' -}}
+              </a>
+              <a class="mb-cont adaptive_height" style="padding-top: {% unless block.settings.item-image-mb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.item-image-mb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.item-image-mb.aspect_ratio | times: 100 }}%{% endunless %}">
+                {{- block.settings.item-image-mb | image_url: width: block.settings.item-image-mb.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'gaming-item-mb' -}}
+              </a>
+              {% if block.settings.item-team-logo != blank %}
+                {{- block.settings.item-team-logo | image_url: width: block.settings.item-team-logo.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'gaming-logo-item-pc' -}}
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+<script>
+  function isMobile() {
+    return window.innerWidth <= 768
+  }
+  if(!isMobile()) {
+    new Swiper('.gaming_collection .gaming_content',{
+      loop: true,
+      grabCursor : true,
+      slidesPerView : 1.8,
+      spaceBetween : 16,
+      pagination: {
+        el: '.gaming_collection .swiper-pagination',
+        clickable :true,
+      },
+      breakpoints: { 
+        320: {  //当屏幕宽度大于等于320
+          slidesPerView: 1,
+        },
+        992: {  //当屏幕宽度大于等于768 
+          slidesPerView: 1,
+        },
+        1025: {
+          slidesPerView : 1.8,
+        }
+      }
+    })
+  }
+    
+</script>
+{% schema %}
+  {
+    "name": "HOME Gaming New",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "Together with the world’s best. "
+      }
+    ],
+    "blocks": [
+      {
+        "type": "largeImage",
+        "name": "largeImage",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "item-image",
+            "label": "Item Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "item-image-mb",
+            "label": "Item Image Mobile"
+          },
+          {
+            "type": "image_picker",
+            "id": "item-team-logo",
+            "label": "Item Team LOGO"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "HOME Gaming New"
+      }
+    ]
+  }
+{% endschema %}

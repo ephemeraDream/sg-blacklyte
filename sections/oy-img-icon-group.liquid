@@ -1,0 +1,184 @@
+<link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="oy-img-icon-group">
+  <div class="oy-img-icon-group-in">
+    {% if section.settings.title != blank %}
+      <div class="oy-img-icon-group-in-title">
+        <p>{{ section.settings.title }}</p>
+      </div>
+    {% endif %}
+    {% if section.settings.img_show != false %}
+      {% if section.settings.total_show != false %}
+        <!-- pc -->
+        <div class="oy-img-icon-group-in-img pc-show">
+          {% assign pc_total_items = section.blocks | where: 'type', 'item_img' | size %}
+          {% assign pc_remainder = pc_total_items | modulo: 4 %}
+          {% assign pc_max_loop = pc_total_items | minus: pc_remainder %}
+
+          {% for item in section.blocks %}
+            {% if item.type == 'item_img' and forloop.index <= pc_max_loop %}
+              {% if item.settings.img != blank %}
+                <img
+                  width=""
+                  height=""
+                  src="{{ item.settings.img | image_url }}"
+                  alt="{{ section.settings.title }}"
+                  data-fancybox="Open up the path to victory"
+                  href="{{ item.settings.img | image_url }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <!-- <img src="https://dummyimage.com/480x277" alt=""> -->
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <!-- pe -->
+        <div class="oy-img-icon-group-in-img pe-show">
+          {% assign pe_total_items = section.blocks | where: 'type', 'item_img' | size %}
+          {% assign pe_remainder = pe_total_items | modulo: 3 %}
+          {% assign pe_max_loop = pe_total_items | minus: pe_remainder %}
+
+          {% for item in section.blocks %}
+            {% if item.type == 'item_img' and forloop.index <= pe_max_loop %}
+              {% if item.settings.img != blank %}
+                <img
+                  width=""
+                  height=""
+                  src="{{ item.settings.img | image_url }}"
+                  alt="{{ section.settings.title }}"
+                  data-fancybox="Open up the path to victory"
+                  href="{{ item.settings.img | image_url }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <!-- <img src="https://dummyimage.com/480x277" alt=""> -->
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="oy-img-icon-group-in-img">
+          {% for item in section.blocks %}
+            {% if item.type == 'item_img' and forloop.index %}
+              {% if item.settings.img != blank %}
+                <img width="" height="" src="{{ item.settings.img | image_url }}" alt="{{ section.settings.title }}" loading="lazy">
+              {% else %}
+                <!-- <img src="https://dummyimage.com/480x277" alt=""> -->
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endif %}
+    {% if section.settings.logo_show != false %}
+      <div class="oy-img-icon-group-in-icon">
+        <div class="oy-img-icon-group-in-icon-in">
+          {% for item in section.blocks %}
+            {% if item.type == 'item_logo' %}
+              {% if item.settings.img != blank %}
+                <img width="" height="" src="{{ item.settings.img | image_url }}" alt="{{ section.settings.title }}" loading="lazy">
+              {% else %}
+                <!-- <img width="" height="" src="https://dummyimage.com/300/C9CCD0/fff.png&text=logo" alt=""> -->
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="oy-img-icon-group-cover">
+    <img width="" height="" src="{{ section.settings.back_img | image_url }}" alt="{{ section.settings.title }}" loading="lazy">
+  </div>
+</div>
+
+<style>
+  .oy-img-icon-group{
+    padding-top:{{ section.settings.p_t}}px;
+    padding-bottom:{{section.settings.p_m}}px;
+  }
+</style>
+
+<script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "A Img Wall And  Logo List",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "checkbox",
+      "id": "img_show",
+      "label": "显示图片墙",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "logo_show",
+      "label": "显示图标集",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "total_show",
+      "label": "整行显示",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "back_img",
+      "label": "背景图片"
+    },
+    {
+      "type": "range",
+      "id": "p_t",
+      "label": "Padding Top",
+      "max": 300,
+      "min": 0,
+      "default": 30,
+      "unit": "px",
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "p_m",
+      "label": "Padding Bottom",
+      "max": 300,
+      "min": 0,
+      "default": 30,
+      "unit": "px",
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item_img",
+      "name": "img",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "图片"
+        }
+      ]
+    },
+    {
+      "type": "item_logo",
+      "name": "logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "图片"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "A Image Wall And  Logo List" }]
+}
+{% endschema %}

@@ -1,0 +1,245 @@
+{%- liquid
+     if use_variant
+        assign target = product.selected_or_first_available_variant
+    else
+        assign target = product
+    endif
+
+    assign ergonomics_icon = block.settings.ergonomics_icon
+    assign ergonomics_text = block.settings.ergonomics_text
+    assign show_coupon_modal = block.settings.show_coupon_modal
+    assign ergonomics_coupon_title = block.settings.ergonomics_coupon_title
+    assign ergonomics_coupon_desc = block.settings.ergonomics_coupon_desc
+    assign ergonomics_coupon_code = block.settings.ergonomics_coupon_code
+    assign price = target.price | default: 1999
+
+    if settings.currency_format_enable
+        assign money_price = price | money_with_currency
+    else
+        assign money_price = price | money
+    endif 
+
+    if target == product and product.price_varies
+        assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+    endif
+-%}
+
+{%- if show_coupon_modal -%}
+  <span class="bottom_line"></span>
+  <div class="coupon_modal">
+    <span class="coupon_modal_title">{{ ergonomics_coupon_title }}</span>
+    <span class="coupon_modal_desc">{{ ergonomics_coupon_desc }}</span>
+    <span class="coupon_modal_btn">
+      Code: 
+      <span class="coupon_modal_btn_text">{{ ergonomics_coupon_code }}</span>
+      <svg class="coupon_modal_btn_svg" width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 38H41V16H30V4H13V38Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M30 4L41 16" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 20V44H28" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19 20H23" stroke="#ffffff" stroke-width="4" stroke-linecap="round"></path><path d="M19 28H31" stroke="#ffffff" stroke-width="4" stroke-linecap="round"></path>
+      </svg>
+    </span>
+  </div>
+  <span class="bottom_line"></span>
+{%- endif -%}
+
+<div class="ergonomics">
+  <div class="ergonomics_left">
+    <span class="ergonomics_left_bag_svg">
+      {{ ergonomics_icon }}
+    </span>
+    <div class="ergonomics_product_variants">
+      {%- for option in product.options_with_values -%}
+        {%- if forloop.first -%}
+          {%- assign first_value = option.selected_value | split: "|" | first -%}
+          <label class="form__label form__label-first" for="option-{{ forloop.index0 }}">
+            <span data-header-option>
+              {{ first_value }}
+            </span>
+            <br />
+          </label>
+        {%- elsif forloop.index0 == 2 -%}
+          <label class="form__label form__label-last" for="option-{{ forloop.index0 }}">
+            <span data-header-option>
+              {{ option.selected_value }}
+            </span>
+            <br />
+          </label>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <script type="application/json">
+          {{ product.variants | json }}
+      </script>
+    </div>
+  </div>
+  <div class="ergonomics_right">
+    <span class="ergonomics_right_price">{{ price | money_without_trailing_zeros }}</span>
+    <!-- <span class="ergonomics_right_sizes">prc</span> -->
+     <div class="ergonomics_right_remarks">
+      {{ ergonomics_text }}
+    </div>
+  </div>
+</div>
+<span class="bottom_line"></span>
+
+<style>
+  .ergonomics {
+    background-color: #F2F2F2;
+    width: 100%;
+    height: 168px;
+    border: 1px solid #D4D4D8;
+    border-radius: 5px;
+    margin-bottom: 42px;
+    display: flex;
+    align-items: center;
+    padding: 0 26px 0 20px;
+    justify-content: space-between;
+  }
+
+  .ergonomics_left {
+    display: flex;
+  }
+  .ergonomics_product_variants {
+    margin-left: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .ergonomics_left_bag_svg svg {
+    width: auto;
+    height: auto;
+    fill: #f2f2f2;
+  }
+  .bottom_line {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #DFDFDF;
+    margin-bottom: 30px;
+  }
+  .ergonomics_right {
+    margin-left: 1vw;
+  }
+  .ergonomics_right_price {
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .ergonomics_right_sizes {
+    font-size: 14px;
+    font-weight: 600;
+    vertical-align: top;
+    margin-left: 14px;
+  }
+  .form__label {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .form__label-first {
+    font-weight: 600;
+  }
+  .form__label-last {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .ergonomics_right_remarks {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 14px;
+    line-height: 20px;
+  }
+  .ergonomics_product_variants .form__label {
+    text-transform: none;
+  }
+ 
+  .coupon_modal .coupon_modal_title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #18191b;
+    line-height: 1;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .coupon_modal .coupon_modal_desc {
+    font-weight: 600;
+    font-size: 22px;
+    color: #1c1c1e;
+    line-height: 1;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .coupon_modal .coupon_modal_btn {
+    display: inline-block;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+    background: #ff4d00;
+    border-radius: 2px;
+    line-height: 1;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 16px;
+  }
+  .coupon_modal .coupon_modal_btn svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+  }
+  
+  @media (max-width: 767px) {
+    .ergonomics {
+      padding:0 10px;
+    }
+    .ergonomics_product_variants {
+      margin-left: 4px;
+    }
+    .ergonomics_right {
+      margin-left: 10px;
+      width: calc(100% - 134px);
+    }
+    .ergonomics_right_remarks {
+      font-size: 10px;
+    }
+  }
+</style>
+<script>
+  document.addEventListener('click', function (ev) {
+    const arr = Array.from(ev.target.classList)
+    if(arr.includes('coupon_modal_btn') || arr.includes('coupon_modal_btn_text') || arr.includes('coupon_modal_btn_svg')) {
+        const codeText = document.querySelector('.coupon_modal_btn_text').innerText
+        
+        // 创建一个临时输入框用于复制
+        const tempInput = document.createElement('input')
+        tempInput.value = codeText
+        document.body.appendChild(tempInput)
+        
+        // 选择并复制内容
+        tempInput.select();
+        document.execCommand('copy')
+        
+        // 删除临时输入框
+        document.body.removeChild(tempInput)
+
+        // 显示成功弹窗
+        const successPopup = document.createElement('div');
+        successPopup.innerText = 'Success';
+        successPopup.style.position = 'fixed';
+        successPopup.style.top = '50%';
+        successPopup.style.left = '50%';
+        successPopup.style.transform = 'translate(-50%, -50%)';
+        successPopup.style.padding = '10px 12px';
+        successPopup.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
+        successPopup.style.color = '#ffffff';
+        successPopup.style.borderRadius = '3px';
+        successPopup.style.fontSize = '14px';
+        successPopup.style.textAlign = 'center';
+        successPopup.style.zIndex = '1000';
+        
+        document.body.appendChild(successPopup);
+        
+        // 2秒后删除弹窗
+        setTimeout(() => {
+            document.body.removeChild(successPopup);
+        }, 2000);
+    }
+  })
+</script>

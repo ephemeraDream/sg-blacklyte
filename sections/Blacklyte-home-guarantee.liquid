@@ -1,0 +1,209 @@
+<style>
+  .blavklyte-guarantee{
+    background: #f2f2f2;
+    padding: 128px 0px 128px;
+  }
+  img{
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+  }
+  .guarantee-title{
+    margin: 0;
+    margin-bottom: 49px;
+    color: #000;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .blavklyte-guarantee .guarantee-wrapper{
+    padding: 65px 87px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    background: #ffffff;
+  }
+  .blavklyte-guarantee .guarantee-wrapper .icon-list{
+    display: flex;
+    gap:10px;
+  }
+  .blavklyte-guarantee .guarantee-wrapper .icon-list .item{
+    width: calc( 100% / 3 );
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .blavklyte-guarantee .guarantee-wrapper .icon-list .item:not(:last-of-type):after{
+    display: block;
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 1px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.64);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .blavklyte-guarantee .guarantee-wrapper .icon-list .icon-img{
+    max-width: 64px;
+    height: 64px;
+  }
+  .blavklyte-guarantee .info-title{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    margin-top: 24px;
+    color:#000;
+  }
+  .blavklyte-guarantee .info-text{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    padding: 0 50px;
+    color:#2c2c2c;
+  }
+  .blavklyte-guarantee .icon-list .item:first-child .info-text{
+    
+    padding: 0 40px;
+  }
+  @media (min-width: 2000px) {
+    .guarantee-title{
+          font-size: 2.08vw;
+    }
+    .blavklyte-guarantee .guarantee-wrapper .icon-list .icon-img {
+        max-width: 3.33vw;
+        height: 3.33vw;
+    }
+    .blavklyte-guarantee .info-title{
+          font-size: 0.84vw;
+    }
+    .blavklyte-guarantee .info-text{
+      font-size:0.84vw;
+    }
+  }
+  @media only screen and (max-width: 1265px){
+    .blavklyte-guarantee{
+      padding: 128px 30px 128px;
+    }
+  }
+  @media only screen and (max-width: 1024px){
+    .blavklyte-guarantee{
+      padding: 72px 15px 72px;
+    }
+    .blavklyte-guarantee .guarantee-wrapper{
+      padding: 32px 40px;
+    }
+    .guarantee-title{
+      margin-bottom: 32px;
+    }
+  }
+  @media only screen and (max-width: 991px){
+    .blavklyte-guarantee{
+      padding: 72px 10px 72px;
+    }
+    .guarantee-title{
+      font-size: 28px;
+      line-height:1.28;
+    }
+    .blavklyte-guarantee .guarantee-wrapper .icon-list{
+      flex-direction: column;
+      align-items: center;
+      gap: 64px;
+    }
+    .blavklyte-guarantee .guarantee-wrapper .icon-list .item{
+      width: 100%;
+    }
+    .blavklyte-guarantee .guarantee-wrapper .icon-list .item:not(:last-of-type):after{
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 550px){
+  }
+</style>
+
+<section class="blavklyte-guarantee">
+  <div class="container-1570 guarantee-wrapper">
+    {% if section.settings.title != blank %}
+      <h3 class="guarantee-title">{{ section.settings.title }}</h3>
+    {% endif %}
+    <div class="icon-list">
+      {% for block in section.blocks %}
+        <div class="item">
+          <div class="icon-img">
+            {% if block.settings.icon != blank %}
+              {{-
+                block.settings.icon
+                | image_url: width: block.settings.icon.width
+                | image_tag:
+                  is: 'loess-image',
+                  loading: 'lazy',
+                  sizes: '100vw',
+                  widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                  class: ''
+              -}}
+            {% else %}
+              <img src="" loading="lazy">
+            {% endif %}
+          </div>
+      
+          <div class="info">
+              {% if block.settings.title != blank %}
+                <h2 class="info-title">{{ block.settings.title }}</h2>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <p class="info-text">{{ block.settings.text }}</p>
+              {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blacklyte Home Guarantee",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section title",
+      "default": "Our Guarantee"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blcok",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        }, 
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Icon title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Icon text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blacklyte Home Guarantee"
+    }
+  ]
+}
+{% endschema %}

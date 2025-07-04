@@ -1,0 +1,284 @@
+{%- liquid
+    assign featured_media_aspect_ratio = product_card_product.featured_media.aspect_ratio
+    assign product_swatch_option = settings.swatch | downcase
+    assign variant_img = ''
+    for option in product_card_product.options_with_values
+        assign option_name = option.name | downcase
+        if product_swatch_option contains option_name
+            assign variant_selected = option.selected_value
+            for variant in product_card_product.variants limit: 1
+                if variant.image != null  
+                    assign variant_img = variant.image
+                endif
+            endfor
+            break
+        else
+            assign variant_selected = nil
+        endif
+    endfor
+-%}
+<style type="text/css">
+  .product-item {
+    width: calc(100% - 1px);
+    border: 1px solid var(--swatch-border);
+    border-radius: var(--product-swatch-border-radius);
+  }
+  .product-item:before {
+    content: 'Free Gift';
+    color: #ffffff;
+    width: 123px;
+    height: 28px;
+    background-color: #A72A2F;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0px 3px 0px 5px;
+    display: inline-block;
+    text-align: center;
+    line-height: 28px;
+    font-size: 16px;
+  }
+  .product-item-custom .card-information-add-ons {
+    display: flex;
+    justify-content: space-between;
+  }
+  .product-item-custom .card-information__wrapper.text-left {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .quantity_price_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card-title {
+    text-decoration: underline;
+  }
+  .btn-quantity {
+    height: 27.2px;
+  }
+  .quantity__style--1 .quantity__input {
+    padding: 0px 20px 0px 38px;
+  }
+  .btn-quantity.minus:before, .btn-quantity.plus:before, .btn-quantity.plus:after {
+    top: 15px;
+  }
+  .product_card_price_text {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 600;
+    padding-right: 8px;
+  }
+  .free_gift_modules {
+    width: 150px;
+    padding-right: 15px;
+    background-image: url("https://cdn.shopify.com/s/files/1/0702/4053/4777/files/chairs-free-gift-bgimage.png?v=1718862109");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* background-color: #676CFE; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    color: #ffffff;
+    border-radius: 0 2px 2px 0;
+  }
+  .free_gift_modules_title {
+    display: inline-block;
+    width: 100%;
+    font-size: 20px;
+    padding-bottom: 10px;
+    font-weight: 200;
+  }
+  .free_gift_modules_price_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: end;
+  }
+  .free_gift_modules_price_title {
+    font-size: 12px;
+    padding-right: 2px;
+  }
+  .free_gift_modules_price {
+    font-size: 14px;
+  }
+  .card-information.card-information-add-ons {
+    top: 0;
+  }
+  .complementary-products .products-carousel .slick-list {
+    overflow: visible;
+  }
+  .complementary-products .product {
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .tips {
+    background: url(https://cdn.shopify.com/s/files/1/0702/4053/4777/files/product-addons-tiptops.png?v=1718260217) no-repeat;
+    background-size: 100% 100%;
+    padding: 0 14px;
+    height: 56px;
+    color: #ffffff;
+    position: absolute;
+    top: -56px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+  .tips .tips_text {
+    margin-top: -10px;
+  }
+  @media screen and (max-width: 767px) {
+    .free_gift_modules_title {
+      font-size: 14px;
+    }
+    .free_gift_modules_price_title {
+      font-size: 8px;
+    }
+    .free_gift_modules_price {
+      font-size: 10px;
+    }
+    .product-item:before {
+      width: 100px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 14px;
+    }
+    .card-information__wrapper {
+      max-width: calc(100% - 128px);
+    }
+  }
+</style>
+<div class="tips" id="tips_id">
+  <span class="tips_text">
+    {{ 'products.product.gifts.add_ons_descripe' | t }}
+  </span>
+</div>
+<div class="product-item product-item-custom" data-product-id="product-{{ product_card_product.id }}" data-json-product='{{ product_card_product | json | escape }}'
+    title="{{ 'products.product.gifts.free_gift_title' | t }}">
+    <div class="card">
+        <div class="card-product{% if product_card_product.featured_media == nil %} card--text-only card--soft{% endif %}">
+            <a class="card-media"
+                id="card_media_id"
+                href="javascript:void(0);"
+                {% if product_card_product.featured_media %}
+                    style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"
+                {% endif %}
+            >
+            {%- if product_card_product.featured_media -%}
+                {%- for variant in product_card_product.variants limit: 3 -%}
+                      <img {% render 'lazyload', preview_img: variant.image, class: true %} />
+                {%- endfor -%}
+                {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
+            {%- else -%}
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+            </a>
+        </div>
+        <div class="card-information card-information-add-ons">
+            <div class="card-information__wrapper text-left">
+                <span class="text">
+                    {{ product_card_product.title | escape }}
+                    <!-- {% if variant_selected != blank %}
+                        <span data-change-title> - {{ variant_selected }}</span>
+                    {% endif %} -->
+                </span>
+                <!-- <a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}{% if variant_selected != blank %} card-title-change{% endif %}" href="javascript:void(0);">
+                    View Product
+                </a> -->
+                
+                {%- if settings.show_review -%}
+                    <div class="card-review clearfix halo-productReview">
+                        <span class="shopify-product-reviews-badge" data-id="{{ product_card_product.id }}"></span>
+                    </div>
+                {%- endif -%}
+            </div>
+            <!-- 数量以及价格 -->
+            <div class="quantity_price_container">
+              <quantity-input style="display: none;" disabled class="productView-quantity quantity__group quantity__group--{{ quantity_stt }} quantity__style--1 clearfix">
+            	    <div class="quantity__container">
+            		    <button disabled type="button" name="minus" class="minus btn-quantity">
+            		    	<span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+            		    </button>
+            		    <input disabled style="height: 30px;" disabled class="form-input quantity__input" type="number" name="quantity" min="1" value="1" inputmode="numeric" pattern="[0-9]*" id="quantity-{{ product.id }}{%- if quantity_stt > 1 -%}-{{ quantity_stt }}{%- endif -%}" data-product="{{ product.id }}" data-price="{{ current_variant.price }}">
+            		    <button disabled type="button" name="plus" class="plus btn-quantity">
+            		    	<span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+            		    </button>
+            	    </div>
+                </quantity-input>
+                <span class="product_card_price_text">
+                  <!-- <span class="price_no_add">+</span> -->
+                  <span class="price_no_text">{{ product_card_product.price | money }}</span><span class="sale_price__text"></span></span>
+            </div>
+            <!-- free-gift -->
+            <!-- <div class="free_gift_modules">
+              <span class="free_gift_modules_title">{{ 'products.product.gifts.free_gift' | t }}</span>
+              <div class="free_gift_modules_price_container">
+                <span class="free_gift_modules_price_title">{{ 'products.product.gifts.free_gift_price' | t }}</span>
+                <span class="free_gift_modules_price"> {{ product_card_product.price | money }}</span>
+              </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<script>
+ $(document).ready(function(){
+    $('.product-item').click(function(){
+        // 首先隐藏所有的tips_id元素
+        $('[id^="tips_id"]').css('opacity', '0');
+
+        // 获取当前点击元素的兄弟元素中id为tips_id的元素
+        var tipsElement = $(this).siblings('#tips_id');
+
+        // 获取当前点击元素对应的tips_id元素的当前opacity值
+        var currentOpacity = tipsElement.css('opacity');
+
+        // 检查当前opacity，如果为1，则设置为0，如果为0，则设置为1
+        if (currentOpacity == '1') {
+            tipsElement.css('opacity', '0');
+        } else {
+            tipsElement.css('opacity', '1');
+        }
+    });
+
+    $('.product-form__radio[name="Color"]').click(function (ev) {
+       if (ev.target.value) {
+            var selectedColor = ev.target.value.toLowerCase(); // 获取点击事件的值并转换为小写
+         updateImagesOpacity(selectedColor)
+       }
+     })
+  
+     
+  
+     function updateImagesOpacity(selectedColor) {
+         if ($('#card_media_id').find('img').length < 2) return false;
+          // 遍历所有图片元素
+          $('#card_media_id img').each(function() {
+              var alt = $(this).attr('alt');
+      
+              // 如果图片的 alt 属性存在且包含所选颜色的文本
+              if (alt && alt.toLowerCase().includes(selectedColor.toLowerCase())) {
+                  $(this).css('opacity', '1'); // 设置匹配的图片 opacity 为 1
+              } else {
+                  $(this).css('opacity', '0'); // 设置不匹配的图片 opacity 为 0
+              }
+          });
+      }
+      
+      // 调用函数并传入当前选定的颜色值
+     const initColorValue = $('.product-form__radio[name="Color"]:checked')[0].value
+     updateImagesOpacity(initColorValue)
+
+   
+});
+
+
+
+
+</script>

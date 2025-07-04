@@ -1,0 +1,110 @@
+{{ 'section-desk-compare-and-bundle.css' | asset_url | stylesheet_tag }}
+
+<div class="desk_compare_and_bundle">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'compare' -%}
+        <div class="desk_compare_section">
+          <div class="desk_compare_section_title">{{ block.settings.title }}</div>
+          <div class="desk_compare_section_btn" id="show_compare_modal">
+            {{ block.settings.btn_text }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="12" fill="#3173E8"/>
+              <path d="M7.19922 12H16.7992" stroke="#FBFBFB" stroke-width="2"/>
+              <path d="M12.0039 7.19922L12.0039 16.7992" stroke="#FBFBFB" stroke-width="2"/>
+            </svg>
+          </div>
+          <img src="{{ block.settings.image | image_url }}" class="pc_show">
+          <img src="{{ block.settings.pmd_image | image_url }}" class="pmd_show">
+        </div>
+        {% render 'desk-compare-modal',
+          compare_modal_products: product.metafields.custom.compare_modal_products.value
+        %}
+      {%- when 'bundle' -%}
+        <div class="desk_bundle_section">
+          <div class="desk_bundle_section_left">
+            <div class="desk_bundle_section_subtitle">{{ block.settings.sub_title }}</div>
+            <div class="desk_bundle_section_title">{{ block.settings.title }}</div>
+            <a class="desk_bundle_section_btn" href="{{ block.settings.btn_link }}">{{ block.settings.btn_text }}</a>
+          </div>
+          <img src="{{ block.settings.image | image_url }}">
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "desk compare and bundle",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "compare",
+      "name": "compare",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "btn text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "pc image"
+        },
+        {
+          "type": "image_picker",
+          "id": "pmd_image",
+          "label": "mobile image"
+        }
+      ]
+    },
+    {
+      "type": "bundle",
+      "name": "bundle",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "text",
+          "id": "sub_title",
+          "label": "sub title"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "btn text"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "btn link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "desk compare and bundle"
+    }
+  ]
+}
+{% endschema %}

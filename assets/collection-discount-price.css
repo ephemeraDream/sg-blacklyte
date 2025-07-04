@@ -1,0 +1,418 @@
+/* athena pro */
+[data-product-id="9003143397607"] .price-item{ }
+/* athena pro Black */
+[data-variant-id="50767849783527"] .price-item{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+/* athena pro Blue */
+[data-variant-id="50767850078439"] .price-item{ }
+/* Athena pro Pink */
+[data-variant-id="50767849947367"] .price-item{ }
+/* athena pro yellow */
+[data-variant-id="50767849849063"] .price-item{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+[data-variant-id="50767849783527"] .price-item:before,
+[data-variant-id="50767849849063"] .price-item:before{
+  display: inline-block;
+  content: '$409.00';
+  font-size: 22px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: #DE2E39;
+  font-weight: 500;
+}
+/* 左上角save标签 */
+.collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767849783527"] .card-product .card-product__wrapper::before,
+.collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767849849063"] .card-product .card-product__wrapper::before {
+  display: inline-block;
+  content: 'Save $60';
+  padding: 3px 10px;
+  font: 400 1vw var(--font-family-1);
+  color: #fff;
+  background-color: #FF0055;
+  border-radius: 4px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+
+
+/* athena pro grey */
+[data-variant-id="50767850012903"] .price-item{ }
+
+/* athena */
+[data-product-id="9002849042663"] .price-item{ }
+
+
+/* athena Black */
+[data-variant-id="50767835201767"] .price-item{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+[data-variant-id="50767835201767"] .price-item:before{
+  display: inline-block;
+  content: '$379.00';
+  font-size: 22px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: #DE2E39;
+  font-weight: 500;
+}
+.collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767835201767"] .card-product .card-product__wrapper::before {
+  display: inline-block;
+  content: 'Save $50';
+  padding: 3px 10px;
+  font: 400 1vw var(--font-family-1);
+  color: #fff;
+  background-color: #FF0055;
+  border-radius: 4px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+/* athena Blue */
+[data-variant-id="50767835496679"] .price-item{ }
+/* athena Pink */
+[data-variant-id="50767835365607"] .price-item{ }
+/* athena grey */
+[data-variant-id="50767835431143"] .price-item{ }
+/* athena yellow */
+[data-variant-id="50767835267303"] .price-item{ }
+
+/* kraken pro */
+[data-product-id="9003183669479"] .price-item{  }
+[data-product-id="9003183669479"] .price-item:before{ }
+
+
+/* kraken pro black */
+[data-variant-id="50767776547047"] .price-item{ }
+/* kraken pro Blue */
+[data-variant-id="50767776645351"] .price-item{ }
+/* kraken pro green */
+[data-variant-id="50767776710887"] .price-item{ }
+/* kraken pro grey */
+[data-variant-id="50767776579815"] .price-item{ }
+/* kraken pro red */
+[data-variant-id="49252931764530"] .price-item{ }
+/* kraken pro wine red */
+[data-variant-id="50767776612583"] .price-item{ }
+/* kraken pro yellow */
+[data-variant-id="50767776678119"] .price-item{ }
+
+/* kraken */
+[data-product-id="9003166630119"] .price-item{ }
+
+
+/* kraken black */
+[data-variant-id="50767826518247"] .price-item{ }
+/* kraken Blue */
+[data-variant-id="50767826714855"] .price-item{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+/* kraken green */
+[data-variant-id="50767826682087"] .price-item{ }
+/* kraken grey */
+[data-variant-id="50767826649319"] .price-item{ }
+/* kraken red */
+[data-variant-id="50767826583783"] .price-item{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+/* kraken wine red */
+[data-variant-id="50767826551015"] .price-item{ }
+/* kraken yellow */
+[data-variant-id="50767826616551"] .price-item{ }
+
+[data-variant-id="50767826583783"] .price-item:before,
+[data-variant-id="50767826714855"] .price-item:before {
+  display: inline-block;
+  content: '$469.00';
+  font-size: 22px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: #DE2E39;
+  font-weight: 500;
+}
+
+.collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767826583783"] .card-product .card-product__wrapper::before,
+.collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767826714855"] .card-product .card-product__wrapper::before{
+  display: inline-block;
+  content: 'Save $30';
+  padding: 3px 10px;
+  font: 400 1vw var(--font-family-1);
+  color: #fff;
+  background-color: #FF0055;
+  border-radius: 4px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+
+/* athena x */
+[data-product-id="8562365432039"] .price-item{ }
+/* athena x black */
+[data-variant-id="50767976005863"] .price-item{ }
+/* athena x pink */
+[data-variant-id="50767976071399"] .price-item{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+[data-variant-id="50767976071399"] .price-item:before{
+  display: inline-block;
+  content: '$299.00';
+  font-size: 22px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: #DE2E39;
+  font-weight: 500;
+}
+.collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767976071399"] .card-product .card-product__wrapper::before{
+  display: inline-block;
+  content: 'Save $100';
+  padding: 3px 10px;
+  font: 400 1vw var(--font-family-1);
+  color: #fff;
+  background-color: #FF0055;
+  border-radius: 4px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+/* athena x white */
+[data-variant-id="50767976038631"] .price-item{ }
+
+
+/* atlas desk */
+[data-product-id="8334385381607"] .price-item{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+[data-product-id="8334385381607"] .price-item:before{
+  display: inline-block;
+  content: '$899.00';
+  font-size: 22px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: #DE2E39;
+  font-weight: 500;
+}
+.collection-banner-adv:not(.austin-major_event_collection) [data-product-id="8334385381607"] .card-product .card-product__wrapper::before{
+  display: inline-block;
+  content: 'Save $300';
+  padding: 3px 10px;
+  font: 400 1vw var(--font-family-1);
+  color: #fff;
+  background-color: #FF0055;
+  border-radius: 4px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+
+/* desks collection */
+[data-product-id="9144279761127"] .price-item {
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+[data-product-id="9144279761127"] .price-item:before {
+  display: inline-block;
+  content: '$519.00';
+  font-size: 22px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: #DE2E39;
+  font-weight: 500;
+}
+.collection-banner-adv:not(.austin-major_event_collection) [data-product-id="9144279761127"] .card-product .card-product__wrapper::before {
+  display: inline-block;
+  content: 'Save $100';
+  padding: 3px 10px;
+  font: 400 1vw var(--font-family-1);
+  color: #fff;
+  background-color: #FF0055;
+  border-radius: 4px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+
+/* pixel art led */
+[data-product-id="8456610480359"] .price-item{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+[data-product-id="8456610480359"] .price-item:before{
+  display: inline-block;
+  content: '$69.00';
+  font-size: 22px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: #DE2E39;
+  font-weight: 500;
+}
+.collection-banner-adv:not(.austin-major_event_collection) [data-product-id="8456610480359"] .card-product .card-product__wrapper::before{
+  display: inline-block;
+  content: 'Save $50';
+  padding: 3px 10px;
+  font: 400 1vw var(--font-family-1);
+  color: #fff;
+  background-color: #FF0055;
+  border-radius: 4px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+/* auatin major */
+[data-product-id="9201750835431"] .price-item{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #76767F !important;
+}
+[data-product-id="9201750835431"] .price-item:before{
+  display: inline-block;
+  content: '$469.00';
+  font-size: 22px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: #DE2E39;
+  font-weight: 500;
+}
+.collection-banner-adv:not(.austin-major_event_collection) [data-product-id="9201750835431"] .card-product .card-product__wrapper::before{
+  display: inline-block;
+  content: 'Save $50';
+  padding: 3px 10px;
+  font: 400 1vw var(--font-family-1);
+  color: #fff;
+  background-color: #FF0055;
+  border-radius: 4px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+
+/* IPhone */
+@media(max-width: 767px) {
+  [data-variant-id="50767849783527"] .price-item,
+  [data-variant-id="50767849849063"] .price-item,
+  [data-variant-id="50767835201767"] .price-item,
+  [data-variant-id="50767826583783"] .price-item,
+  [data-variant-id="50767826714855"] .price-item,
+  [data-variant-id="50767976071399"] .price-item,
+  [data-variant-id="50767976038631"] .price-item,
+  [data-product-id="8456610480359"] .price-item,
+  [data-product-id="9144279761127"] .price-item,
+  [data-product-id="8334385381607"] .price-item,
+  [data-product-id="9201750835431"] .price-item {
+    font-size: 9px !important;
+  }
+
+  [data-variant-id="50767850012903"] .price-item,
+  [data-variant-id="50767976038631"] .price-item,
+  [data-variant-id="50767849783527"] .price-item:before,
+  [data-variant-id="50767849849063"] .price-item:before,
+  [data-variant-id="50767835201767"] .price-item:before,
+  [data-variant-id="50767826583783"] .price-item:before,
+  [data-variant-id="50767826714855"] .price-item:before
+  [data-variant-id="50767976071399"] .price-item:before,
+  [data-variant-id="50767976038631"] .price-item:before,
+  [data-product-id="8456610480359"] .price-item:before,
+  [data-product-id="9144279761127"] .price-item:before,
+  [data-product-id="8334385381607"] .price-item:before,
+  [data-product-id="9201750835431"] .price-item:before {
+    font-size: 11px !important;
+    margin-right: 4px;
+  }
+
+  /* save */
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767849783527"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767849849063"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767835201767"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767826583783"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767826714855"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767976071399"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-product-id="8334385381607"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-product-id="9144279761127"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-product-id="8456610480359"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-product-id="9201750835431"] .card-product .card-product__wrapper::before {
+    font-size: 10px;
+    padding: 3px 5px;
+    left: 2px;
+    top: 2px;
+  }
+  
+}
+
+/* small screen */
+@media(min-width: 768px) and (max-width: 1490px){
+  [data-variant-id="50767849783527"] .price-item,
+  [data-variant-id="50767849849063"] .price-item,
+  [data-variant-id="50767835201767"] .price-item,
+  [data-variant-id="50767826583783"] .price-item,
+  [data-variant-id="50767826714855"] .price-item,
+  [data-variant-id="50767976071399"] .price-item,
+  [data-variant-id="50767976038631"] .price-item,
+  [data-product-id="8456610480359"] .price-item,
+  [data-product-id="9144279761127"] .price-item,
+  [data-product-id="8334385381607"] .price-item,
+  [data-product-id="9201750835431"] .price-item {
+    font-size: 12px !important;
+  }
+
+  [data-variant-id="50767850012903"] .price-item,
+  [data-variant-id="50767976038631"] .price-item,
+  [data-variant-id="50767849783527"] .price-item:before,
+  [data-variant-id="50767849849063"] .price-item:before,
+  [data-variant-id="50767835201767"] .price-item:before,
+  [data-variant-id="50767826583783"] .price-item:before,
+  [data-variant-id="50767826714855"] .price-item:before
+  [data-variant-id="50767976071399"] .price-item:before,
+  [data-variant-id="50767976038631"] .price-item:before,
+  [data-product-id="8456610480359"] .price-item:before,
+  [data-product-id="9144279761127"] .price-item:before,
+  [data-product-id="8334385381607"] .price-item:before,
+  [data-product-id="9201750835431"] .price-item:before {
+    font-size: 14px !important;
+    margin-right: 6px;
+  }
+}
+/* screen */
+@media(min-width: 1025px) and (max-width: 1900px){
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767849783527"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767849849063"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767835201767"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767826583783"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767826714855"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-variant-id="50767976071399"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-product-id="8334385381607"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-product-id="9144279761127"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-product-id="8456610480359"] .card-product .card-product__wrapper::before,
+  .collection-banner-adv:not(.austin-major_event_collection) [data-product-id="9201750835431"] .card-product .card-product__wrapper::before {
+    left: 4px;
+    top: 4px;
+  }
+}
+/* large screen */
+@media(min-width: 2000px){ }

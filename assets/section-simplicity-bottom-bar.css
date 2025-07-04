@@ -1,0 +1,491 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/roboto:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'DIN-BoldItalic';
+  src: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/DINPro-BoldItalic.woff2?v=1744016875') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DIN-BlackItalic';
+  src: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/DINPro-BlackItalic.woff2?v=1744017127') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* noto-sans-tc-latin-wght-normal */
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-tc:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.simplicity_bottom_bar {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  padding: 0 15.78125vw;
+  box-shadow: -4px -4px 4px 0px #DFDFDF1A;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_contain {
+  height: 80px;
+  /* padding: 12px 0; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_product {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_product img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #E5E5E5;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_product_title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_product_contain {
+  position: relative;
+  padding: 0 22px;
+  height: 100%;
+  display: flex;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_title {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_title img,
+.simplicity_bottom_bar .product_infor_simplicity_right_select_item img {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: left center;
+  margin-right: 7px;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_product_contain[data-type="Material"] .product_infor_simplicity_right_select_title img,
+.simplicity_bottom_bar .product_infor_simplicity_right_product_contain[data-type="Material"] .product_infor_simplicity_right_select_item img {
+  object-position: center center;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_title_value,
+.simplicity_bottom_bar .product_infor_simplicity_right_select_title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_title {
+  margin-right: 0px;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_title svg {
+  width: 15px;
+  height: 10px;
+  flex: 0 0 auto;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_itembox {
+  position: absolute;
+  /* min-width: 190px; */
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  box-shadow: -4px -4px 4px 0px #DFDFDF1A;
+  padding: 16px 44px 20px 22px;
+  transform: translateY(-100%);
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #C4C4C4;
+  display: none;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_product_contain:hover .product_infor_simplicity_right_select_itembox {
+  display: block;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_itembox_title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+  white-space: nowrap;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_item_active::before {
+  content: "";
+  width: calc(100% + 14px);
+  height: calc(100% + 8px);
+  background: #3173E81A;
+  border-radius: 6px;
+  position: absolute;
+  left: -4px;
+  top: -4px;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_select_item:hover::before {
+  content: "";
+  width: calc(100% + 14px);
+  height: calc(100% + 8px);
+  background: #67676733;
+  border-radius: 6px;
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  opacity: .4;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_contain_right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_price {
+  margin-top: 24px;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_price_info {
+  padding-left: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_price_info_discount {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_price_info_save {
+  padding: 4px 8px;
+  background: #FF4E4E;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 500;
+  margin-left: 6px;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_price_info_op {
+  color: #777780;
+  font-size: 12px;
+  line-height: 12px;
+  margin-left: 6px;
+  text-decoration: line-through;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_price_afterpay {
+  margin: 12px 24px 0 20px;
+  background-color: #FFFFFF;
+  /* display: flex;
+  align-items: center; */
+  padding: 4px 4px 7px 7px;
+  font-family: Arial;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  /* min-height: 34px; */
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_price_afterpay img {
+  width: 46px;
+  height: 18px;
+  object-fit: cover;
+  display: inline-block;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_price {
+  margin: 0;
+  min-width: 190px;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_price_afterpay {
+  height: auto;
+  margin-top: 4px;
+  margin-right: 0;
+  padding: 0;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_price_info {
+  justify-content: flex-end;
+}
+
+.simplicity_bottom_bar .pc_show .product_infor_simplicity_right_buybox_price {
+  margin-top: 16px;
+}
+
+.simplicity_bottom_bar .pc_show .product_infor_simplicity_right_buybox_price_info {
+  padding-left: 0;
+}
+
+.simplicity_bottom_bar .pc_show .product_infor_simplicity_right_buybox_price_afterpay {
+  display: none;
+}
+
+.simplicity_bottom_bar .pmd_show,
+.simplicity_bottom_bar .pad_show {
+  display: none;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns {
+  padding: 23px 66px 46px 66px;
+  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns_preorder {
+  padding: 23px 36px 46px 36px;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns_btn {
+  width: 100%;
+  flex: 0 0 auto;
+  height: 56px;
+  border-radius: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3173E8;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #3173E8;
+  background-color: inherit;
+  position: relative;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns_btn_preorder {
+  border-color: #FA9705;
+  background-color: #FA9705;
+  color: #fff;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns_btn_preorder_info {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  text-align: center;
+  vertical-align: middle;
+  color: #FA9705;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns_btn.is_loading {
+  font-size: 0;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns_btn.is_loading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 46%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  border: 2px solid #f6f6f6;
+  border-radius: 50%;
+  border-top: 2px solid var(--spinner-top-color);
+  border-right: 2px solid var(--spinner-right-color);
+  border-bottom: 2px solid var(--spinner-bottom-color);
+  border-left: 2px solid var(--spinner-left-color);
+  width: 20px;
+  height: 20px;
+  animation: spin-icon 1.4s linear infinite;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns_btn[type="submit"] {
+  background: linear-gradient(91.49deg, #1C5FEE -15.55%, #9BEFFF 122.08%);
+  color: #FFFFFF;
+  border: none;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns_btn:disabled {
+  cursor: not-allowed;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_btns {
+  padding: 0;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.simplicity_bottom_bar .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_btns_btn {
+  width: 160px;
+  border-radius: 30px;
+  height: 50px;
+  font-weight: 500;
+}
+
+#conversation-badge {
+  bottom: 86px;
+}
+
+.halo-recently-viewed-popup {
+  bottom: 126px !important;
+}
+
+.simplicity_bottom_bar .product_infor_simplicity_right_buybox_goods_options {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+  margin-top: 4px;
+}
+
+@media screen and (max-width: 1440px) {
+
+  .simplicity_bottom_bar .product_infor_simplicity_right_buybox_btns_btn[data-type="add_to_cart"] {
+    display: none;
+  }
+
+  /* .simplicity_bottom_bar .product_infor_simplicity_right_product_contain {
+    padding: 0 12px;
+  } */
+  .simplicity_bottom_bar .product_infor_simplicity_right_select_title {
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .simplicity_bottom_bar .product_infor_simplicity_right_select_title img,
+  .simplicity_bottom_bar .product_infor_simplicity_right_select_title_value {
+    margin: 0;
+  }
+
+  .simplicity_bottom_bar .product_infor_simplicity_right_select_title svg {
+    display: none;
+  }
+
+  .simplicity_bottom_bar .product_infor_simplicity_right_product_contain[data-type="Size"] {
+    width: 220px;
+  }
+
+  .simplicity_bottom_bar .product_infor_simplicity_right_product_contain[data-type="Size"] .product_infor_simplicity_right_select_title_value {
+    white-space: normal;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .simplicity_bottom_bar .pad_show {
+    display: block;
+  }
+
+  .simplicity_bottom_bar .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_price_afterpay {
+    display: none;
+  }
+
+  .simplicity_bottom_bar .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_price {
+    display: none;
+  }
+
+  .simplicity_bottom_bar .product_infor_simplicity_right_buybox_price_info {
+    padding-left: 0;
+    justify-content: flex-start;
+  }
+
+  .simplicity_bottom_bar .product_infor_simplicity_right_buybox_price_info_discount {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .simplicity_bottom_bar .product_infor_simplicity_right_buybox_goods_options {
+    margin-top: 0;
+    color: #515157;
+  }
+
+  .simplicity_bottom_bar .pad_show .product_infor_simplicity_right_buybox_price {
+    margin-top: 6px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .simplicity_bottom_bar {
+    padding: 0 5.33vw;
+  }
+
+  .simplicity_bottom_bar .product_infor_simplicity_right_product_contain {
+    display: none;
+  }
+
+  .simplicity_bottom_bar .pc_show {
+    display: none;
+  }
+
+  .simplicity_bottom_bar .pmd_show {
+    display: block;
+  }
+
+  .simplicity_bottom_bar .pmd_show .product_infor_simplicity_right_buybox_price {
+    margin-top: 0;
+  }
+}

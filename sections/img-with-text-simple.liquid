@@ -1,0 +1,45 @@
+{{ 'section-img-with-text-simple.css' | asset_url | stylesheet_tag }}
+
+<div class="imgwithtext_simple">
+  {% for item in section.blocks %}
+    <div class="imgwithtext_simple_item">
+      <img src="{{ item.settings.image | image_url }}">
+      <div class="imgwithtext_simple_item_text">{{ item.settings.text }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "imgwithtext simple",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "imgwithtext simple"
+    }
+  ]
+}
+{% endschema %}

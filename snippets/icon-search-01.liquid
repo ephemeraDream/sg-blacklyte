@@ -1,0 +1,20 @@
+<style>
+  .header-navigation .header__icon svg.icon-new-search,
+  .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header__icon svg.icon-new-search {
+    fill: none;
+  }
+  .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header__icon svg.icon-new-search path {
+    stroke: #fff;
+  }
+  .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent:hover .header__icon svg.icon-new-search path {
+    stroke: #000;
+  }
+  .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent:hover .header__icon:hover svg.icon-new-search {
+    fill: none;
+  }
+</style>
+
+<svg class="icon-search{% if class %} {{ class }}{% endif %} icon-new-search" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10.0833 17.1667C13.9953 17.1667 17.1667 13.9953 17.1667 10.0833C17.1667 6.17133 13.9953 3 10.0833 3C6.17133 3 3 6.17133 3 10.0833C3 13.9953 6.17133 17.1667 10.0833 17.1667Z" stroke="#000" stroke-width="1.5"/>
+  <path d="M15.1758 15.1758L18.7113 18.7113" stroke="#000" stroke-width="1.5"/>
+</svg>

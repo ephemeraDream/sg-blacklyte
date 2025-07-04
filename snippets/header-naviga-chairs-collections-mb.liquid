@@ -1,0 +1,258 @@
+{% comment %}
+header navigation chairs collections mobile
+{% endcomment %}
+<style>
+  .chairs_collections_mb {
+    height: 100vh;
+    width: 100%;
+    max-height: 100vh;
+    max-width: 100%;
+    overflow: hidden;
+    transition: .5s;
+    position: absolute;
+    top: 0;
+    left: 100vw;
+    opacity: 0;
+    background-color: #fff;
+    z-index: 999;
+  }
+  .chairs_collections_mb.menu_open_mb_active {
+    left: 0;
+    opacity: 1;
+  }
+  .chairs_collections_title {
+    padding: 20px;
+    /* font-family: "Poppins"; */
+    border: 1px solid #f2f2f2;
+    display: flex;
+    align-items: center;
+  }
+  .chairs_collections_title.scrolled {
+    /* box-shadow: 0 5px 10px -8px #000; */
+    position: relative;
+    z-index: 100;
+  }
+  .chairs_collections_title svg {
+    width: 20px;
+    height: 20px;
+  }
+  .chairs_collections_title.chairs_collections_title_sticky {
+    position: sticky !important;
+    top: 0;
+    transition: opacity .1s, visibility .2s, transform .2s, -webkit-transform .2s, top .2s;
+  }
+  .chairs_collections_mb .chairs_collections_title_text {
+    /* font-family: "Poppins"; */
+    font-size: 20px;
+    color: #333333;
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .chairs_collections_mb .chairs_collection_not_title {
+    height: calc(100vh - 62px);
+    max-height: calc(100vh - 62px);
+    overflow-y: scroll;
+    padding-top: 20px;
+  }
+  .chairs_collections_container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px 30px 20px;
+  }
+  .chairs_collections_container .items {
+    width: 50%;
+    height: auto;
+    /* border: 1px solid #D0D0D0; */
+    border-radius: 10px;
+    cursor: pointer;
+    padding-bottom: 20px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  /* .chairs_collections_container .items:nth-child(even) {
+    margin-left: 4%;
+  } */
+  .chairs_collections_container .items .items_product_image {
+    width: 70%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .chairs_collections_container .items .items_product_image img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .chairs_collections_container .items .items_product_title {
+    /* font-family: "Orbitron"; */
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #333333;
+    text-align: center;
+  }
+  .chairs_collections_container .items .items_product_btns span {
+    /* font-family: "Poppins"; */
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .chairs_collections_container .items .items_product_btns span.items_check_btn {
+    margin-left: 10px;
+  }
+  .chairs_collections_mb .chairs_collection_not_title .chairs_collections_other_item {
+    display: flex;
+    padding: 0 14%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chairs_collections_mb .chairs_collection_not_title .chairs_collections_other_item.chairs_collections_other_addonsitems {
+    margin-top: 30px;
+    margin-bottom: 100px;
+  }
+  body.iOS .chairs_collections_mb .chairs_collection_not_title .chairs_collections_other_item.chairs_collections_other_addonsitems {
+    margin-bottom: 100px;
+  }
+  .chairs_collections_mb .chairs_collection_not_title .chairs_collections_other_item .name_text {
+    /* font-family: "Poppins"; */
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    letter-spacing: 0;
+  }
+  .chairs_collections_mb .chairs_collection_not_title .chairs_collections_other_item .icons svg {
+    width: 10px;
+    height: 10px;
+    fill: none;
+    stroke: none;
+  }
+</style>
+<div class="chairs_collections_mb">
+  <div class="chairs_collections_title">
+    <span class="chairs_collections_title_icon">
+      <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M26.8323 9.04137C27.4995 9.70852 27.4995 10.7902 26.8323 11.4573L17.7903 20.4993L26.8323 29.5414C27.4995 30.2085 27.4995 31.2902 26.8323 31.9573C26.1652 32.6245 25.0835 32.6245 24.4164 31.9573L14.1664 21.7073C13.4992 21.0402 13.4992 19.9585 14.1664 19.2914L24.4164 9.04137C25.0835 8.37423 26.1652 8.37423 26.8323 9.04137Z" fill="black"/>
+      </svg>
+    </span>
+    <span class="chairs_collections_title_text">Chairs</span>
+  </div>
+  <div class="chairs_collection_not_title">
+    <div class="chairs_collections_container">
+      <div data-href-id="/products/blacklyte-kraken-pro-gaming-chair" class="items">
+        <div class="items_product_image">
+          <img width="100%" height="100%" src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/header-menu-krakenpro.png?v=1740626466" />
+        </div>
+        <div class="items_product_title">Kraken Pro</div>
+        <div class="items_product_btns">
+          <span data-url="/pages/kraken-pro-features" class="items_learnmore_btn">Learn More</span>
+          <span data-url="/products/blacklyte-kraken-pro-gaming-chair" class="items_check_btn">Buy</span>
+        </div>
+      </div>
+      <div data-href-id="/products/blacklyte-kraken-gaming-chair" class="items">
+        <div class="items_product_image">
+          <img width="100%" height="100%" src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/header-menu-kraken.png?v=1740626466" />
+        </div>
+        <div class="items_product_title">Kraken</div>
+        <div class="items_product_btns">
+          <span data-url="/pages/kraken-features" class="items_learnmore_btn">Learn More</span>
+          <span data-url="/products/blacklyte-kraken-gaming-chair" class="items_check_btn">Buy</span>
+        </div>
+      </div>
+      <div data-href-id="/products/blacklyte-athena-pro-gaming-chair" class="items">
+        <div class="items_product_image">
+          <img width="100%" height="100%" src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/header-menu-athenapro.png?v=1740626466" />
+        </div>
+        <div class="items_product_title">Athena Pro</div>
+        <div class="items_product_btns">
+          <span data-url="/pages/athena-pro-features" class="items_learnmore_btn">Learn More</span>
+          <span data-url="/products/blacklyte-athena-pro-gaming-chair" class="items_check_btn">Buy</span>
+        </div>
+      </div>
+      <div data-href-id="/products/blacklyte-athena-gaming-chair" class="items">
+        <div class="items_product_image">
+          <img width="100%" height="100%" src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/header-menu-athena-black.webp?v=1750389118" />
+        </div>
+        <div class="items_product_title">Athena</div>
+        <div class="items_product_btns">
+          <span data-url="/pages/athena-features" class="items_learnmore_btn">Learn More</span>
+          <span data-url="/products/blacklyte-athena-pro-gaming-chair" class="items_check_btn">Buy</span>
+        </div>
+      </div>
+      <div data-href-id="/products/blacklyte-athena-x-gaming-chair-pink-1" class="items">
+        <div class="items_product_image">
+          <img width="100%" height="100%" src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/header-menu-athenax-pink.png?v=1747015225" />
+        </div>
+        <div class="items_product_title">Athena X</div>
+        <div class="items_product_btns">
+          <span data-url="/pages/athena-gaming-chair" class="items_learnmore_btn">Learn More</span>
+          <span data-url="/products/blacklyte-athena-x-gaming-chair-pink-1" class="items_check_btn">Buy</span>
+        </div>
+      </div>
+      <!-- <div data-href-id="/products/blacklyte-atlas-gaming-desk" class="items">
+        <div class="items_product_image">
+          <img width="100%" height="100%" src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/header-menu-atlasdesk.png?v=1740626466" />
+        </div>
+        <div class="items_product_title">Atlas Desk</div>
+        <div class="items_product_btns">
+          <span data-url="/products/blacklyte-atlas-gaming-desk" class="items_check_btn">Buy</span>
+        </div>
+      </div> -->
+    </div>
+    <!-- chairs 和 addons 选择列 -->
+    <a  href="/collections/gaming-chairs" class="chairs_collections_other_item">
+      <span class="name_text">All Chairs</span>
+      <span class="icons">
+        <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L11 11L0.999998 21" stroke="#333333" stroke-width="2"/>
+        </svg>
+      </span>
+    </a>
+    <a href="/pages/collections#chariaddons" class="chairs_collections_other_item chairs_collections_other_addonsitems">
+      <span class="name_text">All Chairs Add-Ons</span>
+      <span class="icons">
+        <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L11 11L0.999998 21" stroke="#333333" stroke-width="2"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+</div>
+<script>
+  (function ($) {
+    $('.chairs_collections_title_icon').on('click', function () {
+      $('.chairs_collections_mb').removeClass('menu_open_mb_active')
+      $('body').removeClass('menu_open_mb')
+      $('.chairs_collection_not_title').scrollTop(0)
+      
+    })
+    $('.chairs_collection_not_title').on('scroll', function (e) {
+      if (e.target.scrollTop > 0) {
+        $('.chairs_collections_title').addClass('scrolled')
+      } else {
+        $('.chairs_collections_title').removeClass('scrolled')
+      }
+    })
+
+    $('.chairs_collections_container').on('click', '.items', function (event) {
+      event.preventDefault()
+      event.stopPropagation()
+      window.location.href = $(this).attr('data-href-id')
+    })
+
+    $('.chairs_collections_container .items .items_product_btns').on('click', 'span', function (event) {
+      event.preventDefault()
+      event.stopPropagation()
+      const url = $(this).data('url')
+      if(!url) return false
+      window.location.href = url
+    })
+    
+  })(jQuery)
+  
+</script>

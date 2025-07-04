@@ -1,0 +1,381 @@
+ {% liquid
+          assign sid = section.id
+          assign se_blocks = section.blocks
+          assign arr_item = se_blocks | where: "type", 'image'             
+      %}
+
+<div class="Product_block-margin ">
+  <div class="Product_block">
+    {% for block in arr_item %}
+      
+      <div class="Product_block_block" style=" position: relative;flex:1;">
+        {% if block.settings.image != blank  %}
+          <img loading="lazy" class="slide-pc" src="{{ block.settings.image | img_url: 'master' }}" /> 
+          <img loading="lazy" class="slide-mobile" src="{{ block.settings.image_mb | img_url: 'master' }}" /> 
+          <div class="Product_block-position" style="justify-content: center; align-items: start;">
+          
+              <div class="Text_blocks">
+                <div style="max-width: 85%;margin: 0 auto;">
+                  {% if block.settings.Product_block_heading != blank  %}
+                    <div class="text_block_heading" style="text-align:{{ block.settings.text_position }}; --character-title-85:{{ block.settings.Product_block_heading-color }}">{{ block.settings.Product_block_heading }}</div>
+                  {% endif %}
+                
+                  {% if block.settings.Product_block_text != blank  %}
+                    <div class="text_block_text" style="text-align:{{ block.settings.text_position }};--black-black:{{ block.settings.Product_block_text-color }}">{{ block.settings.Product_block_text }}</div>
+                  {% endif %}
+                  <div class="product_Buy">
+                    {% if block.settings.button1 != blank %}
+                      <a class="product_a product_btn_color" style="--btn1:{{ block.settings.content_color1 }}"  href="{{ block.settings.url1 }}">{{ block.settings.button1 }}</a>
+                    {% endif %}
+                     {% if block.settings.button2 != blank %}
+                      <a class="product_a product_btn1_color" style="margin-left: 10px; --btn2:{{ block.settings.content_color2 }}" href="{{ block.settings.url2 }}">{{ block.settings.button2 }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+          
+          </div>
+        {%- else -%}
+          <div style="width:100%;min-height:300px;height:100%;">{{ 'lifestyle-2' | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full' }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+
+   
+     
+  </div>
+</div>
+<style>
+  #shopify-section-{{ sid }} .Product_block{
+    width:100%;
+    margin: 0 auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    align-content: center;
+    justify-content: space-between;
+    gap:{{section.settings.margin}};
+    
+  }
+
+  #shopify-section-{{ sid }} .Product_block-margin{
+     margin:{{section.settings.margin}};
+  }
+  #shopify-section-{{ sid }} .Product_block-position{
+     position: absolute;
+     top:0;
+     left: 0;
+     width:100%;
+     height:100%;
+     display: flex;
+  }
+   #shopify-section-{{ sid }} .Product_block_block{            
+     margin-top:16px;
+     /* height: 720px; */
+     border-radius: 16px;
+     overflow: hidden;
+   }
+  #shopify-section-{{ sid }} .Product_block_block img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  #shopify-section-{{ sid }} .Product_block_block:first-child,
+  #shopify-section-{{ sid }} .Product_block_block:nth-child(2){
+    margin-top:0px;
+  }
+  #shopify-section-{{ sid }} .Text_block{
+    width:50%;
+    height:auto;
+   
+  }
+  #shopify-section-{{ sid }} .Text_blocks{
+    width:100%;
+    height:auto;
+  }
+  #shopify-section-{{ sid }} .text_block_heading{
+    color: var(--character-title-85, rgba(0, 0, 0, 0.85));
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.26;
+    margin-top:64px;
+    margin-bottom:16px;
+  }
+  #shopify-section-{{ sid }} .text_block_text{
+    color: var(--black-black, #000);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom:32px;
+  }
+  #shopify-section-{{ sid }} .product_Buy{
+    display:flex;
+    justify-content: center;
+    
+  }
+  #shopify-section-{{ sid }} .product_a{
+    padding:0 12px;
+    display: block;
+    font-feature-settings: 'clig' off, 'liga' off;
+    /* body/regular/middle */
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4; 
+   
+  }
+  #shopify-section-{{ sid }} .product_btn_color:hover{
+   text-decoration:underline;
+  }
+  #shopify-section-{{ sid }} .product_btn_color:hover,
+  #shopify-section-{{ sid }} .product_btn_color{
+     color: var(--btn1);
+      font-weight: 700;
+  }
+  #shopify-section-{{ sid }} .product_btn1_color:hover,
+  #shopify-section-{{ sid }} .product_btn1_color{
+    color:var(--btn2);
+  }
+  #shopify-section-{{ sid }} .product_btn1_color:hover{
+    text-decoration:underline;
+  }
+  
+  @media only screen and (min-width: 2000px){
+    #shopify-section-{{ sid }} .Product_block-margin{
+     margin:{{section.settings.margin |divided_by:1920.00|times:100.00 | append: 'vw'}};
+    }
+    #shopify-section-{{ sid }} .Product_block{
+     gap:{{section.settings.margin |divided_by:1920.00|times:100.00 | append: 'vw'}};
+      
+    }
+    #shopify-section-{{ sid }} .text_block_heading{
+      font-size: 1.56vw;
+    }
+    #shopify-section-{{ sid }} .text_block_text{
+      font-size: 0.94vw;
+    }
+    #shopify-section-{{ sid }} .product_a{
+      font-size: 0.84vw;
+    }
+  }
+    @media only screen and (min-width: 1081px) and (max-width: 1440px){
+      #shopify-section-{{ sid }} .text_block_heading{
+        font-size: 2.08vw;
+        margin-top:2.77vw;
+        margin-bottom:1.11vw;
+      }
+      #shopify-section-{{ sid }} .text_block_text{
+        margin-bottom:2.22vw;
+        font-size: 1.11vw;
+      }
+      #shopify-section-{{ sid }} .product_a{
+
+    font-size: 1.11vw;
+      }
+    }
+  /* @media only screen and (max-width: 1080px){
+    #shopify-section-{{ sid }} .Product_block{
+    }
+  } */
+  @media only screen and (max-width: 1080px){
+    #shopify-section-{{ sid }} .Product_block{
+      flex-direction: column;
+      gap:{{section.settings.mbmargin}};
+    }
+    #shopify-section-{{ sid }} .Product_block-margin{
+       margin:{{section.settings.mbmargin}};
+    }
+    #shopify-section-{{ sid }} .text_block_heading{
+      margin-top:32px;
+    }
+    #shopify-section-{{ sid }} .Product_block_block{
+      width: 100% !important;
+      border-radius: 8px;
+      /* height: 500px; */
+    }
+    #shopify-section-{{ sid }} .Product_block_block:first-child{
+      margin-top:0px;
+    }
+    #shopify-section-{{ sid }} .Product_block_block:nth-child(2){
+      margin-top:32px;
+    }
+    #shopify-section-{{ sid }} .Product_block_block:not(:first-child) {
+      margin-top:0px;
+    }
+    #shopify-section-{{ sid }} .Product_block_block img{
+    }
+    #shopify-section-{{ sid }} .Product_block-position{
+      /* position: static; */
+      height: unset;
+    }
+    #shopify-section-{{ sid }} .text_block_heading{
+      font-size: 24px;
+      line-height: 1.33;
+      margin-bottom: 8px;
+    }
+    #shopify-section-{{ sid }} .text_block_text{
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+  }
+  
+
+
+
+</style>
+{% schema %}
+{
+  "name": "Product block",
+  "class": "custom-liquid",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Custom liquid"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom classes"
+    },
+     {
+      "type": "text",
+      "id": "margin",
+      "label": "PC margin",
+      "default": "100px 0 100px 0"
+    },
+    {
+      "type": "text",
+      "id": "mbmargin",
+      "label": "mb margin",
+      "default": "50px,,50px,"
+    }
+  ],
+  "blocks": [
+     {
+      "type": "image",
+      "name": "image",
+      "limit": 2,
+      "settings": [
+         {
+            "type": "text",
+            "id": "block_width",
+            "label": "block width",
+            "default": "50"
+         },
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "image"
+         },
+          {
+            "type": "image_picker",
+            "id": "image_mb",
+            "label": "image mobile"
+         },
+        {
+            "type": "text",
+            "id": "Product_block_heading",
+            "label": "heading",
+          "default": "heading"
+         },
+        {
+          "type": "color",
+          "id": "Product_block_heading-color",
+          "label": "Heading Color",
+          "default": "#ffffff"
+        },
+        {
+            "type": "text",
+            "id": "Product_block_text",
+            "label": "text",
+             "default": "text"
+         },
+        {
+          "type": "color",
+          "id": "Product_block_text-color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "text position",
+          "default": "left",
+          "options": [
+             {
+              "label": "left",
+              "value": "left"
+            },
+            {
+              "label": "center",
+              "value": "center"
+            },
+            {
+              "label": "right",
+              "value": "right"
+            }
+
+            
+          ]
+        },
+        {
+            "type": "text",
+            "id": "button1",
+            "label": "button",
+            "default": "Learn More >"
+         },
+        {
+          "type": "color",
+          "id": "content_color1",
+          "label": "Content Color",
+          "default": "#ffffff"
+        },
+         {
+            "type": "url",
+            "id": "url1",
+            "label": "url"
+           
+         },
+         {
+            "type": "text",
+            "id": "button2",
+            "label": "button 2",
+            "default": "Buy Now >"
+         },
+        {
+          "type": "color",
+          "id": "content_color2",
+          "label": "Content Color",
+          "default": "#ffffff"
+        },
+         {
+            "type": "url",
+            "id": "url2",
+            "label": "url 2"
+           
+         }
+        
+       
+
+      ]
+    }
+   
+
+
+    ],
+  "presets": [
+    {
+      "name": "Custom product block"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,775 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "image_banner_jhgJmE": {
+      "type": "image-banner",
+      "blocks": {
+        "large_img_k3PWYV": {
+          "type": "largeImg",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_banner.png",
+            "mobile_image": "shopify://shop_images/affiliate_banner_mb.png",
+            "show_banner_video_url": false,
+            "banner_video_url": "",
+            "banner_video_url2": "",
+            "banner_video_url_mb": "",
+            "show_youtube_live_url": false,
+            "youtube_url": "",
+            "show_dots_btn": false,
+            "enable_max_width_image": false,
+            "custom_width_image": 1170,
+            "enable_scroll_down": false,
+            "enable_custom_image": false,
+            "image_behavior": "none",
+            "sub_title": "",
+            "sub_title_fontfamily": "",
+            "border_sub_title": false,
+            "font_size_sub_title": 14,
+            "font_size_sub_title_mb": 14,
+            "margin_bottom_sub_title": 14,
+            "sub_heading_font": "font_1",
+            "font_weight_sub_title": "700",
+            "sub_title_position": "sub_title_above",
+            "color_sub_title": "#232323",
+            "color_sub_title_mb": "#ffffff",
+            "show_heading_descrip_text": false,
+            "heading_descrip_text": "",
+            "heading": "",
+            "heading_fontfamily": "",
+            "letter_spacing_heading": "",
+            "enable_style_italic": false,
+            "font_size_heading": 40,
+            "font_size_heading_mb": 24,
+            "font_size_heading_tablet": 24,
+            "margin_bottom_heading": 20,
+            "font_weight_heading": "600",
+            "color_heading": "#232323",
+            "color_heading_mb": "#ffffff",
+            "border_title": "none",
+            "border_color_title": "#232323",
+            "border_color_title_mobile": "#ffffff",
+            "text": "Join the Blacklyte Affiliate Program\n<br>\nInterested in becoming an affiliate and earning up to $10,000 per month?",
+            "text_fontfamily": "",
+            "font_size_des": 30,
+            "font_size_des_mb": 16,
+            "line_height_des": 40,
+            "margin_bottom_des": 35,
+            "color_des": "#ffffff",
+            "color_des_mb": "#ffffff",
+            "countdown": "",
+            "hide_countdown_fc": "countdown",
+            "countdown_style": "round",
+            "countdown_position": "countdown_below_desc",
+            "font_size_countdown_number": 30,
+            "font_size_countdown_text": 14,
+            "color_countdown": "#232323",
+            "color_countdown_mb": "#ffffff",
+            "countdown_margin_bottom": 35,
+            "content_width": 2000,
+            "align": "center",
+            "align_items": "center",
+            "position": "center",
+            "custom_horizontal": "",
+            "custom_vertical": "",
+            "btn_text": "JOIN NOW",
+            "link": "#affiliate-section",
+            "btn_icon": "",
+            "button_1_width": 300,
+            "enable_button_custom_border": false,
+            "button_color": "#ffffff",
+            "button_border": "#ffffff",
+            "button_background": "rgba(0,0,0,0)",
+            "button_background_gradient": "",
+            "button_color_hover": "#ffffff",
+            "button_border_hover": "#ffffff",
+            "button_background_hover": "rgba(0,0,0,0)",
+            "button_background_gradient_hover": "",
+            "btn_text_2": "",
+            "link_2": "",
+            "btn_icon_2": "",
+            "button_color_2": "#ffffff",
+            "button_border_2": "#232323",
+            "button_background_2": "#232323",
+            "button_background_2_gradient": "",
+            "button_color_hover_2": "#ffffff",
+            "button_border_hover_2": "#232323",
+            "button_background_hover_2": "#232323",
+            "button_background_gradient_hover_2": "",
+            "video_link": "",
+            "adaptive_height_video": "56",
+            "icon_style": "style_1",
+            "color_icon": "#ffffff",
+            "bg_color_icon": "#000000",
+            "enable_custom_video_icon_position": false,
+            "video_icon_horizontal_position": "",
+            "video_icon_vertical_position": "",
+            "video_icon_horizontal_position_mb": "",
+            "video_icon_vertical_position_mb": ""
+          }
+        }
+      },
+      "block_order": [
+        "large_img_k3PWYV"
+      ],
+      "custom_css": [
+        ".button {border-radius: 38px; font-weight: 500;}",
+        "@media (max-width: 1024px) {.content-box--absolute {top: 74%; } .banner-text {line-height: 1.4 !important; } .button {font-size: 12px; padding: 10px; max-width: 150px; }}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "id_section": "affiliate-section-id",
+        "container": "fullwidth",
+        "padding_full_width": 0,
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0,
+        "show_banner_title_descripe": false,
+        "banner_title_descripe": "",
+        "image_banner_title": "",
+        "image_banner_title_fontfamily": "",
+        "show_banner_title_and_banner_des_centerImg": false,
+        "enable_border_title": false,
+        "color_title": "#202020",
+        "fontsize_title": 24,
+        "fontsize_title_mb": 20,
+        "margin_bottom_title": 25,
+        "image_banner_des": "",
+        "image_banner_des_fontfamily": "",
+        "font_weight_image_banner_des": "400",
+        "show_des_bottom_lists": false,
+        "color_des": "#202020",
+        "fontsize_des": 16,
+        "title_align": "center",
+        "style_bg": "none",
+        "bg_color": "",
+        "bg_color_gradient": "",
+        "display_type": "list",
+        "list_gap": 0,
+        "enable_arrows": false,
+        "arrows_position": "",
+        "enable_dots": false,
+        "enable_autoplay": false,
+        "enable_variablewidth": false,
+        "enable_initialSlide": 0,
+        "enable_slidestoshow": 1,
+        "centerpadding": "",
+        "enable_fade": false,
+        "enable_centermode": false,
+        "show_twitch_video": false,
+        "show_steps_list_mb": false
+      }
+    },
+    "brand_slider_Jfdnxy": {
+      "type": "brand-slider",
+      "blocks": {
+        "image_VUWy7X": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_icons-0.png",
+            "title": "High Commissions",
+            "color_text": "#262629",
+            "color_text_hover": "#262629",
+            "description": "Earn up to 15% commission on every sale. With Blacklyte’s competitive commission structure, the more you promote, the more you can earn.",
+            "color_des": "#262629",
+            "link": ""
+          }
+        },
+        "image_hjCET7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_icons-1.png",
+            "title": "30-Day Cookie",
+            "color_text": "#262629",
+            "color_text_hover": "#262629",
+            "description": "Your referrals are tracked for 30 days after the first click. This means more time for your leads to make a purchase, increasing your earning potential.",
+            "color_des": "#262629",
+            "link": ""
+          }
+        },
+        "image_WtWqcN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_icons-2.png",
+            "title": "Timely Payouts",
+            "color_text": "#262629",
+            "color_text_hover": "#262629",
+            "description": "We value your hard work. Affiliates are paid on time every month, ensuring a reliable income stream for your efforts.",
+            "color_des": "#262629",
+            "link": ""
+          }
+        },
+        "image_fYcdnm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_icons-3.png",
+            "title": "High Conversion Rate",
+            "color_text": "#262629",
+            "color_text_hover": "#262629",
+            "description": "Blacklyte’s top-tier products and strong brand recognition mean higher conversion rates, giving you a better chance to earn with every referral.",
+            "color_des": "#262629",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_VUWy7X",
+        "image_hjCET7",
+        "image_WtWqcN",
+        "image_fYcdnm"
+      ],
+      "name": "t:sections.brand.presets.name",
+      "settings": {
+        "sectionsID": "affiliate-brand-section",
+        "container": "1570",
+        "padding_full_width": 0,
+        "brands_block_style": "style_1",
+        "brand_layout": "grid",
+        "scroll_from": "ltr",
+        "brand_scroll_time": "20",
+        "display_brand_border": false,
+        "brand_bg": "#ffffff",
+        "brand_bg_gradient": "",
+        "title_align": "center",
+        "brand_title": "Why Parther With Us?",
+        "color_title": "#262629",
+        "fontsize_title": 30,
+        "fontsize_title_mb": 24,
+        "mg_bottom_title": 50,
+        "show_title_bottom_custom_desc": false,
+        "enable_background_title": false,
+        "enable_border_title": false,
+        "border_color_title": "rgba(0,0,0,0)",
+        "brand_des": "",
+        "color_des": "#3c3c3c",
+        "fontsize_des": 16,
+        "mg_bottom_des": 0,
+        "view_all": "",
+        "view_all_fs": 12,
+        "font_weight_view_all": "400",
+        "mg_bottom_view": 0,
+        "enable_border_view_all": true,
+        "link_view_all": "",
+        "color_view_all": "#3c3c3c",
+        "icon_view_all": "",
+        "color_view_all_icon": "#eb492f",
+        "view_all_icon_side": "left",
+        "btn_text": "",
+        "fontsize_btn": 12,
+        "btn_spacing_top": 15,
+        "btn_color": "#828282",
+        "btn_link": "",
+        "enable_autoplay": false,
+        "brand_speed": "3000",
+        "brand_rows": "2",
+        "enable_arrows": false,
+        "enable_dots": false,
+        "enable_center_mode": false,
+        "style_position_arrows": "none",
+        "position_horizontal_arrow": 70,
+        "color_arrow": "",
+        "arrow_background": "",
+        "arrow_background_gradient": "",
+        "arrow_border": "",
+        "color_arrow_hover": "",
+        "arrow_background_hover": "",
+        "arrow_background_gradient_hover": "",
+        "arrow_border_hover": "",
+        "brand_rows_mb": "1",
+        "brand_image_ratio": "square",
+        "item_distance": 80,
+        "margin_bottom_image": 0,
+        "brand_item_border": "none",
+        "border_radius": 0,
+        "border_color": "#e2e5e7",
+        "border_color_hover": "#2d2d2d",
+        "hover_effect": "zoom",
+        "color_underline_image_hover": "#000000",
+        "fontsize_text": 16,
+        "fontsize_text_mb": 13,
+        "fontsize_description": 12,
+        "font_weight_title": "400",
+        "margin_bottom_title": 0,
+        "mg_top_desktop": 100,
+        "mg_top_tablet": 100,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 100,
+        "mg_bottom_tablet": 100,
+        "mg_bottom_mobile": 50
+      }
+    },
+    "image_banner_q8qFjJ": {
+      "type": "image-banner",
+      "blocks": {
+        "large_img_cTdUYP": {
+          "type": "largeImg",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_gaming.png",
+            "mobile_image": "shopify://shop_images/affiliate_gaming_mb.png",
+            "show_banner_video_url": false,
+            "banner_video_url": "",
+            "banner_video_url2": "",
+            "banner_video_url_mb": "",
+            "show_youtube_live_url": false,
+            "youtube_url": "",
+            "show_dots_btn": false,
+            "enable_max_width_image": false,
+            "custom_width_image": 1170,
+            "enable_scroll_down": false,
+            "enable_custom_image": false,
+            "image_behavior": "none",
+            "sub_title": "",
+            "sub_title_fontfamily": "",
+            "border_sub_title": false,
+            "font_size_sub_title": 14,
+            "font_size_sub_title_mb": 14,
+            "margin_bottom_sub_title": 14,
+            "sub_heading_font": "font_1",
+            "font_weight_sub_title": "700",
+            "sub_title_position": "sub_title_above",
+            "color_sub_title": "#232323",
+            "color_sub_title_mb": "#ffffff",
+            "show_heading_descrip_text": false,
+            "heading_descrip_text": "",
+            "heading": "",
+            "heading_fontfamily": "",
+            "letter_spacing_heading": "",
+            "enable_style_italic": false,
+            "font_size_heading": 40,
+            "font_size_heading_mb": 24,
+            "font_size_heading_tablet": 24,
+            "margin_bottom_heading": 20,
+            "font_weight_heading": "600",
+            "color_heading": "#232323",
+            "color_heading_mb": "#ffffff",
+            "border_title": "border_s1",
+            "border_color_title": "#232323",
+            "border_color_title_mobile": "#ffffff",
+            "text": "",
+            "text_fontfamily": "",
+            "font_size_des": 12,
+            "font_size_des_mb": 12,
+            "line_height_des": 26,
+            "margin_bottom_des": 35,
+            "color_des": "#232323",
+            "color_des_mb": "#ffffff",
+            "countdown": "",
+            "hide_countdown_fc": "countdown",
+            "countdown_style": "round",
+            "countdown_position": "countdown_below_desc",
+            "font_size_countdown_number": 30,
+            "font_size_countdown_text": 14,
+            "color_countdown": "#232323",
+            "color_countdown_mb": "#ffffff",
+            "countdown_margin_bottom": 35,
+            "content_width": 475,
+            "align": "center",
+            "align_items": "center",
+            "position": "left",
+            "custom_horizontal": "",
+            "custom_vertical": "",
+            "btn_text": "",
+            "link": "",
+            "btn_icon": "",
+            "button_1_width": 235,
+            "enable_button_custom_border": false,
+            "button_color": "#ffffff",
+            "button_border": "#232323",
+            "button_background": "#232323",
+            "button_background_gradient": "",
+            "button_color_hover": "#ffffff",
+            "button_border_hover": "#232323",
+            "button_background_hover": "#232323",
+            "button_background_gradient_hover": "",
+            "btn_text_2": "",
+            "link_2": "",
+            "btn_icon_2": "",
+            "button_color_2": "#ffffff",
+            "button_border_2": "#232323",
+            "button_background_2": "#232323",
+            "button_background_2_gradient": "",
+            "button_color_hover_2": "#ffffff",
+            "button_border_hover_2": "#232323",
+            "button_background_hover_2": "#232323",
+            "button_background_gradient_hover_2": "",
+            "video_link": "",
+            "adaptive_height_video": "56",
+            "icon_style": "style_1",
+            "color_icon": "#ffffff",
+            "bg_color_icon": "#000000",
+            "enable_custom_video_icon_position": false,
+            "video_icon_horizontal_position": "",
+            "video_icon_vertical_position": "",
+            "video_icon_horizontal_position_mb": "",
+            "video_icon_vertical_position_mb": ""
+          }
+        }
+      },
+      "block_order": [
+        "large_img_cTdUYP"
+      ],
+      "custom_css": [
+        ".halo-block-header .rte {line-height: 1.4;}",
+        "@media (max-width: 1024px) {.title {margin-bottom: 0; padding-bottom: 0; }}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "id_section": "",
+        "container": "1570",
+        "padding_full_width": 0,
+        "mg_top_desktop": 100,
+        "mg_top_tablet": 100,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 100,
+        "mg_bottom_tablet": 100,
+        "mg_bottom_mobile": 50,
+        "show_banner_title_descripe": false,
+        "banner_title_descripe": "",
+        "image_banner_title": "What is an affiliate program?",
+        "image_banner_title_fontfamily": "",
+        "show_banner_title_and_banner_des_centerImg": false,
+        "enable_border_title": false,
+        "color_title": "#262629",
+        "fontsize_title": 30,
+        "fontsize_title_mb": 24,
+        "margin_bottom_title": 20,
+        "image_banner_des": "We created our affiliate program to reward content creators like you for helping to promote our products. By placing referral links on your social media pages or livestreams, you direct potential customers to our website and if they make a purchase, you earn a generous commission!",
+        "image_banner_des_fontfamily": "",
+        "font_weight_image_banner_des": "400",
+        "show_des_bottom_lists": false,
+        "color_des": "#262629",
+        "fontsize_des": 14,
+        "title_align": "center",
+        "style_bg": "full",
+        "bg_color": "#f8f9fc",
+        "bg_color_gradient": "",
+        "display_type": "list",
+        "list_gap": 0,
+        "enable_arrows": false,
+        "arrows_position": "",
+        "enable_dots": false,
+        "enable_autoplay": false,
+        "enable_variablewidth": false,
+        "enable_initialSlide": 0,
+        "enable_slidestoshow": 1,
+        "centerpadding": "",
+        "enable_fade": false,
+        "enable_centermode": false,
+        "show_twitch_video": false,
+        "show_steps_list_mb": false
+      }
+    },
+    "brand_slider_mWq9iU": {
+      "type": "brand-slider",
+      "blocks": {
+        "image_EmnUgw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_icons-4.png",
+            "title": "01. Visit blacklyte.com to apply for the affiliate program",
+            "color_text": "#262629",
+            "color_text_hover": "#262629",
+            "description": "",
+            "color_des": "#3c3c3c",
+            "link": ""
+          }
+        },
+        "image_4th33P": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_icons-5.png",
+            "title": "02. Share an affiliate link",
+            "color_text": "#262629",
+            "color_text_hover": "#262629",
+            "description": "",
+            "color_des": "#3c3c3c",
+            "link": ""
+          }
+        },
+        "image_nABUD3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_icons-6.png",
+            "title": "03.  Encourage customers to click your link and purchase",
+            "color_text": "#262629",
+            "color_text_hover": "#262629",
+            "description": "",
+            "color_des": "#3c3c3c",
+            "link": ""
+          }
+        },
+        "image_qjyJNz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_icons-7.png",
+            "title": "04.  Wait for your order to be confirmed",
+            "color_text": "#262629",
+            "color_text_hover": "#262629",
+            "description": "",
+            "color_des": "#3c3c3c",
+            "link": ""
+          }
+        },
+        "image_bmxWTF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/affiliate_icons-8.png",
+            "title": "05. Receive your commission",
+            "color_text": "#262629",
+            "color_text_hover": "#262629",
+            "description": "",
+            "color_des": "#3c3c3c",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_EmnUgw",
+        "image_4th33P",
+        "image_nABUD3",
+        "image_qjyJNz",
+        "image_bmxWTF"
+      ],
+      "name": "t:sections.brand.presets.name",
+      "settings": {
+        "sectionsID": "commission-section-id",
+        "container": "1570",
+        "padding_full_width": 0,
+        "brands_block_style": "style_1",
+        "brand_layout": "grid",
+        "scroll_from": "ltr",
+        "brand_scroll_time": "20",
+        "display_brand_border": false,
+        "brand_bg": "rgba(0,0,0,0)",
+        "brand_bg_gradient": "",
+        "title_align": "center",
+        "brand_title": "How Do I Earn Commission?",
+        "color_title": "#262629",
+        "fontsize_title": 30,
+        "fontsize_title_mb": 24,
+        "mg_bottom_title": 20,
+        "show_title_bottom_custom_desc": false,
+        "enable_background_title": false,
+        "enable_border_title": false,
+        "border_color_title": "#051c42",
+        "brand_des": "",
+        "color_des": "#3c3c3c",
+        "fontsize_des": 16,
+        "mg_bottom_des": 0,
+        "view_all": "",
+        "view_all_fs": 12,
+        "font_weight_view_all": "400",
+        "mg_bottom_view": 0,
+        "enable_border_view_all": true,
+        "link_view_all": "",
+        "color_view_all": "#3c3c3c",
+        "icon_view_all": "",
+        "color_view_all_icon": "#eb492f",
+        "view_all_icon_side": "left",
+        "btn_text": "",
+        "fontsize_btn": 12,
+        "btn_spacing_top": 15,
+        "btn_color": "#828282",
+        "btn_link": "",
+        "enable_autoplay": false,
+        "brand_speed": "3000",
+        "brand_rows": "3",
+        "enable_arrows": true,
+        "enable_dots": false,
+        "enable_center_mode": false,
+        "style_position_arrows": "none",
+        "position_horizontal_arrow": 15,
+        "color_arrow": "",
+        "arrow_background": "",
+        "arrow_background_gradient": "",
+        "arrow_border": "",
+        "color_arrow_hover": "",
+        "arrow_background_hover": "",
+        "arrow_background_gradient_hover": "",
+        "arrow_border_hover": "",
+        "brand_rows_mb": "1",
+        "brand_image_ratio": "square",
+        "item_distance": 50,
+        "margin_bottom_image": 0,
+        "brand_item_border": "none",
+        "border_radius": 0,
+        "border_color": "#e2e5e7",
+        "border_color_hover": "#2d2d2d",
+        "hover_effect": "zoom",
+        "color_underline_image_hover": "#000000",
+        "fontsize_text": 16,
+        "fontsize_text_mb": 13,
+        "fontsize_description": 12,
+        "font_weight_title": "400",
+        "margin_bottom_title": 0,
+        "mg_top_desktop": 100,
+        "mg_top_tablet": 100,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 100,
+        "mg_bottom_tablet": 100,
+        "mg_bottom_mobile": 50
+      }
+    },
+    "affiliate_form_dW8hXh": {
+      "type": "affiliate-form",
+      "name": "Affiliate Form Section",
+      "settings": {
+        "sectionTitle": "Become an affiliate and get up to 15% commission now",
+        "sectionDescripe": "Our Affiliate Program allows anyone to join and promote Blacklyte, earning commissions on every sale made through your affiliate link. Share your link, earn rewards, and become a marketer. Apply today!",
+        "button-1": "JOIN US ON ShareASale",
+        "button-1-Link": "https://www.shareasale.com/shareasale.cfm?merchantID=157662",
+        "button-2": "JOIN US ON CJ",
+        "button-2-Link": "https://members.cj.com/",
+        "formTitle": "Blacklyte Affiliate Program Application",
+        "formDescripe": "Please fill in the following information.",
+        "formHtml": ""
+      }
+    },
+    "affiliate_faq_collapsible_FpDakJ": {
+      "type": "affiliate-FAQ-collapsible",
+      "blocks": {
+        "block_qJJnpe": {
+          "type": "block",
+          "settings": {
+            "title": "1. How much commission can I earn?",
+            "descripe": "You can earn up to 15% commission, depending on the product category and your sales volume. We reward high performers with competitive commission tiers."
+          }
+        },
+        "block_jQw6UB": {
+          "type": "block",
+          "settings": {
+            "title": "2. What is the cookie duration?",
+            "descripe": "Our affiliate program uses a 30-day cookie window. If a customer completes a purchase within 30 days of clicking your link, you’ll receive credit for the sale."
+          }
+        },
+        "block_7b9Mhz": {
+          "type": "block",
+          "settings": {
+            "title": "3. Where can I apply to join?",
+            "descripe": "You can apply through any of the following:\n<br>Directly on our website: \nhttps://blacklyte.com/affiliate\n<br>CJ Affiliate (Commission Junction)\n<br>ShareASale"
+          }
+        },
+        "block_gUDRfB": {
+          "type": "block",
+          "settings": {
+            "title": "4. How and when do I get paid?",
+            "descripe": "Payouts are processed by the affiliate platform you join. Each platform follows its own payment schedule, typically on a monthly basis."
+          }
+        },
+        "block_WJqcmG": {
+          "type": "block",
+          "settings": {
+            "title": "5. Are there any restrictions on how I can promote?",
+            "descripe": "Yes. The following practices are not allowed:\n<br>Misleading or false advertising\n<br>Paid search bidding on the “Blacklyte” brand name or domain variations\n<br>Spamming or unethical marketing tactics\n<br>Violations may result in termination from the program."
+          }
+        },
+        "block_HyU7Xg": {
+          "type": "block",
+          "settings": {
+            "title": "6. What marketing materials are available?",
+            "descripe": "Once approved, you’ll get access to brand assets including banners, product images, logos, and more to help you create high-converting content."
+          }
+        },
+        "block_NPPwLV": {
+          "type": "block",
+          "settings": {
+            "title": "7. Who is eligible to join?",
+            "descripe": "Anyone with a relevant audience—content creators, bloggers, streamers, review sites, or influencers—can apply. We especially welcome those in the gaming, tech, or lifestyle space."
+          }
+        },
+        "block_3cdaUi": {
+          "type": "block",
+          "settings": {
+            "title": "8. Which regions does Blacklyte ship to?",
+            "descripe": "Blacklyte primarily serves North America, Europe, Australia and Japan, so your promotions will be most effective when targeting customers in these regions."
+          }
+        },
+        "block_WxJggG": {
+          "type": "block",
+          "settings": {
+            "title": "9. How can I increase my commission rate?",
+            "descripe": "We regularly review affiliate performance. If you consistently drive high traffic or sales, you may qualify for custom commission upgrades and special incentives."
+          }
+        }
+      },
+      "block_order": [
+        "block_qJJnpe",
+        "block_jQw6UB",
+        "block_7b9Mhz",
+        "block_gUDRfB",
+        "block_WJqcmG",
+        "block_HyU7Xg",
+        "block_NPPwLV",
+        "block_3cdaUi",
+        "block_WxJggG"
+      ],
+      "name": "Affiliate FAQ Collapsible",
+      "settings": {
+        "sectionTitle": "FAQ"
+      }
+    },
+    "home_guarantee_69PEWF": {
+      "type": "home-guarantee",
+      "blocks": {
+        "blcok_NjqL6Q": {
+          "type": "blcok",
+          "settings": {
+            "icon": "shopify://shop_images/home-guarantee-0.png",
+            "title": "Fast free shipping",
+            "text": "Typically shipped within 1-2 business days, with delivery taking 3-5 days."
+          }
+        },
+        "blcok_AwwxXd": {
+          "type": "blcok",
+          "settings": {
+            "icon": "shopify://shop_images/home-guarantee-1.png",
+            "title": "30-day easy returns",
+            "text": "You can easily return it within 30 days."
+          }
+        },
+        "blcok_3eeWWX": {
+          "type": "blcok",
+          "settings": {
+            "icon": "shopify://shop_images/home-guarantee-2.png",
+            "title": "Longtime warranty",
+            "text": "3-year warranty. Lifetime technical support."
+          }
+        }
+      },
+      "block_order": [
+        "blcok_NjqL6Q",
+        "blcok_AwwxXd",
+        "blcok_3eeWWX"
+      ],
+      "name": "Home Guarantee",
+      "settings": {
+        "title": "Our Guarantee"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_jhgJmE",
+    "brand_slider_Jfdnxy",
+    "image_banner_q8qFjJ",
+    "brand_slider_mWq9iU",
+    "affiliate_form_dW8hXh",
+    "affiliate_faq_collapsible_FpDakJ",
+    "home_guarantee_69PEWF"
+  ]
+}

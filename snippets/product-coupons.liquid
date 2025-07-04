@@ -1,0 +1,105 @@
+{% comment %}
+  siege 产品购买页.
+  显示阶梯价格
+{% endcomment %}
+
+<style>
+  .product-coupons {
+    background-color: #D1D1D1;
+    margin-top: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 16px;
+  }
+  .product-coupons .coupon-title {
+    font-family: "Poppins";
+    font-size: 20px;
+    font-weight: 500;
+    color: #B80000;
+  }
+  .coupon-container .item {
+    font-family: "Poppins";
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    list-style-type: disc; /* 使用圆点 */
+    display: list-item; /* 让元素表现得像列表项 */
+    margin-left: 20px; /* 调整缩进以对齐 */
+    margin-top: 30px;
+  }
+  @media(min-width: 1025px) and (max-width: 1900px) {
+    .product-coupons .coupon-title {
+      font-size: 18px;
+    }
+    .coupon-container .item {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  }
+  @media(min-width: 768px) and (max-width: 1024px) {
+    .product-coupons {
+      margin-top: 20px;
+      padding-top: 16px;
+      padding-bottom: 18px;
+      padding-left: 10px;
+    }
+    .product-coupons .coupon-title {
+      font-size: 12px;
+      line-height: 14px;
+    }
+    .coupon-container .item {
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  }
+  @media(max-width: 767px) {
+    .product-coupons {
+      margin-top: 14px;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      padding-left: 10px;
+    }
+    .product-coupons .coupon-title {
+      font-size: 14px;
+    }
+    .coupon-container .item {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+  }
+</style>
+
+<div class="product-coupons">
+  <div class="coupon-title">{{ block.settings.couponsTitle }}</div>
+  <div class="coupon-container">{{ block.settings.couponsHTML }}</div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  if(window.location.pathname.includes('/blacklyte-kraken-r6-siege-x-edition')) {
+    
+    setTimeout(() => {
+      // 获取折扣DOM, 修改文案
+      $('.settlement-detail .sale_price_item > span:first-child').text('Limited-Time Discount:')
+      // 获取折扣DOM, 控制显示隐藏
+      $('.product-main>.oy-in>.oy-right .settlement-detail .sale_price_item').attr('style', 'display: flex !important')
+      // 将sale price 显示划线样式
+      $('.settlement-detail .oy-p6.oy-p5 #totalPrices_item .oy-total').css({
+        'text-decoration': 'line-through'
+      })
+      $('.product-main>.oy-in>.oy-right .describe-main .describe-main-top .oy-right .sale_price_item').css('display', 'flex')
+      $('.product-main>.oy-in>.oy-right .describe-main>.describe-main-top .oy-right.sale_price_underlined').addClass('act')
+      $('.product-main>.oy-in>.oy-right .describe-main .describe-main-top .oy-right .sale_price_item .num.compare_at_price.sale_prices').text('479.00')
+      // 赋值siege产品最终价格
+      $('.product-main>.oy-in>.oy-right .settlement-detail>.oy-p6.sale_price_item .oy-total').text('479.00')
+      // 分四期付款的价格
+      const priceAtFour = "{{ 47900 | money_without_currency | divided_by: 4.0 | round: 2 }}"
+      // 分12期付款的价格
+      const priceAtTwn = "{{ 47900 | money_without_currency | divided_by: 12.0 | round: 2 }}"
+      // 赋值
+      $('.settle-accounts #financing_twelve').text(priceAtTwn)
+      $('.settle-accounts #financing_four').text(priceAtFour)
+    }, 600)
+
+  }
+  })
+</script>

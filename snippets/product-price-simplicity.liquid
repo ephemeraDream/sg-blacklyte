@@ -1,0 +1,64 @@
+<div class="product_infor_simplicity_right_buybox_price{% if is_pmd_show %} pmd_show{% endif %}">
+  <div class="product_infor_simplicity_right_buybox_price_info">
+    <span
+      class="product_infor_simplicity_right_buybox_price_info_discount"
+      data-value="{{ sale_price | money_without_currency }}"
+    >
+      {{ sale_price | money_without_trailing_zeros }}
+    </span>
+    {% comment %} {% if show_sale_info %} {% endcomment %}
+      <span class="product_infor_simplicity_right_buybox_price_info_op{% unless show_sale_info %} hidden{% endunless %}">
+        {{- product.selected_or_first_available_variant.price | money_without_trailing_zeros -}}
+      </span>
+
+      <span
+        class="product_infor_simplicity_right_buybox_price_info_save{% unless show_sale_info %} hidden{% endunless %}"
+        data-value="{{ save_price | money_without_currency }}"
+      >
+        {% if is_preorder == true %}
+          {{ 'products.product.text.pre_order_discount' | t }}
+        {% else %}
+          {{ 'products.product.text.save' | t -}}
+        {% endif %}
+        {{- save_price | money_without_trailing_zeros -}}
+      </span>
+    {% comment %} {% endif %} {% endcomment %}
+  </div>
+  <div class="product_infor_simplicity_right_buybox_price_afterpay{% if is_bottom %} pc_show{% endif %}">
+    <span class="product_infor_simplicity_right_buybox_price_afterpay_mowith">
+      {{- sale_price | divided_by: 12.0 | round: 2 | money_without_trailing_zeros -}}
+    </span>
+    {{ 'products.product.text.affirmtext' | t }}
+    <span
+      class="product_infor_simplicity_right_buybox_price_afterpay_sixmowith"
+    >
+      {{- sale_price | divided_by: 6.0 | round: 2 | money_without_trailing_zeros -}}
+    </span>
+    {{ 'products.product.text.mowith' | t }}
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/affirm-logo.webp?v=1744598659"
+      alt="{{ product.title }} affirm"
+    >
+  </div>
+  {% if is_bottom %}
+    <div class="product_infor_simplicity_right_buybox_goods_options pmd_show">
+      {% comment %}
+        {{ product.metafields.custom.series_name | append: ' | ' -}}
+      {% endcomment %}
+      {% if product.options_by_name.Size.values.size > 1 %}
+        {{ product.selected_or_first_available_variant.options | join: ' | ' }}
+      {% else %}
+        {% if product.title contains 'Blacklyte Atlas Desk' or product.title contains 'Blacklyte Atlas Gaming Desk' %}
+          {% assign size = product.metafields.custom.product_size.value | first %}
+          {{ size.name | append: ' | ' | append: size.size | replace: '\', '' }}
+        {% else %}
+          {{
+            product.selected_or_first_available_variant.option1
+            | append: ' | '
+            | append: product.selected_or_first_available_variant.option2
+          }}
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,494 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/roboto:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.parameter_comparison {
+  background-color: #fff;
+}
+
+.parameter_comparison .parameter_comparison_title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 1.354167vw;
+  line-height: 2.03125vw;
+  letter-spacing: 0%;
+  color: #262629;
+  text-align: center;
+}
+
+.parameter_comparison .parameter_comparison_selectbox {
+  display: flex;
+  align-items: center;
+  gap: 1.770833vw;
+  padding-top: 2.5vw;
+  position: sticky;
+  top: 80px;
+  background: #fff;
+}
+
+.parameter_comparison .parameter_comparison_select {
+  flex: 1;
+  height: 2.5vw;
+  border: 1px solid #EDEDED;
+  border-radius: 0.20833vw;
+  background-color: #F8F9FC;
+  padding: 0 0.9375vw 0 0.625vw;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 0.9375vw;
+  line-height: 1.40625vw;
+  letter-spacing: 0%;
+  color: #262629;
+
+  background-image: url("https://cdn.shopify.com/s/files/1/0663/6742/2695/files/select-arrow.webp?v=1745833026");
+  background-repeat: no-repeat;
+  background-position: right 0.729167vw center;
+  background-size: 0.59895833vw 0.33854167vw;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.parameter_comparison .parameter_comparison_select option {
+  height: 2.5vw;
+  background-color: #F8F9FC;
+  padding: 0 0.9375vw 0 0.625vw;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 0.9375vw;
+  line-height: 1.40625vw;
+  letter-spacing: 0%;
+  color: #262629;
+}
+
+.parameter_comparison .parameter_comparison_contain {
+  display: flex;
+  margin-top: 0.46875vw;
+}
+
+.parameter_comparison .parameter_comparison_product {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.parameter_comparison .parameter_comparison_product_featured_image {
+  width: 10.5833vw;
+  margin: 0 auto;
+  height: auto;
+}
+
+.parameter_comparison .parameter_comparison_product_series_name {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 1.04167vw;
+  line-height: 1.354167vw;
+  letter-spacing: 0%;
+  color: #262629;
+  margin-top: -0.3645833vw;
+  text-align: center;
+}
+
+.parameter_comparison .parameter_comparison_product_description {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 0.729167vw;
+  line-height: 1.354167vw;
+  letter-spacing: 0%;
+  color: #262629;
+  /* margin-top: -0.833vw; */
+  text-align: center;
+  width: 18.229167vw;
+  margin: 0 auto;
+}
+
+.parameter_comparison .parameter_comparison_product_standard_price {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 0.729167vw;
+  line-height: 1.354167vw;
+  letter-spacing: 0%;
+  color: #76767F;
+  margin-top: 2.395833vw;
+  text-align: center;
+}
+
+.parameter_comparison .parameter_comparison_product_price {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 1.04167vw;
+  line-height: 1.354167vw;
+  letter-spacing: 0%;
+  color: #262629;
+  text-align: center;
+}
+
+.parameter_comparison .parameter_comparison_product_variants_count {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 0.729167vw;
+  line-height: 1.354167vw;
+  letter-spacing: 0%;
+  color: #3173E8;
+  margin-top: 0.20833vw;
+  text-align: center;
+}
+
+.parameter_comparison .parameter_comparison_product_shop_now {
+  width: 18.229167vw;
+  height: 2.1875vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(91.49deg, #1C5FEE -15.55%, #9BEFFF 122.08%);
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 0.9375vw;
+  letter-spacing: 0%;
+  color: #fff;
+  margin: 0.989583vw auto 0 auto;
+  border-radius: 3.125vw;
+}
+
+.parameter_comparison .parameter_comparison_product_learn_more {
+  display: block;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 0.8333vw;
+  line-height: 1.354167vw;
+  letter-spacing: 0%;
+  color: #3173E8;
+  margin-top: 1.04167vw;
+  text-align: center;
+}
+
+.parameter_comparison .parameter_comparison_product_between_line {
+  display: block;
+  width: 100%;
+  height: 0.104167vw;
+  background-color: #F3F3F3;
+  margin: 4.6875vw 0 1.5625vw 0;
+}
+
+.parameter_comparison .parameter_comparison_product_label {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 0.8333vw;
+  line-height: 1.354167vw;
+  letter-spacing: 0%;
+  color: #262629;
+  opacity: 0;
+}
+
+.parameter_comparison .parameter_comparison_product_showtitle .parameter_comparison_product_label {
+  opacity: 1;
+}
+
+.parameter_comparison .parameter_comparison_product_item {
+  text-align: center;
+  margin-top: 3.125vw;
+}
+
+.parameter_comparison .parameter_comparison_product_title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 1.04167vw;
+  line-height: 1.354167vw;
+  letter-spacing: 0%;
+  color: #262629;
+  padding: 0 2.03125vw;
+}
+
+.parameter_comparison .parameter_comparison_product_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 0.729167vw;
+  line-height: 1.4583vw;
+  letter-spacing: 0%;
+  color: #262629;
+  margin-top: 0.4167vw;
+  padding: 0 2.03125vw;
+}
+
+.parameter_comparison .parameter_comparison_product_upholstery img {
+  width: 3.28125vw;
+  height: 3.28125vw;
+  margin: 0 auto 1.25vw auto;
+}
+
+.parameter_comparison .parameter_comparison_product_memory-foam-head-pillow img {
+  width: 6.5104167vw;
+  height: 6.354167vw;
+  margin: 0 auto;
+}
+
+.parameter_comparison .parameter_comparison_product_armrests img {
+  width: 5.743229167vw;
+  height: 5.1833vw;
+  object-fit: contain;
+  object-position: center bottom;
+  margin: 0 auto 1.67vw auto;
+}
+
+.parameter_comparison .parameter_comparison_product_lumbar-support img {
+  width: 6.041667vw;
+  height: 6.041667vw;
+  margin: 0 auto 0.729167vw auto;
+}
+
+.parameter_comparison .parameter_comparison_product_wheelbase img {
+  width: 7.46927083vw;
+  height: 4.9479167vw;
+  margin: 0 auto 1.25vw auto;
+}
+
+.parameter_comparison .parameter_comparison_product_lumbar-pillow img {
+  width: 5.55364583vw;
+  height: 5.70833vw;
+  object-fit: contain;
+  object-position: center center;
+  margin: 0 auto 1.53125vw auto;
+}
+
+.parameter_comparison .parameter_comparison_product_warranty img {
+  width: 4.04167vw;
+  height: 4.6354167vw;
+  margin: 0 auto 1.5625vw auto;
+}
+
+.parameter_comparison .parameter_comparison_product_technical-specifications .parameter_comparison_product_title+.parameter_comparison_product_title {
+  margin-top: 2.5520833vw;
+}
+
+.parameter_comparison .parameter_comparison_product_view-full-specifications-sheet {
+  width: 22.70833vw;
+  height: 15.625vw;
+  border-radius: 1.04167vw;
+  border: 1px solid #E9EEFF;
+  background: #F8F9FC;
+}
+
+.parameter_comparison .parameter_comparison_product_view-full-specifications-sheet img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.parameter_comparison .parameter_comparison_product_shop_now_view-full-specifications-sheet {
+  margin: 1.9270833vw auto 0;
+}
+
+.parameter_comparison .parameter_comparison_product_item_flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.parameter_comparison .parameter_comparison_product_showtitle .parameter_comparison_product_item_flex {
+  justify-content: flex-start;
+}
+
+.parameter_comparison .parameter_comparison_contain_other {
+  display: none;
+}
+
+.parameter_comparison .parameter_comparison_selectbox_sentinel {
+  display: block;
+}
+
+.parameter_comparison .parameter_comparison_selectbox.is-sticky {
+  padding-bottom: 1.5vw;
+  box-shadow: 0 4px 6px -5px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 768px) {
+  .parameter_comparison .parameter_comparison_title {
+    font-size: 5.867vw;
+    line-height: 6.933vw;
+    padding: 0 15.733vw;
+  }
+
+  .parameter_comparison .parameter_comparison_selectbox {
+    padding-top: 12.8vw;
+    gap: 1.867vw;
+    top: 20px;
+  }
+
+  .parameter_comparison .parameter_comparison_select {
+    height: 11.2vw;
+    border-radius: 1.067vw;
+    padding: 0 2.896vw 0 1.6vw;
+    font-size: 3.5vw;
+    line-height: 6.933vw;
+    width: 0;
+
+    background-position: right 3.733vw center;
+    background-size: 3.067vw 1.733vw;
+  }
+
+  .parameter_comparison .parameter_comparison_select option {
+    height: 11.2vw;
+    padding: 0 2.896vw 0 1.6vw;
+    font-size: 4.267vw;
+    line-height: 6.933vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_featured_image {
+    width: 46.848vw;
+    margin-top: 6.67vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_series_name {
+    font-size: 4.8vw;
+    line-height: 6.933vw;
+    margin-top: 1.6vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_description {
+    font-size: 3.2vw;
+    line-height: 5.33vw;
+    margin-top: 4.267vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_standard_price {
+    font-size: 3.73vw;
+    line-height: 6.933vw;
+    margin-top: 4.267vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_price {
+    font-size: 4.8vw;
+    line-height: 6.933vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_variants_count {
+    font-size: 3.2vw;
+    line-height: 6.933vw;
+    margin-top: 1.067vw;
+  }
+
+
+  .parameter_comparison .parameter_comparison_product_shop_now {
+    width: 28.533vw;
+    height: 7.73vw;
+    font-size: 3.2vw;
+    margin: 1.867vw auto 0;
+    border-radius: 16vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_learn_more {
+    font-size: 3.2vw;
+    line-height: 6.933vw;
+    margin-top: 2.4vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_between_line {
+    height: .267vw;
+    margin: 8vw 0 8vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_label {
+    font-size: 4.267vw;
+    line-height: 6.933vw;
+    white-space: nowrap;
+  }
+
+  .parameter_comparison .parameter_comparison_product_item {
+    margin-top: 8vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_title {
+    font-size: 3.733vw;
+    line-height: 6.933vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_text {
+    font-size: 3.2vw;
+    line-height: 5.33vw;
+    margin-top: 0;
+  }
+
+  .parameter_comparison .parameter_comparison_product_sizes .parameter_comparison_product_title {
+    font-size: 4.8vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_sizes .parameter_comparison_product_text {
+    margin-top: 3.2vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_upholstery img {
+    width: 13.33vw;
+    height: 13.33vw;
+    margin: 0 auto 2.4vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_memory-foam-head-pillow img {
+    width: 24vw;
+    height: 23.467vw;
+    margin: 0 auto 2.4vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_memory-foam-head-pillow .parameter_comparison_product_title {
+    font-size: 3.2vw;
+    line-height: 5.33vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_armrests img {
+    width: 23.467vw;
+    height: 21.067vw;
+    margin: 0 auto 4vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_lumbar-support img {
+    width: 26.67vw;
+    height: 26.67vw;
+    margin: 0 auto 2.133vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_lumbar-support .parameter_comparison_product_title,
+  .parameter_comparison .parameter_comparison_product_lumbar-pillow .parameter_comparison_product_title,
+  .parameter_comparison .parameter_comparison_product_warranty .parameter_comparison_product_title {
+    line-height: 5.33vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_wheelbase img {
+    width: 32vw;
+    height: 21.067vw;
+    margin: 0 auto 4vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_lumbar-pillow img {
+    width: 24vw;
+    height: 24.533vw;
+    margin: 0 auto 5.33vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_warranty img {
+    width: 18.67vw;
+    height: 21.33vw;
+    margin: 0 auto 6.4vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_technical-specifications.parameter_comparison_product_item {
+    margin-top: 13.067vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_technical-specifications .parameter_comparison_product_title+.parameter_comparison_product_title {
+    margin-top: 8vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_view-full-specifications-sheet {
+    width: 43.733vw;
+    height: 29.867vw;
+    border-radius: 5.33vw;
+    margin-top: 4vw;
+  }
+
+  .parameter_comparison .parameter_comparison_product_shop_now_view-full-specifications-sheet {
+    margin: 4.53vw auto 0;
+  }
+}

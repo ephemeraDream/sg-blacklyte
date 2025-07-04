@@ -1,0 +1,227 @@
+{% assign sid = section.id %}
+<style>
+  #shopify-section-{{ sid }} .event_slides-container{
+    background:{{section.settings.bg}};
+    padding:{{section.settings.margin}};
+  }
+  #shopify-section-{{ sid }} .text_block_heading{
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom:48px;
+  }
+  #shopify-section-{{ sid }} .event_slides{
+    margin: 0 auto;
+  }
+  #shopify-section-{{ sid }} .block_text_item_inner{
+    color:{{section.settings.block-text-color}};
+    text-align:center;
+    padding: 0 10px;
+  }
+  #shopify-section-{{ sid }} .block_text_item_inner img{
+    background:#fff;
+    border-radius: 16px;
+    max-width: 300px;
+  }
+  #shopify-section-{{ sid }} .block_text_item_inner p:not(.name){
+    font-size:20px;
+    font-weight: 600;
+    margin-top:0px;
+    margin:8px 0 16px;
+    line-height: 1.4;
+    /* opacity: 0.65; */
+  }
+  #shopify-section-{{ sid }} .block_text_item_inner p.name{
+    font-size:24px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin:0;
+    opacity: 0.65;
+  }
+  #shopify-section-{{ sid }} .arrow {
+    background: transparent;
+    border:unset;
+  }
+  #shopify-section-{{ sid }} .arrow svg{
+      transform: scale(2);
+  }
+  #shopify-section-{{ sid }} .arrow.prev{
+        left: -6%;
+  }
+  #shopify-section-{{ sid }} .arrow.next{
+        right: -6%;
+  }
+  @media only screen and (min-width: 2000px){
+    #shopify-section-{{ sid }} .text_block_heading{
+      font-size: 2.08vw;
+      margin-bottom:2.5vw;
+    }
+    #shopify-section-{{ sid }} .block_text_item_inner{
+      padding:0 .52vw;
+    }
+    #shopify-section-{{ sid }} .block_text_item_inner img{
+      max-width:15.62vw;
+    }
+    #shopify-section-{{ sid }} .block_text_item_inner p:not(.name){
+      font-size: 1.04vw;
+      margin: .41vw 0 .84vw;
+    }
+  }
+  @media only screen and (max-width: 991px){
+    #shopify-section-{{ sid }} .event_slides-container{
+      padding:{{section.settings.mbmargin}};
+    }
+    #shopify-section-{{ sid }} .text_block_heading{
+      margin-bottom:16px;
+      font-size:28px;
+    line-height: 1.28;
+      
+    }
+    #shopify-section-{{ sid }} .event_slides{
+          padding-bottom: 50px;
+      position: relative;
+    }
+    #shopify-section-{{ sid }} .block_text_item_inner img{
+          max-width: 86px;
+    }
+    #shopify-section-{{ sid }} .block_text_item_inner p:not(.name){
+      font-size:16px;
+      margin-bottom:8px;
+      padding: 0 18px;
+    }
+    #shopify-section-{{ sid }} .block_text_item_inner p.name{
+      font-size:14x;
+    }
+     #shopify-section-{{ sid }} .event_slides .slick-dots {
+      bottom: 10px;
+    }
+     #shopify-section-{{ sid }} .event_slides .slick-dots li{
+      margin:0 5px;
+    }
+     #shopify-section-{{ sid }} .event_slides .slick-dots li button{
+      --dots-width:24px;
+      --dots-height:4px;
+      --dots-color:#464646;
+      border-radius:4px;
+    }
+     #shopify-section-{{ sid }} .event_slides .slick-dots li.slick-active button{
+      --dots-color-active:#fff;
+      --dots-border-color-active:#fff;
+    }
+  }
+</style>
+<div class="event_slides-container">
+  <div class="container-1570">
+    <div class="event_slides-wrapper">
+      {% if section.settings.Product_block_heading != blank  %}
+        <div class="text_block_heading" style=" color:{{ section.settings.Product_block_heading-color }}">{{ section.settings.Product_block_heading }}</div>
+      {% endif %}
+      <div class="event_slides">
+        {% for block in section.blocks %}  
+          <div class="block_text_item block-{{block.id}}">
+            <div class="block_text_item_inner">
+              <img loading="lazy"  src="{{ block.settings.img | img_url: 'master' }}" /> 
+              <p>{{ block.settings.content }}</p>
+              <p class="name">{{ block.settings.title }}</p>
+            </div>
+          </div>
+        {% endfor %}
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    $('#shopify-section-{{ sid }} .event_slides').slick({
+      arrows: false,
+      slidesToShow: 5,
+      slidesToScroll: 5,
+      responsive: [
+          {
+            breakpoint: 991,
+            settings: {
+              
+              dots: true,
+              slidesToShow: 2,
+              slidesToScroll: 2,
+            }
+          }
+        ]
+    })
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Event slide",
+    "settings": [
+      {
+        "type": "color_background",
+        "id": "bg",
+        "label": "Background color"
+      },
+      {
+          "type": "text",
+          "id": "Product_block_heading",
+          "label": "heading",
+        "default": "heading"
+       },
+      {
+        "type": "color",
+        "id": "Product_block_heading-color",
+        "label": "Heading Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "block-text-color",
+        "label": "Block text Color",
+        "default": "#ffffff"
+      },
+       {
+        "type": "text",
+        "id": "margin",
+        "label": "PC margin",
+        "default": "100px 0 100px 0"
+      },
+      {
+        "type": "text",
+        "id": "mbmargin",
+        "label": "mb margin",
+        "default": "50px,,50px,"
+      }
+    ],
+    "blocks": [
+      {
+          "type": "text",
+            "name": "Text",
+            "settings": [
+              {
+                "type": "image_picker",
+                "id": "img",
+                "label": "Image"
+              },
+              {
+                  "type": "textarea",
+                  "id": "content",
+                  "label": "Content"
+              },
+              {
+                  "type": "text",
+                  "id": "title",
+                  "label": "title"
+              }
+            ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Event slide"
+      }
+    ]
+  }
+{% endschema %}

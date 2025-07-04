@@ -1,0 +1,272 @@
+{% comment %} 
+  Collection ALL Header: 
+  title: 固定为Collection PAGE, 右边向下箭头icon.
+  可点击: 点击之后出现popup选项:
+    1. charis
+    2. desk
+  可点击的 steps, 功能为点击对应的item, 页面滚动到对应的target
+{% endcomment %}
+
+<style>
+  .new_collection_module {
+    background-color: #fff;
+  }
+  /* .new_collection_module .container_new {
+    padding-left: 58px;
+  } */
+  .new_collection_module .new_collection_module_container .title {
+    padding-top: 39px;
+    padding-bottom: 39px;
+    border-bottom: 1px solid rgba(153, 153, 153, 0.5);
+    position: relative;
+  }
+  .new_collection_module .new_collection_module_container .title:after {
+    content: '';
+    width: 100vw;
+    height: 1px;
+    background-color: rgba(153, 153, 153, 0.5); 
+  }
+  .new_collection_module_container .title_text {
+    font-weight: 500;
+    font-size: 30px;
+    vertical-align: middle;
+    margin-left: 58px;
+    cursor: pointer;
+  }
+  .new_collection_module_container .title_icon {
+    cursor: pointer;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  .new_collection_module_container .title_icon svg {
+    width: 40px;
+    height: 40px;
+    fill: none;
+    stroke: none;
+  }
+  .steps_list {
+    padding-top: 14px;
+    display: flex;
+  }
+  .steps_list .item {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 32px;
+    margin-right: 80px;
+    padding-bottom: 14px;
+  }
+  .steps_list .item:nth-of-type(1) {
+    margin-left: 58px;
+  }
+  .steps_list .item.item_active {
+    border-bottom: 1px solid #333333;
+  }
+  .show_popup_list {
+    background-color: #EDEDED;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 13px;
+    padding-bottom: 19px;
+    width: 259px;
+    position: absolute;
+    top: 119px;
+    left: 55px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    transition-property: all !important;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition-duration: 150ms !important;
+  }
+  .show_popup_list.show_popup_list-opacity-0 {
+    opacity: 0;
+    z-index: -1;
+  }
+  .show_popup_list.show_popup_list-opacity-1 {
+    opacity: 1;
+    z-index: 11;
+  }
+  .show_popup_list .popup_item {
+    display: block;
+    font-size: 14px;
+    line-height: 32px;
+    color: #333333;
+    font-weight: 400;
+  }
+  .show_popup_list .popup_item.popup_item_active {
+    font-weight: 500;
+  }
+  .show_popup_list a.popup_item:hover {
+    background-color: #d9d9d9;
+  }
+  
+  /* icon 向上/向下的样式. 旋转180deg */
+  .new_collection_module_container .title_icon.title_icon_up svg {
+    transform: rotate(180deg);
+  }
+  .new_collection_module_container .title_icon.title_icon_down svg {
+    transform: rotate(0deg);
+  }
+
+  /* Ipad */
+  @media(min-width: 768px) and (max-width: 1024px) {
+    .steps_list {
+      max-width: 100%;
+      overflow-x: scroll;
+    }
+    .steps_list .item {
+      line-height: 24px;
+      white-space: nowrap;
+    }
+  }
+  
+  /* 1025px ~ 1900px */
+  @media(min-width: 1025px) and (max-width: 1910px) { }
+  
+  /* Iphone */
+  @media(max-width: 767px) {
+    .new_collection_module .new_collection_module_container .title {
+      text-align: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .new_collection_module_container .title_text {
+      margin-left: 0;
+      font-size: 15px;
+    }
+    .new_collection_module_container .title_icon svg {
+      width: 20px;
+      height: 20px;
+    }
+    .steps_list {
+      max-width: 100%;
+      overflow-x: scroll;
+    }
+    .steps_list .item {
+      margin-right: 30px;
+      line-height: 20px;
+      white-space: nowrap;
+    }
+    .steps_list .item:nth-of-type(1) {
+      margin-left: 15px;
+    }
+    .show_popup_list {
+      left: 50%;
+      top: 61px;
+      text-align: left;
+      transform: translateX(-50%);
+    }
+  }
+  
+</style>
+
+<section class="new_collection_module">
+  <div class="container_new new_collection_module_container">
+    <div class="title">
+      <span class="title_text">{{ section.settings.title }}</span>
+      <span class="title_icon title_icon_down">
+        {{ section.settings.titleIcon }}
+      </span>
+      <!-- 点击显示下拉框list -->
+      <div class="show_popup_list show_popup_list-opacity-0">
+        <a class="popup_item popup_item_active" href="javascript:void(0)">Shop All Products</a>
+        <a class="popup_item" href="/collections/gaming-chairs">Gaming Chair</a>
+        <a class="popup_item" href="/products/blacklyte-desk">Desks</a>
+      </div>
+    </div>
+    
+    {% comment %} <div class="steps_list">
+      <a href="#gamingchairs" class="item item_active">GAMING CHAIRS</a>
+      <a href="#chariaddons" class="item">CHAIR ADD-ONS</a>
+      <a href="#gamingdesk" class="item">GAMING DESK</a>
+      <!-- <a href="#gamingdeskaddons" class="item">GAMING DESK ADD-ONS</a> -->
+      <a href="#peripherals" class="item">PERIPHERALS</a>
+    </div> {% endcomment %}
+  </div>
+</section>
+
+<script type="text/javascript">
+  (function() {
+    $('.steps_list .item').on('click', function(e) {
+
+        // 移除所有 item 的 item_active 类
+        $('.steps_list .item').removeClass('item_active');
+
+        // 给当前点击的 item 添加 item_active 类
+        $(this).addClass('item_active');
+
+        // 获取目标 ID
+        var target = $(this).attr('href'); // 获取 href 属性
+        var targetOffset = $(target).offset().top; // 获取目标元素的偏移量
+
+        // 根据屏幕宽度设置偏移值
+        var offset = window.innerWidth >= 768 ? 140 : 0;
+
+        // 添加平滑滚动效果
+        $('html, body').animate({
+            scrollTop: targetOffset - offset
+        }, 600); // 600 毫秒的过渡时间
+    })
+
+    function handleClickTitleIcon(e) {
+      let $icon = $('.new_collection_module_container .title_icon');
+      let $popupList = $('.show_popup_list');
+
+      if ($icon.hasClass('title_icon_down')) {
+          $icon.removeClass('title_icon_down').addClass('title_icon_up');
+          $popupList.removeClass('show_popup_list-opacity-0').addClass('show_popup_list-opacity-1');
+      } else if ($icon.hasClass('title_icon_up')) {
+          $icon.removeClass('title_icon_up').addClass('title_icon_down');
+          $popupList.removeClass('show_popup_list-opacity-1').addClass('show_popup_list-opacity-0');
+      } else {
+          $icon.addClass('title_icon_down'); // 初始状态时添加 title_icon_down
+          $popupList.removeClass('show_popup_list-opacity-1').addClass('show_popup_list-opacity-0');
+      }      
+    }
+    $('.new_collection_module_container .title_text').on('click', function(e){
+      handleClickTitleIcon()
+    })
+    $('.new_collection_module_container .title_icon').on('click', function(e) {
+      handleClickTitleIcon()
+    })
+    
+    $(document).on('click', function(e) {
+        // 判断点击的目标是否是 .title_icon 或 .title_text
+        if (!$(e.target).closest('.new_collection_module_container .title .title_icon, .new_collection_module_container .title .title_text').length) {
+    
+            let $popupList = $('.show_popup_list');
+            let $icon = $('.new_collection_module_container .title_icon');
+    
+            if ($popupList.hasClass('show_popup_list-opacity-1')) {
+                // 关闭弹窗
+                $popupList.removeClass('show_popup_list-opacity-1').addClass('show_popup_list-opacity-0');
+                $icon.removeClass('title_icon_up').addClass('title_icon_down');
+            }
+        }
+    })
+    
+  })(jQuery)
+</script>
+
+{% schema %}
+  {
+    "name": "NEW Collection Header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title",
+        "default": "COLLECTION PAGE"
+      },
+      {
+        "type": "textarea",
+        "id": "titleIcon",
+        "label": "Section Title Icon"
+      }
+    ],
+    "presets": [
+      {
+        "name": "NEW Collection Header"
+      }
+    ]
+  }
+{% endschema %}

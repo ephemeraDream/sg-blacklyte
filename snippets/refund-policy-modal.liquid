@@ -1,0 +1,186 @@
+<style>
+  .refund_policy_modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #00000080;
+    display: none;
+    padding: 5vh 0;
+  }
+
+  .refund_policy_modal .refund_policy_modal_contain {
+    width: 810px;
+    height: 90vh;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  .refund_policy_modal .refund_policy_modal_head {
+    height: 9.074vh;
+    background-color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36px;
+    font-family: DIN-BlackItalic;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 30px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #262626;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .refund_policy_modal .refund_policy_modal_head svg {
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+  }
+
+  .refund_policy_modal .refund_policy_modal_body {
+    padding: 1.56vh 40px 7.04vh 40px;
+    overflow: auto;
+    height: calc(100% - 9.074vh);
+  }
+
+  .refund_policy_modal .refund_policy_modal_body_title {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #262629;
+    margin-top: 4.629vh;
+    margin-bottom: 1.86vh;
+  }
+
+  .refund_policy_modal .refund_policy_modal_body_text {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #76767f;
+  }
+  /* IPhone */
+  @media (max-width: 768px) {
+    .refund_policy_modal .refund_policy_modal_contain {
+      width: 88%;
+    }
+    .refund_policy_modal .refund_policy_modal_head {
+      font-size: 16px;
+      line-height: 1.4;
+      padding: 0 15px;
+    }
+    .refund_policy_modal .refund_policy_modal_body {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+</style>
+
+<div class="refund_policy_modal">
+  <div class="refund_policy_modal_contain">
+    <div class="refund_policy_modal_head">
+      <span>{{ 'refund_policy.refund_policy' | t }}</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="37"
+        height="37"
+        viewBox="0 0 37 37"
+        fill="none"
+        id="close_refund_policy_modal"
+      >
+        <path d="M27.5762 9.19141L9.19139 27.5762" stroke="#262626" stroke-width="2"/>
+        <path d="M9.19141 9.19336L27.5762 27.5781" stroke="#262626" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="refund_policy_modal_body">
+      <div class="refund_policy_modal_body_title">
+        {{ 'refund_policy.return_and_refund_policy' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.return_and_refund_policy_text' | t }}
+      </div>
+      <div class="refund_policy_modal_body_title">
+        {{ 'refund_policy.initiating_a_return' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.initiating_a_return_text' | t }}
+      </div>
+      <div class="refund_policy_modal_body_title">
+        {{ 'refund_policy.return_eligibility' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.return_eligibility_text_one' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.return_eligibility_text_two' | t }}
+      </div>
+      <div class="refund_policy_modal_body_title">
+        {{ 'refund_policy.return_shipping_costs' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.return_shipping_costs_text_one' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.return_shipping_costs_text_two' | t }}
+      </div>
+      <div class="refund_policy_modal_body_title">
+        {{ 'refund_policy.damages_and_issues' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.damages_and_issues_text' | t }}
+      </div>
+      <div class="refund_policy_modal_body_title">
+        {{ 'refund_policy.exchanges' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.exchanges_text' | t }}
+      </div>
+      <div class="refund_policy_modal_body_title">
+        {{ 'refund_policy.refunds' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.refunds_text' | t }}
+      </div>
+      <div class="refund_policy_modal_body_title">
+        {{ 'refund_policy.warranty_returns' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.warranty_returns_text_one' | t }}
+      </div>
+      <div class="refund_policy_modal_body_text">
+        {{ 'refund_policy.warranty_returns_text_two' | t }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const refund_policy_modal = document.querySelector('.refund_policy_modal');
+  if (refund_policy_modal) {
+    document.querySelector('#refund_policy_btn').addEventListener('click', () => {
+      refund_policy_modal.style.display = 'block';
+      document.body.style.overflowY = 'hidden';
+    });
+    document.querySelector('#close_refund_policy_modal').addEventListener('click', () => {
+      refund_policy_modal.style.display = 'none';
+      document.body.style.overflowY = 'auto';
+    });
+    refund_policy_modal.addEventListener('click', (e) => {
+      if (e.target === refund_policy_modal) {
+        refund_policy_modal.style.display = 'none';
+        document.body.style.overflowY = 'auto';
+      }
+    });
+  }
+</script>

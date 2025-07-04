@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "athena_series_section_J7NAm3": {
+      "type": "athena-series-section",
+      "settings": {
+        "reactAppText": "My React App",
+        "background_color": "#ffffff",
+        "show_header": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "athena_series_section_J7NAm3"
+  ]
+}

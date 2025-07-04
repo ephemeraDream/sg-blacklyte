@@ -1,0 +1,97 @@
+.number_box_simplicity {
+  max-width: 75vw;
+  margin: 0 auto;
+  position: relative;
+  background-color: #0C0C0C;
+  padding: 5.3125vw 15vw 5.9375vw;
+}
+
+.number_box_simplicity .number_box_simplicity_title {
+  font-family: DIN-BlackItalic;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #FF0055;
+  text-align: center;
+}
+
+.number_box_simplicity .number_box_simplicity_subtitle {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #FF0055;
+  text-align: center;
+}
+
+.number_box_simplicity .number_box_simplicity_contain {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 3.59375vw;
+  padding: 0 0.625vw;
+}
+
+.number_box_simplicity .number_box_simplicity_item_num {
+  font-family: DIN-BlackItalic;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 30px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  vertical-align: middle;
+  color: #FF0055;
+}
+
+.number_box_simplicity .number_box_simplicity_item_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 1.25vw;
+}
+
+@media screen and (max-width: 768px) {
+  .number_box_simplicity {
+    max-width: 100vw;
+    padding: 6.67vw 5.33vw;
+  }
+
+  .number_box_simplicity .number_box_simplicity_title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .number_box_simplicity .number_box_simplicity_subtitle {
+    font-size: 16px;
+  }
+
+  .number_box_simplicity .number_box_simplicity_contain {
+    flex-wrap: wrap;
+    row-gap: 5.33vw;
+  }
+
+  .number_box_simplicity .number_box_simplicity_item {
+    flex: 0 0 50%;
+  }
+
+  .number_box_simplicity .number_box_simplicity_item_num {
+    font-size: 18px;
+  }
+
+  .number_box_simplicity .number_box_simplicity_item_text {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,187 @@
+{% assign sid = section.id %}
+<style>
+  #shopify-section-{{ sid }} .event_iwt-container{
+    background:{{section.settings.bg}};
+    padding:{{section.settings.margin}};
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper{
+    border-radius: 16px;
+    display:flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.text{
+    width:52%; 
+    padding:4%; 
+    text-align:center;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.text .content{
+    font-size: 24px;
+    line-height: 1.4;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.text .title{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    margin-top:32px;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.text .caption{
+    margin-top:8px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.image{
+    width:48%; 
+  }
+  @media only screen and (min-width: 2000px){
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .content{
+      font-size: 1.25vw;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .title{
+      margin-top:1.66vw;
+      font-size: 1.25vw;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .caption{
+      margin-top:0.41vw;
+      font-size: 0.84vw;
+    }
+  }
+  @media only screen and (min-width: 992px){
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.image{
+      position: absolute;
+      top: 0;
+      left: 52%;
+      width: 48%;
+      height: 100%;
+  }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  @media only screen and (max-width: 991px){
+    #shopify-section-{{ sid }} .event_iwt-container{
+      padding:{{section.settings.mbmargin}};
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper{
+      flex-direction: column-reverse;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text{
+      padding:16px; 
+      width:100%;
+    }
+     #shopify-section-{{ sid }} .event_iwt-wrapper>.text .content{
+      font-size: 16px;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .title{
+      font-size: 16px;
+      margin-top:16px;
+      line-height: 1.5;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .caption{
+      margin-top:4px;
+      font-size: 14px;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.image{
+      width:100%; 
+    }
+  }
+</style>
+<div class="event_iwt-container">
+  <div class="container-1570">
+    <div class="event_iwt-wrapper" style="background:{{ section.settings.content_bg }}">
+      <div class="text">
+        <div class="content" style="color:{{ section.settings.content_color }}">{{ section.settings.content }}</div>
+        <div class="title" style="color:{{ section.settings.title_color }}">{{ section.settings.title }}</div>
+        <div class="caption" style="color:{{ section.settings.caption_color }}">{{ section.settings.caption }}</div>
+      </div>
+      <div class="image">
+        {{ section.settings.img | image_url: width: '2048' | image_tag:class:"slide-pc" }}
+        {{ section.settings.image_mb | image_url: width: '1000' | image_tag:class:"slide-mobile" }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Event image with text",
+    "settings": [
+      {
+        "type": "color_background",
+        "id": "bg",
+        "label": "Background color of the section"
+      },
+      {
+        "type": "color_background",
+        "id": "content_bg",
+        "label": "Background color of the content"
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mb",
+        "label": "Image (mobile)"
+      },
+      {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+      },
+      {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+      },
+      {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption"
+      },
+      {
+        "type": "color_background",
+        "id": "content_color",
+        "label": "Content color",
+        "default": "#000"
+      },
+      {
+        "type": "color_background",
+        "id": "title_color",
+        "label": "Title color",
+        "default": "#000"
+      },
+      {
+        "type": "color_background",
+        "id": "caption_color",
+        "label": "Caption color",
+        "default": "#000000a5"
+      },
+       {
+        "type": "text",
+        "id": "margin",
+        "label": "PC margin",
+        "default": "100px 0 100px 0"
+      },
+      {
+        "type": "text",
+        "id": "mbmargin",
+        "label": "mb margin",
+        "default": "50px,,50px,"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Event image with text"
+      }
+    ]
+  }
+{% endschema %}

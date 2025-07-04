@@ -1,0 +1,118 @@
+{{ 'section-bundle-collection.css' | asset_url | stylesheet_tag }}
+
+<div class="bundle_collection">
+  <div class="bundle_collection_title">{{ section.settings.title }}</div>
+  <div class="bundle_collection_desc">{{ section.settings.description }}</div>
+  <div class="bundle_collection_contain">
+    {% for item in section.blocks %}
+      {% assign chair = item.settings.bundleProduct | first %}
+      {% assign desk = item.settings.bundleProduct | last %}
+      <div class="bundle_collection_item" data-chair="{{ chair.id }}" data-desk="{{ desk.id }}">
+        {% assign srcset_1x = item.settings.cover | image_url: width: 1420 | append: ' 1x, ' %}
+        {% assign srcset_2x = item.settings.cover | image_url: width: 670 | append: ' 2x, ' %}
+        {% assign srcset_3x = item.settings.cover | image_url: width: 670 | append: ' 3x, ' %}
+        {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+        {{-
+          item.settings.cover
+          | image_url: width: item.settings.cover.width
+          | image_tag:
+            sizes: '(min-width:769px) 45vw, 100vw',
+            srcset: srcset_init,
+            alt: item.settings.title,
+            class: 'bundle_collection_item_img'
+        -}}
+        <div class="bundle_collection_item_title">{{ item.settings.title }}</div>
+        <div class="bundle_collection_item_product_contain">
+          <div class="bundle_collection_item_product_flex">
+            {% assign total_price = 0 %}
+            {% for product in item.settings.bundleProduct %}
+              {% assign total_price = total_price | plus: product.price %}
+              <div class="bundle_collection_item_product_item">
+                <img
+                  src="{{ product.featured_image | image_url: width: 200,height: 280 }}"
+                  alt="{{ product.title }}"
+                >
+              </div>
+            {% endfor %}
+          </div>
+          <div class="bundle_collection_item_product_text bundle_collection_item_click">
+            {{ 'products.product.text.view_all' | t: variants_count: chair.variants.size }}
+          </div>
+        </div>
+        <div class="bundle_collection_item_save">
+          {% assign save_price = total_price | times: 0.2 | money_without_trailing_zeros %}
+          {{ 'products.product.text.you_save_up_to' | t: save_price: save_price }}
+        </div>
+        <div class="bundle_collection_item_btn bundle_collection_item_click">
+          {{ 'products.product.text.configure_now' | t }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="7" height="12" viewBox="0 0 7 12" fill="none">
+            <path d="M0.90625 1L5.81323 5.90698L0.90625 10.814" stroke="white" stroke-width="1.6"/>
+          </svg>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  const btns = document.querySelectorAll('.bundle_collection_item_click');
+  btns.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      const target = event.target.closest('.bundle_collection_item');
+      const chairId = target.getAttribute('data-chair');
+      const deskId = target.getAttribute('data-desk');
+      location.href = `/pages/product-bundle/chairId=${chairId}&deskId=${deskId}`;
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "bundle collection",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bundleItem",
+      "name": "bundle item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "cover",
+          "label": "cover"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "product_list",
+          "id": "bundleProduct",
+          "label": "bundle Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "bundle collection"
+    }
+  ]
+}
+{% endschema %}

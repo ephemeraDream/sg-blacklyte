@@ -1,0 +1,201 @@
+{% comment %} 
+  减配版桌子
+{% endcomment %}
+<style>
+  
+  .tab-list{
+    display: flex;
+    gap: 20px;
+    margin: 20px auto 50px;
+    justify-content: center;
+  }
+  .tab-list .item-tab{
+    font: 500 16px var(--font-family-1);
+    color: #262629;
+    padding: 0 26px;
+    line-height: 40px;
+    cursor: pointer;
+    background: #F5F5F5;
+    border-radius: 50px;
+  }
+  .tab-list .item-tab.item-tab-active{
+    color: #fff;
+    background: linear-gradient(270deg, #8DE0FC 0%, #2672EB 100%);
+  }
+  #resource_container_section_ids .recommend_container .recommend_container_box .container_sizes_box .component_items span.component_key_blod{
+    font-size: 20px;
+    line-height: 39px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 14px;
+  }
+  .atlas-lite-desk-box {
+    touch-action: pan-y; /* 禁止横向传播，保持纵向滚动 */
+    overflow: hidden;     /* 强制控制 swiper 滑动区域 */
+  }
+  /* IPhone */
+  @media(max-width: 767px) {
+    .tab-list{
+        max-width: 90vw;
+        width: 90vw;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+    }
+    .tab-list::-webkit-scrollbar {
+      display: none; /* Chrome 隐藏滚动条 */
+    }
+  }
+</style>
+
+<div class="resource-atlas-cont">
+  <div class="tab-list">
+    <span class="item-tab item-tab-active">1200mm×800mm</span>
+    <span class="item-tab">1400mm×800mm</span>
+    <span class="item-tab">1600mm×800mm</span>
+    <span class="item-tab">1800mm×800mm</span>
+  </div>
+  <div class="atlas-lite-desk-box swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+          {% if block.type == 'smallImage' %}
+            <div class="swiper-slide">
+              <div class="recommend_container_box">
+                <div class="container_sizes_box">
+                  {% if block.settings.item_main-pic != blank %}
+                    <div class="image-cont sizes_image">
+                      <a class="image image-adapt" role="link" aria-disabled="false">
+                          {%- assign height_img = block.settings.item_main-pic.width | divided_by: block.settings.item_main-pic.aspect_ratio | round -%}
+                          {{ block.settings.item_main-pic | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'lazyload', height: height_img, sizes: "100vw", widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                      </a>
+                    </div>
+                  {% endif %}
+                  <div class="sizes_container">
+                    <div class="sizes_container_box1">{{ block.settings.item-SizeLoadAndAdjusrmenbts }}</div>
+                    <div class="container_center_line"></div>
+                    <div class="sizes_container_box2">{{ block.settings.item-StructureAndMaterials }}</div>
+                    <div class="container_center_line"></div>
+                    <div class="Specification_container_box4">{{ block.settings.item-ElectricalSpecifications }}</div>
+                    <div class="container_center_line"></div>
+                    <div class="sizes_container_box3 sizes_container_box3_desk">{{ block.settings.item-PackageSize }}</div>
+                    <div class="container_center_line"></div>
+                  </div>
+                </div>
+                <!-- What‘s in the box -->
+                <div class="resources_box_container">
+                  <div class="box_container_content">
+                    {{ block.settings.item-boxHtml }}
+                  </div>
+                  <div class="box_content_image">
+                    <a class="image image-adapt" role="link" aria-disabled="false">
+                        {%- assign height_img = block.settings.box-main-pic.width | divided_by: block.settings.box-main-pic.aspect_ratio | round -%}
+                        {{ block.settings.box-main-pic | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'lazyload', height: height_img, sizes: "100vw", widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                    </a>
+                  </div>
+                </div>
+                <div class="resources_box_container_bottom_line"></div>
+                <!-- 安装视频和说明书 -->
+                <div class="resources_video_usermanual">
+                  <div class="resources_video" style="display: none;">
+                    <div class="resources_video_image" data-fancybox="video-gallery" href="{{ block.settings.item-resourcesVideoLink }}">
+                      <div class="logo_image">
+                        <a class="image image-adapt" role="link" aria-disabled="false">
+                            {%- assign height_imgs = block.settings.item-resourcesVideoImageLogo.width | divided_by: block.settings.item-resourcesVideoImageLogo.aspect_ratio | round -%}
+                            {{ block.settings.item-resourcesVideoImageLogo | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'lazyload', height: height_imgs, sizes: "100vw", widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                        </a>
+                      </div>
+                      <div class="resources_usermanual_product_text resources_usermanual_product_text_video">{{ block.settings.item-productTitle }}</div>
+                      <div class="resources_usermanual_tag_text resources_usermanual_product_text_video">Assembly Guide</div>
+                      <div class="resources_video_image_bgImg">
+                        <a class="image image-adapt" role="link" aria-disabled="false">
+                            {%- assign height_imgs = block.settings.item-resourcesVideoImage.width | divided_by: block.settings.item-resourcesVideoImage.aspect_ratio | round -%}
+                            {{ block.settings.item-resourcesVideoImage | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'lazyload', height: height_imgs, sizes: "100vw", widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                        </a>
+                      </div>
+                    </div>
+                    <div class="resources_video_content">
+                      <div class="title">{{ block.settings.item-resourcesVideoTitle }}</div>
+                      <div class="desc">{{ block.settings.item-resourcesVideoDesc }}</div>
+                      <div class="play_button" data-fancybox="video-gallery" href="{{ block.settings.item-resourcesVideoLink }}">
+                        <span class="play_button_icon">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="7" cy="7" r="6.5" stroke="#BD1B21"/>
+                            <path d="M10.7695 7.00019L5.11569 10.2644L5.11569 3.73594L10.7695 7.00019Z" fill="#BD1B21"/>
+                          </svg>
+                        </span>
+                        <span class="play_button_text">{{ block.settings.item-resourcesVideoButton }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="resources_usermanual">
+                    <div class="resources_usermanual_image">
+                      <div class="logo_image">
+                        <a class="image image-adapt" role="link" aria-disabled="false">
+                            {%- assign height_img = block.settings.item-resourcesUserManualImage.width | divided_by: block.settings.item-resourcesUserManualImage.aspect_ratio | round -%}
+                            {{ block.settings.item-resourcesUserManualImage | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'lazyload', height: height_img, sizes: "100vw", widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                        </a>
+                      </div>
+                      <div class="resources_usermanual_product_text">{{ block.settings.item-productTitle }}</div>
+                      <div class="resources_usermanual_tag_text">User Manual</div>
+                    </div>
+                    <div class="resources_usermanual_content">
+                      <div class="title">{{ block.settings.item-resourcesUserManualTitle }}</div>
+                      <div class="desc">{{ block.settings.item-resourcesUserManualDesc }}</div>
+                      <div class="play_button" data-url={{ block.settings.item-resourcesUserManualLink }}>
+                        <span class="play_button_icon">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.02539 0H2.1875C1.70488 0 1.3125 0.392383 1.3125 0.875V13.125C1.3125 13.6076 1.70488 14 2.1875 14H11.8125C12.2951 14 12.6875 13.6076 12.6875 13.125V4.66211C12.6875 4.19863 12.5029 3.75293 12.1748 3.4248L9.2627 0.512695C8.93457 0.18457 8.48887 0 8.02539 0ZM8.75 1.2373L11.4502 3.9375H9.625C9.14238 3.9375 8.75 3.54512 8.75 3.0625V1.2373ZM11.375 13.125H2.625C2.38301 13.125 2.1875 12.9295 2.1875 12.6875V1.3125C2.1875 1.07051 2.38301 0.875 2.625 0.875H7.875V3.0625C7.875 4.0291 8.6584 4.8125 9.625 4.8125H11.8125V12.6875C11.8125 12.9295 11.617 13.125 11.375 13.125Z" fill="#C51119"/>
+                          </svg>
+                        </span>
+                        <span class="play_button_text">{{ block.settings.item-resourcesUserManualButton }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  let resourceCont = new Swiper('.atlas-lite-desk-box', {
+    grabCursor : true,
+    loop: false,
+    slidesPerView: 1,
+    nested: true,
+    autoHeight: true,
+    on: {
+        slideChange: function (e) {
+          const index = e.snapIndex
+            // 可选：切换 tab 高亮
+          $('.resource-atlas-cont .tab-list .item-tab')
+            .removeClass('item-tab-active')
+            .eq(index).addClass('item-tab-active');
+        }
+    }
+  })
+  // 点击tab切换不同规格桌子的尺寸
+  $('.resource-atlas-cont .tab-list .item-tab').click(function() {
+      const currentItem = $(this);
+      const index = currentItem.index();
+    
+      // 切换 tab 的 active 状态
+      $('.resource-atlas-cont .tab-list .item-tab').removeClass('item-tab-active');
+      currentItem.addClass('item-tab-active');
+    
+      // 同步 Swiper 切换
+      resourceCont.slideTo(index);
+  })
+
+  $('.tab-list').on('touchstart touchmove', function (e) {
+    e.stopPropagation();
+  });
+
+  $('.atlas-lite-desk-box').on('touchstart touchmove', function (e) {
+    e.stopPropagation(); // 确保移动端阻断冒泡
+  });
+</script>

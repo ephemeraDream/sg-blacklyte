@@ -1,0 +1,111 @@
+{%- liquid
+    assign button_text = 'Submit'
+-%}
+{%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  <div class="newsletter-form__field-wrapper" id="newsletter-form__field-wrapper_id">
+      <div class="field">
+          <label class="field__label hiddenLabels" for="NewsletterForm--{{ section.id }}">{{ 'newsletter.label' | t }}</label>
+          <input id="NewsletterForm--{{ section.id }}" type="email" name="contact[email]" class="field__input form-input-placeholder" value="{{ form.email }}" aria-required="true" autocorrect="off" autocapitalize="off" autocomplete="email"{% if form.errors %} autofocus aria-invalid="true" aria-describedby="ContactFooter-error"{% elsif form.posted_successfully? %} aria-describedby="ContactFooter-success"{% endif %} placeholder="Enter Your Email" required="required">
+      </div>
+      {%- if block.settings.enable_deep_button_border -%}
+      <div class="submit-button-wrapper">
+      {%- endif -%} 
+      <button type="submit" class="button newsletter-form__button" name="commit" id="Subscribe--{{ section.id }}" aria-label="{{ 'newsletter.button_label' | t }}" style="--button-width: {{ button_width }}">{% if settings.enable_button_1_border_outside %}<span>{% endif %}{{ button_text }}{% if settings.enable_button_1_border_outside %}</span>{% endif %}</button>   
+      {%- if block.settings.enable_deep_button_border -%}
+      </div>
+      {%- endif -%}
+  </div>
+  {%- if form.errors -%}
+      <div class="newsletter-form__message newsletter-form__message--error form__message" id="ContactFooter-error">
+          {% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+      </div>
+  {%- endif -%}
+  {%- if form.posted_successfully? -%}
+  <script>
+      $(document).ready(function() {
+          var newsletterSuccessPopup = (function() {
+              var popup = $('.newsletter-success-modal');
+              var close = popup.find('.close');
+              var success = popup.find('.success');
+              var error = popup.find('.error');
+              var overlay = $('.background-overlay');
+              popup.show();
+              overlay.show();
+              error.hide();
+              success.show();
+              // $.cookie('emailSubcribeModal', 'closed', {
+              //     expires: 1,
+              //     path: '/'
+              // });
+              close.off('click').on('click', function() {
+                  popup.fadeOut();
+                  overlay.hide();
+              });
+              overlay.off('click').on('click', function() {
+                  popup.fadeOut();
+                  overlay.hide();
+              });
+          })();
+          var newURL = location.href.split("?")[0];
+          window.history.pushState('object', document.title, newURL);
+      })
+  </script>
+  {%- else -%}
+      <script>
+          $(document).ready(function() {
+              if (window.location.href.indexOf('newsletter&form_type=customer') > -1) {
+                  var newsletterSuccessPopup = (function() {
+                      var popup = $('.newsletter-success-modal');
+                      var close = popup.find('.close');
+                      var success = popup.find('.success');
+                      var error = popup.find('.error');
+                      var overlay = $('.background-overlay');
+                      popup.show();
+                      overlay.show();
+                      error.show();
+                      success.hide();
+                      // $.cookie('emailSubcribeModal', 'closed', {
+                      //     expires: 1,
+                      //     path: '/'
+                      // });
+                      close.off('click').on('click', function() {
+                          popup.fadeOut();
+                          overlay.hide();
+                      });
+                      overlay.off('click').on('click', function() {
+                          popup.fadeOut();
+                          overlay.hide();
+                      });
+                  })();
+                  var newURL = location.href.split("?")[0];
+                  window.history.pushState('object', document.title, newURL);
+              }
+          })
+      </script>
+  {%- endif -%}
+{%- endform -%}
+<style>
+  /* #newsletter-form__field-wrapper_id {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  } */
+  .button.newsletter-form__button {
+    background-color: #676CFE;
+    color: #ffffff;
+    border: none;
+    /* width: 100px; */
+    margin-top: 14px;
+    max-height: 48px;
+  }
+  /* .field {
+    width: calc(100% - 111px);
+  } */
+  .field__input.form-input-placeholder {
+    background-color: #ffffff;
+  }
+  .field__input.form-input-placeholder::placeholder {
+    color: #999999 !important;
+  }
+</style>

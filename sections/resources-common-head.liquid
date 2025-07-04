@@ -1,0 +1,280 @@
+{% comment %}
+ resources合集顶部:
+   展示产品包括: kraken pro、kraken、Athena pro、Athena、Athena X、Atlas Desk
+   功能:
+     1. pc端展示一个产品图以及产品名称. 移动端只展示 产品名称.
+     2. 产品可点击, 点击产品时, 下面切换展示对应产品的各种资源信息, 包括细节图、说明书、安装视频.
+     3. 说明书(PDF)点击按钮 打开新窗口阅读, 安装视频点击按钮 弹窗观看.
+{% endcomment %}
+<style>
+  .resources_module {
+    width: 100vw;
+    background-color: #EDEDED;
+    padding-top: 20px;
+  }
+  .resources_module .resources_products {
+    display: flex;
+    justify-content: space-around;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .resources_module .resources_products .items_mobile {
+    display: none;
+  }
+  .resources_module .resources_products .item {
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .resources_module .resources_products .item.item_active:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #333333;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .resources_module .resources_products .item .item_image {
+    max-height: 140px;
+    max-width: 140px;
+    box-sizing: border-box;
+  }
+  .resources_module .resources_products .item .item_image img {
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+  }
+  .resources_module .resources_products .item .item_title {
+    /* font-family: "Orbitron"; */
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+    font-weight: 500;
+    margin-top: 10px;
+    padding-bottom: 20px;
+  }
+  .resources_module .resources_products .item .item_title .item_title_icon {
+    display: none;
+  }
+
+  /* 2000px 以上 */
+  @media(min-width: 2000px) {
+    .resources_module .resources_products .item .item_image {
+      max-height: 180px;
+      max-width: 180px;
+    }
+    .resources_module .resources_products .item .item_title {
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
+  
+  /* 1025px ~ 1900px */
+  @media(min-width: 1026px) and (max-width: 1900px) {}
+
+  /* iPad */
+  @media(min-width: 768px) and (max-width: 1024px) {}
+  
+  /* iPhone */
+  @media(max-width: 767px) {
+    .resources_module {
+      padding-top: 10px;
+    }
+    .resources_module .resources_products .item .item_image {
+      display: none;
+    }
+    .resources_module .resources_products {
+      flex-direction: column;
+      height: 50px;
+      max-height: 50px;
+      overflow-y: hidden;
+    }
+    .resources_module .resources_products .item .item_title {
+      font-size: 15px;
+    }
+    .resources_module .resources_products .item .item_title .item_title_icon {
+      display: inline-block;
+      transition-property: all !important;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+      transition-duration: 150ms !important;
+    }
+    .resources_module .resources_products .item .item_title .item_title_icon svg {
+      fill: none;
+      stroke: none;
+      width: 20px;
+      height: 20px;
+    }
+    .resources_module .resources_products .item .item_title .item_title_icon.item_title_icon_active {
+      transform: rotate(180deg);
+    }
+    .resources_module .resources_products .items_mobile {
+      display: block;
+      border: 0.5px solid #999;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 142px;
+      z-index: 999;
+      background-color: #EDEDED;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      transition-property: all !important;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+      transition-duration: 150ms !important;
+    }
+    .resources_module .resources_products .items_mobile.items_mobile_show {
+      opacity: 1;
+    }
+    .resources_module .resources_products .items_mobile.items_mobile_hide {
+      opacity: 0;
+    }
+    .resources_module .resources_products .items_mobile .items_mobile_item {
+      /* font-family: "Orbitron"; */
+      font-size: 15px;
+      line-height: 46px;
+      color: #333333;
+      font-weight: 500;
+      text-align: left;
+      width: 180px;
+      text-indent: 20px;
+    }
+    .resources_module .resources_products .items_mobile .items_mobile_item.items_mobile_item_active {
+      background-color: #fff;
+    }
+  }
+  
+</style>
+
+<section class="resources_module">
+  <div class="resources_products">
+      {% for block in section.blocks %}
+        <div class="item" data-url="{{ block.settings.ItemTitle }}">
+          <div class="item_image">
+            {% if block.settings.Avatar != blank %}
+              {{-
+                block.settings.Avatar
+                | image_url: width: block.settings.Avatar.width
+                | image_tag:
+                  is: 'loess-image',
+                  loading: 'lazy',
+                  sizes: '100vw',
+                  widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                  class: ''
+              -}}
+            {% else %}
+              <img src="" loading="lazy">
+            {% endif %}
+          </div>
+          <div class="item_title">
+            <span class="item_title_text">{{ block.settings.ItemTitle }}</span>
+            <span class="item_title_icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 15L20 25L10 15" stroke="#333333" stroke-width="2"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+      <div class="items_mobile items_mobile_hide">
+        <div class="items_mobile_item items_mobile_item_active">Kraken Pro</div>
+        <div class="items_mobile_item">Kraken</div>
+        <div class="items_mobile_item">Athena Pro</div>
+        <div class="items_mobile_item">Athena</div>
+        <div class="items_mobile_item">Athena X</div>
+        <div class="items_mobile_item">Atlas Desk</div>
+        <div class="items_mobile_item">Atlas Lite Desk</div>
+      </div>
+  </div>
+                  
+</section>
+<script>
+  // 判断是否是非移动端
+  function isMobile() {
+    return window.innerWidth >= 768;
+  }
+  if(isMobile()) {
+    $('.resources_module .resources_products .item:nth-of-type(1)').addClass('item_active')
+    // 判断点击事件, 当前点击的item 添加 item_active
+    $('.resources_module .resources_products').on('click', '.item', function() {
+        const dataIndex = $(this).index()
+        // 移除所有 .item 的 item_active 类
+        $('.resources_module .resources_products .item').removeClass('item_active');
+        // 给当前点击的 .item 添加 item_active 类
+        $(this).addClass('item_active');
+      
+        // 获取当前点击 .item 的 data-url 值
+        var dataUrl = $(this).data('url');
+        slideSwipers(dataIndex)
+    });
+  } else {
+    $('.resources_module .resources_products .item .item_title .item_title_icon').on('click', function(e) {
+      handleClickShowHideIsMobile()
+    })
+    $('.resources_module .resources_products .item .item_title .item_title_text').on('click', function(e) {
+      handleClickShowHideIsMobile()
+    })
+    $('.resources_module .resources_products .items_mobile .items_mobile_item').on('click', function(e) {
+      
+      if(e.target.textContent) {
+        const indexKey = $(this).index()
+        $('.resources_module .resources_products .item:nth-of-type(1) .item_title .item_title_text').text(e.target.textContent)
+        // 移除所有 .item 的 item_active 类
+        $('.resources_module .resources_products .items_mobile .items_mobile_item').removeClass('items_mobile_item_active');
+        // 给当前点击的 .item 添加 item_active 类
+        $(this).addClass('items_mobile_item_active');
+        
+        handleClickShowHideIsMobile()
+        slideSwipers(indexKey)
+      }
+    })
+  }
+
+  function handleClickShowHideIsMobile() {
+    const $icon = $('.resources_module .resources_products .item .item_title .item_title_icon')
+    const $popItems = $('.resources_module .resources_products .items_mobile')
+    if($icon.hasClass('item_title_icon_active')) {
+      $('.resources_module .resources_products .item .item_title .item_title_icon').removeClass('item_title_icon_active')
+      $('.resources_module .resources_products .items_mobile').removeClass('items_mobile_show').addClass('items_mobile_hide')
+    } else {
+      $('.resources_module .resources_products .item .item_title .item_title_icon').addClass('item_title_icon_active')
+      $('.resources_module .resources_products .items_mobile').removeClass('items_mobile_hide').addClass('items_mobile_show')
+    }
+  }
+
+  // 点击切换swiper
+  function slideSwipers(i) {
+    window.resourceSwiper.slideToLoop(i)
+  }
+  
+</script>
+
+{% schema %}
+  {
+    "name": "Resources Common Head",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "Avatar",
+            "label": "Item Image"
+          },
+          {
+            "type": "textarea",
+            "id": "ItemTitle",
+            "label": "Item Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Resources Common Head"
+      }
+    ]
+  }
+{% endschema %}

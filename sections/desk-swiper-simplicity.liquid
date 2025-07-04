@@ -1,0 +1,136 @@
+{{ 'section-desk-swiper-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="desk_swiper_simplicity">
+  <div class="desk_swiper_simplicity_info">
+    <div class="desk_swiper_simplicity_subtitle">{{ section.settings.sub_title }}</div>
+    <div class="desk_swiper_simplicity_title">{{ section.settings.title }}</div>
+    <div class="desk_swiper_simplicity_desc">{{ section.settings.description }}</div>
+  </div>
+  <div class="desk_swiper_simplicity_swiper swiper">
+    <div class="swiper-wrapper">
+      {% for item in section.blocks %}
+        <div class="swiper-slide">
+          {% assign srcset_1x = item.settings.swiper_image | image_url: width: 1728 | append: ' 1x, ' %}
+          {% assign srcset_2x = item.settings.swiper_image | image_url: width: 670 | append: ' 2x, ' %}
+          {% assign srcset_3x = item.settings.swiper_image | image_url: width: 670 | append: ' 3x, ' %}
+          {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+          {{-
+            item.settings.swiper_image
+            | image_url: width: item.settings.swiper_image.width
+            | image_tag:
+              sizes: '(min-width:769px) 45vw, 100vw',
+              srcset: srcset_init,
+              alt: section.settings.title,
+              class: 'desk_swiper_simplicity_swiper_image'
+          -}}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="desk_swiper_simplicity_swiper_navigation">
+      <div class="desk_swiper_simplicity_swiper_prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <g clip-path="url(#clip0_13479_1810)">
+          <g clip-path="url(#clip1_13479_1810)">
+          <path d="M20.1148 36.1043C29.0951 36.1043 36.375 28.8244 36.375 19.8441C36.375 10.8639 29.0951 3.58398 20.1148 3.58398C11.1346 3.58398 3.85471 10.8639 3.85471 19.8441C3.85471 28.8244 11.1346 36.1043 20.1148 36.1043Z" fill="white"/>
+          <path d="M20.1148 36.1043C29.0951 36.1043 36.375 28.8244 36.375 19.8441C36.375 10.8639 29.0951 3.58398 20.1148 3.58398C11.1346 3.58398 3.85471 10.8639 3.85471 19.8441C3.85471 28.8244 11.1346 36.1043 20.1148 36.1043Z" stroke="white" stroke-width="1.7561" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22.5527 24.7209L17.6747 19.8429L22.5527 14.9648" stroke="black" stroke-width="1.7561" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_13479_1810">
+          <rect width="40" height="40" fill="white" transform="matrix(-1 0 0 1 40 0)"/>
+          </clipPath>
+          <clipPath id="clip1_13479_1810">
+          <rect width="40" height="40" fill="white" transform="matrix(-1 0 0 1 40 0)"/>
+          </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <div class="desk_swiper_simplicity_swiper_next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <g clip-path="url(#clip0_13479_1804)">
+          <g clip-path="url(#clip1_13479_1804)">
+          <path d="M19.8852 36.1043C10.9049 36.1043 3.625 28.8244 3.625 19.8441C3.625 10.8639 10.9049 3.58398 19.8852 3.58398C28.8654 3.58398 36.1453 10.8639 36.1453 19.8441C36.1453 28.8244 28.8654 36.1043 19.8852 36.1043Z" fill="white"/>
+          <path d="M19.8852 36.1043C10.9049 36.1043 3.625 28.8244 3.625 19.8441C3.625 10.8639 10.9049 3.58398 19.8852 3.58398C28.8654 3.58398 36.1453 10.8639 36.1453 19.8441C36.1453 28.8244 28.8654 36.1043 19.8852 36.1043Z" stroke="white" stroke-width="1.7561" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17.4453 24.7209L22.3234 19.8429L17.4453 14.9648" stroke="black" stroke-width="1.7561" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_13479_1804">
+          <rect width="40" height="40" fill="white"/>
+          </clipPath>
+          <clipPath id="clip1_13479_1804">
+          <rect width="40" height="40" fill="white"/>
+          </clipPath>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  new Swiper('.desk_swiper_simplicity_swiper', {
+    {% comment %} loop: true, {% endcomment %}
+    navigation: {
+      nextEl: '.desk_swiper_simplicity_swiper_next',
+      prevEl: '.desk_swiper_simplicity_swiper_prev',
+    },
+    breakpoints: {
+      768: {
+        spaceBetween: 22,
+        slidesPerView: 'auto',
+      },
+      0: {
+        spaceBetween: 0,
+        slidesPerView: 1,
+      },
+    },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "desk swiper simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "sub title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "swiperItem",
+      "name": "swiper Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "swiper_image",
+          "label": "swiper image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "desk swiper simplicity"
+    }
+  ]
+}
+{% endschema %}

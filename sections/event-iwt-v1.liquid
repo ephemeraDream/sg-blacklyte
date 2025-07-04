@@ -1,0 +1,203 @@
+{% assign sid = section.id %}
+<style>
+  #shopify-section-{{ sid }} .event_iwt-container{
+    background:{{section.settings.bg}};
+    padding:{{section.settings.margin}};
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper{
+    border-radius: 16px;
+    position: relative;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.text{
+    position:absolute;
+    top:50%;
+    left:48px;
+    transform:translateY(-50%);
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.text .content{
+    font-size: 20px;
+    line-height: 1.4;
+    margin-top:16px;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.text .title{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.text .btn{
+    margin-top:24px;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+    display:inline-block;
+    border-radius: calc(var(--btn-1-border-radius));
+    padding: 8px 16px;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.text svg{
+    width: 14px;
+    height: 14px;
+    margin-top: -4px;
+    stroke-width: 0;
+  }
+  #shopify-section-{{ sid }} .event_iwt-wrapper>.image{
+    
+  }
+  @media only screen and (min-width: 2000px){
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text{
+      left:2.5vw;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .content{
+      font-size: 1.04vw;
+      margin-top:.84vw;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .title{
+      font-size: 2.5vw;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .btn{
+      margin-top:1.25vw;
+      font-size: 0.84vw;
+      padding: 0.41vw .84vw;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text svg{
+      width: 0.72vw;
+      height: 0.72vw;
+      margin-top: -0.2vw;
+    }
+  }
+  @media only screen and (min-width: 769px){
+  }
+  @media only screen and (max-width: 991px){
+    #shopify-section-{{ sid }} .event_iwt-container{
+      padding:{{section.settings.mbmargin}};
+    }
+   #shopify-section-{{ sid }} .event_iwt-wrapper>.text{
+      position:absolute;
+      top:32px;
+      left:50%;
+      transform:translateX(-50%);
+     text-align:center;
+     width:95%;
+    }
+     #shopify-section-{{ sid }} .event_iwt-wrapper>.text .content{
+      font-size: 16px;
+       margin-top:8px;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .title{
+             padding: 0 22px;
+      font-size: 28px;
+      line-height:1.28;
+    }
+    #shopify-section-{{ sid }} .event_iwt-wrapper>.text .caption{
+      margin-top:24px;
+      font-size: 16px;
+    }
+
+  }
+</style>
+<div class="event_iwt-container">
+  <div class="container-1570">
+    <div class="event_iwt-wrapper" style="background:{{ section.settings.content_bg }}">
+      <div class="text">
+        <div class="title" style="color:{{ section.settings.title_color }}">{{ section.settings.title }}</div>
+        <div class="content" style="color:{{ section.settings.content_color }}">{{ section.settings.content }}</div>
+        {% if section.settings.btn != blank %}
+        <a href="{{ section.settings.link }}" class="btn" style="color:{{ section.settings.content_color }};background:{{ section.settings.btn_color }}">
+          {{ section.settings.btn }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M10.9641 6.60662L3.92031 1.10505C3.90191 1.09056 3.87979 1.08156 3.8565 1.07907C3.8332 1.07659 3.80968 1.08072 3.78863 1.091C3.76758 1.10128 3.74986 1.11729 3.7375 1.13719C3.72514 1.15709 3.71864 1.18007 3.71875 1.20349V2.4113C3.71875 2.48787 3.75469 2.5613 3.81406 2.60818L9.43906 7.00037L3.81406 11.3926C3.75313 11.4394 3.71875 11.5129 3.71875 11.5894V12.7972C3.71875 12.9019 3.83906 12.9597 3.92031 12.8957L10.9641 7.39412C11.0239 7.34742 11.0724 7.28768 11.1057 7.21945C11.139 7.15122 11.1563 7.07629 11.1563 7.00037C11.1563 6.92444 11.139 6.84951 11.1057 6.78128C11.0724 6.71305 11.0239 6.65332 10.9641 6.60662Z" fill="currentColor"/>
+          </svg>
+        </a>
+        {% endif %}
+      </div>
+      <div class="image">
+        {{ section.settings.img | image_url: width: '2048' | image_tag:class:"slide-pc" }}
+        {{ section.settings.image_mb | image_url: width: '1000' | image_tag:class:"slide-mobile" }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Event image with text v1",
+    "settings": [
+      {
+        "type": "color_background",
+        "id": "bg",
+        "label": "Background color of the section"
+      },
+      {
+        "type": "color_background",
+        "id": "content_bg",
+        "label": "Background color of the content"
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mb",
+        "label": "Image (mobile)"
+      },
+      {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+      },
+      {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+      },
+      {
+          "type": "text",
+          "id": "btn",
+          "label": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "color_background",
+        "id": "content_color",
+        "label": "Content color",
+        "default": "#000"
+      },
+      {
+        "type": "color_background",
+        "id": "title_color",
+        "label": "Title color",
+        "default": "#000"
+      },
+      {
+        "type": "color_background",
+        "id": "btn_color",
+        "label": "Button color",
+        "default": "#000000a5"
+      },
+       {
+        "type": "text",
+        "id": "margin",
+        "label": "PC margin",
+        "default": "100px 0 100px 0"
+      },
+      {
+        "type": "text",
+        "id": "mbmargin",
+        "label": "mb margin",
+        "default": "50px,,50px,"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Event image with text v1"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,1044 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "common": {
+      "close": "Close",
+      "menu": "Menu",
+      "categories": "Categories",
+      "log_in": "Log in",
+      "account": "Account",
+      "search": "Search",
+      "wishlist": "Wishlist",
+      "video": "Click to watch video",
+      "video_alt": "Video Alt",
+      "scroll_down": "Scroll Down",
+      "lang_cur": "Language / Currency Sidebar",
+      "buy_now_btn": "Buy Now"
+    },
+    "password_page": {
+      "login_form_heading": "Enter store using password:",
+      "login_password_button": "Enter using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_error": "Wrong password!",
+      "login_form_submit": "Enter",
+      "modal": "Password modal",
+      "admin_link_html": "Are you the store owner? <a href=\"/admin\" class=\"link underlined-link\">Log in here</a>",
+      "powered_by_shopify_html": "This shop will be powered by {{ shopify }}",
+      "label": "Early Access Login",
+      "label_2": "Early Access Login*",
+      "input": "Early access password...",
+      "input_2": "Enter Password",
+      "submit": "Enter"
+    },
+    "social": {
+      "alt_text": {
+        "share_on_facebook": "Share on Facebook",
+        "share_on_twitter": "Tweet on Twitter",
+        "share_on_pinterest": "Pin on Pinterest"
+      },
+      "links": {
+        "twitter": "Twitter",
+        "facebook": "Facebook",
+        "pinterest": "Pinterest",
+        "instagram": "Instagram",
+        "tumblr": "Tumblr",
+        "snapchat": "Snapchat",
+        "youtube": "YouTube",
+        "vimeo": "Vimeo",
+        "tiktok": "TikTok",
+        "google_plus": "Google Plus",
+        "telegram": "Telegram",
+        "email": "Email",
+        "whatsapp": "Whatsapp",
+        "linkedin": "Linkedin"
+      }
+    },
+    "continue_shopping": "Continue shopping",
+    "back_to_previous_page": "Go Back To Previous page",
+    "pagination": {
+      "label": "Pagination",
+      "page": "Page {{ number }}",
+      "next": "Next",
+      "previous": "Prev",
+      "prev": "Prev"
+    },
+    "search": {
+      "search": "Search",
+      "title": "Search",
+      "close": "Close",
+      "search_product": "Search products...",
+      "search_a_product": "Search for a product...",
+      "search_the_store": "Search the store",
+      "search_the_store_2": "Search entire store here...",
+      "im_looking_for": "I’m looking for",
+      "label": "Label Search",
+      "search_result_title": "Product Results",
+      "search_no_result": "Search for",
+      "search_more": "Search more",
+      "view_all": "View All Results ({{ count }})"
+    },
+    "cart": {
+      "cart": "Cart",
+      "shopping_cart": "Shopping Cart",
+      "my_cart": "My Cart",
+      "view": "View my cart ({{ count }})",
+      "item_added": "Item added to your cart",
+      "shipping_calculator_button": "Calculate Shipping",
+      "shipping_calculator_calculating": "Calculating...",
+      "shipping_calculator_error_message": "Error: Please enter right shipping information",
+      "shipping_calculator_success_many_rates": {
+        "there_are": "There are",
+        "shipping_rates_available_for": "shipping rates available for",
+        "starting_at": ", starting at"
+      },
+      "shipping_calculator_success_one_rate": "There is one shipping rate available for",
+      "shipping_calculator_success_no_rate": "There is no shipping rate available for this order and destination.",
+      "shipping_calculator_success_at": "at",
+      "cart_countdown": "Please, hurry! Someone has placed an order on one of the items you have in the cart. We'll keep it for you for",
+      "cart_countdown_minutes": "minutes.",
+      "note": "Add Order Note",
+      "OfficialWarranty": "3-Year Official Blacklyte Warranty",
+      "OfficialWarrantyDetail": "Blacklyte chairs and desks are designed and certified for safety and durability. We offer the most comprehensive warranty, and wear and tear coverage for 36 months.",
+      "FreeReturns": "30-day refund/return policy",
+      "FreeReturnsDetails": "If the product you receive is damaged, faulty, doesn't match your order or even you don't like it, don't worry — you can easily return it within 30 days.",
+      "ShippingTime": "Shipping Time",
+      "shippingTimeInfo": "Unless explicitly stated otherwise on the product page, inventory orders are typically shipped the next business day and will be delivered within 1-5 business days.",
+      "ShippingMethod": "Shipping Method",
+      "shippingMethodInfo": "We work closely with leading delivery services so we can select the fastest courier, according to your location,such as UPS, Fedex,etc..",
+      "WhyBuyFromUS": "Why Buy From Us?",
+      "OfficialGamingChairPremier": "Official Gaming Chair Partner of Blast Premier",
+      "30DaysMoneyBackGuarantee": "30-day refund/return policy**.",
+      "ViewReturnPolicy": "View Return Policy",
+      "3DaysWarrantyLifeTimeSupport": "3-year Warranty. Lifetime Technical Support",
+      "FastFreeShipping": "Fast & Free Shipping",
+      "couponTitleInfo": "Have a Coupon Code?",
+      "couponTitleValue": "Proceed to checkout to use Coupons",
+      "CartPageTitle": "Shopping Cart",
+      "note_placeholder": "Special instruction for seller...",
+      "secure_text": "Secure Shopping Guarantee",
+      "accept_text": "We accept",
+      "save": "Save",
+      "cancel": "Cancel",
+      "gift_cart_add": "Add",
+      "gift_cart_adding": "Adding...",
+      "add_a_gift_wrap": "Add A Gift Wrap",
+      "order_summary": "Cart Summary",
+      "subtotal": "Subtotal",
+      "shipping": "Get Shipping Estimate",
+      "email": "Email",
+      "coupon_code": "Coupon Code",
+      "total": "Total",
+      "NonDirectPricing": "Non-Direct Pricing",
+      "coupon_code_text": "Coupon code will be applied on the checkout page",
+      "estimate_shipping": "Estimate Shipping Rates",
+      "country": "Country/Region",
+      "state": "State",
+      "zip_code": "ZIP Code",
+      "postal_code": "Postal Code",
+      "enter_coupo_code": "Enter Coupon Code",
+      "soldout_text": "sold out",
+      "already_text": "all",
+      "are_saving": "Discount:"
+    },
+    "share": {
+      "copy_to_clipboard": "Copy link",
+      "share": "Share",
+      "share_url": "Link",
+      "success_message": "Link copied to clipboard!"
+    },
+    "navigation": {
+      "go_to": "Go to",
+      "new_label": "New",
+      "sale_label": "Sale",
+      "hot_label": "Hot",
+      "all": "All"
+    },
+    "button_load_more": {
+      "default": "Show more",
+      "loading": "Loading...",
+      "view_all": "View All Collection",
+      "no_more": "No More Product"
+    }
+  },
+  "brands_page": {
+    "general": {
+      "az_title": "Brands A - Z",
+      "all": "All"
+    }
+  },
+  "newsletter": {
+    "label": "Your email",
+    "placeholder": "enter your email address",
+    "placeholder_2": "Your Email Address",
+    "success": "Thanks for subscribing!",
+    "error": "This email has been registered!",
+    "button_label": "Submit",
+    "button_label_2": "Sign Me Up",
+    "start_now": "Start Now",
+    "dont_miss_out_this_sale": "don't miss out this sale",
+    "button_label_popup": "Notify Me"
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "skip_to_product_info": "Skip to product information",
+    "close": "Close",
+    "unit_price_separator": "per",
+    "vendor": "Vendor:",
+    "error": "Error",
+    "refresh_page": "Choosing a selection results in a full page refresh.",
+    "link_messages": {
+      "new_window": "Opens in a new window.",
+      "external": "Opens external website."
+    },
+    "of": "of",
+    "next_slide": "Slide right",
+    "previous_slide": "Slide left",
+    "loading": "Loading..."
+  },
+  "blogs": {
+    "article": {
+      "blog": "Blog",
+      "read_more_title": "Read more: {{ title }}",
+      "read_more": "View details",
+      "author": "{{ author }}",
+      "comments": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} Comments"
+      },
+      "moderated": "Please note, comments need to be approved before they are published.",
+      "moderated-all": "All blog comments are checked prior to publishing",
+      "comment_form_title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Comment",
+      "post": "Post comment",
+      "back_to_blog": "Back to blog",
+      "share": "Share this article",
+      "success": "Your comment was posted successfully! Thank you!",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
+      "on": "On",
+      "by": "by",
+      "featured": "featured",
+      "older_post": "Older Post",
+      "newer_post": "Newer Post",
+      "prev_post": "Prev Post",
+      "next_post": "Next Post",
+      "tags": "Tags:"
+    }
+  },
+  "onboarding": {
+    "product_title": "Example product title",
+    "collection_title": "Collection's name"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "add_to": "Add to",
+      "buy_it_now": "Buy it now",
+      "adding_to_cart": "Adding to cart...",
+      "add_all_to_cart": "Add All to cart",
+      "adding_all_to_cart": "Adding All to cart...",
+      "added_to_cart": "Added to cart",
+      "add_to_cart_message": "You must select at least one products to add!",
+      "add_to_cart_success_message": "is added to your shopping cart.",
+      "description": "Description",
+      "on_sale": "Sale",
+      "product_variants": "Product variants",
+      "details": "Details",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "select_variant": "Select Options",
+      "more_sizes": "More sizes available",
+      "measurements": "Measurements",
+      "media": {
+        "media_alt": "Load media in gallery viewer, {{ mediaAlt }}",
+        "video_alt": "Load video in gallery viewer, {{ mediaAlt }}",
+        "model_alt": "Load 3D model in gallery viewer, {{ mediaAlt }}"
+      },
+      "gifts": {
+        "free_gift": "Free gift",
+        "free_gift_price": "Price",
+        "free_gift_title": "No need to choose; we will deliver the same color as your chair.",
+        "descripe_text": "The head pillow and lumbar pillow are both free gifts, no need to choose.",
+        "add_ons_descripe": "No need to choose; we will deliver the same color as your chair."
+      },
+      "add": {
+        "label": "Add More",
+        "label__2": "Add"
+      },
+      "quantity": {
+        "label": "Quantity",
+        "label_1": "Quantity:",
+        "label__2": "Quantity:",
+        "input_label": "Quantity for {{ product }}",
+        "increase": "Increase quantity for {{ product }}",
+        "decrease": "Decrease quantity for {{ product }}"
+      },
+      "pickup_availability": {
+        "view_store_info": "View store information",
+        "check_other_stores": "Check availability at other stores",
+        "pick_up_available": "Pickup available",
+        "pick_up_available_at_html": "Pickup available at <span class=\"strong\">{{ location_name }}</span>",
+        "pick_up_unavailable_at_html": "Pickup currently unavailable at <span class=\"strong\">{{ location_name }}</span>",
+        "unavailable": "Couldn't load pickup availability",
+        "refresh": "Refresh"
+      },
+      "price": {
+        "from_price_html": "<span class=\"text\">From</span> {{ price }}",
+        "regular_price": "Regular price",
+        "sale_price": "Sale price",
+        "unit_price": "Unit price",
+        "saved_price_html": "Save {{ price }}",
+        "all_product_total_price": "Selling Price:",
+        "all_bag_total_price": "List Price:"
+      },
+      "read_less": "Read Less",
+      "read_more": "Read More",
+      "share": "Share this product",
+      "sold_out": "Sold out",
+      "sold_out_message": "This variant is sold out!",
+      "custom": "Custom Label",
+      "new": "New",
+      "bundle": "Bundle",
+      "unavailable": "Unavailable",
+      "unavailable_message": "This variant is unavailable!",
+      "value_unavailable": "{{ option_value }} (Unavailable)",
+      "out_of_stock": "Out Of Stock",
+      "vendor": "Vendor",
+      "video_exit_message": "{{ title }} opens full screen video in same window.",
+      "xr_button": "View in your space",
+      "xr_button_label": "View in your space, loads item in augmented reality window",
+      "pre_order": "Pre-Order",
+      "quick_view": "Quick View",
+      "quick_view_2": "Quick view",
+      "quick_shop": "Quick Add",
+      "select": "Select a {{ name }}",
+      "shop_now": "Shop Now",
+      "select_options": "Choose Options",
+      "select_options_plus": "+ Select Options",
+      "sub_total": "Add To Cart - {{ value }}",
+      "hot_stock": "Hurry up! only {{ inventory }} left",
+      "hot_stock_2": "Please hurry! Only {{ inventory }} left in stock",
+      "warning_quantity": "Maximum quantity: {{ inventory}}",
+      "in_stock": "In Stock",
+      "many_in_stock": "Many In Stock",
+      "on_sale_text": "Sale",
+      "off_text": " off",
+      "description_placeholder": " Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis...",
+      "sold_in_last": {
+        "text_1": "sold in last",
+        "text_2": "hours"
+      },
+      "text": {
+        "sku": "SKU:",
+        "barcode": "Barcode:",
+        "vendor": "Vendor:",
+        "availability": "Availability:",
+        "type": "Product Type:",
+        "series": "Select Configuration",
+        "select": "Select ",
+        "addons": "Add-Ons",
+        "save": "Save ",
+        "aslowas": "As low as ",
+        "mowith": "/mo with ",
+        "estimated_dispatch": "Estimated dispatch within 2 business days",
+        "free_shipping": "Free Shipping on All Orders",
+        "returns_policy": "30-Day Returns Policy | 7-Day Price Match",
+        "warranty_protection": "3-Year Warranty Protection",
+        "global_support": "Global Support",
+        "ways_to_pay": "Ways To Pay",
+        "spring_sale": "SPRING SALE: Up to $70 OFF! LIMITED TIME OFFER",
+        "discount_tip": "*This discount cannot be combined with other promo codes.",
+        "return_policy": "30 Days Easy Return Policy: Changed your mind? Send it back within 30 days for refund.",
+        "view_return_policy": "View return Policy >",
+        "with_expert": "Shop with an Expert. We're here to help.",
+        "chat_now": "Chat with our experts now >",
+        "feature": "Feature",
+        "compare": "Compare",
+        "specs": "Specs",
+        "faq": "Faq",
+        "recommended_size": "Recommended size",
+        "main_components": "Main components",
+        "packaging": "Packaging",
+        "from": "From ",
+        "not_sure": "Not sure which one to choose?",
+        "chat_with": "Click to chat with our customer service team.",
+        "chat": "Chat",
+        "drop_us": "Drop us a line and we'll get back to you soon.",
+        "email": "Email",
+        "affirmtext": " /m or 6 interest-free payments of ",
+        "watch_intro": "WATCH INTRO",
+        "buy_now": "BUY NOW",
+        "difference": "What's difference",
+        "comparison_title": "Which chair is right for you?",
+        "blacklyte": "Blacklyte ",
+        "standard_price": "Standard price",
+        "available_variants": "Available in {{ variants_count }} variants",
+        "shop_now": "SHOP NOW",
+        "learn_more": "LEARN MORE",
+        "available_material": "Available in {{ available_material }}",
+        "chair": "CHAIR",
+        "desk": "DESK",
+        "summary": "SUMMARY",
+        "choose_your_chair": "Choose Your Chair",
+        "not_sure_what": "Not sure what’s right for you?",
+        "compare_chairs": "Compare chairs.",
+        "color": "Color",
+        "material": "Material",
+        "size": "Size",
+        "continue": "CONTINUE",
+        "your_saving": "Your’re saving ",
+        "by_bundling": " by bundling",
+        "choose_your_desk": "Choose Your Desk",
+        "compare_desks": "Compare desks.",
+        "back": "BACK",
+        "bundle_summary": "Bundle Summary",
+        "bundle_ok": "Everything you need to do your best work.",
+        "view_all": "View all {{ variants_count }} colors in this bundle >",
+        "you_save_up_to": "You save up to {{ save_price }}",
+        "configure_now": "Configure Now",
+        "size_load_and_adjusrmenbts": "Size, Load and Adjustments",
+        "structure_and_materials": "Structure and Materials",
+        "electrical_specifications": "Electrical specifications",
+        "different_size_options": "Different size options",
+        "pre_order": "Pre order",
+        "pre_order_discount": "Pre-Order Discount ",
+        "activity_title": "Summer Sale",
+        "order_now": "Order Now. You Might Get It Free!",
+        "learn_more_capitalize": "Learn More",
+        "activity_tip_title": "Austin Major Free Order Giveaway — Rules",
+        "activity_tip_subtitle": "Promotion Period: June 2, 2025 – June 22, 2025 (PST, UTC-8))",
+        "activity_tip_item_head_one": "How to Enter:",
+        "activity_tip_item_body_one": "Place any order on our official website during the promotion period. Every completed order automatically qualifies as one entry — no extra steps needed!",
+        "activity_tip_item_head_two": "What You Could Win:",
+        "activity_tip_item_body_two": "Selected winners will receive a 100% refund of their order value (excluding shipping and tax if applicable).",
+        "activity_tip_item_head_thr": "Winner Selection:",
+        "activity_tip_item_body_thr": "Winners will be randomly selected from all eligible orders. Multiple winners may be chosen.",
+        "activity_tip_item_head_for": "Announcement Date:",
+        "activity_tip_item_body_for": "Winners will be announced on our website or via email between June 23–30, 2025",
+        "activity_tip_body_tip_head": "Eligibility: ",
+        "activity_tip_body_tip_body_one": "* Open to customers worldwide.",
+        "activity_tip_body_tip_body_two": "* Cancelled or refunded orders are not eligible.",
+        "activity_tip_body_tip_body_thr": "* One prize per customer maximum.",
+        "you_might_also_like": "You might also like",
+        "desk_comparison_title": "Which desk is right for you?"
+      },
+      "show_options": "Show Variants",
+      "hide_options": "Hide Variants",
+      "adding": "Adding",
+      "thank_you": "Thank You",
+      "add_more": "Add More",
+      "cart_feedback": "Added",
+      "see_details": "View Full Details",
+      "bundle_block": {
+        "add_all_to_cart": "Add All To Cart",
+        "add_item_to_cart": "Add ([item]) item to cart",
+        "add_items_to_cart": "Add ([item]) items to cart",
+        "include": "include",
+        "included": "including",
+        "select_options": "Select Option",
+        "total_price": "Price Total:"
+      },
+      "ergonomics_details": "Experience top-tier comfort without breaking the bank , designed to rival industry leaders.",
+      "features_heading": "Features",
+      "choose_your_color": "Choose Your Color",
+      "choose_your_size": "Choose Your Size",
+      "choose_your_material": "Choose Your Material",
+      "choose_your_add-Ons": "Choose Your Add-Ons",
+      "include_text": "INCLUDED",
+      "list_price": "List Price:",
+      "selling_price": "Selling Price:",
+      "spring_sale": "Spring sale:",
+      "special_offer": "Special Offer:",
+      "esports_season_sale": "Esports Season Sale:",
+      "financing_available": "Financing available",
+      "financing_available_text": " /month** or 4 interest-free payments of",
+      "with_text": "with",
+      "3-year_warranty_text": "3-year Warranty. With Blacklyte's Warranty Coverage, You Can Shop With Peace of Mind.",
+      "30-day_refund_text": "30-day refund/return policy.** ",
+      "view_return_policy_text": "View Return Policy",
+      "easy_safe_installation_text": "Easy & Safe Installation. We Prioritize Simplicity, Ensuring a Hassle-free Experience.",
+    },
+    "modal": {
+      "label": "Media gallery"
+    }
+  },
+  "portfolio_page": {
+    "general": {
+      "all": "All"
+    }
+  },
+  "templates": {
+    "404": {
+      "title": "Oops!Page Not Found",
+      "subtext": "404",
+      "description": "Sorry! The page you're looking for clocked out!",
+      "button": "Return to Store"
+    },
+    "search": {
+      "no_results": "No results found for “{{ terms }}”. Check the spelling or use a different word or phrase.",
+      "search_result_title_2": "There are {{ count }} Page(s) and article(s) for '{{ terms }}'",
+      "view": "View {{ type }}",
+      "page": "Page",
+      "results_with_count": {
+        "one": "{{ count }} result found for “{{ terms }}”",
+        "other": "{{ count }} results found for “{{ terms }}”"
+      },
+      "title": "Search for products on our site",
+      "text": "Search for products on our site",
+      "quick_links": "Quick Iinks",
+      "kraken_pro_chairs": "Kraken Pro Chairs",
+      "kraken_chairs": "Kraken Chairs",
+      "athena_pro_chairs": "Athena Pro Chairs",
+      "athena_chairs": "Athena Chairs",
+      "atlas_desk": "Atlas Desk",
+      "atlas_lite_desk": "Atlas Lite Standing Desk",
+      "kraken_pro_and_kraken": "Kraken Pro & Kraken",
+      "athena_pro_and_athena": "Athena Pro & Athena",
+      "kraken_series": "Kraken Series",
+      "athena_series": "Athena Series"
+    },
+    "cart": {
+      "cart": "Cart"
+    },
+    "contact": {
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone number",
+        "comment": "Comment",
+        "send": "Submit Contact",
+        "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
+        "error_heading": "Please adjust the following:"
+      }
+    }
+  },
+  "faqs": {
+    "general": {
+      "all": "All",
+      "filter": "Filter by Topic"
+    }
+  },
+  "portfolio": {
+    "filter": "Filter",
+    "close": "Close",
+    "tab_all": "Tab to show all galleries",
+    "tab": "Tab to filter gallery"
+  },
+  "sections": {
+    "header": {
+      "announcement": "Announcement",
+      "menu": "Menu",
+      "cart_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
+    "term_condition": "Terms & Conditions",
+    "cart": {
+      "title": "Your cart",
+      "caption": "Cart items",
+      "checkout": "Checkout",
+      "proceed_to_checkout": "Proceed To Checkout",
+      "my_cart": "Your Cart",
+      "items": "items",
+      "item": "item",
+      "view_cart": "View Cart",
+      "edit_title": "Remove {{ title }}",
+      "edit_cart_title": "Edit Option",
+      "remove_title": "Remove {{ title }}",
+      "items_in_your_cart": "{{ count }} items in your shopping cart",
+      "subtotal": "Subtotal",
+      "new_subtotal": "New subtotal",
+      "note": "Order special instructions",
+      "continue_shopping": "Continue Shopping",
+      "shipping": "Shipping",
+      "shipping_text": "Taxes and shipping fee will be calculated at checkout",
+      "empty": "Your cart is empty",
+      "title_collection": "You May Also Like",
+      "cart_error": "There was an error while updating your cart. Please try again.",
+      "cart_quantity_error_html": "You can only add [quantity] of this item to your cart.",
+      "cart_quantity_error_alert": "You can only add {{maxQuantity}} of this product to your cart",
+      "cart_quantity_error_alert_2": "The quantity of this product is insufficient.",
+      "quick_cart": "Quick Cart",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
+      "taxes_included_but_shipping_at_checkout": "Tax and shipping are calculated at checkout",
+      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "headings": {
+        "product": "Product",
+        "price": "Price",
+        "total": "Total",
+        "quantity": "Quantity"
+      },
+      "update": "Update",
+      "upsell": "The following items has been added to your cart:",
+      "your_order": "Your Order"
+    },
+    "footer": {
+      "payment": "Payment methods"
+    },
+    "featured_blog": {
+      "view_all": "View all",
+      "onboarding_title": "Blog post",
+      "onboarding_content": "Give your customers a summary of your blog post"
+    },
+    "featured_collection": {
+      "view_all": "View all",
+      "view_all_label": "View all products in the {{ collection_name }} collection"
+    },
+    "collection_list": {
+      "title": "Collections",
+      "view_all": "View all",
+      "shop_the_collection": "Shop the collection",
+      "count": "{{ count }} products"
+    },
+    "collection_template": {
+      "all_tags": "All products",
+      "apply": "Apply",
+      "clear": "Clear",
+      "clear_all": "Clear all",
+      "empty": "No products found",
+      "end_count": " of {{ count }} total",
+      "from": "From",
+      "filter_and_sort": "Filter and sort",
+      "filter_by_label": "Filter by",
+      "filter_button": "Filter",
+      "filters_selected": "{{ count }} selected",
+      "item_per_page": "Items per page",
+      "load_more": "Load More",
+      "show_more": "Show More",
+      "show_less": "Show Less",
+      "show_all": "Show All",
+      "loading_more": "Loading More",
+      "no_more": "No More Product",
+      "max": "Max",
+      "max_price": "The highest price is {{ price }}",
+      "min": "Min",
+      "product_count": "Showing {{ count }} of {{ total }} products",
+      "read_more": "Read more",
+      "read_less": "Read less",
+      "refined_by": "Refined By",
+      "reset": "Clear",
+      "start_count": "Showing",
+      "sort_button": "Sort",
+      "sort_by_label": "Sort by",
+      "title": "Collection",
+      "to": "to",
+      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">clear all</a>",
+      "view_as": "View as",
+      "image": "Images",
+      "product": "Product",
+      "price": "Price",
+      "qty": "Qty",
+      "options": "Options",
+      "show_variants": "Show Variants",
+      "results": "results"
+    },
+    "collection_list_template": {
+      "product_count": "{{ count }} products"
+    },
+    "sidebar": {
+      "title": "Sidebar"
+    }
+  },
+  "localization": {
+    "country_label": "Country/region",
+    "language_label": "Language",
+    "update_language": "Update language",
+    "update_country": "Update country/region"
+  },
+  "currency": {
+    "change_text": "The store's currency changed to",
+    "currency": "Currency"
+  },
+  "customer": {
+    "account": {
+      "welcome": "Hi, {{ name }}",
+      "title": "Account",
+      "my_account": "My Account",
+      "details": "Account details",
+      "view_addresses": "View addresses",
+      "return": "Return to Account Details"
+    },
+    "account_fallback": "Account",
+    "activate_account": {
+      "title": "Activate account",
+      "subtext": "Create your password to activate your account.",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Activate account",
+      "cancel": "Decline invitation"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "default": "Default",
+      "address_book": "Customer Address Book",
+      "add_new": "Add a new address",
+      "edit_address": "Edit address",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "country": "Country/region",
+      "province": "Province",
+      "zip": "Postal/ZIP code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "add": "Add address",
+      "update": "Update address",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Remove",
+      "delete_confirm": "Are you sure you wish to delete this address?",
+      "none": "Set your home and work addresses, if you haven't already."
+    },
+    "forgot_password": "Forgot your password?",
+    "log_in": "Log in",
+    "sign_in": "Sign In",
+    "or": "or",
+    "create_account": "Create an Account",
+    "log_out": "Log out",
+    "hello": "Hello",
+    "my_account": "My Account",
+    "login_page": {
+      "cancel": "Cancel",
+      "create_account": "Create account",
+      "email": "Email Address",
+      "forgot_password": "Lost your password?",
+      "guest_continue": "Continue",
+      "guest_title": "Continue as a guest",
+      "password": "Password",
+      "title": "Sign in",
+      "sign_in": "Login",
+      "submit": "Submit",
+      "register": "Register",
+      "text": "Please enter your email and password below to access your account"
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date_html": "Placed on {{ date }}",
+      "cancelled_html": "Order Cancelled on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "billing_address": "Billing Address",
+      "payment_status": "Payment Status",
+      "shipping_address": "Shipping Address",
+      "fulfillment_status": "Fulfillment Status",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "fulfilled_at_html": "Fulfilled {{ date }}",
+      "track_shipment": "Track shipment",
+      "tracking_url": "Tracking link",
+      "tracking_company": "Carrier",
+      "tracking_number": "Tracking number",
+      "subtotal": "Subtotal"
+    },
+    "orders": {
+      "title": "Order history",
+      "order_number": "Order",
+      "order_number_link": "Order number {{ number }}",
+      "date": "Date",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status",
+      "total": "Total",
+      "none": "You haven't placed any orders yet."
+    },
+    "recover_password": {
+      "title": "Reset your password",
+      "subtext": "We will send you an email to reset your password",
+      "success": "We've sent you an email with a link to update your password."
+    },
+    "register": {
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "you_email": "Your Email Address",
+      "password": "Password",
+      "you_password": "Your Password",
+      "register": "Register",
+      "submit": "Create An Account",
+      "text": "Please register below to create an account",
+      "subscribe": "Subscribe to email marketing"
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "subtext": "Enter a new password for {{ email }}",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Reset password"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Here's your {{ value }} gift card for {{ shop }}!",
+      "subtext": "Your gift card",
+      "gift_card_code": "Gift card code",
+      "shop_link": "Continue shopping",
+      "remaining_html": "Remaining {{ balance }}",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "qr_image_alt": "QR code — scan to redeem gift card",
+      "copy_code": "Copy code",
+      "expired": "Expired",
+      "copy_code_success": "Code copied successfully",
+      "print_gift_card": "Print"
+    }
+  },
+  "wishlist": {
+    "general": {
+      "wishlist": "Wish Lists",
+      "title": "My Wish List",
+      "text_icon": "My Wishlists",
+      "added": "Added to wishlist",
+      "product_image": "Image",
+      "product_name": "Product Name",
+      "price": "Price",
+      "add_1": "Add",
+      "add": "Add to wishlist",
+      "remove": "Remove",
+      "share": "Share my Wish List via email",
+      "empty": "No product is added to your wishlist",
+      "continue_shopping": "Continue Shopping"
+    }
+  },
+  "compare": {
+    "general": {
+      "title": "Compare",
+      "add": "Add To Compare",
+      "added": "Added To Compare",
+      "remove_compare": "Remove compare",
+      "remove_all": "Remove All",
+      "product": "Product",
+      "sku": "SKU",
+      "review": "Rating",
+      "description": "Description",
+      "collection": "Collection",
+      "availability": "Availability",
+      "product_type": "Product Type",
+      "other_details": "Other Details",
+      "message": "You must select at least two products to compare!"
+    }
+  },
+  "someone_purcharse": {
+    "general": {
+      "text_1": "Someone recently bought a",
+      "ago": "ago,",
+      "from": "from"
+    }
+  },
+  "before_you_leave": {
+    "general": {
+      "recommended_product": "Recommended",
+      "back_to_store": "Back To Store",
+      "continue_shopping": "Continue Shopping"
+    }
+  },
+  "recently_viewed": {
+    "general": {
+      "product_title": "Recently Viewed",
+      "no_product": "Sorry, there are no products.",
+      "share_title": "Social",
+      "newsletter": "Newsletter Sign-up"
+    }
+  },
+  "calculator_free_shipping_message": {
+    "general": {
+      "free_shipping_message": "Free shipping for all orders over",
+      "free_shipping_message_1": "You qualify for free shipping!",
+      "free_shipping_message_2": "Only",
+      "free_shipping_message_3": "away from",
+      "free_shipping_message_4": "free shipping",
+      "free_shipping_1": "Free",
+      "free_shipping_2": "TBD"
+    }
+  },
+  "notify_form": {
+    "general": {
+      "label": "Notify me",
+      "title": "Leave your email and we will notify as soon as the product / variant is back in stock",
+      "placeholder": "Insert your email",
+      "submit": "Subscribe",
+      "success": "Thanks! We've received your request and will respond shortly when this product / variant becomes available!",
+      "error": "Please use a valid email address, such as john@example.com."
+    }
+  },
+  "ask_an_expert": {
+    "general": {
+      "text": "Ask An Expert",
+      "name": "Your Name",
+      "mail": "Your Mail",
+      "phone": "Your Phone",
+      "message": "What can i help you with today?",
+      "submit": "Send Question",
+      "success": "Thank you. We've received your feedback and will respond shortly.",
+      "error_1": "Please use a valid email address, such as john@example.com.",
+      "error_2": "The field must be filled out before submitting this form.",
+      "customer_name": "My Name",
+      "customer_mail": "My Mail",
+      "customer_phone": "My Phone",
+      "customer_message": "My Message",
+      "button": "Click to see Ask An Expert form"
+    }
+  },
+  "countdown": {
+    "general": {
+      "text": "Limited-Time Offers, End in:",
+      "day": "D",
+      "hour": "H",
+      "min": "M",
+      "sec": "S",
+      "d": "d",
+      "h": "h",
+      "m": "m",
+      "s": "s",
+      "day_2": "Days",
+      "hour_2": "Hours",
+      "min_2": "Mins",
+      "sec_2": "Secs",
+      "days": "Days",
+      "hours": "Hours",
+      "mins": "Mins",
+      "secs": "Secs"
+    }
+  },
+  "customer_viewing": {
+    "general": {
+      "text": "{{ number }} customers are viewing this product"
+    }
+  },
+  "size_chart": {
+    "general": {
+      "title": "Size Chart",
+      "text": "Size Guide"
+    }
+  },
+  "compare_color": {
+    "general": {
+      "title": "Compare Color",
+      "text": "Click On Color / Pattern To Compare, Click And Drag Images To Reorder"
+    }
+  },
+  "lookbook": {
+    "view_all": "View entire look",
+    "shop_look": "Shop the look"
+  },
+  "bulk_editor_page": {
+    "general": {
+      "all_collection": "All Product",
+      "select_collection": "Choose Category",
+      "submit": "Submit Editor",
+      "edit_metafields": "Edit metafield in products."
+    }
+  },
+  "find_a_store": {
+    "no_stores": "Sorry, we are working on our store presentation right now! Please come back later..."
+  },
+  "recipient": {
+    "form": {
+      "checkbox": "I want to send this as a gift",
+      "email_label": "Recipient email",
+      "email_label_optional": "Recipient email (optional)",
+      "email": "Email",
+      "name_label": "Recipient name (optional)",
+      "name": "Name",
+      "message_label": "Message (optional)",
+      "message": "Message",
+      "max_characters": "{{ max_chars }} characters max",
+      "send_on": "YYYY-MM-DD",
+      "send_on_label": "Send on (optional)"
+    }
+  },
+  "pagefly": {
+    "products": {
+      "product": {
+        "regular_price": "Regular price",
+        "sold_out": "Sold out",
+        "unavailable": "Unavailable",
+        "on_sale": "Sale",
+        "quantity": "Quantity",
+        "add_to_cart": "Add to cart",
+        "back_to_collection": "Back to {{ title }}",
+        "view_details": "View details"
+      }
+    },
+    "article": {
+      "tags": "Tags:",
+      "all_topics": "All topics",
+      "by_author": "by {{ author }}",
+      "posted_in": "Posted in",
+      "read_more": "Read more",
+      "back_to_blog": "Back to {{ title }}"
+    },
+    "comments": {
+      "title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "moderated": "Please note, comments must be approved before they are published",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
+      "success": "Your comment was posted successfully! Thank you!",
+      "comments_with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "password_page": {
+      "login_form_message": "Enter store using password:",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_label": "Email",
+      "signup_form_success": "We will send you an email right before we open!",
+      "password_link": "Enter using password"
+    }
+  },
+  "common": {
+    "gaming_chairs": "GAMING CHAIRS",
+    "athena_series": "ATHENA SERIES",
+    "athena_series_text": "Locked in for the grind. The Athena Pro and Athena are forged with battle-tested tech and pro-grade ergonomics—built to keep you sharp, steady, and unstoppable through every clutch and showdown. This is where comfort meets domination.",
+    "compare_chairs": "COMPARE CHAIRS"
+  },
+  "refund_policy": {
+    "refund_policy": "Refund Policy",
+    "return_and_refund_policy": "Return & Refund Policy",
+    "return_and_refund_policy_text": "Thank you for shopping with Blacklyte. To ensure a smooth and transparent return process, please carefully review the following policy.",
+    "initiating_a_return": "Initiating a Return",
+    "initiating_a_return_text": "To start a return, please contact our customer service at support@blacklyte.com with your proof of purchase. Unauthorized returns will not be accepted. Returns must be requested within 30 days of receiving your product. Upon approval, we will provide you with a return shipping label and detailed instructions on how to send your item back to us. Please provide tracking information within 7 days of receiving the return label to expedite the processing of your return.",
+    "return_eligibility": "Return Eligibility",
+    "return_eligibility_text_one": "To be eligible for a return, the item must be unused, in its original condition, and in its original packaging with all tags attached. Returns that do not meet these conditions may incur additional fees.",
+    "return_eligibility_text_two": "If the original packaging is not returned, or if the item or packaging is damaged or missing components, a damage fee may be applied to cover the cost of restoration or replacement. This fee ensures that returned products meet resale standards. We ask that you carefully inspect and pack your items before returning them to avoid any additional charges.",
+    "return_shipping_costs": "Return Shipping Costs",
+    "return_shipping_costs_text_one": "· Customer Responsibility: Customers are responsible for return shipping fees for all non-quality-related returns, including returns for reasons such as changing your mind or ordering the wrong item.",
+    "return_shipping_costs_text_two": "· Manufacturer's Defects: If your return is due to a manufacturer's defect or damage during shipping, we may cover the return shipping costs. Please contact us with details for assessment.",
+    "damages_and_issues": "Damages and Issues",
+    "damages_and_issues_text": "Upon receiving your order, please inspect it thoroughly. If the product is damaged, defective, or if you received the wrong item, contact us immediately. We will address the issue promptly and take the necessary steps to rectify it.",
+    "exchanges": "Exchanges",
+    "exchanges_text": "If you wish to exchange an item, we recommend processing a return first. Once approved, you can place a new order for the replacement product. This process ensures a faster exchange.",
+    "refunds": "Refunds",
+    "refunds_text": "Once we receive and inspect your return, we will notify you of the approval status of your refund. If approved, refunds will be processed to your original payment method within 14 business days. Please note that banks or credit card companies may take additional time to post the refund. If you have not received your refund within 15 business days, please contact us at support@blacklyte.com.",
+    "warranty_returns": "Warranty Returns",
+    "warranty_returns_text_one": "For warranty-related returns or repairs, the customer is responsible for all shipping costs, including return and replacement shipments. If a warranty claim is approved, we will provide further instructions on shipping procedures.  We may cover the return shipping costs. Please contact us with details for assessment.",
+    "warranty_returns_text_two": "For any additional questions, don't hesitate to reach out to us at support@blacklyte.com. We're here to help!"
+  }
+}

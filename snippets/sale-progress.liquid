@@ -1,0 +1,221 @@
+<style>
+  .sale_progress {
+    padding: 40px 0;
+  }
+
+  .sale_progress .sale_progress_item + .sale_progress_item {
+    margin-top: 45px;
+  }
+
+  .sale_progress .sale_progress_item_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sale_progress .sale_progress_item_head span:first-child {
+    padding-left: 8px;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #333333;
+  }
+
+  .sale_progress .sale_progress_item_head span:last-child {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #999;
+  }
+
+  .sale_progress .sale_progress_item_body {
+    display: block;
+    margin-top: 5px;
+    width: 100%;
+    height: 24px;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    box-shadow: 0px -4px 4px 0px #00000033 inset;
+    position: relative;
+  }
+
+  .sale_progress .sale_progress_item_body svg {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -9px;
+    right: -1px;
+  }
+
+  .sale_progress .sale_progress_item_body_progress {
+    position: absolute;
+    height: calc(100% + 2px);
+    top: -1px;
+    left: -1px;
+    padding: 3px 5px;
+    background-color: #83acf1;
+    border-radius: 12px;
+  }
+
+  .sale_progress .sale_progress_item_body_progress img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sale_progress .sale_progress_item_body_progress:not(.sale_progress_item_body_progress_complete) img {
+    animation: scrollImg 2.5s linear infinite;
+    position: relative;
+    left: -100%;
+  }
+
+  @keyframes scrollImg {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(50%);
+    }
+  }
+
+  .sale_progress .sale_progress_item_body_progress_text {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #3175e6;
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    transform: translateY(100%);
+  }
+
+  .sale_progress .sale_progress_item_body_progress_complete svg {
+    display: block;
+  }
+
+  .sale_progress .sale_progress_item_body_progress_complete .sale_progress_item_body_progress_text {
+    bottom: -15px;
+  }
+
+  .sale_progress .sale_progress_item_body_progress_wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(0deg, #3173e8 0%, #89b4ff 100%);
+    border: 1px solid #2c6cd8;
+    display: flex;
+    overflow: hidden;
+  }
+</style>
+
+{% assign quantity = product.selected_or_first_available_variant.inventory_quantity %}
+{% assign total_quantity = 150.0 %}
+{% assign progress = total_quantity | minus: quantity | divided_by: total_quantity | times: 100 | round | append: '%' %}
+<div class="sale_progress">
+  <div class="sale_progress_item">
+    <div class="sale_progress_item_head">
+      <span>First Batch - Shipped on 06/30/2025</span>
+      <span>Sold Out</span>
+    </div>
+    <div class="sale_progress_item_body">
+      <div
+        class="sale_progress_item_body_progress sale_progress_item_body_progress_complete"
+        style="width: calc(100% + 2px)"
+      >
+        <div class="sale_progress_item_body_progress_wrapper">
+          <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/sale-progress.webp?v=1749801027">
+        </div>
+        <div class="sale_progress_item_body_progress_text">100%</div>
+      </div>
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" fill="#2C6CD8"/>
+        <circle cx="20" cy="20" r="19" fill="url(#paint0_linear_1789_4066)"/>
+        <circle cx="20" cy="20" r="19" stroke="white" stroke-width="2"/>
+        <path d="M10 19.0312L17.6779 26.7091L30.707 13.68" stroke="white" stroke-width="2"/>
+        <defs>
+        <linearGradient id="paint0_linear_1789_4066" x1="40" y1="20" x2="0" y2="20" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#3173E8"/>
+        <stop offset="1" stop-color="#6099FE"/>
+        </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+  <div class="sale_progress_item">
+    <div class="sale_progress_item_head">
+      <span>Second Batch - Shipped on 07/15/2025</span>
+      <span>Sold Out</span>
+    </div>
+    <div class="sale_progress_item_body">
+      <div
+        class="sale_progress_item_body_progress sale_progress_item_body_progress_complete"
+        style="width: calc(100% + 2px)"
+      >
+        <div class="sale_progress_item_body_progress_wrapper">
+          <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/sale-progress.webp?v=1749801027">
+        </div>
+        <div class="sale_progress_item_body_progress_text">100%</div>
+      </div>
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" fill="#2C6CD8"/>
+        <circle cx="20" cy="20" r="19" fill="url(#paint0_linear_1789_4066)"/>
+        <circle cx="20" cy="20" r="19" stroke="white" stroke-width="2"/>
+        <path d="M10 19.0312L17.6779 26.7091L30.707 13.68" stroke="white" stroke-width="2"/>
+        <defs>
+        <linearGradient id="paint0_linear_1789_4066" x1="40" y1="20" x2="0" y2="20" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#3173E8"/>
+        <stop offset="1" stop-color="#6099FE"/>
+        </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+  <div class="sale_progress_item">
+    <div class="sale_progress_item_head">
+      <span>Last Batch - Shipped on 07/30/2025</span>
+      <span>
+        {%- if progress == '100%' %}Sold Out{% else %}In Progress{% endif -%}
+      </span>
+    </div>
+    <div class="sale_progress_item_body">
+      <div
+        class="sale_progress_item_body_progress{%- if progress == '100%' %} sale_progress_item_body_progress_complete{% endif -%}"
+        style="width: {%- if progress == '100%' %}calc(100% + 2px){% else %}{{ progress }}{% endif -%}"
+      >
+        <div class="sale_progress_item_body_progress_wrapper">
+          {%- if progress == '100%' -%}
+            <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/sale-progress.webp?v=1749801027">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/sale-progress.webp?v=1749801027">
+            <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/sale-progress.webp?v=1749801027">
+          {%- endif -%}
+        </div>
+        <div class="sale_progress_item_body_progress_text">{{ progress }}</div>
+      </div>
+      {%- if progress == '100%' %}
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="19" fill="#2C6CD8"/>
+          <circle cx="20" cy="20" r="19" fill="url(#paint0_linear_1789_4066)"/>
+          <circle cx="20" cy="20" r="19" stroke="white" stroke-width="2"/>
+          <path d="M10 19.0312L17.6779 26.7091L30.707 13.68" stroke="white" stroke-width="2"/>
+          <defs>
+          <linearGradient id="paint0_linear_1789_4066" x1="40" y1="20" x2="0" y2="20" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#3173E8"/>
+          <stop offset="1" stop-color="#6099FE"/>
+          </linearGradient>
+          </defs>
+        </svg>
+      {% endif -%}
+    </div>
+  </div>
+</div>

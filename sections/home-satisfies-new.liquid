@@ -1,0 +1,211 @@
+{% comment %}
+3.0设计首页 satisfies all your moods 模块.
+{% endcomment %}
+<style>
+  .statisfied-module {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .statisfied-module .container-1570{
+    max-width: 68%;
+  }
+  .statisfied-module .module-title {
+    font-family: "Roboto";
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #262629;
+  }
+  .statisfied-module .module-content {
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+  }
+  .statisfied-module .module-content .module-content-image {
+    width: 100%;
+    height: 100%;
+  }
+  .statisfied-module .module-content .module-content-image img {
+    border-radius: 24px;
+  }
+  .statisfied-module .module-content .image-pc {
+    display: block;
+  }
+  .statisfied-module .module-content .image-mb {
+    display: none;
+  }
+  .statisfied-module .module-buttons {
+    max-width: 268px;
+    display: flex;
+    margin: 29px auto 0 auto;
+    line-height: 40px;
+    background-color: #EDEFF2;
+    border-radius: 30px;
+  }
+  .statisfied-module .module-buttons .btn {
+    width: 50%;
+    text-align: center;
+    font-size: 16px;
+    color: #1E1E21;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .statisfied-module .module-buttons .btn.btn-active {
+    background-color: #1E1E21;
+    color: #ffffff;
+    border-radius: 30px;
+  }
+  
+  
+  
+  /* IPhone */
+  @media(max-width: 767px) {
+    .statisfied-module .container-1570{
+      max-width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .statisfied-module {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .statisfied-module .module-title {
+      font-size: 24px;
+    }
+    .statisfied-module .module-content {
+      margin-top: 25px;
+    }
+    .statisfied-module .module-content .image-pc {
+      display: none;
+    }
+    .statisfied-module .module-content .image-mb {
+      display: block;
+    }
+    .statisfied-module .module-content .module-content-image img{
+      border-radius: 20px;
+    }
+  }
+  /* IPad */
+  @media(min-width: 768px) and (max-width: 1024px) {
+    .statisfied-module .container-1570{
+      max-width: 100%;
+    }
+  }
+  
+  /* small screen */
+  @media(min-width: 1025px) and (max-width: 1900px) {}
+  @media(min-width: 1025px) and (max-width: 1480px){
+    .statisfied-module .container-1570{
+      max-width: calc(100% - (var(--margin-left-1) * 2));
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  /* large screen */
+  @media(min-width: 2000px) {}
+  
+</style>
+
+<div class="statisfied-module">
+  <div class="container-1570">
+    {% if section.settings.section_Title != blank %}
+      <div class="module-title">{{ section.settings.section_Title }}</div>
+    {% endif %}
+    <div class="module-content swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% if block.type == 'largeImage' %}
+            <div class="module-content-image swiper-slide">
+              <div class="adaptive_height image-pc" style="padding-top: {% unless block.settings.item_image.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.item_image.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.item_image.aspect_ratio | times: 100 }}%{% endunless %}">
+                <img  width="100%" height="100%" {% render 'lazyload',preview_img: block.settings.item_image %} />
+              </div>
+              <div class="adaptive_height image-mb" style="padding-top: {% unless block.settings.item_image_mb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.item_image_mb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.item_image_mb.aspect_ratio | times: 100 }}%{% endunless %}">
+                <img width="100%" height="100%" {% render 'lazyload',preview_img: block.settings.item_image_mb %} />
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="module-buttons">
+      <div class="module-btn-left btn btn-active">{{ section.settings.button-1 }}</div>
+      <div class="module-btn-right btn">{{ section.settings.button-2 }}</div>
+    </div>
+  </div>
+</div>
+<script>
+  const swiperSatisfies = new Swiper('.statisfied-module .module-content', {
+    loop: true, // 无限循环
+    slidesPerView: 1, // 一次显示几张（根据需要改）
+    navigation: {
+      nextEl: '.statisfied-module .module-buttons .module-btn-right',
+      prevEl: '.statisfied-module .module-buttons .module-btn-left',
+    },
+  });
+  // 监听切换事件
+  swiperSatisfies.on('realIndexChange', function () {
+    const index = swiperSatisfies.realIndex
+    switch(index) {
+      case 0:
+        $('.module-btn-left').addClass('btn-active')
+        $('.module-btn-right').removeClass('btn-active')
+        break;
+      case 1:
+        $('.module-btn-left').removeClass('btn-active')
+        $('.module-btn-right').addClass('btn-active')
+        break;
+      default:
+        $('.module-btn-left').addClass('btn-active')
+        $('.module-btn-right').removeClass('btn-active')
+    }
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "HOME Statisfies New",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_Title",
+        "label": "Section Title",
+        "default": "Blacklyte satisfies all your moods"
+      },
+      {
+        "type": "text",
+        "id": "button-1",
+        "label": "BUTTON 1",
+        "default": "Work"
+      },
+      {
+        "type": "text",
+        "id": "button-2",
+        "label": "BUTTON 2",
+        "default": "Game"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "largeImage",
+        "name": "largeImage",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "item_image",
+            "label": "Item Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "item_image_mb",
+            "label": "Item Image Mobile"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "HOME Statisfies New"
+      }
+    ]
+  }
+{% endschema %}

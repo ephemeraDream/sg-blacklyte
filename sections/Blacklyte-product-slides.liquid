@@ -1,0 +1,282 @@
+<style>
+  .blacklyte-products-{{ section.id }}{
+    background: #ffffff;
+    padding: {{section.settings.pt_pc}}px 0 {{section.settings.pb_pc}}px;
+  }
+  .blacklyte-products .products-title{
+    margin: 0;
+    color: #000;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.33;
+    text-align: left;
+  }
+  .blacklyte-products .item-wrapper{
+    padding: 10px;
+  }
+  .blacklyte-products .title-box{
+    margin-bottom: 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .title-box .more{
+    color: #5216FC;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .title-box .more:hover{
+    text-decoration: underline;
+  }
+  .products-inner .item{
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .products-inner .item .text-box{
+    padding: 15px;
+  }
+  .products-inner .item .text-box .item-title{
+    margin: 0 0 6px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #000;
+    min-height: 56px;
+  }
+  .products-inner .item .text-box .item-content{
+    color: #5216FC;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+  .products-wrapper .slick-dots{
+    bottom: -20px;
+  }
+  .products-wrapper .slick-dots li button{
+        --dots-width: 24px;
+        --dots-height: 4px;
+        --dots-color: #464646;
+        border-radius: 4px;
+        opacity: .2;
+  }
+  .products-wrapper .slick-dots li.slick-active button{
+    opacity: 1;
+  }
+  .products-inner .item .img-box{
+    overflow: hidden;
+    background: #f2f2f2;
+  }
+  .products-inner .item img{
+      transition: all .5s;
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+    }
+  @media only screen and (min-width: 2000px){
+    .blacklyte-products .products-title{
+      font-size: 2.08vw;
+    }
+    .products-inner .item .text-box .item-title{
+      font-size: 1.5vw;
+    }
+    .products-inner .item .text-box .item-content,
+    .title-box .more{
+      font-size: 1.04vw;
+      line-height: 1.3vw;
+    }
+    .products-inner .item .text-box{
+      padding: 1vw;
+    }
+  }
+  @media only screen and (min-width: 1025px){
+    .products-inner .item:hover img{
+      transition: all .5s;
+      scale: 1.1;
+    }
+  }
+  @media only screen and (max-width: 1024px){
+    .blacklyte-products .title-box{
+      margin-bottom: 15px;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .blacklyte-products-{{ section.id }}{
+      padding: {{section.settings.pt_m}}px 0 {{section.settings.pb_m}}px;
+    }
+    .products-inner .item .text-box{
+      padding: 16px;
+    }
+  }
+
+  @media only screen and (max-width: 991px){
+    .blacklyte-products .products-title{
+      font-size: 28px;
+      line-height: 1.28;
+    }
+  }
+</style>
+
+{%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.styles_max_width }}px, 100vw){% endif %}{%- endcapture -%}
+<section class="blacklyte-products blacklyte-products-{{ section.id }}">
+  <div class="container-1570">
+    <div class="title-box scroll-trigger animate--slide-in">
+      {% if section.settings.title != blank %}
+        <h3 class="products-title">{{ section.settings.title }}</h3>
+      {% endif %}
+      {% if section.settings.view != blank %}
+        <a class="more" href="{{ section.settings.url }}">{{ section.settings.view }}</a>
+      {% endif %}
+    </div>
+    
+    <div class="products-wrapper">
+      <div class="products-inner custom_carousel">
+          {% for block in section.blocks %}
+                <div class="item-wrapper">
+                  <a class="item" href="{{ block.settings.url }}">
+                    <div class="img-box">
+                      {{- block.settings.img | image_url: width: block.settings.img.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200' -}}
+                    </div>
+                    <div class="text-box">
+                      {% if block.settings.heading != blank %}
+                        <h3 class="item-title">{{ block.settings.heading }}</h3>
+                      {% endif %}
+                      {% if block.settings.content != blank %}
+                        <p class="item-content">{{ block.settings.content }}</p>
+                      {% endif %}
+                    </div>
+                  </a>
+                </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(document).ready(function() {
+     $('.blacklyte-products-{{ section.id }} .custom_carousel').slick({
+        arrows:false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+          {
+            breakpoint: 590,
+            settings: {
+              infinite: true,
+              dots: true,
+              slidesToScroll: 1,
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+  });
+
+  
+</script>
+
+{% schema %}
+{
+  "name": "Blacklyte Product Slides",
+  "settings": [
+    {
+      "type" : "textarea",
+      "id" : "title",
+      "label" : "Title",
+      "default" : "MORE DETAILS"
+    },
+    {
+      "type" : "text",
+      "id" : "view",
+      "label" : "View More",
+      "default" : "View More"
+    },
+    {
+      "type" : "url",
+      "id" : "url",
+      "label" : "View More Link"
+    },
+    {
+      "type": "range",
+      "id": "pt_pc",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top PC",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "pb_pc",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom PC",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "pt_m",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top MOBILE",
+      "default": 78
+    },
+    {
+      "type": "range",
+      "id": "pb_m",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom MOBILE",
+      "default": 78
+    }
+  ],
+  "blocks": [
+      {
+        "type": "block",
+        "name": "block",
+        "settings": [
+          {
+              "type" : "image_picker",
+              "id" : "img",
+              "label" : "Image"
+          },
+          {
+              "type" : "textarea",
+              "id" : "heading",
+              "label" : "Heading",
+              "default" : "Blacklyte Athena Black Gaming Chair"
+          },
+          {
+              "type": "textarea",
+              "id": "content",
+              "label": "Content",
+              "default": "$369 USD"
+          },
+          {
+            "type" : "url",
+            "id" : "url",
+            "label" : "Link"
+          }
+        ]
+      }
+  ],
+  "presets": [
+    {
+      "name": "Blacklyte Product Slides"
+    }
+  ]
+}
+{% endschema %}

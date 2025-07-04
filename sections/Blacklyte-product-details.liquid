@@ -1,0 +1,417 @@
+<style>
+  .blacklyte-datails-{{ section.id }}{
+    background: {{section.settings.bg}};
+    padding: {{section.settings.pt_pc}}px 0 {{section.settings.pb_pc}}px;
+  }
+  .hide-pc{
+    display: none!important;
+  }
+  .hide-mb{
+    display: block!important;
+  }
+  .blacklyte-datails .datails-title{
+    margin: 0;
+    margin-bottom: 32px;
+    color: #000;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: left;
+  }
+  .datails-inner{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 三等分列 */
+    grid-template-rows: auto auto; /* 自动高度的两行 */
+    gap: 30px; /* 你可以根据需要调整间距 */
+    padding-bottom: 10px;
+  }
+  .datails-inner .item-wrapper-s .img-box{
+    height: 240px;
+    background: #F2F2F2;
+  }
+  .datails-inner .item video,.datails-inner .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .datails-inner .item{
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    width: 100%;
+    height: 100%;
+    
+  }
+  .datails-inner .item-wrapper-l{
+    grid-column: 1 / -1;
+  }
+  .datails-inner .item-l{
+    flex-direction: row-reverse;
+    display: flex;
+  }
+  
+  .datails-inner .item-l .img-box{
+    width: 66%;
+    flex-shrink: 0;
+    background: #F2F2F2;
+  }
+  .datails-inner .item-l .text-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .datails-inner .item .text-box{
+    padding: 20px 40px;
+  }
+  .datails-inner .item .item-title{
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+    margin: 0 0 16px;
+  }
+  .datails-inner .item .item-content{
+    color: #2c2c2c;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .datails-wrapper .slick-dots{
+    bottom: -20px;
+  }
+  .datails-wrapper .slick-dots li button{
+        --dots-width: 24px;
+        --dots-height: 4px;
+        --dots-color: #464646;
+        border-radius: 4px;
+        opacity: .2;
+  }
+  .datails-wrapper .slick-dots li.slick-active button{
+    opacity: 1;
+  }
+  @media only screen and (min-width: 2000px){
+    .blacklyte-datails .datails-title{
+      font-size: 2.08vw;
+    }
+    .datails-inner .item .item-title{
+      font-size: 1.5vw;
+    }
+    .datails-inner .item .item-content{
+      font-size: 1.04vw;
+    }
+    .datails-inner{
+      gap: 1vw;
+    }
+    .datails-inner .item .text-box{
+      padding: 1vw 1.2vw;
+    }
+    .datails-inner .item-wrapper-s .img-box{
+      height: 13vw;
+    }
+  }
+  @media only screen and (max-width: 1024px){
+    .datails-inner .item .text-box{
+      padding: 16px;
+    }
+    .blacklyte-datails-{{ section.id }}{
+      padding: {{section.settings.pt_m}}px 0 {{section.settings.pb_m}}px;
+    }
+    .datails-inner{
+      gap: 16px;
+    }
+  }
+  @media only screen and (max-width: 991px){
+     .datails-inner .item .item-title{
+        font-size: 16px;
+        margin-bottom: 8px;
+        line-height: 1.5;
+    }
+    .datails-inner .item .item-content{
+      font-size: 16px;
+    }
+    .blacklyte-datails .datails-title{
+      font-size: 28px;
+      margin-bottom: 16px;
+      line-height: 1.28;
+    }
+  }
+  @media only screen and (max-width: 590px){
+    .datails-inner{
+      display: block;
+    }
+    .datails-inner .item{
+      margin: 5px;
+      width: unset;
+    }
+    .datails-inner .item-l{
+      flex-direction: column;
+    }
+    .datails-inner .item-l .img-box{
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 550px){
+    .hide-pc{
+      display: block!important;
+    }
+    .hide-mb{
+      display: none!important;
+    }
+  }
+</style>
+
+{%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.styles_max_width }}px, 100vw){% endif %}{%- endcapture -%}
+<section class="blacklyte-datails blacklyte-datails-{{ section.id }}">
+  <div class="container-1570">
+    {% if section.settings.title != blank %}
+      <h3 class="datails-title scroll-trigger animate--slide-in">{{ section.settings.title }}</h3>
+    {% endif %}
+    <div class="datails-wrapper">
+      <div class="datails-inner custom_carousel">
+          {% for block in section.blocks %}
+            {% if block.type == 'large' %}
+                <div class="item-wrapper item-wrapper-l">
+                  <div class="item item-l ">
+                    <div class="img-box">
+                      {% if block.settings.use_video %}
+                        {{ block.settings.video | video_tag:class:"123", autoplay: true, loop: true, muted: true, controls: false, image_size:'master' }}
+                      {% else %}
+                        {{- block.settings.img | image_url: width: block.settings.img.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'hide-mb' -}}
+                        {{- block.settings.img_m | image_url: width: block.settings.img_m.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'hide-pc' -}}
+                      {% endif %}
+                    </div>
+                    <div class="text-box">
+                      {% if block.settings.heading != blank %}
+                        <h3 class="item-title">{{ block.settings.heading }}</h3>
+                      {% endif %}
+                      {% if block.settings.content != blank %}
+                        <p class="item-content">{{ block.settings.content }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+            {% else %}
+                <div class="item-wrapper item-wrapper-s">
+                  <div class="item item-s">
+                    <div class="img-box">
+                      {% if block.settings.use_video %}
+                        {{ block.settings.video | video_tag:class:"123", autoplay: true, loop: true, muted: true, controls: false, image_size:'master' }}
+                      {% else %}
+                        {{- block.settings.img | image_url: width: block.settings.img.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'hide-mb' -}}
+                        {{- block.settings.img_m | image_url: width: block.settings.img_m.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'hide-pc' -}}
+                      {% endif %}
+                    </div>
+                    <div class="text-box">
+                      {% if block.settings.heading != blank %}
+                        <h3 class="item-title">{{ block.settings.heading }}</h3>
+                      {% endif %}
+                      {% if block.settings.content != blank %}
+                        <p class="item-content">{{ block.settings.content }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+            {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(document).ready(function() {
+
+      const minWidth = 590; // 设定宽度阈值
+    
+      function initializeSlick() {
+        $('.blacklyte-datails-{{ section.id }} .custom_carousel').slick({
+            // Slick 的配置选项
+            adaptiveHeight: true,
+            arrows: false,
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        });
+      }
+  
+      function destroySlick() {
+          if ($('.blacklyte-datails-{{ section.id }} .custom_carousel').hasClass('slick-initialized')) {
+              $('.blacklyte-datails-{{ section.id }} .custom_carousel').slick('unslick');
+          }
+      }
+
+      function checkWindowWidth() {
+          if ($(window).width() < minWidth) {
+              if (!$('.blacklyte-datails-{{ section.id }} .custom_carousel').hasClass('slick-initialized')) {
+                  initializeSlick();
+              }
+          } else {
+              destroySlick();
+          }
+      }
+  
+      // 初始检查
+      checkWindowWidth();
+  
+      // 监听窗口尺寸变化
+      $(window).on('resize', function() {
+          checkWindowWidth();
+      });
+  });
+
+  
+</script>
+
+{% schema %}
+{
+  "name": "Blacklyte Product Details",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type" : "textarea",
+      "id" : "title",
+      "label" : "Title",
+      "default" : "MORE DETAILS"
+    },
+    {
+      "type": "range",
+      "id": "pt_pc",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top PC",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "pb_pc",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom PC",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "pt_m",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top MOBILE",
+      "default": 78
+    },
+    {
+      "type": "range",
+      "id": "pb_m",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom MOBILE",
+      "default": 78
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color",
+      "default": "#EDEDED"
+    }
+  ],
+  "blocks": [
+      {
+        "type": "small",
+        "name": "small",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "use_video",
+            "label": "Use video",
+            "default": true
+          },
+          {
+              "type": "video",
+              "id": "video",
+              "label": "A Shopify-hosted video"
+          },
+          {
+              "type" : "image_picker",
+              "id" : "img",
+              "label" : "Image PC"
+          },
+          {
+              "type" : "image_picker",
+              "id" : "img_m",
+              "label" : "Image Mobile"
+          },
+          
+          {
+              "type" : "textarea",
+              "id" : "heading",
+              "label" : "Heading",
+              "default" : "Memory Foam Head Pillow"
+          },
+          {
+              "type": "textarea",
+              "id": "content",
+              "label": "Content",
+              "default": "The memory foam material adapts to the shape of your head and neck, providing personalized ergonomic support that helps reduce strain and fatigue."
+          }
+        ]
+      } ,
+      {
+          "type": "large",
+          "name": "large",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "checkbox",
+              "id": "use_video",
+              "label": "Use video",
+              "default": true
+            },
+            {
+              "type": "video",
+              "id": "video",
+              "label": "A Shopify-hosted video"
+            },
+            {
+                "type" : "image_picker",
+                "id" : "img",
+                "label" : "Image PC"
+            },
+            
+            {
+                "type" : "image_picker",
+                "id" : "img_m",
+                "label" : "Image Mobile"
+            },
+            {
+                "type" : "textarea",
+                "id" : "heading",
+                "label" : "Heading",
+                "default" : "Memory Foam Head Pillow"
+            },
+            {
+                "type": "textarea",
+                "id": "content",
+                "label": "Content",
+                "default": "The memory foam material adapts to the shape of your head and neck, providing personalized ergonomic support that helps reduce strain and fatigue."
+            }
+          ]
+        } 
+  ],
+  "presets": [
+    {
+      "name": "Blacklyte Product Details"
+    }
+  ]
+}
+{% endschema %}

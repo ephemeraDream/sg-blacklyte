@@ -1,0 +1,690 @@
+
+{% comment %}
+  CES PAGE 直播进度
+  功能介绍:
+    进度条按钮, 可点击, 可自动跳转.
+    当前日期的按钮颜色为深色, 其余为浅色.
+    适配web端 以及 mobile端.
+    展示直播文件.
+  三个直播视频: 
+    第一个展示: 上一场的直播回放
+    第二个展示: 当前直播日期的直播
+    第三个展示: 下一场直播的预告
+{% endcomment %}
+
+<style>
+  #shopify-section-template--18319891857639__ces_live_steps_fbxhr3 {
+    background-color: #f4f4f4;
+  }
+  .event_container_modules {
+    padding-bottom: 100px;
+    background-color: #f4f4f4;
+  }
+  .steps_lines {
+    list-style-type: none;
+    display: flex;
+    padding: 0 30px;
+    margin: 0;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    max-width: 100%;
+    /* 隐藏滚动条 */
+    scrollbar-width: none; /* 适用于 Firefox */
+    margin-top: 100px;
+  }
+  .steps_lines::-webkit-scrollbar {
+    display: none; /* 适用于 Chrome、Safari 和 Edge */
+  }
+  .steps_lines::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .steps_lines .steps_lines_item {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    width: calc(100% / 4);
+    min-width: calc(100% / 4);
+  }
+  
+  
+  .steps_lines .steps_lines_item .text_title {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #25282C;
+    line-height: 40px;
+    text-wrap-mode: nowrap;
+    border-bottom: 2px solid rgba(37, 40, 44, 0.3);
+    padding-bottom: 10px;
+    width: 100%;
+  }
+  .steps_lines .steps_lines_item.steps_lines_item_active .text_title {
+    border-bottom: 4px solid rgba(37, 40, 44, 1);
+  }
+  .video_living_list {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: thin; /* 适用于 Firefox，使用细滚动条 */
+    scrollbar-color: rgba(37, 40, 44, 0.3) transparent; /* 适用于 Firefox，红色滚动条 */
+    padding-bottom: 20px;
+  }
+  .video_living_list::-webkit-scrollbar {
+      width: 4px; /* 设置滚动条宽度，适用于 Chrome、Safari 和 Edge */
+      height: 4px; /* 设置水平滚动条高度 */
+  }
+  
+  .video_living_list::-webkit-scrollbar-track {
+      background: transparent; /* 滚动条背景透明 */
+  }
+  
+  .video_living_list::-webkit-scrollbar-thumb {
+      background-color: rgba(37, 40, 44, 0.3); /* 滚动条颜色为红色 */
+      border-radius: 4px; /* 设置圆角 */
+  }
+  
+  .video_living_list::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(37, 40, 44, 1); /* 滚动条悬停时变1 */
+  }
+  .video_living_list .video_item {
+    min-width: calc(100% / 3);
+    position: relative;
+  }
+  .video_living_list .video_item .living_button {
+    width: 180px;
+    background-color: #25282C;
+    border-radius: 60px;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.8s ease-in-out;
+    border: 1px solid #25282C;
+  }
+  .video_living_list .video_item .living_button:hover {
+    background-color: #fff;
+    color: #18181B;
+    border: 1px solid #18181B;
+  }
+  .video_living_list .video_item .living_button:hover svg path,
+  .video_living_list .video_item .living_button:hover svg circle {
+    fill: #18181B;
+  }
+  .video_living_list .video_item .video_item_video {
+    width: 96%;
+    height: 230px;
+    margin: 0 auto;
+  }
+  .video_living_list .video_item .video_item_video .not_living_module {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  .video_living_list .video_item .video_item_video .not_living_module.not_living_module_replay {
+    background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event_replay_bgImg.png?v=1736303481') no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .video_living_list .video_item .video_item_video .not_living_module.not_living_module_current {
+    background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event_living_mudule_bgImg.png?v=1734676967') no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .video_living_list .video_item .video_item_video .not_living_module.not_living_module_next {
+    background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event_upcoming_bgImg.png?v=1734676967') no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .video_living_list .video_item .video_item_video .not_living_module .names_text {
+    font-weight: 600;
+    font-size: 26px;margin-bottom: 15px;
+    line-height: 30px;
+  }
+  .video_living_list .video_item .video_item_video .not_living_module .times_text {
+    font-size: 20px;
+  }
+  .video_living_list .video_item .video_item_video .not_living_module.not_living_module_replay.hide_video_on_play,
+  .video_living_list .video_item .video_item_video .not_living_module.not_living_module_current.hide_video_on_current,
+  .video_living_list .video_item .video_item_video .not_living_module.not_living_module_next.hide_video_on_next {
+    display: none;
+  }
+  .video_living_list .video_item .living_button .living_button_svg.living_button_svg-pre svg {
+    width: 24px;
+    height: 24px;
+  }
+  .video_living_list .video_item .living_button .living_button_svg.living_button_svg-current svg {
+    width: 10px;
+    height: 10px;
+  }
+  .video_living_list .video_item .living_button .living_button_svg.living_button_svg-next svg {
+    width: 22px;
+    height: 22px;
+  }
+ 
+  .video_living_list .video_item .living_button .living_button_text {
+    vertical-align: middle;
+  }
+
+  .video_living_list .video_item .video_item_svg {
+    background-color: #C02A2A;
+    border-radius: 25px;
+    font-size: 12px;
+    color: #ffffff;
+    position: absolute;
+    text-align: center;
+    right: 24px;
+    top: 18px;
+    padding: 6px 10px;
+  }
+  .video_living_list .video_item .video_item_svg.video_item_svg_uncoming {
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 38.93%, rgba(255, 255, 255, 0) 100%);
+  }
+  
+  .video_living_list .video_item .video_item_svg svg {
+    width: 13px;
+    height: 13px;
+    fill: none;
+    stroke: none;
+  }
+  .video_living_list .video_item .video_item_svg .video_item_svg_text {
+    vertical-align: middle;
+  }
+
+  .storeify-formbuilder-button-subscripe {
+    position: fixed;
+    right: 30px;
+    bottom: 24%;
+    z-index:999999;
+    border: 0px;
+    line-height: 24px;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(rgb(234, 97, 97) 0%, rgb(225, 60, 60) 100%);
+    display: inline-block;
+    max-width: 150px;
+    border-radius: 12px;
+    padding: 10px;
+    animation: horizontal-shaking-btn-web 6s ease infinite;
+    animation-delay: 5s;
+  }
+  @keyframes horizontal-shaking-btn-web {
+    0%, 18%, 100% {
+      transform: translateZ(0px); /* 保持在初始居中位置 */
+    }
+    2%, 6%, 10%, 14% {
+      transform: translateY(-10px); /* 向左偏移10px */
+    }
+    4%, 8%, 12%, 16% {
+      transform: translateY(10px); /* 向右偏移10px */
+    }
+  }
+  .storeify-formbuilder-button-subscripe .storeify-formbuilder-button-subscripe-svg {
+    text-align: center;
+  }
+  .storeify-formbuilder-button-subscripe .storeify-formbuilder-button-subscripe-svg svg {
+    width: 43px;
+    height: 43px;
+    fill: none;
+    stroke: none;
+  }
+  .storeify-formbuilder-button {
+    border: 0px;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgb(255, 255, 255);
+    background: rgba(0,0,0,0);
+  }
+
+  .current_persons_box {
+    width: 100%;
+    height: auto;
+    margin-top: 63px;
+  }
+  .current_persons_box img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  @media(max-width: 767px) {
+    .steps_lines .steps_lines_item {
+       width: 100%;
+        min-width: 100%;
+    }
+    .steps_lines .steps_lines_item .text_title {
+      font-size: 16px;
+    }
+    .event_container_modules {
+      padding-top: 0px;
+      padding-bottom: 50px;
+    }
+    .steps_lines {
+      padding: 0;
+    }
+    
+    .video_living_list {
+      display: flex;
+      width: auto;
+      max-width: auto;
+    }
+    .video_living_list .video_item .video_item_video {
+      width: 100vw;
+    }
+    .video_living_list .video_item {
+      width: auto;
+      min-width: auto;
+    }
+    .video_living_list .video_item .living_button {
+      width: 130px;
+      font-size: 16px;
+      padding: 10px 0;
+    }
+    .video_living_list .video_item .living_button .living_button_svg.living_button_svg-pre svg {
+      width: 16px;
+      height: 16px;
+    }
+    .video_living_list .video_item .living_button .living_button_svg.living_button_svg-current svg {
+      width: 6px;
+      height: 6px;
+    }
+    .video_living_list .video_item .living_button .living_button_svg.living_button_svg-next svg {
+      width: 14px;
+      height: 14px;
+    }
+    .current_persons_box {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>
+
+<div class="event_container_modules {% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1570' %}container-1570{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
+    
+  <div id="servicify-floating-button" class="show-servicify-floating-button"><div data-servicify="BookNowButton" class="Servicify-BookNowButton"><button type="button" style="position: fixed; z-index: 100; bottom: 1em; right: 1em; background: rgb(225, 60, 60); border-radius: 5px; color: rgb(255, 255, 255); font-size: 16px; border: none; cursor: pointer; padding: 1em 2em; box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;">Book a time with us at CES 2025</button><style>
+    [data-servicify="BookNowButton-ModalContent"] {
+      padding: 16px;
+      background: white;
+      height: 100%;
+      overflow: auto;
+      margin: 0 auto;
+    }
+    .calendar-liquid {
+      border: none;
+      width: 100%;
+      height: 700px;
+    }
+    .calendar-embed {
+      border: none;
+      width: 100%;
+    }
+  </style></div></div>
+
+  <!-- 直播视频 -->
+  <div class="video_living_list">
+    <!-- 0107上场回放 -->
+    <div class="video_item">
+      <div class="video_item_video">
+        <iframe width="100%" height="100%" class="replayVideo" src="https://www.youtube.com/embed/8VOffGzGunQ?si=3qLJinugNHdhw_UQ&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+       </div>
+      <div class="video_item_svg">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_9208_6898)">
+          <path d="M5.45285 3.88086C5.43799 3.88086 5.42301 3.88023 5.40803 3.87883L3.05051 3.66149C2.79115 3.63762 2.55844 3.48883 2.42794 3.26374C2.29844 3.04018 2.28499 2.76685 2.39201 2.53262L3.38757 0.352453C3.49828 0.1101 3.78443 0.00333203 4.02678 0.114035C4.26914 0.224738 4.3759 0.510891 4.2652 0.753244L3.36625 2.72165L5.49652 2.91805C5.76185 2.94255 5.95711 3.17741 5.9326 3.44275C5.9095 3.69297 5.69926 3.88086 5.45285 3.88086ZM6.28287 8.25567C6.15551 8.2557 6.03332 8.20531 5.94301 8.11551C5.89788 8.07067 5.86205 8.01734 5.83761 7.9586C5.81316 7.89986 5.80057 7.83687 5.80057 7.77324V5.07968C5.80057 4.8132 6.01652 4.59726 6.28299 4.59726C6.54947 4.59726 6.76542 4.8132 6.76542 5.07968V7.28727L8.97237 7.27178H8.9758C9.24062 7.27178 9.45631 7.48557 9.45809 7.75077C9.46 8.01725 9.24545 8.23472 8.9791 8.23662L6.28642 8.25554C6.28503 8.25567 6.28388 8.25567 6.28287 8.25567Z" fill="white"/>
+          <path d="M6.50014 12.9291C5.70033 12.9291 4.92427 12.7723 4.1934 12.4632C3.48767 12.1647 2.85404 11.7375 2.30992 11.1934C1.7658 10.6493 1.3386 10.0157 1.04014 9.30993C0.731006 8.57906 0.574219 7.803 0.574219 7.00319C0.574219 6.65687 0.604434 6.30965 0.663848 5.97119C0.709932 5.70878 0.960029 5.53346 1.22244 5.57954C1.48485 5.62563 1.66018 5.87572 1.61409 6.13813C1.56433 6.42162 1.53906 6.71272 1.53906 7.00319C1.53906 9.73865 3.76455 11.9641 6.50014 11.9641C9.2356 11.9641 11.4612 9.73865 11.4612 7.00319C11.4612 4.26773 9.23572 2.04212 6.50014 2.04212C5.35591 2.04212 4.23961 2.44088 3.35665 3.16489C3.15061 3.33387 2.84668 3.30378 2.67771 3.09773C2.50873 2.89169 2.53882 2.58776 2.74486 2.41879C3.26321 1.99362 3.84415 1.66215 4.47155 1.43363C5.12079 1.19712 5.80329 1.07715 6.50026 1.07715C7.30007 1.07715 8.07613 1.23394 8.807 1.54307C9.51273 1.84153 10.1464 2.26873 10.6905 2.81285C11.2346 3.35697 11.6618 3.9906 11.9603 4.69633C12.2694 5.4272 12.4262 6.20326 12.4262 7.00307C12.4262 7.80287 12.2694 8.57894 11.9603 9.3098C11.6618 10.0155 11.2346 10.6492 10.6905 11.1933C10.1464 11.7374 9.51261 12.1647 8.80688 12.4633C8.07601 12.7725 7.29994 12.9291 6.50014 12.9291Z" fill="white"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_9208_6898">
+          <rect width="13" height="13" fill="white"/>
+          </clipPath>
+          </defs>
+        </svg>
+        <span class="video_item_svg_text">Replay</span>
+      </div>
+    </div>
+    
+    <!-- 0108上场回放 -->
+    <div class="video_item">
+      <div class="video_item_video">
+        <iframe width="100%" height="100%" class="replayVideo" src="https://www.youtube.com/embed/NwDjKgymxUY?si=C1pan3V-O9ALHXr0&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="video_item_svg">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_9208_6898)">
+          <path d="M5.45285 3.88086C5.43799 3.88086 5.42301 3.88023 5.40803 3.87883L3.05051 3.66149C2.79115 3.63762 2.55844 3.48883 2.42794 3.26374C2.29844 3.04018 2.28499 2.76685 2.39201 2.53262L3.38757 0.352453C3.49828 0.1101 3.78443 0.00333203 4.02678 0.114035C4.26914 0.224738 4.3759 0.510891 4.2652 0.753244L3.36625 2.72165L5.49652 2.91805C5.76185 2.94255 5.95711 3.17741 5.9326 3.44275C5.9095 3.69297 5.69926 3.88086 5.45285 3.88086ZM6.28287 8.25567C6.15551 8.2557 6.03332 8.20531 5.94301 8.11551C5.89788 8.07067 5.86205 8.01734 5.83761 7.9586C5.81316 7.89986 5.80057 7.83687 5.80057 7.77324V5.07968C5.80057 4.8132 6.01652 4.59726 6.28299 4.59726C6.54947 4.59726 6.76542 4.8132 6.76542 5.07968V7.28727L8.97237 7.27178H8.9758C9.24062 7.27178 9.45631 7.48557 9.45809 7.75077C9.46 8.01725 9.24545 8.23472 8.9791 8.23662L6.28642 8.25554C6.28503 8.25567 6.28388 8.25567 6.28287 8.25567Z" fill="white"/>
+          <path d="M6.50014 12.9291C5.70033 12.9291 4.92427 12.7723 4.1934 12.4632C3.48767 12.1647 2.85404 11.7375 2.30992 11.1934C1.7658 10.6493 1.3386 10.0157 1.04014 9.30993C0.731006 8.57906 0.574219 7.803 0.574219 7.00319C0.574219 6.65687 0.604434 6.30965 0.663848 5.97119C0.709932 5.70878 0.960029 5.53346 1.22244 5.57954C1.48485 5.62563 1.66018 5.87572 1.61409 6.13813C1.56433 6.42162 1.53906 6.71272 1.53906 7.00319C1.53906 9.73865 3.76455 11.9641 6.50014 11.9641C9.2356 11.9641 11.4612 9.73865 11.4612 7.00319C11.4612 4.26773 9.23572 2.04212 6.50014 2.04212C5.35591 2.04212 4.23961 2.44088 3.35665 3.16489C3.15061 3.33387 2.84668 3.30378 2.67771 3.09773C2.50873 2.89169 2.53882 2.58776 2.74486 2.41879C3.26321 1.99362 3.84415 1.66215 4.47155 1.43363C5.12079 1.19712 5.80329 1.07715 6.50026 1.07715C7.30007 1.07715 8.07613 1.23394 8.807 1.54307C9.51273 1.84153 10.1464 2.26873 10.6905 2.81285C11.2346 3.35697 11.6618 3.9906 11.9603 4.69633C12.2694 5.4272 12.4262 6.20326 12.4262 7.00307C12.4262 7.80287 12.2694 8.57894 11.9603 9.3098C11.6618 10.0155 11.2346 10.6492 10.6905 11.1933C10.1464 11.7374 9.51261 12.1647 8.80688 12.4633C8.07601 12.7725 7.29994 12.9291 6.50014 12.9291Z" fill="white"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_9208_6898">
+          <rect width="13" height="13" fill="white"/>
+          </clipPath>
+          </defs>
+        </svg>
+        <span class="video_item_svg_text">Replay</span>
+      </div>
+    </div>
+    
+    <!-- 0109上场回放 -->
+    <div class="video_item">
+      <div class="video_item_video">
+        <iframe width="100%" height="100%" class="replayVideo" src="https://www.youtube.com/embed/bAcfNKcSnGM?si=4xfqOF-TxnmjHIvy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="video_item_svg">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_9208_6898)">
+          <path d="M5.45285 3.88086C5.43799 3.88086 5.42301 3.88023 5.40803 3.87883L3.05051 3.66149C2.79115 3.63762 2.55844 3.48883 2.42794 3.26374C2.29844 3.04018 2.28499 2.76685 2.39201 2.53262L3.38757 0.352453C3.49828 0.1101 3.78443 0.00333203 4.02678 0.114035C4.26914 0.224738 4.3759 0.510891 4.2652 0.753244L3.36625 2.72165L5.49652 2.91805C5.76185 2.94255 5.95711 3.17741 5.9326 3.44275C5.9095 3.69297 5.69926 3.88086 5.45285 3.88086ZM6.28287 8.25567C6.15551 8.2557 6.03332 8.20531 5.94301 8.11551C5.89788 8.07067 5.86205 8.01734 5.83761 7.9586C5.81316 7.89986 5.80057 7.83687 5.80057 7.77324V5.07968C5.80057 4.8132 6.01652 4.59726 6.28299 4.59726C6.54947 4.59726 6.76542 4.8132 6.76542 5.07968V7.28727L8.97237 7.27178H8.9758C9.24062 7.27178 9.45631 7.48557 9.45809 7.75077C9.46 8.01725 9.24545 8.23472 8.9791 8.23662L6.28642 8.25554C6.28503 8.25567 6.28388 8.25567 6.28287 8.25567Z" fill="white"/>
+          <path d="M6.50014 12.9291C5.70033 12.9291 4.92427 12.7723 4.1934 12.4632C3.48767 12.1647 2.85404 11.7375 2.30992 11.1934C1.7658 10.6493 1.3386 10.0157 1.04014 9.30993C0.731006 8.57906 0.574219 7.803 0.574219 7.00319C0.574219 6.65687 0.604434 6.30965 0.663848 5.97119C0.709932 5.70878 0.960029 5.53346 1.22244 5.57954C1.48485 5.62563 1.66018 5.87572 1.61409 6.13813C1.56433 6.42162 1.53906 6.71272 1.53906 7.00319C1.53906 9.73865 3.76455 11.9641 6.50014 11.9641C9.2356 11.9641 11.4612 9.73865 11.4612 7.00319C11.4612 4.26773 9.23572 2.04212 6.50014 2.04212C5.35591 2.04212 4.23961 2.44088 3.35665 3.16489C3.15061 3.33387 2.84668 3.30378 2.67771 3.09773C2.50873 2.89169 2.53882 2.58776 2.74486 2.41879C3.26321 1.99362 3.84415 1.66215 4.47155 1.43363C5.12079 1.19712 5.80329 1.07715 6.50026 1.07715C7.30007 1.07715 8.07613 1.23394 8.807 1.54307C9.51273 1.84153 10.1464 2.26873 10.6905 2.81285C11.2346 3.35697 11.6618 3.9906 11.9603 4.69633C12.2694 5.4272 12.4262 6.20326 12.4262 7.00307C12.4262 7.80287 12.2694 8.57894 11.9603 9.3098C11.6618 10.0155 11.2346 10.6492 10.6905 11.1933C10.1464 11.7374 9.51261 12.1647 8.80688 12.4633C8.07601 12.7725 7.29994 12.9291 6.50014 12.9291Z" fill="white"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_9208_6898">
+          <rect width="13" height="13" fill="white"/>
+          </clipPath>
+          </defs>
+        </svg>
+        <span class="video_item_svg_text">Replay</span>
+      </div>
+    </div>
+    
+    <!-- 0110上场回放 -->
+    <div class="video_item">
+      <div class="video_item_video">
+        <iframe width="100%" height="100%" class="replayVideo" src="https://www.youtube.com/embed/7y7dTX1qQ3k?si=e2GufNMh0hedHotG&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video_item_svg">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_9208_6898)">
+            <path d="M5.45285 3.88086C5.43799 3.88086 5.42301 3.88023 5.40803 3.87883L3.05051 3.66149C2.79115 3.63762 2.55844 3.48883 2.42794 3.26374C2.29844 3.04018 2.28499 2.76685 2.39201 2.53262L3.38757 0.352453C3.49828 0.1101 3.78443 0.00333203 4.02678 0.114035C4.26914 0.224738 4.3759 0.510891 4.2652 0.753244L3.36625 2.72165L5.49652 2.91805C5.76185 2.94255 5.95711 3.17741 5.9326 3.44275C5.9095 3.69297 5.69926 3.88086 5.45285 3.88086ZM6.28287 8.25567C6.15551 8.2557 6.03332 8.20531 5.94301 8.11551C5.89788 8.07067 5.86205 8.01734 5.83761 7.9586C5.81316 7.89986 5.80057 7.83687 5.80057 7.77324V5.07968C5.80057 4.8132 6.01652 4.59726 6.28299 4.59726C6.54947 4.59726 6.76542 4.8132 6.76542 5.07968V7.28727L8.97237 7.27178H8.9758C9.24062 7.27178 9.45631 7.48557 9.45809 7.75077C9.46 8.01725 9.24545 8.23472 8.9791 8.23662L6.28642 8.25554C6.28503 8.25567 6.28388 8.25567 6.28287 8.25567Z" fill="white"/>
+            <path d="M6.50014 12.9291C5.70033 12.9291 4.92427 12.7723 4.1934 12.4632C3.48767 12.1647 2.85404 11.7375 2.30992 11.1934C1.7658 10.6493 1.3386 10.0157 1.04014 9.30993C0.731006 8.57906 0.574219 7.803 0.574219 7.00319C0.574219 6.65687 0.604434 6.30965 0.663848 5.97119C0.709932 5.70878 0.960029 5.53346 1.22244 5.57954C1.48485 5.62563 1.66018 5.87572 1.61409 6.13813C1.56433 6.42162 1.53906 6.71272 1.53906 7.00319C1.53906 9.73865 3.76455 11.9641 6.50014 11.9641C9.2356 11.9641 11.4612 9.73865 11.4612 7.00319C11.4612 4.26773 9.23572 2.04212 6.50014 2.04212C5.35591 2.04212 4.23961 2.44088 3.35665 3.16489C3.15061 3.33387 2.84668 3.30378 2.67771 3.09773C2.50873 2.89169 2.53882 2.58776 2.74486 2.41879C3.26321 1.99362 3.84415 1.66215 4.47155 1.43363C5.12079 1.19712 5.80329 1.07715 6.50026 1.07715C7.30007 1.07715 8.07613 1.23394 8.807 1.54307C9.51273 1.84153 10.1464 2.26873 10.6905 2.81285C11.2346 3.35697 11.6618 3.9906 11.9603 4.69633C12.2694 5.4272 12.4262 6.20326 12.4262 7.00307C12.4262 7.80287 12.2694 8.57894 11.9603 9.3098C11.6618 10.0155 11.2346 10.6492 10.6905 11.1933C10.1464 11.7374 9.51261 12.1647 8.80688 12.4633C8.07601 12.7725 7.29994 12.9291 6.50014 12.9291Z" fill="white"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_9208_6898">
+            <rect width="13" height="13" fill="white"/>
+            </clipPath>
+            </defs>
+          </svg>
+          <span class="video_item_svg_text">Replay</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="steps_lines">
+    <li class="steps_lines_item steps_lines_item_active">
+      <div class="text_title">Tuesday, January 7</div>
+    </li>
+    <li class="steps_lines_item">
+      <div class="text_title">Wednesday, January 8</div>
+    </li>
+    <li class="steps_lines_item">
+      <div class="text_title">Thursday, January 9</div>
+    </li>
+    <li class="steps_lines_item">
+      <div class="text_title">Friday, January 10</div>
+    </li>
+  </ul>
+  <div class="current_persons_box">
+    <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_persons_fi.png?v=1736389441" />
+  </div>
+</div>
+
+
+<script>
+  (function ($) {
+    // 检测是否为手机端
+    function isMobile() {
+      return window.innerWidth <= 768
+    }
+
+    function updateImageSrc(index) {
+        const img = document.querySelector('.current_persons_box img')
+        if (isMobile()) {
+          if(index=== 0) {
+            // 移动端图片路径
+            img.src = `https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_persons_fi_mb.png?v=1736389486`;
+          } else if (index===1) {
+            // 移动端图片路径
+            img.src = `https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_persons_sec_mb.png?v=1736392906`;
+          } else if(index===2) {
+            // 移动端图片路径
+            img.src = `https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_persons_thi_mb.png?v=1736389552`;
+          } else if(index===3) {
+            // 移动端图片路径
+            img.src = `https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_persons_fou_mb.png?v=1736391980`;
+          }
+        } else {
+          if(index=== 0) {
+            // 移动端图片路径
+            img.src = `https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_persons_fi.png?v=1736389441`;
+          } else if (index===1) {
+            // 移动端图片路径
+            img.src = `https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_persons_sec.png?v=1736392892`;
+          } else if(index===2) {
+            // 移动端图片路径
+            img.src = `https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_persons_thi.png?v=1736389468`;
+          } else if(index===3) {
+            // 移动端图片路径
+            img.src = `https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_persons_fou.png?v=1736389476`;
+          }
+        }
+    }
+    
+    // 初始化时设置图片
+    updateImageSrc(0);
+
+     if(isMobile()) {
+        // 视频
+      $('.video_living_list').slick({
+        arrows: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false,
+        nextArrow: window.arrows.icon_next,
+        prevArrow: window.arrows.icon_prev,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              initialSlide: 1
+            }
+          }
+        ]
+      })
+    }
+
+      $('.steps_lines_item').each(function(index) {
+        $(this).on('click', function(e) {
+          // 移除所有其他元素的 `steps_lines_item_active` 类
+          $('.steps_lines_item').removeClass('steps_lines_item_active');
+      
+          // 给当前被点击的元素添加 `steps_lines_item_active` 类
+          $(this).addClass('steps_lines_item_active');
+          updateImageSrc(index)
+          getCurrentClickIndex(index)
+        })
+      })
+
+
+     // 点击booknow 直接跳到对应商品
+      $('#servicify-floating-button [data-servicify="BookNowButton"] button').click(function (e) {
+         // 阻止默认点击事件，兼容性处理
+          if (e.preventDefault) {
+            e.preventDefault(); // 标准方法
+          } else {
+            e.returnValue = false; // 兼容较旧的浏览器
+          }
+        // 跳转到指定页面
+        window.location.href = '/products/book-a-time-with-us-at-ces-2025';
+      })
+
+      function getCurrentClickIndex(index) {
+        clearInterval(countdownfunctionInit)
+        switch(index) {
+          case 0:
+            countDownTime('2025/1/7 10:0:00')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(0) span').text('Clarence Ford')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(1) span').text('Peter Jin Hong')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(2)').css('display', 'none')
+            break;
+          case 1:
+            countDownTime('2025/1/8 10:0:00')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(2)').css('display', 'inline-block')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(0) span').text('Jean-Francois Menard')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(1) span').text('Chris DeAppolonio')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(2) span').text('Bryce Eldridge')
+            break;
+          case 2:
+            countDownTime('2025/1/9 10:0:00')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(0) span').text('Sean Guadron')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(1) span').text('Dr.Kris Alexander')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(2)').css('display', 'none')
+            break;
+          case 3:
+            countDownTime('2025/1/10 10:0:00')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(2)').css('display', 'inline-block')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(0) span').text('Tom Harris')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(1) span').text('Akshat Rathee')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(2) span').text('Neil Duffy')
+            break;
+          default:
+            countDownTime('2025/1/10 10:0:00')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(2)').css('display', 'inline-block')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(0) span').text('Tom Harris')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(1) span').text('Akshat Rathee')
+            $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG .banner-action .banner-button.button:eq(2) span').text('Neil Duffy')
+        }
+      }
+
+      // 计算倒计时的函数
+      function countDownTime(val) {
+        clearInterval(window.countdownfunction); // 清除现有定时器
+        var countdownElm = $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG [data-countdown]');
+        if (countdownElm.length) {
+            countdownElm.each(function () {
+                var self = $(this),
+                    countDown = val,
+                    countDownDate = new Date(countDown).getTime(),
+                    originalHtml = self.html(); // 缓存初始内容
+    
+                window.countdownfunction = setInterval(function () {
+                    // 获取当前时间并转换到拉斯维加斯时区
+                    var now = new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
+                    now = new Date(now).getTime(); // 转换为时间戳
+                    var distance = countDownDate - now;
+    
+                    if (distance > 0) {
+                        // 如果元素已被移除，则重新加回来
+                        if (!$.contains(document, self[0])) {
+                            if (self.hasClass('hide--countdown')) {
+                                $('#halo-image-banner-template--18319891857639__image_banner_hgUGcG').append(self); // 重新添加元素
+                            } else {
+                                self.parents('.shopify-section').append(self); // 添加到父级容器
+                            }
+                            self.html(originalHtml); // 恢复初始内容
+                        }
+    
+                        // 更新倒计时显示
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                            hours = `0${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}`.slice(-2),
+                            minutes = `0${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}`.slice(-2),
+                            seconds = `0${Math.floor((distance % (1000 * 60)) / 1000)}`.slice(-2),
+                            strCountDown = '';
+                        
+                        strCountDown = '<div class="clock-item"><span class="num">' + days + '</span><span class="text">' + window.countdown.days + '</span></div><span style="margin-top: 20px;">:</span>\
+                                        <div class="clock-item"><span class="num">' + hours + '</span><span class="text">' + window.countdown.hours + '</span></div><span style="margin-top: 20px;">:</span>\
+                                        <div class="clock-item"><span class="num">' + minutes + '</span><span class="text">' + window.countdown.mins + '</span></div><span style="margin-top: 20px;">:</span>\
+                                        <div class="clock-item"><span class="num">' + seconds + '</span><span class="text">' + window.countdown.secs + '</span></div>';
+                        self.html(strCountDown);
+                    } else {
+                        // 倒计时结束，清除定时器并移除元素
+                        clearInterval(window.countdownfunction);
+                        window.countdownfunction = null; // 确保后续不再触发
+                        if (self.hasClass('hide--countdown')) {
+                            self.remove(); // 移除倒计时元素
+                        } else {
+                            self.parents('.shopify-section').remove(); // 移除相关父元素
+                        }
+                    }
+                }, 1000);
+            });
+        }
+    }
+
+
+
+    
+  })(jQuery);
+
+</script>
+
+{% schema %}
+  {
+    "name": "CES Living Steps",
+    "settings": [
+      {
+          "type": "select",
+          "id": "container",
+          "label": "t:sections.layout.container.option",
+          "default": "container",
+          "options": [
+              {
+                  "value": "container",
+                  "label": "t:sections.layout.container.option1"
+              },
+              {
+                  "value": "1170",
+                  "label": "t:sections.layout.container.option4"
+              },
+              {
+                  "value": "1570",
+                  "label": "Width (1570px)"
+              },
+              {
+                  "value": "1770",
+                  "label": "t:sections.layout.container.option3"
+              },
+              {
+                  "value": "fullwidth",
+                  "label": "t:sections.layout.container.option2"
+              }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "living_type",
+        "label": "Video Living Type",
+        "info": "choose living type, youtube, twitch",
+        "default": "youtube",
+        "options": [
+          {
+            "value": "youtube",
+            "label": "youtube"
+          },
+          {
+            "value": "twitch",
+            "label": "twitch"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "CES Living Steps"
+      }
+    ]
+  }
+{% endschema %}

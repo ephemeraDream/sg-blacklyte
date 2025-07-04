@@ -1,0 +1,237 @@
+{{ 'section-features-navbar.css' | asset_url | stylesheet_tag }}
+<link
+  rel="stylesheet"
+  href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.css?v=1702624065"
+>
+
+<div class="features_navbar">
+  <div class="features_navbar_title">
+    <div class="features_navbar_title_info">
+      {% assign first_item = section.blocks | first %}
+      <span>{{ first_item.settings.title }}</span>
+      {% if section.blocks.size > 1 %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="9" viewBox="0 0 16 9" fill="none">
+          <path d="M14.3981 0.698851L7.69922 7.3977L1.00037 0.698851" stroke="white" stroke-width="2"/>
+        </svg>
+      {% endif %}
+    </div>
+    {% if section.blocks.size > 1 %}
+      <div class="features_navbar_title_select">
+        {% for block in section.blocks %}
+          <a
+            class="features_navbar_title_select_item{% if forloop.first %} active{% endif %}"
+            href="{{ block.settings.url }}"
+          >
+            {{- block.settings.title -}}
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="features_navbar_anchor">
+    <a
+      class="features_navbar_anchor_item features_navbar_anchor_item_active"
+      data-value="feature"
+      data-watch="feature_watch"
+    >
+      {{- 'products.product.text.feature' | t -}}
+    </a>
+    {% if section.settings.show_compare %}
+      <a class="features_navbar_anchor_item" data-value="compare" data-watch="compare">
+        {{- 'products.product.text.compare' | t -}}
+      </a>
+    {% endif %}
+    <a class="features_navbar_anchor_item" data-value="specs" data-watch="specs">
+      {{- 'products.product.text.specs' | t -}}
+    </a>
+    <a class="features_navbar_anchor_item" data-value="faq" data-watch="faq">
+      {{- 'products.product.text.faq' | t -}}
+    </a>
+    {% comment %}
+      <a class="features_navbar_btn pc_show" href="{{ section.settings.url }}">
+        {{- 'products.product.text.buy_now' | t -}}
+      </a>
+    {% endcomment %}
+  </div>
+</div>
+
+<script src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.js?v=1702624149"></script>
+<script>
+  const top_bar = document.querySelectorAll('.shopify-section.shopify-section-group-header-group');
+  top_bar.forEach((el) => {
+    el.style.setProperty('position', 'relative', 'important');
+    el.style.setProperty('top', '0', 'important');
+  });
+
+  const navbar = document.querySelector('.features_navbar');
+  const navbarOffsetTop = navbar.offsetTop;
+  let scrollFunction = () => {
+    if (window.scrollY >= navbarOffsetTop) {
+      navbar.style.position = 'fixed';
+    } else {
+      navbar.style.position = 'relative';
+    }
+  };
+  window.addEventListener('scroll', scrollFunction);
+
+  function waitForElement(selector, callback) {
+    const element = document.querySelector(selector);
+    if (element) {
+      callback(element);
+      return;
+    }
+
+    const observer = new MutationObserver((mutations, obs) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        obs.disconnect();
+        callback(element);
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  const links = document.querySelectorAll('.features_navbar_anchor_item');
+  links.forEach((link) => {
+    link.addEventListener('click', function (event) {
+      event.preventDefault(); // 阻止默认锚点跳转
+      const targetId = this.getAttribute('data-value');
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection && navbar) {
+        const navbarHeight = navbar.offsetHeight;
+        const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight + 2;
+
+        if (window.getComputedStyle(navbar).position === 'fixed' && targetId === 'feature') {
+          window.scrollTo({
+            top: offsetTop + navbarHeight,
+          });
+        } else {
+          window.scrollTo({
+            top: offsetTop,
+          });
+        }
+      }
+
+      links.forEach((item) => item.classList.remove('features_navbar_anchor_item_active'));
+      this.classList.add('features_navbar_anchor_item_active');
+    });
+  });
+  // 获取所有链接对应的 section
+  const sectionIds = Array.from(links).map((link) => link.getAttribute('data-watch'));
+  let sectionsLoaded = 0;
+  let sectionsObserver;
+  let sections = [];
+
+  function initializeObserver() {
+    // 等待所有目标 section 元素都加载完毕
+    sectionIds.forEach((sectionId) => {
+      waitForElement(`#${sectionId}`, (element) => {
+        sections.push(element);
+        sectionsLoaded++;
+
+        // 一旦所有 sections 加载完毕，开始初始化 IntersectionObserver
+        if (sectionsLoaded === sectionIds.length) {
+          startIntersectionObserver(sections);
+        }
+      });
+    });
+  }
+
+  function startIntersectionObserver(sections) {
+    sectionsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const targetSection = entry.target;
+          const correspondingLink = document.querySelector(
+            `.features_navbar_anchor_item[data-watch="${targetSection.id}"]`
+          );
+          // 如果该 section 进入视口，则给对应的链接添加 active 类
+          if (entry.isIntersecting) {
+            links.forEach((link) => link.classList.remove('features_navbar_anchor_item_active'));
+            if (correspondingLink) {
+              correspondingLink.classList.add('features_navbar_anchor_item_active');
+            }
+          }
+        });
+      },
+      {
+        root: null, // 视口
+        threshold: 0.1, // 设置阈值，0.3表示至少30%的区域出现在视口中时触发
+      }
+    );
+
+    // 开始观察所有 section
+    sections.forEach((section) => {
+      sectionsObserver.observe(section);
+    });
+  }
+
+  initializeObserver();
+
+  document.querySelectorAll('.features_navbar_title_select_item').forEach((item) => {
+    item.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (item.classList.contains('active')) return;
+      const url = item.getAttribute('href');
+      window.location.href = url;
+    });
+  });
+
+  document.querySelector('.features_navbar_title').addEventListener('click', function (e) {
+    e.stopPropagation();
+    const parent = e.target.closest('.features_navbar_title');
+    parent.classList.toggle('active');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (
+      document.querySelector('.features_navbar_title.active') &&
+      !document.querySelector('.features_navbar_title.active').contains(e.target)
+    ) {
+      document.querySelector('.features_navbar_title.active').classList.remove('active');
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "features navbar",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_compare",
+      "label": "show compare",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "name"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "features navbar"
+    }
+  ]
+}
+{% endschema %}

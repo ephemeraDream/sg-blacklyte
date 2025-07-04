@@ -1,0 +1,38 @@
+{% comment %}
+  新版设计背书部分
+{% endcomment %}
+<style>
+  .product-feature-container .features-title {
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #333;
+  }
+  .product-feature-container .feature-lists {
+    margin: 0;
+    margin-top: 25px;
+    list-style-type: disc;
+    padding-left: 18px;
+  }
+  .product-feature-container .feature-lists .item {
+    font-family: "Poppins";
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 26px;
+    color: #666666;
+  }
+  @media(max-width: 767px) {
+    .product-feature-container .feature-lists {
+      margin-top: 10px;
+    }
+  }
+  
+</style>
+
+<section>
+  <div class="product-feature-container">
+    <div class="features-title">{{ block.settings.featureTitle }}</div>
+    {{ block.settings.featureHTML }}
+  </div>
+</section>

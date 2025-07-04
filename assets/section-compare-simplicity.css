@@ -1,0 +1,387 @@
+.compare_simplicity {
+  max-width: 75vw;
+  margin: 0 auto;
+  position: relative;
+  background-color: #000000;
+  padding: 6.25vw 11.45833vw 4.167vw 11.45833vw;
+}
+
+.compare_simplicity .compare_simplicity_title {
+  font-family: DIN-BlackItalic;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.compare_simplicity .compare_simplicity_desc {
+  font-family: Noto Sans TC;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #9F9FA5;
+  margin-top: 0.4167vw;
+}
+
+.compare_simplicity .compare_simplicity_product {
+  display: flex;
+  align-items: center;
+  padding: 1.04166vw 0;
+  border-bottom: 1px solid #A0A0A64D;
+  margin-top: 1.45833vw;
+}
+
+.compare_simplicity .compare_simplicity_product_item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.compare_simplicity .compare_simplicity_product_item img {
+  width: 8.75vw;
+  height: 12.39583vw;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.compare_simplicity .compare_simplicity_product_item_name {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #F8F9FC;
+}
+
+.compare_simplicity .compare_simplicity_product_item_desc {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #fff;
+  margin-top: 0.3125vw;
+}
+
+.compare_simplicity .compare_simplicity_product_item_price {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  color: #86868B;
+  margin-top: 0.3125vw;
+}
+
+.compare_simplicity .compare_simplicity_item {
+  border-bottom: 1px solid #A0A0A64D;
+  height: 6.25vw;
+  display: flex;
+  align-items: center;
+}
+
+.compare_simplicity .compare_simplicity_item_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #F8F9FC;
+  flex: 1;
+}
+
+.compare_simplicity .compare_simplicity_item_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #F8F9FC;
+  flex: 1;
+}
+
+.compare_simplicity .compare_simplicity_item_text.light_word {
+  color: #9F9FA5;
+}
+
+.compare_simplicity .compare_simplicity_contact {
+  position: relative;
+  width: 45vw;
+  height: 16.14583vw;
+  border-radius: 1.25vw;
+  margin: 0 auto;
+  background-color: #15171B;
+}
+
+.compare_simplicity .compare_simplicity_contact_top {
+  margin-top: 11.979167vw;
+}
+
+.compare_simplicity .compare_simplicity_contact_logo {
+  width: 3.75vw;
+  height: 3.75vw;
+  position: absolute;
+  top: -0.9375vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.compare_simplicity .compare_simplicity_contact_logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.compare_simplicity .compare_simplicity_contact_title {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 22.5px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  padding-top: 3.64583vw;
+}
+
+.compare_simplicity .compare_simplicity_contact_box {
+  display: flex;
+  align-items: center;
+  margin-top: 2.604166vw;
+}
+
+.compare_simplicity .compare_simplicity_contact_box_item {
+  text-align: center;
+  padding: 0 4.167vw;
+}
+
+.compare_simplicity .compare_simplicity_contact_box_item+.compare_simplicity_contact_box_item {
+  border-left: 1px solid #A0A0A633
+}
+
+.compare_simplicity .compare_simplicity_contact_box_item>svg {
+  width: 2.0833vw;
+  height: 2.0833vw;
+}
+
+.compare_simplicity .compare_simplicity_contact_box_item_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #9F9FA5;
+  margin-top: 0.4167vw;
+}
+
+.compare_simplicity .compare_simplicity_contact_box_item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  background: linear-gradient(91.49deg, #1C5FEE -15.55%, #9BEFFF 122.08%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0.833vw;
+}
+
+.compare_simplicity .compare_simplicity_contact_box_item a svg {
+  width: 0.833vw;
+  height: 0.833vw;
+}
+
+.compare_simplicity .compare_simplicity_item_pmdbox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.compare_simplicity .pmd_show {
+  display: none;
+}
+
+@media screen and (max-width: 1440px) {
+  .compare_simplicity .compare_simplicity_contact_box_item {
+    padding: 0 2.167vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact {
+    height: 18.14583vw;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .compare_simplicity .compare_simplicity_item_title {
+    font-size: 16px;
+  }
+
+  .compare_simplicity .compare_simplicity_item_text {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .compare_simplicity .compare_simplicity_contact {
+    height: 21.14583vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_box_item {
+    padding: 0 1.167vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .compare_simplicity {
+    max-width: 100vw;
+    padding: 9.6vw 5.33vw !important;
+  }
+
+  .compare_simplicity .pc_show {
+    display: none;
+  }
+
+  .compare_simplicity .pmd_show {
+    display: flex;
+  }
+
+  .compare_simplicity .compare_simplicity_title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .compare_simplicity .compare_simplicity_desc {
+    margin-top: 1.6vw;
+  }
+
+  .compare_simplicity .compare_simplicity_product {
+    padding: 3.73vw 0;
+    margin-top: 2.93vw;
+  }
+
+  .compare_simplicity .compare_simplicity_product_item {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .compare_simplicity .compare_simplicity_product_item img {
+    width: 20.8vw;
+    height: 36.267vw;
+    flex: 0 0 100%;
+  }
+
+  .compare_simplicity .compare_simplicity_product_item div {
+    text-align: center;
+  }
+
+  .compare_simplicity .compare_simplicity_product_item_name {
+    font-size: 14px;
+    margin-top: 1.33vw;
+  }
+
+  .compare_simplicity .compare_simplicity_product_item_desc {
+    font-size: 12px;
+    margin-top: 0;
+  }
+
+  .compare_simplicity .compare_simplicity_product_item_price {
+    font-size: 12px;
+    margin-top: .533vw;
+  }
+
+  .compare_simplicity .compare_simplicity_item {
+    height: 21.33vw;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  .compare_simplicity .compare_simplicity_item_text {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .compare_simplicity .compare_simplicity_item_title {
+    font-weight: 500;
+    font-size: 10px;
+    color: #9F9FA5;
+    text-align: center;
+  }
+
+  .compare_simplicity .compare_simplicity_item_pmdbox {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .compare_simplicity .compare_simplicity_contact {
+    width: 100%;
+    height: 141.33vw;
+    border-radius: 6.4vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_top {
+    margin-top: 18.4vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_logo {
+    width: 19.2vw;
+    height: 19.2vw;
+    top: -6.4vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_title {
+    font-size: 26px;
+    padding: 19.2vw 6.6vw 0;
+    line-height: 30px;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_box {
+    flex-wrap: wrap;
+    margin-top: 10.4vw;
+    gap: 14.4vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_box_item {
+    text-align: center;
+    padding: 0 11.2vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_box_item>svg {
+    width: 10.4vw;
+    height: 10.4vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_box_item_text {
+    margin-top: 1.6vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_box_item a {
+    margin-top: 4vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_box_item a svg {
+    width: 4vw;
+    height: 4vw;
+  }
+
+  .compare_simplicity .compare_simplicity_contact_box_item+.compare_simplicity_contact_box_item {
+    border: none;
+  }
+}

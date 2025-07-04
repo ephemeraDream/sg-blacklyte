@@ -1,0 +1,173 @@
+{{ 'section-swiper-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="swiper_simplicity{% if section.settings.style == 'two' %} swiper_simplicity_styletwo{% endif %}">
+  {% if section.settings.style == 'one' %}
+    <div class="swiper swiper_simplicity_swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <img
+              src="{{ block.settings.image | image_url: width: 129 }}"
+              alt="{{ block.settings.title }}"
+            >
+            <div class="swiper_simplicity_swiper_title">{{ block.settings.title }}</div>
+            <div class="swiper_simplicity_swiper_text">{{ block.settings.text }}</div>
+          </div>
+        {% endfor -%}
+      </div>
+    </div>
+    <div class="swiper_simplicity_swiper_prev">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="48"
+        height="48"
+        viewBox="0 0 48 48"
+        fill="none"
+      >
+        <g opacity="0.6">
+        <rect width="48" height="48" rx="24" fill="#25262A"/>
+        <g clip-path="url(#clip0_13258_3490)">
+        <rect width="8" height="12" transform="matrix(-1 0 0 -1 28 30)" fill="url(#pattern0_13258_3490)"/>
+        </g>
+        </g>
+        <defs>
+        <pattern id="pattern0_13258_3490" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0_13258_3490" transform="scale(0.0588235 0.0344828)"/>
+        </pattern>
+        <clipPath id="clip0_13258_3490">
+        <rect width="8" height="12" fill="white" transform="translate(20 18)"/>
+        </clipPath>
+        <image id="image0_13258_3490" width="17" height="29" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAdCAYAAABMr4eBAAAAAXNSR0IArs4c6QAAANpJREFUSEud1WsNwkAQBOAZB5WAAzTgBBwgoVWABJCEgyIBB0u3uZK79h67t3+aPvJlLtlJiTAiMgAYSH62Z9YrI2QGcFruR5KTFdDvViSkUETT6LigOMkVwDNKYIb+SEjUBSVIL3RAeqAs4oWKiAeqIlaoiVggE9KCzEgNciFFyFO0qKzJZruThDTaMYXWcSMikgAAbi4kC5AvM7IDvgAuJN/m49QAE9ICmogFqCJWoIh4gCziBQ5ID5AgIvIAcA+bnOxBq1/xf0d6gH2SEcB56dO0bWIrwfb+Bwsolu+39yX7AAAAAElFTkSuQmCC"/>
+        </defs>
+      </svg>
+    </div>
+    <div class="swiper_simplicity_swiper_next">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="48"
+        height="48"
+        viewBox="0 0 48 48"
+        fill="none"
+      >
+        <g opacity="0.6">
+        <rect width="48" height="48" rx="24" fill="#25262A"/>
+        <g clip-path="url(#clip0_13258_3490)">
+        <rect width="8" height="12" transform="matrix(-1 0 0 -1 28 30)" fill="url(#pattern0_13258_3490)"/>
+        </g>
+        </g>
+        <defs>
+        <pattern id="pattern0_13258_3490" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0_13258_3490" transform="scale(0.0588235 0.0344828)"/>
+        </pattern>
+        <clipPath id="clip0_13258_3490">
+        <rect width="8" height="12" fill="white" transform="translate(20 18)"/>
+        </clipPath>
+        <image id="image0_13258_3490" width="17" height="29" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAdCAYAAABMr4eBAAAAAXNSR0IArs4c6QAAANpJREFUSEud1WsNwkAQBOAZB5WAAzTgBBwgoVWABJCEgyIBB0u3uZK79h67t3+aPvJlLtlJiTAiMgAYSH62Z9YrI2QGcFruR5KTFdDvViSkUETT6LigOMkVwDNKYIb+SEjUBSVIL3RAeqAs4oWKiAeqIlaoiVggE9KCzEgNciFFyFO0qKzJZruThDTaMYXWcSMikgAAbi4kC5AvM7IDvgAuJN/m49QAE9ICmogFqCJWoIh4gCziBQ5ID5AgIvIAcA+bnOxBq1/xf0d6gH2SEcB56dO0bWIrwfb+Bwsolu+39yX7AAAAAElFTkSuQmCC"/>
+        </defs>
+        <circle class="ring-progress-bg" cx="24" cy="24" r="22" stroke-linecap="round" />
+        <circle class="ring-progress" cx="24" cy="24" r="22" stroke-linecap="round" />
+      </svg>
+    </div>
+    <div class="swiper_simplicity_pagination"></div>
+  {% else %}
+
+  {% endif %}
+</div>
+
+<script>
+  (() => {
+    const ring = document.querySelector('.ring-progress');
+
+    new Swiper('.swiper_simplicity .swiper_simplicity_swiper', {
+      loop: true,
+      on: {
+        init: function () {
+          restartProgressAnimation(ring);
+        },
+        slideChange: function () {
+          {% comment %} ring.classList.remove('animate'); {% endcomment %}
+          ring.style.animation = 'none';
+          restartProgressAnimation(ring);
+        },
+      },
+      navigation: {
+        nextEl: '.swiper_simplicity .swiper_simplicity_swiper_next',
+        prevEl: '.swiper_simplicity .swiper_simplicity_swiper_prev',
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper_simplicity .swiper_simplicity_pagination',
+      },
+    });
+
+    function restartProgressAnimation(ring) {
+      if (!ring) return;
+      setTimeout(() => {
+        {% comment %} ring.classList.add('animate'); {% endcomment %}
+        ring.style.animation = 'circleProgress 5s linear forwards';
+      }, 0);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "swiper simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "radio",
+      "id": "style",
+      "label": "style",
+      "default": "one",
+      "options": [
+        {
+          "value": "one",
+          "label": "style one"
+        },
+        {
+          "value": "two",
+          "label": "style two"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "swiperItem",
+      "name": "swiper Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "swiper simplicity"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,82 @@
+<div class="oy-img-txt">
+  <div class="oy-img-txt-in{% if section.settings.flex_reversal %} flex_reversal{% endif %}">
+    <div class="oy-img-txt-txt">
+      <div class="oy-img-txt-txt-in">
+        <div class="oy-title">
+          <p>{{ section.settings.title }}</p>
+        </div>
+        <div class="oy-title-b">
+          <p>{{ section.settings.text }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="oy-img-txt-img">
+      <img width="" height="" src="{{ section.settings.img | image_url  }}" alt="{{ section.settings.title }}" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<style>
+    .oy-img-txt-img{
+      min-width:100px;
+    }
+
+  .oy-img-txt{
+       padding-top:{{ section.settings.p_t}}px;
+        padding-bottom:{{ section.settings.p_m}}px;
+  }
+    .oy-img-txt-in.flex_reversal{
+      flex-direction: row-reverse;
+    }
+</style>
+
+{% schema %}
+{
+  "name": "A Image and Text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "选择图片"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "内容"
+    },
+    {
+      "type": "checkbox",
+      "id": "flex_reversal",
+      "label": "是否反转",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "p_t",
+      "label": "Padding Top",
+      "max": 300,
+      "min": 0,
+      "default": 30,
+      "unit": "px",
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "p_m",
+      "label": "Padding Bottom",
+      "max": 300,
+      "min": 0,
+      "default": 30,
+      "unit": "px",
+      "step": 5
+    }
+  ],
+
+  "presets": [{ "name": "A Image and Text" }]
+}
+{% endschema %}

@@ -1,0 +1,207 @@
+.collection-banner-adv{
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blastEvent-cont-bgImg-new.webp?v=1746607611') no-repeat;
+  background-size: cover;
+}
+.collection-banner-adv .container-full{
+  padding-left: 160px;
+  padding-right: 160px;
+}
+.collection-block-section_title {
+  font: 600 40px "Roboto";
+  color: #FFFFFF;
+  padding: 90px 0 27px;
+  text-align: center;
+}
+.esports_secson-sale_collection .card-product{
+  border-radius: 24px 24px 0 0;
+  background: #eaeaea url('https://cdn.shopify.com/s/files/1/0599/2867/4417/files/blastEvent-prod-bgurl.gif?v=1745896523') no-repeat;
+  background-size: 90px;
+  background-position: right 0;
+}
+
+.esports_secson-sale_collection .media--loading-effect{
+  border-radius: 24px 24px 0 0;
+  padding-bottom: 80% !important;
+}
+.esports_secson-sale_collection .card-information{
+  background-color: #1D1D2D;
+  border: 1px solid #42425D;
+  border-radius: 0 0 24px 24px;
+  padding: 26px 25px 35px;
+}
+.esports_secson-sale_collection .card-title{
+  font: 600 22px "Roboto";
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 8px;
+}
+.esports_secson-sale_collection .card-title:hover{
+  color: rgba(255,255,255,1);
+}
+.esports_secson-sale_collection .price-item{
+  /* font: 400 22px "Roboto"; */
+  color: rgba(255,255,255,0.6);
+}
+.esports_secson-sale_collection .collection .blast-collection-price-bths .card-action{
+  margin-bottom: 27px;
+}
+.esports_secson-sale_collection .blast-collection-btn,
+.esports_secson-sale_collection .blast-collection-price-bths_shop_now {
+  background: linear-gradient(92deg, rgba(49, 115, 232, 1), rgba(155, 239, 255, 1) 100%);
+  color: #fff;
+  font: 500 15px "Roboto";
+  width: 9vw;
+  min-width: 9vw;
+  padding: 15px 0;
+  text-align: center;
+  border-radius: 30px;
+  text-transform: uppercase;
+}
+.esports_secson-sale_collection .blast-collection-price-bths{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.esports_secson-sale_collection a.blast-collection-btn:hover,
+.esports_secson-sale_collection a.blast-collection-price-bths_shop_now:hover {
+  color: #fff;
+}
+.esports_secson-sale_collection .card-price{
+  margin-bottom: 0;
+  color: rgba(255,255,255,0.8);
+}
+.esports_secson-sale_collection .collection_all_variant-list{
+  font: 400 15px "Roboto";
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 20px;
+}
+.esports_secson-sale_collection .card-product .card-product__wrapper:before{
+  left: 5% !important;
+  top: 5% !important;
+}
+
+/* small IPhone */
+@media(max-width: 380px) {
+  .collection .card-title{
+    min-height: calc(12px * 2);
+  }
+}
+
+/* IPhone */
+@media(max-width: 767px) {
+  .collection-banner-adv .container-full{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .collection-block-section_title{
+    font-size: 24px;
+    padding: 50px 0 0;
+  }
+   .collection .blast-collection-price-bths .card-action {
+    margin-bottom: 0;
+  }
+  .esports_secson-sale_collection .blast-collection-btn,
+  .esports_secson-sale_collection .blast-collection-price-bths_shop_now {
+    font-size: 9px;
+    width: 90px;
+    min-width: 90px;
+    padding: 10px 0;
+  }
+  .collection .card-title{
+    font-size: 10px;
+    line-height: 12px;
+  }
+  .esports_secson-sale_collection .price-item{
+    font-size: 10px;
+  }
+  .esports_secson-sale_collection .media--loading-effect,
+  .esports_secson-sale_collection .card-product {
+    border-radius: 12px 12px 0 0;
+  }
+  .esports_secson-sale_collection .card-information{
+    border-radius: 0 0 12px 12px;
+    padding: 10px;
+  }
+  .esports_secson-sale_collection .collection_all_variant-list{
+    font-size: 8px;
+  }
+  .esports_secson-sale_collection .card-product{
+    background-size: 40px;
+    background-position: right 0;
+  }
+}
+/* IPad */
+@media(min-width: 768px) and (max-width: 1024px) {
+  .collection-banner-adv .container-full{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .esports_secson-sale_collection .card-information{
+    padding: 10px;
+  }
+  .collection .blast-collection-price-bths .card-action{
+    position: static;
+    margin-bottom: 10px;
+  }
+  .blast-collection-btn,
+  .blast-collection-price-bths_shop_now{
+    width: 12vw;
+    min-width: 12vw;
+    font-size: 10px;
+    padding: 10px 0;
+  }
+}
+/* small screen */
+@media(min-width: 1025px) and (max-width: 1490px) {
+  .collection-banner-adv .container-full{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .esports_secson-sale_collection .blast-collection-btn,
+  .esports_secson-sale_collection .blast-collection-price-bths_shop_now{
+    width: 8vw;
+    min-width: 8vw;
+    font-size: 10px;
+    padding: 10px 0;
+  }
+  .collection .blast-collection-price-bths .card-action{
+    position: static;
+    margin-bottom: 0;
+  }
+}
+/* small screen */
+@media(min-width: 1500px) and (max-width: 1900px) {
+  .collection-banner-adv .container-full{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .esports_secson-sale_collection .blast-collection-btn,
+  .esports_secson-sale_collection .blast-collection-price-bths_shop_now {
+    width: 8vw;
+    min-width: 8vw;
+    font-size: 12px;
+    padding: 10px 0;
+  }
+  .esports_secson-sale_collection .price-item.price-item--regular{
+    font-size: 14px;
+  }
+  .esports_secson-sale_collection .price-item.price-item--regular:before{
+    font-size: 16px;
+  }
+}
+/* large screen */
+@media(min-width: 2000px) {
+  .esports_secson-sale_collection .card-title{
+    font-size: 28px;
+  }
+  .esports_secson-sale_collection .price-item,
+  .collection_all_variant-list{
+    font-size: 24px;
+  }
+  
+  .esports_secson-sale_collection .blast-collection-btn,
+  .esports_secson-sale_collection .blast-collection-price-bths_shop_now{
+    font-size: 18px;
+    width: 150px;
+    border-radius: 70px;
+  }
+}

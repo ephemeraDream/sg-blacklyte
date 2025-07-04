@@ -1,0 +1,334 @@
+{% comment %}
+  达人返图 or 视频文件
+  功能介绍:
+    a. 点击可播放可暂停
+      I. 当前被点击的视频文件如果在播放状态则暂停播放, 如果在未播放状态则播放视频文件. 始终保持只播放一个视频文件.
+    b. 显示达人名称.
+    c. 当前视频播放完毕自动播放下一个.
+    d. 移动端显示轮播样式, 当前视频文件播放完自动轮播下一个, 始终播放当前页的第一个视频文件.
+{% endcomment %}
+<style>
+  .Influencer-return {
+    background-color: #f2f2f2;
+    padding: 100px 0;
+    /* background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/CyberMonday_returns_bgImg.png?v=1733291489') no-repeat; */
+    /* background-size: 100% 100%; */
+  }
+  .influencer_title {
+    font-size: 40px;
+    line-height: 50px;
+    color: #18181b;
+    text-align: center;
+    font-weight: 500;
+  }
+  .Influencer-return .video-list-container {
+    margin-top: 60px;
+  }
+  .video-item {
+    width: 33.333333vw;
+    position: relative;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .video-item .video-item-settings {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  .video-item .focusable-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transfrom: translate(-50%, -50%);
+  }
+  .video-item .focusable-play-button.fwn-1oknevx {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    border: 0px;
+    inset: 50% auto auto 50%;
+    box-sizing: border-box;
+    color: inherit;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .video-item .focusable-play-button .fwn-na8a98 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  .video-item .focusable-play-button .fwn-na8a98 svg {
+    width: 50px;
+    height: 50px;
+    fill: none;
+    stroke: none;
+  }
+  .person_info_container {
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0.8) 0px 0px 4px;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    width: 100%;
+    line-height: 40px;
+  }
+  @media (max-width: 768px) {
+    .Influencer-return {
+      padding: 50px 0;
+    }
+    .video-item {
+      width: 25vw;
+    }
+    .influencer_title {
+      font-size: 24px;
+      line-height: 30px;
+    }
+    .person_info_container {
+      font-size: 18px;
+      line-height: 20px;
+      font-weight: 500;
+      bottom: 10px;
+    }
+  }
+</style>
+<div class="Influencer-return">
+  <div class="Influencer-return-container {% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1570' %}container-1570{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
+    <div class="influencer_title">{{ section.settings.title }}</div>
+    <div class="video-list-container">
+      {%- for block in section.blocks -%}
+        <div class="video-item">
+          {% if block.settings.url_upload != blank %}
+            {{
+              block.settings.url_upload
+              | video_tag:
+                class: 'video-item-settings',
+                loop: true,
+                muted: true,
+                playsinline: true,
+                preload: 'none',
+                poster: block.settings.video_poster_url
+            }}
+          {% else %}
+            <video
+              class="video-item-settings"
+              muted
+              playsinline
+              preload="none"
+              loop
+              poster="{{ block.settings.video_poster_url }}"
+            >
+              <source src="{{ block.settings.video_url }}" type="video/mp4">
+            </video>
+          {% endif %}
+          {% if block.settings.show_playicon %}
+            <button aria-label="Play Video" class="focusable-play-button fwn-1oknevx">
+              <div role="presentation" class="accessible-icon">
+                <div class="fwn-na8a98">
+                  <svg role="img" width="100%" height="100%" viewBox="0 0 40 40">
+                    <title>play</title>
+                    <circle cx="50%" cy="50%" r="50%" fill="rgba(64 64 64 / 50%)"></circle>
+                    <path filter="" d="M14.9765 29.3996C14.1117 29.3996 13.5 28.7316 13.5 27.654V12.2456C13.5 11.1788 14.1117 10.5 14.9765 10.5C15.3703 10.5 15.7224 10.6277 16.1365 10.8604L28.7505 18.312C29.6575 18.8615 30.0372 19.271 30.0372 19.9498C30.0372 20.6286 29.6575 21.0489 28.7505 21.5876L16.2949 28.9471C15.8097 29.238 15.4195 29.3996 14.9765 29.3996Z" fill="currentColor"></path>
+                  </svg>
+                </div>
+                <span style="contain: paint; opacity: 0; overflow: hidden; margin: 0px; padding: 0px; height: 0px; width: 0px; font-size: 0px; clip: rect(0px, 0px, 0px, 0px); border: none; position: fixed; top: -200vh; left: -200vw;"
+                  >Play</span
+                >
+              </div>
+            </button>
+          {% endif %}
+          <div class="person_info_container">{{ block.settings.influencer_name }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function ($) {
+    $('.video-list-container').slick({
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      nextArrow: window.arrows.icon_next,
+      prevArrow: window.arrows.icon_prev,
+      dots: false,
+      autoplay: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: true,
+            autoplay: false,
+          },
+        },
+      ],
+    });
+
+    // 函数：暂停所有视频
+    function pauseAllVideos() {
+      $('.video-list-container video').each(function () {
+        this.pause();
+        this.currentTime = 0; // 重置视频播放进度
+      });
+    }
+
+    // 函数：播放当前视窗中的第一个视频
+    function playFirstVisibleVideo() {
+      const firstVisibleVideo = $('.slick-current video')[0]; // 获取当前滑块中的第一个视频
+      if (firstVisibleVideo) {
+        firstVisibleVideo.play();
+      }
+    }
+
+    // 监听滑块切换事件
+    $('.video-list-container').on('afterChange', function (event, slick, currentSlide) {
+      pauseAllVideos(); // 切换时暂停所有视频
+      playFirstVisibleVideo(); // 播放当前视窗中的第一个视频
+      updateButtonOpacity(slick, currentSlide);
+    });
+
+    // 更新按钮的透明度
+    function updateButtonOpacity(slick, currentSlide) {
+      console.log('slick:', slick);
+      console.log('currentSlide:', currentSlide);
+      // 获取当前滑动的视频项
+      var currentVideoItem = $(slick.$slides[currentSlide]);
+
+      // 使当前视频的播放按钮透明度为 0，其他按钮透明度为 1
+      currentVideoItem.find('.focusable-play-button').css('opacity', 0); // 当前视频按钮透明度为 0
+      slick.$slides.not(currentVideoItem).find('.focusable-play-button').css('opacity', 1); // 其他视频按钮透明度为 1
+    }
+
+    // 初始化时播放第一个视频
+    playFirstVisibleVideo();
+
+    $('.video-list-container .video-item:first .focusable-play-button').css('opacity', 0);
+    $('[data-slick-index="0"] .focusable-play-button').css('opacity', 0);
+
+    // button点击播放视频
+    $('.video-list-container').on('click', '.video-item', function () {
+      // 获取当前点击的 video 元素
+      var currentVideo = $(this).closest('.video-item').find('video')[0];
+
+      // 暂停页面上的所有视频，并重置按钮透明度
+      $('.video-list-container video').each(function () {
+        var video = this;
+        // 获取当前 video 所在的 button
+        var button = $(this).closest('.video-item').find('button');
+
+        if (video !== currentVideo) {
+          video.pause(); // 暂停所有其他视频
+          button.css('opacity', 1); // 将其他按钮的透明度设置为1
+        }
+      });
+
+      // 播放当前视频，并将当前视频的按钮透明度设置为0, 暂停状态则播放, 播放状态则暂停
+      if (currentVideo.paused) {
+        currentVideo.play(); // 播放当前视频
+        $(this).find('.focusable-play-button').css('opacity', 0); // 将当前按钮的透明度设置为0
+      } else {
+        currentVideo.pause(); // 暂停当前视频
+        $(this).find('.focusable-play-button').css('opacity', 1); // 将当前按钮的透明度设置为1
+      }
+    });
+  })(jQuery);
+</script>
+
+{% schema %}
+{
+  "name": "Influencer Returns",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "select",
+      "id": "container",
+      "label": "t:sections.layout.container.option",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.layout.container.option1"
+        },
+        {
+          "value": "1170",
+          "label": "t:sections.layout.container.option4"
+        },
+        {
+          "value": "1570",
+          "label": "Width (1570px)"
+        },
+        {
+          "value": "1770",
+          "label": "t:sections.layout.container.option3"
+        },
+        {
+          "value": "fullwidth",
+          "label": "t:sections.layout.container.option2"
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section title",
+      "default": "Section title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blcok",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "video URL",
+          "info": "Video URL"
+        },
+        {
+          "type": "text",
+          "id": "video_poster_url",
+          "label": "video poster URL",
+          "info": "video poster url"
+        },
+        {
+          "type": "text",
+          "id": "influencer_name",
+          "label": "Influencer Name",
+          "info": "Influencer Name"
+        },
+        {
+          "type": "video",
+          "id": "url_upload",
+          "label": "video upload"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_playicon",
+          "label": "show playicon",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blacklyte Influencer Returns"
+    }
+  ]
+}
+{% endschema %}

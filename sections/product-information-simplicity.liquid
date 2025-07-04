@@ -1,0 +1,1246 @@
+{{ 'section-product-information-simplicity.css' | asset_url | stylesheet_tag }}
+{{ 'section-product-information-simplicity-fitter.css' | asset_url | stylesheet_tag }}
+<link
+  rel="stylesheet"
+  href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.css?v=1702624065"
+>
+<link
+  rel="preload"
+  as="image"
+  href="{{ product.selected_or_first_available_variant.metafields.custom.multiple_images.value | default: product.featured_image | first | image_url }}"
+  type="image/webp"
+>
+{% if product.selected_or_first_available_variant.metafields.custom.spin_images != blank %}
+  <link
+    rel="preload"
+    as="image"
+    href="{{ product.selected_or_first_available_variant.metafields.custom.spin_images.value | first | image_url }}"
+    type="image/webp"
+  >
+{% endif %}
+
+{% for currency in shop.enabled_currencies %}
+  {% if currency.iso_code == shop.currency %}
+    {%- assign currency_symbol = currency.symbol -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} 促销 {% endcomment %}
+{%- liquid
+  assign kraken_pro_condition = false
+
+  assign kraken_condition = false
+  if product.title contains 'Blacklyte Kraken Gaming Chair'
+    if product.selected_or_first_available_variant.options[1] == 'Red' or product.selected_or_first_available_variant.options[1] == 'Blue'
+      assign kraken_condition = true
+    endif
+  endif
+
+  assign athena_pro_condition = false
+  if product.title contains 'Blacklyte Athena Pro Gaming Chair'
+    if product.selected_or_first_available_variant.options[1] == 'Black' or product.selected_or_first_available_variant.options[1] == 'Yellow'
+      assign athena_pro_condition = true
+    endif
+  endif
+
+  assign athena_condition = false
+  if product.title contains 'Blacklyte Athena Gaming Chair' and product.selected_or_first_available_variant.options[1] == 'Black'
+    assign athena_condition = true
+  endif
+
+  assign athena_x_pink_condition = false
+  if product.title contains 'Blacklyte Athena X Gaming Chair' and product.selected_or_first_available_variant.options[1] == 'Pink'
+    assign athena_x_pink_condition = true
+  endif
+
+  assign athena_x_other_condition = false
+
+  assign atlas_lite_desk_condition = false
+  if product.title contains 'Blacklyte Atlas Lite Standing Desk'
+    assign atlas_lite_desk_condition = true
+  endif
+
+  assign atlas_desk_condition = false
+  if product.title contains 'Blacklyte Atlas Desk'
+    assign atlas_desk_condition = true
+  endif
+
+  assign major_chair_condition = false
+  if product.title contains 'Blacklyte Athena Pro Austin Major Edition'
+    assign major_chair_condition = true
+  endif
+
+  assign sale_price = product.selected_or_first_available_variant.price
+
+  if kraken_pro_condition
+    assign save_price = 3000
+
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+  endif
+
+  if kraken_condition
+    assign save_price = 3000
+
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+  endif
+
+  if athena_pro_condition
+    assign save_price = 6000
+
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+  endif
+
+  if athena_condition
+    assign save_price = 5000
+
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+  endif
+
+  if athena_x_pink_condition
+    assign save_price = 10000
+
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+  endif
+
+  if athena_x_other_condition
+    assign save_price = 7000
+
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+  endif
+
+  if atlas_lite_desk_condition
+    assign save_price = 10000
+
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+  endif
+
+  if atlas_desk_condition
+    assign save_price = 30000
+
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+  endif
+
+  if major_chair_condition
+    assign save_price = 5000
+
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+  endif
+
+  assign show_sale_info = false
+  if kraken_condition or athena_pro_condition or athena_condition or athena_x_pink_condition or atlas_lite_desk_condition or kraken_pro_condition or atlas_desk_condition or major_chair_condition
+    assign show_sale_info = true
+  endif
+-%}
+
+{% assign is_preorder = false %}
+{% comment %}
+  {% if product.selected_or_first_available_variant.metafields.custom.preorder_info != blank %}
+    {% assign is_preorder = true %}
+  {% endif %}
+{% endcomment %}
+
+<div class="product_infor_simplicity">
+  <input type="hidden" name="currency_symbol" value="{{ currency_symbol }}">
+  <div class="product_infor_simplicity_left">
+    <div id="product_infor_simplicity_left_loading" class="loading-spinner"></div>
+    <div class="product_infor_simplicity_left_contain">
+      <div class="swiper imgmain-swiper{% if section.settings.img_show_type == 'grid' %} pmd_show{% endif %}">
+        <div class="swiper-wrapper">
+          {%- if product.selected_or_first_available_variant != null -%}
+            {% assign show_images = product.selected_or_first_available_variant.metafields.custom.multiple_images.value
+              | default: product.images
+            %}
+            {% for image in show_images %}
+              <div class="swiper-slide">
+                {% assign srcset_1x = image | image_url: width: 2240 | append: ' 1x, ' %}
+                {% assign srcset_2x = image | image_url: width: 1536 | append: ' 2x, ' %}
+                {% assign srcset_3x = image | image_url: width: 1536 | append: ' 3x, ' %}
+                {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+                {{-
+                  image
+                  | image_url: width: image.width
+                  | image_tag:
+                    sizes: '(min-width:769px) 58.33vw, 100vw',
+                    srcset: srcset_init,
+                    alt: product.title,
+                    preload: true
+                -}}
+                {% comment %}
+                  <img
+                    src="{{ image | image_url }}"
+                    alt="{{ product.title }}"
+                  >
+                {% endcomment %}
+              </div>
+            {% endfor -%}
+          {%- endif -%}
+        </div>
+        <div class="imgmain-swiper-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="24" transform="matrix(-1 0 0 1 48 0)" fill="#BABABA" fill-opacity="0.3"/>
+            <path d="M25 30L19.1415 24.1415C19.0634 24.0634 19.0634 23.9367 19.1415 23.8586L25 18.0001" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="imgmain-swiper-next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="24" fill="#BABABA" fill-opacity="0.3"/>
+            <path d="M23 30L28.8585 24.1415C28.9366 24.0634 28.9366 23.9367 28.8585 23.8586L23 18.0001" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="spin-360{% if section.settings.show_degree == "true" %} act{% endif %}">
+          {% render 'product-360',
+            images: product.selected_or_first_available_variant.metafields.custom.spin_images.value
+          %}
+        </div>
+      </div>
+      <div class="imgthumb-swiper-box{% if section.settings.img_show_type == 'grid' %} pmd_show{% endif %}">
+        <div class="swiper imgthumb-swiper">
+          <div class="swiper-wrapper">
+            {% assign thumb_images = product.selected_or_first_available_variant.metafields.custom.multiple_images.value
+              | default: product.images
+            %}
+            {% if product.selected_or_first_available_variant.metafields.custom.multiple_thumb_images != blank %}
+              {% assign thumb_images = product.selected_or_first_available_variant.metafields.custom.multiple_thumb_images.value %}
+            {% endif %}
+            {% for image in thumb_images %}
+              <div class="swiper-slide{% if section.settings.product_type == "desk" %} desk_thumb_slide{% endif %}">
+                <img
+                  src="{{ image | image_url: width: 270 }}"
+                  alt="{{ product.title }}"
+                >
+              </div>
+            {% endfor -%}
+          </div>
+
+          <div class="imgthumb-swiper-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="39" viewBox="0 0 20 39" fill="none">
+              <path d="M18 1.20507L2 19.6025L18 38" stroke="#464646" stroke-width="3"/>
+            </svg>
+          </div>
+          <div class="imgthumb-swiper-next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="39" viewBox="0 0 20 39" fill="none">
+              <path d="M2 37.7949L18 19.3975L2 1" stroke="#464646" stroke-width="3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="icon-360 hide">
+          <img
+            src="{{ product.selected_or_first_available_variant.featured_image | image_url: width: 80 }}"
+            alt="{{ product.title }}"
+          >
+          <svg
+            width="80"
+            height="81"
+            viewBox="0 0 80 81"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_134_10)">
+                <path
+                    d="M44.4919 62.6332L45.4971 59.221C43.4022 59.3436 41.4294 59.4096 39.5035 59.4284C29.1792 59.5509 19.4278 58.5518 12.0627 56.6101C4.20901 54.5364 0.0379228 51.6616 0.000345443 48.2872C-0.0466263 44.6488 4.69752 41.5006 13.6973 39.1819L14.9937 38.8614L14.928 40.2941C14.9373 40.7937 15.0689 41.3027 15.3131 41.8022L15.8486 42.905L14.6743 43.2161C7.75068 44.9693 5.30815 47.0053 5.32694 48.2212C5.33633 49.456 7.89159 51.4731 15.0501 53.066C21.7388 54.5553 30.6071 55.3188 40.0296 55.2057C41.5797 55.1868 43.1955 55.1397 44.9241 55.0643L43.3834 52.2554L55.9906 56.1294L44.4919 62.6332ZM58.8465 58.0145L58.7525 56.94C58.7056 56.4216 58.2922 56.0069 57.954 55.7524L56.0658 54.3291L58.4049 53.9803C63.7879 53.2074 68.2972 52.1329 71.4443 50.8698C75.4463 49.258 75.8596 47.9196 75.8596 47.42C75.8408 46.0815 72.9756 43.9513 64.9622 42.3207L63.9194 42.1039L64.2013 41.0859C64.267 40.822 64.3046 40.5392 64.3046 40.2753C64.3046 40.0679 64.2764 39.8605 64.2294 39.6155V39.606L63.9194 38.1168L65.4037 38.4278C69.7157 39.3704 73.295 40.6052 75.7657 41.9907C78.584 43.5837 80.0307 45.3934 80.0589 47.3823C80.0777 49.0035 79.0725 51.4259 74.1874 53.7635C70.6927 55.4319 65.7513 56.8363 59.8987 57.826L58.8465 58.0145ZM67.9872 19.8591C66.0144 19.8591 64.4079 21.4614 64.4079 23.4503C64.4079 25.4297 66.0144 27.0415 67.9872 27.0415C69.96 27.0415 71.5664 25.4391 71.5664 23.4503C71.5664 21.4614 69.9506 19.8591 67.9872 19.8591ZM67.9872 25.4391C66.888 25.4391 65.9956 24.5437 65.9956 23.4409C65.9956 22.338 66.888 21.4426 67.9872 21.4426C69.0863 21.4426 69.9788 22.338 69.9788 23.4409C69.9788 24.5437 69.0863 25.4391 67.9872 25.4391ZM45.375 35.1005C44.0974 33.7903 42.4815 33.1211 40.5651 33.1211C40.3208 33.1211 40.0484 33.14 39.7478 33.1682C39.6069 33.1871 39.466 33.1965 39.3157 33.2248L45.375 24.1572H41.5233L34.9379 34.5444C34.2427 35.6472 33.7354 36.6746 33.4254 37.6078C33.106 38.5503 32.9557 39.5118 32.9557 40.4543C32.9557 42.5092 33.6133 44.2058 34.9285 45.4877C36.2343 46.7602 37.9629 47.4106 40.086 47.4106C41.1382 47.4106 42.1527 47.1938 43.1016 46.7602C44.0598 46.3266 44.8865 45.7139 45.5535 44.9316C46.1359 44.2718 46.5775 43.5177 46.8781 42.6977C47.1693 41.8871 47.3196 40.9916 47.3196 40.0585C47.3008 38.0791 46.6526 36.4107 45.375 35.1005ZM42.8949 43.2915C42.1621 44.0738 41.2415 44.4509 40.0766 44.4509C38.8835 44.4509 37.9629 44.0927 37.2677 43.3481C36.5725 42.6129 36.2249 41.5949 36.2249 40.3507C36.2249 39.0876 36.5913 38.0602 37.3241 37.2779C38.0568 36.4861 38.9681 36.0997 40.1142 36.0997C41.3166 36.0997 42.2749 36.4767 42.9701 37.2119C43.6652 37.9471 44.0128 38.9934 44.0128 40.2941C44.0034 41.5006 43.6371 42.5186 42.8949 43.2915Z"
+                    fill="#999999" />
+                <path
+                    d="M23.1292 44.4509C22.3213 44.4509 21.5697 44.2153 20.8933 43.7534C20.2075 43.2821 19.6345 42.6035 19.1836 41.7269L19.0708 41.5101L16.1868 43.1124L16.2995 43.3198C17.0417 44.6583 18.0093 45.6762 19.1554 46.3549C20.3109 47.0336 21.6731 47.3823 23.2043 47.3823C25.4402 47.3823 27.3191 46.6471 28.7752 45.1861C30.2407 43.7345 30.9735 41.8588 30.9735 39.6343C30.9735 37.6266 30.344 35.9583 29.0946 34.6858C27.9391 33.4982 26.4454 32.8384 24.6511 32.7158L30.6071 24.1478H17.455V27.3149L24.9799 27.1735L18.3944 36.2034L19.2399 36.7783L19.3714 36.6841C19.9915 36.2316 20.6115 35.8829 21.2221 35.6567C21.8234 35.4304 22.4434 35.3079 23.0446 35.3079C24.4162 35.3079 25.5529 35.7415 26.4172 36.5898C27.2721 37.4381 27.7136 38.5598 27.7136 39.9077C27.7136 41.1896 27.2721 42.2735 26.3984 43.1407C25.5247 44.0173 24.4256 44.4509 23.1292 44.4509ZM62.9612 40.0679V31.3397C62.9612 28.9832 62.3412 27.1358 61.1387 25.8256C59.9174 24.5154 58.1983 23.8462 56.0188 23.8462C53.9896 23.8462 52.308 24.5343 51.021 25.8822C49.734 27.23 49.0857 29.0115 49.0857 31.1794V40.0773C49.0857 42.2453 49.734 44.0173 51.021 45.3746C52.308 46.7225 53.9802 47.4106 56.0188 47.4106C58.0667 47.4106 59.7483 46.7225 61.0353 45.3746C62.313 44.0079 62.9612 42.2264 62.9612 40.0679ZM52.3644 32.1503C52.3644 30.3405 52.6838 28.9644 53.2944 28.0878C53.905 27.2112 54.7975 26.787 56.0188 26.787C57.24 26.787 58.1325 27.2112 58.7337 28.0784C59.3444 28.9644 59.6544 30.3311 59.6544 32.1503V39.1159C59.6544 40.9351 59.3444 42.2924 58.7431 43.169C58.1513 44.0267 57.2588 44.4509 56.0188 44.4509C54.7787 44.4509 53.8863 44.0267 53.285 43.1596C52.665 42.2736 52.3644 40.9162 52.3644 39.1159V32.1503Z"
+                    fill="#999999" />
+            </g>
+            <defs>
+                <clipPath id="clip0_134_10">
+                    <rect width="80" height="80.2676" fill="white"
+                        transform="translate(0 0.287598)" />
+                </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      {% if section.settings.img_show_type == 'grid' %}
+        <div class="product_infor_simplicity_left_contain_grid pc_show">
+          {% for image in product.selected_or_first_available_variant.metafields.custom.multiple_images.value %}
+            {% assign srcset_1x = image | image_url: width: 2240 | append: ' 1x, ' %}
+            {% assign srcset_2x = image | image_url: width: 1536 | append: ' 2x, ' %}
+            {% assign srcset_3x = image | image_url: width: 1536 | append: ' 3x, ' %}
+            {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+            {{-
+              image
+              | image_url: width: image.width
+              | image_tag:
+                sizes: '(min-width:769px) 58.33vw, 100vw',
+                srcset: srcset_init,
+                alt: product.title,
+                preload: true,
+                class: 'product_infor_simplicity_left_contain_grid_img'
+            -}}
+          {% endfor -%}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="product_infor_simplicity_right">
+    <div class="product_infor_simplicity_right_header">
+      <h2 class="product_infor_simplicity_right_product_title">{{ product.title }}</h2>
+      <div class="pc_show">
+        {% render 'product-price-simplicity',
+          sale_price: sale_price,
+          show_sale_info: show_sale_info,
+          save_price: save_price,
+          product: product,
+          is_bottom: false,
+          is_pmd_show: false,
+          is_preorder: is_preorder
+        %}
+      </div>
+      <div class="product_infor_simplicity_right_product_desc">{{ product.description }}</div>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          {%- when 'starBlock' -%}
+            <a href="#stamped-main-widget" class="star-html">
+              {{ block.settings.starHtml }}
+            </a>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+    {% render 'product-price-simplicity',
+      sale_price: sale_price,
+      show_sale_info: show_sale_info,
+      save_price: save_price,
+      product: product,
+      is_bottom: false,
+      is_pmd_show: true,
+      is_preorder: is_preorder
+    %}
+    {% render 'countdown-card' %}
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'productExtraInfo' -%}
+          {% render 'product-extra-info', block: block, save_price: save_price %}
+      {%- endcase -%}
+    {%- endfor -%}
+    {% if product.metafields.custom.extra_description != blank %}
+      <div class="product_infor_simplicity_right_extra_desc">
+        {{ product.metafields.custom.extra_description | metafield_tag }}
+      </div>
+    {% endif %}
+    {% if product.metafields.custom.series_product != blank %}
+      <div class="product_infor_simplicity_right_product_contain" data-type="series">
+        <div class="product_infor_simplicity_right_select_title">
+          <span>{{ 'products.product.text.series' | t }}</span>
+          <span class="product_infor_simplicity_right_select_title_text" id="show_compare_modal">
+            {{- 'products.product.text.difference' | t -}}
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+              <path d="M0 4H8" stroke="#262629"/>
+              <path d="M4 0L4 8" stroke="#262629"/>
+            </svg>
+          </span>
+        </div>
+        <div class="product_infor_simplicity_right_select_itembox">
+          {% for series in product.metafields.custom.series_product.value %}
+            <div
+              data-handle="{{ series.handle }}"
+              class="product_infor_simplicity_right_select_item product_infor_simplicity_right_select_item_series{% if forloop.first %} product_infor_simplicity_right_select_item_active{% endif %}"
+            >
+              <div class="product_infor_simplicity_right_product_contain_flexbox">
+                <img
+                  src="{{ series.images[0].src | image_url: width:144 }}"
+                  alt="{{ series.title }}"
+                >
+                <div class="product_infor_simplicity_right_select_title">
+                  <span>{{- series.metafields.custom.series_name.value -}}</span>
+                  {% comment %}
+                    <span class="product_infor_simplicity_right_select_item_series_price_differences">
+                      {{ series.price | money_without_trailing_zeros }}
+                    </span>
+                  {% endcomment %}
+                </div>
+              </div>
+              {% comment %}
+                <span class="product_infor_simplicity_right_select_title">
+                  {{- series.price | money_without_trailing_zeros -}}
+                </span>
+              {% endcomment %}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {% endif %}
+    {% for option in product.options_with_values %}
+      {%- case option.name -%}
+        {%- when 'Material' -%}
+          {% if section.settings.spec_hidden == 'false' %}
+            <div
+              class="product_infor_simplicity_right_product_contain"
+              data-type="{{ option.name }}"
+            >
+              <div class="product_infor_simplicity_right_select_title">
+                {{ 'products.product.text.select' | t }}
+                {{ option.name }}
+              </div>
+              <div class="product_infor_simplicity_right_select_itembox">
+                {% for value in option.values %}
+                  {% liquid
+                    assign variant = value.variant
+                    if value.variant.available == false or value.variant.available == blank
+                      assign available_variant = product.variants | where: 'option1', value | where: 'available'
+                      if available_variant.size > 0
+                        assign variant = available_variant[0]
+                      endif
+                    endif
+                  %}
+                  {% assign material_object = '' %}
+                  {% for material in product.metafields.custom.product_material.value %}
+                    {% if material.name == value %}
+                      {% assign material_object = material %}
+                    {% endif %}
+                  {% endfor %}
+                  <div
+                    data-id="{{ variant.id }}"
+                    data-value="{{ value }}"
+                    class="product_infor_simplicity_right_select_item product_infor_simplicity_right_select_item_material{% unless value.available %} product_infor_simplicity_right_select_item_diasbled{% endunless %}{% if value.selected %} product_infor_simplicity_right_select_item_active{% endif %}"
+                  >
+                    <img
+                      src="{{ material_object.img_new | image_url }}"
+                      alt="{{ material_object.name }}"
+                    >
+                    <span class="product_infor_simplicity_right_select_title">
+                      {{ value }}
+                    </span>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {%- when 'Color' -%}
+          {% if option.values.size > 1 %}
+            <div class="product_infor_simplicity_right_product_contain" data-type="{{ option.name }}">
+              <div class="product_infor_simplicity_right_select_title">
+                {{ 'products.product.text.select' | t }}
+                {% if request.host contains '.uk' %}
+                  Colour
+                {% else %}
+                  {{ option.name }}
+                {% endif %}
+              </div>
+              <div class="product_infor_simplicity_right_select_itembox">
+                {% for value in option.values %}
+                  {% liquid
+                    assign variant = value.variant
+                    if value.variant.available == false or value.variant.available == blank
+                      if section.settings.product_type == 'desk'
+                        assign available_variant = product.variants | where: 'option1', value | where: 'available'
+                      else
+                        assign available_variant = product.variants | where: 'option2', value | where: 'available'
+                      endif
+                      if available_variant.size > 0
+                        assign variant = available_variant[0]
+                      endif
+                    endif
+                  %}
+                  {% assign color_object = '' %}
+                  {% for color in product.metafields.custom.color_style.value %}
+                    {% if color.color == value %}
+                      {% assign color_object = color %}
+                    {% endif %}
+                  {% endfor %}
+                  {% assign pass_product = false %}
+                  {% if product.title contains 'Blacklyte Athena Pro Gaming Chair'
+                    or product.title contains 'Blacklyte Athena Gaming Chair'
+                  %}
+                    {% assign pass_product = true %}
+                  {% endif %}
+                  {% unless value.variant.available == blank and available_variant.size == 0 and pass_product %}
+                    <div
+                      data-id="{{ variant.id }}"
+                      data-value="{{ value }}"
+                      class="product_infor_simplicity_right_select_item product_infor_simplicity_right_select_item_color{% unless variant.available %} product_infor_simplicity_right_select_item_diasbled{% endunless %}{% if value.selected %} product_infor_simplicity_right_select_item_active{% endif %}{% if forloop.index0 > 2 %} product_infor_simplicity_right_select_item_hidden{% endif %}{% if value.variant.available == false or value.variant.available == blank %}{% if available_variant.size > 0  and section.settings.product_type == 'chair' %} product_infor_simplicity_right_select_item_disabled_material{% endif %}{% endif %}"
+                    >
+                      {% comment %}
+                        <div
+                          class="product_infor_simplicity_right_select_colorbox"
+                          style="background-color: {{ color_object.color_value }}"
+                        ></div>
+                      {% endcomment %}
+                      {% if value.variant.available == false or value.variant.available == blank %}
+                        {% if section.settings.product_type == 'chair' %}
+                          {% if available_variant.size > 0 %}
+                            <div class="product_infor_simplicity_right_select_item_available_material">
+                              {{ 'products.product.text.available_material' | t: available_material: variant.option1 }}
+                            </div>
+                          {% else %}
+                            <div class="product_infor_simplicity_right_select_item_out_of_stock">
+                              {{ 'products.product.out_of_stock' | t }}
+                            </div>
+                          {% endif %}
+                        {% endif %}
+                      {% endif %}
+                      <img
+                        src="{{ color_object.color_img | image_url }}"
+                        alt="{{ color_object.show_name }}"
+                      >
+                      <span class="product_infor_simplicity_right_select_title">
+                        {{ color_object.show_name }}
+                      </span>
+                    </div>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+          {% comment %}
+            {% if option.values.size > 3 %}
+              <div class="product_infor_simplicity_right_product_viewmore">
+                <span>View more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+                  <path d="M3.69142 5.62586C3.85141 5.81985 4.14859 5.81985 4.30858 5.62586L7.79029 1.40451C8.00548 1.14362 7.8199 0.75 7.48171 0.75H0.518289C0.180101 0.75 -0.00547671 1.14362 0.209707 1.40451L3.69142 5.62586Z" fill="#515157"/>
+                </svg>
+              </div>
+            {% endif %}
+          {% endcomment %}
+        {%- when 'Size' -%}
+          {% if option.values.size > 1 %}
+            <div class="product_infor_simplicity_right_product_contain" data-type="{{ option.name }}">
+              <div class="product_infor_simplicity_right_select_title">
+                {{ 'products.product.text.select' | t }}
+                {{ option.name }}
+              </div>
+              <div class="product_infor_simplicity_right_select_itembox">
+                {% for value in option.values %}
+                  {% assign size_object = '' %}
+                  {% for size in product.metafields.custom.product_size.value %}
+                    {% if size.name == value %}
+                      {% assign size_object = size %}
+                    {% endif %}
+                  {% endfor %}
+                  <div
+                    data-index="{{ forloop.index0 }}"
+                    data-id="{{ value.variant.id }}"
+                    data-value="{{ value }}"
+                    class="product_infor_simplicity_right_select_item{% unless value.available %} product_infor_simplicity_right_select_item_diasbled{% endunless %}{% if option.values.size == 1 %} product_infor_simplicity_right_select_item_onlyone{% endif %}{% if value.selected %} product_infor_simplicity_right_select_item_active{% endif %}"
+                  >
+                    <div>
+                      <span class="product_infor_simplicity_right_select_title">
+                        {{ value }}
+                      </span>
+                      <p class="product_infor_simplicity_right_select_text">
+                        {{ size_object.size | replace: '\', '' }}
+                      </p>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+      {%- endcase -%}
+    {% endfor %}
+    {% if product.metafields.custom.product_attach != blank
+      or product.metafields.custom.selectable_product_attach != blank
+    %}
+      <div class="product_infor_simplicity_right_product_addons">
+        <div class="product_infor_simplicity_right_select_title">{{ 'products.product.text.addons' | t }}</div>
+        {% if product.title contains 'Athena X' %}
+          {% for item in product.metafields.custom.product_attach.value %}
+            {% for variant in item.variants %}
+              {% assign variant_option_color = variant.option2 | downcase %}
+              {% assign selected_option_color = product.selected_or_first_available_variant.option2 | downcase %}
+
+              {% if variant_option_color == selected_option_color %}
+                <div class="product_infor_simplicity_right_select_item product_infor_simplicity_right_select_item_onlyone product_infor_simplicity_right_select_item_addons product_infor_simplicity_right_select_item_active">
+                  <div class="product_infor_simplicity_right_select_item_addons_head">
+                    <img src="{{ variant.featured_image | image_url: width:120  }}" alt="{{item.title}}">
+                    <div>
+                      <div class="product_infor_simplicity_right_select_title_box">
+                        <div class="product_infor_simplicity_right_select_title">{{ item.title }}</div>
+                        <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/addson-included.webp?v=1749180142">
+                      </div>
+                      <div class="product_infor_simplicity_right_text_normal">
+                        {{ '00.00' | money_without_trailing_zeros }}
+                        <span class="linethrough_word">{{ variant.price | money_without_trailing_zeros }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  {% if section.settings.spec_hidden == 'false' %}
+                    {% comment %} <div class="product_infor_simplicity_right_select_item_addons_info">{{ item.description }}</div>{% endcomment %}
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% else %}
+          {% for item in product.metafields.custom.product_attach.value %}
+            <div class="product_infor_simplicity_right_select_item product_infor_simplicity_right_select_item_onlyone product_infor_simplicity_right_select_item_addons product_infor_simplicity_right_select_item_active">
+              <div class="product_infor_simplicity_right_select_item_addons_head">
+                <img src="{{ item.featured_image | image_url: width:120  }}" alt="{{item.title}}">
+                <div>
+                  <div class="product_infor_simplicity_right_select_title_box">
+                    <div class="product_infor_simplicity_right_select_title">{{ item.title }}</div>
+                    <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/addson-included.webp?v=1749180142">
+                  </div>
+                  <div class="product_infor_simplicity_right_text_normal">
+                    {{ '00.00' | money_without_trailing_zeros }}
+                    <span class="linethrough_word">{{ item.price | money_without_trailing_zeros }}</span>
+                  </div>
+                </div>
+              </div>
+              {% comment %}<div class="product_infor_simplicity_right_select_item_addons_info">{{ item.description }}</div>{% endcomment %}
+            </div>
+          {% endfor %}
+        {% endif %}
+        {% for item in product.metafields.custom.selectable_product_attach.value %}
+          <div
+            data-id="{{ item.selected_or_first_available_variant.id }}"
+            class="product_infor_simplicity_right_select_item product_infor_simplicity_right_select_item_onlyone product_infor_simplicity_right_select_item_addons_selectable"
+          >
+            <div class="product_infor_simplicity_right_select_item_addons_selectable_select">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <rect width="22" height="22" rx="4" fill="#2C2C2C"/>
+                <path d="M3.50439 10.5503L8.98606 16.032L18.1321 6.88597" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <img
+              src="{{ item.selected_or_first_available_variant.featured_image | default: item.featured_image | image_url: width:120  }}"
+              alt="{{item.title}}"
+              class="product_infor_simplicity_right_select_feature_img"
+              data-fancybox="{{ item.title }}"
+              href="{{ item.selected_or_first_available_variant.featured_image | default: item.featured_image | image_url }}"
+            >
+            <div class="product_infor_simplicity_right_select_item_addons_selectable_info">
+              <div class="product_infor_simplicity_right_select_title">
+                {{ item.title }}
+                <div class="product_infor_simplicity_right_select_quantity_box">
+                  <span class="product_infor_simplicity_right_select_quantity_btn" data-type="minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <g opacity="0.5" clip-path="url(#clip0_13258_3211)">
+                      <g clip-path="url(#clip1_13258_3211)">
+                      <path d="M13.9074 9.20117H5.90742C5.46559 9.20117 5.10742 9.55934 5.10742 10.0012C5.10742 10.443 5.46559 10.8012 5.90742 10.8012H13.9074C14.3492 10.8012 14.7074 10.443 14.7074 10.0012C14.7074 9.55934 14.3492 9.20117 13.9074 9.20117Z" fill="black"/>
+                      </g>
+                      </g>
+                      <defs>
+                      <clipPath id="clip0_13258_3211">
+                      <rect width="20" height="20" fill="white"/>
+                      </clipPath>
+                      <clipPath id="clip1_13258_3211">
+                      <rect width="20" height="20" fill="white"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                  <input
+                    class="product_infor_simplicity_right_select_quantity_input"
+                    type="text"
+                    name="quantity"
+                    value="1"
+                  >
+                  <span class="product_infor_simplicity_right_select_quantity_btn" data-type="plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <g opacity="0.5" clip-path="url(#clip0_13258_3217)">
+                      <g clip-path="url(#clip1_13258_3217)">
+                      <path d="M14.1667 9.16602H5.83333C5.3731 9.16602 5 9.53911 5 9.99935C5 10.4596 5.3731 10.8327 5.83333 10.8327H14.1667C14.6269 10.8327 15 10.4596 15 9.99935C15 9.53911 14.6269 9.16602 14.1667 9.16602Z" fill="#191C21"/>
+                      <path d="M10.834 14.1667V5.83333C10.834 5.3731 10.4609 5 10.0007 5C9.54041 5 9.16732 5.3731 9.16732 5.83333V14.1667C9.16732 14.6269 9.54041 15 10.0007 15C10.4609 15 10.834 14.6269 10.834 14.1667Z" fill="#191C21"/>
+                      </g>
+                      </g>
+                      <defs>
+                      <clipPath id="clip0_13258_3217">
+                      <rect width="20" height="20" fill="white"/>
+                      </clipPath>
+                      <clipPath id="clip1_13258_3217">
+                      <rect width="20" height="20" fill="white"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+              {% comment %}
+                <div class="product_infor_simplicity_right_select_title">{{ item.title }}</div>
+                <div class="product_infor_simplicity_right_select_item_addons_selectable_desc">
+                  {{ item.description }}
+                </div>
+              {% endcomment %}
+              <div class="product_infor_simplicity_right_text_normal">
+                {% assign discount = item.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                +<span
+                  class="product_infor_simplicity_right_select_dp{% if discount != blank %} show{% endif %}"
+                  data-value="{{ item.selected_or_first_available_variant.metafields.custom.discount_price.value | money_without_currency }}"
+                >
+                  {{-
+                    item.selected_or_first_available_variant.price
+                    | minus: item.selected_or_first_available_variant.metafields.custom.discount_price.value
+                    | money_without_trailing_zeros
+                  -}}
+                </span>
+                <span
+                  class="product_infor_simplicity_right_select_op"
+                  data-value="{{ item.selected_or_first_available_variant.price | money_without_currency }}"
+                >
+                  {{- item.selected_or_first_available_variant.price | money_without_trailing_zeros -}}
+                </span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% render 'recommended-products', product: product, currency_symbol: currency_symbol %}
+
+    {% if product.title contains 'Athena Pro Austin Major' %}
+      {% render 'sale-progress', product: product %}
+    {% endif %}
+
+    <div class="product_infor_simplicity_right_buybox">
+      <div class="product_infor_simplicity_right_buybox_goods">
+        <img
+          src="{{ product.selected_or_first_available_variant.featured_image | default: product.featured_image | image_url: width: 100 }}"
+          alt="{{ product.title }}"
+        >
+        <div>
+          <div class="product_infor_simplicity_right_buybox_goods_title">{{ product.title }}</div>
+          {% if section.settings.product_type != 'peripheral' %}
+            <div class="product_infor_simplicity_right_buybox_goods_options">
+              {% if product.options_by_name.Size.values.size > 1 %}
+                {{ product.selected_or_first_available_variant.options | join: ' | ' }}
+              {% else %}
+                {% if product.title contains 'Blacklyte Atlas Desk' %}
+                  {% assign size = product.metafields.custom.product_size.value | first %}
+                  {{ size.name | append: ' | ' | append: size.size | replace: '\', '' }}
+                {% else %}
+                  {{
+                    product.selected_or_first_available_variant.option1
+                    | append: ' | '
+                    | append: product.selected_or_first_available_variant.option2
+                  }}
+                {% endif %}
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <input type="hidden" name="goods_id" value="{{ product.selected_or_first_available_variant.id }}">
+      <div class="product_infor_simplicity_right_buybox_quantity">
+        <span class="product_infor_simplicity_right_buybox_quantity_text">Quantity</span>
+        <div class="product_infor_simplicity_right_buybox_quantity_box">
+          <span class="product_infor_simplicity_right_buybox_quantity_btn" data-type="minus">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g opacity="0.5" clip-path="url(#clip0_13258_3211)">
+              <g clip-path="url(#clip1_13258_3211)">
+              <path d="M13.9074 9.20117H5.90742C5.46559 9.20117 5.10742 9.55934 5.10742 10.0012C5.10742 10.443 5.46559 10.8012 5.90742 10.8012H13.9074C14.3492 10.8012 14.7074 10.443 14.7074 10.0012C14.7074 9.55934 14.3492 9.20117 13.9074 9.20117Z" fill="black"/>
+              </g>
+              </g>
+              <defs>
+              <clipPath id="clip0_13258_3211">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              <clipPath id="clip1_13258_3211">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              </defs>
+            </svg>
+          </span>
+          <input
+            class="product_infor_simplicity_right_buybox_quantity_input"
+            type="text"
+            name="quantity"
+            value="1"
+          >
+          <span class="product_infor_simplicity_right_buybox_quantity_btn" data-type="plus">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g opacity="0.5" clip-path="url(#clip0_13258_3217)">
+              <g clip-path="url(#clip1_13258_3217)">
+              <path d="M14.1667 9.16602H5.83333C5.3731 9.16602 5 9.53911 5 9.99935C5 10.4596 5.3731 10.8327 5.83333 10.8327H14.1667C14.6269 10.8327 15 10.4596 15 9.99935C15 9.53911 14.6269 9.16602 14.1667 9.16602Z" fill="#191C21"/>
+              <path d="M10.834 14.1667V5.83333C10.834 5.3731 10.4609 5 10.0007 5C9.54041 5 9.16732 5.3731 9.16732 5.83333V14.1667C9.16732 14.6269 9.54041 15 10.0007 15C10.4609 15 10.834 14.6269 10.834 14.1667Z" fill="#191C21"/>
+              </g>
+              </g>
+              <defs>
+              <clipPath id="clip0_13258_3217">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              <clipPath id="clip1_13258_3217">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              </defs>
+            </svg>
+          </span>
+        </div>
+      </div>
+      {% render 'product-price-simplicity',
+        sale_price: sale_price,
+        show_sale_info: show_sale_info,
+        save_price: save_price,
+        product: product,
+        is_bottom: false,
+        is_pmd_show: false,
+        is_preorder: is_preorder
+      %}
+
+      {% comment %}
+        {% if product.selected_or_first_available_variant.metafields.custom.preorder_info != blank %}
+          <div class="product_infor_simplicity_right_buybox_btns product_infor_simplicity_right_buybox_btns_preorder">
+            <button
+              class="product_infor_simplicity_right_buybox_btns_btn product_infor_simplicity_right_buybox_btns_btn_preorder an-horizontal-shaking"
+              data-type="add_to_cart"
+              {% if product.selected_or_first_available_variant.available == false
+                or product.selected_or_first_available_variant == null
+              %}
+                disabled
+              {% endif %}
+            >
+              {{ 'products.product.pre_order' | t }}
+            </button>
+            <div class="product_infor_simplicity_right_buybox_btns_btn_preorder_info">
+              {{ product.selected_or_first_available_variant.metafields.custom.preorder_info }}
+            </div>
+          </div>
+        {% else %}
+      {% endcomment %}
+      <div class="product_infor_simplicity_right_buybox_btns">
+        <button
+          data-type="buy_it_now"
+          type="submit"
+          class="product_infor_simplicity_right_buybox_btns_btn an-horizontal-shaking"
+          {% if product.selected_or_first_available_variant.available == false
+            or product.selected_or_first_available_variant == null
+          %}
+            disabled
+          {% endif %}
+        >
+          {{ 'products.product.buy_it_now' | t }}
+        </button>
+        <button
+          class="product_infor_simplicity_right_buybox_btns_btn"
+          data-type="add_to_cart"
+          {% if product.selected_or_first_available_variant.available == false
+            or product.selected_or_first_available_variant == null
+          %}
+            disabled
+          {% endif %}
+        >
+          {% if product.selected_or_first_available_variant.inventory_quantity <= 0 %}
+            {% if product.selected_or_first_available_variant.available %}
+              {{ 'products.product.pre_order' | t }}
+            {% else %}
+              {{ 'products.product.out_of_stock' | t }}
+            {% endif %}
+          {% else %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% endif %}
+        </button>
+        {% if product.selected_or_first_available_variant.metafields.custom.preorder_info != blank %}
+          <div class="product_infor_simplicity_right_buybox_btns_btn_preorder_info">
+            {{ product.selected_or_first_available_variant.metafields.custom.preorder_info }}
+          </div>
+        {% endif %}
+      </div>
+      {% comment %} {% endif %} {% endcomment %}
+
+      {% comment %} {% render 'activity-tip-modal' %} {% endcomment %}
+    </div>
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'productExtraInfoBottom' -%}
+          {% render 'product-extra-info-bottom', block: block %}
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="simplicity_bottom_bar">
+    <div class="simplicity_bottom_bar_contain">
+      <div class="pc_show">
+        <div class="product_infor_simplicity_right_select_title">{{ product.title }}</div>
+        <div class="product_infor_simplicity_right_product_desc">{{ product.description }}</div>
+      </div>
+      <div class="simplicity_bottom_bar_contain_right">
+        {% comment %}
+          <div class="product_infor_simplicity_right_buybox_price">
+            <div class="product_infor_simplicity_right_buybox_price_info">
+              <span
+                class="product_infor_simplicity_right_buybox_price_info_discount"
+                data-value="{{ sale_price | money_without_currency }}"
+              >
+                {{ sale_price | money_without_trailing_zeros }}
+              </span>
+              {% if show_sale_info %}
+                <span
+                  class="product_infor_simplicity_right_buybox_price_info_save"
+                  data-value="{{ save_price | money_without_currency }}"
+                >
+                  {{ 'products.product.text.save' | t -}}
+                  {{- save_price | money_without_trailing_zeros -}}
+                </span>
+
+                <span class="product_infor_simplicity_right_buybox_price_info_op">
+                  {{- product.selected_or_first_available_variant.price | money_without_trailing_zeros -}}
+                </span>
+              {% endif %}
+            </div>
+            <div class="product_infor_simplicity_right_buybox_price_afterpay pc_show">
+              <span class="product_infor_simplicity_right_buybox_price_afterpay_mowith">
+                {{- sale_price | divided_by: 12.0 | round: 2 | money_without_trailing_zeros -}}
+              </span>
+              {{ 'products.product.text.affirmtext' | t }}
+              <span class="product_infor_simplicity_right_buybox_price_afterpay_sixmowith">
+                {{- sale_price | divided_by: 6.0 | round: 2 | money_without_trailing_zeros -}}
+              </span>
+              {{ 'products.product.text.mowith' | t }}
+              <img
+                src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/affirm-logo.webp?v=1744598659"
+                alt="{{ product.title }} affirm"
+              >
+            </div>
+            <div class="product_infor_simplicity_right_buybox_goods_options pmd_show">
+              {% comment %} {{ product.metafields.custom.series_name | append: ' | ' -}} {% endcomment %}
+              {{- product.selected_or_first_available_variant.options | join: ' | ' }}
+            </div>
+          </div>
+        {% endcomment %}
+        {% render 'product-price-simplicity',
+          sale_price: sale_price,
+          show_sale_info: show_sale_info,
+          save_price: save_price,
+          product: product,
+          is_bottom: true,
+          is_pmd_show: false,
+          is_preorder: is_preorder
+        %}
+        <div class="product_infor_simplicity_right_buybox_btns">
+          {% comment %}
+            {% if product.selected_or_first_available_variant.metafields.custom.preorder_info != blank %}
+              <button
+                class="product_infor_simplicity_right_buybox_btns_btn product_infor_simplicity_right_buybox_btns_btn_preorder"
+                data-type="add_to_cart"
+                {% if product.selected_or_first_available_variant.available == false
+                  or product.selected_or_first_available_variant == null
+                %}
+                  disabled
+                {% endif %}
+              >
+                {{ 'products.product.pre_order' | t }}
+              </button>
+            {% else %}
+          {% endcomment %}
+          <button
+            data-type="buy_it_now"
+            type="submit"
+            class="product_infor_simplicity_right_buybox_btns_btn"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {{ 'products.product.buy_it_now' | t }}
+          </button>
+          <button
+            class="product_infor_simplicity_right_buybox_btns_btn pc_show"
+            data-type="add_to_cart"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {% if product.selected_or_first_available_variant.inventory_quantity <= 0 %}
+              {% if product.selected_or_first_available_variant.available %}
+                {{ 'products.product.pre_order' | t }}
+              {% else %}
+                {{ 'products.product.out_of_stock' | t }}
+              {% endif %}
+            {% else %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% endif %}
+          </button>
+          {% comment %} {% endif %} {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% if section.settings.product_type != 'peripheral' %}
+  <div class="product_infor_navbar{% if product.metafields.custom.series_product == blank %} product_infor_navbar_smheight{% endif %}">
+    {% if product.metafields.custom.series_product != blank %}
+      <div class="product_infor_navbar_select">
+        <div class="product_infor_navbar_select_head">
+          {{- product.metafields.custom.series_name.value -}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none">
+            <rect x="5.65625" y="7.07031" width="8.00001" height="2.00001" rx="1" transform="rotate(-135 5.65625 7.07031)" fill="#262629"/>
+            <rect x="5.65625" y="7.07031" width="2.00112" height="7.99738" rx="1.00056" transform="rotate(-135 5.65625 7.07031)" fill="#262629"/>
+          </svg>
+        </div>
+        <div class="product_infor_navbar_select_box">
+          {% for series in product.metafields.custom.series_product.value %}
+            <div data-handle="{{ series.handle }}" class="product_infor_navbar_select_item">
+              {{- series.metafields.custom.series_name.value -}}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {% endif %}
+    <div class="product_infor_navbar_anchor{% if product.metafields.custom.series_product == blank %} justify_end{% endif %}">
+      <a
+        class="product_infor_navbar_anchor_item product_infor_navbar_anchor_item_active"
+        data-value="feature"
+        data-watch="feature_watch"
+      >
+        {{- 'products.product.text.feature' | t -}}
+      </a>
+      {% if section.settings.show_compare == 'true' %}
+        <a class="product_infor_navbar_anchor_item" data-value="compare" data-watch="compare">
+          {{- 'products.product.text.compare' | t -}}
+        </a>
+      {% endif %}
+      <a class="product_infor_navbar_anchor_item" data-value="specs" data-watch="specs">
+        {{- 'products.product.text.specs' | t -}}
+      </a>
+      <a class="product_infor_navbar_anchor_item" data-value="faq" data-watch="faq">
+        {{- 'products.product.text.faq' | t -}}
+      </a>
+    </div>
+  </div>
+{% endif %}
+{% if product.metafields.custom.compare_modal_products != blank %}
+  <div class="product_infor_modal">
+    <div class="product_infor_modal_contain">
+      <div class="product_infor_modal_head">
+        <span>{{ 'products.product.text.difference' | t }}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="37"
+          height="37"
+          viewBox="0 0 37 37"
+          fill="none"
+          id="close_compare_modal"
+        >
+          <path d="M27.5762 9.19141L9.19139 27.5762" stroke="#262626" stroke-width="2"/>
+          <path d="M9.19141 9.19336L27.5762 27.5781" stroke="#262626" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="product_infor_modal_body">
+        {% render 'parameter-comparison',
+          compare_modal_products: product.metafields.custom.compare_modal_products.value
+        %}
+        {% comment %}
+          {% assign product_compare = product.metafields.custom.product_compare.value %}
+          {% if product_compare != blank %}
+            <div class="compare_simplicity_product">
+              {% for item in product_compare.product_list.value %}
+                {% if item.metafields.custom.series_name == product.metafields.custom.series_name %}
+                  {% assign active_index = forloop.index0 %}
+                {% endif %}
+                <div class="compare_simplicity_product_item">
+                  <img
+                    src="{{ item.featured_image | image_url: width:180 }}"
+                    alt="{{ item.title }}"
+                    loading="lazy"
+                  >
+                  <div>
+                    <div class="compare_simplicity_product_item_name">{{ item.metafields.custom.series_name }}</div>
+                    {% comment %} <div class="compare_simplicity_product_item_desc">{{ item.description }}</div> {% endcomment %}
+                    <div class="compare_simplicity_product_item_price">
+                      {{ 'products.product.text.from' | t -}}
+                      {{- item.price | money_without_trailing_zeros }}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="compare_simplicity_item_box">
+              {% for data in product_compare.compare_data.value.data %}
+                <div class="compare_simplicity_item">
+                  <div class="compare_simplicity_item_titlebox">
+                    {% for value in data.value %}
+                      <div class="compare_simplicity_item_title">{{ data.label }}</div>
+                    {% endfor %}
+                  </div>
+                  <div class="compare_simplicity_item_textbox">
+                    {% for value in data.value %}
+                      <div class="compare_simplicity_item_text">
+                        {{ value }}
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% render 'refund-policy-modal' %}
+
+<script src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.js?v=1702624149"></script>
+<script>
+  const show_degree = JSON.parse({{ section.settings.show_degree | json }})
+  const img_show_type = "{{ section.settings.img_show_type }}"
+  const product_type = {{ section.settings.product_type | json }}
+  const product = {{ product | json }}
+</script>
+<script src="{{ 'product-information-simplicity.js' | asset_url  }}"></script>
+
+{% schema %}
+{
+  "name": "product infor simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "radio",
+      "id": "show_compare",
+      "label": "show compare",
+      "default": "true",
+      "options": [
+        {
+          "value": "false",
+          "label": "false"
+        },
+        {
+          "value": "true",
+          "label": "true"
+        }
+      ]
+    },
+    {
+      "type": "radio",
+      "id": "spec_hidden",
+      "label": "spec hidden",
+      "default": "false",
+      "options": [
+        {
+          "value": "false",
+          "label": "false"
+        },
+        {
+          "value": "true",
+          "label": "true"
+        }
+      ]
+    },
+    {
+      "type": "radio",
+      "id": "show_degree",
+      "label": "show degree",
+      "default": "true",
+      "options": [
+        {
+          "value": "false",
+          "label": "false"
+        },
+        {
+          "value": "true",
+          "label": "true"
+        }
+      ]
+    },
+    {
+      "type": "radio",
+      "id": "product_type",
+      "label": "product type",
+      "default": "chair",
+      "options": [
+        {
+          "value": "chair",
+          "label": "chair"
+        },
+        {
+          "value": "desk",
+          "label": "desk"
+        },
+        {
+          "value": "peripheral",
+          "label": "peripheral"
+        }
+      ]
+    },
+    {
+      "type": "radio",
+      "id": "img_show_type",
+      "label": "img show type",
+      "default": "thumb",
+      "options": [
+        {
+          "value": "thumb",
+          "label": "thumb"
+        },
+        {
+          "value": "grid",
+          "label": "grid"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "starBlock",
+      "name": "starBlock",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "html",
+          "id": "starHtml",
+          "label": "Star HTML"
+        }
+      ]
+    },
+    {
+      "type": "productExtraInfo",
+      "name": "product Extra Info",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "text_one",
+          "label": "text one"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_text_one",
+          "label": "enable text one",
+          "default": true
+        },
+        {
+          "type": "textarea",
+          "id": "text_two",
+          "label": "text two"
+        },
+        {
+          "type": "textarea",
+          "id": "text_thr",
+          "label": "text thr"
+        }
+      ]
+    },
+    {
+      "type": "productExtraInfoBottom",
+      "name": "product Extra Info Bottom",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_one",
+          "label": "text one"
+        },
+        {
+          "type": "textarea",
+          "id": "text_two",
+          "label": "text two"
+        },
+        {
+          "type": "textarea",
+          "id": "text_thr",
+          "label": "text thr"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "product infor simplicity"
+    }
+  ]
+}
+{% endschema %}

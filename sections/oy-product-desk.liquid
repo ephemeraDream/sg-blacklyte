@@ -1,0 +1,1959 @@
+{{ 'oy-main.css' | asset_url | stylesheet_tag }}
+{{ 'oy-main-min.css' | asset_url | stylesheet_tag }}
+<style>
+  .product-main>.oy-in>.oy-left .img-shop .shop-main .icon-360 svg{
+    height: 70%;
+  }
+</style>
+
+{% assign score_num = 4.5 %}
+{% if product.metafields.custom.score_num != blank -%}
+  {%- assign score_num = product.metafields.custom.score_num -%}
+{%- endif %}
+
+{% for currency in shop.enabled_currencies %}
+  {% if currency.iso_code == shop.currency %}
+    {%- assign currency_symbol = currency.symbol -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<div class="product-main desk-main">
+  <div class="oy-in product-main-in">
+    <div class="pe-title pe-show">
+      <div class="oy-title pe-show">
+        <h2 class="h2">{{ product.title }}</h2>
+      </div>
+      <div>
+        <div class="text-describe">{{ product.description }}</div>
+      </div>
+      <div class="oy-right pe-show">
+      <div class="oy-right sale_price_item">
+          <span class="symbol">{{ currency_symbol }}</span>
+          <span class="num compare_at_price sale_prices">{{ product.price | money_without_currency }}</span>
+        </div>
+        <div class="oy-right sale_price_underlined">
+          <span class="symbol">{{ currency_symbol }}</span>
+          <span class="num compare_at_price">{{ product.price | money_without_currency }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="oy-left">
+      <div class="img-shop oy-in pc-suspend">
+        <div class="shop-main">
+          <div class="spin-360">
+            {% comment %}
+              {%- assign app_rendered = false -%}
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when '@app' -%}
+                    {%- unless app_rendered -%}
+                      {% render block %}
+                      {%- assign app_rendered = true -%}
+                    {%- endunless -%}
+                {%- endcase -%}
+              {%- endfor -%}
+            {% endcomment %}
+            {% comment %} {% assign image_blocks = section.blocks | where: "type", "image" %} {% endcomment %}
+            {% render 'product-360',
+              images: product.selected_or_first_available_variant.metafields.custom.spin_images.value
+            %}
+          </div>
+          <img id="productMainImg" width="" height="" src="{{ product.featured_image | image_url  }}" alt="">
+
+          <div id="productMainBtnPrev" class="oy-cut-btn oy-prev oy-in">
+            <svg
+              width="25"
+              height="43"
+              viewBox="0 0 25 43"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M23 1.44148L3 21.5084L23 41.5753" stroke="#B5B5B5" stroke-width="3" />
+            </svg>
+          </div>
+          <div id="productMainBtnNext" class=" oy-cut-btn oy-next oy-in">
+            <svg
+              width="25"
+              height="43"
+              viewBox="0 0 25 43"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M2 41.5752L22 21.5084L2 1.44147" stroke="#B5B5B5" stroke-width="3" />
+            </svg>
+          </div>
+          <div class="icon-360">
+            <img src="{{ product.images[0].src | image_url }}" alt="{{ product.images[0].alt }}">
+            <svg
+              width="80"
+              height="81"
+              viewBox="0 0 80 81"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_134_10)">
+                  <path
+                      d="M44.4919 62.6332L45.4971 59.221C43.4022 59.3436 41.4294 59.4096 39.5035 59.4284C29.1792 59.5509 19.4278 58.5518 12.0627 56.6101C4.20901 54.5364 0.0379228 51.6616 0.000345443 48.2872C-0.0466263 44.6488 4.69752 41.5006 13.6973 39.1819L14.9937 38.8614L14.928 40.2941C14.9373 40.7937 15.0689 41.3027 15.3131 41.8022L15.8486 42.905L14.6743 43.2161C7.75068 44.9693 5.30815 47.0053 5.32694 48.2212C5.33633 49.456 7.89159 51.4731 15.0501 53.066C21.7388 54.5553 30.6071 55.3188 40.0296 55.2057C41.5797 55.1868 43.1955 55.1397 44.9241 55.0643L43.3834 52.2554L55.9906 56.1294L44.4919 62.6332ZM58.8465 58.0145L58.7525 56.94C58.7056 56.4216 58.2922 56.0069 57.954 55.7524L56.0658 54.3291L58.4049 53.9803C63.7879 53.2074 68.2972 52.1329 71.4443 50.8698C75.4463 49.258 75.8596 47.9196 75.8596 47.42C75.8408 46.0815 72.9756 43.9513 64.9622 42.3207L63.9194 42.1039L64.2013 41.0859C64.267 40.822 64.3046 40.5392 64.3046 40.2753C64.3046 40.0679 64.2764 39.8605 64.2294 39.6155V39.606L63.9194 38.1168L65.4037 38.4278C69.7157 39.3704 73.295 40.6052 75.7657 41.9907C78.584 43.5837 80.0307 45.3934 80.0589 47.3823C80.0777 49.0035 79.0725 51.4259 74.1874 53.7635C70.6927 55.4319 65.7513 56.8363 59.8987 57.826L58.8465 58.0145ZM67.9872 19.8591C66.0144 19.8591 64.4079 21.4614 64.4079 23.4503C64.4079 25.4297 66.0144 27.0415 67.9872 27.0415C69.96 27.0415 71.5664 25.4391 71.5664 23.4503C71.5664 21.4614 69.9506 19.8591 67.9872 19.8591ZM67.9872 25.4391C66.888 25.4391 65.9956 24.5437 65.9956 23.4409C65.9956 22.338 66.888 21.4426 67.9872 21.4426C69.0863 21.4426 69.9788 22.338 69.9788 23.4409C69.9788 24.5437 69.0863 25.4391 67.9872 25.4391ZM45.375 35.1005C44.0974 33.7903 42.4815 33.1211 40.5651 33.1211C40.3208 33.1211 40.0484 33.14 39.7478 33.1682C39.6069 33.1871 39.466 33.1965 39.3157 33.2248L45.375 24.1572H41.5233L34.9379 34.5444C34.2427 35.6472 33.7354 36.6746 33.4254 37.6078C33.106 38.5503 32.9557 39.5118 32.9557 40.4543C32.9557 42.5092 33.6133 44.2058 34.9285 45.4877C36.2343 46.7602 37.9629 47.4106 40.086 47.4106C41.1382 47.4106 42.1527 47.1938 43.1016 46.7602C44.0598 46.3266 44.8865 45.7139 45.5535 44.9316C46.1359 44.2718 46.5775 43.5177 46.8781 42.6977C47.1693 41.8871 47.3196 40.9916 47.3196 40.0585C47.3008 38.0791 46.6526 36.4107 45.375 35.1005ZM42.8949 43.2915C42.1621 44.0738 41.2415 44.4509 40.0766 44.4509C38.8835 44.4509 37.9629 44.0927 37.2677 43.3481C36.5725 42.6129 36.2249 41.5949 36.2249 40.3507C36.2249 39.0876 36.5913 38.0602 37.3241 37.2779C38.0568 36.4861 38.9681 36.0997 40.1142 36.0997C41.3166 36.0997 42.2749 36.4767 42.9701 37.2119C43.6652 37.9471 44.0128 38.9934 44.0128 40.2941C44.0034 41.5006 43.6371 42.5186 42.8949 43.2915Z"
+                      fill="#999999" />
+                  <path
+                      d="M23.1292 44.4509C22.3213 44.4509 21.5697 44.2153 20.8933 43.7534C20.2075 43.2821 19.6345 42.6035 19.1836 41.7269L19.0708 41.5101L16.1868 43.1124L16.2995 43.3198C17.0417 44.6583 18.0093 45.6762 19.1554 46.3549C20.3109 47.0336 21.6731 47.3823 23.2043 47.3823C25.4402 47.3823 27.3191 46.6471 28.7752 45.1861C30.2407 43.7345 30.9735 41.8588 30.9735 39.6343C30.9735 37.6266 30.344 35.9583 29.0946 34.6858C27.9391 33.4982 26.4454 32.8384 24.6511 32.7158L30.6071 24.1478H17.455V27.3149L24.9799 27.1735L18.3944 36.2034L19.2399 36.7783L19.3714 36.6841C19.9915 36.2316 20.6115 35.8829 21.2221 35.6567C21.8234 35.4304 22.4434 35.3079 23.0446 35.3079C24.4162 35.3079 25.5529 35.7415 26.4172 36.5898C27.2721 37.4381 27.7136 38.5598 27.7136 39.9077C27.7136 41.1896 27.2721 42.2735 26.3984 43.1407C25.5247 44.0173 24.4256 44.4509 23.1292 44.4509ZM62.9612 40.0679V31.3397C62.9612 28.9832 62.3412 27.1358 61.1387 25.8256C59.9174 24.5154 58.1983 23.8462 56.0188 23.8462C53.9896 23.8462 52.308 24.5343 51.021 25.8822C49.734 27.23 49.0857 29.0115 49.0857 31.1794V40.0773C49.0857 42.2453 49.734 44.0173 51.021 45.3746C52.308 46.7225 53.9802 47.4106 56.0188 47.4106C58.0667 47.4106 59.7483 46.7225 61.0353 45.3746C62.313 44.0079 62.9612 42.2264 62.9612 40.0679ZM52.3644 32.1503C52.3644 30.3405 52.6838 28.9644 53.2944 28.0878C53.905 27.2112 54.7975 26.787 56.0188 26.787C57.24 26.787 58.1325 27.2112 58.7337 28.0784C59.3444 28.9644 59.6544 30.3311 59.6544 32.1503V39.1159C59.6544 40.9351 59.3444 42.2924 58.7431 43.169C58.1513 44.0267 57.2588 44.4509 56.0188 44.4509C54.7787 44.4509 53.8863 44.0267 53.285 43.1596C52.665 42.2736 52.3644 40.9162 52.3644 39.1159V32.1503Z"
+                      fill="#999999" />
+              </g>
+              <defs>
+                  <clipPath id="clip0_134_10">
+                      <rect width="80" height="80.2676" fill="white"
+                          transform="translate(0 0.287598)" />
+                  </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="shop-slide-wrap oy-in">
+          <div id="productSlide" class="shop-slide oy-in">
+            {% comment %}
+              {% assign first_item = product.metafields.custom.color_style.value | first %}
+              {% assign first_color = first_item.color | downcase %}
+            {% endcomment %}
+
+            {% for item in product.images %}
+              <div class="oy-item{% if forloop.index == 1 %} active{% endif %}">
+                <img width="" height="" src="{{ item | image_url }}" alt="{{ item.alt }}">
+              </div>
+              {% comment %}
+                {% if item_alt == first_color %}
+                  <div class="oy-item {% if forloop.index == 0 %}active{% endif %}">
+                    <img width="" height="" src="{{ item | image_url }}" alt="{{ item.alt }}">
+                  </div>
+                {% else %}
+                  <div style="display:none;" class="oy-item {% if forloop.index == 0 %}active{% endif %}">
+                    <img width="" height="" src="{{ item | image_url }}" alt="{{ item.alt }}">
+                  </div>
+                {% endif %}
+              {% endcomment %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="oy-right .oy-in">
+      <!-- <form id="productForm"> -->
+      <div class="describe-main pc-show oy-pad">
+        <div class="describe-main-top  oy-in ">
+          <div class="oy-left">
+            <div class="title">
+              <h2 class="h2 ">{{ product.title }}</h2>
+            </div>
+            <div>
+              {% comment %}
+                <div class="star-box">
+                  <span id="star"></span>
+                  <span style="color: #016FD0;" class="text-describe">
+                    {{- score_num }}/5 rating | 2780 Customer Reviews</span
+                  >
+                </div>
+              {% endcomment %}
+              {%- assign app_rendered = false -%}
+              <a href="#stamped-main-widget" class="star-html">
+                {%- for block in section.blocks -%}
+                  {%- case block.type -%}
+                    {%- when '@app' -%}
+                      {%- unless app_rendered -%}
+                        {% render block %}
+                        {%- assign app_rendered = true -%}
+                      {%- endunless -%}
+                    {%- when 'starBlock' -%}
+                      <div>{{ block.settings.starHtml }}</div>
+                  {%- endcase -%}
+                {%- endfor -%}
+              </a>
+            </div>
+            <div>
+              <div class="text-describe" style="margin-top:1rem;">{{ product.description }}</div>
+            </div>
+          </div>
+          <div class="oy-right flex-wrap">
+            <div class="oy-right sale_price_item">
+              <span class="symbol">{{ currency_symbol }}</span>
+              <span class="num compare_at_price sale_prices">{{ product.price | money_without_currency }}</span>
+            </div>
+            <div class="oy-right sale_price_underlined">
+              <span class="symbol">{{ currency_symbol }}</span>
+              <span class="num compare_at_price">{{ product.price | money_without_currency }}</span>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="describe-main-btm">
+          <div class="text-describe">Features</div>
+          <div class="text-main">
+            {{ product.metafields.custom.product_features }}
+          </div>
+        </div>
+      </div>
+      <div class="product-sku spec">
+        <div class="product-sku-fold">
+          <!-- Color -->
+          <div class="oy-item">
+            {% for item in product.metafields.custom.color_style.value %}
+              {% if forloop.index == 1 %}
+                <div class="oy-item-main oy-pad">
+                  <div class="oy-title">Choose Your Color</div>
+                  <div class="oy-value">{{ item.color }}</div>
+                  <!-- <div class="oy-explain">4.9/5 rating | 2780 Customer Reviews</div> -->
+
+                  <div class="oy-icon">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3.33317 7.33295L9.99984 13.9996L16.6665 7.33295" stroke="#333333"
+                          stroke-width="2" />
+                    </svg>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+            <div class="oy-item-fold-color oy-item-content oy-in oy-pad">
+              {% for item in product.metafields.custom.color_style.value %}
+                <div class="oy-item oy-in {% if forloop.index==0 %}active{% endif %}" data-value="{{ item.color }}">
+                  <img width="" height="" src="{{ item.img | image_url }}" alt="">
+                  <p class="oy-value-title">{{ item.color }}</p>
+                </div>
+              {% endfor %}
+            </div>
+            <select id="colorSelect" class="oy-hideForm oy-sku-input">
+              {% for item in product.metafields.custom.color_style.value %}
+                <option value="{{ item.color }}">{{ item.color }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <!-- endColor -->
+          <!-- Size -->
+
+          <div class="oy-item active spec">
+            <div class="oy-item-main oy-pad">
+              <div class="oy-title">Choose Your Size</div>
+              {% for item in product.metafields.custom.product_size.value %}
+                <div
+                  class="oy-item-fold-size oy-item oy-item-content oy-in oy-pad{% if forloop.index == 1 %} active{% endif %}"
+                  data-value="{{ item.name }}"
+                  data-remark="{{ item.remark | escape }}"
+                >
+                  <div class="oy-item">
+                    <div class="oy-value oy-value-title">{{ item.name }}</div>
+                    <div class="oy-explain"><span>|</span>{{ item.remark }}</div>
+                  </div>
+                  <div class="oy-item-price">
+                    {{ currency_symbol -}}
+                    <span class="compare_at_price">{{ product.price | money_without_currency }}</span>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <select id="sizeSelect" class="oy-hideForm oy-sku-input">
+              {% for item in product.metafields.custom.product_size.value %}
+                <option value="{{ item.name }}">{{ item.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <!-- endSize -->
+
+          <!-- material -->
+          <div class="oy-item">
+            {% for item in product.metafields.custom.product_material.value %}
+              {% if forloop.index == 1 %}
+                <div class="oy-item-main oy-pad">
+                  <div class="oy-title">Choose Your Material</div>
+                  <div class="oy-value">{{ item.name }}</div>
+                  <!-- <div class="oy-explain">4.9/5 rating | 2780 Customer Reviews</div> -->
+
+                  <div class="oy-icon">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3.33317 7.33295L9.99984 13.9996L16.6665 7.33295" stroke="#333333"
+                          stroke-width="2" />
+                    </svg>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            <div class="oy-item-fold-material oy-item-content oy-in oy-pad active">
+              {% for item in product.metafields.custom.product_material.value %}
+                <div class="oy-item oy-in {% if forloop.index==0 %}active{% endif %}" data-value="{{ item.name }}">
+                  <img width="" height="" src="{{ item.img | image_url }}" alt="">
+                  <p class="oy-value-title">{{ item.name }}</p>
+                </div>
+              {% endfor %}
+              <br>
+              <select id="materialSelect" class="oy-hideForm oy-sku-input">
+                {% for item in product.metafields.custom.product_material.value %}
+                  <option value="{{ item.name }}">{{ item.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <!-- endMaterial -->
+          {% comment %}
+            <div class="product-sku-attach">
+              <div class="oy-title">
+                <p>Choose Your Add-Ons</p>
+              </div>
+
+              <!-- Product Attach -->
+              {% for item in product.metafields.custom.product_attach.value %}
+                <div class="product-sku-attach-main oy-in">
+                  <div class="oy-left">
+                    <img width="" height="" src="{{ item.featured_image | image_url  }}" alt="">
+                  </div>
+                  <div class="oy-right">
+                    <div class="oy-top">
+                      <span class="oy-title">{{ item.title }}</span>
+                      <span class="oy-nameplate">
+                        <span class="nameplate-box">
+                          <svg
+                            width="10"
+                            height="8"
+                            viewBox="0 0 10 8"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                                d="M0.703974 3.86977L0 4.54233L3.27012 7.65219L10 1.3039L9.29936 0.628784L3.27313 6.31338L0.703974 3.86977Z"
+                                fill="white" />
+                          </svg>
+                        </span>
+                        <span class="oy-text">INCLUDED</span>
+                      </span>
+                    </div>
+                    <div class="oy-btm">
+                      <div class="oy-text">
+                        {{ item.description }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+              <!-- end Product Attach -->
+
+              <!-- Selectable Product Attach -->
+              {% comment %}
+                {% for item in product.metafields.custom.selectable_product_attach.value %}
+                  <div class="product-sku-attach-option oy-in">
+                    <div class="oy-checkbox oy-in">
+                      <input id="check{{ item.id }}" type="checkbox">
+                    </div>
+                    <div class="oy-left oy-in">
+                      <img width="" height="" src="{{ item.featured_image | image_url  }}" alt="">
+                    </div>
+                    <div class="oy-right">
+                      <div class="oy-title">
+                        <span class="oy-title-in">{{ item.title }}</span>
+                      </div>
+                      <div class="oy-text">
+                        <div class="oy-text-in">{{ item.category }}</div>
+                      </div>
+                      <div class="oy-price">
+                        <span class="oy-price-in"> +{{ item.price | money_without_trailing_zeros }}</span>
+                        <!-- <span class="oy-price-in"> +${{ item.price }}</span> -->
+                      </div>
+                      <div class="oy-count-input">
+                        <button disabled class="minus oy-cut">-</button
+                        ><input
+                          id="count{{ item.id }}"
+                          value="1"
+                          oninput="value=value.replace(/[^\d]/g,'')"
+                          maxlength="3"
+                          class="oy-count-ipt"
+                          type="text"
+                          max="999"
+                          min="1"
+
+                        ><button class="oy-cut plus">+</button>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endcomment %}
+              <!-- end Selectable Product Attach -->
+            </div>
+          {% endcomment %}
+
+          <div class="settlement-detail">
+            <div class="oy-p1">{{ product.title }}</div>
+            <div class="oy-p2">
+              <span id="endSKU1"></span>
+            </div>
+            <div class="oy-p2">
+              <span id="endSKU2"></span
+              ><span class="compare_at_price">
+                {{ currency_symbol -}}
+                {{- product.price | money_without_currency }}
+              </span>
+            </div>
+            <div class="oy-p2"><span id="endSKU3"></span></div>
+            {% assign total_price = product.price %}
+            <div class="oy-p2 spec">Leather Material</div>
+            {% if product.metafields.custom.product_attach != blank %}
+              <div class="settlement-detail-line"></div>
+              <div class="oy-p2">Leather Material</div>
+              {% for item in product.metafields.custom.product_attach.value %}
+                {% assign total_price = total_price | plus: item.price %}
+                <div class="oy-p2 product_attach_item" data-value="{{item.price}}">
+                  <span>{{ item.title }}</span
+                  ><span>
+                    {{ currency_symbol -}}
+                    {{- item.price | money_without_currency }}
+                  </span>
+                </div>
+              {% endfor %}
+              <div class="settlement-detail-line"></div>
+            {% endif %}
+            <div class="oy-p6">
+              <span>List Price:</span
+              ><span id="originalTotalPrice" class="oy-del">
+                {{ currency_symbol -}}
+                <span class="add_attach_price">{{ total_price | money_without_currency }} </span></span
+              >
+            </div>
+            <div class="oy-p6 oy-p5">
+              <span>Selling Price:</span>
+              <div id="totalPrices_item">
+                <span class="oy-total">
+                  {{- currency_symbol -}}
+                  <span id="totalPrices" class="oy-total compare_at_price">
+                    {{- product.price | money_without_currency -}}
+                  </span></span
+                >
+              </div>
+            </div>
+              <div class="oy-p6 sale_price_item">
+              <span>Austin Major Special Offer:</span
+              ><span class="oy-total">
+                {{- currency_symbol -}}
+                <span class="oy-total sale_prices">{{ product.price | money_without_currency }}</span></span
+              >
+            </div>
+          </div>
+          <div class="settle-accounts">
+            <div class="oy-top">
+              <div class="oy-p1">Financing available</div>
+              <div class="oy-p2">
+                <span class="redd">
+                  {{ currency_symbol -}}
+                  <span id="financing_twelve" class="redd">
+                    {{- product.price | divided_by: 100.0 | divided_by: 12.0 | round: 2 }}
+                  </span></span
+                >
+                <span>{{ 'products.product.text.affirmtext' | t }}</span>
+                <span class="redd">
+                  {{- currency_symbol -}}
+                  <span id="financing_four" class="redd">
+                    {{- product.price | divided_by: 100.0 | divided_by: 6.0 | round: 2 -}}
+                  </span></span
+                >
+                <span>{{ 'products.product.text.mowith' | t }}</span>
+                <span
+                  ><img class="imgg" width="" height="" src="{{ section.settings.financing_logo | image_url }}" alt=""
+                ></span>
+              </div>
+            </div>
+            <hr class="hrr">
+            <div class="oy-cet" id="product-add-to-cart">
+              <button id="addCart" class="buyy">
+                {% comment %}
+                  <svg
+                    width="24"
+                    height="25"
+                    viewBox="0 0 24 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                        d="M10.25 23.0766C11.2165 23.0766 12 22.2905 12 21.3208C12 20.3511 11.2165 19.5649 10.25 19.5649C9.2835 19.5649 8.5 20.3511 8.5 21.3208C8.5 22.2905 9.2835 23.0766 10.25 23.0766Z"
+                        fill="white" />
+                    <path
+                        d="M18.75 23.0766C19.7165 23.0766 20.5 22.2905 20.5 21.3208C20.5 20.3511 19.7165 19.5649 18.75 19.5649C17.7835 19.5649 17 20.3511 17 21.3208C17 22.2905 17.7835 23.0766 18.75 23.0766Z"
+                        fill="white" />
+                    <path d="M2.5 3.51147L7 6.52151L9.5 17.5583H19.5L22 9.02987H12.5" stroke="white"
+                        stroke-width="2" />
+                    <path d="M12.5 13.5449H16.1364H20.5" stroke="white" stroke-width="2" />
+                  </svg>
+                {% endcomment %}
+                &nbsp;Add to cart
+              </button>
+
+              <button id="buyNow" class="subcart">Buy it now</button>
+            </div>
+            <div class="oy-btm">
+              <div class="oy-p1">
+                <svg
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M7.99992 15.0103C9.84085 15.0103 11.5075 14.2616 12.714 13.0511C13.9204 11.8406 14.6666 10.1684 14.6666 8.32129C14.6666 6.4742 13.9204 4.80196 12.714 3.59147C11.5075 2.38101 9.84085 1.63232 7.99992 1.63232C6.15899 1.63232 4.49232 2.38101 3.28587 3.59147C2.07945 4.80196 1.33325 6.4742 1.33325 8.32129C1.33325 10.1684 2.07945 11.8406 3.28587 13.0511C4.49232 14.2616 6.15899 15.0103 7.99992 15.0103Z"
+                      fill="#999999" />
+                  <path d="M5.33325 8.32114L7.33325 10.3278L11.3333 6.31445" stroke="#D9D9D9" />
+                </svg>
+                3-year Warranty. With Blacklyte's Warranty Coverage, You Can Shop With Peace of Mind.
+              </div>
+              <div class="oy-p2">
+                <svg
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M7.99992 15.0103C9.84085 15.0103 11.5075 14.2616 12.714 13.0511C13.9204 11.8406 14.6666 10.1684 14.6666 8.32129C14.6666 6.4742 13.9204 4.80196 12.714 3.59147C11.5075 2.38101 9.84085 1.63232 7.99992 1.63232C6.15899 1.63232 4.49232 2.38101 3.28587 3.59147C2.07945 4.80196 1.33325 6.4742 1.33325 8.32129C1.33325 10.1684 2.07945 11.8406 3.28587 13.0511C4.49232 14.2616 6.15899 15.0103 7.99992 15.0103Z"
+                      fill="#999999" />
+                  <path d="M5.33325 8.32114L7.33325 10.3278L11.3333 6.31445" stroke="#D9D9D9" />
+                </svg>
+                30-day refund/return policy.** <span><a href="/pages/return-refund-policy">View Return Policy</a></span>
+              </div>
+              <div class="oy-p3">
+                <svg
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      d="M7.99992 15.0103C9.84085 15.0103 11.5075 14.2616 12.714 13.0511C13.9204 11.8406 14.6666 10.1684 14.6666 8.32129C14.6666 6.4742 13.9204 4.80196 12.714 3.59147C11.5075 2.38101 9.84085 1.63232 7.99992 1.63232C6.15899 1.63232 4.49232 2.38101 3.28587 3.59147C2.07945 4.80196 1.33325 6.4742 1.33325 8.32129C1.33325 10.1684 2.07945 11.8406 3.28587 13.0511C4.49232 14.2616 6.15899 15.0103 7.99992 15.0103Z"
+                      fill="#999999" />
+                  <path d="M5.33325 8.32114L7.33325 10.3278L11.3333 6.31445" stroke="#D9D9D9" />
+                </svg>
+                Easy & Safe Installation. We Prioritize Simplicity, Ensuring a Hassle-free Experience.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </form> -->
+    </div>
+  </div>
+</div>
+{{ 'section-product-information-simplicity.css' | asset_url | stylesheet_tag }}
+{{ 'section-product-information-simplicity-fitter.css' | asset_url | stylesheet_tag }}
+<style>
+    .product_infor_simplicity {
+      padding: 0;
+  }
+    .product_infor_simplicity .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_btns_btn {
+    border: 1px solid #6E6BF6;
+    color: #6E6BF6;
+    border-radius: 6px;
+  }
+
+  .product_infor_simplicity .simplicity_bottom_bar_contain_right .product_infor_simplicity_right_buybox_btns_btn[type="submit"] {
+    background: #6E6BF6;
+    color: #fff;
+  }
+
+  .product_infor_simplicity .product_infor_simplicity_right_buybox_price_info_save,.product_infor_simplicity  .product_infor_simplicity_right_buybox_price_info_op{
+    display: none;
+  }
+
+  .product_infor_simplicity .product_infor_simplicity_right_buybox_price_info_save.show,.product_infor_simplicity  .product_infor_simplicity_right_buybox_price_info_op.show{
+    display: block;
+  }
+</style>
+<div class="product_infor_simplicity">
+  <div class="simplicity_bottom_bar">
+    <div class="simplicity_bottom_bar_contain">
+      <div class="pc_show">
+        <div class="product_infor_simplicity_right_select_title">{{ product.title }}</div>
+        <div class="product_infor_simplicity_right_product_desc">{{ product.description }}</div>
+      </div>
+      <div class="simplicity_bottom_bar_contain_right">
+        <div class="product_infor_simplicity_right_buybox_price">
+          <div class="product_infor_simplicity_right_buybox_price_info">
+            <span
+              class="product_infor_simplicity_right_buybox_price_info_discount"
+              data-value="{{ sale_price | money_without_currency }}"
+            >
+              {{ currency_symbol -}}
+              <span class="sale_prices">{{ sale_price | money_without_trailing_zeros }}</span>
+            </span>
+            <span
+              class="product_infor_simplicity_right_buybox_price_info_save"
+              data-value="{{ save_price | money_without_currency }}"
+            >
+              {{ 'products.product.text.save' | t -}}
+              {{ currency_symbol -}}
+              <span>{{ sale_price | money_without_trailing_zeros }}</span>
+            </span>
+            <span class="product_infor_simplicity_right_buybox_price_info_op">
+              <span>{{- product.selected_or_first_available_variant.price | money_without_trailing_zeros -}}</span>
+            </span>
+          </div>
+          <div class="product_infor_simplicity_right_buybox_price_afterpay pc_show">
+            <span class="redd">
+              {{ currency_symbol -}}
+              <span id="financing_twelve" class="financing_twelve">
+                {{- product.price | money_without_currency | divided_by: 12.0 | round: 2 }}
+              </span></span
+            >
+            <span>{{ 'products.product.text.affirmtext' | t }}</span>
+            <span class="redd">
+              {{- currency_symbol -}}
+              <span id="financing_four" class="financing_four">
+                {{- product.price | money_without_currency | divided_by: 6.0 | round: 2 -}}
+              </span></span
+            >
+            <span>{{ 'products.product.text.mowith' | t }}</span>
+            <span
+              ><img
+                class="imgg"
+                width=""
+                height=""
+                src="{{ section.settings.financing_logo | image_url }}"
+                alt="financing available"
+                loading="lazy"
+            ></span>
+          </div>
+          <div class="product_infor_simplicity_right_buybox_goods_options pmd_show">
+            <div class="product_infor_simplicity_right_select_title">{{ product.title }}</div>
+          </div>
+        </div>
+        <div class="product_infor_simplicity_right_buybox_btns">
+          <button
+            class="product_infor_simplicity_right_buybox_btns_btn"
+            data-type="add_to_cart"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {% if product.selected_or_first_available_variant.inventory_quantity == 0 %}
+              {% if product.selected_or_first_available_variant.available %}
+                {{ 'products.product.pre_order' | t }}
+              {% else %}
+                {{ 'products.product.out_of_stock' | t }}
+              {% endif %}
+            {% else %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% endif %}
+          </button>
+          <button
+            data-type="buy_it_now"
+            type="submit"
+            class="product_infor_simplicity_right_buybox_btns_btn pc_show"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {{ 'products.product.buy_it_now' | t }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/url-parse@1.5.10/dist/url-parse.min.js"></script>
+<!-- <script src="{{ 'oy-main.js' | asset_url  }}"></script> -->
+<script>
+  const headerWidth = document.querySelector(".header-navigation-wrapper").offsetHeight
+const announcementBarWidth = document.querySelector(".announcement-bar").offsetHeight
+let productImgBox = document.querySelector(".product-main>.oy-in>.oy-left")
+productImgBox.style.top = (headerWidth + announcementBarWidth) + "px"
+// 产品主图轮播
+let productSlideAll = document.querySelectorAll("#productSlide>.oy-item")
+let productMainImg = document.querySelector("#productMainImg")
+let productMainBtnPrev = document.querySelector("#productMainBtnPrev")
+let productMainBtnNext = document.querySelector("#productMainBtnNext")
+
+let slideWrap = document.querySelector(".shop-slide-wrap")
+let slides = slideWrap.querySelector(".shop-slide") 
+let slideList = slideWrap.querySelectorAll(".shop-slide .oy-item") 
+
+let productMainStateNum = 0
+let tempI = 0
+
+function setSlideLeft  (){
+    if(moveDistance>30) return
+    return
+  let slideWrapWidth = slideWrap.offsetWidth
+
+  let slideWidth  = slides.querySelector(".oy-item").offsetWidth
+  let slidesWidth = slides.scrollWidth + 100
+
+  let xx = slideWidth * productMainStateNum
+    
+    if(xx > (slidesWidth - slideWrapWidth)){
+      slides.style.left = -( slidesWidth - slideWrapWidth )+20 + "px"
+      // slides.style.right = "2vw"
+          // slides.style.left = "unset"
+    }else{
+      // slides.style.right = "unset"
+      if((( slideWidth * productMainStateNum  > slideWrapWidth) && (productMainStateNum > tempI)) ||  productMainStateNum < tempI){
+        slides.style.left = - xx +"px"
+      }
+    
+    }
+      tempI = productMainStateNum
+}
+
+function setProductMainState (i) {
+
+    productSlideAll[i].classList.add("active")
+    productMainImg.src = productSlideAll[i].querySelector("img").src
+    const aspectRatio = productSlideAll[i].querySelector("img").naturalWidth / productSlideAll[i].querySelector("img").naturalHeight;
+
+  if (aspectRatio > 1) {
+    productMainImg.style.objectFit = "cover";
+  } else {
+    productMainImg.style.objectFit = "contain";
+  }
+    setSlideLeft()
+}
+function remProductMainActive () {
+    productSlideAll.forEach(e => {
+        e.classList.remove("active")
+    })
+}
+
+productSlideAll.forEach((e,i) => {
+    e.addEventListener("click", (e) => {
+      document.querySelector(".spin-360").classList.remove("act")
+     if(moveDistance>30) return
+        productMainStateNum = i
+        productSlideAll.forEach(e => {
+            e.classList.remove("active")
+        })
+        e.target.classList.add("active")
+        productMainImg.src = e.target.querySelector("img").src
+        const aspectRatio = productSlideAll[i].querySelector("img").naturalWidth / productSlideAll[i].querySelector("img").naturalHeight;
+
+  if (aspectRatio > 1) {
+    productMainImg.style.objectFit = "cover";
+  } else {
+    productMainImg.style.objectFit = "contain";
+  }
+           setSlideLeft()
+    })
+
+})
+
+productMainBtnPrev.addEventListener("click", e => {
+    remProductMainActive()
+
+
+   while(true){
+    productMainStateNum--
+    if (productMainStateNum <= 0) {
+        productMainStateNum = productSlideAll.length-1
+    }
+        if(slideList[productMainStateNum].style.display == "none"){
+            
+        }else{
+          break
+        }
+      }
+
+    setProductMainState(productMainStateNum)
+
+})
+
+productMainBtnNext.addEventListener("click", e => {
+    remProductMainActive()
+
+  while(true){
+        productMainStateNum++
+            if (productMainStateNum >= productSlideAll.length) {
+              productMainStateNum = 0
+          }
+
+        if(slideList[productMainStateNum].style.display == "none"){
+            
+        }else{
+          break
+        }
+      }
+
+
+  
+
+
+    setProductMainState(productMainStateNum)
+
+})
+
+document.addEventListener("DOMContentLoaded", function () {
+  let startX = 0;
+  let endX = 0;
+  const productSlide = document.querySelector(".shop-main");
+
+  productSlide.addEventListener("touchstart", function (event) {
+    startX = event.touches[0].clientX;
+  });
+
+  productSlide.addEventListener("touchmove", function (event) {
+    endX = event.touches[0].clientX;
+  });
+
+  productSlide.addEventListener("touchend", function () {
+    if(document.querySelector(".spin-360").classList.contains("act")) return;
+    if (startX - endX > 50) {
+      // 右滑 -> 下一张
+      productMainBtnNext.click();
+    } else if (endX - startX > 50) {
+      // 左滑 -> 上一张
+      productMainBtnPrev.click();
+    }
+  });
+});
+
+// 产品缩略图滑动
+
+let isDragging = false;
+let startX;
+let startLeft;
+let moveDistance = 0;
+
+  slideWrap.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startLeft = parseInt(slides.style.left, 10) || 0;
+    slideWrap.style.cursor = 'grabbing';
+  });
+
+  slideWrap.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    moveDistance++;
+    const deltaX = e.clientX - startX;
+    slides.style.left = `${startLeft + deltaX}px`;
+  });
+
+  slideWrap.addEventListener('mouseup', () => {
+    isDragging = false;
+    slideWrap.style.cursor = 'grab';
+    checkBoundary();
+    setTimeout(() => {
+      moveDistance = 0;
+    }, 100);
+  });
+
+  slideWrap.addEventListener('mouseleave', () => {
+    isDragging = false;
+    slideWrap.style.cursor = 'grab';
+    checkBoundary();
+    setTimeout(() => {
+      moveDistance = 0;
+    }, 100);
+  });
+
+  // 检查边界并重置位置
+function checkBoundary() {
+  const slideWrapWidth = slideWrap.offsetWidth;
+  const slidesWidth = getSlidesWidth(); // 计算所有 item 的总宽度
+  const currentLeft = parseInt(slides.style.left, 10) || 0;
+
+  // 左边界
+  if (currentLeft > 0 ||  slideWrapWidth > slidesWidth ) {
+    slides.style.left = '0px';
+    return;
+  }
+
+  // 右边界
+  console.log(currentLeft, slideWrapWidth, slidesWidth)
+  const maxRight = slideWrapWidth - slidesWidth;
+  if (currentLeft < maxRight) {
+    slides.style.left = `${maxRight}px`;
+    return;
+  }
+}
+
+// 计算所有 item 的总宽度（包括 gap）
+function getSlidesWidth() {
+  const items = slides.querySelectorAll('.oy-item');
+  const gap = parseFloat(window.getComputedStyle(slides).gap) || 0; // 获取 gap 值
+  let totalWidth = 0;
+
+  items.forEach((item, index) => {
+    totalWidth += item.offsetWidth;
+    if (item.offsetWidth) {
+      totalWidth += gap; // 累加 gap（最后一个 item 后不需要加 gap）
+    }
+    if(index === items.length - 1 ) {
+      totalWidth += parseFloat(window.getComputedStyle(slides).marginLeft)
+    }
+  });
+  return totalWidth;
+}
+
+// 移动端事件
+function handleTouchStart(e) {
+  isDragging = true;
+  startX = e.touches[0].clientX; // 获取第一个触摸点
+  startLeft = parseInt(slides.style.left, 10) || 0;
+}
+
+function handleTouchMove(e) {
+  if (!isDragging) return;
+  e.preventDefault(); // 阻止默认滚动行为
+  const deltaX = e.touches[0].clientX - startX;
+  slides.style.left = `${startLeft + deltaX}px`;
+}
+
+function handleTouchEnd() {
+  isDragging = false;
+  checkBoundary()
+  setTimeout(() => moveDistance = 0, 100);
+}
+
+slideWrap.addEventListener('touchstart', handleTouchStart, { passive: false });
+slideWrap.addEventListener('touchmove', handleTouchMove, { passive: false });
+slideWrap.addEventListener('touchend', handleTouchEnd);
+
+  // 折叠和展开-SKU
+
+{% comment %} let skuFoldColorItemAll = document.querySelectorAll(".product-sku-fold>.oy-item")
+
+skuFoldColorItemAll.forEach((e, i) => {
+    e.querySelector(".oy-item-main").addEventListener("click", e2 => {
+        skuFoldColorItemAll[i].classList.toggle("active")
+        if(skuFoldColorItemAll[i].classList.contains("active")){
+          skuFoldColorItemAll[i].querySelector(".oy-item-main .oy-icon svg").style.transform= "rotateX(180deg)"
+        }else{
+          skuFoldColorItemAll[i].querySelector(".oy-item-main .oy-icon svg").style.transform= "unset"
+        }
+    })
+}) {% endcomment %}
+
+// 赠品选项关联active( checkbox 点击事件)
+  {% comment %} let attachOptionAll = document.querySelectorAll(".product-sku-attach-option")
+
+    attachOptionAll.forEach((e,i)=>{
+    let ipt = attachOptionAll[i].querySelector(".oy-count-ipt")
+
+      
+    e.querySelector(".oy-checkbox>input[type='checkbox'").addEventListener("click",e1=>{
+        if(e1.currentTarget.checked){
+          attachOptionAll[i].classList.add("active")
+          ipt.value==0?ipt.value++:0
+        }else{
+           attachOptionAll[i].classList.remove("active")
+        }
+      setTotalPrice()
+    })
+  }) {% endcomment %}
+
+//产品结算和加购
+
+let productData =  {{ product | json }}
+
+let matchedProductId = ''
+
+
+    let cartFormData = {
+ 'items': [
+   {
+  'id': matchedProductId,
+  'quantity': 1
+  },
+   
+]
+};
+
+
+let skuArray = []
+let skuInputAll = document.querySelectorAll(".oy-sku-input")
+
+  function changeSkuArray(skuArray){
+    {% comment %} skuInputAll.forEach((e,i)=>{
+       if(skuArray.includes(e.value) != true){
+          skuArray[i]=e.value
+       }
+  }) {% endcomment %}
+
+    let matchedProduct = {}
+    matchedProduct  =  productData.variants.find(f=> skuArray.length === f.options.length && skuArray.every(ev =>f.options.includes(ev)))
+  matchedProductId = matchedProduct.id
+
+      
+        // 改url
+      var url = new URLParse(window.location.href, true)
+        url.query.variant = matchedProduct.id
+        window.history.replaceState(null, null, url.toString());
+  }
+
+
+{% comment %} changeSkuArray() {% endcomment %}
+
+let selectableProductAttachJson = {{ product.metafields.custom.selectable_product_attach.value | json }}
+
+let addCartBtn =  document.querySelector("#addCart")
+  
+addCartBtn.addEventListener("click",e=>{
+
+  addCartBtn.classList.add("is-loading") 
+
+cartFormData = {
+ 'items': [
+   {
+  'id': matchedProductId,
+  'quantity': 1
+  },
+]
+};
+
+
+  
+    {% comment %} selectableProductAttachJson.forEach(e=>{
+        if(document.querySelector(`#check${e.id}`).checked == true){
+              cartFormData.items.push({
+                "id":e.variants[0].id,
+                  "quantity":Number(document.querySelector(`#count${e.id}`).value)
+              })  
+        }
+    }) {% endcomment %}
+
+
+  
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cartFormData)
+    })
+    .then(response => {
+      Shopify.getCart((cartTotal) => {
+        document.body.classList.add('cart-sidebar-show');
+        updateSidebarCart(cartTotal);
+    });
+    addCartBtn.classList.remove("is-loading")
+      return response.json();
+    
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+         setTimeout(() => {
+                 document.querySelector(".header--cart .header__icon--cart").click()
+        }, 1000);
+        addCartBtn.classList.remove("is-loading")
+    });
+
+         setTimeout(() => {
+                 document.querySelector(".header--cart .header__icon--cart").click()
+        }, 1000);
+
+
+  
+  
+})
+
+function updateSidebarCart(cart) {
+  if (cart && Object.keys(cart).length > 0) {
+      const cartDropdown = document.querySelector('#halo-cart-sidebar .halo-sidebar-wrapper .previewCart-wrapper');
+      if (!cartDropdown) return;
+
+      const cartLoading = document.createElement('div');
+      cartLoading.classList.add('loading-overlay', 'loading-overlay--custom');
+      cartLoading.innerHTML = `
+          <div class="loading-overlay__spinner">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+          </div>
+      `;
+
+      cartDropdown.classList.add('is-loading');
+      cartDropdown.prepend(cartLoading);
+
+      fetch(window.routes.root + '/cart?view=ajax_side_cart', { cache: "no-store" })
+          .then(response => response.text())
+          .then(data => {
+              cartDropdown.classList.remove('is-loading');
+              cartDropdown.innerHTML = data;
+          })
+          .catch(error => {
+              console.error("Cart update error:", error);
+          })
+          .finally(() => {
+              document.querySelectorAll('[data-cart-count]').forEach(el => el.textContent = cart.item_count);
+
+              document.querySelectorAll('[data-cart-text]').forEach(el => {
+                  el.textContent = (cart.item_count === 1) ? window.cartStrings.item : window.cartStrings.items;
+              });
+
+              document.dispatchEvent(new CustomEvent('cart-update', { detail: cart }));
+
+              if (document.body.classList.contains('cursor-fixed__show')) {
+                  window.sharedFunctionsAnimation.onEnterButton();
+                  window.sharedFunctionsAnimation.onLeaveButton();
+              }
+          });
+  }
+}
+
+// 换颜色函数
+function handleColorSetImg(color){
+
+      let flag = true
+      slideList.forEach((e,i)=>{
+        if(color.toLowerCase() == e.querySelector("img").alt.toLowerCase() ){
+             e.style.display = "unset"
+          if(flag){
+            e.classList.add("active")
+             productMainImg.src = e.querySelector("img").src
+            flag = false
+          }
+         
+        }else{
+               e.style.display = "none"
+        }
+            
+              // if(e.style.display == "none"){
+              //   e.style.display = "unset"
+              //  productMainImg.src = e.querySelector("img").src
+              // }else{
+              //   e.style.display = "none"
+              // }
+        
+      })
+  
+  
+}
+
+let skuItems = document.querySelectorAll(".product-sku-fold>.oy-item")
+
+  function remo(){
+    skuItems.forEach((e,ei)=>{
+
+      if(e.querySelectorAll(".oy-item.active").length){
+
+      }else{
+                  e.querySelector(".oy-item-main .oy-value").innerText = ''
+                  e.querySelector(".oy-item-main .oy-explain").innerText = ''
+      }
+    })
+  }
+
+// sku交互+库存判断
+
+  let domKeys =[ "oy-item-fold-color","oy-item-fold-size","oy-item-fold-material"]
+  let colorWrap = document.querySelector(".oy-item-fold-color")
+  let sizeWrap = document.querySelector(".oy-item-fold-size")
+  let materialWrap = document.querySelector(".oy-item-fold-material")
+
+  let  colorItems =colorWrap.querySelectorAll(".oy-item")
+  let sizeItems = document.querySelectorAll(".oy-item-fold-size")
+  let materialItems = materialWrap.querySelectorAll(".oy-item")
+
+
+
+// 分别设置点击事件
+  
+  colorItems.forEach((c,ci)=>{
+    c.addEventListener("click",(cc)=>{
+      skuItems[1].querySelector(".oy-item-main .oy-value").innerText = ''
+      skuItems[1].querySelector(".oy-item-main .oy-explain").innerText = ''
+      document.querySelector("#endSKU2").innerText = ''
+      skuItems[2].querySelector(".oy-item-main .oy-value").innerText = ''
+      document.querySelector("#endSKU3").innerText = ''
+      if(cc.currentTarget.classList.contains("disable") == false ){
+
+        let color = cc.currentTarget.dataset.value
+        handleColorSetImg(color)
+
+        
+          colorItems.forEach(eee=>{
+            eee.classList.remove("active")
+                  eee.classList.remove("disable")
+          })
+        cc.currentTarget.classList.add("active")
+        skuItems[0].querySelector(".oy-item-main .oy-value").innerText = cc.currentTarget.dataset.value
+        document.querySelector("#endSKU1").innerText = cc.currentTarget.dataset.value
+        // 
+        skuArray[1]=c.dataset.value
+
+            clickYouh(1)
+
+        
+         mhyouh(1)
+         changeSkuArray(skuArray)
+
+         matchedProduct  =  productData.variants.find(f=> skuArray.length === f.options.length && skuArray.every(ev =>f.options.includes(ev)))
+        changeVariant360Images(matchedProduct.id)
+         {% comment %} judgeShow360Icon() {% endcomment %}
+      }
+
+ 
+             remo()
+        
+    })
+  })
+
+
+  {% comment %} sizeItems.forEach((s,si)=>{
+    s.addEventListener("click",(sc)=>{
+       if(sc.currentTarget.classList.contains("disable") == false ){
+      sizeItems.forEach(eee=>{
+            eee.classList.remove("active")
+           {% comment %} eee.classList.remove("disable") {% endcomment %}
+          })
+        sc.currentTarget.classList.add("active")
+         skuItems[1].querySelector(".oy-item-main .oy-value").innerText = sc.currentTarget.dataset.value
+         skuItems[1].querySelector(".oy-item-main .oy-explain").innerText = sc.currentTarget.dataset.remark
+         document.querySelector("#endSKU2").innerText = sc.currentTarget.dataset.value + " | " +  sc.currentTarget.dataset.remark
+             // if(skuItems[i].querySelector(".oy-item-main .oy-explain")){
+             // skuItems[i].querySelector(".oy-item-main .oy-explain").innerText = sc.currentTarget.dataset.value
+             // }
+        skuArray[0]=s.dataset.value
+
+ 
+          clickYouh(0)
+
+         
+            mhyouh(0)
+            changeSkuArray(skuArray)
+      }
+
+        
+   remo()
+   
+    })
+  }) {% endcomment %}
+
+  
+  materialItems.forEach((m,mi)=>{
+    m.addEventListener("click",(mc)=>{
+    if(mc.currentTarget.classList.contains("disable") == false ){
+
+   materialItems.forEach(eee=>{
+        {% comment %} eee.classList.remove("disable") {% endcomment %}
+            eee.classList.remove("active")
+          })
+        mc.currentTarget.classList.add("active")
+      skuItems[2].querySelector(".oy-item-main .oy-value").innerText = mc.currentTarget.dataset.value
+      document.querySelector("#endSKU3").innerText = mc.currentTarget.dataset.value
+        // 
+        skuArray[2]=m.dataset.value
+ 
+      {% comment %} clickYouh(2) {% endcomment %}
+
+      
+          mhyouh(2)
+
+          changeSkuArray(skuArray)
+      }
+
+    
+        remo()
+    })
+  })
+
+//点击时第一有货
+
+
+  function clickYouh(i){
+         let oneFlag = true
+         document.querySelector("#buyNow").disabled = false;
+         document.querySelector("#addCart").disabled = false
+  productData.variants.forEach(v=>{
+
+      if(i === 1 && v.available && v.options[i] ==skuArray[i] && oneFlag) {
+        skuArray[0] = v.options[0]
+        skuArray[2] = v.options[2]
+        oneFlag = false
+      }
+      if(i === 0 && v.available && v.options[i] ==skuArray[i] && v.options[1] ==skuArray[1] && oneFlag) {
+        skuArray[2] = v.options[2]
+        oneFlag = false
+      }
+        {% comment %} if(v.available && oneFlag && v.options[i] ==skuArray[i] ) { 
+
+            let ii = i+1
+          ii=ii>=3?0:ii
+
+          let iii = ii+1
+          iii=iii>=3?0:iii
+          
+
+
+          for(let q=0;q<3;q++){
+        
+              if(q == ii  || q == iii){
+  
+          if(q==0){
+                   sizeItems.forEach(e=>{
+                     if(e.dataset.value == v.options[q]){
+                        e.classList.remove("disable")
+                       e.classList.add("active")
+                       skuArray[q]=e.dataset.value
+                     }else{
+                         e.classList.remove("active")
+                     }
+                        
+                     
+              
+          })
+            
+          }
+                 if(q==1){
+                   colorItems.forEach(e=>{
+                           if(e.dataset.value == v.options[q]){
+                                          e.classList.remove("disable")
+                       e.classList.add("active")
+                                    skuArray[q]=e.dataset.value
+                     }else{
+                         e.classList.remove("active")
+                     }
+              
+          })
+          }
+                 if(q==2){
+                    materialItems.forEach(e=>{
+                    
+                     if(e.dataset.value == v.options[q]){
+                                    e.classList.remove("disable")
+                       e.classList.add("active")
+                              skuArray[q]=e.dataset.value
+                     }else{
+                         e.classList.remove("active")
+                     }
+          })
+          }
+                
+                
+              }
+
+            
+          }
+   
+   
+  
+      
+
+
+          
+
+          
+
+           oneFlag= false
+        } {% endcomment %}
+  })
+if(oneFlag) {
+  console.log("无货")
+  document.querySelector("#buyNow").disabled = true;
+  document.querySelector("#addCart").disabled = true
+}
+    
+  }
+
+//加载时第一有货
+
+  let oneFlag = true
+  productData.variants.forEach(v=>{
+        if(v.available && oneFlag){
+
+                for(let i =0; i<colorItems.length;i++){
+                  // console.log(colorItems[i].dataset.value)
+                    if(colorItems[i].dataset.value == v.option2){
+                      colorItems[i].classList.add("active")
+                      skuArray[2-1]=v.option2
+                        skuItems[0].querySelector(".oy-item-main .oy-value").innerText = v.option2
+                        document.querySelector("#endSKU1").innerText = v.option2
+                        handleColorSetImg(v.option2)
+                    }          
+                }
+              for(let i =0; i<sizeItems.length;i++){
+                  // console.log(sizeItems[i].dataset.value)
+                    if(sizeItems[i].dataset.value == v.option1){
+                      sizeItems[i].classList.add("active")
+                       skuArray[1-1]=v.option1
+                           {% comment %} skuItems[1].querySelector(".oy-item-main .oy-value").innerText = v.option1
+                           skuItems[1].querySelector(".oy-item-main .oy-explain").innerText = sizeItems[i].dataset.remark {% endcomment %}
+                           document.querySelector("#endSKU2").innerText = v.option1 + " | " + sizeItems[i].dataset.remark
+                    }          
+                }
+            for(let i =0; i<materialItems.length;i++){
+                  // console.log(materialItems[i].dataset.value)
+                    if(materialItems[i].dataset.value == v.option3){
+                      materialItems[i].classList.add("active")
+                       skuArray[3-1]=v.option3
+                          skuItems[2].querySelector(".oy-item-main .oy-value").innerText = v.option3
+                          document.querySelector("#endSKU3").innerText = v.option3
+                    }          
+                }
+        changeSkuArray(skuArray)
+          changeVariantPrice(v) 
+        {% comment %} judgeShow360Icon() {% endcomment %}
+           oneFlag= false
+        }
+  })
+
+function mhyouh (i){
+  console.log(skuArray,"skuArray")
+        let youh = skuArray[i]
+        let arr = []
+        let ii = i+1
+          ii=ii>=3?0:ii
+
+          let youh2 = skuArray[ii]
+if(i === 1) {
+  sizeItems.forEach(i => {
+    i.classList.add("disable")
+    i.classList.remove("active")
+  })
+  materialItems.forEach(i => {
+    i.classList.add("disable")
+    i.classList.remove("active")
+  })
+}
+if(i === 0) {
+  materialItems.forEach(i => {
+    i.classList.add("disable")
+    i.classList.remove("active")
+  })
+}
+      {% comment %} skuItems[1].querySelector(".oy-item-main .oy-value").innerText = ''
+      skuItems[1].querySelector(".oy-item-main .oy-explain").innerText = ''
+      document.querySelector("#endSKU2").innerText = ''
+      skuItems[2].querySelector(".oy-item-main .oy-value").innerText = ''
+      document.querySelector("#endSKU3").innerText = '' {% endcomment %}
+     productData.variants.forEach(v=>{
+      if(i === 1 && v.options[i]==youh && v.available) {
+        console.log(v,"va")
+        for(let s=0;s<sizeItems.length;s++){
+          if(sizeItems[s].dataset.value == v.options[0]){
+              sizeItems[s].classList.remove("disable")
+              if(sizeItems[s].dataset.value == skuArray[0]) {
+                sizeItems[s].classList.add("active")
+                {% comment %} skuItems[1].querySelector(".oy-item-main .oy-value").innerText = sizeItems[s].dataset.value
+                skuItems[1].querySelector(".oy-item-main .oy-explain").innerText = sizeItems[s].dataset.remark {% endcomment %}
+                document.querySelector("#endSKU2").innerText = sizeItems[s].dataset.value + " | " + sizeItems[s].dataset.remark
+              }
+             }else{
+             }
+          }
+        for(let s=0;s<materialItems.length;s++){
+          if(v.options[0] == skuArray[0] && materialItems[s].dataset.value == v.options[2]){
+              materialItems[s].classList.remove("disable")
+              if(skuArray[2] == materialItems[s].dataset.value) {
+                materialItems[s].classList.add("active")
+                skuItems[2].querySelector(".oy-item-main .oy-value").innerText = materialItems[s].dataset.value
+                document.querySelector("#endSKU3").innerText = materialItems[s].dataset.value
+               changeVariantPrice(v)  
+              }
+              }else{
+              }
+          }
+      }
+      if(i === 0 && v.options[i]==youh && v.options[ii] == youh2 && v.available) {
+        for(let s=0;s<materialItems.length;s++){
+          if(v.options[0] == skuArray[0] && materialItems[s].dataset.value == v.options[2]){
+              materialItems[s].classList.remove("disable")
+              if(skuArray[2] == materialItems[s].dataset.value) {
+                materialItems[s].classList.add("active")
+                skuItems[2].querySelector(".oy-item-main .oy-value").innerText = materialItems[s].dataset.value
+                document.querySelector("#endSKU3").innerText = materialItems[s].dataset.value
+                changeVariantPrice(v) 
+              }
+              }else{
+              }
+          }
+      }
+        {% comment %} if(v.options[i]==youh  && v.options[ii] == youh2 && !v.available){
+          console.log(v,"123", i)
+          let iii = ii+1
+             iii=iii>=3?0:iii
+
+          if(iii == 0){
+            for(let s=0;s<sizeItems.length;s++){
+                   if(sizeItems[s].dataset.value == v.options[0]){
+                                  sizeItems[s].classList.remove("active")
+
+                 // for(let s=0;s<sizeItems.length;s++){
+                 //       sizeItems[s].classList.remove("disable")
+                 // }
+                     
+                sizeItems[s].classList.add("disable")
+          
+                      }else{
+                              // sizeItems[s].classList.remove("disable")
+                      }
+            }
+            mhyouh(0)
+          }
+          
+             if(iii == 1){
+               // colorItems
+                 for(let s=0;s<colorItems.length;s++){
+                              if(colorItems[s].dataset.value == v.options[1]){
+                                             colorItems[s].classList.remove("active")
+                 //                     for(let s=0;s<colorItems.length;s++){
+                 //       colorItems[s].classList.remove("disable")
+                 // }
+              colorItems[s].classList.add("disable")
+                     
+                      }else{
+                              // colorItems[s].classList.remove("disable")
+                      }
+                 }
+   
+          }
+             if(iii == 2){
+               // materialItems
+                 for(let s=0;s<materialItems.length;s++){
+                         if(materialItems[s].dataset.value == v.options[2]){
+                         materialItems[s].classList.remove("active")
+
+
+                 //                           for(let s=0;s<materialItems.length;s++){
+                 //       materialItems[s].classList.remove("disable")
+                 // }
+                        materialItems[s].classList.add("disable")
+          
+                      }else{
+                              // materialItems[s].classList.remove("disable")
+                      }
+                   
+                 }
+        
+          }
+          
+          // for(let n = 0; n<3;n++){
+          // arr.push(v)
+          //   // if(n != i){
+          //   //     console.log(n)
+          //   //   arr.push(v)
+          //   // }
+          // }
+ 
+        } {% endcomment %}
+
+     
+   })
+  
+}
+
+mhyouh(1)
+
+// 购买数量交互
+  let countBoxAll = document.querySelectorAll(".oy-count-input")
+
+
+  
+  countBoxAll.forEach((e,i)=>{
+      let countInput =  e.querySelector(".oy-count-ipt")
+      e.addEventListener("input",ip=>{
+        countInput.value==0?countInput.value=1:0
+                  setTotalPrice()
+      })
+      let minusBtn =  e.querySelector(".minus")
+          let plusBtn =  e.querySelector(".plus")
+
+    
+     minusBtn.addEventListener("click",e1=>{
+        
+        countInput.value <=0?0: countInput.value--
+        if(countInput.value<=0){
+            minusBtn.disabled=true
+           plusBtn.disabled=false
+        }else{
+               minusBtn.disabled=false
+           plusBtn.disabled=false
+        }
+           setTotalPrice()
+      })
+
+ 
+       plusBtn.addEventListener("click",e2=>{
+         countInput.value >=999?0: countInput.value++
+            if(countInput.value>=999){
+             
+           plusBtn.disabled=true
+                   minusBtn.disabled=false
+        }else{
+           plusBtn.disabled=false
+                     minusBtn.disabled=false
+        }
+         setTotalPrice()
+                 // setTotalPrice()
+      })
+
+    
+  })
+
+  
+
+
+
+  // function getPrice(){
+    
+  // }
+  
+
+
+
+
+// 计算总价
+
+function setTotalPrice(){
+  // console.log("00000000000000000000000000000000000000000000000000000000000000000000000")
+  // console.log(selectableProductAttachJson)
+  // console.log(productData)
+
+  // let selectableProductAttachTotalPrice = selectableProductAttachJson.reduce((acc, curr, index)=> acc +     document.querySelector(`#check${curr.id}`).checked?(curr.price *  document.querySelector(`#count${curr.id}`).value):0   ,0 )
+
+let selectableProductAttachTotalPrice = selectableProductAttachJson.reduce((acc, curr) => {
+    const isChecked = document.querySelector(`#check${curr.id}`).checked;
+    const count = parseInt(document.querySelector(`#count${curr.id}`).value, 10) || 0;
+    return acc + (isChecked ? (curr.price/100) * count : 0);
+}, 0);
+
+  
+  let productPrice = productData.price
+   let total =  selectableProductAttachTotalPrice+productPrice
+  let originalTotalPriceBox = document.querySelector("#originalTotalPrice")
+  let totalPricesBox = document.querySelector("#totalPrices")
+    originalTotalPriceBox.innerText = "$" + total
+    totalPricesBox.innerText = "$" + total
+}
+  {% comment %} setTotalPrice() {% endcomment %}
+
+
+
+
+
+
+
+
+
+// 结算按钮
+
+
+  let buyNowBox  = document.querySelector("#buyNow")
+
+  
+
+buyNowBox.addEventListener("click",e=>{
+  buyNowBox.classList.add("is-loading")
+let id = productData.variants.find(f=> skuArray.length === f.options.length && skuArray.every(ev =>f.options.includes(ev))).id
+  
+  location.href =" /cart/" +  id + ":1?checkout"
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    //锚点的过渡效果
+    $(document).on('click', 'a[href^="#"]', function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var $target = $(this.hash);
+            $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');//获取到点击对应id的元素
+            if ($target.length) {
+                var targetOffset = $target.offset().top;
+                $('html,body').animate({   //滑动效果主要用到jq的animate函数
+                    scrollTop: targetOffset
+                }, 200);
+                return false;
+            }
+        }
+    });
+
+    {% comment %} document.addEventListener("DOMContentLoaded", function () {
+      let targetId = "-spin-studio-large-thumb";
+    
+      function updateElementStyle(element) {
+        if (element) {
+          element.style.width = "100%";
+          element.style.objectFit = "contain";
+          if(window.innerWidth > 660) {
+            element.style.height = "36.58vw";
+          }
+          if(window.innerWidth <= 660) {
+            element.style.height = "auto";
+          }
+          setTimeout(() => {
+            let parentNode = document.getElementById('-spin-studio-large-thumb-reel');
+            parentNode.style.width = "100%";
+            parentNode.style.height = "auto";
+          }, 500)
+        }
+      }
+    
+      let targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        let observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === "style") {
+              let currentDisplay = window.getComputedStyle(targetElement).display;
+              if (currentDisplay === "block") {
+                updateElementStyle(targetElement);
+              }
+            }
+          });
+        });
+    
+        // 监听该元素的属性变化（包括 style 变化）
+        observer.observe(targetElement, { attributes: true, attributeFilter: ["style"] });
+    
+        // 如果元素初始就可见，直接修改样式
+        if (window.getComputedStyle(targetElement).display === "block") {
+          updateElementStyle(targetElement);
+        }
+      }
+    });     {% endcomment %}
+
+    document.querySelector(".icon-360").addEventListener("click",e=>{
+      document.querySelector(".spin-360").classList.add("act")
+    })
+
+    function judgeShow360Icon() {
+      if(skuArray[1] == "Black") {
+        document.querySelector(".icon-360").style.display = "block"
+      }else{
+        document.querySelector(".icon-360").style.display = "none"
+      }
+    }
+
+    function changeVariantPrice(product) {
+  {% comment %}    const sticky = document.querySelector('.productView-stickyCart');
+      const itemPrice = sticky.querySelector('.sticky-price');
+      const mobileSticky = document.querySelector('.sticky-product-mobile-content');
+      const mobileItemPrice = mobileSticky.querySelector('.sticky-price');{% endcomment %}
+      const symbol = document.querySelector(".oy-right.sale_price_item .symbol").innerText;
+      
+      const sale_price = product.price - 20000;
+        document.querySelectorAll(".sale_price_item").forEach(ele => {
+        ele.style.display = "flex"
+      });
+      document.querySelector("#totalPrices_item .oy-total").classList.add("oy-del")
+      document.querySelector("#financing_twelve").innerText = ((sale_price / 100).toFixed(2) / 12).toFixed(2)
+      document.querySelector("#financing_four").innerText = ((sale_price / 100).toFixed(2) / 6).toFixed(2)
+      document.querySelectorAll(".sale_prices").forEach(ele => {
+        ele.innerText = new Intl.NumberFormat('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(sale_price / 100);
+      })
+      document.querySelectorAll(".sale_price_underlined").forEach(ele => ele.classList.add("act"));
+
+  {% comment %}    itemPrice.innerHTML = `<span class="money-subtotal">${symbol}${(sale_price / 100).toFixed(2)}</span><s class="money-compare-price" data-compare-price="0">${symbol}${(product.price / 100).toFixed(2)}</s>`
+      mobileItemPrice.innerHTML = `<span class="money-subtotal">${symbol}${(sale_price / 100).toFixed(2)}</span><s class="money-compare-price" data-compare-price="0">${symbol}${(product.price / 100).toFixed(2)}</s>`
+      {% endcomment %}
+          document.querySelector(".product_infor_simplicity_right_buybox_price_info_save").classList.add("show")
+    document.querySelector(".product_infor_simplicity_right_buybox_price_info_op").classList.add("show")
+    document.querySelector(".product_infor_simplicity_right_buybox_price_info_save span").innerHTML = (
+      (product.price - sale_price) / 100
+    ).toFixed(2)
+    document.querySelector(".product_infor_simplicity_right_buybox_price_afterpay .financing_twelve").innerText = (
+      (sale_price / 100).toFixed(2) / 12
+    ).toFixed(2);
+    document.querySelector(".product_infor_simplicity_right_buybox_price_afterpay .financing_four").innerText = (
+      (sale_price / 100).toFixed(2) / 6
+    ).toFixed(2);
+    document.querySelector(".product_infor_simplicity_right_buybox_price_info_discount span").innerText = (
+      sale_price / 100).toFixed(2)
+      {% comment %} let price = product.compare_at_price || product.price
+      price = new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(price / 100);
+      console.log(price, "price")
+      document.querySelectorAll(".compare_at_price").forEach(item => {
+        item.innerText = price;
+      })
+      const attach_items = document.querySelectorAll(".product_attach_item")
+      let add_attach_price = price
+      attach_items.forEach(item => {
+        add_attach_price =  Number(add_attach_price) + Number(new Intl.NumberFormat('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(item.dataset.value / 100))
+      })
+      document.querySelector(".add_attach_price").innerText = Number(add_attach_price).toFixed(2);
+      if(product.compare_at_price) {
+        document.querySelector("#sale_prices").innerText = new Intl.NumberFormat('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(product.price / 100);
+        document.querySelector(".sale_price_item").style.display = "flex"
+        document.querySelector("#financing_twelve").innerText = ((product.price / 100).toFixed(2) / 12).toFixed(2)
+        document.querySelector("#financing_four").innerText = ((product.price / 100).toFixed(2) / 4).toFixed(2)
+        document.querySelector("#totalPrices_item .oy-total").classList.add("oy-del")
+      }else{
+        document.querySelector(".sale_price_item").style.display = "none"
+        document.querySelector("#financing_twelve").innerText = (price / 12).toFixed(2)
+        document.querySelector("#financing_four").innerText = (price / 4).toFixed(2)
+        document.querySelector("#totalPrices_item .oy-total").classList.remove("oy-del")
+      } {% endcomment %}
+    }
+
+    function changeVariant360Images(variantId) {
+      console.log(variantId)
+      fetch(location.pathname + `?variant=${variantId}`)
+      .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const html = parser.parseFromString(data, 'text/html');
+
+          const viewer = html.querySelector('#product-360-viewer .product-360-images');
+          const images = viewer.querySelectorAll(".product-360-image");
+          images[0].style.opacity = "1";
+          let imagesHTML = "";
+          images.forEach(img => {
+            imagesHTML += img.outerHTML; // 直接获取 <img> 标签的 HTML
+          });
+          document.querySelector('#product-360-viewer .product-360-images').innerHTML = imagesHTML;
+          init360Images();
+          console.log(html.querySelector('#product-360-viewer .product-360-images'))
+          {% comment %} document.querySelector('.product-grid').innerHTML = html.querySelector('.product-grid')?.innerHTML || '';
+          document.querySelector('.custom-pagination').innerHTML =
+          html.querySelector('.custom-pagination')?.innerHTML || ''; {% endcomment %}
+        });
+    }
+
+    function init360Images() {
+      const viewer = document.getElementById("product-360-viewer");
+      const imagesContainer = document.querySelector(".product-360-images");
+      const images = document.querySelectorAll(".product-360-image");
+
+      let currentIndex = 0;
+      let imageCount = images.length;
+    
+      updateImage(currentIndex);
+    
+      function updateImage(index) {
+        images.forEach((img, i) => {
+          img.style.opacity = i === index ? "1" : "0";
+        });
+      }
+    
+      function handleMouseMove(event) {
+        let mouseX = event.clientX || event.touches?.[0]?.clientX || 0;
+        let viewerRect = viewer.getBoundingClientRect();
+        let relativeX = mouseX - viewerRect.left;
+        let newIndex = Math.floor((relativeX / viewerRect.width) * imageCount);
+    
+        newIndex = Math.max(0, Math.min(newIndex, imageCount - 1));
+    
+        if (newIndex !== currentIndex) {
+          currentIndex = newIndex;
+          updateImage(currentIndex);
+        }
+      }
+    
+      viewer.addEventListener("mousemove", handleMouseMove);
+      viewer.addEventListener("touchmove", handleMouseMove);
+    }
+
+  document.querySelectorAll(".product_infor_simplicity_right_buybox_btns_btn").forEach((btn) => {
+  btn.addEventListener("click", async (event) => {
+    const type = btn.getAttribute("data-type");
+    const cartIcon = document.querySelector(".header--cart .header__icon--cart");
+    btn.classList.add("is_loading");
+    if (type === "add_to_cart") {
+      try {
+        cartFormData = {
+         'items': [
+           {
+          'id': matchedProductId,
+          'quantity': 1
+          },
+        ]
+        };
+        await fetch(window.Shopify.routes.root + "cart/add.js", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(cartFormData),
+        });
+
+        Shopify.getCart((cartTotal) => {
+          document.body.classList.add("cart-sidebar-show");
+          updateSidebarCart(cartTotal);
+        });
+      } finally {
+        btn.classList.remove("is_loading");
+        setTimeout(() => cartIcon?.click(), 0);
+      }
+    }
+    if (type === "buy_it_now") {
+      // 安全获取变体ID
+     let id = productData.variants.find(f=> skuArray.length === f.options.length && skuArray.every(ev =>f.options.includes(ev))).id
+
+      const buildCheckoutUrl = (id) =>
+        `/cart/${id}:1?checkout`.replace(/([^:]\/)\/+/g, "$1");
+
+      location.href = buildCheckoutUrl(id);
+      btn.classList.remove("is_loading");
+    }
+  });
+});
+
+const navbar = document.querySelector(".simplicity_bottom_bar");
+let scrollFunction = () => {
+  if (window.scrollY >= 2620) {
+    navbar.style.display = "block";
+  } else {
+    navbar.style.display = "none";
+  }
+}
+window.addEventListener("scroll", scrollFunction);
+</script>
+
+{% schema %}
+{
+  "name": "A Product Desk",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "financing_logo",
+      "label": "Financing Logo"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "starBlock",
+      "name": "starBlock",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "html",
+          "id": "starHtml",
+          "label": "Star HTML"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "A Product Desk" }]
+}
+{% endschema %}

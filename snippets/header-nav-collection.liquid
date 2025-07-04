@@ -1,0 +1,316 @@
+{% comment %}
+新版设计头部菜单集合:
+  1. 背景色为白色.
+  2. hover到 chairs 时显示.
+  3. 显示两个按钮. learn more 与 buy; learn more 点击跳转到对应产品的详情页; buy 点击跳转对应产品的购买页.
+  4. pc位为占满整屏的布局, 移动端为 2 * 3 的布局
+{% endcomment %}
+<style>
+  .header-nav-section {
+    width: 100%;
+    max-width: 100%;
+    background-color: #f2f2f2;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    transition: max-height 0.5s ease, opacity 0.4s ease;
+    position: absolute;
+    top: 59px;
+    left: 0;
+  }
+  .header-nav-section .header-nav-container {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 29px 0 48px;
+  }
+  .header-nav-section .header-nav-container .items {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  .header-nav-section .header-nav-container .items_product-img {
+    width: 160px;
+    height: 160px;
+  }
+  .header-nav-section .header-nav-container .title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* font-family: "Orbitron"; */
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+  }
+  .header-nav-section .header-nav-container .items_btns span {
+    display: inline-block;
+    /* font-family: "Poppins"; */
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .header-nav-section .header-nav-container .items_btns span.items_btns_buy {
+    margin-left: 12px;
+  }
+</style>
+
+<section class="header-nav-section">
+  <div class="header-nav-container">
+    <!-- kraken pro -->
+    <div data-url="/products/blacklyte-kraken-pro-gaming-chair" class="items">
+      <div class="items_product-img">
+        <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/header-menu-krakenpro.png?v=1740626466" width="100%" height="100%" />
+      </div>
+      <div class="title">
+        <span data-href-id="/products/blacklyte-kraken-pro-gaming-chair">Kraken Pro</span>
+      </div>
+      <div class="items_btns">
+        <span data-href-id="/pages/kraken-pro-features" class="items_btns_learnmore">Learn More</span>
+        <span data-href-id="/products/blacklyte-kraken-pro-gaming-chair" class="items_btns_buy">Buy</span>
+      </div>
+    </div>
+    <!-- kraken -->
+    <div data-url="/products/blacklyte-kraken-gaming-chair" class="items">
+      <div class="items_product-img">
+        <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/header-menu-kraken.png?v=1740626466" width="100%" height="100%" />
+      </div>
+      <div class="title">
+        <span data-href-id="/products/blacklyte-kraken-gaming-chair">Kraken</span>
+      </div>
+      <div class="items_btns">
+        <span data-href-id="/pages/kraken-features" class="items_btns_learnmore">Learn More</span>
+        <span data-href-id="/products/blacklyte-kraken-gaming-chair" class="items_btns_buy">Buy</span>
+      </div>
+    </div>
+    <!-- Athena pro -->
+    <div data-url="/products/blacklyte-athena-pro-gaming-chair" class="items">
+      <div class="items_product-img">
+        <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/header-menu-athenapro.png?v=1740626466" width="100%" height="100%" />
+      </div>
+      <div class="title">
+        <span data-href-id="/products/blacklyte-athena-pro-gaming-chair">Athena Pro</span>
+      </div>
+      <div class="items_btns">
+        <span data-href-id="/pages/athena-pro-features" class="items_btns_learnmore">Learn More</span>
+        <span data-href-id="/products/blacklyte-athena-pro-gaming-chair" class="items_btns_buy">Buy</span>
+      </div>
+    </div>
+    <!-- Athena -->
+    <div data-url="/products/blacklyte-athena-gaming-chair" class="items">
+      <div class="items_product-img">
+        <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/header-menu-athena-black.webp?v=1750389118" width="100%" height="100%" />
+      </div>
+      <div class="title">
+        <span data-href-id="/products/blacklyte-athena-gaming-chair">Athena</span>
+      </div>
+      <div class="items_btns">
+        <span data-href-id="/pages/athena-features" class="items_btns_learnmore">Learn More</span>
+        <span data-href-id="/products/blacklyte-athena-gaming-chair" class="items_btns_buy">Buy</span>
+      </div>
+    </div>
+    <!-- Athena X -->
+    <div data-url="/products/blacklyte-athena-x-gaming-chair-pink-1" class="items">
+      <div class="items_product-img">
+        <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/header-menu-athenax-pink.png?v=1747015225" width="100%" height="100%" />
+      </div>
+      <div class="title">
+        <span data-href-id="/products/blacklyte-athena-x-gaming-chair-pink-1">Athena X</span>
+      </div>
+      <div class="items_btns">
+        <span data-href-id="/pages/athena-gaming-chair" class="items_btns_learnmore">Learn More</span>
+        <span data-href-id="/products/blacklyte-athena-x-gaming-chair-pink-1" class="items_btns_buy">Buy</span>
+      </div>
+    </div>
+    <!-- Atlas Desk -->
+    <!-- <div data-url="/products/blacklyte-atlas-gaming-desk" class="items">
+      <div class="items_product-img">
+        <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/header-menu-atlasdesk.png?v=1740626466" width="100%" height="100%" />
+      </div>
+      <div class="title">
+        <span data-href-id="/products/blacklyte-atlas-gaming-desk">Atlas Desk</span>
+      </div>
+      <div class="items_btns">
+        <span data-href-id="/products/blacklyte-atlas-gaming-desk" class="items_btns_buy">Buy</span>
+      </div>
+    </div> -->
+  </div>
+</section>
+
+<script>
+  (function ($) {
+    // 当鼠标悬停在 .menu-lv-item 且文字为 'chairs' 时，显示 .header-navigation-chairs
+    $('.header-navigation .menu-lv-item').on('mouseenter', function() {
+      let currentMenuText = $(this).text().toLowerCase().trim()
+        if (currentMenuText === 'chairs') {
+          // chairs
+            $('.header-nav-section').css({
+              'opacity': '1',
+              'max-height': '590px',
+              'border-top': '1px solid #D4D4D8',
+              'border-bottom': "1px solid #D4D4D8"
+            });
+          // desk
+          $('.header-nav-desks-sections').css({
+            'opacity': '0',
+            'max-height': '0',
+            'border-top': 'none',
+            'border-bottom': 'none'
+          });
+          // bundle
+          $('.header-nav-bundle').css({
+              'opacity': '0',
+              'max-height': '0',
+              'border-top': 'none',
+              'border-bottom': 'none'
+           });
+          
+        } else if(currentMenuText === 'desk') {
+          // desk
+          $('.header-nav-desks-sections').css({
+              'opacity': '1',
+              'max-height': '590px',
+              'border-top': '1px solid #D4D4D8',
+              'border-bottom': "1px solid #D4D4D8"
+           });
+          // chairs
+           $('.header-nav-section').css({
+              'opacity': '0',
+              'max-height': '0',
+              'border-top': 'none',
+              'border-bottom': 'none'
+           });
+           // bundle
+           $('.header-nav-bundle').css({
+              'opacity': '0',
+              'max-height': '0',
+              'border-top': 'none',
+              'border-bottom': 'none'
+           });
+        } else if(currentMenuText == 'bundle & save') {
+          // bundle
+          $('.header-nav-bundle').css({
+            'opacity': '1',
+            'max-height': '590px',
+            'border-top': '1px solid #D4D4D8',
+            'border-bottom': "1px solid #D4D4D8"
+          });
+          // chairs
+          $('.header-nav-section').css({
+              'opacity': '0',
+              'max-height': '0',
+              'border-top': 'none',
+              'border-bottom': 'none'
+           });
+          // desk
+          $('.header-nav-desks-sections').css({
+            'opacity': '0',
+            'max-height': '0',
+            'border-top': 'none',
+            'border-bottom': 'none'
+           });
+        } else {
+          // desk
+          $('.header-nav-desks-sections').css({
+            'opacity': '0',
+            'max-height': '0',
+            'border-top': 'none',
+            'border-bottom': 'none'
+           });
+           // chairs
+           $('.header-nav-section').css({
+              'opacity': '0',
+              'max-height': '0',
+              'border-top': 'none',
+              'border-bottom': 'none'
+           });
+           // bundle
+           $('.header-nav-bundle').css({
+              'opacity': '0',
+              'max-height': '0',
+              'border-top': 'none',
+              'border-bottom': 'none'
+           });
+          
+        }
+
+    });
+    
+    // 当鼠标离开 .menu-lv-item 时，隐藏 .header-nav-section（除非鼠标移到 .header-nav-section 上）
+    $('.header-navigation .menu-lv-item').on('mouseleave', function() {
+        if ($(this).text().toLowerCase().trim() === 'chairs' && !$('.header-nav-section:hover').length) {
+            // 检查 .header-nav-section 的当前 opacity
+            let chairsOpacity = $('.header-nav-section').css('opacity');
+            
+            // 只有在 opacity 为 1 时才执行操作
+            if (chairsOpacity === '1') {
+                $('.header-nav-section').css({
+                    'opacity': '0',
+                    'max-height': '0',
+                    'border-top': 'none',
+                    'border-bottom': 'none'
+                });
+            }
+        } else if($(this).text().toLowerCase().trim() == 'desk' && !$('.header-nav-desks-sections:hover').length) {
+          // 检查当前desk的opacity
+          let deskOpacity = $('.header-nav-desks-sections').css('opacity')
+          // 只有在opacity 为 1 时才执行操作
+          if(deskOpacity === '1') {
+            $('.header-nav-desks-sections').css({
+              'opacity': '0',
+              'max-height': '0',
+              'border-top': 'none',
+              'border-bottom': 'none'
+           });
+          }
+        } else if($(this).text().toLowerCase().trim() == 'bundle & save' && !$('.header-nav-bundle:hover').length) {
+            // 检查 .header-nav-bundle 的当前 opacity
+            let bundleOpacity = $('.header-nav-bundle').css('opacity');
+            
+            // 只有在 opacity 为 1 时才执行操作
+            if (bundleOpacity === '1') {
+                $('.header-nav-bundle').css({
+                    'opacity': '0',
+                    'max-height': '0',
+                    'border-top': 'none',
+                    'border-bottom': 'none'
+                });
+            }
+        }
+    });
+
+    
+    // 当鼠标离开 .header-nav-section 时隐藏
+    $('.header-nav-section').on('mouseleave', function() {
+        $(this).css({
+          'opacity': '0',
+          'max-height': '0',
+          'border-top': 'none',
+          'border-bottom': 'none'
+        });
+    });
+
+    // 点击items时获取data-url 并且跳转
+    $('.header-nav-section .header-nav-container').on('click', '.items', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const url = $(this).data('url')
+      if(!url) return false
+      window.location.href = url
+    })
+    
+    // 点击items 下的span时获取data-url 并且跳转
+    $('.header-nav-section .header-nav-container').on('click', '.items span', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const url = $(this).data('href-id')
+      if(!url) return false
+      window.location.href = url
+    })
+
+  })(jQuery)
+</script>

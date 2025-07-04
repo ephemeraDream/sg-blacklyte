@@ -1,0 +1,88 @@
+{% comment %}
+  warranty extension terms&Conditions
+{% endcomment %}
+<style>
+  .warranty_terms {
+    background-color: #ffffff;
+    padding: 100px 0;
+  }
+  .warranty_terms .terms_title {
+    font-size: 30px;
+    line-height: 52px;
+    color: #333333;
+    text-align: center;
+  }
+  .warranty_terms .terms_desc {
+    font-size: 14px;
+    line-height: 21px;
+    color: #666666;
+    text-align: center;
+  }
+  .warranty_terms .terms_content {
+    margin-top: 50px;
+  }
+  .warranty_terms .terms_content ul {
+    list-style: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .warranty_terms .terms_content ul li {
+    color: #666666;
+    font-size: 16px;
+    line-height: 38px;
+    font-weight: 400;
+  }
+  @media(max-width: 767px) {
+    .warranty_terms {
+      padding: 50px 20px;
+    }
+    .warranty_terms .terms_title {
+      font-size: 24px;
+      line-height: 30px;
+    }
+    .warranty_terms .terms_content {
+      margin-top: 30px;
+    }
+    .warranty_terms .terms_content ul li {
+      font-size: 10px;
+      line-height: 21px;
+    }
+  }
+  
+</style>
+<div class="warranty_terms">
+  <div class="container-1570">
+    <div class="terms_title h3">{{ section.settings.title }}</div>
+    <div class="terms_desc">{{ section.settings.descripe }}</div>
+    <div class="terms_content">{{ section.settings.content }}</div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Warranty Terms",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Terms & Conditions"
+      },
+      {
+        "type": "text",
+        "id": "descripe",
+        "label": "Descripe",
+        "default": "Learn the details of the extended warranty"
+      },
+      {
+        "type": "html",
+        "id": "content",
+        "label": "content"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Warranty Terms"
+      }
+    ]
+  }
+{% endschema %}

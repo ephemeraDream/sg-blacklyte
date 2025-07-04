@@ -1,0 +1,373 @@
+<style>
+  .blavklyte-scroll .hide-pc{
+    display: none!important;
+  }
+  .blavklyte-scroll .hide-mb{
+    display: block!important;
+  }
+  .blavklyte-scroll{
+    background: #000;
+    position: relative;
+  }
+  .blavklyte-scroll video{
+    width: 100%;
+  }
+  .blavklyte-scroll canvas{
+      max-width: 100vw;
+      max-height: 100vh;
+    transform: translateX(12vw);
+  }
+  .blavklyte-scroll .scroll-text{
+    width: 100%;
+    position: absolute;
+    color: #fff;
+  }
+  .scroll-text h3{
+    margin: 0;
+    font-size: 40px;
+    color: #5216FC;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .scroll-text p{
+    margin: 0;
+    max-width: 40%;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #f2f2f2;
+  }
+  .scroll-1{
+    top: 18%;
+  }
+  .scroll-2{
+    top: unset;
+    bottom: 10%;
+  }
+  .scroll-text2,
+  .scroll-text3{
+    margin-bottom: 30px;
+  }
+  .scroll-1,
+  .scroll-text2,
+  .scroll-text3,
+  .scroll-text4{
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.3s linear;
+  }
+  #placeholder{
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+  }
+  @media only screen and (min-width: 2000px){
+    .scroll-text h3{
+      font-size: 2.08vw;
+      margin-bottom: 0.5vw;
+    }
+    .scroll-text p{
+      font-size: 1.04vw;
+      line-height: 1.3vw;
+    }
+  }
+  @media only screen and (max-width: 1080px){
+    .scroll-2{
+      bottom: 5%;
+    }
+    .scroll-text2, .scroll-text3{
+      margin-bottom: 1.6vh;
+    }
+  }
+  @media only screen and (max-width: 1024px){
+
+  }
+  @media only screen and (max-width: 899px){
+    .scroll-text h3{
+      font-size: 28px;
+      line-height: 1.28;
+    }
+    .scroll-text p{
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    .scroll-text2, .scroll-text3{
+      margin-bottom: 16px;
+    }
+  }
+  @media only screen and (max-width: 590px){
+    .blavklyte-scroll .hide-pc{
+      display: block!important;
+    }
+    .blavklyte-scroll .hide-mb{
+      display: none!important;
+    }
+    .scroll-1{
+      top: 80px;
+    }
+    .scroll-text p{
+      max-width: 90%;
+    }
+    .blavklyte-scroll .scroll-text{
+      position: static;
+    }
+    .scroll-1,
+    .scroll-text2,
+    .scroll-text3,
+    .scroll-text4{
+      opacity: 1!important;
+      transform: translateY(0px)!important;
+    }
+    .scroll-1{
+      padding: 32px 0;
+    }
+    .scroll-2{
+      padding-bottom: 72px;
+    }
+  }
+</style>
+
+{%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.styles_max_width }}px, 100vw){% endif %}{%- endcapture -%}
+<section class="blavklyte-scroll">
+    <div class="container-1570 hide-pc">
+        {{ section.settings.video | video_tag:class:"123", autoplay: true, loop: true, muted: true, controls: false, image_size:'master' }}
+    </div>
+    <div class="scroll-text scroll-1 ">
+      <div class="container-1570">
+        <h3 style="color: #fff;">{{ section.settings.title }}</h3>
+        <p style="font-weight: 400;">{{ section.settings.subtitle }}</p>
+      </div>
+    </div>
+    <div class="scroll-text scroll-2 ">
+      <div class="container-1570">
+        <div class="scroll-text2">
+          {% if section.settings.heading1 != blank %}
+            <h3>{{ section.settings.heading1 }}</h3>
+          {% endif %}
+          {% if section.settings.content1 != blank %}
+            <p>{{ section.settings.content1 }}</p>
+          {% endif %}
+        </div>
+        <div class="scroll-text3">
+          {% if section.settings.heading2 != blank %}
+            <h3>{{ section.settings.heading2 }}</h3>
+          {% endif %}
+          {% if section.settings.content2 != blank %}
+            <p>{{ section.settings.content2 }}</p>
+          {% endif %}
+        </div>
+        <div class="scroll-text4">
+          {% if section.settings.heading3 != blank %}
+            <h3>{{ section.settings.heading3 }}</h3>
+          {% endif %}
+          {% if section.settings.content3 != blank %}
+            <p>{{ section.settings.content3 }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+</section>
+
+<script src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ScrollTrigger.min.js?v=1702624230"></script>
+<script src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/gsap.min.js?v=1702624210"></script>
+<script>
+  const frameCount = 451;
+  const files = (index) => {
+    const paddedIndex = String(index).padStart(3, '0');
+    return `https://cdn.shopify.com/s/files/1/0663/6742/2695/files/productanimation-${paddedIndex}.png`;
+  };
+  
+  let canvas, context, img = new Image(), index = 1, canvasTrigger, textTrigger;
+  
+  // 初始化 Canvas 和 ScrollTrigger
+  const init = () => {
+    if (window.innerWidth > 590) {
+      createCanvas();
+      preloadImages();
+      setupScrollTriggers();
+    }
+  };
+  
+  // 创建并附加 Canvas
+  const createCanvas = () => {
+    canvas = document.createElement('canvas');
+    context = canvas.getContext('2d');
+    document.querySelector('.blavklyte-scroll').appendChild(canvas);
+    resizeCanvas();
+  };
+  
+  // 销毁 Canvas 和 ScrollTrigger
+  const destroyCanvasAndTriggers = () => {
+    if (canvas) {
+      canvas.remove();
+      canvas = null;
+      context = null;
+    }
+    if (canvasTrigger) canvasTrigger.kill();
+    if (textTrigger) textTrigger.kill();
+    $('.blavklyte-scroll .scroll-text').addClass('scroll-trigger');
+    $('.blavklyte-scroll .scroll-text').addClass('animate--slide-in');
+  };
+  
+  // 调整 Canvas 尺寸
+  const resizeCanvas = () => {
+    if (canvas) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      render();
+    }
+  };
+  
+  // 预加载图片
+  const preloadImages = () => {
+    let loadedImages = 0;
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      img.src = files(i);
+      img.onload = () => {
+        loadedImages++;
+        if (loadedImages === frameCount) {
+          index = 1;
+          render();
+        }
+      };
+    }
+  };
+  
+  // 渲染 Canvas 内容
+  const render = () => {
+    if (canvas && index > 0 && index <= frameCount) {
+      img.src = files(index);
+      img.onload = () => {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+        const x = (canvas.width - img.width * scale) / 2;
+        const y = (canvas.height - img.height * scale) / 2;
+        context.drawImage(img, x, y, img.width * scale, img.height * scale);
+      };
+    }
+  };
+  
+  // 设置 ScrollTrigger
+  const setupScrollTriggers = () => {
+    canvasTrigger = ScrollTrigger.create({
+      trigger: '.blavklyte-scroll',
+      start: 'top top',
+      end: '+=4500',
+      pin: true,
+      scrub: 0.1,
+      onUpdate: (self) => {
+        index = Math.ceil(self.progress * (frameCount - 1));
+        render();
+      },
+      animation: gsap.timeline()
+        .to('.scroll-1', { opacity: 1, translateY: 0 })
+        .to('.scroll-text2', { opacity: 1, translateY: 0 }, ">")
+        .to('.scroll-text3', { opacity: 1, translateY: 0 }, ">")
+        .to('.scroll-text4', { opacity: 1, translateY: 0 }, ">")
+    });
+  
+    // textTrigger = ScrollTrigger.create({
+    //   trigger: '.blavklyte-scroll',
+    //   start: () => canvasTrigger.end,
+    //   end: '+=2000',
+    //   scrub: 0.1,
+    //   pin: true,
+    //   animation: gsap.timeline()
+    //     .to('.scroll-1', { opacity: 1, translateY: 0 })
+    //     .to('.scroll-text2', { opacity: 1, translateY: 0 }, ">")
+    //     .to('.scroll-text3', { opacity: 1, translateY: 0 }, ">")
+    //     .to('.scroll-text4', { opacity: 1, translateY: 0 }, ">")
+    // });
+  };
+  
+  // 根据屏幕尺寸决定是否创建或销毁 Canvas
+  const handleResize = () => {
+    if (window.innerWidth <= 590) {
+      destroyCanvasAndTriggers();
+    } else if (!canvas) {
+      init();
+      $('.blavklyte-scroll .scroll-text').removeClass('scroll-trigger');
+      $('.blavklyte-scroll .scroll-text').removeClass('animate--slide-in');
+    }else{
+      resizeCanvas();
+      $('.blavklyte-scroll .scroll-text').removeClass('scroll-trigger');
+      $('.blavklyte-scroll .scroll-text').removeClass('animate--slide-in');
+    }
+  };
+  
+  // 页面加载完毕后初始化
+  window.addEventListener('DOMContentLoaded', () => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+  });
+
+</script>
+
+{% schema %}
+  {
+    "name": "Blacklyte Product Scroll",
+    "settings": [
+            {
+              "type": "video",
+              "id": "video",
+              "label": "A Shopify-hosted video(Mobile)"
+          },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Banner title",
+        "default": "Blacklyte Athena Chair"
+      },
+      {
+        "type": "textarea",
+        "id": "subtitle",
+        "label": "Banner sub title",
+        "default": "For gaming enthusiasts"
+      },
+      {
+        "type": "text",
+        "id": "heading1",
+        "label": "Heading 1",
+        "default": "Blacklyte Athena Chair"
+      },
+      {
+        "type": "text",
+        "id": "content1",
+        "label": "Content 1",
+        "default": "For gaming enthusiasts"
+      },
+      {
+        "type": "text",
+        "id": "heading2",
+        "label": "Heading 2",
+        "default": "Blacklyte Athena Chair"
+      },
+      {
+        "type": "text",
+        "id": "content2",
+        "label": "Content 2",
+        "default": "For gaming enthusiasts"
+      },
+      {
+        "type": "text",
+        "id": "heading3",
+        "label": "Heading 3",
+        "default": "Blacklyte Athena Chair"
+      },
+      {
+        "type": "text",
+        "id": "content3",
+        "label": "Content 3",
+        "default": "For gaming enthusiasts"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blacklyte Product Scroll"
+      }
+    ]
+  }
+{% endschema %}

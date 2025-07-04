@@ -1,0 +1,275 @@
+{% comment %}
+  affiliate 页面表单部分
+{% endcomment %}
+<style>
+  .affiliate-section{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #F8F9FC;
+  }
+  .affiliate-section .affiliate-header{
+    text-align: center;
+  }
+  .affiliate-section .affiliate-header .title{
+    font: 500 30px var(--font-family-1);
+    color: #262629;
+    line-height: 1.1;
+  }
+  .affiliate-section .affiliate-header .desc{
+    font: 400 14px var(--font-family-1);
+    color: #76767F;
+    line-height: 1.4;
+    max-width: 65%;
+    margin: 18px auto 0;
+  }
+  .affiliate-section .affiliate-header .header-btns{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+  }
+  .affiliate-section .affiliate-header .header-btns .btn{
+    display: inline-block;
+    font: 500 16px var(--font-family-1);
+    padding: 22px 0;
+    width: 337px;
+    border-radius: 130px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .affiliate-section .affiliate-header .header-btns .btn.button-1{
+    background: linear-gradient(0deg, #3173E8, #3173E8), linear-gradient(270deg, #8DE0FC 0%, #2672EB 100%);
+  }
+  .affiliate-section .affiliate-header .header-btns .btn.button-2{
+    background-color: #FF9F3F;
+  }
+  .affiliate-section .affiliate-header .content-line-space{
+    margin-top: 60px;
+  }
+  .affiliate-section .affiliate-header .content-line-space .content-line-space-text{
+    font: 400 16px var(--font-family-1);
+    color: #666666;
+  }
+  .affiliate-section .affiliate-header .content-line-space .content-line-space-text:before{
+    display: inline-block;
+    content: ' ';
+    width: calc(50% - 50px);
+    height: 1px;
+    background-color: #999999;
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+  .affiliate-section .affiliate-header .content-line-space .content-line-space-text:after{
+    display: inline-block;
+    content: ' ';
+    width: calc(50% - 50px);
+    height: 1px;
+    background-color: #999999;
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+  .affiliate-section .affiliate-content {
+    margin-top: 60px;
+    text-align: center;
+  }
+  .affiliate-section .affiliate-content .form-title{
+    font: 500 30px var(--font-family-1);
+    line-height: 1.4;
+    color: #262629;
+  }
+  .affiliate-section .affiliate-content .form-desc{
+    font: 400 14px var(--font-family-1);
+    line-height: 1.4;
+    color: #76767F;
+  }
+  /* 注册结果 */
+  .affiliate-regi-resu{
+    font: 400 16px var(--font-family-1);
+    color: #262629;
+    padding: 10px 0;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    display: none;
+    transition: all .3s ease-in-out;
+  }
+  .affiliate-regi-resu .title{
+    background: -webkit-repeating-linear-gradient(160deg,#baa35b,#e8d087 100%);
+    font: 500 22px var(--font-family-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  .affiliate-regi-resu .text{
+    font: 400 16px var(--font-family-1);
+    color: #262629;
+    margin: 20px 0 15px;
+  }
+  .affiliate-regi-resu .button{
+    font: 400 14px var(--font-family-1);
+    color: #fff;
+    width: 150px;
+    border-radius: 30px;
+    background: linear-gradient(270deg, #8DE0FC 0%, #2672EB 100%);
+  }
+  
+  
+  /* IPhone */
+  @media(max-width: 767px) {
+    .affiliate-section{
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .affiliate-section .affiliate-header .desc{
+      max-width: 90%;
+    }
+    .affiliate-section .affiliate-header .header-btns{
+      flex-direction: column;
+      align-items: center;
+    }
+    .affiliate-section .affiliate-header .header-btns .btn{
+      font-size: 12px;
+      padding: 16px 20px;
+    }
+    .affiliate-section .affiliate-header .content-line-space{
+      margin-top: 30px;
+    }
+    .affiliate-section .affiliate-header .content-line-space .content-line-space-text:before{
+      margin-right: 10px;
+    }
+    .affiliate-section .affiliate-header .content-line-space .content-line-space-text:after{
+      margin-left: 10px;
+    }
+    .affiliate-section .affiliate-content{
+      margin-top: 24px;
+    }
+    .affiliate-section .affiliate-content .form-title{
+      font-size: 24px;
+    }
+    
+  }
+  /* IPad */
+  @media(min-width: 768px) and(max-width: 1024px){ }
+  /* large screen */
+  @media(min-width: 2000px){ }
+  
+</style>
+
+<section class="affiliate-section" id="affiliate-section">
+  <div class="container-1570">
+    <div class="affiliate-header">
+      <div class="title">{{ section.settings.sectionTitle }}</div>
+      <div class="desc">{{ section.settings.sectionDescripe }}</div>
+      <div class="header-btns">
+        <a {% if section.settings.button-1-Link != blank %}href="{{ section.settings.button-1-Link }}" {% else %} aria-disabled="true" {% endif %} class="button-1 btn">{{ section.settings.button-1 }}</a>
+        <a {% if section.settings.button-2-Link != blank %}href="{{ section.settings.button-2-Link }}" {% else %} aria-disabled="true" {% endif %} class="button-2 btn">{{ section.settings.button-2 }}</a>
+      </div>
+      <div class="content-line-space">
+        <span class="content-line-space-text">OR</span>
+      </div>
+    </div>
+    
+    <div class="affiliate-content">
+      {% if section.settings.formTitle != blank %}
+        <div class="form-title">{{ section.settings.formTitle }}</div>
+      {% endif %}
+      {% if section.settings.formDescripe != blank %}
+        <div class="form-desc">{{ section.settings.formDescripe }}</div>
+      {% endif %}
+      {% if section.settings.formHtml != blank %}
+        {{ section.settings.formHtml }}
+      {% endif %}
+      {% render 'affiliate-custom-form' %}
+    </div>
+  </div>
+  <!-- 注册结果 -->
+  <div class="affiliate-regi-resu">
+    <div class="title">Application Completed!</div>
+    <div class="text">Thank you for your interest in our Affiliate Program</div>
+    <a class="button" role="link" href="/">Return to Website</a>
+  </div>
+</section>
+
+<script>
+  if(window.location.pathname.includes('affiliate')) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').slice(1);
+        const targetDom = document.getElementById(targetId);
+        if (targetDom) {
+          e.preventDefault();
+          targetDom.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }
+</script>
+
+{% schema %}
+  {
+    "name": "Affiliate Form Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sectionTitle",
+        "label": "Section Title",
+        "default": "Become an affiliate and get up to 15% commission now"
+      },
+      {
+        "type": "text",
+        "id": "sectionDescripe",
+        "label": "Section Descripe",
+        "default": "Our Affiliate Program allows anyone to join and promote Blacklyte, earning commissions on every sale made through your affiliate link. Share your link, earn rewards, and become a marketer. Apply today!"
+      },
+      {
+        "type": "text",
+        "id": "button-1",
+        "label": "Button 1 Text",
+        "default": "JOIN US ON ShareASale"
+      },
+      {
+        "type": "url",
+        "id": "button-1-Link",
+        "label": "Button 1 Link"
+      },
+      {
+        "type": "text",
+        "id": "button-2",
+        "label": "Button 2 Text",
+        "default": "JOIN US ON CJ"
+      },
+      {
+        "type": "url",
+        "id": "button-2-Link",
+        "label": "Button 2 Link"
+      },
+      {
+        "type": "text",
+        "id": "formTitle",
+        "label": "form Title",
+        "default": "Blacklyte Affiliate Program Application"
+      },
+      {
+        "type": "text",
+        "id": "formDescripe",
+        "label": "form Info",
+        "default": "Please fill in the following information."
+      },
+      {
+        "type": "html",
+        "id": "formHtml",
+        "label": "affiliate Form HTML"
+      }
+    ],
+    "blocks": [ ],
+    "presets": [
+      {
+        "name": "Affiliate Form Section"
+      }
+    ]
+  }
+{% endschema %}

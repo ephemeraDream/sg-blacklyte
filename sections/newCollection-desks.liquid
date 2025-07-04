@@ -1,0 +1,338 @@
+{% comment %}
+  desk 集合
+{% endcomment %}
+
+<style>
+  .new_collection_desk_section {
+    background-color: #f5f5f5;
+    padding-bottom: 68px;
+  }
+  .new_collection_desk_module {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .new_collection_desk_module_header {
+    padding-top: 50px;
+    padding-bottom: 28px;
+  }
+  .new_collection_desk_module_header .title {
+    font-family: var(--font-family-1);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 39px;
+    letter-spacing: 0%;
+    color: #262629;
+  }
+  .new_collection_desk_module_header .descripe {
+    font-family: var(--font-family-1);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 40px;
+    letter-spacing: 0%;
+    color: #76767f;
+  }
+
+  .new_collection_desk_container .chair_item {
+    position: relative;
+  }
+  .new_collection_desk_container .chair_item .image {
+    border-radius: 24px;
+  }
+  .new_collection_desk_container .chair_item {
+    width: 100%;
+  }
+
+  .new_collection_desk_container .chair_item .chair_item_container {
+    position: absolute;
+    bottom: 30px;
+    left: 36px;
+    z-index: 2;
+  }
+  .new_collection_desk_container .chair_item .item_title {
+    font-family: var(--font-family-1);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #fff;
+  }
+  .new_collection_desk_container .chair_item .item_desc {
+    font-family: var(--font-family-1);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    margin-top: 10px;
+    color: #999;
+  }
+  .new_collection_desk_container .chair_item .hide-mb {
+    display: block;
+    pointer-events: none;
+  }
+  .new_collection_desk_container .chair_item .hide-mb::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+    bottom: 0;
+    z-index: 1;
+  }
+  .new_collection_desk_container .chair_item .hide-pc {
+    display: none;
+  }
+
+  /* 1500px ~ 1900px */
+  @media (min-width: 1025px) and (max-width: 1900px) {
+    .new_collection_desk_container .chair_item .chair_item_container {
+      left: 10px;
+      bottom: 20px;
+    }
+    .new_collection_desk_container .chair_item .item_title {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    .new_collection_desk_container .chair_item .item_desc {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  /* iPad */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .new_collection_desk_container .chair_item .chair_item_container {
+      bottom: 30px;
+      left: 10px;
+    }
+    .new_collection_desk_container .chair_item .item_title {
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 6px;
+    }
+    .new_collection_desk_container .chair_item .item_desc {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  /* iPhone */
+  @media (max-width: 767px) {
+    .new_collection_desk_section {
+      padding-bottom: 30px;
+    }
+    .new_collection_desk_container .chair_item .hide-mb {
+      display: none;
+    }
+    .new_collection_desk_container .chair_item .hide-pc {
+      display: block;
+    }
+    .new_collection_desk_container .chair_item .hide-pc::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 113px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+      bottom: 0;
+      z-index: 1;
+    }
+    .new_collection_desk_container {
+      padding-right: 20px;
+    }
+
+    .new_collection_desk_module {
+      padding-left: 20px;
+      padding-right: 0px;
+    }
+    .new_collection_desk_module_header {
+      padding-top: 28px;
+      padding-bottom: 16px;
+    }
+    .new_collection_desk_module_header .title {
+      font-size: 22px;
+    }
+
+    .new_collection_desk_module_header .descripe {
+      font-size: 14px;
+      line-height: 14px;
+    }
+    .new_collection_desk_container .chair_item {
+      width: 100%;
+    }
+
+    .new_collection_desk_module .btn svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: none;
+    }
+    .new_collection_desk_module .btn.button-prev {
+      position: absolute;
+      top: 50%;
+      left: 25px;
+      transform: translateY(40px);
+      background-color: rgba(255, 255, 255, 0.6);
+      z-index: 10;
+      border-radius: 50%;
+    }
+    .new_collection_desk_module .btn.button-next {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(40px);
+      background-color: rgba(255, 255, 255, 0.6);
+      z-index: 10;
+      border-radius: 50%;
+    }
+    .new_collection_desk_container .chair_item .item_title {
+      font-size: 22px;
+      line-height: 26px;
+    }
+    .new_collection_desk_container .chair_item .item_desc {
+      font-size: 14px;
+      line-height: 21px;
+      margin-top: 4px;
+    }
+    .new_collection_desk_container .chair_item .chair_item_container {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      padding-right: 20px;
+    }
+  }
+</style>
+
+<section class="new_collection_desk_section" id="gamingdesk">
+  <div class="container-full new_collection_desk_module">
+    <div class="new_collection_desk_module_header">
+      <div class="title">{{ section.settings.title }}</div>
+      <div class="descripe">
+        <span>{{ section.settings.descripe }}</span>
+      </div>
+    </div>
+    <div class="new_collection_desk_container">
+      <div>
+        {% for block in section.blocks %}
+          <div class="chair_item">
+            {% if block.settings.ItemImage != blank %}
+              <a
+                class="hide-mb image image-adapt image-zoom{% if block.settings.ItemImage != 'fixed' %} adaptive_height{% endif %}"
+                {% if block.settings.link == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ block.settings.link }}"
+                {% endif %}
+                style="padding-top: {% unless block.settings.ItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.ItemImage.aspect_ratio | times: 110 | append: '%' }}{% else %}{{ 1 | divided_by: block.settings.ItemImage.aspect_ratio | times: 100 | append: '%' }}{% endunless %}"
+              >
+                {{
+                  block.settings.ItemImage
+                  | image_url: width: 3840
+                  | image_tag:
+                    loading: 'lazy',
+                    class: lazy,
+                    height: block.settings.ItemImage.height,
+                    sizes: '100vw',
+                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                }}
+                {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
+              </a>
+            {% endif %}
+            {% if block.settings.ItemImageMb != blank %}
+              <a
+                class="hide-pc image image-adapt image-zoom{% if block.settings.ItemImageMb != 'fixed' %} adaptive_height{% endif %}"
+                {% if block.settings.link == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ block.settings.link }}"
+                {% endif %}
+                style="padding-top: {% unless block.settings.ItemImageMb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.ItemImageMb.aspect_ratio | times: 110 | append: '%' }}{% else %}{{ 1 | divided_by: block.settings.ItemImageMb.aspect_ratio | times: 100 | append: '%' }}{% endunless %}"
+              >
+                {{
+                  block.settings.ItemImageMb
+                  | image_url: width: 3840
+                  | image_tag:
+                    loading: 'lazy',
+                    class: lazy,
+                    height: block.settings.ItemImageMb.height,
+                    sizes: '100vw',
+                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                }}
+                {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
+              </a>
+            {% endif %}
+            {% if block.settings.ItemTitle != blank or block.settings.ItemDescripe != blank %}
+              <div class="chair_item_container">
+            {% endif %}
+            {% if block.settings.ItemTitle != blank %}
+              <div class="item_title">{{ block.settings.ItemTitle }}</div>
+            {% endif %}
+            {% if block.settings.ItemDescripe != blank %}
+              <div class="item_desc">{{ block.settings.ItemDescripe }}</div>
+            {% endif %}
+            {% if block.settings.ItemTitle != blank or block.settings.ItemDescripe != blank %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "New Collection Desks",
+  "max_blocks": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Gaming desk"
+    },
+    {
+      "type": "text",
+      "id": "descripe",
+      "label": "Section Desc",
+      "default": "Designed for best-in-class cable management"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "ItemImage",
+          "label": "Item Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "ItemImageMb",
+          "label": "Item Image Mobile"
+        },
+        {
+          "type": "text",
+          "id": "ItemTitle",
+          "label": "Item Title"
+        },
+        {
+          "type": "text",
+          "id": "ItemDescripe",
+          "label": "Item Descripe"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Item Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Collection Desks"
+    }
+  ]
+}
+{% endschema %}

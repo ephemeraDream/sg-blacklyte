@@ -1,0 +1,150 @@
+  <div class="oy-download">
+        <div class="oy-download-in">
+
+
+            <div class="oy-download-item oy-download-item-video">
+                <div class="oy-download-item-left">
+                    <video controlsList="nodownload noplaybackrate" disablepictureinpicture controls
+                        src="./test.mp4"></video>
+                </div>
+                <div class="oy-download-item-right">
+                    <p class="oy-p1">Full Assembly Video Guide</p>
+                    <p class="oy-p2">For Blacklyte Kraken Pro</p>
+                    <div class="oy-btn">
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="7" cy="7.11035" r="6.5" stroke="#BD1B21" />
+                            <path d="M10.77 7.11005L5.11617 10.3743L5.11617 3.8458L10.77 7.11005Z" fill="#BD1B21" />
+                        </svg>
+
+                        <a>View Video</a>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="oy-download-item oy-download-item-file">
+                <div class="oy-download-item-left">
+                    <img src="./img/icon-1.png" alt="">
+                </div>
+                <div class="oy-download-item-right">
+                    <p class="oy-p1">Full Assembly Video Guide</p>
+                    <p class="oy-p2">For Blacklyte Kraken Pro</p>
+                    <div class="oy-btn">
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_134_415)">
+                                <path
+                                    d="M8.02539 0.110352H2.1875C1.70488 0.110352 1.3125 0.502734 1.3125 0.985352V13.2354C1.3125 13.718 1.70488 14.1104 2.1875 14.1104H11.8125C12.2951 14.1104 12.6875 13.718 12.6875 13.2354V4.77246C12.6875 4.30898 12.5029 3.86328 12.1748 3.53516L9.2627 0.623047C8.93457 0.294922 8.48887 0.110352 8.02539 0.110352ZM8.75 1.34766L11.4502 4.04785H9.625C9.14238 4.04785 8.75 3.65547 8.75 3.17285V1.34766ZM11.375 13.2354H2.625C2.38301 13.2354 2.1875 13.0398 2.1875 12.7979V1.42285C2.1875 1.18086 2.38301 0.985352 2.625 0.985352H7.875V3.17285C7.875 4.13945 8.6584 4.92285 9.625 4.92285H11.8125V12.7979C11.8125 13.0398 11.617 13.2354 11.375 13.2354Z"
+                                    fill="#C51119" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_134_415">
+                                    <rect width="14" height="14" fill="white" transform="translate(0 0.110352)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+
+                        <a>View Video</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<style>
+  .oy-download{
+    padding-top:{{section.settings.p_t}}px;
+    padding-bottom:{{section.settings.p_m}}px;
+  }
+  </style>
+
+
+
+
+{% schema %}
+  {
+    "name": "A Video And Download Card",
+    "settings": [
+           {
+        "type":"range",
+        "id": "p_t",
+        "label": "Padding Top",
+        "max":300,
+        "min": 0,
+        "default":30,
+        "unit": "px",
+        "step": 5,
+      },
+            {
+        "type":"range",
+        "id": "p_m",
+        "label": "Padding Bottom",
+        "max":300,
+        "min": 0,
+        "default":30,
+        "unit": "px",
+        "step": 5,
+      },
+    ],
+    "blocks": [
+      {
+        "type": "video",
+        "name":"video",
+        "settings": [
+          {
+            "type": "video",
+            "id":"video",
+            "label": "视频"
+          },
+             {
+            "type": "text",
+            "id":"title",
+            "label": "标题"
+          },
+             {
+            "type": "text",
+            "id":"title_b",
+            "label": "副标题"
+          },
+             {
+            "type": "text",
+            "id":"link_text",
+            "label": "链接文本"
+          },
+        ]
+      },
+       {
+        "type": "file",
+        "name":"file",
+        "settings": [
+          {
+            "type":"video",
+            "id":"video",
+            "label": "视频"
+          },
+             {
+            "type": "text",
+            "id":"title",
+            "label": "标题"
+          },
+             {
+            "type": "text",
+            "id":"title_b",
+            "label": "副标题"
+          },
+             {
+            "type": "text",
+            "id":"link_text",
+            "label": "链接文本"
+          },
+        ]
+      },
+    ],
+    "presets": [
+    {"name":   "A Video And Download Card"}
+    ]
+  }
+{% endschema %}

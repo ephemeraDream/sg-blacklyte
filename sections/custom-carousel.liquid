@@ -1,0 +1,228 @@
+{% assign sid = section.id %}
+<style>
+  #shopify-section-{{ sid }} .custom_carousel-container{
+    background:{{section.settings.bg}};
+    padding:{{section.settings.margin}};
+  }
+  #shopify-section-{{ sid }} .text_block_heading{
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom:32px;
+  }
+  #shopify-section-{{ sid }} .custom_carousel{
+    max-width: 932px;margin: 0 auto; padding:0 16px;
+  }
+  #shopify-section-{{ sid }} .block_text_item_inner{
+    color:{{section.settings.block-text-color}};
+    text-align:center;
+  }
+  #shopify-section-{{ sid }} .block_text_item_inner p:not(.name){
+    font-size:20px;
+    font-weight: 400;
+    margin-top:0px;
+    margin-bottom:32px;
+    line-height: 1.4;
+    /* opacity: 0.65; */
+  }
+  #shopify-section-{{ sid }} .block_text_item_inner p.name{
+    font-size:24px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin:0;
+    color:{{ section.settings.Product_block_heading-color }};
+  }
+  #shopify-section-{{ sid }} .arrow {
+    background: transparent;
+    border:unset;
+  }
+  #shopify-section-{{ sid }} .arrow svg{
+      transform: scale(2);
+  }
+  #shopify-section-{{ sid }} .arrow.prev{
+        left: -6%;
+  }
+  #shopify-section-{{ sid }} .arrow.next{
+        right: -6%;
+  }
+  @media (min-width: 2000px) {
+
+    #shopify-section-{{ sid }} .text_block_heading{
+      font-size: 2.08vw;
+    }
+    #shopify-section-{{ sid }} .custom_carousel{
+      max-width: 48.54vw;
+    }
+    #shopify-section-{{ sid }} .block_text_item_inner p:not(.name){
+      font-size:1.04vw;
+      
+    }
+    #shopify-section-{{ sid }} .block_text_item_inner p.name{
+      font-size:1.25vw;
+    }
+  }
+  @media only screen and (max-width: 991px){
+    #shopify-section-{{ sid }} .custom_carousel-container{
+      padding:{{section.settings.mbmargin}};
+    }
+    #shopify-section-{{ sid }} .text_block_heading{
+      margin-bottom:24px;
+      font-size:28px;
+      line-height:1.28;
+    }
+  #shopify-section-{{ sid }} .custom_carousel{
+        padding-bottom: 50px;
+    position: relative;
+  }
+    #shopify-section-{{ sid }} .block_text_item_inner p:not(.name){
+      font-size:14px;
+      line-height: 1.4;
+      margin-bottom:18px;
+    }
+    #shopify-section-{{ sid }} .block_text_item_inner p.name{
+      font-size: 14px;
+      line-height: 1.4;
+      
+    }
+    #shopify-section-{{ sid }} .arrow.prev{
+          left: -2%;
+    }
+    #shopify-section-{{ sid }} .arrow.next{
+          right: -2%;
+    }
+    
+     #shopify-section-{{ sid }} .custom_carousel .slick-dots {
+      bottom: 10px;
+    }
+     #shopify-section-{{ sid }} .custom_carousel .slick-dots li{
+      margin:0 5px;
+    }
+     #shopify-section-{{ sid }} .custom_carousel .slick-dots li button{
+      --dots-width:24px;
+      --dots-height:4px;
+      --dots-color:#464646;
+      border-radius:4px;
+    }
+     #shopify-section-{{ sid }} .custom_carousel .slick-dots li.slick-active button{
+      --dots-color-active:#fff;
+      --dots-border-color-active:#fff;
+    }
+  }
+</style>
+<div class="custom_carousel-container">
+  <div class="container-1570">
+    <div class="custom_carousel-wrapper">
+      {% if section.settings.Product_block_heading != blank  %}
+        <div class="text_block_heading" style=" color:{{ section.settings.Product_block_heading-color }}">{{ section.settings.Product_block_heading }}</div>
+      {% endif %}
+      <div class="custom_carousel">
+        {% for block in section.blocks %}  
+          <div class="block_text_item block-{{block.id}}">
+            <div class="block_text_item_inner">
+              <p>{{ block.settings.content }}</p>
+              <p class="name">{{ block.settings.title }}</p>
+            </div>
+          </div>
+        {% endfor %}
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    $('#shopify-section-{{ sid }} .custom_carousel').slick({
+      prevArrow: `<div class="arrow prev"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">  <path d="M21.667 10.5881L11.7831 17.7399C11.742 17.7695 11.7086 17.8084 11.6855 17.8535C11.6624 17.8985 11.6504 17.9484 11.6504 17.9991C11.6504 18.0497 11.6624 18.0996 11.6855 18.1446C11.7086 18.1897 11.742 18.2286 11.7831 18.2582L21.667 25.41C21.88 25.5627 22.1773 25.41 22.1773 25.1488V23.2645C22.1773 22.8546 21.9804 22.4649 21.6469 22.2238L15.805 18.0011L21.6469 13.7743C21.9804 13.5332 22.1773 13.1475 22.1773 12.7337V10.8493C22.1773 10.5881 21.88 10.4354 21.667 10.5881Z" fill="white" fill-opacity="0.65"/></svg></div>`,
+      nextArrow: `<div class="arrow next"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">  <path d="M14.333 10.5881L24.2169 17.7399C24.258 17.7695 24.2914 17.8084 24.3145 17.8535C24.3376 17.8985 24.3496 17.9484 24.3496 17.9991C24.3496 18.0497 24.3376 18.0996 24.3145 18.1446C24.2914 18.1897 24.258 18.2286 24.2169 18.2582L14.333 25.41C14.12 25.5627 13.8227 25.41 13.8227 25.1488V23.2645C13.8227 22.8546 14.0196 22.4649 14.3531 22.2238L20.195 18.0011L14.3531 13.7743C14.0196 13.5332 13.8227 13.1475 13.8227 12.7337V10.8493C13.8227 10.5881 14.12 10.4354 14.333 10.5881Z" fill="white" fill-opacity="0.65"/></svg></div>`,
+      responsive: [
+          {
+            breakpoint: 991,
+            settings: {
+              dots: true,
+              slidesToScroll: 1,
+            }
+          }
+        ]
+    })
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Custom carousel",
+    "settings": [
+      {
+        "type": "color_background",
+        "id": "bg",
+        "label": "Background color"
+      },
+      {
+        "type": "liquid",
+        "id": "custom_liquid",
+        "label": "Custom liquid"
+      },
+      {
+        "type": "text",
+        "id": "custom_class",
+        "label": "Custom classes"
+      },
+      {
+          "type": "text",
+          "id": "Product_block_heading",
+          "label": "heading",
+        "default": "heading"
+       },
+      {
+        "type": "color",
+        "id": "Product_block_heading-color",
+        "label": "Heading Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "block-text-color",
+        "label": "Block text Color",
+        "default": "#ffffff"
+      },
+       {
+        "type": "text",
+        "id": "margin",
+        "label": "PC margin",
+        "default": "100px 0 100px 0"
+      },
+      {
+        "type": "text",
+        "id": "mbmargin",
+        "label": "mb margin",
+        "default": "50px,,50px,"
+      }
+    ],
+    "blocks": [
+      {
+          "type": "text",
+            "name": "Text",
+            "settings": [
+              {
+                  "type": "textarea",
+                  "id": "content",
+                  "label": "Content"
+              },
+              {
+                  "type": "text",
+                  "id": "title",
+                  "label": "title"
+              }
+            ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Custom carousel"
+      }
+    ]
+  }
+{% endschema %}

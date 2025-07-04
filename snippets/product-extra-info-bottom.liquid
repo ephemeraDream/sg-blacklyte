@@ -1,0 +1,228 @@
+<style>
+  .extra_info_bottom {
+    margin-top: 1.5625vw;
+  }
+
+  .extra_info_bottom_item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+  }
+
+  .extra_info_bottom_item + .extra_info_bottom_item {
+    border-top: 1px solid #edeff2;
+  }
+
+  .extra_info_bottom_item p + p {
+    margin-top: 8px;
+  }
+
+  .extra_info_bottom_item .flex_full {
+    flex: 1;
+  }
+
+  .extra_info_bottom_item svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .extra_info_bottom_item_between {
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .extra_info_bottom_item_between svg:last-child {
+    width: 8px;
+    height: 12px;
+  }
+
+  .extra_info_bottom_payway {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-left: 36px;
+  }
+
+  .extra_info_bottom_payway img {
+    width: 44px;
+    height: 28px;
+  }
+
+  .extra_info_bottom a {
+    color: #0080fa;
+  }
+
+  .extra_info_bottom a:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    .extra_info_bottom {
+      margin-top: 2.67vw;
+    }
+    .extra_info_bottom_item {
+      padding: 24px 0;
+    }
+  }
+</style>
+
+<div class="extra_info_bottom">
+  <div class="extra_info_bottom_item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+      <g clip-path="url(#clip0_13258_3370)">
+      <g clip-path="url(#clip1_13258_3370)">
+      <path d="M1.66602 4.30664H12.2429C12.774 4.30664 13.2045 4.67013 13.2045 5.25975V13.275C13.2045 13.8234 12.774 14.3066 12.2429 14.3066H2.49935C2.03911 14.3066 1.66602 13.9336 1.66602 13.4733V12.2233" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M19.1673 13.4746C19.1673 13.9348 18.7942 14.3079 18.334 14.3079H14.1673C13.7071 14.3079 13.334 13.9348 13.334 13.4746V9.30795C13.334 8.84771 13.7071 8.47461 14.1673 8.47461H15.9248C16.1343 8.47461 16.3361 8.55352 16.4901 8.69561L18.8992 10.9194C19.0701 11.0772 19.1673 11.2992 19.1673 11.5318V13.4746Z" stroke="#262629" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M11.666 15.1406C11.666 16.061 12.4122 16.8073 13.3326 16.8073C14.2531 16.8073 14.9993 16.061 14.9993 15.1406" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.33398 15.1406C3.33398 16.061 4.08019 16.8073 5.00065 16.8073C5.92111 16.8073 6.66731 16.061 6.66731 15.1406" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1.66602 7.22461H7.08269" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1.66602 9.72461H7.08269" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <defs>
+      <clipPath id="clip0_13258_3370">
+      <rect width="20" height="20" fill="white" transform="translate(0 0.140625)"/>
+      </clipPath>
+      <clipPath id="clip1_13258_3370">
+      <rect width="20" height="20" fill="white" transform="translate(0 0.140625)"/>
+      </clipPath>
+      </defs>
+    </svg>
+    {% comment %}
+      <div>
+        <p>{{ 'products.product.text.estimated_dispatch' | t }}</p>
+        <p>{{ 'products.product.text.free_shipping' | t }}</p>
+      </div>
+    {% endcomment %}
+    {{ block.settings.text_one }}
+  </div>
+  <div class="extra_info_bottom_item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+      <g clip-path="url(#clip0_13258_3324)">
+      <g clip-path="url(#clip1_13258_3324)">
+      <path d="M2 5.08391C2 4.6328 2.30203 4.23753 2.7373 4.11902L10.0038 2.14062L17.2629 4.1189C17.6981 4.23749 18 4.63269 18 5.08371V8.78866C18 13.4858 14.7779 17.6558 10.0012 19.1406C5.22316 17.6558 2 13.4849 2 8.7866V5.08391Z" stroke="#262629" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M6.25 9.72396L9.16667 12.6407L14.1667 7.64062" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <defs>
+      <clipPath id="clip0_13258_3324">
+      <rect width="20" height="20" fill="white" transform="translate(0 0.140625)"/>
+      </clipPath>
+      <clipPath id="clip1_13258_3324">
+      <rect width="20" height="20" fill="white" transform="translate(0 0.140625)"/>
+      </clipPath>
+      </defs>
+    </svg>
+    {% comment %}
+      <div>
+        <p>{{ 'products.product.text.returns_policy' | t }}</p>
+        <p>{{ 'products.product.text.warranty_protection' | t }}</p>
+      </div>
+    {% endcomment %}
+    {{ block.settings.text_two }}
+  </div>
+  <div class="extra_info_bottom_item extra_info_bottom_item_between global_support chat_now">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+      <g clip-path="url(#clip0_13258_3337)">
+      <g clip-path="url(#clip1_13258_3337)">
+      <g clip-path="url(#clip2_13258_3337)">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 9.26758H3.68421C4.99225 9.26758 6.05263 10.328 6.05263 11.636V12.0308C6.05263 13.1208 5.16898 14.0044 4.07895 14.0044H2.5V9.26758Z" stroke="#262629" stroke-width="1.5" stroke-linejoin="round"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M17.4999 9.26758H16.3157C15.0076 9.26758 13.9473 10.328 13.9473 11.636V12.0308C13.9473 13.1208 14.8309 14.0044 15.921 14.0044H17.4999V9.26758Z" stroke="#262629" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M1.75 13.9925C1.75 14.4068 2.08579 14.7425 2.5 14.7425C2.91422 14.7425 3.25 14.4068 3.25 13.9925H1.75ZM3.25 13.9925V9.46484H1.75V13.9925H3.25ZM3.25 9.46484C3.25 5.73692 6.27208 2.71485 10 2.71485V1.21484C5.44365 1.21484 1.75 4.9085 1.75 9.46484H3.25ZM10 2.71485C13.7279 2.71485 16.75 5.73692 16.75 9.46484H18.25C18.25 4.9085 14.5564 1.21484 10 1.21484V2.71485ZM16.75 9.46484V13.5701H18.25V9.46484H16.75Z" fill="#262629"/>
+      <path d="M12.3691 18.5437C15.2032 18.5437 17.5007 16.465 17.5007 13.9008V13.4121" stroke="#262629" stroke-width="1.5"/>
+      <path d="M11.1848 17.1621H10.0006C9.3466 17.1621 8.81641 17.6923 8.81641 18.3463C8.81641 19.0004 9.3466 19.5305 10.0006 19.5305H11.1848C11.8389 19.5305 12.369 19.0004 12.369 18.3463C12.369 17.6923 11.8389 17.1621 11.1848 17.1621Z" stroke="#262629" stroke-width="1.5"/>
+      </g>
+      </g>
+      </g>
+      <defs>
+      <clipPath id="clip0_13258_3337">
+      <rect width="20" height="20" fill="white" transform="translate(0 0.300781)"/>
+      </clipPath>
+      <clipPath id="clip1_13258_3337">
+      <rect width="20" height="20" fill="white" transform="translate(0 0.300781)"/>
+      </clipPath>
+      <clipPath id="clip2_13258_3337">
+      <rect width="20" height="20" fill="white" transform="translate(0 0.300781)"/>
+      </clipPath>
+      </defs>
+    </svg>
+    {% comment %} <div class="flex_full">{{ 'products.product.text.global_support' | t }}</div> {% endcomment %}
+    {{ block.settings.text_thr }}
+    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+      <rect x="7.53906" y="6.01953" width="8.00001" height="2.00001" rx="1" transform="rotate(135 7.53906 6.01953)" fill="#76767F"/>
+      <rect x="7.53906" y="6.01953" width="2.00112" height="8.00445" rx="1.00056" transform="rotate(135 7.53906 6.01953)" fill="#76767F"/>
+    </svg>
+  </div>
+  <div class="extra_info_bottom_item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+      <g clip-path="url(#clip0_13258_3351)">
+      <g clip-path="url(#clip1_13258_3351)">
+      <path d="M2.5 6.83984L8.07142 11.2305C8.54167 11.6315 9.51175 12.2565 10.4167 11.4232C11.3705 10.5448 10.625 9.54817 10.4167 9.33984L7.08333 6.83984" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M1.66602 3.92383H10.8627C11.1115 3.92383 11.3513 4.01655 11.5354 4.18389L15.8327 8.0905" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.75 14.3398L18.3333 14.3479" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.75 8.08984V16.2565C3.75 16.8088 4.19772 17.2565 4.75 17.2565H17.3333C17.8856 17.2565 18.3333 16.8088 18.3333 16.2565V9.08984C18.3333 8.53756 17.8856 8.08984 17.3333 8.08984H9.16675" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <defs>
+      <clipPath id="clip0_13258_3351">
+      <rect width="20" height="20" fill="white" transform="translate(0 0.589844)"/>
+      </clipPath>
+      <clipPath id="clip1_13258_3351">
+      <rect width="20" height="20" fill="white" transform="translate(0 0.589844)"/>
+      </clipPath>
+      </defs>
+    </svg>
+    <div>{{ 'products.product.text.ways_to_pay' | t }}</div>
+  </div>
+  <div class="extra_info_bottom_payway">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/payway_1.webp?v=1743490271"
+      alt="payway"
+    >
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/payway_2.webp?v=1743490271"
+      alt="payway"
+    >
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/payway_3.webp?v=1743490271"
+      alt="payway"
+    >
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/payway_4.webp?v=1743490271"
+      alt="payway"
+    >
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/payway_5.webp?v=1743490271"
+      alt="payway"
+    >
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/payway_6.webp?v=1743490271"
+      alt="payway"
+    >
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/payway_7.webp?v=1743490271"
+      alt="payway"
+    >
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/payway_8.webp?v=1743490271"
+      alt="payway"
+    >
+    <img
+      src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/payway_9.webp?v=1743490271"
+      alt="payway"
+    >
+  </div>
+</div>
+
+<script>
+  document.querySelector('.global_support').addEventListener('click', () => {
+    zE('messenger', 'open');
+  });
+</script>

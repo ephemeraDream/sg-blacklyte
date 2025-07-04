@@ -1,0 +1,203 @@
+{{ 'section-video-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="video_simplicity{% if section.settings.style == "two" %} video_simplicity_two{% endif %}" id="feature">
+  {% assign poster_image = section.settings.cover_image | image_url %}
+  {% assign poster_image_mobile = section.settings.cover_image_mobile | image_url %}
+
+  {% if section.settings.file_type == 'image' %}
+    <img src="{{ poster_image }}" class="video_simplicity_img pc_show">
+  {% else %}
+    {% assign autoplay = false %}
+    {% assign zindex = '' %}
+    {% if section.settings.autoplay %}
+      {% assign autoplay = true %}
+      {% assign zindex = 'z-index: 2' %}
+    {% endif %}
+    {% if section.settings.video_url != blank %}
+      <video
+        {% if section.settings.autoplay %}
+          autoplay
+          style="z-index: 2"
+        {% endif %}
+        loop
+        muted
+        playsinline
+        preload="none"
+        class="video_simplicity_video pc_show"
+        {% if poster_image != blank %}
+          poster="{{ poster_image }}"
+        {% endif %}
+        src="{{ section.settings.video_url }}"
+      ></video>
+    {% else %}
+      {{
+        section.settings.url_upload
+        | video_tag:
+          class: 'video_simplicity_video pc_show',
+          loop: true,
+          muted: true,
+          playsinline: true,
+          preload: 'none',
+          poster: poster_image,
+          autoplay: autoplay,
+          style: zindex
+      }}
+    {% endif %}
+  {% endif %}
+  <img src="{{ poster_image_mobile }}" class="video_simplicity_img pmd_show">
+  {% if section.settings.style == 'one' %}
+    {% if section.settings.file_type == 'video' and section.settings.autoplay != true %}
+      <div class="video_simplicity_playicon pc_show">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="81" viewBox="0 0 80 81" fill="none">
+          <path d="M39.9994 73.8872C58.4089 73.8872 73.3327 58.8506 73.3327 40.302C73.3327 21.7534 58.4089 6.7168 39.9994 6.7168C21.5898 6.7168 6.66602 21.7534 6.66602 40.302C6.66602 58.8506 21.5898 73.8872 39.9994 73.8872Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M33.334 40.3022V28.668L43.334 34.4851L53.334 40.3022L43.334 46.1194L33.334 51.9365V40.3022Z" fill="white"/>
+        </svg>
+      </div>
+    {% endif %}
+  {% else -%}
+    {% comment %}
+      <div class="video_simplicity_playicon">
+        <span>{{ 'products.product.text.watch_intro' | t }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12" fill="none">
+          <g clip-path="url(#clip0_13258_4455)">
+          <g clip-path="url(#clip1_13258_4455)">
+          <g clip-path="url(#clip2_13258_4455)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1.17666 0.147646C0.902155 -0.021179 0.548828 0.176321 0.548828 0.498587V11.5006C0.548828 11.8229 0.902155 12.0204 1.17666 11.8515L10.1212 6.35052C10.3827 6.18966 10.3827 5.80949 10.1212 5.64864L1.17666 0.147646Z" fill="white"/>
+          </g>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_13258_4455">
+          <rect width="10" height="12" fill="white" transform="translate(0.5)"/>
+          </clipPath>
+          <clipPath id="clip1_13258_4455">
+          <rect width="10" height="12" fill="white" transform="translate(0.5)"/>
+          </clipPath>
+          <clipPath id="clip2_13258_4455">
+          <rect width="10" height="12" fill="white" transform="translate(0.5)"/>
+          </clipPath>
+          </defs>
+        </svg>
+      </div>
+    {% endcomment %}
+    {% if section.settings.file_type == 'video' and section.settings.autoplay != true %}
+      <div class="video_simplicity_playicon pc_show">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="81" viewBox="0 0 80 81" fill="none">
+          <path d="M39.9994 73.8872C58.4089 73.8872 73.3327 58.8506 73.3327 40.302C73.3327 21.7534 58.4089 6.7168 39.9994 6.7168C21.5898 6.7168 6.66602 21.7534 6.66602 40.302C6.66602 58.8506 21.5898 73.8872 39.9994 73.8872Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M33.334 40.3022V28.668L43.334 34.4851L53.334 40.3022L43.334 46.1194L33.334 51.9365V40.3022Z" fill="white"/>
+        </svg>
+      </div>
+    {% endif %}
+  {%- endif %}
+  <div class="video_simplicity_info">
+    {% if section.settings.title != blank %}
+      <div>{{ section.settings.title }}</div>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <p>{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  (() => {
+    const video = document.querySelector('.video_simplicity_video');
+    const playIcon = document.querySelector('.video_simplicity_playicon');
+    if (playIcon) {
+      playIcon.addEventListener('click', function () {
+        if (video.paused) {
+          video.style.zIndex = 2;
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "video simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "file_type",
+      "label": "file type",
+      "default": "image",
+      "options": [
+        {
+          "value": "image",
+          "label": "image"
+        },
+        {
+          "value": "video",
+          "label": "video"
+        }
+      ]
+    },
+    {
+      "type": "radio",
+      "id": "style",
+      "label": "style",
+      "default": "one",
+      "options": [
+        {
+          "value": "one",
+          "label": "style one"
+        },
+        {
+          "value": "two",
+          "label": "style two"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "cover image"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image_mobile",
+      "label": "cover image mobile"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "video url"
+    },
+    {
+      "type": "video",
+      "id": "url_upload",
+      "label": "video upload"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "description"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "autoplay",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "video simplicity"
+    }
+  ]
+}
+{% endschema %}

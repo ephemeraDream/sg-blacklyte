@@ -1,0 +1,210 @@
+.video_simplicity {
+  max-width: 75vw;
+  height: 33.33vw;
+  margin: 0 auto;
+  position: relative;
+  background-color: #000;
+  display: flex;
+}
+
+.video_simplicity .video_simplicity_video,
+.video_simplicity .video_simplicity_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.video_simplicity .video_simplicity_coverimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video_simplicity::after {
+  content: "";
+  width: 100%;
+  height: 22.7604167vw;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.video_simplicity .video_simplicity_playicon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  width: 4.167vw;
+  height: 4.167vw;
+}
+
+.video_simplicity .video_simplicity_playicon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.video_simplicity .video_simplicity_info {
+  position: absolute;
+  bottom: 3.33vw;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 32px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #fff;
+  z-index: 1;
+}
+
+.video_simplicity .video_simplicity_info p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22.4px;
+  margin-top: 5px;
+}
+
+.video_simplicity_two {
+  max-width: 100vw;
+  height: auto;
+}
+
+.video_simplicity_two .video_simplicity_video,
+.video_simplicity_two .video_simplicity_img {
+  height: auto;
+  /* aspect-ratio: 16 / 9; */
+}
+
+.video_simplicity_two .video_simplicity_info {
+  /* top: 40%;
+  bottom: auto; */
+  bottom: 26%;
+}
+
+.video_simplicity_two .video_simplicity_playicon {
+  top: 30%;
+}
+
+/* .video_simplicity_two .video_simplicity_playicon {
+  min-width: 13.95833vw;
+  height: 2.70833vw;
+  border-radius: 6.25vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.32px;
+  vertical-align: middle;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 22.239583vw;
+  background: url("https://cdn.shopify.com/s/files/1/0663/6742/2695/files/video-playicon-bg.webp?v=1744620308") no-repeat no-repeat center center;
+  cursor: pointer;
+
+}
+
+.video_simplicity_two .video_simplicity_playicon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #00000066;
+  border-radius: 6.25vw;
+}
+
+.video_simplicity_two .video_simplicity_playicon svg {
+  width: 0.52083vw;
+  height: 0.625vw;
+  margin-left: 0.364583vw;
+  z-index: 1;
+}
+
+.video_simplicity_two .video_simplicity_playicon span {
+  z-index: 1;
+} */
+
+.video_simplicity_two .video_simplicity::after {
+  height: 27.0833vw;
+}
+
+.video_simplicity .pmd_show {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .video_simplicity {
+    max-width: 100vw;
+    height: auto;
+  }
+
+  .video_simplicity .video_simplicity_playicon {
+    width: 12.267vw;
+    height: 12.267vw;
+  }
+
+  .video_simplicity .video_simplicity_info,
+  .video_simplicity_two .video_simplicity_info {
+    position: absolute;
+    top: auto;
+    bottom: 5vw;
+    font-size: 26px;
+    line-height: 30px;
+    width: 89.34vw;
+  }
+
+  .video_simplicity .video_simplicity_info p,
+  .video_simplicity_two .video_simplicity_info p {
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  .video_simplicity .video_simplicity_video {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* .video_simplicity:after {
+    height: 80.8vw;
+  } */
+
+  /* .video_simplicity_two .video_simplicity_playicon {
+    width: 41.067vw;
+    height: 8vw;
+    border-radius: 18.4vw;
+    font-size: 18px;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .video_simplicity_two .video_simplicity_playicon svg {
+    width: 1.533vw;
+    height: 1.84vw;
+    margin-left: 1.0733vw;
+  } */
+
+  .video_simplicity .pc_show {
+    display: none;
+  }
+
+  .video_simplicity .pmd_show {
+    display: block;
+  }
+
+  .video_simplicity .pmd_show.video_simplicity_video {
+    aspect-ratio: auto;
+  }
+}

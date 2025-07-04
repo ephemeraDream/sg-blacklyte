@@ -1,0 +1,108 @@
+<style>
+  .warranty_code_container {
+    height: 100vh;
+    background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/warranty-bgimg.png?v=1725863053') no-repeat;
+    background-size: 100% 100%;
+  }
+  .warranty_conatiner {
+    padding-top: 160px;
+  }
+  .warranty_code_container .logo_img{
+    width: 180px;
+    height: 112px;
+    margin: 0 auto;
+  }
+  .warranty_form_container {
+    /* display: flex; */
+    margin-top: 50px;
+    padding: 0 50px;
+  }
+  .warranty_btn {
+    margin-top: 10px;
+  }
+  #warranty_code_inp {
+    color: #ffffff;
+    line-height: 50px;
+    border-color: #fff;
+    text-align: center;
+  }
+  input#warranty_code_inp:disabled {
+    color: #ffffff;
+    opacity: 1;
+    -webkit-text-fill-color: #fff;
+    -webkit-opacity: 1;
+  }
+  #warranty_code_inp::placeholer{
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .warranty_redirect {
+    color: #6846FF;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+  }
+  .warranty_note {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    line-height: 16px;
+    padding: 15px 50px;
+  }
+</style>
+
+<div class="warranty_code_container">
+  <div class="warranty_conatiner">
+    <img class="logo_img" src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/warranty_logo_L.png?v=1726898175" />
+    <div class="warranty_form_container">
+      <input class="form-input" id="warranty_code_inp" value="" disabled placeholder="warranty code" />
+      <input class="button button-2 warranty_btn" type="button" value="copy" id="copy_btn"  />
+    </div>
+    <span class="warranty_note">
+      Note: After registration and login, you can access the official website for inquiries with the anti-counterfeiting code. You can receive an additional 2 years of warranty on top of the 3-year warranty.
+    </span>
+    <a href="/" class="warranty_redirect">www.goblacklyte.com</a>
+  </div>
+</div>
+<script type="text/javascript">
+   (function ($) {
+      const code = sessionStorage.getItem('qrcode')
+       $("#warranty_code_inp").val(code)
+      // var data = { code: code, appid: '20570', appsecret: 'dffddfefbeab4d4688a4f3cce59b8c11' };
+      // $.ajax({
+      //     type: "get",
+      //     data: data,
+      //     async: true,
+      //     url: "https://kz315.com/api/query.ashx?callback=?",
+      //     dataType: "jsonp",
+      //     jsonp: "callback",
+      //     success: function (data) {
+      //       if(data.errcode>=1) { }
+      //     },
+      //     error: function () { }
+      // });
+      $('#copy_btn').click(function() {
+          if($('#warranty_code_inp').val().trim() === '') return false
+          // 选择输入框
+          const input = $('#warranty_code_inp')
+          input.select();
+          document.execCommand('copy')
+
+          alert('Copy successful!')
+      });
+   })(jQuery)
+                
+    
+</script>
+
+{% schema %}
+  {
+    "name": "Warranty Code",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Warranty Code"
+      }
+    ]
+  }
+{% endschema %}

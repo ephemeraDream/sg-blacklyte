@@ -1,0 +1,558 @@
+{{ 'snippet-desk-parameter-comparison.css' | asset_url | stylesheet_tag }}
+
+{% assign show_btns = true %}
+{% assign show_select = false %}
+{% if is_modal %}
+  {% assign show_btns = false %}
+{% endif %}
+{% if compare_modal_products != blank %}
+  {% assign compare_products = compare_modal_products %}
+{% endif %}
+{% if page.metafields.custom.compare_products != blank %}
+  {% assign compare_products = page.metafields.custom.compare_products.value %}
+{% endif %}
+
+<div class="parameter_comparison">
+  <div class="parameter_comparison_title">{{ 'products.product.text.desk_comparison_title' | t }}</div>
+  {% if show_select %}
+    <div class="parameter_comparison_selectbox">
+      <select id="productSelectOne" class="parameter_comparison_select">
+        {% for item in compare_products %}
+          <option value="{{ item.metafields.custom.series_name.value }}">
+            {{ 'products.product.text.blacklyte' | t -}}
+            {{- item.metafields.custom.series_name.value }}
+          </option>
+        {% endfor %}
+      </select>
+      <select id="productSelectTwo" class="parameter_comparison_select">
+        {% for item in compare_products %}
+          <option
+            value="{{ item.metafields.custom.series_name.value }}"
+            {% if forloop.index0 == 1 %}
+              selected
+            {% endif %}
+          >
+            {{ 'products.product.text.blacklyte' | t -}}
+            {{- item.metafields.custom.series_name.value }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  {% endif %}
+  <div class="parameter_comparison_contain parameter_comparison_contain_twoline">
+    {% for product in compare_products limit: 2 %}
+      {% assign is_last = false %}
+      {% if forloop.last %}
+        {% assign is_last = true %}
+      {% endif %}
+      <div
+        class="parameter_comparison_product{% if forloop.index0 == 0 %} parameter_comparison_product_showtitle{% endif %}"
+        data-value="{{ product.metafields.custom.series_name.value }}"
+      >
+        <img
+          src="{{ product.selected_or_first_available_variant.featured_image | image_url: width:280 }}"
+          alt="{{ product.metafields.custom.series_name }}"
+          class="parameter_comparison_product_featured_image"
+        >
+        {% comment %}
+          {% if is_modal %}
+            <div class="parameter_comparison_product_series_name_sentinel"></div>
+          {% endif %}
+        {% endcomment %}
+        <div class="parameter_comparison_product_series_name_sentinel"></div>
+        <div class="parameter_comparison_product_contain" data-type="product-name">
+          <div class="parameter_comparison_product_series_name">{{ product.metafields.custom.series_name }}</div>
+        </div>
+        <div class="parameter_comparison_product_contain" data-type="product-info">
+          <div class="parameter_comparison_product_description">{{ product.description | strip_html }}</div>
+        </div>
+        <div class="parameter_comparison_product_standard_price">
+          {{ 'products.product.text.standard_price' | t }}
+        </div>
+        <div class="parameter_comparison_product_price">
+          {{ 'products.product.text.from' | t }}
+          {{- product.price | money_without_trailing_zeros }}
+        </div>
+        {% comment %}
+          <div class="parameter_comparison_product_variants_count">
+            {{ 'products.product.text.available_variants' | t: variants_count: product.variants_count }}
+          </div>
+        {% endcomment %}
+        {% if show_btns %}
+          <a class="parameter_comparison_product_shop_now" href="{{ product.url }}">
+            {{- 'products.product.text.shop_now' | t -}}
+          </a>
+          <a
+            class="parameter_comparison_product_learn_more"
+            href="/pages/{{ product.metafields.custom.series_name | handle }}-features"
+          >
+            {{- 'products.product.text.learn_more' | t -}}
+          </a>
+        {% endif %}
+        <div class="pmd_show">
+          {% for item in product.metafields.custom.product_parameter_comparison.value.common_data.value %}
+            <div class="parameter_comparison_product_card" data-type="{{ item.title | handle }}" open>
+              <div class="parameter_comparison_product_head">
+                <div class="parameter_comparison_product_head_title">{{ item.title }}</div>
+                <div class="parameter_comparison_product_head_icon" close>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path d="M0 11L22 11" stroke="#262629" stroke-width="2"/>
+                    <path d="M11.0039 0L11.0039 22" stroke="#262629" stroke-width="2"/>
+                  </svg>
+                </div>
+                <div class="parameter_comparison_product_head_icon" open>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="4" viewBox="0 0 28 4" fill="none">
+                    <path d="M0 2L28 2" stroke="#C9C9C9" stroke-width="3"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="parameter_comparison_product_body">
+                {% for data in item.data %}
+                  <div class="parameter_comparison_product_label">
+                    {% unless is_last %}
+                      {{ data.label -}}
+                    {% else %}
+                      ""
+                    {% endunless %}
+                    {%- if data.tips != blank %}
+                      <div class="parameter_comparison_product_tips">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="23"
+                          height="23"
+                          viewBox="0 0 23 23"
+                          fill="none"
+                        >
+                          <path d="M11.4992 1.82812C9.62277 1.82812 7.78846 2.38456 6.22825 3.42706C4.66804 4.46956 3.452 5.9513 2.73392 7.68492C2.01583 9.41853 1.82795 11.3261 2.19402 13.1665C2.5601 15.0069 3.4637 16.6974 4.79055 18.0243C6.1174 19.3512 7.80791 20.2547 9.6483 20.6208C11.4887 20.9869 13.3963 20.799 15.1299 20.0809C16.8635 19.3628 18.3453 18.1468 19.3878 16.5866C20.4303 15.0264 20.9867 13.1921 20.9867 11.3156C20.9867 8.79938 19.9871 6.3862 18.2079 4.60695C16.4286 2.8277 14.0155 1.82813 11.4992 1.82812ZM12.0972 15.9731C11.9077 16.152 11.6564 16.2509 11.3957 16.2491C11.2654 16.2517 11.1359 16.2275 11.0152 16.178C10.8946 16.1286 10.7853 16.0549 10.6942 15.9616C10.6018 15.8723 10.5286 15.765 10.4792 15.6463C10.4297 15.5277 10.4051 15.4002 10.4067 15.2716C10.4014 15.1426 10.4244 15.014 10.4741 14.8948C10.5238 14.7756 10.5989 14.6687 10.6942 14.5816C10.7863 14.4904 10.896 14.4189 11.0166 14.3714C11.1372 14.324 11.2662 14.3016 11.3957 14.3056C11.5271 14.3007 11.6581 14.3226 11.7807 14.3701C11.9033 14.4175 12.0149 14.4895 12.1087 14.5816C12.2041 14.6687 12.2792 14.7756 12.3288 14.8948C12.3785 15.014 12.4015 15.1426 12.3962 15.2716C12.3982 15.4047 12.3726 15.5367 12.3212 15.6593C12.2697 15.782 12.1935 15.8928 12.0972 15.9846V15.9731ZM14.0522 10.6831C13.6891 11.0571 13.3051 11.4104 12.9022 11.7411C12.6658 11.9313 12.4735 12.1707 12.3387 12.4426C12.1899 12.7178 12.1146 13.0268 12.1202 13.3396V13.5696H10.6827V13.3396C10.6666 12.8941 10.7614 12.4515 10.9587 12.0516C11.3682 11.405 11.881 10.8301 12.4767 10.3496L12.7067 10.0966C12.942 9.81967 13.0758 9.47084 13.0862 9.10763C13.0795 8.71241 12.9234 8.3344 12.6492 8.04962C12.4942 7.909 12.3126 7.80092 12.115 7.73179C11.9175 7.66265 11.7081 7.63386 11.4992 7.64713C11.2473 7.62606 10.9941 7.66874 10.763 7.77124C10.5318 7.87373 10.3302 8.03275 10.1767 8.23363C9.91072 8.64292 9.78184 9.12623 9.80872 9.61363H8.42872C8.40964 9.19283 8.47512 8.77249 8.62128 8.37744C8.76745 7.98239 8.99134 7.62066 9.27972 7.31362C9.593 7.01656 9.96378 6.78678 10.3692 6.63844C10.7747 6.49011 11.2062 6.42636 11.6372 6.45113C12.4153 6.38457 13.1892 6.6192 13.7992 7.10663C14.0727 7.34831 14.2882 7.64858 14.4295 7.98508C14.5709 8.32157 14.6346 8.68563 14.6157 9.05013C14.6204 9.64642 14.4216 10.2265 14.0522 10.6946V10.6831Z" fill="#262629"/>
+                        </svg>
+                        <div class="parameter_comparison_product_tips_context">{{ data.tips }}</div>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="parameter_comparison_product_contain" data-type="{{ data.label | handle }}">
+                    {% for value in data.value %}
+                      <div class="parameter_comparison_product_item parameter_comparison_product_{{ data.label | handle }}">
+                        {% if value.icon != blank %}
+                          {{ value.icon }}
+                        {% endif %}
+                        {% if value.text != blank %}
+                          <div class="parameter_comparison_product_text">{{ value.text }}</div>
+                        {% endif %}
+                        {% if value.title != blank %}
+                          <div class="parameter_comparison_product_title">{{ value.title }}</div>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="parameter_comparison_contain pc_show">
+    {% for product in compare_products limit: 1 %}
+      <div
+        class="parameter_comparison_product parameter_comparison_product_showtitle"
+        data-value="title"
+      >
+        {% for item in product.metafields.custom.product_parameter_comparison.value.common_data.value %}
+          <div class="parameter_comparison_product_card" data-type="{{ item.title | handle }}" open>
+            <div class="parameter_comparison_product_head">
+              <div class="parameter_comparison_product_head_title">{{ item.title }}</div>
+            </div>
+            <div class="parameter_comparison_product_body">
+              {% for data in item.data %}
+                <div class="parameter_comparison_product_contain" data-type="{{ data.label | handle }}">
+                  <div class="parameter_comparison_product_item parameter_comparison_product_{{ data.label | handle }}">
+                    <div class="parameter_comparison_product_label">
+                      {{ data.label }}
+                      {% if data.tips != blank %}
+                        <div class="parameter_comparison_product_tips">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="23"
+                            height="23"
+                            viewBox="0 0 23 23"
+                            fill="none"
+                          >
+                            <path d="M11.4992 1.82812C9.62277 1.82812 7.78846 2.38456 6.22825 3.42706C4.66804 4.46956 3.452 5.9513 2.73392 7.68492C2.01583 9.41853 1.82795 11.3261 2.19402 13.1665C2.5601 15.0069 3.4637 16.6974 4.79055 18.0243C6.1174 19.3512 7.80791 20.2547 9.6483 20.6208C11.4887 20.9869 13.3963 20.799 15.1299 20.0809C16.8635 19.3628 18.3453 18.1468 19.3878 16.5866C20.4303 15.0264 20.9867 13.1921 20.9867 11.3156C20.9867 8.79938 19.9871 6.3862 18.2079 4.60695C16.4286 2.8277 14.0155 1.82813 11.4992 1.82812ZM12.0972 15.9731C11.9077 16.152 11.6564 16.2509 11.3957 16.2491C11.2654 16.2517 11.1359 16.2275 11.0152 16.178C10.8946 16.1286 10.7853 16.0549 10.6942 15.9616C10.6018 15.8723 10.5286 15.765 10.4792 15.6463C10.4297 15.5277 10.4051 15.4002 10.4067 15.2716C10.4014 15.1426 10.4244 15.014 10.4741 14.8948C10.5238 14.7756 10.5989 14.6687 10.6942 14.5816C10.7863 14.4904 10.896 14.4189 11.0166 14.3714C11.1372 14.324 11.2662 14.3016 11.3957 14.3056C11.5271 14.3007 11.6581 14.3226 11.7807 14.3701C11.9033 14.4175 12.0149 14.4895 12.1087 14.5816C12.2041 14.6687 12.2792 14.7756 12.3288 14.8948C12.3785 15.014 12.4015 15.1426 12.3962 15.2716C12.3982 15.4047 12.3726 15.5367 12.3212 15.6593C12.2697 15.782 12.1935 15.8928 12.0972 15.9846V15.9731ZM14.0522 10.6831C13.6891 11.0571 13.3051 11.4104 12.9022 11.7411C12.6658 11.9313 12.4735 12.1707 12.3387 12.4426C12.1899 12.7178 12.1146 13.0268 12.1202 13.3396V13.5696H10.6827V13.3396C10.6666 12.8941 10.7614 12.4515 10.9587 12.0516C11.3682 11.405 11.881 10.8301 12.4767 10.3496L12.7067 10.0966C12.942 9.81967 13.0758 9.47084 13.0862 9.10763C13.0795 8.71241 12.9234 8.3344 12.6492 8.04962C12.4942 7.909 12.3126 7.80092 12.115 7.73179C11.9175 7.66265 11.7081 7.63386 11.4992 7.64713C11.2473 7.62606 10.9941 7.66874 10.763 7.77124C10.5318 7.87373 10.3302 8.03275 10.1767 8.23363C9.91072 8.64292 9.78184 9.12623 9.80872 9.61363H8.42872C8.40964 9.19283 8.47512 8.77249 8.62128 8.37744C8.76745 7.98239 8.99134 7.62066 9.27972 7.31362C9.593 7.01656 9.96378 6.78678 10.3692 6.63844C10.7747 6.49011 11.2062 6.42636 11.6372 6.45113C12.4153 6.38457 13.1892 6.6192 13.7992 7.10663C14.0727 7.34831 14.2882 7.64858 14.4295 7.98508C14.5709 8.32157 14.6346 8.68563 14.6157 9.05013C14.6204 9.64642 14.4216 10.2265 14.0522 10.6946V10.6831Z" fill="#262629"/>
+                          </svg>
+                          <div class="parameter_comparison_product_tips_context">{{ data.tips }}</div>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    {% for product in compare_products limit: 2 %}
+      {% assign is_last = false %}
+      {% if forloop.last %}
+        {% assign is_last = true %}
+      {% endif %}
+      <div
+        class="parameter_comparison_product"
+        data-value="{{ product.metafields.custom.series_name.value }}"
+      >
+        {% for item in product.metafields.custom.product_parameter_comparison.value.common_data.value %}
+          <div class="parameter_comparison_product_card" data-type="{{ item.title | handle }}" open>
+            <div class="parameter_comparison_product_head">
+              {% if is_last %}
+                <div class="parameter_comparison_product_head_icon" close>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path d="M0 11L22 11" stroke="#262629" stroke-width="2"/>
+                    <path d="M11.0039 0L11.0039 22" stroke="#262629" stroke-width="2"/>
+                  </svg>
+                </div>
+                <div class="parameter_comparison_product_head_icon" open>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="4" viewBox="0 0 28 4" fill="none">
+                    <path d="M0 2L28 2" stroke="#C9C9C9" stroke-width="3"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+            <div class="parameter_comparison_product_body">
+              {% for data in item.data %}
+                <div class="parameter_comparison_product_contain" data-type="{{ data.label | handle }}">
+                  {% for value in data.value %}
+                    <div class="parameter_comparison_product_item parameter_comparison_product_{{ data.label | handle }}">
+                      {% if value.icon != blank %}
+                        {{ value.icon }}
+                      {% endif %}
+                      {% if value.text != blank %}
+                        <div class="parameter_comparison_product_text">{{ value.text }}</div>
+                      {% endif %}
+                      {% if value.title != blank %}
+                        <div class="parameter_comparison_product_title">{{ value.title }}</div>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+  {% if show_select %}
+    <div class="parameter_comparison_contain_other">
+      {% for product in compare_products offset: 2 %}
+        <div class="parameter_comparison_product" data-value="{{ product.metafields.custom.series_name.value }}">
+          <img
+            src="{{ product.featured_image | image_url: width:280 }}"
+            alt="{{ product.metafields.custom.series_name }}"
+            class="parameter_comparison_product_featured_image"
+          >
+          <div class="parameter_comparison_product_series_name">{{ product.metafields.custom.series_name }}</div>
+          <div class="parameter_comparison_product_contain" data-type="product-info">
+            <div class="parameter_comparison_product_description">{{ product.description | strip_html }}</div>
+          </div>
+          <div class="parameter_comparison_product_standard_price">
+            {{ 'products.product.text.standard_price' | t }}
+          </div>
+          <div class="parameter_comparison_product_price">
+            {{ 'products.product.text.from' | t }}
+            {{- product.price | money_without_trailing_zeros }}
+          </div>
+          <div class="parameter_comparison_product_variants_count">
+            {{ 'products.product.text.available_variants' | t: variants_count: product.variants_count }}
+          </div>
+          {% if show_btns %}
+            <a class="parameter_comparison_product_shop_now" href="{{ product.url }}">
+              {{- 'products.product.text.shop_now' | t -}}
+            </a>
+            <a
+              class="parameter_comparison_product_learn_more"
+              href="/pages/{{ product.metafields.custom.series_name | handle }}-features"
+            >
+              {{- 'products.product.text.learn_more' | t -}}
+            </a>
+          {% endif %}
+          <div class="parameter_comparison_product_between_line"></div>
+          {% for item in product.metafields.custom.product_parameter_comparison.value.common_data.value %}
+            <div class="parameter_comparison_product_label">{{ item.label }}</div>
+            <div class="parameter_comparison_product_contain" data-type="{{ item.label | handle }}">
+              {% for value in item.value %}
+                <div class="parameter_comparison_product_item parameter_comparison_product_{{ item.label | handle }}">
+                  {% if value.image != '' %}
+                    <img
+                      src="{{ value.image }}"
+                      alt="{{ value.title }}"
+                    >
+                  {% endif %}
+                  <div class="parameter_comparison_product_title">{{ value.title }}</div>
+                  {% if value.text != '' %}
+                    <div class="parameter_comparison_product_text">{{ value.text }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="parameter_comparison_product_between_line"></div>
+          {% endfor %}
+          {% if product.metafields.custom.product_parameter_comparison.value.list_data != blank %}
+            {% assign list_data = product.metafields.custom.product_parameter_comparison.value.list_data.value %}
+            <div class="parameter_comparison_product_label">{{ list_data.label }}</div>
+            <div class="parameter_comparison_product_item parameter_comparison_product_{{ list_data.label | handle }}">
+              {% for value in list_data.value %}
+                <div class="parameter_comparison_product_title">{{ value }}</div>
+              {% endfor %}
+            </div>
+            <div class="parameter_comparison_product_between_line"></div>
+          {% endif %}
+          {% if product.metafields.custom.product_parameter_comparison.value.img_data != blank and show_img_data %}
+            {% assign img_data = product.metafields.custom.product_parameter_comparison.value.img_data.value %}
+            <div class="parameter_comparison_product_label">{{ img_data.label }}</div>
+            <div class="parameter_comparison_product_item_flex">
+              <div class="parameter_comparison_product_item parameter_comparison_product_{{ img_data.label | handle }}">
+                <img
+                  src="{{ img_data.value }}"
+                  alt="{{ product.metafields.custom.series_name }}"
+                >
+              </div>
+            </div>
+            <a
+              class="parameter_comparison_product_shop_now parameter_comparison_product_shop_now_{{ img_data.label | handle }}"
+              href="{{ product.url }}"
+            >
+              {{- 'products.product.text.shop_now' | t -}}
+            </a>
+            <a
+              class="parameter_comparison_product_learn_more"
+              href="/pages/{{ product.metafields.custom.series_name | handle }}-features"
+            >
+              {{- 'products.product.text.learn_more' | t -}}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  const is_modal = JSON.parse({{ is_modal | json }})
+  const show_select = JSON.parse({{ show_select | json }})
+
+  if(is_modal && window.innerWidth > 768) {
+    const stickyEl = document.querySelectorAll('.parameter_comparison_product_contain[data-type="product-name"]');
+    const sentinel = document.querySelector('.parameter_comparison_product_series_name_sentinel');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          stickyEl.forEach(item => item.classList.add('is-sticky'))
+        } else {
+          stickyEl.forEach(item => item.classList.remove('is-sticky'))
+        }
+      },
+      { root: null, threshold: 0,}
+    );
+
+    observer.observe(sentinel);
+  }
+
+  function unifyComparisonHeightsByType(el) {
+    const container = document.querySelector(el);
+    const items = container.querySelectorAll('.parameter_comparison_product_contain');
+    const typeMap = {};
+
+    // 初始化分组
+    items.forEach((item) => {
+      const type = item.getAttribute('data-type');
+      if (!typeMap[type]) typeMap[type] = [];
+      item.style.height = 'auto'; // 重置高度避免干扰
+      typeMap[type].push(item);
+    });
+
+    // 遍历每组，找出最大高度并统一设置
+    Object.values(typeMap).forEach((group) => {
+      let maxHeight = 0;
+
+      group.forEach((el) => {
+        const height = el.offsetHeight;
+        if (height > maxHeight) maxHeight = height;
+      });
+
+      group.forEach((el) => {
+        el.style.height = `${maxHeight}px`;
+      });
+    });
+  }
+
+  const target = document.querySelector('.parameter_comparison');
+
+  if (target) {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            unifyComparisonHeightsByType('.parameter_comparison_contain.pc_show');
+            observer.unobserve(target);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(target);
+  }
+
+  const modalTarget = document.querySelector('.parameter_comparison_contain_twoline');
+
+  if (modalTarget) {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            unifyComparisonHeightsByType('.parameter_comparison_contain_twoline');
+            observer.unobserve(target);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(modalTarget);
+  }
+
+  function updateComparisonProduct(selectId, index) {
+    const select = document.getElementById(selectId);
+    const selectedValue = select.value;
+
+    const containerMain = document.querySelector('.parameter_comparison_contain');
+    const containerOther = document.querySelector('.parameter_comparison_contain_other');
+
+    const currentMainItem = containerMain.querySelectorAll('.parameter_comparison_product')[index];
+    const newItemInOther = containerOther.querySelector(`.parameter_comparison_product[data-value="${selectedValue}"]`);
+
+    if (!currentMainItem || !newItemInOther || currentMainItem.dataset.value === selectedValue) return;
+
+    // 克隆新旧节点
+    const newItemClone = newItemInOther.cloneNode(true);
+    const oldItemClone = currentMainItem.cloneNode(true);
+    if (index === 0) {
+      newItemClone.classList.add('parameter_comparison_product_showtitle');
+    } else {
+      newItemClone.classList.remove('parameter_comparison_product_showtitle');
+    }
+    // 替换目标位置的卡片
+    containerMain.replaceChild(newItemClone, currentMainItem);
+    containerOther.replaceChild(oldItemClone, newItemInOther);
+
+    // 替换后同步高度
+    unifyComparisonHeightsByType();
+  }
+
+  if(show_select) {
+    const selectOne = document.getElementById('productSelectOne');
+    const selectTwo = document.getElementById('productSelectTwo');
+
+    function updateDisabledOptions() {
+      const valueOne = selectOne.value;
+      const valueTwo = selectTwo.value;
+
+      // 清空所有 disabled
+      [...selectOne.options].forEach((opt) => (opt.disabled = false));
+      [...selectTwo.options].forEach((opt) => (opt.disabled = false));
+
+      // 禁用对方选中的值
+      [...selectOne.options].forEach((opt) => {
+        if (opt.value === valueTwo) opt.disabled = true;
+      });
+      [...selectTwo.options].forEach((opt) => {
+        if (opt.value === valueOne) opt.disabled = true;
+      });
+    }
+
+    // 初始化
+    updateDisabledOptions();
+
+    // 监听选择器变化
+    selectOne.addEventListener('change', () => {
+      updateComparisonProduct('productSelectOne', 0); // 替换第一个
+      updateDisabledOptions();
+    });
+
+    selectTwo.addEventListener('change', () => {
+      updateComparisonProduct('productSelectTwo', 1); // 替换第二个
+      updateDisabledOptions();
+    });
+  }
+
+  document.querySelectorAll(".parameter_comparison_product_head").forEach(item => {
+    item.addEventListener("click", () => {
+      const contain = item.closest(".parameter_comparison_contain")
+      const parent = item.closest(".parameter_comparison_product_card")
+      const type = parent.getAttribute("data-type")
+      contain.querySelectorAll(`.parameter_comparison_product_card[data-type="${type}"]`).forEach(el => el.toggleAttribute("open"))
+    })
+  })
+
+  if(window.innerWidth < 768) {
+    document.querySelectorAll(".parameter_comparison_product_tips").forEach(item => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        item.toggleAttribute("open")
+      })
+    })
+    document.addEventListener("click", (e) => {
+      document.querySelectorAll(".parameter_comparison_product_tips").forEach(item => {
+        if(item.hasAttribute("open")) {
+          item.removeAttribute("open")
+        }
+      })
+    });
+    const stickyEl = document.querySelectorAll('.parameter_comparison_product_contain[data-type="product-name"]');
+    const sentinel = document.querySelector('.parameter_comparison_product_series_name_sentinel');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          stickyEl.forEach(item => item.classList.add('is-sticky'))
+        } else {
+          stickyEl.forEach(item => item.classList.remove('is-sticky'))
+        }
+      },
+      { root: null, threshold: 0,}
+    );
+
+    observer.observe(sentinel);
+
+    if(!is_modal){
+      const header = document.querySelector('.section-header-mobile');
+      const targets = document.querySelectorAll('.parameter_comparison_product_contain[data-type="product-name"]');
+
+      if (header && targets.length) {
+        const observer = new MutationObserver((mutationsList) => {
+          for (let mutation of mutationsList) {
+            if (mutation.attributeName === 'class') {
+              const hasHidden = header.classList.contains('shopify-section-header-hidden');
+              
+              if (!hasHidden) {
+                targets.forEach(item => item.classList.add('is-sticky-top'));
+              } else {
+                targets.forEach(item => item.classList.remove('is-sticky-top'));
+              }
+            }
+          }
+        });
+
+        observer.observe(header, { attributes: true });
+      }
+    }
+  }
+</script>

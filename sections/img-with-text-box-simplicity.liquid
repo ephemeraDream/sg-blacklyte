@@ -1,0 +1,296 @@
+{{ 'section-img-with-text-box-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="img_with_text_box_simplicity"
+  id="{{ section.id }}"
+>
+  <div id="feature_watch">
+    <div class="img_with_text_box_simplicity_maintitle">{{ section.settings.main_title }}</div>
+    <div class="img_with_text_box_simplicity_contain">
+      {% for block in section.blocks %}
+        <div class="img_with_text_box_simplicity_contain_item pc_show">
+          <div class="img_with_text_box_simplicity_filebox">
+            {% if block.settings.file_type == 'image' %}
+              {% assign srcset_1x = block.settings.file_image | image_url: width: 353 | append: ' 1x, ' %}
+              {% assign srcset_2x = block.settings.file_image | image_url: width: 335 | append: ' 2x, ' %}
+              {% assign srcset_3x = block.settings.file_image | image_url: width: 335 | append: ' 3x, ' %}
+              {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+              {{-
+                block.settings.file_image
+                | image_url: width: block.settings.file_image.width
+                | image_tag:
+                  sizes: '(min-width:769px) 18vw, 100vw',
+                  srcset: srcset_init,
+                  alt: block.settings.title,
+                  class: 'img_with_text_box_simplicity_filebox_image'
+              -}}
+              {% comment %}
+                <img
+                  class="img_with_text_box_simplicity_filebox_image"
+                  src="{{ block.settings.file_image | image_url }}"
+                  alt="{{ block.settings.title }}"
+                  loading="lazy"
+                >
+              {% endcomment %}
+            {% else %}
+              {% assign poster_image = blank %}
+              {% if block.settings.cover_image != blank %}
+                {% assign poster_image = block.settings.cover_image | image_url: width: 353 %}
+              {% endif %}
+              {% if block.settings.video_url != blank %}
+                <video
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="none"
+                  class="img_with_text_box_simplicity_filebox_video"
+                  {% if poster_image != blank %}
+                    poster="{{ poster_image }}"
+                  {% endif %}
+                  src="{{ block.settings.video_url }}"
+                ></video>
+              {% else %}
+                {{
+                  block.settings.url_upload
+                  | video_tag:
+                    class: 'img_with_text_box_simplicity_filebox_video',
+                    autoplay: true,
+                    loop: true,
+                    muted: true,
+                    playsinline: true,
+                    preload: 'none',
+                    poster: poster_image
+                }}
+              {% endif %}
+              {% comment %}
+                <div class="img_with_text_box_simplicity_filebox_playicon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <circle cx="24" cy="24" r="24" fill="#BABABA" fill-opacity="0.3"/>
+                    <path d="M32.2872 23.9231L23.122 17.4534C22.857 17.2664 22.4913 17.4559 22.4913 17.7802L22.4913 30.7194C22.4913 31.0437 22.857 31.2332 23.122 31.0462L32.2872 24.5767C32.5129 24.4173 32.5129 24.0825 32.2872 23.9231Z" fill="#D9D9D9"/>
+                  </svg>
+                </div>
+              {% endcomment %}
+            {% endif %}
+          </div>
+          <div class="img_with_text_box_simplicity_info">
+            <div class="img_with_text_box_simplicity_subtitle">{{ block.settings.sub_title }}</div>
+            <div class="img_with_text_box_simplicity_title">{{ block.settings.title }}</div>
+            <div class="img_with_text_box_simplicity_desc">{{ block.settings.description }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="img_with_text_box_simplicity_contain swiper pmd_show{% if section.settings.mobile_display == "grid" %} img_with_text_box_simplicity_contain_grid{% endif %}">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="img_with_text_box_simplicity_contain_item swiper-slide">
+            <div class="img_with_text_box_simplicity_filebox">
+              {% if block.settings.file_type == 'image' %}
+                {% assign srcset_1x = block.settings.file_image | image_url: width: 353 | append: ' 1x, ' %}
+                {% assign srcset_2x = block.settings.file_image | image_url: width: 335 | append: ' 2x, ' %}
+                {% assign srcset_3x = block.settings.file_image | image_url: width: 335 | append: ' 3x, ' %}
+                {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+                {{-
+                  block.settings.file_image
+                  | image_url: width: block.settings.file_image.width
+                  | image_tag:
+                    sizes: '(min-width:769px) 18vw, 100vw',
+                    srcset: srcset_init,
+                    alt: block.settings.title,
+                    class: 'img_with_text_box_simplicity_filebox_image'
+                -}}
+                {% comment %}
+                  <img
+                    class="img_with_text_box_simplicity_filebox_image"
+                    src="{{ block.settings.file_image | image_url }}"
+                    alt="{{ block.settings.title }}"
+                    loading="lazy"
+                  >
+                {% endcomment %}
+              {% else %}
+                {% assign poster_image = blank %}
+                {% if block.settings.cover_image != blank %}
+                  {% assign poster_image = block.settings.cover_image | image_url: width: 353 %}
+                {% endif %}
+                {% if block.settings.video_url != blank %}
+                  <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="none"
+                    class="img_with_text_box_simplicity_filebox_video"
+                    {% if poster_image != blank %}
+                      poster="{{ poster_image }}"
+                    {% endif %}
+                    src="{{ block.settings.video_url }}"
+                  ></video>
+                {% else %}
+                  {{
+                    block.settings.url_upload
+                    | video_tag:
+                      class: 'img_with_text_box_simplicity_filebox_video',
+                      autoplay: true,
+                      loop: true,
+                      muted: true,
+                      playsinline: true,
+                      preload: 'none',
+                      poster: poster_image
+                  }}
+                {% endif %}
+                {% comment %}
+                  <div class="img_with_text_box_simplicity_filebox_playicon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                      <circle cx="24" cy="24" r="24" fill="#BABABA" fill-opacity="0.3"/>
+                      <path d="M32.2872 23.9231L23.122 17.4534C22.857 17.2664 22.4913 17.4559 22.4913 17.7802L22.4913 30.7194C22.4913 31.0437 22.857 31.2332 23.122 31.0462L32.2872 24.5767C32.5129 24.4173 32.5129 24.0825 32.2872 23.9231Z" fill="#D9D9D9"/>
+                    </svg>
+                  </div>
+                {% endcomment %}
+              {% endif %}
+            </div>
+            <div class="img_with_text_box_simplicity_info">
+              <div class="img_with_text_box_simplicity_subtitle">{{ block.settings.sub_title }}</div>
+              <div class="img_with_text_box_simplicity_title">{{ block.settings.title }}</div>
+              <div class="img_with_text_box_simplicity_desc">{{ block.settings.description }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="swiper-pagination pmd_show"></div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const mobile_display = '{{ section.settings.mobile_display }}';
+    const playIconList = document.querySelectorAll(
+      '#{{ section.id }} .img_with_text_box_simplicity_filebox_playicon svg'
+    );
+
+    if (playIconList.length) {
+      playIconList.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const container = e.target.closest('.img_with_text_box_simplicity_contain_item');
+          const video = container.querySelector('.img_with_text_box_simplicity_filebox_video');
+          if (video.paused) {
+            video.style.zIndex = 2;
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      });
+    }
+
+    if (mobile_display == 'swiper' && window.innerWidth <= 768) {
+      new Swiper('.img_with_text_box_simplicity_contain.pmd_show', {
+        loop: true,
+        initialSlide: 1,
+        spaceBetween: 20,
+        pagination: {
+          el: '.img_with_text_box_simplicity .swiper-pagination',
+        },
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "file box simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "title"
+    },
+    {
+      "type": "radio",
+      "id": "mobile_display",
+      "label": "mobile display",
+      "default": "swiper",
+      "options": [
+        {
+          "value": "swiper",
+          "label": "swiper"
+        },
+        {
+          "value": "grid",
+          "label": "grid"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "file_with_text",
+      "name": "file with text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "text",
+          "id": "sub_title",
+          "label": "sub title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "description"
+        },
+        {
+          "type": "radio",
+          "id": "file_type",
+          "label": "file type",
+          "default": "image",
+          "options": [
+            {
+              "value": "image",
+              "label": "image"
+            },
+            {
+              "value": "video",
+              "label": "video"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "file_image",
+          "label": "file image"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "cover image"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "video url"
+        },
+        {
+          "type": "video",
+          "id": "url_upload",
+          "label": "video upload"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "file box simplicity"
+    }
+  ]
+}
+{% endschema %}

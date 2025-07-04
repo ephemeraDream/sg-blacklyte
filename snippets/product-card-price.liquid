@@ -1,0 +1,51 @@
+<style>
+  .product_card_price .price__discount {
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #262629;
+  }
+
+  .product_card_price .price__last {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+    color: #76767f;
+  }
+</style>
+
+<div class="product_card_price">
+  <div class="price__save">
+    <dd
+      class="price__discount"
+      data-value="
+        {{-
+          product.selected_or_first_available_variant.price
+          | minus: product.selected_or_first_available_variant.metafields.custom.discount_price.value
+          | money_without_trailing_zeros
+        -}}
+      "
+    ></dd>
+    <dd
+      class="price__last"
+      data-value="{{- product.selected_or_first_available_variant.price | money_without_trailing_zeros -}}"
+    ></dd>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const price_list = document.querySelectorAll('.product_card_price');
+    price_list.forEach((item) => {
+      const price__discount = item.querySelector('.price__discount');
+      const price__last = item.querySelector('.price__last');
+      price__discount.innerHTML = price__discount.getAttribute('data-value');
+      price__last.innerHTML = price__last.getAttribute('data-value');
+    });
+  });
+</script>

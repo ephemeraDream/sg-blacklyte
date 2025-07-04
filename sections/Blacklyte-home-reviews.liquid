@@ -1,0 +1,306 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.css?v=1702624065"
+>
+<style>
+  .blacklyte-review{
+    background: #f2f2f2;
+    padding: 128px 0px 40px;
+    position: relative;
+    user-select: none;
+  }
+  .blacklyte-review img{
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+  }
+  .review-title{
+    margin: 0;
+    margin-bottom: 49px;
+    color: #000;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .blacklyte-review .inner{
+    background: #fff;
+    padding: 16px 16px 32px;
+    border-radius: 16px;
+  }
+  .blacklyte-review .img-box{
+    margin-bottom: 20px;
+  }
+  .blacklyte-review .info-title{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    margin-bottom: 8px;
+    color: #000;
+  }
+  .blacklyte-review .info-text{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    min-height: calc(14px* 1.4* 3);
+    color:#2c2c2c;
+  }
+  .blacklyte-review .info-star{
+    display: flex;
+    gap: 2px;
+  }
+  .blacklyte-review .info-star .star--icon{
+    font-size: 24px;
+    display: inline-block;
+    position: relative;
+  }
+  .blacklyte-review .info-star .star--icon::before{
+    color: #ffc107;
+    content: "\2605";
+  }
+  .blacklyte-review .info-name{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color:#000;
+    
+  }
+  .blacklyte-review .swiper-pagination{
+    bottom: 0;
+  }
+  .blacklyte-review .swiper-pagination .swiper-pagination-bullet{
+    width: 24px;
+    height: 4px;
+    display: inline-block;
+    border-radius: 16px;
+  }
+  .blacklyte-review .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: #000000;
+  }
+  .blacklyte-review .btn{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .blacklyte-review .btn svg{
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .button-prev{
+    left: -60px;
+  }
+  .button-next{
+    right: -60px;
+  }
+  @media (min-width: 2000px) {
+    .review-title{
+      font-size:2.08vw;
+    }
+    .blacklyte-review .info-title{
+      font-size:0.84vw;
+    }
+    .blacklyte-review .info-text{
+      font-size:0.72vw;
+    }
+    .blacklyte-review .info-name{
+      font-size:0.72vw;
+    }
+  }
+  @media only screen and (max-width: 1265px){
+    .blacklyte-review{
+      padding: 128px 30px 40px;
+    }
+    .button-prev{
+      left: -50px;
+    }
+    .button-next{
+      right: -50px;
+    }
+  }
+  @media only screen and (max-width: 1024px){
+    .blacklyte-review .btn{
+      display: none;
+    }
+    .blacklyte-review{
+      padding: 72px 15px 32px;
+    }
+    .review-wrapper{
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .review-title{
+      margin-bottom: 32px;
+    }
+  }
+  @media only screen and (max-width: 991px){
+    .blacklyte-review{
+      padding: 72px 10px 32px;
+      padding-right: 0;
+    }
+    
+    .review-title{
+      font-size: 28px;
+      line-height:1.28;
+    }
+  }
+  @media only screen and (max-width: 550px){
+  }
+</style>
+
+<section class="blacklyte-review">
+  <div class="container-1570 review-wrapper">
+    {% if section.settings.title != blank %}
+      <h3 class="review-title">{{ section.settings.title }}</h3>
+    {% endif %}
+    <div style="position: relative;">
+      <div class="review-list swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="item swiper-slide">
+              <div class="inner">
+                <div class="img-box">
+                  <img src="{{ block.settings.avatar | img_url:'master' }}" loading="lazy">
+                </div>
+                <div class="info-box">
+                  <h3 class="info-title">{{ block.settings.heading }}</h3>
+                  <div class="info-star">
+                    {% assign num = block.settings.rating %}
+                    {% for i in (1..num) limit:5 %}
+                      <span class="star--icon "></span>
+                    {% endfor %}
+                  </div>
+                  <p class="info-text">{{ block.settings.Content }}</p>
+                  <div class="info-name">
+                    <span>
+                      {{ block.settings.name }}
+                    </span>
+                    <span>
+                      <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/check-circle.png?v=1724919030" loading="lazy">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="btn button-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">  <path d="M21.667 10.5881L11.7831 17.7399C11.742 17.7695 11.7086 17.8084 11.6855 17.8535C11.6624 17.8985 11.6504 17.9484 11.6504 17.9991C11.6504 18.0497 11.6624 18.0996 11.6855 18.1446C11.7086 18.1897 11.742 18.2286 11.7831 18.2582L21.667 25.41C21.88 25.5627 22.1773 25.41 22.1773 25.1488V23.2645C22.1773 22.8546 21.9804 22.4649 21.6469 22.2238L15.805 18.0011L21.6469 13.7743C21.9804 13.5332 22.1773 13.1475 22.1773 12.7337V10.8493C22.1773 10.5881 21.88 10.4354 21.667 10.5881Z" fill="currentColor" fill-opacity="0.65"/></svg>
+      </div>
+      <div class="btn button-next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">  <path d="M14.333 10.5881L24.2169 17.7399C24.258 17.7695 24.2914 17.8084 24.3145 17.8535C24.3376 17.8985 24.3496 17.9484 24.3496 17.9991C24.3496 18.0497 24.3376 18.0996 24.3145 18.1446C24.2914 18.1897 24.258 18.2286 24.2169 18.2582L14.333 25.41C14.12 25.5627 13.8227 25.41 13.8227 25.1488V23.2645C13.8227 22.8546 14.0196 22.4649 14.3531 22.2238L20.195 18.0011L14.3531 13.7743C14.0196 13.5332 13.8227 13.1475 13.8227 12.7337V10.8493C13.8227 10.5881 14.12 10.4354 14.333 10.5881Z" fill="currentColor" fill-opacity="0.65"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</section>
+
+<script src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.js?v=1702624149"></script>
+<script>
+    let review_swiper = new Swiper('.blacklyte-review .review-list',{
+      // loop: true,
+      grabCursor : true,
+      slidesPerView : 1.2,
+      // slidesPerGroup : 3,
+      spaceBetween : 16,
+      pagination: {
+        el: '.blacklyte-review .swiper-pagination',
+        clickable :true,
+      },
+      navigation: {
+        nextEl: '.blacklyte-review .swiper-button-next',
+        prevEl: '.blacklyte-review .swiper-button-prev',
+      },
+      breakpoints: { 
+        320: {  //当屏幕宽度大于等于320
+          slidesPerView: 1.2,
+        },
+        992: {  //当屏幕宽度大于等于768 
+          slidesPerView: 3,
+        },
+        1280: {  //当屏幕宽度大于等于1280
+          slidesPerView: 4,
+        }
+      }
+    })
+
+
+    $('.blacklyte-review .button-prev').click(function(){
+      review_swiper.slidePrev();
+    })
+    $('.blacklyte-review .button-next').click(function(){
+      review_swiper.slideNext();
+    })
+    
+</script>
+
+{% schema %}
+{
+  "name": "Blacklyte Home Reviews",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section title",
+      "default": "Read What Our Customers Have to Say About BLACKLYTE"
+    }
+  ],
+  "blocks": [
+      {
+        "type": "review",
+        "name": "review",
+        "settings": [
+          {
+              "type" : "image_picker",
+              "id" : "avatar",
+              "label" : "Avatar"
+          },
+          {
+              "type" : "text",
+              "id" : "heading",
+              "label" : "Heading",
+              "default" : "Awesome..."
+          },
+          {
+            "type": "number",
+            "id": "rating",
+            "label": "Rating (Star):",
+            "info": "More than 5 defaults to 5",
+            "default": 5
+          },
+          {
+              "type" : "text",
+              "id" : "name",
+              "label" : "name"
+          },
+          {
+              "type": "textarea",
+              "id": "Content",
+              "label": "Content",
+              "default": "Nam tempus turpis at metus scelerisque placerat nulla deumantos delo sollicitudin delos felis. Pellentesque diam dolor an elementum et lobortis at mollis ut risus. Curabitur semper sagittis mi condimentum..."
+          }
+        ]
+      } 
+  ],
+  "presets": [
+    {
+      "name": "Blacklyte Home Reviews"
+    }
+  ]
+}
+{% endschema %}

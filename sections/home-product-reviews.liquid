@@ -1,0 +1,368 @@
+<style>
+  .blacklyte-reviews{
+    padding: 128px 0px 100px;
+    position: relative;
+    user-select: none;
+  }
+  .blacklyte-reviews .review-wrapper {
+    margin-left: 16%;
+  }
+  .blacklyte-reviews .review-wrapper .swiper-slide{
+    height: auto;
+    display: flex;
+  }
+  .blacklyte-reviews img{
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+    border-radius: 24px 24px 0 0;
+  }
+  .blacklyte-reviews .image-zoom:hover {
+    border-radius: 24px 24px 0 0;
+  }
+  .blacklyte-reviews .review-title{
+    font-family: "Roboto";
+    margin: 0;
+    margin-bottom: 50px;
+    color: #262629;
+    text-align: left;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .blacklyte-reviews .inner{
+    background: #ffffff;
+    border: 1px solid #EDEFF2;
+    border-radius: 24px;
+  }
+  .blacklyte-reviews .inner .adaptive_height{
+    margin: initial;
+  }
+
+  .blacklyte-reviews .info-box {
+    padding: 35px 20px 35px;
+  }
+  .blacklyte-reviews .flex-1{
+    flex: 1;
+  }
+  .blacklyte-reviews .info-title{
+    font-family: "Roboto";
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 15px 0;
+    color: #262629;
+  }
+  .blacklyte-reviews .info-text{
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    /* padding-bottom: 50px; */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    min-height: calc(16px * 1.4 * 3);
+    color: #76767F;
+  }
+  .blacklyte-reviews .info-star{
+    display: flex;
+    gap: 2px;
+  }
+  .blacklyte-reviews .info-star .star--icon{
+    display: inline-block;
+    position: relative;
+  }
+  .blacklyte-reviews .info-star .star--icon svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: none;
+  }
+  .blacklyte-reviews .info-name{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color:#999999;
+  }
+  .blacklyte-reviews .swiper-pagination{
+    bottom: 0;
+  }
+  .blacklyte-reviews .swiper-pagination .swiper-pagination-bullet{
+    width: 100px;
+    height: 4px;
+    display: inline-block;
+    border-radius: 0;
+    background: rgba(217, 217, 217, 1);
+  }
+  .blacklyte-reviews .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: #D9D9D9;
+  }
+  .custom-pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+    margin-right: calc(16% - 25px);
+  }
+  .blacklyte-reviews .btn{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(186, 186, 186, 0.3);
+    cursor: pointer;
+    margin-right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .blacklyte-reviews .btn.button-next svg {
+    transform: rotate(180deg);
+  }
+  .blacklyte-reviews .btn svg {
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: none;
+  }
+  .blacklyte-reviews .btn:hover svg path{
+    stroke: #429BFF;
+  }
+ 
+  @media (min-width: 768px) and (max-width: 1024px){
+    .blacklyte-reviews .info-title{
+      font-size: 1.6vw;
+    }
+    .blacklyte-reviews .info-text{
+      font-size: 1.04vw;
+    }
+    .blacklyte-reviews{
+      padding: 72px 15px 32px;
+    }
+    .blacklyte-reviews .review-wrapper{
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0;
+    }
+    .blacklyte-reviews .review-title{
+      margin-bottom: 32px;
+    }
+    .blacklyte-reviews .swiper-pagination .swiper-pagination-bullet {
+      width: 40px;
+    }
+    .custom-pagination{
+      margin-right: 0;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px){
+    .blacklyte-reviews .info-title{
+      font-size: 2.2vw;
+    }
+    .blacklyte-reviews .info-text{
+      font-size: 2vw;
+    }
+    .blacklyte-reviews{
+      padding: 72px 10px 32px;
+      padding-right: 0;
+    }
+    
+    .blacklyte-reviews .review-title{
+      font-size: 28px;
+      line-height:1.28;
+    }
+  }
+  @media(max-width: 767px) {
+    .blacklyte-reviews{
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .blacklyte-reviews .review-wrapper {
+      width: 100%;
+      margin-left: 0;
+      padding-right: 20px;
+      padding-left: 10px;
+    }
+    .blacklyte-reviews .review-title {
+      font-size: 24px;
+      max-width: 100%;
+      margin-bottom: 25px;
+    }
+    .blacklyte-reviews .swiper-pagination .swiper-pagination-bullet {
+      width: 40px;
+    }
+    .blacklyte-reviews .review-title{
+      font-size: 24px;
+      line-height: 1.3;
+    }
+    .blacklyte-reviews .btn {
+      margin-right: 9px;
+    }
+    .custom-pagination {
+      margin-right: 0;
+      margin-top: 15px;
+      justify-content: center;
+    }
+    .blacklyte-reviews .inner{
+      border-radius: 20px;
+    }
+    .blacklyte-reviews img{
+      border-radius: 20px 20px 0 0;
+    }
+    .blacklyte-reviews .info-title{
+      font-size: 18px;
+    }
+    .blacklyte-reviews .info-text{
+      font-size: 14px;
+      min-height: auto;
+    }
+  }
+  @media(min-width: 1024px) and (max-width: 1900px) { }
+  @media(min-width: 1025px) and (max-width: 1480px){
+    .blacklyte-reviews .review-wrapper{
+      margin-left: var(--margin-left-1);
+    }
+    .custom-pagination{
+      margin-right: calc(var(--margin-left-1) - 25px);
+    }
+  }
+</style>
+
+<section class="blacklyte-reviews">
+  <div class="container-full review-wrapper">
+    {% if section.settings.title != blank %}
+      <div class="review-title">{{ section.settings.title }}</div>
+    {% endif %}
+    <div style="position: relative;">
+      <div class="review-list swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="item swiper-slide">
+              <div class="inner">
+                <div class="img-box adaptive_height image-zoom" style="padding-top: {% unless block.settings.avatar.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.avatar.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.avatar.aspect_ratio | times: 100 }}%{% endunless %}">
+                  <img src="{{ block.settings.avatar | img_url:'master' }}" loading="lazy" />
+                </div>
+                <div class="info-box">
+                  <div class="info-star">
+                    {% assign num = block.settings.rating %}
+                    {% for i in (1..num) limit:5 %}
+                      <span class="star--icon ">
+                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.04984 0.669575C7.42543 -0.0399553 8.44185 -0.0399556 8.81745 0.669575L10.4402 3.73506C10.5848 4.00826 10.8476 4.19922 11.1522 4.25234L14.5691 4.84837C15.3599 4.98633 15.674 5.953 15.1153 6.52947L12.7013 9.02009C12.4862 9.24205 12.3858 9.55103 12.4294 9.85705L12.9184 13.2909C13.0316 14.0857 12.2093 14.6831 11.4883 14.3299L8.37366 12.8037C8.09608 12.6677 7.7712 12.6677 7.49363 12.8037L4.37895 14.3299C3.65803 14.6831 2.83573 14.0857 2.94892 13.2909L3.43793 9.85705C3.48152 9.55103 3.38112 9.24205 3.16599 9.02009L0.751993 6.52947C0.193255 5.953 0.507346 4.98633 1.29821 4.84837L4.71512 4.25234C5.01964 4.19922 5.28247 4.00826 5.42709 3.73506L7.04984 0.669575Z" fill="#EE5025"/>
+                        </svg>
+                      </span>
+                    {% endfor %}
+                  </div>
+                  <div class="info-title">{{ block.settings.heading }}</div>
+                  <span class="flex-1"></span>
+                  <div class="info-text">{{ block.settings.Content }}</div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="custom-pagination">
+    <div class="btn button-prev">
+      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 13L1.14146 7.14146C1.06336 7.06336 1.06336 6.93672 1.14146 6.85862L7 1.00008" stroke="#76767F" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="btn button-next">
+      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 13L1.14146 7.14146C1.06336 7.06336 1.06336 6.93672 1.14146 6.85862L7 1.00008" stroke="#76767F" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<script>
+    let review_swiper = new Swiper('.blacklyte-reviews .review-list',{
+      loop: true,
+      grabCursor : true,
+      slidesPerView : 1.4,
+      // slidesPerGroup : 3,
+      spaceBetween : 16,
+      navigation: {
+        nextEl: '.blacklyte-reviews .swiper-button-next',
+        prevEl: '.blacklyte-reviews .swiper-button-prev',
+      },
+      breakpoints: { 
+        320: {  //当屏幕宽度大于等于320
+          slidesPerView: 1,
+        },
+        992: {  //当屏幕宽度大于等于768 
+          slidesPerView: 3,
+        },
+        1280: {  //当屏幕宽度大于等于1280
+          slidesPerView: 4,
+        }
+      }
+    })
+
+
+    $('.blacklyte-reviews .button-prev').click(function(){
+      review_swiper.slidePrev();
+    })
+    $('.blacklyte-reviews .button-next').click(function(){
+      review_swiper.slideNext();
+    })
+    
+</script>
+
+{% schema %}
+{
+  "name": "Home Product Reviews",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section title",
+      "default": "What 1,000,000+ Gamers are Saying"
+    }
+  ],
+  "blocks": [
+      {
+        "type": "review",
+        "name": "review",
+        "settings": [
+          {
+              "type" : "image_picker",
+              "id" : "avatar",
+              "label" : "Avatar"
+          },
+          {
+              "type" : "text",
+              "id" : "heading",
+              "label" : "Heading",
+              "default" : "Awesome..."
+          },
+          {
+            "type": "number",
+            "id": "rating",
+            "label": "Rating (Star):",
+            "info": "More than 5 defaults to 5",
+            "default": 5
+          },
+          {
+              "type": "textarea",
+              "id": "Content",
+              "label": "Content",
+              "default": "Nam tempus turpis at metus scelerisque placerat nulla deumantos delo sollicitudin delos felis. Pellentesque diam dolor an elementum et lobortis at mollis ut risus. Curabitur semper sagittis mi condimentum..."
+          }
+        ]
+      } 
+  ],
+  "presets": [
+    {
+      "name": "Home Product Reviews"
+    }
+  ]
+}
+{% endschema %}

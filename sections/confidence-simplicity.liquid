@@ -1,0 +1,89 @@
+{{ 'section-confidence-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div id="feature_watch">
+  <div class="confidence_simplicity">
+    <div class="confidence_simplicity_title">{{ section.settings.title }}</div>
+    <div class="confidence_simplicity_desc">{{ section.settings.description }}</div>
+    <div class="confidence_simplicity_images">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'images' -%}
+            <img
+              src="{{ block.settings.file_image | image_url }}"
+              alt="{{ section.settings.title }}"
+              class="confidence_simplicity_images_item"
+              width="{{ block.settings.file_image.width }}"
+            >
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+    <div class="confidence_simplicity_textinfo">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'textinfo' -%}
+            <div class="confidence_simplicity_textinfo_box">
+              <div class="confidence_simplicity_textinfo_box_title">{{ block.settings.title }}</div>
+              <div class="confidence_simplicity_textinfo_box_desc">{{ block.settings.description }}</div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "confidence simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "images",
+      "name": "images",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "file_image",
+          "label": "file image"
+        }
+      ]
+    },
+    {
+      "type": "textinfo",
+      "name": "textinfo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "confidence simplicity"
+    }
+  ]
+}
+{% endschema %}

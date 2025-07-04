@@ -1,0 +1,288 @@
+{% comment %}
+warranty extension 轮播展示模块
+{% endcomment %}
+<!-- Swiper CSS -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" /> -->
+
+<style>
+  .warranty_extension {
+    background-color: #151515;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .warranty_extension .module_title {
+    font-size: 40px;
+    line-height: 52px;
+    color: #fff;
+    text-align: center;
+  }
+  .warranty_extension .module_descript {
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    margin: 50px auto 0;
+    text-align: center;
+    max-width: 66%;
+  }
+  .warranty_extension .module_footer_button {
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    width: 300px;
+    line-height: 50px;
+    border: 1px solid #fff;
+    text-align: center;
+    margin: 80px auto 0;
+  }
+  .warranty_extension .module_media_lists_img {
+    width: 100%;
+    margin-top: 72px;
+  }
+  .warranty_extension .module_media_lists {
+    width: 1200px;
+    max-width: 100%;
+    margin: 70px auto 0;
+    position: relative; /* 设置为相对定位，以便绝对定位的伪元素基于这个元素 */
+    overflow: hidden; /* 隐藏溢出的部分 */
+  }
+  .swiper-slide.media_item {
+    width: 240px;
+    height: 500px;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+  }
+  .swiper-slide.media_item img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  .swiper-slide.swiper-slide-active {
+    border: 4px solid grey;
+    border-radius: 20px;
+  }
+  .module_media_lists .gradient-overlay {
+      display: block;
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(21, 21, 21, 0) 0%, #151515 58.5%);
+      pointer-events: none; /* 防止阻止对底部元素的交互 */
+      z-index: 1; /* 确保在内容之上 */
+  }
+  .module_icons_lists {
+    display: flex;
+    gap: 30px;
+  }
+  .module_icons_lists .items {
+    flex: 1;
+  }
+  .module_icons_lists .item_icon_image {
+    width: 161px;
+    height: 161px;
+    margin: 0 auto;
+  }
+  .module_icons_lists .item_icon_text {
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  /* IPhone */
+  @media(max-width: 767px) {
+    .warranty_extension {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .warranty_extension .module_title {
+      font-size: 24px;
+      line-height: 30px;
+    }
+    .warranty_extension .module_descript {
+      margin-top: 20px;
+      max-width: 100%;
+    }
+    .warranty_extension .module_media_lists {
+      margin: 50px auto 0;
+    }
+    .swiper-slide.media_item {
+      width: 100px;
+      height: 200px;
+      border-radius: 10px;
+    }
+    .module_icons_lists {
+      flex-direction: column;
+      padding: 0 50px;
+      margin-top: 30px;
+    }
+    .module_icons_lists .item_icon_image {
+      width: 80px;
+      height: 80px;
+    }
+    .module_icons_lists .item_icon_text {
+      font-size: 10px;
+      line-height: 18px;
+    }
+    .warranty_extension .module_footer_button {
+      margin: 30px auto 0;
+      font-size: 12px;
+      width: 240px;
+    }
+  }
+  
+  /* IPad */
+  @media(min-width: 768px) and (max-width: 1025px) {}
+  
+  /* small screen */
+  @media(min-width: 1026px) and (max-width: 1900px) {}
+  
+  /* large screen */
+  @media(min-width: 2000px) {}
+  
+</style>
+
+<section class="warranty_extension">
+  <div class="container-1570">
+    <div class="module_title h3">{{ section.settings.title }}</div>
+    <div class="module_descript">{{ section.settings.descripe }}</div>
+    <!-- <div class="module_media_lists swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% if block.type == 'social_media_image' %}
+            <div class="media_item swiper-slide">
+              <img width="100%" height="100%" {% render 'lazyload',preview_img: block.settings.media_image %} />
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="gradient-overlay"></div>
+    </div> -->
+    <div class="module_media_lists_img">
+      <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/warranty-extension-bgImg.png?v=1744368155" width="100%" height="100%" />
+    </div>
+    <div class="module_icons_lists">
+      {% for block in section.blocks %}
+        {% if block.type == 'icons_list' %}
+          <div class="items">
+            <div class="item_icon_image">
+              {% if block.settings.icon_image != blank %}
+                <img width="100%" height="100%" {% render 'lazyload',preview_img: block.settings.icon_image %} />
+              {% else %}
+                <img src="" />
+              {% endif %}
+            </div>
+            <div class="item_icon_text">{{ block.settings.icon_text }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <a href="{% if section.settings.btn_link != blank %}{{ section.settings.btn_link }}{% endif %}" class="module_footer_button">{{ section.settings.button }}</a>
+  </div>
+</section>
+<!-- Swiper JS -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script> -->
+
+<script>
+  // new Swiper(".module_media_lists", {
+  //   effect: "coverflow",
+  //   grabCursor: true,
+  //   centeredSlides: true,
+  //   initialSlide: 2,
+  //   slidesPerView: "auto",
+  //   loop: true,
+  //   coverflowEffect: {
+  //     rotate: 0,
+  //     stretch: 10,
+  //     depth: 100,
+  //     modifier: 1.2,
+  //     slideShadows: false,
+  //   },
+  // });
+  document.querySelector('.warranty_extension .module_footer_button').addEventListener('click', function(e) {
+    e.preventDefault();
+  
+    const currentSection = this.closest('.shopify-section');
+    const nextSection = currentSection?.nextElementSibling;
+  
+    if (nextSection) {
+      // 判断是否为移动端（你可以自定义临界值，比如 768 或 992）
+      const isMobile = window.innerWidth <= 768;
+      const offset = isMobile ? 0 : 100;
+      
+      const top = nextSection.getBoundingClientRect().top + window.pageYOffset - offset;
+  
+      window.scrollTo({
+        top,
+        behavior: 'smooth'
+      });
+    }
+  });
+
+</script>
+{% schema %}
+  {
+    "name": "Warranty Slick",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Extend Your Warranty To 5 Years For Free"
+      },
+      {
+        "type": "textarea",
+        "id": "descripe",
+        "label": "Descripe",
+        "default": "＊The Extended Warranty Policy is only available for Blacklyte gaming chairs. You must apply for an extended warranty for free within 30 days (from the date your original order was shipped)."
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Button",
+        "default": "EXTEND YOUR WARRANTY"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Button URL"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "social_media_image",
+        "name": "social media image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "media_image",
+            "label": "Media Image",
+          }
+        ]
+      },
+      {
+        "type": "icons_list",
+        "name": "Icons List",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon_image",
+            "label": "Icon Image"
+          },
+          {
+            "type": "text",
+            "id": "icon_text",
+            "label": "Icon Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Warranty Slick"
+      }
+    ]
+  }
+{% endschema %}

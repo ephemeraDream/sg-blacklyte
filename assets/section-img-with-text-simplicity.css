@@ -1,0 +1,254 @@
+.img_with_text_simplicity {
+  max-width: 75vw;
+  margin: 0 auto;
+  position: relative;
+  background-color: #000000;
+  padding: 0 15vw;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_subtitle {
+  font-family: DIN-BoldItalic;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  background: linear-gradient(91.49deg, #1C5FEE -15.55%, #9BEFFF 122.08%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_title {
+  font-family: DIN-BlackItalic;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 0.4167vw;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_desc {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.32px;
+  vertical-align: middle;
+  color: #fff;
+  margin-top: 0.9375vw;
+  opacity: .7;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_filebox {
+  position: relative;
+  height: 25.3125vw;
+  margin-top: 1.5625vw;
+  background-color: #121212;
+  border-radius: 1.25vw;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_filebox_video,
+.img_with_text_simplicity .img_with_text_simplicity_filebox_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  border-radius: 1.25vw;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_filebox_playicon svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
+.img_with_text_simplicity_left {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 0 8.33vw;
+  gap: 3.125vw;
+}
+
+.img_with_text_simplicity_left .img_with_text_simplicity_filebox,
+.img_with_text_simplicity_right .img_with_text_simplicity_filebox {
+  width: 32.29167vw;
+  height: 18.229167vw;
+  flex: 0 0 auto;
+}
+
+.img_with_text_simplicity_right {
+  display: flex;
+  align-items: center;
+  padding: 0 8.33vw;
+  gap: 3.125vw;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_append {
+  margin-top: 1.25vw;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_append_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_append_desc {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.32px;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 0.2083vw;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_append_desc a {
+  color: inherit;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_append_desc a:hover {
+  color: #fff;
+}
+
+#sturdy_stable .img_with_text_simplicity {
+  padding-left: 15vw;
+}
+
+#sturdy_stable .img_with_text_simplicity .img_with_text_simplicity_title,
+#sturdy_stable .img_with_text_simplicity .img_with_text_simplicity_desc {
+  width: 17.7083vw;
+}
+
+#sturdy_stable .img_with_text_simplicity .img_with_text_simplicity_info {
+  min-height: 34.375vw;
+  width: 23.33vw;
+  position: relative;
+  z-index: 1;
+}
+
+#sturdy_stable .img_with_text_simplicity .img_with_text_simplicity_filebox {
+  height: 34.375vw;
+  width: 45.3125vw;
+  background-color: transparent;
+  position: absolute;
+  right: 0;
+}
+
+#work_smarter .img_with_text_simplicity {
+  padding: 6.25vw 3.90625vw 4.427083vw 15vw;
+  justify-content: flex-end;
+}
+
+#work_smarter .img_with_text_simplicity_filebox {
+  height: 40.78125vw;
+  width: 40.78125vw;
+  background-color: #000;
+}
+
+#work_smarter .img_with_text_simplicity_info {
+  position: absolute;
+  z-index: 1;
+  width: 19.6875vw;
+  left: 15vw;
+}
+
+#work_smarter .img_with_text_simplicity_desc {
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .img_with_text_simplicity {
+    max-width: 100vw;
+    padding: 0 5.33vw !important;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5.33vw;
+  }
+
+  .img_with_text_simplicity .img_with_text_simplicity_subtitle {
+    font-size: 16px;
+  }
+
+  .img_with_text_simplicity .img_with_text_simplicity_title {
+    font-size: 26px;
+    line-height: 30px;
+    margin-top: 1.067vw;
+  }
+
+  .img_with_text_simplicity .img_with_text_simplicity_desc {
+    line-height: 19px;
+    margin-top: 3.2vw;
+  }
+
+  .img_with_text_simplicity .img_with_text_simplicity_filebox {
+    height: 66.67vw;
+    margin-top: 3.2vw;
+    border-radius: 3.2vw;
+  }
+
+  .img_with_text_simplicity .img_with_text_simplicity_filebox_video,
+  .img_with_text_simplicity .img_with_text_simplicity_filebox_image {
+    border-radius: 3.2vw;
+  }
+
+  /* .img_with_text_simplicity_left,
+  .img_with_text_simplicity_right {
+    display: block;
+  } */
+
+  .img_with_text_simplicity_left .img_with_text_simplicity_filebox,
+  .img_with_text_simplicity_right .img_with_text_simplicity_filebox {
+    width: 100%;
+    height: 66.67vw;
+  }
+
+  #sturdy_stable .img_with_text_simplicity .img_with_text_simplicity_title,
+  #sturdy_stable .img_with_text_simplicity .img_with_text_simplicity_desc {
+    width: 100%;
+  }
+
+  #sturdy_stable .img_with_text_simplicity .img_with_text_simplicity_info {
+    height: auto;
+    width: 100%;
+  }
+
+  #sturdy_stable .img_with_text_simplicity .img_with_text_simplicity_filebox {
+    height: 66.67vw;
+    width: 100%;
+    background-color: transparent;
+    position: relative;
+  }
+
+  #work_smarter .img_with_text_simplicity_filebox {
+    height: auto;
+    width: 100%;
+    background-color: #000;
+  }
+
+  #work_smarter .img_with_text_simplicity_filebox_image {
+    height: auto;
+  }
+
+  #work_smarter .img_with_text_simplicity_info {
+    position: relative;
+    width: 100%;
+    left: 0;
+  }
+}

@@ -1,0 +1,297 @@
+<style>
+  .blacklyte-textwithimg {
+    background: #f2f2f2;
+    padding: 128px 0;
+    margin-top: -1px;
+  }
+  .hide-pc {
+    display: none !important;
+  }
+  .hide-mb {
+    display: block !important;
+  }
+  .blacklyte-textwithimg .item {
+    display: flex;
+    gap: 47px;
+    margin: 0 0 48px;
+
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .blacklyte-textwithimg .item .img-box {
+    width: 50%;
+  }
+  .blacklyte-textwithimg .img-box video {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+  }
+  .blacklyte-textwithimg .img-box img {
+    /* border-radius: 16px; */
+    object-fit: contain;
+    height: auto;
+  }
+  .blacklyte-textwithimg .item:last-of-type {
+    margin-bottom: 0;
+  }
+  .blacklyte-textwithimg .item.to-left {
+    flex-direction: row;
+  }
+  .blacklyte-textwithimg .item.to-right {
+    flex-direction: row-reverse;
+  }
+  .blacklyte-textwithimg .item .text-box {
+    width: 50%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .blacklyte-textwithimg .item.to-left .text-box {
+    padding-right: 40px;
+  }
+  .blacklyte-textwithimg .item.to-right .text-box {
+    padding-left: 40px;
+  }
+  .blacklyte-textwithimg .item .item-title {
+    color: #000;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+    margin-bottom: 16px;
+  }
+  .blacklyte-textwithimg .item .item-title .highlight {
+    color: #5216fc;
+  }
+  .blacklyte-textwithimg .item .item-content {
+    color: #2c2c2c;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+  }
+  @media only screen and (min-width: 2000px) {
+    .blacklyte-textwithimg .item .item-title {
+      font-size: 2.08vw;
+    }
+    .blacklyte-textwithimg .item .item-content {
+      font-size: 1.04vw;
+    }
+    .blacklyte-textwithimg .img-box img {
+      /* border-radius: 1vw; */
+    }
+    .blacklyte-textwithimg .item {
+      display: flex;
+      gap: 2vw;
+      margin: 0 0 48px;
+    }
+    .blacklyte-textwithimg .item .text-box {
+      padding: 0 1vw;
+    }
+  }
+  @media only screen and (max-width: 991px) {
+    .blacklyte-textwithimg .item .item-title {
+      font-size: 28px;
+      line-height: 1.28;
+      margin: 0;
+      margin-bottom: 16px;
+    }
+    .blacklyte-textwithimg .item .item-content {
+      font-size: 16px;
+    }
+    .blacklyte-textwithimg .item.to-left .text-box {
+      padding-right: 16px;
+    }
+    .blacklyte-textwithimg .item.to-right .text-box {
+      padding-left: 16px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .blacklyte-textwithimg {
+      padding: 72px 0;
+    }
+    .hide-pc {
+      display: block !important;
+    }
+    .hide-mb {
+      display: none !important;
+    }
+    .blacklyte-textwithimg .item {
+      flex-direction: column !important;
+      margin: 0 0 72px;
+      gap: 24px;
+    }
+    .blacklyte-textwithimg .item:last-of-type {
+      margin-bottom: 0;
+    }
+    .blacklyte-textwithimg .item .img-box {
+      width: 100%;
+    }
+    .blacklyte-textwithimg .item .text-box {
+      width: 100%;
+      padding: 0 10px 20px;
+    }
+
+    .blacklyte-textwithimg .img-box img {
+      /* border-radius: 8px; */
+    }
+
+    #desk-template {
+      padding-top: 0;
+    }
+    #desk-template .review-wrapper .item {
+      position: relative;
+      padding: 30px 0;
+    }
+    #desk-template .review-wrapper .item:first-child {
+      padding-top: 50px;
+    }
+    #desk-template .review-wrapper .item .text-box {
+      position: absolute;
+      padding-bottom: 0;
+      bottom: 0px;
+    }
+    #desk-template .review-wrapper .to-right .text-box {
+      padding: 0;
+      position: relative;
+    }
+    #desk-template .review-wrapper .to-left .text-box {
+      padding: 0;
+      position: relative;
+    }
+  }
+</style>
+
+{%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.styles_max_width }}px, 100vw){% endif %}{%- endcapture -%}
+<section class="blacklyte-textwithimg" id="{{ section.settings.sectionId }}">
+  <div class="container-1570">
+    <div class="review-wrapper">
+      {% for block in section.blocks %}
+        <div class="item to-{{ block.settings.alignment }}">
+          <div class="img-box">
+            {% if block.settings.isVideo and block.settings.video != blank %}
+              {{
+                block.settings.video
+                | video_tag:
+                  class: '123',
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  controls: false,
+                  image_size: 'master'
+              }}
+            {% else %}
+              {{-
+                block.settings.img
+                | image_url: width: block.settings.img.width
+                | image_tag:
+                  is: 'loess-image',
+                  loading: 'lazy',
+                  sizes: sizes,
+                  widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                  class: 'hide-mb'
+              -}}
+              {{-
+                block.settings.img_m
+                | image_url: width: block.settings.img_m.width
+                | image_tag:
+                  is: 'loess-image',
+                  loading: 'lazy',
+                  sizes: sizes,
+                  widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                  class: 'hide-pc'
+              -}}
+            {% endif %}
+          </div>
+          <div class="text-box">
+            {% if block.settings.heading != blank %}
+              <h3 class="item-title scroll-trigger animate--slide-in">{{ block.settings.heading }}</h3>
+            {% endif %}
+            {% if block.settings.content != blank %}
+              <p class="item-content scroll-trigger animate--slide-in">{{ block.settings.content }}</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blacklyte Product TextImg",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sectionId",
+      "label": "Section ID"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "block",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "isVideo",
+          "label": "Use video",
+          "default": false
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image PC"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_m",
+          "label": "Image Mobile"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Adjustable 4D Armrests"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content",
+          "default": "Experience smooth, precise adjustments in four directions with a refined mechanism. Raise the armrests to match your desk for perfect wrist and elbow support, or slide them under when you need to lean in and focus."
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blacklyte Product TextImg"
+    }
+  ]
+}
+{% endschema %}

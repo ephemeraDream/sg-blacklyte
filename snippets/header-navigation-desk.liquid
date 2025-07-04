@@ -1,0 +1,269 @@
+{% comment %}
+  菜单desk显示的内容
+{% endcomment %}
+
+<style>
+  .header-nav-desks-sections {
+    width: 100%;
+    max-width: 100%;
+    background-color: #f2f2f2;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    transition: max-height 0.5s ease, opacity 0.4s ease;
+    position: absolute;
+    top: 59px;
+    left: 0;
+  }
+  .header-nav-desks-sections .header-nav-desk-title,
+  .header-nav-desks-sections .desk-collection-footer {
+    display: none;
+  }
+  .header-nav-desks-sections .desk-container {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 29px 0 48px;
+  }
+  .header-nav-desks-sections .desk-container .nav-desk-items {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .header-nav-desks-sections .desk-container .nav-desk-items .item-main-icon {
+    font: 500 14px 'Roboto';
+    color: #fff;
+    padding: 4px 7px;
+    background: linear-gradient(91.49deg, #1c5fee -15.55%, #9befff 122.08%), linear-gradient(0deg, #ffffff, #ffffff);
+    border-radius: 4px;
+    position: absolute;
+    right: -40px;
+    top: 0;
+  }
+  .header-nav-desks-sections .desk-container .item-main-image {
+    width: 120px;
+    height: auto;
+  }
+
+  .header-nav-desks-sections .desk-container .item-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+  }
+  .header-nav-desks-sections .desk-container .item-btns .item-btn-buynow {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .header-nav-desks-sections .desk-container .item-btns span {
+    display: inline-block;
+    /* font-family: "Poppins"; */
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .header-nav-desks-sections .desk-container .item-btns span.item-btn-buynow {
+    margin-left: 12px;
+  }
+  /* IPhone */
+  @media (max-width: 1024px) {
+    .header-nav-desks-sections {
+      height: 100vh;
+      width: 100%;
+      max-height: 100vh;
+      max-width: 100%;
+      overflow: hidden;
+      transition: 0.5s;
+      position: absolute;
+      top: 0;
+      left: 100vw;
+      opacity: 0;
+      background-color: #fff;
+      z-index: 999;
+    }
+    .header-nav-desks-sections.menu_open_desk_mb_active {
+      left: 0;
+      opacity: 1 !important;
+      max-height: 100vh !important;
+    }
+    .header-nav-desks-sections .header-nav-desk-title {
+      display: block;
+      padding: 20px;
+      border: 1px solid #f2f2f2;
+      display: flex;
+      align-items: center;
+    }
+    .header-nav-desks-sections .header-nav-desk-title.scrolled {
+      position: relative;
+      z-index: 100;
+    }
+    .header-nav-desks-sections .header-nav-desk-title svg {
+      width: 20px;
+      height: 20px;
+    }
+    .header-nav-desks-sections .header-nav-desk-title.header-nav-desk-title_sticky {
+      position: sticky !important;
+      top: 0;
+      transition: opacity 0.1s, visibility 0.2s, transform 0.2s, -webkit-transform 0.2s, top 0.2s;
+    }
+    .header-nav-desks-sections .header-nav-desk-title .desk_collections_title_text {
+      font-size: 20px;
+      color: #333333;
+      font-weight: 500;
+      flex: 1;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .header-nav-desks-sections .desk-container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 50px 20px 30px 20px;
+      width: 100%;
+    }
+    .header-nav-desks-sections .desk-container .nav-desk-items {
+      width: 50%;
+      height: auto;
+      border-radius: 10px;
+      cursor: pointer;
+      padding-bottom: 20px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .header-nav-desks-sections .desk-container .nav-desk-items .item-main-icon {
+      right: 10px;
+      font-size: 10px;
+    }
+    /* .header-nav-desks-sections .desk-collection-footer{
+      display: block;
+    }
+    .header-nav-desks-sections .desk-collection-footer .desk_collections_other_item{
+      display: flex;
+      padding: 0 30px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-nav-desks-sections .desk-collection-footer .desk_collections_other_item.desk_collections_other_addonsitems{
+      margin-top: 30px;
+    }
+    .header-nav-desks-sections .desk-collection-footer .desk_collections_other_item .name_text{
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+      letter-spacing: 0;
+    }
+    .header-nav-desks-sections .desk-collection-footer .desk_collections_other_item .icons svg{
+      width: 10px;
+      height: 10px;
+      fill: none;
+      stroke: none;
+    } */
+  }
+</style>
+<section class="header-nav-desks-sections">
+  <div class="header-nav-desk-title">
+    <span class="desk_collections_title_icon">
+      <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M26.8323 9.04137C27.4995 9.70852 27.4995 10.7902 26.8323 11.4573L17.7903 20.4993L26.8323 29.5414C27.4995 30.2085 27.4995 31.2902 26.8323 31.9573C26.1652 32.6245 25.0835 32.6245 24.4164 31.9573L14.1664 21.7073C13.4992 21.0402 13.4992 19.9585 14.1664 19.2914L24.4164 9.04137C25.0835 8.37423 26.1652 8.37423 26.8323 9.04137Z" fill="black"/>
+      </svg>
+    </span>
+    <span class="desk_collections_title_text">Desk</span>
+  </div>
+  <div class="desk-container">
+    <div class="nav-desk-items" data-url="/products/blacklyte-atlas-gaming-desk">
+      <div class="item-main-image">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/nav-desk-0.png?v=1747641815"
+          width="100%"
+          height="100%"
+        >
+      </div>
+      <div class="item-title">Atlas Desk</div>
+      <div class="item-btns">
+        <span data-href-id="/pages/atlas-desk-features" class="items_btns_learnmore">Learn More</span>
+        <span data-href-id="/products/blacklyte-atlas-gaming-desk" class="item-btn-buynow">Buy</span>
+      </div>
+    </div>
+    <div class="nav-desk-items" data-url="/products/blacklyte-atlas-lite-desk">
+      <span class="item-main-icon">{{ 'general.navigation.new_label' | t }}</span>
+      <div class="item-main-image">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/nav-desk-1.png?v=1747641815"
+          width="100%"
+          height="100%"
+        >
+      </div>
+      <div class="item-title">Atlas Lite Standing Desk</div>
+      <div class="item-btns">
+        <span data-href-id="/pages/atlas-lite-standing-desk-features" class="items_btns_learnmore">Learn More</span>
+        <span data-href-id="/products/blacklyte-atlas-lite-desk" class="item-btn-buynow">Buy</span>
+      </div>
+    </div>
+  </div>
+  <!-- chairs 和 addons 选择列 -->
+  <!--
+    <div class="desk-collection-footer">
+      <a href="/collections/gaming-chairs" class="desk_collections_other_item">
+        <span class="name_text">All Chairs</span>
+        <span class="icons">
+          <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L11 11L0.999998 21" stroke="#333333" stroke-width="2"/>
+          </svg>
+        </span>
+      </a>
+      <a href="/pages/collections#chariaddons" class="desk_collections_other_item desk_collections_other_addonsitems">
+        <span class="name_text">All Chairs Add-Ons</span>
+        <span class="icons">
+          <svg width="13" height="22" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L11 11L0.999998 21" stroke="#333333" stroke-width="2"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  -->
+</section>
+<script>
+  $('.header-nav-desks-sections .desk-container').on('click', '.nav-desk-items', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const url = $(this).data('url');
+    if (!url) return false;
+    window.location.href = url;
+  });
+
+  // 点击items 下的span时获取data-url 并且跳转
+  $('.header-nav-desks-sections .desk-container').on('click', '.nav-desk-items span', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const url = $(this).data('href-id');
+    if (!url) return false;
+    window.location.href = url;
+  });
+
+  // 当鼠标离开 .header-nav-desks-sections 时隐藏
+  $('.header-nav-desks-sections').on('mouseleave', function () {
+    $(this).css({
+      opacity: '0',
+      'max-height': '0',
+      'border-top': 'none',
+      'border-bottom': 'none',
+    });
+  });
+
+  // 回退上一步
+  $('.header-nav-desks-sections .header-nav-desk-title .desk_collections_title_icon').on('click', function () {
+    $('.header-nav-desks-sections').removeClass('menu_open_desk_mb_active');
+    $('body').removeClass('menu_open_mb');
+  });
+</script>

@@ -1,0 +1,405 @@
+{{ 'snippet-parameter-comparison.css' | asset_url | stylesheet_tag }}
+
+{% assign show_img_data = true %}
+{% assign show_btns = true %}
+{% assign show_select = true %}
+{% assign is_modal = false %}
+{% if compare_modal_products != blank %}
+  {% assign compare_products = compare_modal_products %}
+  {% assign show_img_data = false %}
+  {% assign show_btns = false %}
+  {% assign show_select = false %}
+  {% assign is_modal = true %}
+{% endif %}
+{% if page.metafields.custom.compare_products != blank %}
+  {% assign compare_products = page.metafields.custom.compare_products.value %}
+{% endif %}
+
+<div class="parameter_comparison">
+  <div class="parameter_comparison_title">{{ 'products.product.text.comparison_title' | t }}</div>
+  {% if show_select %}
+    <div class="parameter_comparison_selectbox_sentinel"></div>
+    <div class="parameter_comparison_selectbox">
+      <select id="productSelectOne" class="parameter_comparison_select">
+        {% for item in compare_products %}
+          <option value="{{ item.metafields.custom.series_name.value }}">
+            {{ 'products.product.text.blacklyte' | t -}}
+            {{- item.metafields.custom.series_name.value }}
+          </option>
+        {% endfor %}
+      </select>
+      <select id="productSelectTwo" class="parameter_comparison_select">
+        {% for item in compare_products %}
+          <option
+            value="{{ item.metafields.custom.series_name.value }}"
+            {% if forloop.index0 == 1 %}
+              selected
+            {% endif %}
+          >
+            {{ 'products.product.text.blacklyte' | t -}}
+            {{- item.metafields.custom.series_name.value }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  {% endif %}
+  <div class="parameter_comparison_contain">
+    {% for product in compare_products limit: 2 %}
+      <div
+        class="parameter_comparison_product{% if forloop.index0 == 0 %} parameter_comparison_product_showtitle{% endif %}"
+        data-value="{{ product.metafields.custom.series_name.value }}"
+      >
+        <img
+          src="{{ product.featured_image | image_url: width:280 }}"
+          alt="{{ product.metafields.custom.series_name }}"
+          class="parameter_comparison_product_featured_image"
+        >
+        {% if is_modal %}
+          <div class="parameter_comparison_product_series_name_sentinel"></div>
+        {% endif %}
+        <div class="parameter_comparison_product_series_name">{{ product.metafields.custom.series_name }}</div>
+        <div class="parameter_comparison_product_contain" data-type="product-info">
+          <div class="parameter_comparison_product_description">{{ product.description | strip_html }}</div>
+        </div>
+        <div class="parameter_comparison_product_standard_price">
+          {{ 'products.product.text.standard_price' | t }}
+        </div>
+        <div class="parameter_comparison_product_price">
+          {{ 'products.product.text.from' | t }}
+          {{- product.price | money_without_trailing_zeros }}
+        </div>
+        {% comment %}
+          <div class="parameter_comparison_product_variants_count">
+            {{ 'products.product.text.available_variants' | t: variants_count: product.variants_count }}
+          </div>
+        {% endcomment %}
+        {% if show_btns %}
+          <a class="parameter_comparison_product_shop_now" href="{{ product.url }}">
+            {{- 'products.product.text.shop_now' | t -}}
+          </a>
+          <a
+            class="parameter_comparison_product_learn_more"
+            href="/pages/{{ product.metafields.custom.series_name | handle }}-features"
+          >
+            {{- 'products.product.text.learn_more' | t -}}
+          </a>
+        {% endif %}
+        <div class="parameter_comparison_product_between_line"></div>
+        {% for item in product.metafields.custom.product_parameter_comparison.value.common_data.value %}
+          <div class="parameter_comparison_product_label">{{ item.label }}</div>
+          <div class="parameter_comparison_product_contain" data-type="{{ item.label | handle }}">
+            {% for value in item.value %}
+              <div class="parameter_comparison_product_item parameter_comparison_product_{{ item.label | handle }}">
+                {% if value.image != '' %}
+                  <img
+                    src="{{ value.image }}"
+                    alt="{{ value.title }}"
+                  >
+                {% endif %}
+                <div class="parameter_comparison_product_title">{{ value.title }}</div>
+                {% if value.text != '' %}
+                  <div class="parameter_comparison_product_text">{{ value.text }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+          <div class="parameter_comparison_product_between_line"></div>
+        {% endfor %}
+        {% if product.metafields.custom.product_parameter_comparison.value.list_data != blank %}
+          {% assign list_data = product.metafields.custom.product_parameter_comparison.value.list_data.value %}
+          <div class="parameter_comparison_product_label">{{ list_data.label }}</div>
+          <div class="parameter_comparison_product_item parameter_comparison_product_{{ list_data.label | handle }}">
+            {% for value in list_data.value %}
+              <div class="parameter_comparison_product_title">{{ value }}</div>
+            {% endfor %}
+          </div>
+          <div class="parameter_comparison_product_between_line"></div>
+        {% endif %}
+        {% if product.metafields.custom.product_parameter_comparison.value.img_data != blank and show_img_data %}
+          {% assign img_data = product.metafields.custom.product_parameter_comparison.value.img_data.value %}
+          <div class="parameter_comparison_product_label">{{ img_data.label }}</div>
+          <div class="parameter_comparison_product_item_flex">
+            <div class="parameter_comparison_product_item parameter_comparison_product_{{ img_data.label | handle }}">
+              <img
+                src="{{ img_data.value }}"
+                alt="{{ product.metafields.custom.series_name }}"
+              >
+            </div>
+          </div>
+          <a
+            class="parameter_comparison_product_shop_now parameter_comparison_product_shop_now_{{ img_data.label | handle }}"
+            href="{{ product.url }}"
+          >
+            {{- 'products.product.text.shop_now' | t -}}
+          </a>
+          <a
+            class="parameter_comparison_product_learn_more"
+            href="/pages/{{ product.metafields.custom.series_name | handle }}-features"
+          >
+            {{- 'products.product.text.learn_more' | t -}}
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  {% if show_select %}
+    <div class="parameter_comparison_contain_other">
+      {% for product in compare_products offset: 2 %}
+        <div class="parameter_comparison_product" data-value="{{ product.metafields.custom.series_name.value }}">
+          <img
+            src="{{ product.featured_image | image_url: width:280 }}"
+            alt="{{ product.metafields.custom.series_name }}"
+            class="parameter_comparison_product_featured_image"
+          >
+          <div class="parameter_comparison_product_series_name">{{ product.metafields.custom.series_name }}</div>
+          <div class="parameter_comparison_product_contain" data-type="product-info">
+            <div class="parameter_comparison_product_description">{{ product.description | strip_html }}</div>
+          </div>
+          <div class="parameter_comparison_product_standard_price">
+            {{ 'products.product.text.standard_price' | t }}
+          </div>
+          <div class="parameter_comparison_product_price">
+            {{ 'products.product.text.from' | t }}
+            {{- product.price | money_without_trailing_zeros }}
+          </div>
+          {% comment %}
+            <div class="parameter_comparison_product_variants_count">
+              {{ 'products.product.text.available_variants' | t: variants_count: product.variants_count }}
+            </div>
+          {% endcomment %}
+          {% if show_btns %}
+            <a class="parameter_comparison_product_shop_now" href="{{ product.url }}">
+              {{- 'products.product.text.shop_now' | t -}}
+            </a>
+            <a
+              class="parameter_comparison_product_learn_more"
+              href="/pages/{{ product.metafields.custom.series_name | handle }}-features"
+            >
+              {{- 'products.product.text.learn_more' | t -}}
+            </a>
+          {% endif %}
+          <div class="parameter_comparison_product_between_line"></div>
+          {% for item in product.metafields.custom.product_parameter_comparison.value.common_data.value %}
+            <div class="parameter_comparison_product_label">{{ item.label }}</div>
+            <div class="parameter_comparison_product_contain" data-type="{{ item.label | handle }}">
+              {% for value in item.value %}
+                <div class="parameter_comparison_product_item parameter_comparison_product_{{ item.label | handle }}">
+                  {% if value.image != '' %}
+                    <img
+                      src="{{ value.image }}"
+                      alt="{{ value.title }}"
+                    >
+                  {% endif %}
+                  <div class="parameter_comparison_product_title">{{ value.title }}</div>
+                  {% if value.text != '' %}
+                    <div class="parameter_comparison_product_text">{{ value.text }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="parameter_comparison_product_between_line"></div>
+          {% endfor %}
+          {% if product.metafields.custom.product_parameter_comparison.value.list_data != blank %}
+            {% assign list_data = product.metafields.custom.product_parameter_comparison.value.list_data.value %}
+            <div class="parameter_comparison_product_label">{{ list_data.label }}</div>
+            <div class="parameter_comparison_product_item parameter_comparison_product_{{ list_data.label | handle }}">
+              {% for value in list_data.value %}
+                <div class="parameter_comparison_product_title">{{ value }}</div>
+              {% endfor %}
+            </div>
+            <div class="parameter_comparison_product_between_line"></div>
+          {% endif %}
+          {% if product.metafields.custom.product_parameter_comparison.value.img_data != blank and show_img_data %}
+            {% assign img_data = product.metafields.custom.product_parameter_comparison.value.img_data.value %}
+            <div class="parameter_comparison_product_label">{{ img_data.label }}</div>
+            <div class="parameter_comparison_product_item_flex">
+              <div class="parameter_comparison_product_item parameter_comparison_product_{{ img_data.label | handle }}">
+                <img
+                  src="{{ img_data.value }}"
+                  alt="{{ product.metafields.custom.series_name }}"
+                >
+              </div>
+            </div>
+            <a
+              class="parameter_comparison_product_shop_now parameter_comparison_product_shop_now_{{ img_data.label | handle }}"
+              href="{{ product.url }}"
+            >
+              {{- 'products.product.text.shop_now' | t -}}
+            </a>
+            <a
+              class="parameter_comparison_product_learn_more"
+              href="/pages/{{ product.metafields.custom.series_name | handle }}-features"
+            >
+              {{- 'products.product.text.learn_more' | t -}}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  const is_modal = JSON.parse({{ is_modal | json }})
+  const show_select = JSON.parse({{ show_select | json }})
+
+  if(show_select) {
+    const stickyEl = document.querySelectorAll('.parameter_comparison_selectbox');
+    const sentinel = document.querySelector('.parameter_comparison_selectbox_sentinel');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          stickyEl.forEach(item => item.classList.add('is-sticky'))
+        } else {
+          stickyEl.forEach(item => item.classList.remove('is-sticky'))
+        }
+      },
+      { root: null, threshold: 0,}
+    );
+
+    observer.observe(sentinel);
+  }
+
+  if(is_modal) {
+    const stickyEl = document.querySelectorAll('.parameter_comparison_product_series_name');
+    const sentinel = document.querySelector('.parameter_comparison_product_series_name_sentinel');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          stickyEl.forEach(item => item.classList.add('is-sticky'))
+        } else {
+          stickyEl.forEach(item => item.classList.remove('is-sticky'))
+        }
+      },
+      { root: null, threshold: 0,}
+    );
+
+    observer.observe(sentinel);
+  }
+
+  function unifyComparisonHeightsByType() {
+    const container = document.querySelector('.parameter_comparison_contain');
+    const items = container.querySelectorAll('.parameter_comparison_product_contain');
+    const typeMap = {};
+
+    // 等待所有图片加载完成
+    const imageLoadPromises = Array.from(container.querySelectorAll('img')).map((img) => {
+      return new Promise((resolve) => {
+        if (img.complete) return resolve();
+        img.onload = resolve;
+        img.onerror = resolve;
+      });
+    });
+
+    Promise.all(imageLoadPromises).then(() => {
+      // 初始化分组
+      items.forEach((item) => {
+        const type = item.getAttribute('data-type');
+        if (!typeMap[type]) typeMap[type] = [];
+        item.style.height = 'auto'; // 重置高度避免干扰
+        typeMap[type].push(item);
+      });
+
+      // 遍历每组，找出最大高度并统一设置
+      Object.values(typeMap).forEach((group) => {
+        let maxHeight = 0;
+
+        group.forEach((el) => {
+          const height = el.offsetHeight;
+          if (height > maxHeight) maxHeight = height;
+        });
+
+        group.forEach((el) => {
+          el.style.height = `${maxHeight}px`;
+        });
+      });
+    });
+  }
+
+  const target = document.querySelector('.parameter_comparison');
+
+  if (target) {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            unifyComparisonHeightsByType();
+            observer.unobserve(target);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(target);
+  }
+
+  function updateComparisonProduct(selectId, index) {
+    const select = document.getElementById(selectId);
+    const selectedValue = select.value;
+
+    const containerMain = document.querySelector('.parameter_comparison_contain');
+    const containerOther = document.querySelector('.parameter_comparison_contain_other');
+
+    const currentMainItem = containerMain.querySelectorAll('.parameter_comparison_product')[index];
+    const newItemInOther = containerOther.querySelector(`.parameter_comparison_product[data-value="${selectedValue}"]`);
+
+    if (!currentMainItem || !newItemInOther || currentMainItem.dataset.value === selectedValue) return;
+
+    // 克隆新旧节点
+    const newItemClone = newItemInOther.cloneNode(true);
+    const oldItemClone = currentMainItem.cloneNode(true);
+    if (index === 0) {
+      newItemClone.classList.add('parameter_comparison_product_showtitle');
+    } else {
+      newItemClone.classList.remove('parameter_comparison_product_showtitle');
+    }
+    // 替换目标位置的卡片
+    containerMain.replaceChild(newItemClone, currentMainItem);
+    containerOther.replaceChild(oldItemClone, newItemInOther);
+
+    // 替换后同步高度
+    unifyComparisonHeightsByType();
+  }
+
+  const selectOne = document.getElementById('productSelectOne');
+  const selectTwo = document.getElementById('productSelectTwo');
+
+  function updateDisabledOptions() {
+    const valueOne = selectOne.value;
+    const valueTwo = selectTwo.value;
+
+    // 清空所有 disabled
+    [...selectOne.options].forEach((opt) => (opt.disabled = false));
+    [...selectTwo.options].forEach((opt) => (opt.disabled = false));
+
+    // 禁用对方选中的值
+    [...selectOne.options].forEach((opt) => {
+      if (opt.value === valueTwo) opt.disabled = true;
+    });
+    [...selectTwo.options].forEach((opt) => {
+      if (opt.value === valueOne) opt.disabled = true;
+    });
+  }
+
+  // 初始化
+  if(show_select) {
+    updateDisabledOptions();
+
+    // 监听选择器变化
+    selectOne.addEventListener('change', () => {
+      updateComparisonProduct('productSelectOne', 0); // 替换第一个
+      updateDisabledOptions();
+    });
+
+    selectTwo.addEventListener('change', () => {
+      updateComparisonProduct('productSelectTwo', 1); // 替换第二个
+      updateDisabledOptions();
+    });
+  }
+</script>

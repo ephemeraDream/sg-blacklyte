@@ -1,0 +1,285 @@
+{{ 'section-specs-simplicity.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.product != blank %}
+  {% assign product = section.settings.product %}
+{% endif %}
+{% assign product_specs = product.metafields.custom.product_specs.value %}
+
+<div class="specs_simplicity{% if section.settings.show_type == 'two' %} specs_simplicity_spec{% endif %}" id="specs">
+  <div class="specs_simplicity_head">
+    <div class="specs_simplicity_title">{{ 'products.product.text.specs' | t }}</div>
+    {% comment %}
+      {% if section.settings.show_type == 'two' %}
+        <div class="specs_simplicity_select">
+          <div class="specs_simplicity_select_head">
+            {{ 'products.product.text.different_size_options' | t }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="13" viewBox="0 0 21 13" fill="none">
+              <path d="M0.999255 1.62816L10.627 11.2559L20.2546 1.62816" stroke="white" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="specs_simplicity_select_choosed"></div>
+          <div class="specs_simplicity_select_box">
+            {% for value in product.options_by_name.Size.values -%}
+              {% assign size_object = '' %}
+              {% for size in product.metafields.custom.product_size.value %}
+                {% if size.name == value %}
+                  {% assign size_object = size %}
+                {% endif %}
+              {% endfor %}
+              <div class="specs_simplicity_select_item" data-index="{{ forloop.index0 }}">{{ size_object.size }}</div>
+            {%- endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% endcomment %}
+  </div>
+  {% if section.settings.show_type == 'one' %}
+    <div class="specs_simplicity_contain">
+      <div class="specs_simplicity_contain_left">
+        {% for image in product_specs.images.value %}
+          {% assign srcset_1x = image | image_url: width: 540 | append: ' 1x, ' %}
+          {% assign srcset_2x = image | image_url: width: 340 | append: ' 2x, ' %}
+          {% assign srcset_3x = image | image_url: width: 340 | append: ' 3x, ' %}
+          {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+          {{-
+            image
+            | image_url: width: image.width
+            | image_tag: sizes: '(min-width:769px) 14vw, 100vw', srcset: srcset_init, alt: 'specs image'
+          -}}
+          {% comment %}
+            <img
+              src="{{ image | image_url }}"
+              alt="specs image"
+              loading="lazy"
+            >
+          {% endcomment %}
+        {% endfor %}
+      </div>
+      <div class="specs_simplicity_contain_right">
+        <div class="specs_simplicity_contain_right_item">
+          <div class="specs_simplicity_contain_right_item_title">
+            {{ 'products.product.text.recommended_size' | t }}
+          </div>
+          <div class="specs_simplicity_contain_right_item_info">
+            {% for spec in product_specs.recommended_size.value.data %}
+              <div class="specs_simplicity_contain_right_item_info_line{% if spec.label == '' %} empty_label{% endif %}">
+                <span>{{ spec.label }} :</span>
+                <span>{{ spec.value }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="specs_simplicity_contain_right_item">
+          <div class="specs_simplicity_contain_right_item_title">{{ 'products.product.text.main_components' | t }}</div>
+          <div class="specs_simplicity_contain_right_item_info">
+            {% for spec in product_specs.main_components.value.data %}
+              <div class="specs_simplicity_contain_right_item_info_line">
+                <span>{{ spec.label }} :</span><span>{{ spec.value }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="specs_simplicity_contain_right_item">
+          <div class="specs_simplicity_contain_right_item_title">{{ 'products.product.text.packaging' | t }}</div>
+          <div class="specs_simplicity_contain_right_item_info">
+            {% for spec in product_specs.packaging.value.data %}
+              <div class="specs_simplicity_contain_right_item_info_line">
+                <span>{{ spec.label }} :</span><span>{{ spec.value }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="swiper specs_simplicity_swiper">
+      <div class="swiper-wrapper">
+        {% for item in product.options_by_name.Size.values %}
+          {% assign target_index = forloop.index0 %}
+          <div class="swiper-slide specs_simplicity_contain">
+            <div class="specs_simplicity_contain_left">
+              {% assign feature_image_urls = '' %}
+
+              {% if request.path contains 'features' %}
+                {% for img in product_specs.images.value %}
+                  {% if img.src contains 'features' %}
+                    {% assign img_url = img | image_url %}
+                    {% assign feature_image_urls = feature_image_urls | append: img_url | append: ',' %}
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                {% for img in product_specs.images.value %}
+                  {% unless img.src contains 'features' %}
+                    {% assign img_url = img | image_url %}
+                    {% assign feature_image_urls = feature_image_urls | append: img_url | append: ',' %}
+                  {% endunless %}
+                {% endfor %}
+              {% endif %}
+
+              {% assign feature_image_list = feature_image_urls | split: ',' %}
+
+              {% for img in feature_image_list %}
+                {% if forloop.index0 == target_index %}
+                  <img src="{{img }}">
+                {% endif %}
+              {% endfor %}
+              {% comment %}
+                {% for imageItem in product_specs.images.value %}
+                  {% if forloop.index0 == target_index %}
+                    {% assign image = imageItem %}
+                    {% assign srcset_1x = image | image_url: width: 1000 | append: ' 1x, ' %}
+                    {% assign srcset_2x = image | image_url: width: 670 | append: ' 2x, ' %}
+                    {% assign srcset_3x = image | image_url: width: 670 | append: ' 3x, ' %}
+                    {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+                    {{-
+                      image
+                      | image_url: width: image.width
+                      | image_tag: sizes: '(min-width:769px) 14vw, 100vw', srcset: srcset_init, alt: 'specs image'
+                    -}}
+                  {% endif %}
+                {% endfor %}
+              {% endcomment %}
+            </div>
+            <div class="specs_simplicity_contain_right">
+              <div class="specs_simplicity_contain_right_item">
+                <div class="specs_simplicity_contain_right_item_title">
+                  {{ 'products.product.text.size_load_and_adjusrmenbts' | t }}
+                </div>
+                <div class="specs_simplicity_contain_right_item_info">
+                  {% for item in product_specs.size_load_and_adjusrmenbts.value %}
+                    {% if forloop.index0 == target_index %}
+                      {% for spec in item.data %}
+                        <div class="specs_simplicity_contain_right_item_info_line{% if spec.label == '' %} empty_label{% endif %}">
+                          <span>{{ spec.label }} :</span>
+                          <span>{{ spec.value }}</span>
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="specs_simplicity_contain_right_item">
+                <div class="specs_simplicity_contain_right_item_title">
+                  {{ 'products.product.text.structure_and_materials' | t }}
+                </div>
+                <div class="specs_simplicity_contain_right_item_info">
+                  {% for item in product_specs.structure_and_materials.value %}
+                    {% if forloop.index0 == target_index %}
+                      {% for spec in item.data %}
+                        <div class="specs_simplicity_contain_right_item_info_line">
+                          <span>{{ spec.label }} :</span><span>{{ spec.value }}</span>
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="specs_simplicity_contain_right_item">
+                <div class="specs_simplicity_contain_right_item_title">
+                  {{ 'products.product.text.electrical_specifications' | t }}
+                </div>
+                <div class="specs_simplicity_contain_right_item_info">
+                  {% for item in product_specs.electrical_specifications.value %}
+                    {% if forloop.index0 == target_index %}
+                      {% for spec in item.data %}
+                        <div class="specs_simplicity_contain_right_item_info_line">
+                          <span>{{ spec.label }} :</span><span>{{ spec.value }}</span>
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="specs_simplicity_contain_right_item">
+                <div class="specs_simplicity_contain_right_item_title">{{ 'products.product.text.packaging' | t }}</div>
+                <div class="specs_simplicity_contain_right_item_info">
+                  {% for item in product_specs.packaging.value %}
+                    {% if forloop.index0 == target_index %}
+                      {% for spec in item.data %}
+                        <div class="specs_simplicity_contain_right_item_info_line">
+                          <span class="{% if spec.value == "" %}specs_simplicity_contain_right_item_info_line_spectitle{% endif %}">
+                            {{- spec.label -}}
+                            {%- if spec.value != '' %} :{% endif -%}</span
+                          ><span>{{ spec.value }}</span>
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+   var specsSwiper = new Swiper('.specs_simplicity_swiper', {
+     spaceBetween: 20,
+     slidesPerView: 1,
+     simulateTouch: false,
+   });
+
+  {% comment %}  document.querySelectorAll('.specs_simplicity_select_item').forEach((item) => {
+     item.addEventListener('click', (event) => {
+       const index = event.target.getAttribute('data-index');
+       specsSwiper.slideTo(index);
+     });
+   });
+
+   const specsSelect = document.querySelector('.specs_simplicity_select');
+
+   if (specsSelect) {
+     specsSelect.addEventListener('click', (e) => {
+       e.stopPropagation();
+       specsSelect.classList.toggle('show');
+     });
+
+     document.addEventListener('click', (e) => {
+       if (!specsSelect.contains(e.target)) {
+         specsSelect.classList.remove('show');
+       }
+     });
+   } {% endcomment %}
+</script>
+
+{% schema %}
+{
+  "name": "specs simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "product"
+    },
+    {
+      "type": "radio",
+      "id": "show_type",
+      "label": "show type",
+      "default": "one",
+      "options": [
+        {
+          "value": "one",
+          "label": "one"
+        },
+        {
+          "value": "two",
+          "label": "two"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "specs simplicity"
+    }
+  ]
+}
+{% endschema %}

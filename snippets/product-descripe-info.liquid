@@ -1,0 +1,38 @@
+{%- liquid 
+    assign fontsize_text = block.settings.fontsize_text
+    assign fontsize_text_mb = block.settings.fontsize_text_mb
+    assign color_descripe = block.settings.color_descripe
+   assign show_descripe_btn = block.settings.show_descripe_btn
+   assign descripe_text = block.settings.descripe_text
+-%}
+{%- if check_show_share == '3' -%}
+    <div class="halo-share-3">
+        <h1 class="productView-title" style="--color-title: {{ color_descripe }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};"><span>{{ product.description | escape }}</span></h1>
+        {% render 'halo-share', product: product, share_layout: check_show_share %}
+    </div>
+{%- else -%}
+    <h1 class="productView-title product_info_descripe_text" style="--color-title: {{ color_descripe }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};">
+      <span>{{ descripe_text }}</span>
+      {%- if show_descripe_btn -%}
+        <span class="learn_more_btn" data-fancybox-details="images" href="https://cdn.shopify.com/s/files/1/0702/4053/4777/files/desk-details_of_awards.jpg?v=1720776697">Learn More</span>
+      {%- endif -%}
+    </h1>
+{%- endif -%}
+
+{%- if show_descripe_btn -%}
+<script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+{%- endif -%} 
+
+<style>
+  .product_info_descripe_text.productView-title {
+    font-weight: 500;
+    line-height: 20px;
+  }
+  .learn_more_btn {
+    color: #676CFE;
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+</style>

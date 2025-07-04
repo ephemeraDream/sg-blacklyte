@@ -1,0 +1,331 @@
+<style>
+  .blacklyte-swiper-{{ section.id }}{
+    background: #000000;
+    padding: {{section.settings.pt_pc}}px 0 {{section.settings.pb_pc}}px;
+  }
+  .hide-pc{
+    display: none!important;
+  }
+  .hide-mb{
+    display: block!important;
+  }
+  .blacklyte-swiper .swiper-title{
+    margin: 0;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: left;
+  }
+  .blacklyte-swiper .swiper-text{
+    margin: 0;
+    color: #f2f2f2;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    max-width: 585px;
+  }
+  .blacklyte-swiper .title-box{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+  .blacklyte-swiper .item-wrapper{
+    margin: 35px;
+  }
+  .blacklyte-swiper .slick-slide{
+    transition: all 300ms ease;
+  }
+  .blacklyte-swiper .slick-slide:not(.slick-center) {
+    transform: scale(0.9);
+  }
+    .blacklyte-swiper .slick-dots li button{
+        --dots-width: 24px;
+        --dots-height: 4px;
+        --dots-color: #ffffff;
+        border-radius: 4px;
+        opacity: .2;
+        border: none;
+  }
+  .blacklyte-swiper .slick-dots li.slick-active button{
+    opacity: 1;
+    background: #ffffff;
+  }
+  .blacklyte-swiper .slick-arrow{
+    background: none!important;
+    border: none!important;
+  }
+  .blacklyte-swiper .slick-arrow.prev{
+    left: 230px;
+  }
+  .blacklyte-swiper .slick-arrow.next{
+    right: 230px;
+  }
+  .blacklyte-swiper .slick-arrow:hover{
+    border-color: none;
+    background: none;
+  }
+  .blacklyte-swiper .img-box{
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  @media only screen and (min-width: 2000px){
+    .blacklyte-swiper .swiper-title{
+      font-size: 2.08vw;
+    }
+    .blacklyte-swiper .swiper-text{
+      font-size: 1.04vw;
+      max-width: 32vw;
+    }
+    .blacklyte-swiper .img-box{
+      border-radius: 1vw;
+    }
+    .blacklyte-swiper .slick-arrow{
+      width: 3vw;
+      height: 3vw;
+    }
+    .blacklyte-swiper .slick-arrow svg{
+      width: 100%;
+      height: 100%;
+    }
+    .blacklyte-swiper .slick-dots li button{
+      width: 2vw;
+      height: 0.3vw;
+    }
+    .blacklyte-swiper .slick-arrow.prev{
+      left: 12vw;
+    }
+    .blacklyte-swiper .slick-arrow.next{
+      right: 12vw;
+    }
+  }
+  @media only screen and (max-width: 1500px){
+    .blacklyte-swiper .slick-arrow.prev{
+      left: 80px;
+    }
+    .blacklyte-swiper .slick-arrow.next{
+      right: 80px;
+    }
+  }
+  @media only screen and (max-width: 1200px){
+    .blacklyte-swiper .item-wrapper{
+      margin: 10px;
+    }
+  }
+  @media only screen and (max-width: 991px){
+    .blacklyte-swiper-{{ section.id }}{
+      background: #000000;
+      padding: {{section.settings.pt_m}}px 0 {{section.settings.pb_m}}px;
+    }
+    .blacklyte-swiper .title-box{
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .blacklyte-swiper .swiper-title{
+      font-size: 28px;
+      line-height: 1.28;
+    }
+    .blacklyte-swiper .swiper-text{
+      font-size: 16px;
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+  @media only screen and (max-width: 768px){
+   .blacklyte-swiper .item-wrapper{
+      margin: 0px;
+    }
+  }
+  @media only screen and (max-width: 550px){
+    .hide-pc{
+      display: block!important;
+    }
+    .hide-mb{
+      display: none!important;
+    }
+    .blacklyte-swiper .img-box{
+      border-radius: 8px;
+    }
+  }
+</style>
+
+{%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.styles_max_width }}px, 100vw){% endif %}{%- endcapture -%}
+<section class="blacklyte-swiper blacklyte-swiper-{{ section.id }}">
+    <div class="title-box container-1570">
+      {% if section.settings.title != blank %}
+        <h3 class="swiper-title scroll-trigger animate--slide-in">{{ section.settings.title }}</h3>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="swiper-text scroll-trigger animate--slide-in">{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+    
+    <div class="swiper-wrapper scroll-trigger animate--slide-in">
+      <div class="swiper-inner custom_carousel">
+          {% for block in section.blocks %}
+                <div class="item-wrapper">
+                  <div class="item">
+                    <div class="img-box">
+                      {{- block.settings.img | image_url: width: block.settings.img.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'hide-mb' -}}
+                      {{- block.settings.img_m | image_url: width: block.settings.img_m.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'hide-pc' -}}
+                    </div>
+                  </div>
+                </div>
+          {% endfor %}
+      </div>
+    </div>
+</section>
+<script>
+  $(document).ready(function() {
+    $('.blacklyte-swiper-{{ section.id }} .custom_carousel').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            centerMode: true,
+            centerPadding: '15vw',
+            prevArrow: `<div class="prev">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_255_2249)">
+                        <rect width="24" height="24" transform="matrix(-1 0 0 1 24 0)" fill="white" fill-opacity="0.01"/>
+                        <path d="M5.20446 11.3256L17.2795 1.89438C17.311 1.86954 17.3489 1.8541 17.3889 1.84984C17.4288 1.84558 17.4691 1.85266 17.5052 1.87029C17.5413 1.88791 17.5717 1.91535 17.5929 1.94946C17.614 1.98357 17.6252 2.02297 17.625 2.06313V4.13366C17.625 4.26491 17.5634 4.39081 17.4616 4.47116L7.81875 12.0006L17.4616 19.5301C17.5661 19.6104 17.625 19.7363 17.625 19.8676V21.9381C17.625 22.1176 17.4187 22.2167 17.2795 22.1069L5.20446 12.6756C5.10183 12.5956 5.01881 12.4932 4.9617 12.3762C4.9046 12.2592 4.87492 12.1308 4.87492 12.0006C4.87492 11.8705 4.9046 11.742 4.9617 11.6251C5.01881 11.5081 5.10183 11.4057 5.20446 11.3256Z" fill="white" fill-opacity="0.85"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_255_2249">
+                        <rect width="24" height="24" fill="white" transform="matrix(-1 0 0 1 24 0)"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
+                        </div>`,
+            nextArrow: `<div class="next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_255_2247)">
+                        <rect width="24" height="24" fill="white" fill-opacity="0.01"/>
+                        <path d="M18.7955 11.3256L6.72054 1.89438C6.68899 1.86954 6.65107 1.8541 6.61114 1.84984C6.57121 1.84558 6.53088 1.85266 6.4948 1.87029C6.45871 1.88791 6.42833 1.91535 6.40714 1.94946C6.38595 1.98357 6.37481 2.02297 6.375 2.06313V4.13366C6.375 4.26491 6.43661 4.39081 6.5384 4.47116L16.1813 12.0006L6.5384 19.5301C6.43393 19.6104 6.375 19.7363 6.375 19.8676V21.9381C6.375 22.1176 6.58125 22.2167 6.72054 22.1069L18.7955 12.6756C18.8982 12.5956 18.9812 12.4932 19.0383 12.3762C19.0954 12.2592 19.1251 12.1308 19.1251 12.0006C19.1251 11.8705 19.0954 11.742 19.0383 11.6251C18.9812 11.5081 18.8982 11.4057 18.7955 11.3256Z" fill="white" fill-opacity="0.85"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_255_2247">
+                        <rect width="24" height="24" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
+                        </div>
+                        `,
+            responsive: [
+              {
+                breakpoint: 2000,
+                settings: {
+                  centerPadding: '280px',
+                }
+              },
+              {
+                breakpoint: 1500,
+                settings: {
+                  centerPadding: '120px',
+                }
+              },
+              {
+                breakpoint: 1200,
+                settings: {
+                  centerPadding: '30px',
+                }
+              },
+              {
+                breakpoint: 1024,
+                settings: {
+                  arrows: false,
+                  centerPadding: '10px',
+                  
+                }
+              },
+            ]
+        });
+  });
+
+  
+</script>
+
+{% schema %}
+{
+  "name": "Blacklyte Product Swiper",
+  "settings": [
+    {
+      "type" : "textarea",
+      "id" : "title",
+      "label" : "Title",
+      "default" : "MORE DETAILS"
+    },
+    {
+      "type" : "textarea",
+      "id" : "text",
+      "label" : "Text",
+      "default" : "Athena Chair embodies our vision of redefining work and play setups through immersive entertainment solutions. It seamlessly blends innovation and comfort to enhance any environment"
+    },
+    {
+      "type": "range",
+      "id": "pt_pc",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top PC",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "pb_pc",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom PC",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "pt_m",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top MOBILE",
+      "default": 78
+    },
+    {
+      "type": "range",
+      "id": "pb_m",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom MOBILE",
+      "default": 78
+    }
+  ],
+  "blocks": [
+      {
+        "type": "block",
+        "name": "block",
+        "settings": [
+          {
+              "type" : "image_picker",
+              "id" : "img",
+              "label" : "Image PC"
+          },
+          {
+              "type" : "image_picker",
+              "id" : "img_m",
+              "label" : "Image Mobile"
+          }
+        ]
+      }
+  ],
+  "presets": [
+    {
+      "name": "Blacklyte Product Swiper"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,399 @@
+{% comment %}
+  addons 集合
+{% endcomment %}
+
+<style>
+  .new_collection_addons_section {
+    background-color: #EDEDED;
+    padding-bottom: 88px;
+  }
+  .new_collection_addons_module {
+    padding-left: 60px;
+    position: relative;
+  }
+  .new_collection_addons_header {
+    padding-top: 42px;
+    padding-bottom: 40px;
+  }
+  .new_collection_addons_header .title {
+    /* font-family: "Orbitron"; */
+    font-weight: 500;
+    color: #18181B;
+    font-size: 30px;
+  }
+  .new_collection_addons_header .descripe {
+    /* font-family: "Poppins"; */
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 40px;
+    color: #666666;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 60px;
+  }
+  .new_collection_addons_header .view_all_icon {
+    font-size: 22px;
+    line-height: 40px;
+    font-weight: 400;
+    color: #333333;
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
+
+  .new_collection_addons_container {
+    padding-right: 60px;
+  }
+  .new_collection_addons_container .chair_item {
+    width: 400px;
+  }
+  .new_collection_addons_container .chair_item .image {
+    border-radius: 2px;
+    background-color: #D9D9D9;
+    border: 1px solid #999999;
+  }
+  .new_collection_addons_container .chair_item .chair_item_container { }
+  
+  .new_collection_addons_container .chair_item .item_title {
+    font-size: 22px;
+    line-height: 26px;
+    /* font-family: "Poppins"; */
+    font-weight: 400;
+    color: #333333;
+    margin-top: 20px;
+  }
+  
+  .new_collection_addons_container .chair_item .hide-mb {
+    display: block;
+  }
+  .new_collection_addons_container .chair_item .hide-pc {
+    display: none;
+  }
+  .new_collection_addons_section .view_all_mb {
+    display: none;
+  }
+  .new_collection_addons_module .btn.button-prev {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    z-index: 9;
+    transform: translateY(30px);
+    cursor: pointer;
+    opacity: 0;
+  }
+  .new_collection_addons_module .btn.button-prev svg,
+  .new_collection_addons_module .btn.button-next svg {
+    width: 60px;
+    height: 60px;
+    fill: none;
+    stroke: none;
+    border-radius: 50%;
+  }
+  .new_collection_addons_module .btn.button-next {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    z-index: 9;
+    transform: translateY(30px);
+    cursor: pointer;
+  }
+
+  /* 1500px ~ 1900px */
+  @media(min-width: 1025px) and (max-width: 1900px) {
+    .new_collection_addons_container .chair_item .chair_item_container {
+      left: 10px;
+      bottom: 20px;
+    }
+    .new_collection_addons_container .chair_item .item_title {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+
+  /* iPad */
+  @media(min-width: 768px) and (max-width: 1024px) {
+    .new_collection_addons_container .chair_item .chair_item_container {
+      bottom: 30px;
+      left: 10px;
+    }
+    .new_collection_addons_container .chair_item .item_title {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 6px;
+    }
+    .new_collection_addons_section .btn svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: none;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+    .new_collection_addons_section .btn.button-prev {
+      position: absolute;
+      top: 50%;
+      left: 70px;
+      transform: translateY(50px);
+      z-index: 10;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .new_collection_addons_section .btn.button-next {
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(50px);
+      z-index: 10;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+
+  /* iPhone */
+  @media(max-width: 767px) {
+    .new_collection_addons_module {
+      padding-left: 0;
+    }
+    .new_collection_addons_container .chair_item .hide-mb {
+      display: none;
+    }
+    .new_collection_addons_container .chair_item .hide-pc {
+      display: block;
+    }
+    .new_collection_addons_container {
+      padding-right: 20px;
+    }
+    
+    .new_collection_addons_section {
+      padding-left: 20px;
+      padding-right: 0px;
+    }
+    .new_collection_addons_header {
+      padding-bottom: 20px;
+    }
+    .new_collection_addons_header .title {
+      font-size: 24px;
+    }
+    .new_collection_addons_header .view_all_icon {
+      display: none;
+    }
+    .new_collection_addons_header .descripe {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .new_collection_addons_container .chair_item {
+      width: 300px;
+    }
+    .new_collection_addons_module .btn.button-prev svg,
+    .new_collection_addons_module .btn.button-next svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: none;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .new_collection_addons_section .btn.button-prev {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: 10;
+      border-radius: 50%;
+    }
+    .new_collection_addons_section .btn.button-next {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      z-index: 10;
+      border-radius: 50%;
+    }
+    .new_collection_addons_container .chair_item .item_title {
+        font-size: 12px;
+        line-height: 14px;
+        margin-top: 10px;
+    }
+    .new_collection_addons_section .view_all_mb {
+      display: block;
+      margin-top: 28px;
+    }
+    .new_collection_addons_section .view_all_mb .view_all_icon {
+      /* font-family: "Poppins"; */
+      color: #333333;
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration-line: underline;
+      cursor: pointer;
+    }
+  }
+  
+</style>
+
+<section class="new_collection_addons_section" id="{{ section.settings.sectionsID }}" data-swiper-id="{{ section.settings.sectionsID }}">
+  <div class="container-full new_collection_addons_module">
+    <div class="new_collection_addons_header">
+      <div class="title">{{ section.settings.title }}</div>
+      <div class="descripe">
+        <span>{{ section.settings.descripe }}</span>
+        <a href="{% if section.settings.view_all_link != blank %}{{ section.settings.view_all_link }}{% else %}javascripe:void(0);{% endif %}" class="view_all_icon">
+          {{ section.settings.view_all_chairs }}
+        </a>
+      </div>
+    </div>
+    <div class="new_collection_addons_container swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="chair_item swiper-slide">
+            {% if block.settings.ItemImage != blank %}
+              <a class="hide-mb image image-adapt image-zoom{% if block.settings.ItemImage != 'fixed' %} adaptive_height{% endif %}"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} style="padding-top: {% unless block.settings.ItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.ItemImage.aspect_ratio | times: 110 | append: '%' }}{% else %}{{ 1 | divided_by: block.settings.ItemImage.aspect_ratio | times: 100 | append: '%' }}{% endunless %}">
+                  {{ block.settings.ItemImage | image_url: width: 3840 | image_tag: loading: 'lazy', class: lazy, height: block.settings.ItemImage.height, sizes: "100vw", widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                  {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
+              </a>
+            {% endif %}
+            {% if block.settings.ItemImageMb != blank %}
+              <a class="hide-pc image image-adapt image-zoom{% if block.settings.ItemImageMb != 'fixed' %} adaptive_height{% endif %}"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} style="padding-top: {% unless block.settings.ItemImageMb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.ItemImageMb.aspect_ratio | times: 110 | append: '%' }}{% else %}{{ 1 | divided_by: block.settings.ItemImageMb.aspect_ratio | times: 100 | append: '%' }}{% endunless %}">
+                  {{ block.settings.ItemImageMb | image_url: width: 3840 | image_tag: loading: 'lazy', class: lazy, height: block.settings.ItemImageMb.height, sizes: "100vw", widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840' }}
+                  {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
+              </a>
+            {% endif %}
+            {% if block.settings.ItemTitle != blank %}
+              <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="chair_item_container">
+            {% endif %}
+              {% if block.settings.ItemTitle != blank %}
+                <div class="item_title">{{ block.settings.ItemTitle }}</div>
+              {% endif %}
+            {% if block.settings.ItemTitle != blank %}
+              </a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="btn button-prev">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M38 10L18 30L38 50" stroke="#B5B5B5" stroke-width="3"/>
+      </svg>
+    </div>
+    <div class="btn button-next">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 50L42 30L22 10" stroke="#B5B5B5" stroke-width="3"/>
+      </svg>
+    </div>
+    <div class="view_all_mb">
+      <a href="{% if section.settings.view_all_link != blank %}{{ section.settings.view_all_link }}{% else %}javascripe:void(0);{% endif %}" class="view_all_icon">
+          {{ section.settings.view_all_chairs }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+    $('.new_collection_addons_section').each(function() {
+        let swiperSectionId = $(this).data('swiper-id'); // 获取唯一ID
+        let swiperContainer = $(this).find('.new_collection_addons_container').get(0); // 只获取当前 section 内的 Swiper 容器
+        let prevButton = $(this).find('.button-prev'); // 获取当前 section 的 prev 按钮
+        let nextButton = $(this).find('.button-next'); // 获取当前 section 的 next 按钮
+    
+        let swiperDom = new Swiper(swiperContainer, {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            navigation: {
+                nextEl: nextButton.get(0),
+                prevEl: prevButton.get(0)
+            },
+            on: {
+                slideChangeTransitionEnd: function () { // 使用 slideChangeTransitionEnd 事件
+                  if (swiperDom.isBeginning) {
+                      prevButton.css({ 'opacity': 0 });
+                      nextButton.css({ 'opacity': 1 });
+                  } else if (swiperDom.isEnd) {
+                      prevButton.css({ 'opacity': 1 });
+                      nextButton.css({ 'opacity': 0 });
+                  } else {
+                      prevButton.css({ 'opacity': 1 });
+                      nextButton.css({ 'opacity': 1 });
+                  }
+              }
+            }
+        });
+
+        // 绑定翻页按钮点击事件
+        $(this).find('.button-prev').click(function() {
+            swiperDom.slidePrev();
+        });
+    
+        $(this).find('.button-next').click(function() {
+            swiperDom.slideNext();
+        });
+        
+    });
+
+</script>
+
+{% schema %}
+  {
+    "name": "New Collection AddOns",
+    "max_blocks": 10,
+    "settings": [
+      {
+        "type": "text",
+        "id": "sectionsID",
+        "label": "Section ID"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title",
+        "default": "Chair add-ons"
+      },
+      {
+        "type": "text",
+        "id": "descripe",
+        "label": "Section Desc",
+        "default": "Personalize your agent experience"
+      },
+      {
+        "type": "text",
+        "id": "view_all_chairs",
+        "label": "Section View All",
+        "default": "VIEW ALL  >"
+      },
+      {
+        "type": "url",
+        "id": "view_all_link",
+        "label": "Section View All Link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "ItemImage",
+            "label": "Item Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "ItemImageMb",
+            "label": "Item Image Mobile"
+          },
+          {
+            "type": "text",
+            "id": "ItemTitle",
+            "label": "Item Title"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Item Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "New Collection AddOns"
+      }
+    ]
+  }
+{% endschema %}

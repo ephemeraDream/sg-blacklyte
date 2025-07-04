@@ -1,0 +1,22 @@
+div.flex-1{ flex: 1; display: block; }
+.productGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-item{
+  height: 100%;
+}
+.product-item>.card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.card-information{
+  display: flex;
+  flex: 1;
+}
+.card-information__wrapper{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

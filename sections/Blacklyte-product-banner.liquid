@@ -1,0 +1,214 @@
+<style>
+  .hide-pc{
+    display: none!important;
+  }
+  .hide-mb{
+    display: block!important;
+  }
+  img{
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+  }
+  .blavklyte-banner .banner-link{
+    position: relative;
+    display: block;
+  }
+  .blavklyte-banner .banner-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .blavklyte-banner .content-wrapper{
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .blavklyte-banner .info-title{
+    margin: 16px 0 32px;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.16;
+  }
+  .blavklyte-banner .info-sub{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.66;
+    margin: 0;
+  }
+  .blavklyte-banner .info-btn{
+    border-radius: calc(var(--btn-1-border-radius));
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    gap: 4px;
+  }
+  .blavklyte-banner .info-btn:hover{
+    background: #4212CA!important;
+  }
+  @media only screen and (min-width: 2000px){
+    .blavklyte-banner .info-title{
+      font-size: 3vw;
+    }
+    .blavklyte-banner .info-sub{
+      font-size: 1.5vw;
+    }
+    .scroll-text p{
+      font-size: 1.04vw;
+      line-height: 1.3vw;
+    }
+    .blavklyte-banner .info-btn{
+      padding: 0.5vw 1vw;
+      font-size: 1.04vw;
+      line-height: normal;
+      gap: 0.5vw;
+    }
+    .blavklyte-banner .info-btn svg{
+      width: 0.5vw;
+      height: 0.5vw;
+    }
+  }
+  @media only screen and (max-width: 550px){
+    .hide-pc{
+      display: block!important;
+    }
+    .hide-mb{
+      display: none!important;
+    }
+    .blavklyte-banner .content-wrapper{
+      justify-content: center;
+      align-items: flex-end;
+    }
+    .blavklyte-banner .content-wrapper .info{
+      text-align: center;
+      padding-bottom: 32px;
+    }
+    .blavklyte-banner .info-title{
+      margin: 8px 0 16px;
+      font-size: 32px;
+      line-height: 1.25;
+    }
+    .blavklyte-banner .info-sub{
+      font-size: 16px;
+      line-height: 1.4;
+    }
+  }
+</style>
+
+<section class="blavklyte-banner">
+  {% assign link = '' %}
+  {% if section.settings.btn_link != blank %}
+    {% assign link = section.settings.btn_link %}
+  {% else %}
+    {% assign link = 'javascript;' %}
+  {% endif %}
+  <a class="banner-link" href="{{ link }}">
+    {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.styles_max_width }}px, 100vw){% endif %}{%- endcapture -%}
+    {{- section.settings.bg | image_url: width: section.settings.bg.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'hide-mb' -}}
+    {{- section.settings.bg_m | image_url: width: section.settings.bg_m.width | image_tag: is: 'loess-image', loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'hide-pc' -}}
+
+    <div class="banner-wrapper">
+      <div class="container-1570 content-wrapper">
+        <div class="info">
+          {% if section.settings.subtitle != blank %}
+            <p class="info-sub" style="color:{{ section.settings.subtitle_color }};">{{ section.settings.subtitle }}</p>
+          {% endif %}
+          {% if section.settings.title != blank %}
+            <h2 class="info-title" style="color:{{ section.settings.title_color }};">{{ section.settings.title }}</h2>
+          {% endif %}
+          {% if section.settings.btn_link != blank %}
+            <div class="info-btn" style="color:{{ section.settings.btn_color }};background: {{ section.settings.btn_bg }};">
+              <span>{{ section.settings.btn_name }}</span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.9641 6.60637L3.92031 1.10481C3.90191 1.09032 3.87979 1.08131 3.8565 1.07883C3.8332 1.07634 3.80968 1.08048 3.78863 1.09076C3.76758 1.10104 3.74986 1.11704 3.7375 1.13694C3.72514 1.15684 3.71864 1.17982 3.71875 1.20325V2.41106C3.71875 2.48762 3.75469 2.56106 3.81406 2.60793L9.43906 7.00012L3.81406 11.3923C3.75313 11.4392 3.71875 11.5126 3.71875 11.5892V12.797C3.71875 12.9017 3.83906 12.9595 3.92031 12.8954L10.9641 7.39387C11.0239 7.34717 11.0724 7.28744 11.1057 7.21921C11.139 7.15098 11.1563 7.07605 11.1563 7.00012C11.1563 6.9242 11.139 6.84927 11.1057 6.78104C11.0724 6.71281 11.0239 6.65307 10.9641 6.60637Z" fill="white"/>
+                </svg>
+              </span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+  </a>
+</section>
+
+{% schema %}
+  {
+    "name": "Blacklyte Product Banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg",
+        "label": "Banner Image PC"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_m",
+        "label": "Banner Image Mobile"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Banner title",
+        "default": "Blacklyte Athena Chair"
+      },
+      {
+        "type": "textarea",
+        "id": "subtitle",
+        "label": "Banner sub title",
+        "default": "For gaming enthusiasts"
+      },
+      {
+        "type": "text",
+        "id": "btn_name",
+        "label": "Button text",
+        "default": "Buy Now >"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Button link"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "subtitle_color",
+        "label": "Sub title color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "btn_color",
+        "label": "Button text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "btn_bg",
+        "label": "Button background color",
+        "default": "#5216FC"
+      }
+      
+    ],
+    "presets": [
+      {
+        "name": "Blacklyte Product Banner"
+      }
+    ]
+  }
+{% endschema %}

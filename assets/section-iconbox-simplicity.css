@@ -1,0 +1,113 @@
+.iconbox_simplicity {
+  max-width: 75vw;
+  margin: 0 auto;
+  position: relative;
+  padding: 5.729167vw 16.67vw 2.7604167vw;
+}
+
+.iconbox_simplicity .iconbox_simplicity_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 54px;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #262629;
+}
+
+.iconbox_simplicity .iconbox_simplicity_grid {
+  display: grid;
+  grid-template-columns: 1fr 15.625vw 1fr;
+  margin-top: 3.33vw;
+}
+
+.iconbox_simplicity .iconbox_simplicity_grid_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.9375vw;
+  padding-top: 0.78125vw;
+  height: 10.4167vw;
+}
+
+.iconbox_simplicity .iconbox_simplicity_grid_item:nth-child(3n+1) {
+  padding-right: 2.65625vw;
+}
+
+.iconbox_simplicity .iconbox_simplicity_grid_item:nth-child(3n) {
+  padding-left: 2.65625vw;
+}
+
+.iconbox_simplicity .iconbox_simplicity_grid_item:nth-child(3n-1) {
+  padding-right: 2.65625vw;
+  padding-left: 2.65625vw;
+}
+
+.iconbox_simplicity .iconbox_simplicity_grid_item_text {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #262629;
+}
+
+.iconbox_simplicity .iconbox_simplicity_grid_item svg {
+  width: 3.125vw;
+  height: 3.125vw;
+}
+
+@media screen and (max-width: 1600px) {
+  .iconbox_simplicity .iconbox_simplicity_grid_item_text {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .iconbox_simplicity .iconbox_simplicity_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .iconbox_simplicity {
+    max-width: 100vw;
+    padding: 5.33vw;
+  }
+
+  .iconbox_simplicity .iconbox_simplicity_title {
+    font-size: 30px;
+    line-height: 45px;
+  }
+
+  .iconbox_simplicity .iconbox_simplicity_grid_item svg {
+    width: 16vw;
+    height: 16vw;
+  }
+
+  .iconbox_simplicity .iconbox_simplicity_grid_item {
+    height: 32vw;
+  }
+
+  .iconbox_simplicity .iconbox_simplicity_grid_item:nth-child(3),
+  .iconbox_simplicity .iconbox_simplicity_grid_item:nth-child(4) {
+    justify-content: center;
+    height: 36vw;
+  }
+
+  .iconbox_simplicity .iconbox_simplicity_grid_item:nth-child(5),
+  .iconbox_simplicity .iconbox_simplicity_grid_item:nth-child(6) {
+    justify-content: flex-end;
+  }
+
+  .iconbox_simplicity .iconbox_simplicity_grid_item:nth-child(2n+1) {
+    padding: 0;
+    padding-right: 5.33vw;
+  }
+
+  .iconbox_simplicity .iconbox_simplicity_grid_item:nth-child(2n) {
+    padding: 0;
+    padding-left: 5.33vw;
+  }
+}

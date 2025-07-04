@@ -1,0 +1,278 @@
+{% comment %}
+  集合页增加现场赛事轮播模块.
+  
+{% endcomment %}
+<style>
+  :root{
+    --left: 60px;
+    --left-mb: 10px;
+    --borderRadius: 6px;
+    --bgColor: #FFFFFF;
+    --borderColor: #D4D4D8;
+    --cardBgColor: #F5F5F5;
+  }
+  div.all-gaming-chairs-new-collections.all-prod_swiper-temp .container-full .collection{
+    padding-left: var(--left);
+    padding-right: var(--left);
+  }
+  div.all-gaming-chairs-new-collections.all-prod_swiper-temp .collection_title_text{
+    padding-left: var(--left);
+    background-color: var(--bgColor);
+  }
+  div.all-gaming-chairs-new-collections.all-prod_swiper-temp .container-full .all_product_toolbar_container{
+    background-color: var(--bgColor);
+  }
+  div.all-gaming-chairs-new-collections.all-prod_swiper-temp .collection{
+    background-color: var(--bgColor);
+  }
+  div.all-gaming-chairs-new-collections.all-prod_swiper-temp .card-product{
+    /* border-radius: var(--borderRadius); */
+    background-color: var(--cardBgColor) !important;
+  }
+  .austin-major_event_collection .product-item{
+    border: 1px solid #EDEFF2;
+    border-radius: var(--borderRadius);
+  }
+  .austin-major_event_collection .product-item .card-information{
+    padding: 16px 20px;
+  }
+  .productGrid.column-5 .product.swiper_event{
+    width: 60%;
+  }
+  .productGrid.column-4 .product.swiper_event{
+    width: 50%;
+  }
+  .productGrid.column-3 .product.swiper_event{
+    width: 100%;
+  }
+  
+  .productGrid.column-4 .product.swiper_event .product-item{
+    border: 1px solid #EDEFF2;
+    border-radius: var(--borderRadius);
+  }
+  .collection_swiper{
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+  }
+  .collection_swiper .item .image_pc{
+    display: block;
+  }
+  .collection_swiper .item .image_mb{
+    display: none;
+  }
+  .swiper-pagination.pagination-dots{
+    bottom: 28px;
+  }
+  .swiper-pagination.pagination-dots .swiper-pagination-bullet{
+    width: 11px;
+    height: 11px;
+    display: inline-block;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+  }
+  .swiper-pagination.pagination-dots .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: rgba(255, 255, 255, 1);
+  }
+
+  /* austin major */
+  div.all-gaming-chairs-new-collections.austin-major_event_collection .card-media{
+    padding-bottom: 90% !important;
+  }
+  .austin-major_event_collection .product-item:before{
+    display: inline-block;
+    content: '';
+    width: 40px;
+    height: 45px;
+    background: url('https://cdn.shopify.com/s/files/1/0599/2867/4417/files/austin-major_collection-logo.webp?v=1749525444') no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+  }
+  .austin_major_container{
+    display: flex;
+    justify-content: space-between;
+  }
+  .austin_major_event_btn{
+    font: 500 14px var(--font-family-1);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #DE2E39;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #DE2E39;
+    transition: all .15s ease-in-out;
+  }
+  .austin_major_event_btn:hover{
+    color: #DE2E39;
+    background-color: #ffffff;
+  }
+  div.all-gaming-chairs-new-collections.austin-major_event_collection .card-title{
+    color: #262629;
+  }
+  div.all-gaming-chairs-new-collections.austin-major_event_collection .card-title:hover{
+    text-decoration: none;
+  }
+  div.all-gaming-chairs-new-collections.austin-major_event_collection .collection_all_variant_name{
+    font: 400 14px var(--font-family-1);
+    color: #57575B;
+    margin-top: 4px;
+  }
+  .austin-major_event_collection .productGrid.column-5 .product:nth-child(-n+4),
+  .austin-major_event_collection .productGrid.column-5 .product:nth-child(-n+5),
+  .austin-major_event_collection .productGrid.column-5 .product {
+    margin-top: 30px;
+  }
+  .austin-major_event_collection .productGrid .product{
+    padding-left: 8.5px !important;
+    padding-right: 8.5px !important;
+  }
+
+  @media(max-width: 551px) {
+    .austin_major_event_btn{
+      font-size: 8px;
+      padding: 4px 5px;
+    }
+  }
+  /* IPhone */
+  @media(max-width: 768px) {
+    div.all-gaming-chairs-new-collections.all-prod_swiper-temp .container-full .collection{
+      padding-left: var(--left-mb);
+      padding-right: var(--left-mb);
+    }
+    div.all-gaming-chairs-new-collections.all-prod_swiper-temp .collection_title_text{
+      padding-left: var(--left-mb);
+    }
+    .productGrid.column-4 .product.swiper_event,
+    .productGrid.column-5 .product.swiper_event{
+      width: 100%;
+    }
+    .collection_swiper .item .image_pc{
+      display: none;
+    }
+    .collection_swiper .item .image_mb{
+      display: block;
+    }
+    .swiper-pagination.pagination-dots{
+      bottom: 10px;
+    }
+    .swiper-pagination.pagination-dots .swiper-pagination-bullet{
+      width: 6px;
+      height: 6px;
+      margin: 2px;
+    }
+    /* austin major */
+    .austin-major_event_collection .product-item:before{
+      width: 20px;
+      height: 25px;
+      top: 10px;
+      left: 10px;
+    }
+    .austin-major_event_collection .product-item .card-information{
+      padding: 8px 10px;
+    }
+    .austin-major_event_collection .productGrid.column-5 .product:nth-child(-n+4),
+    .austin-major_event_collection .productGrid.column-5 .product:nth-child(-n+5),
+    .austin-major_event_collection .productGrid.column-5 .product {
+      margin-top: 16px;
+    }
+    .austin-major_event_collection .productGrid .product{
+      padding-left: 4px !important;
+      padding-right: 4px !important;
+    }
+    div.all-gaming-chairs-new-collections.austin-major_event_collection .card-media{
+      padding-bottom: 110% !important;
+    }
+    div.all-gaming-chairs-new-collections.austin-major_event_collection .card-title{
+      font-size: 11px;
+      line-height: 1.1;
+    }
+    div.all-gaming-chairs-new-collections.austin-major_event_collection .collection_all_variant_name{
+      font-size: 9px;
+    }
+  }
+  @media(min-width: 768px) and (max-width: 990px) {
+    .productGrid.column-4 .product.swiper_event,
+    .productGrid.column-5 .product.swiper_event {
+      width: 100%;
+    }
+  }
+  @media (min-width: 1101px) and (max-width: 1299px){
+    .productGrid.column-4 .product.swiper_event,
+    .productGrid.column-5 .product.swiper_event {
+      width: calc((100% / 3) * 2);
+    }
+  }
+  @media (min-width: 991px) and (max-width: 1100px) {
+    .productGrid.column-4 .product.swiper_event,
+    .productGrid.column-5 .product.swiper_event {
+      width: 100%;
+    }
+  }
+  @media(min-width: 1025px) and (max-width: 1300px) {
+    .austin-major_event_collection .productGrid.column-5 .product.swiper_event{
+      width: calc((100% / 3)) * 2);
+    }
+     .collection_swiper .item .image_pc{
+       padding-top: 58% !important;
+     }
+    .collection_swiper .item .image_pc img{
+      object-fit: cover;
+    }
+  }
+  @media(min-width: 1300px) and (max-width: 1600px) {
+    .austin-major_event_collection .productGrid.column-5 .product.swiper_event{
+      width: 75%;
+    }
+  }
+  @media(min-width: 2000px) {
+    .collection_swiper .item .image_pc{
+      padding-top: 37% !important;
+    }
+    .collection_swiper .item .image_pc img{
+      object-fit: cover;
+    }
+  }
+</style>
+
+<div style="position: relative;">
+  <div class="collection_swiper collections_event_swiper swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% if block.type == 'swiperItem' %}
+          <div class="item swiper-slide">
+            <div class="adaptive_height image_pc" style="padding-top: {% unless block.settings.item_picture.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.item_picture.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.item_picture.aspect_ratio | times: 100 }}%{% endunless %}">
+              <img width="100%" height="100%" {% render 'lazyload',preview_img: block.settings.item_picture %} />
+            </div>
+            <div class="adaptive_height image_mb" style="padding-top: {% unless block.settings.item_picture_mb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.item_picture_mb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.item_picture_mb.aspect_ratio | times: 100 }}%{% endunless %}">
+              <img width="100%" height="100%" {% render 'lazyload',preview_img: block.settings.item_picture_mb %} />
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="swiper-pagination pagination-dots"></div>
+</div>
+  
+<script>
+  $(document).ready(function() {
+    let liveEvent = new Swiper('.collections_event_swiper', {
+      loop: true,
+      slidesPerView: 1,
+      speed: 500,
+      autoplay: true,
+      pagination: {
+        el: '.swiper-pagination.pagination-dots',
+        clickable :true
+      },
+    })
+  })
+</script>
+

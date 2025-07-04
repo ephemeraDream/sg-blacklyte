@@ -1,0 +1,1313 @@
+{% comment %}
+  HLTV Collection
+{% endcomment %}
+<style>
+  .hltv-event{
+    background: #FAF7ED url('https://cdn.shopify.com/s/files/1/0599/2867/4417/files/summerSaleEvent-bgImg.webp?v=1751253129');
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center;
+  }
+  .hltv-event-container{
+    padding-bottom: 400px;
+  }
+  .header-title{
+    font: 800 60px var(--font-family-1);
+    color: #fff;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .target-lists{
+    display: flex;
+    gap: 160px;
+    background-color: #fff;
+    justify-content: center;
+    position: sticky;
+    top: 100px;
+    z-index: 100;
+  }
+  .target-lists .target-item{
+    font: 800 20px var(--font-family-1);
+    font-style: italic;
+    color: #262629;
+    padding: 19px 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* 保证动画不会溢出 */
+  }
+  .target-lists .target-item::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #FD9300;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  
+  .target-lists .target-item.target-item-active::after {
+    transform: scaleX(1);
+  }
+  .header-title.desk-header-title{
+    margin: 100px auto 60px;
+    position: relative;
+  }
+  
+  .chairs_prod_lists{
+    position: relative;
+  }
+  .chairs_title-image-block{
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .chairs_title-image-block.desks_title-image-block {
+    width: 60%;
+  }
+  .block-chair-cont .top_pick{
+    display: flex;
+    background-color: #FFFFFF;
+    padding: 40px 100px;
+    cursor: pointer;
+    border-radius: 16px;
+    position: relative;
+  }
+  .block-chair-cont .top_pick .left{ }
+  .block-chair-cont .top_pick .right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    margin-left: 0px;
+  }
+  .block-chair-cont .top_pick .right .top_pick_subtitle{
+    font: 500 14px var(--font-family-1);
+    color: #262629;
+    line-height: 1.2;
+  }
+  .block-chair-cont .top_pick .right .top_pick_title{
+    font: 500 30px var(--font-family-1);
+    color: #262629;
+    line-height: 1.4;
+    margin-top: 6px;
+  }
+  .block-chair-cont .top_pick .right .top_pick_desc{
+    font: 400 14px var(--font-family-1);
+    color: #262629;
+    line-height: 1.6;
+    margin-top: 6px;
+  }
+  .block-chair-cont .top_pick .right .top_pick_prices{
+    margin-top: 8px;
+  }
+  .block-chair-cont .top_pick .right .top_pick_prices .discount-price{
+    font: 600 30px var(--font-family-1);
+    color: #FD9300;
+  }
+  .block-chair-cont .top_pick .right .top_pick_prices .sale-price{
+    font: 400 24px var(--font-family-1);
+    color: #262629;
+    text-decoration: line-through;
+    margin-left: 6px;
+  }
+  
+  .block-chair-cont .top_pick .right .top_pick_btn{
+    font-family: var(--font-family-1);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 26px;
+    letter-spacing: 0;
+    padding: 15px 0;
+    border-radius: 30px;
+    background: #FD9300;
+    max-width: 220px;
+    text-align: center;
+    color: #fff;
+    margin-top: 10px;
+  }
+  .prod_lists {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .prod_lists .prod_item{
+    width: calc((100% - 80px) / 3);
+    background-color: #fff;
+    border-radius: 16px;
+    position: relative;
+  }
+  
+  .prod_lists .prod_item .container{
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
+  }
+  .prod_lists .prod_item .prod_card_info{
+    padding: 0 26px 27px 27px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .prod_lists .prod_item .prod_item_title{
+    font: 500 20px var(--font-family-1);
+    color: #262629;
+    line-height: 1.4;
+  }
+  .prod_lists .prod_item .prod_item-variants{
+    font: 400 12px var(--font-family-1);
+    color: #262629;
+    margin-top: 6px;
+  }
+  .flex-1{
+    display: block !important;
+    flex: 1;
+  }
+  .prod_lists .prod_item .prod_item_price{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 8px;
+  }
+  .prod_lists .prod_item .prod_item_price .price{ }
+  .prod_lists .prod_item .prod_item_price .prod_item_discount_price{
+    font: 500 22px var(--font-family-1);
+    color: #fff;
+    margin-right: 5px;
+  }
+  .prod_lists .prod_item .prod_item_price .prod_item_sale_price{
+    font: 400 22px var(--font-family-1);
+    color: #262629;
+  }
+  .prod_lists .prod_item .prod_item_price .prod_item_sale_price.prod_item_sale_price_new{
+    text-decoration: line-through;
+    font-size: 14px;
+  }
+  .prod_lists .prod_item .prod_item_price .prod_item_sale_price.prod_item_sale_save_price{
+    text-decoration: line-through;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+  .prod_lists .prod_item .prod_item_price .prod_item_save_discount_price{
+    font: 500 22px var(--font-family-1);
+    color: #262629;
+    margin-right: 5px;
+  }
+
+  
+  .prod_lists .prod_item .prod_item_price .shop_now_btn {
+    font: 500 18px var(--font-family-1);
+    font-style: italic;
+    color: #fff;
+    width: 120px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 30px;
+    background: #FD9300;
+  }
+  .module-title{
+    margin-top: 168px;
+    text-align: center;
+  }
+  .module-title.bundle-title{
+    margin-bottom: 100px;
+  }
+  .prod-list-title{
+    font: 800 50px var(--font-family-1);
+    font-style: italic;
+    color: #102E4A;
+    position: relative;
+  }
+  .prod-list-title:after{
+    display: inline-block;
+    content: '';
+    width: 70px;
+    height: 70px;
+    background: url('https://cdn.shopify.com/s/files/1/0599/2867/4417/files/saleEvent-moduleTitle-icon.webp?v=1751104065') no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: -26px;
+    transform: translateX(-35px);
+  }
+  .prod-list-desc{
+    font: 500 30px var(--font-family-1);
+    color: #26262980;
+    margin-top: 8px;
+  }
+  .bundle-prod-lists {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+  }
+  .bundle-prod-lists .bundle-prod-items{
+    flex: 1;
+    padding: 38px 30px;
+    border-radius: 16px;
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-item-save-tag {
+    width: 84px;
+    height: 90px;
+    background: url(https://cdn.shopify.com/s/files/1/0702/4053/4777/files/summerSaleEvent-tag.webp?v=1751267609) no-repeat;
+    background-size: cover;
+    position: absolute;
+    right: 16px;
+    top: -1px;
+    font: 500 20px var(--font-family-1);
+    line-height: 1.3;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    padding-top: 10px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-item-save-tag span{
+    display: block;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-middle-icon{
+    margin: auto 14px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-middle-icon svg{
+    width: 54px;
+    height: 54px;
+    fill: none;
+    stroke: none;
+  }
+  .bundle-prod-item-right-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .bundle-prod-items-cont-left{
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 300px);
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-left,
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-center{
+    height: auto;
+    background-color: #FAF7ED;
+    border-radius: 16px;
+    padding: 30px;
+    flex: 1;
+  }
+
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-left .image-bundle,
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-center .image-bundle{
+    width: 90%;
+    margin: auto;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-sale-price{
+    font: 900 40px var(--font-family-1);
+    font-style: italic;
+    color: #102E4A;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-discount-price{
+    font: 900 30px var(--font-family-1);
+    font-style: italic;
+    text-decoration: line-through;
+    color: #262629;
+    opacity: 0.5;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-shopnow-btn{
+    margin-top: 20px;
+    background-color: #FD9300;
+    color: #fff;
+    padding: 15px 59px;
+    font: 600 26px var(--font-family-1);
+    font-style: italic;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  .bundle-item-title{
+    font: 500 20px var(--font-family-1);
+    color: #262629;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  /* 折扣 */
+  [data-variant-id="50767849783527"] .prod_item_sale_price,
+  [data-variant-id="50767849849063"] .prod_item_sale_price,
+  [data-variant-id="50767835201767"] .prod_item_sale_price,
+  [data-variant-id="50767826583783"] .prod_item_sale_price,
+  [data-variant-id="50767826714855"] .prod_item_sale_price,
+  [data-variant-id="50912341917927"] .prod_item_sale_price,
+  [data-product-id="8334385381607"] .prod_item_sale_price,
+  [data-product-id="8456610480359"] .prod_item_sale_price,
+  [data-product-id="9144279761127"] .prod_item_sale_price,
+  [data-product-id="9201750835431"] .prod_item_sale_price{
+    text-decoration: line-through;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+  [data-variant-id="50767849783527"] .prod_item_sale_price::before,
+  [data-variant-id="50767849849063"] .prod_item_sale_price::before {
+    display: inline-block;
+    content: '$409.00';
+    font: 500 22px var(--font-family-1);
+    color: #262629;
+    margin-right: 5px;
+  }
+  .chairs-block-chairs-cont{
+    position: relative;
+  }
+  [data-variant-id="50767849783527"].prod_item:before,
+  [data-variant-id="50767849849063"].prod_item:before,
+  .chairs-block-chairs-cont:before{
+    display: inline-block;
+    content: '$60 OFF';
+    width: 64px;
+    height: 70px;
+    background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/summerSaleEvent-tag.webp?v=1751267609') no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 16px;
+    top: -1px;
+    font: 500 20px var(--font-family-1);
+    line-height: 1.3;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    padding-top: 3px;
+  }
+  [data-variant-id="50767835201767"] .prod_item_sale_price::before{
+    display: inline-block;
+    content: '$379.00';
+    font: 500 22px var(--font-family-1);
+    color: #262629;
+    margin-right: 5px;
+  }
+  [data-variant-id="50767835201767"].prod_item:before,
+  [data-product-id="9201750835431"].prod_item:before {
+    display: inline-block;
+    content: '$50 OFF';
+    width: 64px;
+    height: 70px;
+    background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/summerSaleEvent-tag.webp?v=1751267609') no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 16px;
+    top: -1px;
+    font: 500 20px var(--font-family-1);
+    line-height: 1.3;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    padding-top: 3px;
+  }
+  [data-variant-id="50767826583783"] .prod_item_sale_price::before,
+  [data-variant-id="50767826714855"] .prod_item_sale_price::before,
+  [data-product-id="9201750835431"] .prod_item_sale_price::before {
+    display: inline-block;
+    content: '$469.00';
+    font: 500 22px var(--font-family-1);
+    color: #262629;
+    margin-right: 5px;
+  }
+  [data-variant-id="50767826583783"].prod_item:before,
+  [data-variant-id="50767826714855"].prod_item:before{
+    display: inline-block;
+    content: '$30 OFF';
+    width: 64px;
+    height: 70px;
+    background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/summerSaleEvent-tag.webp?v=1751267609') no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 16px;
+    top: -1px;
+    font: 500 20px var(--font-family-1);
+    line-height: 1.3;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    padding-top: 3px;
+  }
+  [data-variant-id="50912341917927"] .prod_item_sale_price::before{
+    display: inline-block;
+    content: '$299.00';
+    font: 500 22px var(--font-family-1);
+    color: #262629;
+    margin-right: 5px;
+  }
+  [data-variant-id="50912341917927"].prod_item:before{
+    display: inline-block;
+    content: '$100 OFF';
+    width: 64px;
+    height: 70px;
+    background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/summerSaleEvent-tag.webp?v=1751267609') no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 16px;
+    top: -1px;
+    font: 500 20px var(--font-family-1);
+    line-height: 1.3;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    padding-top: 3px;
+  }
+  [data-product-id="8334385381607"] .prod_item_sale_price::before{
+    display: inline-block;
+    content: '$899.00';
+    font: 500 22px var(--font-family-1);
+    color: #262629;
+    margin-right: 5px;
+  }
+  [data-product-id="8334385381607"].prod_item:before{
+    display: inline-block;
+    content: '$300 OFF';
+    width: 64px;
+    height: 70px;
+    background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/summerSaleEvent-tag.webp?v=1751267609') no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 16px;
+    top: -1px;
+    font: 500 20px var(--font-family-1);
+    line-height: 1.3;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    padding-top: 3px;
+  }
+  [data-product-id="8456610480359"] .prod_item_sale_price::before{
+    display: inline-block;
+    content: '$69.00';
+    font: 500 22px var(--font-family-1);
+    color: #262629;
+    margin-right: 5px;
+  }
+  [data-product-id="8456610480359"].prod_item:before{
+    display: inline-block;
+    content: '$50 OFF';
+    width: 64px;
+    height: 70px;
+    background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/summerSaleEvent-tag.webp?v=1751267609') no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 16px;
+    top: -1px;
+    font: 500 20px var(--font-family-1);
+    line-height: 1.3;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    padding-top: 3px;
+  }
+  [data-product-id="9144279761127"] .prod_item_sale_price::before{
+    display: inline-block;
+    content: '$659.00';
+    font: 500 22px var(--font-family-1);
+    color: #262629;
+    margin-right: 5px;
+  }
+  [data-product-id="9144279761127"].prod_item:before{
+    display: inline-block;
+    content: '$100 OFF';
+    width: 64px;
+    height: 70px;
+    background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/summerSaleEvent-tag.webp?v=1751267609') no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 16px;
+    top: -1px;
+    font: 500 20px var(--font-family-1);
+    line-height: 1.3;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    padding-top: 3px;
+  }
+  /* 无折扣 */
+  [data-product-id="9003143397607"]:not([data-variant-id="50767849783527"]).prod_item .prod_item_price .prod_item_sale_price,
+  [data-product-id="9003143397607"]:not([data-variant-id="50767849849063"]).prod_item .prod_item_price .prod_item_sale_price,
+  [data-product-id="9002849042663"]:not([data-variant-id="50767835201767"]).prod_item .prod_item_price .prod_item_sale_price,
+  [data-product-id="9003166630119"]:not([data-variant-id="50767826583783"]).prod_item .prod_item_price .prod_item_sale_price,
+  [data-product-id="9003166630119"]:not([data-variant-id="50767826714855"]).prod_item .prod_item_price .prod_item_sale_price,
+  [data-product-id="9223097516263"].prod_item .prod_item_price .prod_item_sale_price,
+  [data-product-id="9003183669479"].prod_item .prod_item_price .prod_item_sale_price{
+    font: 500 22px var(--font-family-1);
+  }
+  
+
+  /* IPhone */
+  @media(max-width: 767px) {
+    .hltv-event{
+      background-size: cover;
+      background-position: center;
+    }
+    .prod_lists {
+      gap: 10px;
+    }
+    .header-title,.header-title.desk-header-title{
+      font-size: 20px;
+      margin: 40px auto 20px;
+    }
+    .header-title{
+      margin-top: 0;
+    }
+    .block-chair-cont .top_pick{
+      padding: 0px 10px 40px;
+      flex-direction: column;
+      gap: 0px;
+    }
+    .block-chair-cont .top_pick .left{
+      max-width: 80%;
+      margin: 0 auto;
+    }
+    .block-chair-cont .top_pick .right{
+      margin-left: 0;
+      padding: 0 10px;
+    }
+    .block-chair-cont .top_pick .right .top_pick_subtitle{
+      font-size: 10px;
+    }
+    .block-chair-cont .top_pick .right .top_pick_title{
+      font-size: 18px;
+    }
+    .block-chair-cont .top_pick .right .top_pick_desc{
+      font-size: 10px;
+    }
+    .block-chair-cont .top_pick .right .top_pick_prices .discount-price{
+      font-size: 18px;
+    }
+    .block-chair-cont .top_pick .right .top_pick_prices .sale-price{
+      font-size: 16px;
+    }
+    .block-chair-cont .top_pick .right .top_pick_btn{
+      font-size: 14px;
+      line-height: 10px;
+      max-width: none;
+    }
+    .prod_lists .prod_item{
+      width: calc((100% - 10px) / 2);
+    }
+    .prod_lists .prod_item .prod_card_info{
+      padding: 0 0 20px;
+    }
+    .prod_lists .prod_item .prod_item_title{
+      font-size: 14px;
+    }
+    .prod_lists .prod_item .prod_item-variants{
+      font-size: 10px;
+    }
+    .prod_lists .prod_item .prod_item_price .price{ }
+    .prod_lists .prod_item .prod_item_price .discount-price{
+      font-size: 12px;
+    }
+    
+    .prod_lists .prod_item .prod_item_price .shop_now_btn{
+      font-size: 9px;
+      width: 62px;
+      line-height: 28px;
+    }
+    .target-lists{
+      gap: 30px;
+    }
+    .target-lists .target-item{
+      font-size: 14px;
+      padding: 14px 2px;
+    }
+    .module-title{
+      margin-top: 50px;
+    }
+    .prod-list-title{
+      font-size: 30px;
+    }
+    .prod-list-desc{
+      font-size: 20px;
+    }
+    .module-title.bundle-title{
+      margin-bottom: 30px;
+    }
+    .bundle-prod-lists .bundle-prod-items{
+      flex-direction: column;
+      padding: 50px 15px 20px;
+    }
+    .bundle-prod-items-cont-left{
+      width: 100%;
+      align-items: normal;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-middle-icon{
+      margin: auto;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-left,
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-center{
+      width: calc((100% - 30px) / 2);
+      padding: 10px 0;
+      border-radius: 8px;
+    }
+    .bundle-item-title{
+      margin-top: 0;
+      font-size: 10px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-middle-icon svg{
+      width: 30px;
+      height: 30px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right{
+      width: 90%;
+      margin: 20px auto 0;
+    }
+    .bundle-prod-item-right-cont {
+      display: flex;
+      align-items: anchor-center;
+      gap: 12px;
+      flex-direction: row;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-sale-price{
+      font-size: 20px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-discount-price{
+      font-size: 12px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-shopnow-btn{
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+    }
+    .hltv-event-container{
+      padding-bottom: 100px;
+    }
+    .target-lists{
+      top: 0;
+      z-index: 14;
+    }
+    .prod-list-title:after{
+      width: 50px;
+      height: 50px;
+      top: -20px;
+      transform: translateX(-30px);
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-item-save-tag{
+      width: 54px;
+      height: 60px;
+      font-size: 12px;
+      left: 13px;
+    }
+    
+    [data-variant-id="50767849783527"] .prod_item_sale_price,
+    [data-variant-id="50767849849063"] .prod_item_sale_price,
+    [data-variant-id="50767835201767"] .prod_item_sale_price,
+    [data-variant-id="50767826583783"] .prod_item_sale_price,
+    [data-variant-id="50767826714855"] .prod_item_sale_price,
+    [data-variant-id="50912341917927"] .prod_item_sale_price,
+    [data-product-id="8334385381607"] .prod_item_sale_price,
+    [data-product-id="8456610480359"] .prod_item_sale_price,
+    [data-product-id="9144279761127"] .prod_item_sale_price,
+    [data-product-id="9201750835431"] .prod_item_sale_price {
+      font-size: 10px !important;
+    }
+
+    [data-variant-id="50767849783527"] .prod_item_sale_price::before,
+    [data-variant-id="50767849849063"] .prod_item_sale_price::before,
+    [data-variant-id="50767835201767"] .prod_item_sale_price::before,
+    [data-variant-id="50767826583783"] .prod_item_sale_price::before,
+    [data-variant-id="50767826714855"] .prod_item_sale_price::before,
+    [data-variant-id="50912341917927"] .prod_item_sale_price::before,
+    [data-product-id="8334385381607"] .prod_item_sale_price::before,
+    [data-product-id="8456610480359"] .prod_item_sale_price::before,
+    [data-product-id="9144279761127"] .prod_item_sale_price::before,
+    .prod_lists .prod_item .prod_item_price .prod_item_sale_price,
+    [data-product-id="9201750835431"] .prod_item_sale_price::before,
+    [data-product-id="9003143397607"]:not([data-variant-id="50767849783527"]).prod_item .prod_item_price .prod_item_sale_price,
+    [data-product-id="9003143397607"]:not([data-variant-id="50767849849063"]).prod_item .prod_item_price .prod_item_sale_price,
+    [data-product-id="9002849042663"]:not([data-variant-id="50767835201767"]).prod_item .prod_item_price .prod_item_sale_price,
+    [data-product-id="9003166630119"]:not([data-variant-id="50767826583783"]).prod_item .prod_item_price .prod_item_sale_price,
+    [data-product-id="9003166630119"]:not([data-variant-id="50767826714855"]).prod_item .prod_item_price .prod_item_sale_price,
+    [data-product-id="9223097516263"].prod_item .prod_item_price .prod_item_sale_price,
+    [data-product-id="9003183669479"].prod_item .prod_item_price .prod_item_sale_price{
+      font-size: 12px;
+    }
+    [data-variant-id="50767849783527"].prod_item:before,
+    [data-variant-id="50767849849063"].prod_item:before,
+    [data-variant-id="50767835201767"].prod_item:before,
+    [data-variant-id="50767826583783"].prod_item:before,
+    [data-variant-id="50767826714855"].prod_item:before,
+    [data-variant-id="50912341917927"].prod_item:before,
+    [data-product-id="8334385381607"].prod_item:before,
+    [data-product-id="8456610480359"].prod_item:before,
+    [data-product-id="9144279761127"].prod_item:before,
+    [data-product-id="9201750835431"].prod_item:before,
+    .chairs-block-chairs-cont:before {
+      width: 44px;
+      height: 50px;
+      left: 10px;
+      top: -1px;
+      padding-top: 4px;
+      /* border-top-left-radius: 16px; */
+      font-size: 12px;
+    }
+    
+
+  }
+  /* IPad */
+  @media(min-width: 768px) and (max-width: 991px) {
+    .prod_lists{
+      gap: 20px;
+    }
+    .prod_lists .prod_item{
+      width: calc((100% - 40px) / 3);
+    }
+    .prod_lists .prod_item .prod_item_price .shop_now_btn{
+      font-size: 14px;
+    }
+    .prod_lists .prod_item .prod_card_info{
+      padding: 0 0 10px 0;
+    }
+    .block-chair-cont .top_pick{
+      padding: 20px 10px;
+    }
+    .block-chair-cont .top_pick .right{
+      margin-left: 0;
+    }
+    .prod_lists .prod_item .prod_item_price .prod_item_sale_price:before{
+      font-size: 16px;
+    }
+  }
+  /* small screen */
+  @media(min-width: 992px) and (max-width: 1600px) {
+    .prod_lists{
+      gap: 20px;
+    }
+    .prod_lists .prod_item{
+      width: calc((100% - 40px) / 3);
+    }
+    .prod_lists .prod_item .prod_card_info{
+      padding: 0 15px 27px 15px;
+    }
+    .prod_lists .prod_item .prod_item_price .shop_now_btn{
+      font-size: 16px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-middle-icon{
+      margin: auto 10px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-middle-icon svg{
+      width: 30px;
+      height: 30px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-sale-price{
+      font-size: 30px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-discount-price{
+      font-size: 20px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-shopnow-btn{
+      padding: 10px 45px;
+      font-size: 16px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-left,
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-center{
+      width: 340px;
+      height: auto;
+      flex: 1;
+    }
+  }
+
+  @media(min-width: 768px) and (max-width: 1024px) {
+    .target-lists{
+      top: 40px;
+    }
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-left,
+    .bundle-prod-lists .bundle-prod-items .bundle-prod-item-center{
+      padding: 10px 0;
+      flex: auto;
+    }
+    .bundle-item-title{
+      font-size: 18px;
+    }
+  }
+</style>
+
+<section class="hltv-event">
+  <div class="target-lists">
+    {% for block in section.blocks %}
+      {% if block.type == 'targetItem' %}
+        <span class="target-item {% if forloop.index == 1 %}target-item-active{% endif %}">{{ block.settings.targetItemTitle }}</span>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="container-1570 hltv-event-container">
+    <div class="event-cont">
+      <div class="module-title" id="chairsProdCont">
+        <div class="prod-list-title">{{ section.settings.productTitle }}</div>
+        <div class="prod-list-desc">{{ section.settings.productDescripe }}</div>
+      </div>
+      {% for block in section.blocks %}
+        {% if block.type == 'chairsItem' %}
+          <div class="header-title">
+            {% if block.settings.chairs_title_image != blank %}
+              <div class="chairs_title-image-block">
+                <img src="{{ block.settings.chairs_title_image | img_url:'master' }}" />
+              </div>
+            {% else %}
+              <span class="text">{{ block.settings.charis_title }}</span>
+            {% endif %}
+          </div>
+          <div class="block-chair-cont chairs-block-chairs-cont" data-href="{{ block.settings.chairs_top_pick_LINK }}">
+            <div class="top_pick">
+              <div class="left image-zoom">
+                <img src="{{ block.settings.chairs_top_pick | img_url:'master' }}">
+              </div>
+              <div class="right">
+                <div class="top_pick_subtitle">
+                  <span>{{ block.settings.chairs_top_pick_subtitle }}</span>
+                </div>
+                <div class="top_pick_title">
+                  <span>{{ block.settings.chairs_top_pick_title }}</span>
+                </div>
+                <div class="top_pick_desc">
+                  <span>{{ block.settings.chairs_top_pick_descripe }}</span>
+                </div>
+                <div class="top_pick_prices">
+                  <span class="discount-price">{{ block.settings.chairs_top_pick_discount_price }}</span>
+                  <span class="sale-price">{{ block.settings.chairs_top_pick_sale_price }}</span>
+                </div>
+                <div data-href="{{ block.settings.chairs_top_pick_LINK }}" class="top_pick_btn">
+                  <span>{{ block.settings.chairs_top_pick_shopnow }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      
+      <div class="prod_lists chairs_prod_lists">
+        {%- for product_card_product in collection.products -%}
+          {%-liquid
+            assign variant_img = ''
+            for option in product_card_product.options_with_values
+                for variant in product_card_product.variants limit: 1
+                    if variant.image != null  
+                        assign variant_img = variant.image
+                    endif
+                endfor
+            endfor
+          -%}
+            
+           <div class="prod_item" data-product-id="{{ product_card_product.id }}" style="{% if product_card_product.metafields.custom.product_type != 'accessories' %}display: block; {% else %} display: none; {% endif %}">
+              <div class="container">
+               <div class="card-product">
+                 {% render 'product-badge', product: product_card_product, class: 'card__badge', badge_detail: true, serial: serial %}
+                 <div class="card-media card-media--adapt {% if product_card_product.media[1] != nil and settings.show_image_swap %} media--hover-effect{% endif%} media--loading-effect" style="padding-bottom: {{ 1.1 | times: 100 }}%;">
+                    {% render 'image-product-card', product_card_product: product_card_product, variant_img: variant_img, has_video: false, loading: true %}
+                    <a class="card-link" href="{{ product_card_product.url }}" title="{{ product_card_product.title | escape }}"></a>
+                 </div>
+               </div>
+               <div class="prod_card_info">
+                 <div class="prod_item_title">
+                   <span>{{ product_card_product.title}}</span>
+                 </div>
+                 <div class="prod_item-variants">
+                    {{ product_card_product.selected_or_first_available_variant.option3 }}
+                 </div>
+                 <div class="flex-1"></div>
+                 <div class="prod_item_price">
+                   <div class="price">
+                     <span class="prod_item_sale_price">{{ product_card_product.selected_or_first_available_variant.price | money }}</span>
+                   </div>
+                   <a class="shop_now_btn" href="{{ product_card_product.url }}">{{ 'products.product.shop_now' | t }}</a>
+                 </div>
+                </div>
+             </div>
+           </div>
+        {% endfor %}
+      </div>
+      <!-- bundle -->
+      <div class="module-title bundle-title" id="bundleItemConte">
+        <div class="prod-list-title">{{ section.settings.bundleTitle }}</div>
+        <div class="prod-list-desc">{{ section.settings.bundleDescripe }}</div>
+      </div>
+      <div class="bundle-prod-lists">
+        {% for block in section.blocks %}
+          {% if block.type == 'bundleItem' %}
+            <div class="bundle-prod-items bundle-cont-link" data-href="{{ block.settings.bundleItemLink }}">
+              <div class="bundle-prod-items-cont-left">
+                <div class="bundle-prod-item-left">
+                  <div class="image-bundle image-zoom">
+                    <img src="{{ block.settings.bundleItemChair | img_url:'master' }}" width="100%" height="100%">
+                  </div>
+                  <div class="bundle-item-title">{{ block.settings.bundleItemTitle }}</div>
+                </div>
+                <div class="bundle-middle-icon">
+                  <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="54" height="54" rx="27" fill="#FFC179"/>
+                    <path d="M17 27H37" stroke="white" stroke-opacity="0.99" stroke-width="3"/>
+                    <path d="M27 17L27 37" stroke="white" stroke-opacity="0.99" stroke-width="3"/>
+                  </svg>
+                </div>
+    
+                <div class="bundle-prod-item-center">
+                  <div class="image-bundle image-zoom">
+                    <img src="{{ block.settings.bundleItemDesk | img_url:'master' }}" width="100%" height="100%">
+                  </div>
+                  <div class="bundle-item-title">{{ block.settings.bundleItemDeskTitle }}</div>
+                </div>
+              </div>
+              
+              <div class="bundle-prod-item-right">
+                <div class="bundle-prod-item-right-cont">
+                  <div class="bundle-item-sale-price">{{ block.settings.bundleItemSalePrice }}</div>
+                  <div class="bundle-item-discount-price">{{ block.settings.bundleItemDiscountPrice }}</div>
+                </div>
+                <div class="bundle-item-shopnow-btn bundle-cont-link" data-href="{{ block.settings.bundleItemLink }}">{{ 'products.product.shop_now' | t }}</div>
+              </div>
+              <!-- save -->
+              <div class="bundle-item-save-tag">
+                <span>{{ block.settings.bundleSaveTagPrices }}</span>
+                <span>OFF</span>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+        
+      </div>
+      <!-- ACCESSORIES -->
+      <div class="module-title bundle-title" id="accessoriesCont">
+        <div class="prod-list-title">{{ section.settings.accessoriesTitle }}</div>
+        <div class="prod-list-desc">{{ section.settings.accessoriesDescripe }}</div>
+      </div>
+      <div class="prod_lists chairs_prod_lists">
+        {%- for product_card_product in collection.products -%}
+          {%-liquid
+            assign variant_img = ''
+            for option in product_card_product.options_with_values
+                for variant in product_card_product.variants limit: 1
+                    if variant.image != null  
+                        assign variant_img = variant.image
+                    endif
+                endfor
+            endfor
+          -%}
+          
+           <div class="prod_item" data-product-id="{{ product_card_product.id }}" style="{% if product_card_product.metafields.custom.product_type == 'accessories' %}display: block; {% else %} display: none; {% endif %}">
+              <div class="container">
+               <div class="card-product">
+                 {% render 'product-badge', product: product_card_product, class: 'card__badge', badge_detail: true, serial: serial %}
+                 <div class="card-media card-media--adapt {% if product_card_product.media[1] != nil and settings.show_image_swap %} media--hover-effect{% endif%} media--loading-effect" style="padding-bottom: {{ 1.1 | times: 100 }}%;">
+                    {% render 'image-product-card', product_card_product: product_card_product, variant_img: variant_img, has_video: false, loading: true %}
+                    <a class="card-link" href="{{ product_card_product.url }}" title="{{ product_card_product.title | escape }}"></a>
+                 </div>
+               </div>
+               <div class="prod_card_info">
+                 <div class="prod_item_title">
+                   <span>{{ product_card_product.title}}</span>
+                 </div>
+                 <div class="prod_item-variants">
+                    {{ product_card_product.selected_or_first_available_variant.option3 }}
+                 </div>
+                 <div class="flex-1"></div>
+                 <div class="prod_item_price">
+                   <div class="price">
+                     <span class="prod_item_sale_price">{{ product_card_product.selected_or_first_available_variant.price | money }}</span>
+                   </div>
+                   <a class="shop_now_btn" href="{{ product_card_product.url }}">{{ 'products.product.shop_now' | t }}</a>
+                 </div>
+                </div>
+             </div>
+           </div>
+        {% endfor %}
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function() {
+    $('.prod_lists .prod_item').each(function() {
+      let titleElement = $(this).find('.prod_item_title');
+      const itemVariantVal = $(this).find('.prod_item-variants');
+  
+      let title = titleElement.text().trim();
+
+      let partsVal = title.split('-');
+  
+      if (partsVal[1]) {
+        const partsVal1 = partsVal[1].split('/')[0]?.trim();
+        const partsVal2 = partsVal[1].split('/')[1]?.trim();
+
+        let prependTex = ''
+        if (partsVal1) {
+          if(partsVal2) {
+            prependTex = partsVal1 + ' / '
+            itemVariantVal.append(' / ' + partsVal2);
+          } else {
+            prependTex = partsVal1 + '   '
+          }
+          itemVariantVal.prepend(prependTex)
+          titleElement.text(partsVal[0].trim())
+        } else {
+          itemVariantVal.prepend(partsVal2)
+          titleElement.text(partsVal[0].trim())
+        }
+      }
+    });
+    setTimeout(function() {
+      $('.prod_item_title').each(function() {
+        // 获取原文本
+        var txt = $(this).text().trim();
+        // 去掉最后的 ' Gaming Chair'，区分大小写
+        if (txt.endsWith(' Gaming Chair')) {
+          txt = txt.replace(/ Gaming Chair$/, '');
+          $(this).text(txt);
+        }
+      });
+    }, 0)
+
+    $('.top_pick_btn').on('click', function(){
+      let url = $(this).data('href')
+      targetLink(url)
+    })
+    $('.block-chair-cont').on('click', function() {
+      let url = $(this).data('href')
+      targetLink(url)
+    })
+    $('.bundle-cont-link').on('click', function() {
+      let url = $(this).data('href')
+      targetLink(url)
+    })
+    // 跳转方法
+    function targetLink(url) {
+      if(url) {
+        window.location.href = url
+      }
+    }
+    $('.target-lists').on('click', '.target-item', function() {
+      // 移除所有兄弟的 active 类
+      $(this).siblings('.target-item').removeClass('target-item-active');
+      // 当前点击的 item 添加 active 类
+      $(this).addClass('target-item-active');
+  
+      var index = $(this).index();
+      var targetId = '';
+      if(index === 0){
+        targetId = '#chairsProdCont';
+      } else if(index === 1){
+        targetId = '#bundleItemConte';
+      } else if(index === 2){
+        targetId = '#accessoriesCont';
+      }
+      if(targetId){
+        // 兼容有吸顶导航时可以加个 offset，比如 80
+        var offset = $(targetId).offset().top - 200; 
+        $('html, body').animate({ scrollTop: offset }, 600);
+      }
+    });
+    
+  });
+
+  function updateTargetActiveOnScroll() {
+    var chairsTop = $('#chairsProdCont').offset()?.top - 200 ?? 99999;
+    var bundleTop = $('#bundleItemConte').offset()?.top - 200 ?? 99999;
+    var accessoriesTop = $('#accessoriesCont').offset()?.top - 200 ?? 99999;
+    var scrollY = $(window).scrollTop();
+    var offset = 80;
+  
+    chairsTop -= offset;
+    bundleTop -= offset;
+    accessoriesTop -= offset;
+  
+    var items = $('.target-item');
+    var activeIndex = 0;
+    if (scrollY >= chairsTop && scrollY < bundleTop) {
+      activeIndex = 0;
+    } else if (scrollY >= bundleTop && scrollY < accessoriesTop) {
+      activeIndex = 1;
+    } else if (scrollY >= accessoriesTop) {
+      activeIndex = 2;
+    }
+  
+    items.removeClass('target-item-active');
+    items.eq(activeIndex).addClass('target-item-active');
+  }
+  $(window).on('scroll', updateTargetActiveOnScroll);
+  $(function(){ updateTargetActiveOnScroll(); });
+
+  
+
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Sale Main Collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "productTitle",
+        "label": "product Title"
+      },
+      {
+        "type": "text",
+        "id": "productDescripe",
+        "label": "product descripe"
+      },
+      {
+        "type": "text",
+        "id": "bundleTitle",
+        "label": "bundle Title"
+      },
+      {
+        "type": "text",
+        "id": "bundleDescripe",
+        "label": "bundle Descripe"
+      },
+      {
+        "type": "text",
+        "id": "accessoriesTitle",
+        "label": "accessories Title"
+      },
+      {
+        "type": "text",
+        "id": "accessoriesDescripe",
+        "label": "accessories Desc"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "targetItem",
+        "name": "targetItem",
+        "settings": [
+          {
+            "type": "text",
+            "id": "targetItemTitle",
+            "label": "target Item Title"
+          }
+        ]
+      },
+      {
+        "type": "chairsItem",
+        "name": "chairsItem",
+        "settings": [
+          {
+            "type": "text",
+            "id": "charis_title",
+            "label": "Chairs Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "chairs_title_image",
+            "label": "Chairs Title Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "chairs_top_pick",
+            "label": "Chairs Top Pick"
+          },
+          {
+            "type": "text",
+            "id": "chairs_top_pick_subtitle",
+            "label": "chairs Top Pick SubTitle",
+            "default": "TRUSTED BY PROS AT AUSTIN MAJOR"
+          },
+          {
+            "type": "text",
+            "id": "chairs_top_pick_title",
+            "label": "chairs Top Pick Title",
+            "default": "Blacklyte Athena Pro Gaming Chair"
+          },
+          {
+            "type": "textarea",
+            "id": "chairs_top_pick_descripe",
+            "label": "chairs Top Pick Desc",
+            "default": "Engineered for elite performance, trusted on the biggest stages. The Athena Pro — official chair of Austin Major, designed to keep pros focused, calm, and in control. Own the chair built for champions."
+          },
+          {
+            "type": "text",
+            "id": "chairs_top_pick_discount_price",
+            "label": "Discount price",
+            "default": "$609.00"
+          },
+          {
+            "type": "text",
+            "id": "chairs_top_pick_sale_price",
+            "label": "sale price",
+            "default": "$645.00"
+          },
+          {
+            "type": "text",
+            "id": "chairs_top_pick_shopnow",
+            "label": "chairs Top Pick Btn",
+            "default": "SHOP NOW"
+          },
+          {
+            "type": "url",
+            "id": "chairs_top_pick_LINK",
+            "label": "chairs Top Pick Link"
+          }
+        ]
+      },
+      {
+        "type": "bundleItem",
+        "name": "bundleItem",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "bundleItemChair",
+            "label": "bundle Item Chair"
+          },
+          {
+            "type": "text",
+            "id": "bundleItemTitle",
+            "label": "bundle Item Chair Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "bundleItemDesk",
+            "label": "bundle Item Desk"
+          },
+          {
+            "type": "text",
+            "id": "bundleItemDeskTitle",
+            "label": "bundle Item Desk Title"
+          },
+          {
+            "type": "text",
+            "id": "bundleItemSalePrice",
+            "label": "bundle Item Sale Price"
+          },
+          {
+            "type": "text",
+            "id": "bundleItemDiscountPrice",
+            "label": "bundle Item Discount Price"
+          },
+          {
+            "type": "url",
+            "id": "bundleItemLink",
+            "label": "bundle Item Link"
+          },
+          {
+            "type": "text",
+            "id": "bundleSaveTagPrices",
+            "label": "bundle Save Tag Prices"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Sale Main Collection"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,283 @@
+{% comment %}
+  3.0修改版首页弹窗
+{% endcomment %}
+<style>
+  .prod-modal{
+    width: 800px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: #ffffff;
+    transform: translate(0, -6%);
+    opacity: 0;
+    display: none;
+    transition: all .5s ease;
+  }
+  body.home-modal-show .home-background-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #0009;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+  }
+  body.home-modal-show .prod-modal {
+    transition: all .5s ease;
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(0, 6%);
+    animation: slowShow .55s ease-in forwards;
+  }
+  .prod-modal .prod-modal-title{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F8F9FC;
+    padding: 27px 42px;
+    border-radius: 20px 20px 0 0;
+    font: 500 26px "Roboto";
+    color: #262629;
+  }
+  .prod-modal .prod-modal-title .close-icon svg{
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: none;
+    cursor: pointer;
+  }
+  .prod-modal .prod-modal-cont {
+    padding: 48px 42px 84px;
+    max-height: 84vh;
+    overflow-y: scroll;
+    transition: all .15s linear;
+  }
+  
+  .prod-modal .prod-modal-cont .prod-modal-cont-container .title{
+    font: 500 26px "Roboto";
+    color: #262629;
+    padding-bottom: 25px;
+  }
+  .prod-modal .prod-modal-cont .pro-modal-cont-fi .content{
+    line-height: 1.4 !important;
+    font: 400 16px "Roboto";
+    color: #76767F;
+  }
+  .prod-modal .prod-modal-cont .pro-modal-cont-fi .content div:nth-of-type(2){
+    margin-top: 30px;
+  }
+  .prod-modal .prod-modal-cont .content-line-bxo{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #F3F3F3;
+    margin: 60px 0;
+  }
+  .prod-modal .cont-item{
+    display: flex;
+    gap: 17px;
+    align-items: center;
+    margin-top: 29px;
+  }
+  .prod-modal .pro-modal-cont-sec .cont-item .cont-image{
+    width: 60px;
+    height: auto;
+  }
+  .prod-modal .pro-modal-cont-thi .cont-item .cont-image{
+    width: 106px;
+    height: auto;
+  }
+  .prod-modal .pro-modal-cont-thi .cont-item .cont-container{
+    width: calc(100% - 123px);
+  }
+  .prod-modal .cont-item .cont-title{
+    font: 500 16px "Roboto";
+    color: #262629;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .prod-modal .cont-item .cont-desc {
+    font: 400 16px "Roboto";
+    color: #76767F;
+  }
+  /* IPhone */
+  @media(max-width: 767px) {
+    .prod-modal{
+      width: 90%;
+    }
+    .prod-modal .prod-modal-title{
+      font-size: 20px;
+      padding: 20px 24px;
+    }
+    .prod-modal .prod-modal-cont{
+      padding: 30px 24px 30px 24px;
+      max-height: 72vh;
+    }
+    .prod-modal .prod-modal-cont .pro-modal-cont-fi .title{
+      font-size: 20px;
+    }
+    .prod-modal .prod-modal-cont .pro-modal-cont-fi .content{
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .prod-modal .prod-modal-cont .pro-modal-cont-fi .content div:nth-of-type(2){
+      margin-top: 20px;
+    }
+    .prod-modal .prod-modal-cont .content-line-bxo{
+      margin: 30px 0;
+    }
+    .prod-modal .prod-modal-cont .prod-modal-cont-container .title{
+      font-size: 18px;
+      padding-bottom: 10px;
+    }
+    .prod-modal .cont-item .cont-title{
+      font-size: 12px;
+    }
+    .prod-modal .cont-item .cont-desc{
+      font-size: 12px;
+    }
+    .prod-modal .cont-item{
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .prod-modal .pro-modal-cont-sec .cont-item .cont-image{
+      width: 40px;
+    }
+    .prod-modal .pro-modal-cont-thi .cont-item .cont-image{
+      width: 86px;
+    }
+  }
+  /* IPad */
+  @media(min-width: 768px) and (max-width: 1024px) { }
+  /* small screen */
+  @media(min-width: 1025px) and (max-width: 1900px) { }
+  /* large screen */
+  @media(min-width: 2000px) {
+    .prod-modal{
+      width: 1000px;
+    }
+    .prod-modal .prod-modal-cont .pro-modal-cont-fi .content{
+      font-size: 2rem;
+    }
+    .prod-modal .cont-item .cont-desc,
+    .prod-modal .cont-item .cont-title,
+    .prod-modal .cont-item .cont-desc {
+      font-size: 20px;
+    }
+  }
+  
+</style>
+<section class="home-background-overlay">
+  <div class="prod-modal">
+    <div class="prod-modal-title">
+      <span>{{ block.settings.item_title }}</span>
+      <span class="close-icon">
+        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.00293 2L19.3156 19.3126" stroke="#76767F" stroke-width="3"/>
+          <path d="M19.3125 2L1.99986 19.3126" stroke="#76767F" stroke-width="3"/>
+        </svg>
+      </span>
+    </div>
+    <div class="prod-modal-cont">
+      <div class="pro-modal-cont-fi prod-modal-cont-container">
+        <div class="content">
+          <div>{{ block.settings.item-desc-1 }}</div>
+          <div>{{ block.settings.item-desc-2 }}</div>
+        </div>
+      </div>
+      <div class="content-line-bxo"></div>
+      <div class="pro-modal-cont-sec prod-modal-cont-container">
+        <div class="title">The Science Behind Your Support</div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-0.png?v=1745312113" width="100%" height="100%" />
+          </div>
+          <div class="cont-desc">2,000+ hours of biomechanical research with posture specialists</div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-1.png?v=1745312134" width="100%" height="100%" />
+          </div>
+          <div class="cont-desc">Motion capture technology analyzing 50+ sitting positions</div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-2.png?v=1745312169" width="100%" height="100%" />
+          </div>
+          <div class="cont-desc">Pressure mapping to eliminate discomfort points</div>
+        </div>
+      </div>
+      <div class="content-line-bxo"></div>
+      <div class="pro-modal-cont-thi prod-modal-cont-container">
+        <div class="title">Features That Actually Adapt to You</div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-3.png?v=1745315281" width="100%" height="100%" />
+          </div>
+          <div class="cont-container">
+            <div class="cont-title">Ergonomic Lumbar Support</div>
+            <div class="cont-desc">The lumbar system lets you fine-tune back support for an even more natural curve and bigger comfort.</div>
+          </div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-4.png?v=1745315281" width="100%" height="100%" />
+          </div>
+          <div class="cont-container">
+            <div class="cont-title">Magnetic Headrest</div>
+            <div class="cont-desc">Instantly snaps into your perfect neck position.</div>
+          </div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-5.png?v=1745315281" width="100%" height="100%" />
+          </div>
+          <div class="cont-container">
+            <div class="cont-title">Multi-Axis Armrests</div>
+            <div class="cont-desc">4D adjustments follow your elbows naturally.</div>
+          </div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-6.png?v=1745315281" width="100%" height="100%" />
+          </div>
+          <div class="cont-container">
+            <div class="cont-title">90-168° Backrest Recline</div>
+            <div class="cont-desc">Designed for every activity you need —gaming, lounging, napping, and more.</div>
+          </div>
+        </div>
+      </div>
+      <div class="content-line-bxo"></div>
+      <div class="pro-modal-cont-thi prod-modal-cont-container">
+        <div class="title">Materials That Work With Your Body</div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-7.png?v=1745316123" width="100%" height="100%" />
+          </div>
+          <div class="cont-container">
+            <div class="cont-title">High-density Foam</div>
+            <div class="cont-desc">As comfortable as durable.</div>
+          </div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-8.png?v=1745316123" width="100%" height="100%" />
+          </div>
+          <div class="cont-container">
+            <div class="cont-title">Blacklyte Primed Fabric</div>
+            <div class="cont-desc">4x more breathable than standard fabric.</div>
+          </div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-image">
+            <img src="https://cdn.shopify.com/s/files/1/0599/2867/4417/files/home-modal-9.png?v=1745316123" width="100%" height="100%" />
+          </div>
+          <div class="cont-container">
+            <div class="cont-title">NEXGEN Eco Leatherette</div>
+            <div class="cont-desc">15x the strength of standard PU.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

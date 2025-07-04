@@ -1,0 +1,169 @@
+.img_with_text_box_simplicity {
+  max-width: 75vw;
+  margin: 0 auto;
+  position: relative;
+  background-color: #0C0C0C;
+  padding: 4.427083vw 8.33vw;
+}
+
+.img_with_text_box_simplicity .img_with_text_box_simplicity_maintitle {
+  font-family: Roboto;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0.8px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  background: linear-gradient(91.49deg, #1C5FEE -15.55%, #9BEFFF 122.08%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 3.33vw;
+  text-align: center;
+}
+
+.img_with_text_box_simplicity .img_with_text_box_simplicity_subtitle {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  background: linear-gradient(91.49deg, #1C5FEE -15.55%, #9BEFFF 122.08%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.img_with_text_box_simplicity .img_with_text_box_simplicity_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.img_with_text_box_simplicity .img_with_text_box_simplicity_desc {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.32px;
+  vertical-align: middle;
+  color: #fff;
+  margin-top: 0.2604167vw;
+  opacity: .7;
+}
+
+.img_with_text_box_simplicity .img_with_text_box_simplicity_filebox {
+  position: relative;
+  margin-bottom: 1.77083vw;
+}
+
+.img_with_text_box_simplicity .img_with_text_box_simplicity_filebox_video,
+.img_with_text_box_simplicity .img_with_text_box_simplicity_filebox_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  border-radius: 1.04167vw;
+  aspect-ratio: 1.3185;
+}
+
+.img_with_text_box_simplicity .img_with_text_box_simplicity_filebox_playicon svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
+.img_with_text_box_simplicity .img_with_text_box_simplicity_contain {
+  display: flex;
+  gap: 1.5625vw;
+}
+
+.img_with_text_box_simplicity .pc_show {
+  display: block;
+  flex: 1;
+}
+
+.img_with_text_box_simplicity .pmd_show {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .img_with_text_box_simplicity {
+    max-width: 100vw;
+    padding: 13.33vw 5.33vw 25.6vw 5.33vw !important;
+  }
+
+  .img_with_text_box_simplicity .img_with_text_box_simplicity_maintitle {
+    font-size: 26px;
+    line-height: 30px;
+    margin-bottom: 8.53vw;
+  }
+
+  .img_with_text_box_simplicity .img_with_text_box_simplicity_filebox {
+    margin-bottom: 5.33vw;
+  }
+
+  .img_with_text_box_simplicity .img_with_text_box_simplicity_filebox_video,
+  .img_with_text_box_simplicity .img_with_text_box_simplicity_filebox_image {
+    border-radius: 3.2vw;
+    aspect-ratio: 1.3035;
+  }
+
+  .img_with_text_box_simplicity .img_with_text_box_simplicity_title {
+    font-size: 26px;
+    line-height: 30px;
+    margin-top: 1.067vw;
+  }
+
+  .img_with_text_box_simplicity .img_with_text_box_simplicity_desc {
+    font-size: 14px;
+    line-height: 19px;
+    margin-top: 2.4vw;
+  }
+
+  .img_with_text_box_simplicity .swiper-pagination {
+    bottom: 16vw;
+    z-index: 0;
+  }
+
+  .img_with_text_box_simplicity .swiper-pagination .swiper-pagination-bullet {
+    background-color: #2E2E2E;
+    width: 9.6vw;
+    height: 0.8vw;
+    margin: 0 1.33vw;
+    border-radius: 0;
+    opacity: 1;
+  }
+
+  .img_with_text_box_simplicity .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 14.4vw;
+    background-color: #8E8E8E;
+  }
+
+  .img_with_text_simplicity {
+    padding-top: 6.67vw !important;
+    padding-bottom: 6.67vw !important;
+  }
+
+  .img_with_text_box_simplicity .pc_show {
+    display: none;
+  }
+
+  .img_with_text_box_simplicity .pmd_show {
+    display: block;
+  }
+
+  .img_with_text_box_simplicity_contain_grid .swiper-wrapper {
+    flex-wrap: wrap;
+    gap: 10.67vw;
+  }
+}

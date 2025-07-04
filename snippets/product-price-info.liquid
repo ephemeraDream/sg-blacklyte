@@ -1,0 +1,371 @@
+{%- comment -%}
+    Renders a list of product's price (regular, sale)
+
+    Accepts:
+    - product: {Object} Product Liquid object (optional)
+    - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
+    - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
+    - price_class: {String} Adds a price class to the price element (optional)
+
+    Usage:
+    {% render 'price', product: product %}
+{%- endcomment -%}
+{%- liquid
+     if use_variant
+        assign target = product.selected_or_first_available_variant
+    else
+        assign target = product
+    endif
+
+    assign compare_at_price = target.compare_at_price
+    assign price = target.price | default: 1999
+    assign available = target.available | default: false
+
+    if settings.currency_format_enable
+        assign money_price = price | money_with_currency
+    else
+        assign money_price = price | money
+    endif 
+
+    if target == product and product.price_varies
+        assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+    endif
+-%}
+
+<style type="text/css">
+  /* .price--on-sale .price__sale.price_sale_container_list {
+    display: block !important;
+  } */
+  .productView-price .price {
+    justify-content: flex-end;
+  }
+  .vari_selected_info {
+    margin-top: 16px;
+    border-bottom: 1px solid #DFDFDF;
+  }
+  .vari_selected_info .title {
+    font-size: 24px;
+    color: #18181B;
+  }
+  .productView-product .price__last .price-item.price-item--sale {
+    font-size: calc(18px + 7 * ((100vw - 320px) / 2080));
+  }
+  .price_total_text {
+    font-size: var(--font-body-size);
+  }
+  .price-item {
+    display: inline-block;
+    /* width: 160px; */
+    text-align: right;
+  }
+  .price__compare {
+    text-align: right;
+    white-space: nowrap;
+  }
+  .total_price {
+    white-space: nowrap;
+  }
+  .price dd.price__compare {
+    margin-right: 0px !important;
+  }
+  .product_selected_list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .product_selected_list .form__label {
+    display: block;
+    margin-top: 10px;
+    color: #18181B;
+    font-weight: 500;
+    text-transform: none;
+  }
+  .product_selected_list .form__label:nth-of-type(2),
+  .product_selected_list .form__label:nth-of-type(3) {
+    display: inline-flex;
+  }
+  .product_selected_list .form__label:nth-of-type(3):before {
+    content: '-';
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .options_number_and_price {
+    display: flex;
+    align-items: flex-end;
+  }
+  .options_number_and_price .no {
+    display: inline-block;
+    width: 20px;
+  }
+
+  .add-ons-products_in_details .complementary-products-title,
+  .add-ons-products_in_details .card-product,
+  .add-ons-products_in_details .quantity__container,
+  .add-ons-products_in_details .card-title,
+  .add-ons-products_in_details .price_no_add,
+  .add-ons-products_in_details .free_gift_modules,
+  .add-ons-products_in_details .complementary-products-description,
+  .add-ons-products_in_details #tips_id {
+    display: none;
+  }
+  .add-ons-products_in_details .product-item:before {
+    display: none;
+    content: '';
+  }
+  .add-ons-products_in_details .product_card_price_text {
+    padding-right: 0px;
+  }
+  .add-ons-products_in_details .product-item {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+    border-color: #DFDFDF;
+  }
+  .add-ons-products_in_details .card-information.card-information-add-ons {
+    width: 100%;
+    padding: 24px 0 18px 0 !important;
+  }
+  .add-ons-products_in_details .product-item-custom .card-information__wrapper.text-left {
+    font-size: 16px;
+  }
+  /* .add-ons-products_in_details .product_card_price_text::before {
+    content: 'X 1';
+  } */
+  /* .add-ons-products_in_details .price_no_text {
+    text-decoration: line-through;
+  } */
+  /* .add-ons-products_in_details .sale_price__text::after {
+    content: '$0';
+    padding-left: 4px;
+  } */
+  .add-ons-products_in_details .product_card_price_text {
+    display: inline-block;
+  }
+  .options_number_and_price .price__compare {
+    display: inline-block;
+    margin-right: 4px;
+  }
+  .price__last {
+    color: #F83A3A;
+  }
+  .price-item_title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #18181B;
+  }
+  .price_list_last {
+    text-align: right;
+    margin: 20px 0 16px;
+  }
+  .price_list_last .price-item_title {
+    font-weight: 500;
+  }
+  .price_list_last .price-item.price-item--sale {
+    font-size: calc(18px + 7 * ((100vw - 320px) / 2080)) !important;
+    color: #18181B !important;
+    font-weight: 500;
+  }
+  .add-ons-products_in_details .product {
+    margin-bottom: 0px;
+  }
+  .options_number_and_price .total_price, .add-ons-products_in_details .price_no_text {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .product_metafield_value {
+    font-size: 14px;
+    display: inline-block;
+    background-color: rgb(249 151 4 / 1);
+    color: #ffffff;
+    padding: 4px 10px;
+    margin-top: 4px;
+  }
+  .halloween_sale_price {
+    display: none;
+    margin-top: 16px;
+  }
+  .price--on-sale .price__sale {
+    display: block !important;
+    text-align: right;
+  }
+  .productView-product .price__last .price-item.price-item--sale {
+    font-size: var(--fontsize-text) !important;
+  }
+  @media (min-width: 1921px) {
+    .product_metafield_value {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<!-- 已选择的商品属性  -->
+<div class="vari_selected_info">
+  <span class="title">{{ product.title }}</span>
+  <div class="product_selected_list" id="product-ergonomics-{{ product.id }}">
+    <div>
+      {%- for option in product.options_with_values -%}
+        {%- if forloop.first -%}
+          {%- assign first_value = option.selected_value | split: "|" | first -%}
+          <label class="form__label" for="option-{{ forloop.index0 }}">
+            <span data-header-option>
+              {{ first_value }}
+            </span>
+            <br />
+          </label>
+        {%- else -%}
+          <label class="form__label" for="option-{{ forloop.index0 }}">
+            <span data-header-option>
+              {{ option.selected_value }}
+            </span>
+            <br />
+          </label>
+        {%- endif -%}
+      {%- endfor -%}
+      <script type="application/json">
+          {{ product.variants | json }}
+      </script>
+    </div>
+    <div class="options_number_and_price">
+      <!-- <span class="no">X 1</span> -->
+      <!-- <span class="price__compare"><s>{% if settings.currency_format_enable %}{{ compare_at_price | money_with_currency }}{% else %}{{ compare_at_price | money }}{% endif %}</s></span> -->
+      <span class="total_price">{{ price | money }}</span>
+    </div>
+  </div>
+</div>
+<!-- add ons 商品 -->
+<div class="add-ons-products_in_details">
+  <complementary-products id="complementary-product-data" data-complementary-product data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=10&intent=complementary">
+  </complementary-products>
+</div>
+
+{%- for variant in product.variants -%}
+      <span class="product_metafield_value" data-variant-id="{{ variant.id }}">{{ variant.metafields.custom.pre_order }}</span>
+{%- endfor -%}
+
+<div class="price
+    {%- if price_class %} {{ price_class }}{% endif -%}
+    {%- if available == false %} price--sold-out {% endif -%}
+    {%- if compare_at_price > price %} price--on-sale {% endif -%}
+    {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}">
+    
+    <dl>
+        <!-- 购物车中的总价格  -->
+        <div class="price_list_last">
+          <span class="price-item_title" style="font-weight: 400; font-size: 14px;">{{ 'products.product.price.all_bag_total_price' | t }}</span>
+          <span class="price-item price-item--sale" id="list-price" style="display: inline-block; width: auto;font-size: 16px !important;font-weight: 500;">
+            {{ price | money_with_currency }}
+          </span>
+        </div>
+        {%- comment -%}
+          Explanation of description list:
+            - div.price__regular: Displayed when there are no variants on sale
+            - div.price__sale: Displayed when a variant is a sale
+            - div.price__availability: Displayed when the product is sold out
+        {%- endcomment -%}
+        <div class="price__regular" style="text-align: right;">
+            {%- comment -%}
+                <dt>
+                    <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
+                </dt>
+            {%- endcomment -%}
+            <dd class="price__last">
+              <span class="price-item_title" style="font-weight: 500;font-size: 18px;">{{ 'products.product.price.all_product_total_price' | t }}</span>
+              <span class="price-item price-item--regular" id="halloween_settings" style="display: inline-block; width: auto;">
+                {{ price | money_with_currency }}
+              </span>
+            </dd>
+        </div>
+        
+        <div class="price__sale price_sale_container_list">
+            <!-- {%- comment -%}
+                <dt class="price__compare">
+                    <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
+                </dt>
+            {%- endcomment -%}
+            <dd class="price__compare"><span class="price_total_text">Selling Price</span><s class="price-item price-item--regular">{% if settings.currency_format_enable %}{{ compare_at_price | money_with_currency }}{% else %}{{ compare_at_price | money }}{% endif %}</s></dd> -->
+            
+            {%- comment -%}
+                <dt>
+                    <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
+                </dt>
+            {%- endcomment -%}
+            
+            <dd class="price__last{% if settings.show_price_percent %} price_percent{% endif %}" style="text-align: right;">
+              <span class="price_total_text"></span>
+              <span class="price-item_title" style="font-weight: 500;font-size: 18px;">{{ 'products.product.price.all_product_total_price' | t }}</span>
+              <span class="price-item price-item--sale" id="halloween_settings" style="display: inline-block; width: auto;">
+                  {{ price | money_with_currency }}
+              </span>
+            </dd>
+    
+            
+            {%- if settings.show_saved_price and price != nil and price != blank and compare_at_price != nil and compare_at_price != blank -%}
+                {%- assign saved_price = compare_at_price | minus: price | money -%}
+                <div class="price__saved"><span class="price-item price-item--saved">{{'products.product.price.saved_price_html' | t: price: saved_price }}</span></div>
+            {%- endif -%}
+            {%- if settings.show_price_percent -%}
+            <dd class="price__label_sale price__label_percent">
+                {%- liquid 
+                    assign list_compare = product.variants | where: 'compare_at_price'
+                    assign compare = 0
+                    for variant in list_compare
+                        assign saving = variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | round
+                        if saving > compare
+                            assign compare = saving
+                        endif
+                    endfor
+                    if compare  < 1
+                        assign compare = product.compare_at_price_min | minus: product.price_min | times: 100.0 | divided_by: product.compare_at_price_min | round
+                    endif
+                -%}<span class="label_sale">(-{{ compare | append: '%'}})</span>
+            </dd>
+            {%- endif -%}
+        </div>
+
+         <!-- Halloween Sale -->
+        <div class="halloween_sale_price" id="halloween_price" style="text-align: right;">
+            <span class="price-item_title" style="font-weight: 500;font-size: 18px;">Summer Sale:</span>
+            <span class="price-item price-item--regular" id="checkout_price" style="display: inline-block; width: auto;color: #F83A3A;"></span>
+        </div>
+      
+        <small class="unit-price caption{% if available == false or product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
+            <dt class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</dt>
+            <dd class="price__last"><span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span><span aria-hidden="true">/</span><span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span><span>{%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+                        {{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}{%- endif -%} {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}</span></dd>
+        </small>
+    </dl>
+</div>
+<script>
+  $(document).ready(async () => {
+
+    const productId = $('#complementary-product-data').data('url').match(/[?&]product_id=([^&]+)/)[1]
+
+    const res = await fetch(`/recommendations/products.json?product_id=${productId}&limit=2&intent=complementary`)
+      .then(response => response.json())
+      .then(({ products }) => products)
+    if(res&&res.length===0) {
+      window.totalPrices = 0
+      return false
+    }
+
+    var totalPrice = res.reduce(function(total, product) {
+        // 获取当前产品的价格并将其转换为数字类型
+        var price = parseFloat(product.price);
+        
+        // 将价格添加到总价格中
+        return total + price;
+    }, 0);
+    window.totalPrices = totalPrice
+    const productPrice = "{{ price }}"
+    var listPrice = (totalPrice - 0) + (productPrice - 0)
+    var formattedPrice = Shopify.formatMoney(listPrice, "{{ shop.money_with_currency_format }}")
+    var listTotalPriceCount = formattedPrice.replace(/[,.]00/, '')
+
+    setTimeout(() => {
+      $('#list-price').text(listTotalPriceCount)
+    }, 0)
+    
+  });
+</script>

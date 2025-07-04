@@ -1,0 +1,174 @@
+{{ 'section-collection-tab.css' | asset_url | stylesheet_tag }}
+
+<div class="collection_tab" id="{{  section.settings.section_id }}">
+  <div class="collection_tab_head">
+    {% for block in section.blocks %}
+      <div
+        class="collection_tab_head_item{% if forloop.first %} active{% endif %}"
+        data-value="{{ block.settings.title | handle }}"
+      >
+        {{ block.settings.title }}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="collection_tab_contain">
+    {% for block in section.blocks %}
+      <div
+        class="collection_tab_contain_item{% if forloop.first %} show{% endif %}"
+        data-value="{{ block.settings.title | handle }}"
+      >
+        {% for product in block.settings.product_list %}
+          {% if block.settings.show_variant == 'true' %}
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <a class="collection_tab_product" href="{{ variant.url }}">
+                  <div class="collection_tab_product_img">
+                    <img
+                      src="{{ variant.featured_image | image_url }}"
+                      alt="{{ product.title }}"
+                    >
+                  </div>
+                  <div class="collection_tab_product_info">
+                    <div class="collection_tab_product_title">{{ product.title }}</div>
+                    <div>
+                      <div class="collection_tab_product_option">{{ variant.options | join: ' ' }}</div>
+                      <div class="collection_tab_product_price">
+                        {% if variant.metafields.custom.discount_price != blank %}
+                          <div class="collection_tab_product_price_discount">
+                            {{
+                              variant.price
+                              | minus: variant.metafields.custom.discount_price.value
+                              | money_without_trailing_zeros
+                            }}
+                          </div>
+                          <div class="collection_tab_product_price_normal">
+                            {{ variant.price | money_without_trailing_zeros }}
+                          </div>
+                        {% else %}
+                          <div class="collection_tab_product_price_discount">
+                            {{ variant.price | money_without_trailing_zeros }}
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            <a class="collection_tab_product" href="{{ product.url }}">
+              <div class="collection_tab_product_img">
+                <img
+                  src="{{ product.featured_image | image_url }}"
+                  alt="{{ product.title }}"
+                >
+              </div>
+              <div class="collection_tab_product_info">
+                <div class="collection_tab_product_title">{{ product.title }}</div>
+                <div>
+                  {% comment %} <div class="collection_tab_product_option">{{ product.options | join: ' ' }}</div> {% endcomment %}
+                  <div class="collection_tab_product_price">
+                    {% if product.selected_or_first_available_variant.metafields.custom.discount_price != blank %}
+                      <div class="collection_tab_product_price_discount">
+                        {{
+                          product.price
+                          | minus: product.selected_or_first_available_variant.metafields.custom.discount_price.value
+                          | money_without_trailing_zeros
+                        }}
+                      </div>
+                      <div class="collection_tab_product_price_normal">
+                        {{ product.price | money_without_trailing_zeros }}
+                      </div>
+                    {% else %}
+                      <div class="collection_tab_product_price_discount">
+                        {{ product.price | money_without_trailing_zeros }}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  (() => {
+    const tabs = document.querySelectorAll('#{{ section.settings.section_id }} .collection_tab_head_item');
+    const contains = document.querySelectorAll('#{{ section.settings.section_id }} .collection_tab_contain_item');
+    tabs.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        if (item.classList.contains('active')) return;
+        tabs.forEach((el) => el.classList.remove('active'));
+        item.classList.add('active');
+        const dataValue = item.getAttribute('data-value');
+        contains.forEach((el) => {
+          el.classList.remove('show');
+          if (el.getAttribute('data-value') == dataValue) {
+            el.classList.add('show');
+          }
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "collection tab",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "section id"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "radio",
+          "id": "show_variant",
+          "label": "show variant",
+          "default": "true",
+          "options": [
+            {
+              "value": "true",
+              "label": "true"
+            },
+            {
+              "value": "false",
+              "label": "false"
+            }
+          ]
+        },
+        {
+          "type": "product_list",
+          "id": "product_list",
+          "label": "product list"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "collection tab"
+    }
+  ]
+}
+{% endschema %}

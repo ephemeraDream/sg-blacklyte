@@ -1,0 +1,76 @@
+{{ 'section-iconbox-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="iconbox_simplicity">
+  <div class="iconbox_simplicity_title">{{ section.settings.title }}</div>
+  <div class="iconbox_simplicity_grid">
+    {% for item in section.blocks %}
+      <div class="iconbox_simplicity_grid_item">
+        {{ item.settings.icon }}
+        <div class="iconbox_simplicity_grid_item_text">{{ item.settings.text }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  function updateFeatureGridBorders() {
+    const items = document.querySelectorAll('.iconbox_simplicity_grid_item');
+    const count = items.length;
+    const columns = window.innerWidth <= 768 ? 2 : 3;
+
+    items.forEach((item, index) => {
+      const isLastCol = (index + 1) % columns === 0;
+      const isLastRow = index >= count - (count % columns || columns);
+
+      item.style.borderRight = isLastCol ? 'none' : '1px solid #FFDDDD';
+      item.style.borderBottom = isLastRow ? 'none' : '1px solid #FFDDDD';
+      if (isLastRow && window.innerWidth > 768) {
+        item.style.paddingTop = '2.65625vw';
+      }
+    });
+  }
+
+  updateFeatureGridBorders();
+  window.addEventListener('resize', updateFeatureGridBorders);
+</script>
+
+{% schema %}
+{
+  "name": "iconbox simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "iconbox",
+      "name": "icon box",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "icon"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "iconbox simplicity"
+    }
+  ]
+}
+{% endschema %}

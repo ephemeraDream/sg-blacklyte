@@ -1,0 +1,203 @@
+{% comment %}
+  collection 页面展示两个产品对比块
+{% endcomment %}
+
+<style>
+  :root{
+    --left: 60px;
+    --left-mb: 10px;
+    --borderRadius: 6px;
+    --bgColor: #f2f2f2;
+    --borderColor: #D4D4D8;
+  }
+  div.all-gaming-chairs-new-collections.all-prod_new-temp .container-full .collection{
+    padding-left: var(--left);
+    padding-right: var(--left);
+  }
+  div.all-gaming-chairs-new-collections.all-prod_new-temp .collection_title_text{
+    padding-left: var(--left);
+    background-color: var(--bgColor);
+  }
+  /* div.all-gaming-chairs-new-collections.all-prod_new-temp .toolbar{
+    border-bottom: 1px solid var(--borderColor);
+  } */
+  div.all-gaming-chairs-new-collections.all-prod_new-temp .container-full .all_product_toolbar_container{
+    background-color: var(--bgColor);
+  }
+  .productGrid.column-4 .product.compare_prod{
+    width: 50%;
+  }
+  .productGrid.column-3 .product.compare_prod{
+    width: 100%;
+  }
+  .prod_item{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* gap: 30px; */
+    background-color: #fff;
+    border-radius: var(--borderRadius);
+    border: 1px solid #D4D4D8;
+  }
+  .prod_item_left,
+  .prod_item_right {
+    flex: 50%;
+    display: flex;
+  }
+  .prod_item_right{
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 48px 0 36px;
+  }
+  .prod_item_left .prod_item_first{
+    background: linear-gradient(180deg, #17191A 0%, #222426 100%);
+    border-top-left-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
+  }
+  .prod_item_left .prod_item_sec{
+    background: linear-gradient(180deg, #79838B 0%, #AFB3B6 100%);
+  }
+  .prod_item_left .prod_item_first,
+  .prod_item_left .prod_item_sec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    cursor: pointer;
+  }
+  .prod_item_right .prod_item_sub_title{
+    font: 500 14px var(--font-family-1);
+    color: #262629;
+    line-height: 32px;
+  }
+  .prod_item_right .prod_item_title{
+    font: 600 20px var(--font-family-1);
+    color: #262629;
+    line-height: 22px;
+  }
+  .prod_item_right .prod_item_desc{
+    font: 400 14px var(--font-family-1);
+    color: #262629;
+    line-height: 22px;
+    margin-top: 14px;
+  }
+  .prod_main-img{
+    width: auto;
+    height: auto;
+  }
+  .prod_name{
+    font: 600 20px var(--font-family-1);
+    color: #fff;
+  }
+  div.all-gaming-chairs-new-collections.all-prod_new-temp .collection{
+    background-color: var(--bgColor);
+  }
+  div.all-gaming-chairs-new-collections.all-prod_new-temp .card-product {
+    border-radius: 6px;
+  }
+  /* IPhone */
+  @media(max-width: 767px) {
+    div.all-gaming-chairs-new-collections.all-prod_new-temp .container-full .collection{
+      padding-left: var(--left-mb);
+      padding-right: var(--left-mb);
+    }
+    div.all-gaming-chairs-new-collections.all-prod_new-temp .collection_title_text{
+      padding-left: var(--left-mb);
+    }
+    .productGrid.column-4 .product.compare_prod{
+      width: 100%;
+    }
+    .prod_item{
+      flex-direction: column;
+      /* gap: 0; */
+    }
+    .prod_main-img{
+      width: auto;
+    }
+    .prod_item_right{
+      padding: 30px 20px;
+    }
+    .prod_item_right{
+      border-bottom-left-radius: 0;
+    }
+    .prod_item_left .prod_item_first,
+    .prod_item_left .prod_item_sec{
+      padding-bottom: 20px;
+    }
+    .prod_item_left .prod_item_first{
+      border-bottom-left-radius: 0;
+      border-top-left-radius: var(--borderRadius);
+    }
+    .prod_item_left .prod_item_sec{
+      border-top-right-radius: var(--borderRadius);
+    }
+    .prod_name{
+      font-size: 14px;
+    }
+    .prod_item_right .prod_item_sub_title{
+      font-size: 12px;
+      line-height: 24px;
+    }
+    .prod_item_right .prod_item_title{
+      font-size: 16px;
+      line-height: 16px;
+    }
+    .prod_item_right .prod_item_desc{
+      font-size: 10px;
+      line-height: 14px;
+      margin-top: 8px;
+    }
+  }
+  @media(min-width: 768px) and (max-width: 990px) {
+    .productGrid.column-4 .product.compare_prod{
+      width: 100%;
+    }
+  }
+  @media (min-width: 1101px) and (max-width: 1299px){
+    .productGrid.column-4 .product.compare_prod{
+      width: calc((100% / 3) * 2);
+    }
+  }
+  @media (min-width: 991px) and (max-width: 1100px) {
+    .productGrid.column-4 .product.compare_prod{
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="prod_item">
+  <div class="prod_item_left">
+    <div role="link" {% if compare_prod-1-link != blank %}data-url="{{ compare_prod-1-link }}" {% else %} aria-disabled="true"{% endif %} class="prod_item_first prod_link">
+      <div class="prod_main-img">
+        <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ compare_prod-1 | img_url: 'master' }}" src="{{ compare_prod-1 | img_url: 'master' }}" alt="{{ compare_prod-1.alt | default: shop.name | escape }}" loading="lazy" width="100%" height="100%">
+      </div>
+      <span class="prod_name">{{ compare_prod-1-name }}</span>
+    </div>
+    <div role="link" {% if compare_prod-2-link != blank %}data-url="{{ compare_prod-2-link }}" {% else %} aria-disabled="true"{% endif %} class="prod_item_sec prod_link">
+      <div class="prod_main-img">
+        <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ compare_prod-2 | img_url: 'master' }}" src="{{ compare_prod-2 | img_url: 'master' }}" alt="{{ compare_prod-2.alt | default: shop.name | escape }}" loading="lazy" width="100%" height="100%">
+      </div>
+      <span class="prod_name">{{ compare_prod-2-name }}</span>
+    </div>
+  </div>
+  {% if compare_prod-desc-subTitle != blank or compare_prod-desc-title != blank or compare-prod-desc-info != blank %}
+    <div class="prod_item_right">
+      <div class="prod_item_sub_title">{{ compare_prod-desc-subTitle }}</div>
+      <div class="prod_item_title">{{ compare_prod-desc-title }}</div>
+      <div class="prod_item_desc">
+        {{ compare-prod-desc-info }}
+      </div>
+    </div>
+  {% endif %}
+</div>
+<script>
+  $('.prod_item_left .prod_link').on('click', function(e) {
+    e.preventDefault();
+    const url = $(this).data('url');
+    if (url) {
+      window.location.href = url;
+    }
+  });
+</script>

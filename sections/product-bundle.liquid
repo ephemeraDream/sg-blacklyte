@@ -1,0 +1,578 @@
+{{ 'section-product-bundle.css' | asset_url | stylesheet_tag }}
+<link
+  rel="stylesheet"
+  href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.css?v=1702624065"
+>
+
+{% for currency in shop.enabled_currencies %}
+  {% if currency.iso_code == shop.currency %}
+    {%- assign currency_symbol = currency.symbol -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% liquid
+  assign chair_id = ''
+  assign desk_id = ''
+  assign query_string = request.path | split: '/' | last
+  assign params = query_string | split: '&'
+  for param in params
+    assign pair = param | split: '='
+    assign key = pair[0]
+    assign value = pair[1]
+
+    if key == 'chairId'
+      assign chair_id = value | plus: 0
+    elsif key == 'deskId'
+      assign desk_id = value | plus: 0
+    endif
+  endfor
+
+  assign chair_list = page.metafields.custom.chair_bundle.value
+  assign desk_list = page.metafields.custom.desk_bundle.value
+  assign select_chair = chair_list | first
+  assign select_desk = desk_list | first
+  if chair_id != ''
+    for chair in chair_list
+      if chair.id == chair_id
+        assign select_chair = chair
+      endif
+    endfor
+  endif
+  if desk_id != ''
+    for desk in desk_list
+      if desk.id == desk_id
+        assign select_desk = desk
+      endif
+    endfor
+  endif
+  assign select_chair_variant = select_chair.variants | where: 'available' | first
+  assign select_desk_variant = select_desk.variants | where: 'available' | first
+  assign total_price = select_chair_variant.price | plus: select_desk_variant.price
+  assign total_discount = total_price | times: 0.8
+  assign total_save = total_price | times: 0.2 | money_without_trailing_zeros
+
+  assign color_style_obj = ''
+  for item in chair_list
+    if forloop.first
+      assign color_style_obj = color_style_obj | append: '{'
+    else
+      assign color_style_obj = color_style_obj | append: ','
+    endif
+    assign color_styles = ''
+    for color in item.metafields.custom.color_style.value
+      assign color_obj = '{'
+      assign color_obj = color_obj | append: '"color":"' | append: color.color | append: '"'
+      assign color_img = color.color_img | image_url
+      assign color_obj = color_obj | append: ',"color_img":"' | append: color_img | append: '"'
+      assign color_obj = color_obj | append: ',"show_name":"' | append: color.show_name | append: '"'
+      assign color_obj = color_obj | append: '}'
+      if forloop.first
+        assign color_styles = color_styles | append: '[' | append: color_obj
+      else
+        assign color_styles = color_styles | append: ',' | append: color_obj
+      endif
+    endfor
+    assign color_styles = color_styles | append: ']'
+    assign color_style_obj = color_style_obj | append: '"' | append: item.id | append: '":' | append: color_styles
+    if forloop.last
+      assign color_style_obj = color_style_obj | append: '}'
+    endif
+  endfor
+
+  assign desk_color_style_obj = ''
+  for item in desk_list
+    if forloop.first
+      assign desk_color_style_obj = desk_color_style_obj | append: '{'
+    else
+      assign desk_color_style_obj = desk_color_style_obj | append: ','
+    endif
+    assign color_styles = ''
+    for color in item.metafields.custom.color_style.value
+      assign color_obj = '{'
+      assign color_obj = color_obj | append: '"color":"' | append: color.color | append: '"'
+      assign color_img = color.color_img | image_url
+      assign color_obj = color_obj | append: ',"color_img":"' | append: color_img | append: '"'
+      assign color_obj = color_obj | append: ',"show_name":"' | append: color.show_name | append: '"'
+      assign color_obj = color_obj | append: '}'
+      if forloop.first
+        assign color_styles = color_styles | append: '[' | append: color_obj
+      else
+        assign color_styles = color_styles | append: ',' | append: color_obj
+      endif
+    endfor
+    assign color_styles = color_styles | append: ']'
+    assign desk_color_style_obj = desk_color_style_obj | append: '"' | append: item.id | append: '":' | append: color_styles
+    if forloop.last
+      assign desk_color_style_obj = desk_color_style_obj | append: '}'
+    endif
+  endfor
+
+  assign desk_size_obj = ''
+  for item in desk_list
+    if forloop.first
+      assign desk_size_obj = desk_size_obj | append: '{'
+    else
+      assign desk_size_obj = desk_size_obj | append: ','
+    endif
+    assign product_size = ''
+    for size in item.metafields.custom.product_size.value
+      assign size_obj = '{'
+      assign size_obj = size_obj | append: '"name":"' | append: size.name | append: '"'
+      assign size_obj = size_obj | append: ',"size":"' | append: size.size | append: '"'
+      assign size_obj = size_obj | append: '}'
+      if forloop.first
+        assign product_size = product_size | append: '[' | append: size_obj
+      else
+        assign product_size = product_size | append: ',' | append: size_obj
+      endif
+    endfor
+    assign product_size = product_size | append: ']'
+    assign desk_size_obj = desk_size_obj | append: '"' | append: item.id | append: '":' | append: product_size
+    if forloop.last
+      assign desk_size_obj = desk_size_obj | append: '}'
+    endif
+  endfor
+
+  assign chair_series_obj = ''
+  assign is_first = true
+  assign chair_series_obj = chair_series_obj | append: '{'
+  for item in chair_list
+    assign series_name = item.metafields.custom.series_name
+    for el in item.variants
+      unless is_first
+        assign chair_series_obj = chair_series_obj | append: ','
+      endunless
+      assign chair_series_obj = chair_series_obj | append: '"' | append: el.id | append: '":"' | append: series_name | append: '"'
+      assign is_first = false
+    endfor
+  endfor
+  assign chair_series_obj = chair_series_obj | append: '}'
+
+  assign desk_series_obj = ''
+  assign is_first = true
+  assign desk_series_obj = desk_series_obj | append: '{'
+  for item in desk_list
+    assign series_name = item.metafields.custom.series_name
+    for el in item.variants
+      unless is_first
+        assign desk_series_obj = desk_series_obj | append: ','
+      endunless
+      assign desk_series_obj = desk_series_obj | append: '"' | append: el.id | append: '":"' | append: series_name | append: '"'
+      assign is_first = false
+    endfor
+  endfor
+  assign desk_series_obj = desk_series_obj | append: '}'
+%}
+<div class="product_bundle">
+  <input type="hidden" name="currency_symbol" value="{{ currency_symbol }}">
+  <div class="product_bundle_left">
+    <img
+      src="{{ select_chair.selected_or_first_available_variant.featured_image | image_url: width:932 }}"
+      alt="bundle chair"
+      id="product_bundle_left_chair"
+    >
+    <img
+      src="{{ select_desk.selected_or_first_available_variant.featured_image | image_url: width:1250 }}"
+      alt="bundle desk"
+      id="product_bundle_left_desk"
+    >
+  </div>
+  <div class="product_bundle_right">
+    <div class="product_bundle_right_title">{{ section.settings.title }}</div>
+    <div class="product_bundle_right_price">
+      <div class="product_bundle_right_price_dp">{{ total_discount | money_without_trailing_zeros }}</div>
+      <div class="product_bundle_right_price_op">{{ total_price | money_without_trailing_zeros }}</div>
+      <div class="product_bundle_right_save">
+        {{ 'products.product.text.your_saving' | t -}}
+        <span class="product_bundle_right_save_price">{{ total_save }}</span>
+        {{ 'products.product.text.by_bundling' | t }}
+      </div>
+    </div>
+    <div class="product_bundle_right_afterpay">
+      <span class="product_bundle_right_afterpay_mowith">
+        {{- total_discount | divided_by: 12.0 | round: 2 | money_without_trailing_zeros -}}
+      </span>
+      {{ 'products.product.text.affirmtext' | t }}
+      <span
+        class="product_bundle_right_afterpay_sixmowith"
+      >
+        {{- total_discount | divided_by: 6.0 | round: 2 | money_without_trailing_zeros -}}
+      </span>
+      {{ 'products.product.text.mowith' | t }}
+      <img
+        src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/affirm-logo.webp?v=1744598659"
+        alt="bundle affirm"
+      >
+    </div>
+    <div class="product_bundle_right_desc">{{ section.settings.description }}</div>
+    <div class="product_bundle_right_progress">
+      <div class="product_bundle_right_progress_item product_bundle_right_progress_item_active">
+        <div class="product_bundle_right_progress_item_lable">{{ 'products.product.text.chair' | t }}</div>
+        <div class="product_bundle_right_progress_item_circle"></div>
+      </div>
+      <div class="product_bundle_right_progress_item">
+        <div class="product_bundle_right_progress_item_lable">{{ 'products.product.text.desk' | t }}</div>
+        <div class="product_bundle_right_progress_item_circle"></div>
+      </div>
+      <div class="product_bundle_right_progress_item">
+        <div class="product_bundle_right_progress_item_lable">{{ 'products.product.text.summary' | t }}</div>
+        <div class="product_bundle_right_progress_item_circle"></div>
+      </div>
+    </div>
+    <div class="product_bundle_right_chair">
+      <div class="product_bundle_right_select_title">
+        {{ 'products.product.text.choose_your_chair' | t }}
+        <div class="product_bundle_right_save">{{ 'products.product.text.save' | t }}20%</div>
+      </div>
+      {% comment %}
+        <div class="product_bundle_right_select_desc">
+          {{ 'products.product.text.not_sure_what' | t | append: ' ' -}}
+          <span class="product_bundle_right_select_desc_underline">{{ 'products.product.text.compare_chairs' | t }}</span>
+        </div>
+      {% endcomment %}
+      <div class="swiper product_bundle_right_chair_swiper">
+        <div class="swiper-wrapper">
+          {% for item in chair_list %}
+            <div
+              data-id="{{ item.id }}"
+              data-color="{{ item.selected_or_first_available_variant.option2 }}"
+              class="swiper-slide product_bundle_right_chair_swiper_item{% if select_chair.id == item.id %} choosed{% endif %}"
+            >
+              <div class="product_bundle_right_chair_swiper_item_img">
+                <img
+                  src="{{ item.selected_or_first_available_variant.featured_image | image_url: width: 200,height: 280 }}"
+                  alt="{{ item.title }}"
+                >
+              </div>
+              <div class="product_bundle_right_chair_swiper_item_title">{{ item.metafields.custom.series_name }}</div>
+              <div class="product_bundle_right_chair_swiper_item_price">
+                {{ item.price | times: 0.8 | money_without_trailing_zeros }}
+                <span class="product_bundle_right_chair_swiper_item_price_throughline">
+                  {{- item.price | money_without_trailing_zeros -}}
+                </span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="product_bundle_right_chair_swiper_prev">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M7 13L1.14146 7.14146C1.06336 7.06336 1.06336 6.93672 1.14146 6.85862L7 1.00008" stroke="#262629" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="product_bundle_right_chair_swiper_next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 13L6.85854 7.14146C6.93664 7.06336 6.93664 6.93672 6.85854 6.85862L1 1.00008" stroke="#262629" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="product_bundle_right_option" data-type="color">
+        <div class="product_bundle_right_select_title">
+          {{ 'products.product.text.select' | t -}}
+          {{- 'products.product.text.color' | t }}
+        </div>
+        <div class="product_bundle_right_select_value_box">
+          {% for option in select_chair.options_with_values %}
+            {%- case option.name -%}
+              {%- when 'Color' -%}
+                {% for value in option.values %}
+                  {% liquid
+                    assign variant = value.variant
+                    if value.variant.available == false or value.variant.available == blank
+                      assign available_variant = select_chair.variants | where: 'option2', value | where: 'available'
+                      if available_variant.size > 0
+                        assign variant = available_variant[0]
+                      endif
+                    endif
+                  %}
+                  {% assign color_object = '' %}
+                  {% for color in select_chair.metafields.custom.color_style.value %}
+                    {% if color.color == value %}
+                      {% assign color_object = color %}
+                    {% endif %}
+                  {% endfor %}
+                  {% unless value.variant.available == blank and available_variant.size == 0 %}
+                    <div
+                      data-id="{{ variant.id }}"
+                      data-value="{{ value }}"
+                      data-material="{{ variant.option1 }}"
+                      data-img="{{ variant.featured_image | image_url: width:932 }}"
+                      class="product_bundle_right_select_value_box_color{% if value.selected %} product_bundle_right_select_value_box_color_active{% endif %}{% if value.variant.available == false and available_variant.size == 0 %} product_bundle_right_select_value_box_color_disabled{% endif %}"
+                    >
+                      {% if value.variant.available == false or value.variant.available == blank %}
+                        {% if available_variant.size == 0 %}
+                          <div class="product_bundle_right_select_value_box_color_out_of_stock">
+                            {{ 'products.product.out_of_stock' | t }}
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                      <img
+                        src="{{ color_object.color_img | image_url }}"
+                        alt="{{ color_object.show_name }}"
+                      >
+                      <span class="product_bundle_right_select_value_box_color_title">
+                        {{ color_object.show_name }}
+                      </span>
+                    </div>
+                  {% endunless %}
+                {% endfor %}
+            {%- endcase -%}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="product_bundle_right_option" data-type="material">
+        <div class="product_bundle_right_select_desc">
+          <span class="product_bundle_right_select_desc_bold">{{- 'products.product.text.material' | t }}:</span>
+          <span class="product_bundle_right_select_value">
+            {{- select_chair.selected_or_first_available_variant.option1 -}}
+          </span>
+        </div>
+      </div>
+      <div class="product_bundle_right_option">
+        <div class="product_bundle_right_select_desc">
+          <span class="product_bundle_right_select_desc_bold">{{- 'products.product.text.size' | t }}:</span>
+          <span class="product_bundle_right_select_value">
+            {% assign size_object = '' %}
+            {% for size in select_chair.metafields.custom.product_size.value %}
+              {% if size.name == select_chair.selected_or_first_available_variant.option3 %}
+                {% assign size_object = size %}
+              {% endif %}
+            {% endfor %}
+            {{- select_chair.selected_or_first_available_variant.option3 -}}
+            /{{ size_object.remark }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="product_bundle_right_desk hidden">
+      <div class="product_bundle_right_select_title">
+        {{ 'products.product.text.choose_your_desk' | t }}
+        <div class="product_bundle_right_save">{{ 'products.product.text.save' | t }}20%</div>
+      </div>
+      {% comment %}
+        <div class="product_bundle_right_select_desc">
+          {{ 'products.product.text.not_sure_what' | t | append: ' ' -}}
+          <span class="product_bundle_right_select_desc_underline">{{ 'products.product.text.compare_desks' | t }}</span>
+        </div>
+      {% endcomment %}
+      <div class="product_bundle_right_desk_box">
+        {% for item in desk_list %}
+          <div
+            data-id="{{ item.id }}"
+            data-color="{{ item.selected_or_first_available_variant.option1 }}"
+            data-size="{{ item.selected_or_first_available_variant.option2 }}"
+            class="product_bundle_right_desk_item{% if select_desk.id == item.id %} choosed{% endif %}"
+          >
+            <div class="product_bundle_right_desk_item_img">
+              <img
+                src="{{ item.selected_or_first_available_variant.featured_image | image_url: width: 260,height: 300 }}"
+                alt="{{ item.title }}"
+              >
+              {% if item.selected_or_first_available_variant.metafields.custom.preorder_info != blank %}
+                <div class="product_bundle_right_desk_item_img_tag">{{ 'products.product.text.pre_order' | t }}</div>
+              {% endif %}
+            </div>
+            <div class="product_bundle_right_desk_item_title">{{ item.metafields.custom.series_name }}</div>
+             <div class="product_bundle_right_desk_item_price">
+              {{ item.selected_or_first_available_variant.price | times: 0.8 | money_without_trailing_zeros }}
+              <span class="product_bundle_right_desk_item_price_throughline">
+                {{- item.selected_or_first_available_variant.price | money_without_trailing_zeros -}}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="product_bundle_right_option" data-type="color">
+        <div class="product_bundle_right_select_title">
+          {{ 'products.product.text.select' | t -}}
+          {{- 'products.product.text.color' | t }}
+        </div>
+        <div class="product_bundle_right_select_value_box">
+          {% for option in select_desk.options_with_values %}
+            {%- case option.name -%}
+              {%- when 'Color' -%}
+                {% for value in option.values %}
+                  {% liquid
+                    assign variant = value.variant
+                    if value.variant.available == false
+                      assign available_variant = select_desk.variants | where: 'option1', value | where: 'available'
+                      if available_variant.size > 0
+                        assign variant = available_variant[0]
+                      endif
+                    endif
+                  %}
+                  {% assign color_object = '' %}
+                  {% for color in select_desk.metafields.custom.color_style.value %}
+                    {% if color.color == value %}
+                      {% assign color_object = color %}
+                    {% endif %}
+                  {% endfor %}
+                  <div
+                    data-id="{{ variant.id }}"
+                    data-value="{{ value }}"
+                    class="product_bundle_right_select_value_box_color{% if value.selected %} product_bundle_right_select_value_box_color_active{% endif %}{% if value.variant.available == false and available_variant.size == 0 %} product_bundle_right_select_value_box_color_disabled{% endif %}"
+                  >
+                    {% if value.variant.available == false and available_variant.size == 0 %}
+                      <div class="product_bundle_right_select_value_box_color_out_of_stock">
+                        {{ 'products.product.out_of_stock' | t }}
+                      </div>
+                    {% endif %}
+                    <img
+                      src="{{ color_object.color_img | image_url }}"
+                      alt="{{ color_object.show_name }}"
+                    >
+                    <span class="product_bundle_right_select_value_box_color_title">
+                      {{ color_object.show_name }}
+                    </span>
+                  </div>
+                {% endfor %}
+            {%- endcase -%}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="product_bundle_right_option" data-type="size">
+        <div class="product_bundle_right_select_title">
+          {{ 'products.product.text.select' | t -}}
+          {{- 'products.product.text.size' | t }}
+        </div>
+        <div class="product_bundle_right_select_value_box">
+          {% for option in select_desk.options_with_values %}
+            {%- case option.name -%}
+              {%- when 'Size' -%}
+                {% for value in option.values %}
+                  {% assign size_object = '' %}
+                  {% for size in select_desk.metafields.custom.product_size.value %}
+                    {% if size.name == value %}
+                      {% assign size_object = size %}
+                    {% endif %}
+                  {% endfor %}
+                  <div
+                    data-id="{{ value.variant.id }}"
+                    data-value="{{ value }}"
+                    data-price="{{ value.variant.price }}"
+                    class="product_bundle_right_select_value_box_size{% if value.selected %} product_bundle_right_select_value_box_size_active{% endif %}{% if value.variant.available == false %} product_bundle_right_select_value_box_size_disabled{% endif %}"
+                  >
+                    <div class="product_bundle_right_select_value_box_size_title">
+                      <div>{{ value }}</div>
+                      <div>{{ size_object.size | replace: '\', '' }}</div>
+                    </div>
+                  </div>
+                {% endfor %}
+            {%- endcase -%}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="product_bundle_right_summary hidden">
+      <div class="product_bundle_right_select_title">
+        {{ 'products.product.text.bundle_summary' | t }}
+      </div>
+      <div class="product_bundle_right_select_desc">
+        {{ 'products.product.text.bundle_ok' | t }}
+      </div>
+      <div class="product_bundle_right_summary_box"></div>
+    </div>
+    <div class="product_bundle_right_operate">
+      <div class="product_bundle_right_operate_btn product_bundle_right_operate_btn_outline hidden" data-type="back">
+        {{ 'products.product.text.back' | t }}
+      </div>
+      <div class="product_bundle_right_operate_btn" data-type="continue">
+        {{ 'products.product.text.continue' | t }}
+      </div>
+      <div class="product_bundle_right_operate_btn hidden" data-type="addToCart">
+        {{ 'products.product.add_to_cart' | t }}
+      </div>
+    </div>
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'productExtraInfoBottom' -%}
+          {% render 'product-extra-info-bottom', block: block %}
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<script src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.js?v=1702624149"></script>
+<script>
+  let chairId,deskId
+  const searchParams = window.location.pathname.split("/").pop();
+  if(searchParams.indexOf("&") > -1) {
+    const params = new URLSearchParams(searchParams);
+    chairId = params.get("chairId");
+    deskId = params.get("deskId");
+  }
+
+  const chair_list = {{ page.metafields.custom.chair_bundle.value | json }}
+  const desk_list = {{ page.metafields.custom.desk_bundle.value | json }}
+  let select_chair = chair_list[0]
+  let select_desk = desk_list[0]
+  let initChairIndex = 0
+  if(chairId) {
+    select_chair = chair_list.find(item => item.id == chairId)
+    initChairIndex = chair_list.findIndex(item => item.id == chairId)
+  }
+  if(deskId) {
+    select_desk = desk_list.find(item => item.id == deskId)
+  }
+  let select_chair_variant = select_chair.variants.find(el => el.available)
+  let select_desk_variant = select_desk.variants.find(el => el.available)
+  const color_style_obj = JSON.parse({{ color_style_obj | json }})
+  const desk_color_style_obj = JSON.parse({{ desk_color_style_obj | json }})
+  const desk_size_obj = JSON.parse({{ desk_size_obj | json }})
+  const chair_series_obj = JSON.parse({{ chair_series_obj | json }})
+  const desk_series_obj = JSON.parse({{ desk_series_obj | json }})
+  const currency_symbol = document.querySelector("input[name='currency_symbol']").value;
+</script>
+<script src="{{ 'section-product-bundle.js' | asset_url  }}"></script>
+
+{% schema %}
+{
+  "name": "product bundle",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "productExtraInfoBottom",
+      "name": "product Extra Info Bottom",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_one",
+          "label": "text one"
+        },
+        {
+          "type": "textarea",
+          "id": "text_two",
+          "label": "text two"
+        },
+        {
+          "type": "textarea",
+          "id": "text_thr",
+          "label": "text thr"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "product bundle"
+    }
+  ]
+}
+{% endschema %}

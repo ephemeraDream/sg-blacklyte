@@ -1,0 +1,26 @@
+.jdgm-widget.jdgm-widget{
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+@media (min-width: 1025px) and (max-width: 1265px) {
+ .jdgm-widget.jdgm-widget {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (min-width: 1266px) {
+  .jdgm-widget.jdgm-widget {
+    max-width: 80%;
+  }
+}
+@media (min-width: 1500px) {
+  .jdgm-widget.jdgm-widget {
+    max-width: 66%;
+  }
+}
+@media (max-width: 1024px) {
+  .jdgm-widget.jdgm-widget {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

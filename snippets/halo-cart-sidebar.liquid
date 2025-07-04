@@ -1,0 +1,185 @@
+<link rel="stylesheet" href="{{ 'component-quick-cart.css' | asset_url }}" media="print" onload="this.media='all'">
+<style>
+  .halo-sidebar, .halo-sidebar-header {
+    background-color: #f2f2f2;
+  }
+  .halo-sidebar-header .title {
+    color: #333;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .halo-sidebar-header .title .cartCount {
+    font-size: 20px;
+    background-color: #333333;
+    border-radius: 50%;
+    min-width: 27px;
+    min-height: 27px;
+    display: inline-flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+  }
+  .previewCartItem-name:hover {
+    color: #181818;
+  }
+  .halo-sidebar-close {
+    color: #333;
+    top: 48px;
+  }
+  .halo-sidebar-close svg {
+    fill: #333;
+  }
+  .previewCartItem-name {
+    font-size: 16px;
+    font-weight: 500;
+    white-space: normal;
+    color: #333;
+  }
+  
+  .form-input, .field__input{
+    color: #18181B;
+  }
+  .form-input, .field__input {
+    border-color: rgba(135, 135, 135, 0.61);
+  }
+  .halo-cart-sidebar .previewCartItem {
+    /* border: 1px solid #E2E2E2; */
+    padding: 10px 0;
+  }
+  .previewCartItem-variant {
+    font-weight: 400;
+    display: inline;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    line-height: 30px;
+    color: #666;
+  }
+
+  .previewCartItem-qty {
+    margin-top: 0px;
+    margin-bottom: 10.54px;
+  }
+  .previewCartInfo {
+    border-top: 0.5px solid #999;
+    padding-top: 26px;
+    padding-bottom: 0px;
+  }
+  .halo-cart-sidebar .previewCartItem-price .before-discount-price {
+    color: #666;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .halo-sidebar.halo-sidebar-right .halo-sidebar-close {
+    right: 30px;
+    top: 12px;
+  }
+  #cart-sidebar-checkout {
+    background-color: #333;
+    color: #fff;
+    border-radius: 2px;
+    border-color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    flex: 1;
+    margin-right: 10px;
+  }
+  .button.button-2.button-view-cart {
+    border-radius: 2px;
+    background-color: #333;
+    border-color: #333;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    flex: 1;
+    margin-left: 10px;
+  }
+  #cart-sidebar-checkout:hover,
+  .button.button-2.button-view-cart:hover {
+    background-color: #fff;
+    color: #333;
+    border-color: #333;
+  }
+  
+  .previewCartItem-qty .quantity {
+    padding: 5px 24px 5px 25px;
+    border-radius: 0;
+    border-color: #666;
+  }
+  .previewCartItem-qty .btn-quantity {
+    height: 28px;
+  }
+  .previewCartItem-qty .btn-quantity:before, .previewCartItem-qty .btn-quantity.plus:after {
+    top: 13px;
+  }
+  @media (max-width: 768px) {
+    .previewCartItem-variant {
+      font-size: 12px;
+      line-height: 24px;
+    }
+    .previewCartItem-price {
+      margin: 0;
+    }
+    .previewCartTotals .previewCartTotals-label, .previewCartTotals .previewCartTotals-value {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    #cart-sidebar-checkout,
+    .button.button-2.button-view-cart {
+        font-size: 14px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .previewCartTotals.shipTotal .previewCartTotals-value {
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .halo-sidebar-header .title .cartCount {
+      font-size: 10px;
+      min-width: 20px;
+      min-height: 20px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+  }
+  
+</style>
+
+<noscript>{{ 'component-quick-cart.css' | asset_url | stylesheet_tag }}</noscript>
+<div class="halo-sidebar halo-sidebar-right halo-cart-sidebar" id="halo-cart-sidebar">
+    <button type="button" class="halo-sidebar-close button-effect" data-close-cart-sidebar aria-label="{{ 'general.common.close' | t }}">{% render 'icon-close' %} {{ 'general.common.close' | t }}</button>
+    <div class="halo-sidebar-header text-left">
+		<span class="title">
+          {{ 'sections.cart.my_cart' | t }}
+          <span class="cartCount" data-cart-count>{{ cart.item_count }}</span>
+        </span>
+		<!-- <div class="wrapper-cartCount">
+          (<span class="cartCount" data-cart-count>
+            {{ cart.item_count }}
+          </span>)
+          <span data-cart-text>
+            {% if cart.item_count == 1 %}
+              {{ 'sections.cart.item' | t }}
+            {% else %}
+              {{ 'sections.cart.items' | t }}
+            {% endif %}
+          </span>
+        </div> -->
+	</div>
+    <div class="halo-sidebar-wrapper custom-scrollbar {{cart.items}}">
+      	{%- if settings.show_calculator_free_shipping_message -%}
+          <div class="previewCartMessage">{% render 'free-shipping-component' %}</div>
+        {%- endif -%}
+		<cart-coupon-discount data-is-sidebar="true">
+			<template data-discount-icon>{% render 'icon-discount' %}</template>
+			<template data-discounted-price-template>
+				<span class="previewCartItem-saving-price"><s class="before-discount-price" data-original-price-display>{{ item.original_price | money }}</s><span class="discounted-price" data-current-price-display>{{ item.final_price | money }}</span></span> 
+			</template>
+			<div class="previewCart-wrapper"></div>
+		</cart-coupon-discount>
+  	</div>
+</div>
+<script src="{{ 'halo-toolcart.js' | asset_url }}" defer="defer"></script>

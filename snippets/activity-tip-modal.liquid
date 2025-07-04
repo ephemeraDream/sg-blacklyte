@@ -1,0 +1,255 @@
+<style>
+  .activity_tip {
+    position: relative;
+    top: -28px;
+  }
+  
+  .activity_tip .activity_tip_text {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #262629;
+    text-align: center;
+  }
+
+  .activity_tip .activity_tip_text_btn {
+    cursor: pointer;
+    color: #3173e8;
+    text-decoration: underline;
+  }
+
+  .activity_tip .activity_tip_modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #00000080;
+    display: none;
+    padding: 5vh 0;
+    overflow: auto;
+  }
+
+  .activity_tip .activity_tip_modal .activity_tip_modal_contain {
+    width: 810px;
+    min-height: 90vh;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  .activity_tip .activity_tip_modal .activity_tip_modal_head {
+    height: 9.074vh;
+    background-color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36px;
+    font-family: DIN-BlackItalic;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 30px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #262626;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .activity_tip .activity_tip_modal .activity_tip_modal_head svg {
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+  }
+
+  .activity_tip .activity_tip_modal .activity_tip_modal_body {
+    padding: 3.2407vh 57px 7.8703vh 41px;
+  }
+
+  .activity_tip .activity_tip_modal_body_item {
+    margin-top: 30px;
+  }
+
+  .activity_tip .activity_tip_modal_body_item_head {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #262629;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .activity_tip .activity_tip_modal_body_item_head::before {
+    content: '';
+    width: 3px;
+    height: 14px;
+    background-color: #262629;
+    position: absolute;
+    left: 0;
+    top: 6px;
+  }
+
+  .activity_tip .activity_tip_modal_body_item_body {
+    background-color: #f5f5f5;
+    padding: 19px 42px 19px 26px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #262629;
+    margin-top: 14px;
+  }
+
+  .activity_tip .activity_tip_modal_body_tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #76767f;
+    margin-top: 30px;
+  }
+
+  .activity_tip .activity_tip_modal_body_top {
+    display: flex;
+    /* align-items: flex-start; */
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #262629;
+  }
+
+  .activity_tip .activity_tip_modal_body_top svg{
+    width: 26px;
+    height: 26px;
+  }
+  /* IPhone */
+  @media(max-width: 768px) {
+    .activity_tip .activity_tip_modal .activity_tip_modal_contain{
+      width: 88%;
+    }
+    .activity_tip .activity_tip_modal .activity_tip_modal_head{
+      font-size: 16px;
+      line-height: 1.4;
+      padding: 0 15px;
+    }
+    .activity_tip .activity_tip_modal .activity_tip_modal_body{
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+</style>
+
+<div class="activity_tip">
+  <div class="activity_tip_text">
+    {{ 'products.product.text.order_now' | t }}
+    <span class="activity_tip_text_btn">{{ 'products.product.text.learn_more_capitalize' | t }}</span>
+  </div>
+
+  <div class="activity_tip_modal">
+    <div class="activity_tip_modal_contain">
+      <div class="activity_tip_modal_head">
+        <span>{{ 'products.product.text.activity_tip_title' | t }}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="37"
+          height="37"
+          viewBox="0 0 37 37"
+          fill="none"
+          id="close_activity_tip_modal"
+        >
+          <path d="M27.5762 9.19141L9.19139 27.5762" stroke="#262626" stroke-width="2"/>
+          <path d="M9.19141 9.19336L27.5762 27.5781" stroke="#262626" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="activity_tip_modal_body">
+        <div class="activity_tip_modal_body_top">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <path d="M12.1875 6.52344C12.1336 6.52344 12.082 6.54484 12.0439 6.58293C12.0058 6.62102 11.9844 6.67269 11.9844 6.72656V13.2744C11.9844 13.3816 12.0267 13.4845 12.1022 13.5606L16.9475 18.4442C16.9663 18.4631 16.9886 18.4781 17.0132 18.4885C17.0378 18.4988 17.0642 18.5041 17.0909 18.5042C17.1176 18.5043 17.144 18.4992 17.1687 18.4891C17.1934 18.479 17.2158 18.4641 17.2348 18.4453L18.3883 17.3008C18.4072 17.282 18.4223 17.2597 18.4326 17.2351C18.4429 17.2105 18.4483 17.1841 18.4484 17.1574C18.4485 17.1307 18.4433 17.1043 18.4332 17.0796C18.4231 17.0549 18.4082 17.0325 18.3894 17.0135L14.0156 12.6051V6.72656C14.0156 6.67269 13.9942 6.62102 13.9561 6.58293C13.918 6.54484 13.8664 6.52344 13.8125 6.52344H12.1875Z" fill="#262629"/>
+            <path d="M24.4004 13.0127C24.4004 19.302 19.302 24.4004 13.0127 24.4004C6.72344 24.4004 1.625 19.302 1.625 13.0127C1.625 6.72344 6.72344 1.625 13.0127 1.625C19.302 1.625 24.4004 6.72344 24.4004 13.0127ZM22.3691 13.0127C22.3691 7.84527 18.1801 3.65625 13.0127 3.65625C7.84527 3.65625 3.65625 7.84527 3.65625 13.0127C3.65625 18.1801 7.84527 22.3691 13.0127 22.3691C18.1801 22.3691 22.3691 18.1801 22.3691 13.0127Z" fill="#262629"/>
+          </svg>
+          <div>{{ 'products.product.text.activity_tip_subtitle' | t }}</div>
+        </div>
+        <div class="activity_tip_modal_body_item">
+          <div class="activity_tip_modal_body_item_head">
+            {{ 'products.product.text.activity_tip_item_head_one' | t }}
+          </div>
+          <div class="activity_tip_modal_body_item_body">
+            {{ 'products.product.text.activity_tip_item_body_one' | t }}
+          </div>
+        </div>
+        <div class="activity_tip_modal_body_item">
+          <div class="activity_tip_modal_body_item_head">
+            {{ 'products.product.text.activity_tip_item_head_two' | t }}
+          </div>
+          <div class="activity_tip_modal_body_item_body">
+            {{ 'products.product.text.activity_tip_item_body_two' | t }}
+          </div>
+        </div>
+        <div class="activity_tip_modal_body_item">
+          <div class="activity_tip_modal_body_item_head">
+            {{ 'products.product.text.activity_tip_item_head_thr' | t }}
+          </div>
+          <div class="activity_tip_modal_body_item_body">
+            {{ 'products.product.text.activity_tip_item_body_thr' | t }}
+          </div>
+        </div>
+        <div class="activity_tip_modal_body_item">
+          <div class="activity_tip_modal_body_item_head">
+            {{ 'products.product.text.activity_tip_item_head_for' | t }}
+          </div>
+          <div class="activity_tip_modal_body_item_body">
+            {{ 'products.product.text.activity_tip_item_body_for' | t }}
+          </div>
+        </div>
+        <div class="activity_tip_modal_body_tip">
+          <div class="activity_tip_modal_body_tip_head">
+            {{ 'products.product.text.activity_tip_body_tip_head' | t }}
+          </div>
+          <div>
+            <div>{{ 'products.product.text.activity_tip_body_tip_body_one' | t }}</div>
+            <div>{{ 'products.product.text.activity_tip_body_tip_body_two' | t }}</div>
+            <div>{{ 'products.product.text.activity_tip_body_tip_body_thr' | t }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const activity_tip_modal = document.querySelector('.activity_tip_modal');
+  if (activity_tip_modal) {
+    document.querySelector('.activity_tip .activity_tip_text_btn').addEventListener('click', () => {
+      activity_tip_modal.style.display = 'block';
+      document.body.style.overflowY = 'hidden';
+    });
+    document.querySelector('#close_activity_tip_modal').addEventListener('click', () => {
+      activity_tip_modal.style.display = 'none';
+      document.body.style.overflowY = 'auto';
+    });
+    activity_tip_modal.addEventListener('click', (e) => {
+      if (e.target === activity_tip_modal) {
+        activity_tip_modal.style.display = 'none';
+        document.body.style.overflowY = 'auto';
+      }
+    });
+  }
+</script>

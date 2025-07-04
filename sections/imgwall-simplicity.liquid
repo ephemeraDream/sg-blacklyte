@@ -1,0 +1,62 @@
+{{ 'section-imgwall-simplicity.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="imgwall_simplicity" id="{{ section.settings.specId }}">
+  {% for item in section.blocks %}
+    <div class="imgwall_simplicity_image_box">
+      {% assign srcset_1x = item.settings.image | image_url: width: 1920 | append: ' 1x, ' %}
+      {% assign srcset_2x = item.settings.image | image_url: width: 670 | append: ' 2x, ' %}
+      {% assign srcset_3x = item.settings.image | image_url: width: 670 | append: ' 3x, ' %}
+      {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+      {% assign img_href = item.settings.image | image_url %}
+      {{-
+        item.settings.image
+        | image_url: width: item.settings.image.width
+        | image_tag:
+          sizes: '(min-width:769px) 45vw, 100vw',
+          srcset: srcset_init,
+          class: 'imgwall_simplicity_image',
+          data-fancybox: 'athena x pink',
+          href: img_href
+      -}}
+    </div>
+  {% endfor %}
+</div>
+<script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "imgwall simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "imgItem",
+      "name": "img item",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "imgwall simplicity"
+    }
+  ]
+}
+{% endschema %}

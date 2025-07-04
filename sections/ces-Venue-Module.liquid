@@ -1,0 +1,452 @@
+{% comment %}
+ 展示场馆
+{% endcomment %}
+<link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+  #shopify-section-template--18319891857639__ces_venue_module_t8dwEN {
+    background-color: #f4f4f4;
+  }
+  .venue-module {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #f4f4f4;
+  }
+  .venue-module_title {
+    font-size: 50px;
+    line-height: 60px;
+    color: #25282C;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .venue-module_steps {
+    width: 90%;
+    display: flex;
+    color: #25282C;
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .venue-module_steps .step_line_first,
+  .venue-module_steps .step_line_second {
+    width: 50%;
+    text-align: center;
+    padding-bottom: 30px;
+    cursor: pointer;
+    position: relative;
+  }
+  .venue-module_steps .step_line_first:after,
+  .venue-module_steps .step_line_second:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: rgba(37, 40, 44, 0.3);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .venue-module_steps .step_line_first_active:after {
+    height: 5px;
+    background-color: #25282C;
+    bottom: -1.5px;
+  }
+  .container_venue_module {
+    margin-top: 40px;
+  }
+  .venue_module_persons {
+    display: flex;
+    width: auto;
+    overflow-x: scroll;
+  }
+  /* .venue_module_persons_conatiner_box {
+    display: flex;
+    overflow-x: scroll;
+    width: calc(100% * 2);
+    scrollbar-width: none;
+  }
+  .venue_module_persons_conatiner_box::-webkit-scrollbar {
+      display: none; 
+  } */
+  .persons_list_container, .persons_list_container_sec {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    /* flex: 1 100%; */
+  }
+  .persons_list_container_item {
+    width: calc(100% / 5 - 20px);
+    text-align: center;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 2px 2px 4px 0px #0000001A;
+    background-color: #fff;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+  }
+  .persons_list_container_item:hover {
+    transform: scale(1.1);
+  }
+  .persons_list_container_item .image {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  .persons_list_container_item .person_name {
+    color: #25282C;
+    font-size: 18px;
+  }
+  .persons_list_container_item .person_title {
+    font-size: 16px;
+    color: #787878;
+    margin-top: 10px;
+  }
+  .container_venue_module .maps_img-box {
+    width: 90%;
+    min-height: 300px;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  .container_venue_module .maps_img-box img {
+    border: 1px solid #0000001A;
+  }
+  
+  @media(max-width: 767px) {
+    .venue-module {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .venue-module_title {
+      font-size: 30px;
+      line-height: 36px;
+    }
+    .persons_list_container {
+      gap: 10px;
+    }
+    .persons_list_container_item {
+      width: calc(100% / 3 - 20px);
+      height: 150px;
+    }
+    .venue-module_steps .step_line_first, .venue-module_steps .step_line_second {
+      font-size: 16px;
+      padding-bottom: 10px;
+    }
+    .persons_list_container_item .person_name {
+      font-size: 12px;
+      line-height: 14px;
+    }
+    .persons_list_container_item .person_title {
+      font-size: 10px;
+      line-height: 12px;
+      margin-top: 2px;
+      padding-bottom: 6px;
+    }
+    .persons_list_container_item .image {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+  }
+</style>
+  <div class="venue-module {% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1570' %}container-1570{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
+    <div class="venue-module_title">{{ section.settings.title }}</div>
+    <div class="venue-module_steps">
+      <div class="step_line_first step_line_first_active">Exhibitors  Guests</div>
+      <div class="step_line_second">Venue Guide</div>
+    </div>
+    <div class="container_venue_module">
+        <div class="venue_module_persons">
+          <div class="venue_module_persons_conatiner_box">
+            <div class="persons_list_container">
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Alex_Liu.png?v=1735524454">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-17.png?v=1735524383" />
+                </div>
+                <div class="person_name">Alex Liu</div>
+                <div class="person_title">CEO of Blacklyte</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Robbie_Douek_CEO_at_BLAST.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-12.png?v=1734503340" />
+                </div>
+                <div class="person_name">Robbie Douek</div>
+                <div class="person_title">Blast CEO</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/OAM_CEO_Adam_Adamou.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-ten.png?v=1734503340" />
+                </div>
+                <div class="person_name">Adam Adamou</div>
+                <div class="person_title">OAM - CEO</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Akshat_Rathee.png?v=1735524454">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-21.png?v=1735524383" />
+                </div>
+                <div class="person_name">Akshat Rathee</div>
+                <div class="person_title">CEO of Nodwin Esports</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Gimmy_Chu.png?v=1735524454">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-22.png?v=1735524383" />
+                </div>
+                <div class="person_name">Gimmy Chu</div>
+                <div class="person_title">CEO and Co-Founder of Nanoleaf</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Chris_DeAppolonio.png?v=1735524454">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-20.png?v=1735524383" />
+                </div>
+                <div class="person_name">Chris DeAppolonio</div>
+                <div class="person_title">CEO of Evil Genuises</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Neil_Duffy_Chief_Commercial_Officer_Americas_at_Overactive_Media.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-eigh.png?v=1734503340" />
+                </div>
+                <div class="person_name">Neil Duffy</div>
+                <div class="person_title">OAM CCO</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Kris_Alexander_TMU_Professor.png?v=1735280387">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-sev.png?v=1735280038" />
+                </div>
+                <div class="person_name">Kris Alexander</div>
+                <div class="person_title">TMU Professor</div>
+              </div>
+               <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Sean_Guadron_Seneca_Professor.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-13.png?v=1734503340" />
+                </div>
+                <div class="person_name">Sean Guadron</div>
+                <div class="person_title">Seneca Professor</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Clarence_Eugene_Ford_Square_Circle_Creative_Director.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-thir.png?v=1734503340" />
+                </div>
+                <div class="person_name">Clarence Eugene Ford</div>
+                <div class="person_title">Square Circle Creative Director</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Heather_Garozzo_Raidiant_Founder.png?v=1735280387">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-fi.png?v=1735280000" />
+                </div>
+                <div class="person_name">Heather Garozzo</div>
+                <div class="person_title">Raidiant Founder</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Bryce_Eldridge_MLSE_Director_of_Esports.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-sec.png?v=1734503340" />
+                </div>
+                <div class="person_name">Bryce Eldridge</div>
+                <div class="person_title">MLSE Director of Esports</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Garrick_Ng_UHN_Program_Lead_Partnerships_Strategic_Initiatives.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-fif.png?v=1734503340" />
+                </div>
+                <div class="person_name">Garrick Ng</div>
+                <div class="person_title">UHN Program Lead, Partnerships & Strategic Initiatives</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Peter_Jin_Hong_EQ_AI_Innovation_Leader.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-11.png?v=1734503340" />
+                </div>
+                <div class="person_name">Peter Jin Hong</div>
+                <div class="person_title">EQ+AI Innovation Leader</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Jean-Francois_Menard_D-Box_VP_of_Innovation.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-six.png?v=1734503343" />
+                </div>
+                <div class="person_name">Jean-Francois Menard</div>
+                <div class="person_title">D-BOX Principal Strategist, Innovation</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Freddie_Beale_Head_of_Sponsorship_Sales_of_BLAST.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-fou.png?v=1734503341" />
+                </div>
+                <div class="person_name">Freddie Beale</div>
+                <div class="person_title">BLAST Head of Sponsorship Sales</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Tom_Harris_Business_Development_Lead_FNATIC.png?v=1735023809">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-14.png?v=1734503340" />
+                </div>
+                <div class="person_name">Tom Harris</div>
+                <div class="person_title">Fnatic - Head of Business Development</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Francisco_Tejada.png?v=1735524455">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-19.png?v=1735524383" />
+                </div>
+                <div class="person_name">Francisco Tejada</div>
+                <div class="person_title">Senior Director of Playfly Sports</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Simba_Wakatama.png?v=1735524454">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-18.png?v=1735524383" />
+                </div>
+                <div class="person_name">Simba Wakatama</div>
+                <div class="person_title">Partnerships at 111</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Mariana_Selena_Murillo.png?v=1735798388">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-23.png?v=1735798369" />
+                </div>
+                <div class="person_name">Mariana Selena Murillo</div>
+                <div class="person_title">Content Creator</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Matthew_Mason.png?v=1735798388">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-24.png?v=1735798368" />
+                </div>
+                <div class="person_name">Matthew Mason</div>
+                <div class="person_title">Content Creator</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/William_Franklin.png?v=1735798388">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-25.png?v=1735798369" />
+                </div>
+                <div class="person_name">William Franklin</div>
+                <div class="person_title">Content Creator</div>
+              </div>
+              <!-- <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Lydia_Wilson.png?v=1735798388">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-28.png?v=1735798369" />
+                </div>
+                <div class="person_name">Lydia Wilson</div>
+                <div class="person_title">Content Creator</div>
+              </div> -->
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Dario_Ferracci.png?v=1735798388">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-27.png?v=1735798369" />
+                </div>
+                <div class="person_name">Dario Ferracci</div>
+                <div class="person_title">Content Creator</div>
+              </div>
+              <div class="persons_list_container_item">
+                <div class="image" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/Emily_Smith.png?v=1735798389">
+                  <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_event-persons-26.png?v=1735798369" />
+                </div>
+                <div class="person_name">Emily Smith</div>
+                <div class="person_title">Content Creator</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="venue_module_maps_container">
+          <a class="maps_img-box" data-fancybox href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_venue_map_info.png?v=1734661953">
+            <img src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/ces_venue_maps.png?v=1734584897"  />
+          </a>
+        </div>
+    </div>
+  </div>
+  
+<script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+<script>
+  (function ($) {
+    setTimeout(() => {
+      $('.container_venue_module').slick({
+        arrows:false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: []
+      });
+    }, 0)
+    
+      
+      $('.step_line_first').on('click', function() {
+        $(this).addClass('step_line_first_active')
+        $('.step_line_second').removeClass('step_line_first_active')
+        $('.container_venue_module').slick('slickGoTo', 0)
+      })
+      $('.step_line_second').on('click', function() {
+        $(this).addClass('step_line_first_active')
+        $('.step_line_first').removeClass('step_line_first_active')
+        $('.container_venue_module').slick('slickGoTo', 1)
+      })
+      $('.container_venue_module').on('afterChange', function(ev) {
+        if(`${ev.target.slick.currentSlide}`==='0') {
+          $('.step_line_first').addClass('step_line_first_active')
+          $('.step_line_second').removeClass('step_line_first_active')
+        } else if (`${ev.target.slick.currentSlide}`==='1') {
+          $('.step_line_second').addClass('step_line_first_active')
+          $('.step_line_first').removeClass('step_line_first_active')
+        }
+      })
+
+    
+
+    $('[data-fancybox]').fancybox({
+      buttons: [
+          "zoom",
+          "share",
+          "slideShow",
+          "fullScreen",
+          "thumbs",
+          "close"
+      ],
+      loop : true,
+      thumbs : {
+          autoStart : true,
+      }
+    })
+  })(jQuery);
+  
+</script>
+{% schema %}
+  {
+    "name": "CES Venue Module",
+    "settings": [
+      {
+          "type": "select",
+          "id": "container",
+          "label": "t:sections.layout.container.option",
+          "default": "container",
+          "options": [
+              {
+                  "value": "container",
+                  "label": "t:sections.layout.container.option1"
+              },
+              {
+                  "value": "1170",
+                  "label": "t:sections.layout.container.option4"
+              },
+              {
+                  "value": "1570",
+                  "label": "Width (1570px)"
+              },
+              {
+                  "value": "1770",
+                  "label": "t:sections.layout.container.option3"
+              },
+              {
+                  "value": "fullwidth",
+                  "label": "t:sections.layout.container.option2"
+              }
+          ]
+      },
+      {
+        "type" : "textarea",
+        "id" : "title",
+        "label" : "Title",
+        "default" : "Discover Our Exhibitors and Navigate the Venue"
+      }
+    ],
+    "presets": [
+      {
+        "name": "CES Venue Module"
+      }
+    ]
+  }
+{% endschema %}
