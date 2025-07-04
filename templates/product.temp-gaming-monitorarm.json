@@ -249,21 +249,21 @@
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/atlas_desk_swiper_2.webp",
-            "description": ""
+            "description": "<p>Tilt Range: +55° to -55°</p><p>Height Adjustment Range:7.3\" to 18.7\"</p>"
           }
         },
         "swiper_item_RWAEaa": {
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/atlas_desk_swiper_1.webp",
-            "description": ""
+            "description": "<p>Horizontal Adjustment Range</p>"
           }
         },
         "swiper_item_6jqy7W": {
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
-            "description": ""
+            "description": "<p>Extension</p>"
           }
         }
       },
