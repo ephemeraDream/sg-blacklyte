@@ -1,0 +1,125 @@
+.img_with_foldtext {
+  max-width: 75vw;
+  margin: 0 auto;
+  position: relative;
+  background-color: #000000;
+  padding: 0 8.33vw;
+}
+
+.img_with_foldtext .img_with_foldtext_title {
+  font-family: DIN-BlackItalic;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.img_with_foldtext .img_with_foldtext_contain {
+  margin-top: 3.33vw;
+  display: flex;
+  align-items: stretch;
+}
+
+.img_with_foldtext .img_with_foldtext_contain img {
+  flex: 0 0 auto;
+  width: 32.29166vw;
+  height: 18.229167vw;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.img_with_foldtext .img_with_foldtext_contain_right {
+  flex: 1;
+  padding-left: 1.979167vw;
+}
+
+.img_with_foldtext .img_with_foldtext_item_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  vertical-align: middle;
+  color: #fff;
+  padding: 1.04167vw 0;
+}
+
+.img_with_foldtext .img_with_foldtext_item {
+  border-bottom: 1px solid #4B4B4B;
+}
+
+.img_with_foldtext .img_with_foldtext_item:last-child {
+  border: none;
+}
+
+.img_with_foldtext .img_with_foldtext_item.active .img_with_foldtext_answer {
+  padding-bottom: 1.04167vw;
+  max-height: 50rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.img_with_foldtext .img_with_foldtext_item_head svg {
+  width: 16px;
+  height: 16px;
+}
+
+.img_with_foldtext .img_with_foldtext_answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease,
+    visibility 0.3s ease;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: .32px;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, .7);
+}
+
+.img_with_foldtext .img_with_foldtext_item.active .img_with_foldtext_item_head svg {
+  transform: rotate(45deg);
+}
+
+@media screen and (max-width: 768px) {
+  .img_with_foldtext {
+    max-width: 100vw;
+    padding: 0 5.33vw;
+  }
+
+  .img_with_foldtext .img_with_foldtext_title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .img_with_foldtext .img_with_foldtext_contain {
+    flex-wrap: wrap;
+  }
+
+  .img_with_foldtext .img_with_foldtext_contain img {
+    width: 100%;
+    height: 66.67vw;
+  }
+
+  .img_with_foldtext .img_with_foldtext_item_head {
+    padding: 5.33vw 0;
+  }
+
+  .img_with_foldtext .img_with_foldtext_item.active .img_with_foldtext_answer {
+    padding-bottom: 5.33vw;
+  }
+}
