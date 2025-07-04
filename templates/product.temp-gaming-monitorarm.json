@@ -187,6 +187,61 @@
         "right_image": "shopify://shop_images/saleEvent-summer-banner.webp"
       }
     },
+    "img_with_text_box_simple_X4G6ny": {
+      "type": "img-with-text-box-simple",
+      "blocks": {
+        "item_T6RwaT": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Single Monitor Setup (Landscape)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Time_in_Technicolor.webp",
+            "video_url": ""
+          }
+        },
+        "item_wiBLiK": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Dual Monitor Setup (Landscape + Landscape)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Feel_the_Beat.webp",
+            "video_url": ""
+          }
+        },
+        "item_UUYmny": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Dual Monitor Setup (Landscape + Portrait)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Turn_Your_World_into_LED_Art.webp",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_T6RwaT",
+        "item_wiBLiK",
+        "item_UUYmny"
+      ],
+      "name": "imgwithtextbox simple",
+      "settings": {
+        "specId": "imgwithtextbox_simple_two",
+        "title": "<p>EFFORTLESS 3 STEP INSTALLATION</p>",
+        "text": "",
+        "link_text": "",
+        "link": ""
+      }
+    },
+    "custom_liquid_PBYCnL": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>#imgwithtextbox_simple_two {\n  max-width: 75vw;\n  margin: 0 auto;\n  background-color: #0C0C0C;\n  padding: 7.29167vw 8.33vw 8.33vw;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_title {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  font-style: Regular;\n  font-size: 36px;\n  leading-trim: NONE;\n  line-height: 48px;\n  letter-spacing: 0%;\n  vertical-align: middle;\n  text-transform: uppercase;\n  color: #fff;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_btn_box {\n  display: none;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_item_filebox,\n#imgwithtextbox_simple_two .imgwithtextbox_simple_item_filebox_image {\n  border-radius: 0;\n  height: 18.229167vw;\n}\n\n.imgwithtextbox_simple .imgwithtextbox_simple_item {\n  flex: 0 0 calc((100% - 3.125vw) / 3);\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_item_info {\n  padding: 0;\n  border-radius: 0;\n  background-color: inherit;\n  margin-top: 0.9375vw;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_item_title {\n  font-family: Roboto;\n  font-weight: 600;\n  font-style: SemiBold;\n  font-size: 26px;\n  leading-trim: NONE;\n  line-height: 48px;\n  letter-spacing: 0%;\n  vertical-align: middle;\n  text-transform: uppercase;\n  color: #fff;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_item_desc {\n  font-family: Roboto;\n  font-weight: 400;\n  font-style: Medium;\n  font-size: 16px;\n  leading-trim: NONE;\n  line-height: 24px;\n  letter-spacing: 0.32px;\n\n  color: rgba(255, 255, 255, .7);\n}\n\n@media screen and (max-width: 768px) {\n  #imgwithtextbox_simple_two {\n    max-width: 100vw;\n    padding: 8.33vw 5.33vw;\n  }\n\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_title {\n    font-size: 26px;\n    line-height: 30px;\n    max-width: 70vw;\n    margin: 0 auto;\n  }\n\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_item_filebox,\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_item_filebox_image {\n    height: 53.33vw;\n  }\n\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_item_desc {\n    font-size: 16px;\n  }\n\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_item_info {\n    margin-top: 5.33vw;\n  }\n}\n\n</style>"
+      }
+    },
     "collapsible_content_HyyPmn": {
       "type": "collapsible-content",
       "blocks": {
@@ -368,6 +423,8 @@
     "img_with_text_simplicity_byYNLU",
     "img_with_text_simplicity_9Jaxgn",
     "image_compare_simplicity_RCqipK",
+    "img_with_text_box_simple_X4G6ny",
+    "custom_liquid_PBYCnL",
     "collapsible_content_HyyPmn",
     "1743652201516533c4",
     "rich_text_VhDpg9",
