@@ -1,0 +1,70 @@
+.icon_simplicity {
+  max-width: 75vw;
+  margin: 0 auto;
+  position: relative;
+  background-color: #000000;
+  min-height: 15.625vw;
+  padding: 5.104167vw 0 4.21875vw 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3.229167vw;
+}
+
+.icon_simplicity .icon_simplicity_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9895833vw;
+}
+
+.icon_simplicity .icon_simplicity_item img {
+  width: 4.270833vw;
+  height: 4.270833vw;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.icon_simplicity .icon_simplicity_item_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: rgba(255, 255, 255, .7);
+}
+
+@media screen and (max-width: 1440px) {
+  .icon_simplicity .icon_simplicity_item {
+    flex: 0 0 24%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .icon_simplicity {
+    max-width: 100vw;
+    padding: 16vw 5.33vw;
+    gap: 5.33vw;
+  }
+
+  .icon_simplicity .icon_simplicity_item img {
+    width: 16vw;
+    height: 16vw;
+  }
+
+  .icon_simplicity .icon_simplicity_item {
+    flex: 0 0 29%;
+    gap: 2.67vw;
+  }
+
+  .icon_simplicity .icon_simplicity_item_text {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .icon_simplicity .icon_simplicity_item_text {
+    font-size: 11px;
+  }
+}
