@@ -1,31 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "product_information_simplicity_A8DKzG": {
       "type": "product-information-simplicity",
       "blocks": {
-        "judge_me_reviews_preview_badge_yVhA8R": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        },
         "product_extra_info_XCWwCD": {
           "type": "productExtraInfo",
           "settings": {
-            "text_one": "<div>\n      <p class=\"size_large\">SPRING SALE: Up to $70 OFF! LIMITED TIME OFFER<\/p>\n      <p>*This discount cannot be combined with other promo codes.<\/p>\n    <\/div>",
-            "text_two": "<p>\n     30 Days Easy Return Policy: Changed your mind? Send it back within 30 days for refund. \n      <a href=\"\/pages\/return-refund-policy\" title=\"Refund Policy\">View return Policy ><\/a>\n    <\/p>",
-            "text_thr": "<div>\n      <p class=\"size_large\">Shop with an Expert. We're here to help.<\/p>\n      <a class=\"chat_now\">Chat with our experts now ><\/a>\n    <\/div>"
+            "text_one": "<div>\n      <p class=\"size_large\">SPRING SALE: Up to $70 OFF! LIMITED TIME OFFER</p>\n      <p>*This discount cannot be combined with other promo codes.</p>\n    </div>",
+            "text_two": "<p>\n     30 Days Easy Return Policy: Changed your mind? Send it back within 30 days for refund. \n      <a href=\"/pages/return-refund-policy\" title=\"Refund Policy\">View return Policy ></a>\n    </p>",
+            "text_thr": "<div>\n      <p class=\"size_large\">Shop with an Expert. We're here to help.</p>\n      <a class=\"chat_now\">Chat with our experts now ></a>\n    </div>"
           }
         },
         "product_extra_info_bottom_YjDHHV": {
           "type": "productExtraInfoBottom",
           "settings": {
-            "text_one": "<div>\n      <p>Estimated dispatch within 2 business days<\/p>\n      <p>Free Shipping on All Orders<\/p>\n    <\/div>",
-            "text_two": "<div>\n      <p>30-Day Returns Policy<\/p>\n      <p>3-Year Warranty Protection<\/p>\n    <\/div>",
-            "text_thr": "<div class=\"flex_full\">Global Support<\/div>"
+            "text_one": "<div>\n      <p>Estimated dispatch within 2 business days</p>\n      <p>Free Shipping on All Orders</p>\n    </div>",
+            "text_two": "<div>\n      <p>30-Day Returns Policy</p>\n      <p>3-Year Warranty Protection</p>\n    </div>",
+            "text_thr": "<div class=\"flex_full\">Global Support</div>"
           }
         }
       },
       "block_order": [
-        "judge_me_reviews_preview_badge_yVhA8R",
         "product_extra_info_XCWwCD",
         "product_extra_info_bottom_YjDHHV"
       ],
@@ -37,9 +41,9 @@
       "type": "video-simplicity",
       "settings": {
         "style": "one",
-        "cover_image": "shopify:\/\/shop_images\/video_cover.webp",
+        "cover_image": "shopify://shop_images/video_cover.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/krakenpro_chair_lumbar_support.webm",
+        "url_upload": "shopify://files/videos/krakenpro_chair_lumbar_support.webm",
         "title": "Seemlessly Fitting",
         "description": "Engineered for your comfort, designed for your style."
       }
@@ -50,7 +54,7 @@
         "swiper_item_tNK8AL": {
           "type": "swiperItem",
           "settings": {
-            "image": "shopify:\/\/shop_images\/design-logo-1.webp",
+            "image": "shopify://shop_images/design-logo-1.webp",
             "title": "CGM Design1",
             "text": "The desk combines interactive visualization, cable management, and motion control The desk combines interactive visualization, cable management, and motion control."
           }
@@ -58,7 +62,7 @@
         "swiper_item_xTcHg8": {
           "type": "swiperItem",
           "settings": {
-            "image": "shopify:\/\/shop_images\/design-logo-1.webp",
+            "image": "shopify://shop_images/design-logo-1.webp",
             "title": "CGM Design2",
             "text": "The desk combines interactive visualization, cable management, and motion control The desk combines interactive visualization, cable management, and motion control."
           }
@@ -66,7 +70,7 @@
         "swiper_item_EBUQCd": {
           "type": "swiperItem",
           "settings": {
-            "image": "shopify:\/\/shop_images\/design-logo-1.webp",
+            "image": "shopify://shop_images/design-logo-1.webp",
             "title": "CGM Design3",
             "text": "The desk combines interactive visualization, cable management, and motion control The desk combines interactive visualization, cable management, and motion control."
           }
@@ -74,7 +78,7 @@
         "swiper_item_CVD4hN": {
           "type": "swiperItem",
           "settings": {
-            "image": "shopify:\/\/shop_images\/design-logo-1.webp",
+            "image": "shopify://shop_images/design-logo-1.webp",
             "title": "CGM Design4",
             "text": "The desk combines interactive visualization, cable management, and motion control The desk combines interactive visualization, cable management, and motion control."
           }
@@ -101,10 +105,10 @@
         "description": "<p>The Athena Series lets you personalize your comfort. Choose between our premium signature leatherette or fabric upholstery. Whether you crave sleek sophistication or cozy elegance, the decision is yours. Your chair, your way.</p>",
         "file_position": "bottom",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/own_your_sit.webp",
-        "cover_image": "shopify:\/\/shop_images\/own_your_sit.webp",
+        "file_image": "shopify://shop_images/own_your_sit.webp",
+        "cover_image": "shopify://shop_images/own_your_sit.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/home-video.webm"
+        "url_upload": "shopify://files/videos/home-video.webm"
       }
     },
     "img_with_text_simplicity_gCyxNE": {
@@ -118,7 +122,7 @@
         "description": "<p>Why settle for hard, uncomfortable foam when our ultra-soft memory foam cradles you in cloud-like comfort, while delivering the perfect support designed to keep you supported and focused for years to come.</p>",
         "file_position": "left",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/SOFT_YET_FIRM_BEST_OF_BOTH_WORLDS.webp",
+        "file_image": "shopify://shop_images/SOFT_YET_FIRM_BEST_OF_BOTH_WORLDS.webp",
         "video_url": ""
       }
     },
@@ -133,7 +137,7 @@
         "description": "<p>Luxury meets durability with our sustainable leatherette. Offering the premium feel of NAPA leather and 15x the strength of standard PU, it’s designed to last while protecting the planet.</p>",
         "file_position": "right",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/LUXURY_ENDURANCE_SUSTAINABILITY_ALL_IN_ONE.webp",
+        "file_image": "shopify://shop_images/LUXURY_ENDURANCE_SUSTAINABILITY_ALL_IN_ONE.webp",
         "video_url": ""
       }
     },
@@ -148,10 +152,10 @@
         "description": "<p>Why settle for hard, uncomfortable foam when our ultra-soft memory foam cradles you in cloud-like comfort, while delivering the perfect support designed to keep you supported and focused for years to come.</p>",
         "file_position": "left",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/SOFT_YET_FIRM_BEST_OF_BOTH_WORLDS_1.webp",
-        "cover_image": "shopify:\/\/shop_images\/SOFT_YET_FIRM_BEST_OF_BOTH_WORLDS_1.webp",
+        "file_image": "shopify://shop_images/SOFT_YET_FIRM_BEST_OF_BOTH_WORLDS_1.webp",
+        "cover_image": "shopify://shop_images/SOFT_YET_FIRM_BEST_OF_BOTH_WORLDS_1.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/home-video.webm"
+        "url_upload": "shopify://files/videos/home-video.webm"
       }
     },
     "img_with_text_simplicity_axWaGA": {
@@ -165,10 +169,10 @@
         "description": "<p>\"Designed for every posture—upright, cross-legged, reclined, or leaning—our wider, versatile seatbase ensures comfort that adapts to you.\"</p>",
         "file_position": "right",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/Upright_or_Not_We_ve_Got_You.webp",
-        "cover_image": "shopify:\/\/shop_images\/Upright_or_Not_We_ve_Got_You.webp",
+        "file_image": "shopify://shop_images/Upright_or_Not_We_ve_Got_You.webp",
+        "cover_image": "shopify://shop_images/Upright_or_Not_We_ve_Got_You.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/home-video.webm"
+        "url_upload": "shopify://files/videos/home-video.webm"
       }
     },
     "img_with_text_simplicity_pbNbgH": {
@@ -182,10 +186,10 @@
         "description": "<p>The lumbar support is the heart of a good gaming chair and ours is exceptional. Height and depth adjustments ensures a perfect fit for your spine, delivering the ultimate comfort and support you need.</p>",
         "file_position": "bottom",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/Adjustable_Lumbar_Support.webp",
-        "cover_image": "shopify:\/\/shop_images\/Adjustable_Lumbar_Support.webp",
+        "file_image": "shopify://shop_images/Adjustable_Lumbar_Support.webp",
+        "cover_image": "shopify://shop_images/Adjustable_Lumbar_Support.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/home-video.webm"
+        "url_upload": "shopify://files/videos/home-video.webm"
       }
     },
     "img_with_text_simplicity_qJhzrx": {
@@ -199,10 +203,10 @@
         "description": "<p>Our 4-Way Dynamic Armrests are engineered to support your natural posture, moving seamlessly in every direction to reduce stress on your muscles and joints. These armrests provide the perfect alignment to keep you supported and comfortable.</p>",
         "file_position": "bottom",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/PRECISE_ARM_SUPPORT_RELIEVE_SHOULDER_ARM_STRESS.webp",
-        "cover_image": "shopify:\/\/shop_images\/PRECISE_ARM_SUPPORT_RELIEVE_SHOULDER_ARM_STRESS.webp",
+        "file_image": "shopify://shop_images/PRECISE_ARM_SUPPORT_RELIEVE_SHOULDER_ARM_STRESS.webp",
+        "cover_image": "shopify://shop_images/PRECISE_ARM_SUPPORT_RELIEVE_SHOULDER_ARM_STRESS.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/home-video.webm"
+        "url_upload": "shopify://files/videos/home-video.webm"
       }
     },
     "img_with_text_simplicity_GcnqNM": {
@@ -216,10 +220,10 @@
         "description": "<p>Designed for effortless comfort and adjustment, our magnetic neck pillow adjusts to the perfect height with ease and stay securely in place. Its ergonomic shape and magnetic precision delivers the optimal support right where you need it most, keeping your neck and shoulder relaxed always.</p>",
         "file_position": "bottom",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/SNAP_SLIDE_RELAX_ADJUST_WITH_EASE.webp",
-        "cover_image": "shopify:\/\/shop_images\/SNAP_SLIDE_RELAX_ADJUST_WITH_EASE.webp",
+        "file_image": "shopify://shop_images/SNAP_SLIDE_RELAX_ADJUST_WITH_EASE.webp",
+        "cover_image": "shopify://shop_images/SNAP_SLIDE_RELAX_ADJUST_WITH_EASE.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/home-video.webm"
+        "url_upload": "shopify://files/videos/home-video.webm"
       }
     },
     "img_with_text_box_simplicity_xHQGVc": {
@@ -232,7 +236,7 @@
             "sub_title": "155° Backrest Recline",
             "description": "Built for gaming, lounging, napping, and more. Adjust to any position effortlessly with a simple lever pull and push.",
             "file_type": "video",
-            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/3cff18b7aefb48459397018672c77e56.mp4"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/3cff18b7aefb48459397018672c77e56.mp4"
           }
         },
         "file_with_text_inBCzK": {
@@ -242,7 +246,7 @@
             "sub_title": "13° Rocking Mode",
             "description": "Find your perfect gaming stance with our multi-tilt mechanism. Adjust tension, lock your angle, and play in ultimate comfort.",
             "file_type": "video",
-            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/383427bfbdeb40da8b542072c677c879.mp4"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/383427bfbdeb40da8b542072c677c879.mp4"
           }
         },
         "file_with_text_HXmhgR": {
@@ -252,7 +256,7 @@
             "sub_title": "60 mm Height Adjustment",
             "description": "SGS Certified Class Hydraulics. Built for strength and durability. Provide smooth height adjustment for personalized comfort.",
             "file_type": "video",
-            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/aca9ca7011614fb991245df3f636ab9b.mp4"
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/aca9ca7011614fb991245df3f636ab9b.mp4"
           }
         }
       },
@@ -270,7 +274,7 @@
       "settings": {
         "title": "<p>Find your perfect <br>chair</p>",
         "description": "",
-        "arrow_icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"18\" height=\"16\" viewbox=\"0 0 18 16\" fill=\"none\">\n            <path d=\"M7.16016 4.5L11.1602 8.5L7.16016 12.5\" stroke=\"#D0F9FF\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n          <\/svg>",
+        "arrow_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"16\" viewbox=\"0 0 18 16\" fill=\"none\">\n            <path d=\"M7.16016 4.5L11.1602 8.5L7.16016 12.5\" stroke=\"#D0F9FF\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n          </svg>",
         "product": ""
       }
     },
@@ -288,7 +292,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "1. How do I track my order?",
-            "content": "<p>Once your order ships, you'll receive a shipping confirmation email and tracking number, so you can follow your package as it makes its way to you. However, tracking information can take up to 24 hours to update, so don’t worry if it doesn't show up immediately. We recommend tracking your order and ensuring that you’re home on the day of delivery to receive your order.<\/p>",
+            "content": "<p>Once your order ships, you'll receive a shipping confirmation email and tracking number, so you can follow your package as it makes its way to you. However, tracking information can take up to 24 hours to update, so don’t worry if it doesn't show up immediately. We recommend tracking your order and ensuring that you’re home on the day of delivery to receive your order.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -298,7 +302,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "2. When Will My Order be Shipped?",
-            "content": "<p>Inventory orders are typically shipped the next business day and will be delivered within 1-5 business days.  For more information, please check our Shipping and Return Policy.<\/p>",
+            "content": "<p>Inventory orders are typically shipped the next business day and will be delivered within 1-5 business days.  For more information, please check our Shipping and Return Policy.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -308,7 +312,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "3. My order has been shipped. Can I change or cancel my order?",
-            "content": "<p>Unfortunately, we’re unable to cancel your order once it ships.<\/p>",
+            "content": "<p>Unfortunately, we’re unable to cancel your order once it ships.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -318,7 +322,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "4. Can I exchange my Order？",
-            "content": "<p>For the most efficient resolution to obtain the item you desire, we recommend returning the original item. Once your return is approved, we encourage you to proceed with a separate purchase for the new item.  For more information, please check our Return & Refund Policy.<\/p>",
+            "content": "<p>For the most efficient resolution to obtain the item you desire, we recommend returning the original item. Once your return is approved, we encourage you to proceed with a separate purchase for the new item.  For more information, please check our Return & Refund Policy.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -328,7 +332,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "5. How will my order be delivered?",
-            "content": "<p>We deliver your order straight to your address via FedEx & Canada Post. You’ll receive an email with a tracking number when your order ships, so you can easily track your order. Please ensure that you’re home on the day of delivery to receive your order.<\/p>",
+            "content": "<p>We deliver your order straight to your address via FedEx & Canada Post. You’ll receive an email with a tracking number when your order ships, so you can easily track your order. Please ensure that you’re home on the day of delivery to receive your order.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -338,7 +342,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "6. What do I do if I face an issue with my purchase?",
-            "content": "<p>In the unlikely event that you come across any damaged, defective or missing parts, please contact us at <a href=\"mailto:support@blacklyte.com\" title=\"mailto:support@blacklyte.com\">support@blacklyte.com <\/a>with a photo of the affected area and your order number. Our support specialists will do their best to assist you.<\/p>",
+            "content": "<p>In the unlikely event that you come across any damaged, defective or missing parts, please contact us at <a href=\"mailto:support@blacklyte.com\" title=\"mailto:support@blacklyte.com\">support@blacklyte.com </a>with a photo of the affected area and your order number. Our support specialists will do their best to assist you.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -399,15 +403,6 @@
     },
     "1743652201516533c4": {
       "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_98B9hP": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_98B9hP"
-      ],
       "settings": {
         "include_margins": false
       }

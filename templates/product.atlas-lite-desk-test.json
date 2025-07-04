@@ -1,33 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "product_information_simplicity_A8DKzG": {
       "type": "product-information-simplicity",
       "blocks": {
-        "judge_me_reviews_preview_badge_yVhA8R": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {}
-        },
         "product_extra_info_XCWwCD": {
           "type": "productExtraInfo",
           "settings": {
-            "text_one": "<div>\n      <p class=\"size_large\">Austin Major Special Offer: $100 Off! <\/p>\n      <p>*Cannot be combined with other promo codes.<\/p>\n    <\/div>",
+            "text_one": "<div>\n      <p class=\"size_large\">Austin Major Special Offer: $100 Off! </p>\n      <p>*Cannot be combined with other promo codes.</p>\n    </div>",
             "enable_text_one": true,
-            "text_two": "<p>\n     30 Days Easy Return Policy: Changed your mind? Send it back within 30 days for refund. \n      <a href=\"\/pages\/return-refund-policy\" title=\"Refund Policy\">View return Policy ><\/a>\n    <\/p>",
-            "text_thr": "<div>\n      <p class=\"size_large\">Shop with an Expert. We're here to help.<\/p>\n      <a class=\"chat_now\">Chat with our experts now ><\/a>\n    <\/div>"
+            "text_two": "<p>\n     30 Days Easy Return Policy: Changed your mind? Send it back within 30 days for refund. \n      <a href=\"/pages/return-refund-policy\" title=\"Refund Policy\">View return Policy ></a>\n    </p>",
+            "text_thr": "<div>\n      <p class=\"size_large\">Shop with an Expert. We're here to help.</p>\n      <a class=\"chat_now\">Chat with our experts now ></a>\n    </div>"
           }
         },
         "product_extra_info_bottom_YjDHHV": {
           "type": "productExtraInfoBottom",
           "settings": {
-            "text_one": "<div>\n      <p>Free Shipping on All Orders<\/p>\n    <\/div>",
-            "text_two": "<div>\n      <p>30-Day Returns Policy<\/p>\n      <p>3-Year Warranty Protection<\/p>\n    <\/div>",
-            "text_thr": "<div class=\"flex_full\">Global Support<\/div>"
+            "text_one": "<div>\n      <p>Free Shipping on All Orders</p>\n    </div>",
+            "text_two": "<div>\n      <p>30-Day Returns Policy</p>\n      <p>3-Year Warranty Protection</p>\n    </div>",
+            "text_thr": "<div class=\"flex_full\">Global Support</div>"
           }
         }
       },
       "block_order": [
-        "judge_me_reviews_preview_badge_yVhA8R",
         "product_extra_info_XCWwCD",
         "product_extra_info_bottom_YjDHHV"
       ],
@@ -46,10 +49,9 @@
       ],
       "settings": {
         "style": "one",
-        "show_playicon": "false",
-        "cover_image": "shopify:\/\/shop_images\/atlas_desk_video_cover.webp",
+        "cover_image": "shopify://shop_images/atlas_desk_video_cover.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/athena series.webm",
+        "url_upload": "shopify://files/videos/athena series.webm",
         "title": "PERSONALIZED ERGONOMICS",
         "description": "SCIENCE-BACKED POWER  OF SIT-TO-STAND DESKS"
       }
@@ -60,22 +62,22 @@
         "item_qajQbz": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/img-with-text-simple-1.webp",
-            "text": "<p>An innovative global brand that embodies a creative lifestyle, combining the realms of work and play like never before.<\/p>"
+            "image": "shopify://shop_images/img-with-text-simple-1.webp",
+            "text": "<p>An innovative global brand that embodies a creative lifestyle, combining the realms of work and play like never before.</p>"
           }
         },
         "item_7UTgfx": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/img-with-text-simple-2.webp",
-            "text": "<p>Blacklyte stands as a pioneering entertainment company at the forefront of innovative technology.<\/p>"
+            "image": "shopify://shop_images/img-with-text-simple-2.webp",
+            "text": "<p>Blacklyte stands as a pioneering entertainment company at the forefront of innovative technology.</p>"
           }
         },
         "item_69kRb7": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/img-with-text-simple-3.webp",
-            "text": "<p>Blacklyte has worked with top players across multiple titles to make sure their equipment meets their needs.<\/p>"
+            "image": "shopify://shop_images/img-with-text-simple-3.webp",
+            "text": "<p>Blacklyte has worked with top players across multiple titles to make sure their equipment meets their needs.</p>"
           }
         }
       },
@@ -100,12 +102,12 @@
         "specId": "",
         "title": "<p>YOUR FAVOURITE POSITION <br>IN ONE TAP</p>",
         "sub_title": "4-MEMORY POSITION",
-        "description": "<p>The Atlas Lite comes with an adjustable height range of 27.5 ’’ 46 ’’. Move to you or your partner’s favorite position at ease with our programmable memory positions in one tap.  <\/p>",
+        "description": "<p>The Atlas Lite comes with an adjustable height range of 27.5 ’’ 46 ’’. Move to you or your partner’s favorite position at ease with our programmable memory positions in one tap.  </p>",
         "file_position": "left",
         "file_type": "video",
-        "cover_image": "shopify:\/\/shop_images\/YOUR_FAVOURITE_POSITION_IN_ONE_TAP_atlas_desk.webp",
+        "cover_image": "shopify://shop_images/YOUR_FAVOURITE_POSITION_IN_ONE_TAP_atlas_desk.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/YOUR FAVOURITE POSITION IN ONE TAP atlas desk inch.webm"
+        "url_upload": "shopify://files/videos/YOUR FAVOURITE POSITION IN ONE TAP atlas desk inch.webm"
       }
     },
     "img_with_text_simplicity_UVRd4Q": {
@@ -121,12 +123,12 @@
         "specId": "",
         "title": "<p>STABLE YET QUIET <br>PRECISE TO THE MILLIMETER</p>",
         "sub_title": "DUAL MOTOR",
-        "description": "<p>Tired of wobbly desks that threatens your coffee and adjustments that don’t match your optimal height? Our Dual Motor are engineered for rock solid stability so you can work at ease and focused, even at the heights point. Our industrial-grade steel frame supports up to 265lb.<\/p>",
+        "description": "<p>Tired of wobbly desks that threatens your coffee and adjustments that don’t match your optimal height? Our Dual Motor are engineered for rock solid stability so you can work at ease and focused, even at the heights point. Our industrial-grade steel frame supports up to 265lb.</p>",
         "file_position": "right",
         "file_type": "video",
-        "cover_image": "shopify:\/\/shop_images\/STABLE_YET_QUIET_PRECISE_TO_THE_MILLIMETER_atlas_desk.webp",
+        "cover_image": "shopify://shop_images/STABLE_YET_QUIET_PRECISE_TO_THE_MILLIMETER_atlas_desk.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/STABLE YET QUIET PRECISE TO THE MILLIMETER atlas desk.webm"
+        "url_upload": "shopify://files/videos/STABLE YET QUIET PRECISE TO THE MILLIMETER atlas desk.webm"
       }
     },
     "img_with_text_simplicity_E6zmaP": {
@@ -142,10 +144,10 @@
         "specId": "",
         "title": "<p>LESS CABLES <br>MORE PRODUCTIVITY</p>",
         "sub_title": "CABLE MANAGEMENT BRACKET",
-        "description": "<p>Messy cable clutters taking up your work space? Our cable management tray are designed to conceal cables and save you the hassle of cable management. Don’t let your cables get in the way of your productivity. <\/p>",
+        "description": "<p>Messy cable clutters taking up your work space? Our cable management tray are designed to conceal cables and save you the hassle of cable management. Don’t let your cables get in the way of your productivity. </p>",
         "file_position": "left",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/LESS_CABLES_MORE_PRODUCTIVITY_atlas_desk.webp",
+        "file_image": "shopify://shop_images/LESS_CABLES_MORE_PRODUCTIVITY_atlas_desk.webp",
         "video_url": ""
       }
     },
@@ -159,7 +161,7 @@
             "sub_title": "",
             "description": "The monitor stand is made from real wood in Germany by master carpenters and sealed with natural waxes and oils.",
             "file_type": "image",
-            "file_image": "shopify:\/\/shop_images\/atlas-lite-desk-info-1.webp",
+            "file_image": "shopify://shop_images/atlas-lite-desk-info-1.webp",
             "video_url": ""
           }
         },
@@ -170,7 +172,7 @@
             "sub_title": "",
             "description": "Whether it's a highly productive Excel workstation or a dream setup for gamers. Configure the Setup Cockpit exactly as you need it.",
             "file_type": "image",
-            "file_image": "shopify:\/\/shop_images\/atlas-lite-desk-info-2.webp",
+            "file_image": "shopify://shop_images/atlas-lite-desk-info-2.webp",
             "video_url": ""
           }
         },
@@ -181,7 +183,7 @@
             "sub_title": "",
             "description": "Every piece is unique. That's not just an empty phrase, it's a statement. The Setup Cockpit is manufactured with CNC precision and craftsmanship.",
             "file_type": "image",
-            "file_image": "shopify:\/\/shop_images\/atlas-lite-desk-info-3.webp",
+            "file_image": "shopify://shop_images/atlas-lite-desk-info-3.webp",
             "video_url": ""
           }
         }
@@ -209,7 +211,7 @@
           "type": "appendInfo",
           "settings": {
             "subtitle": "",
-            "text": "<p>*With a sit-to-stand desk, you’re not just changing your posture, you’re <strong>upgrading the way you work<\/strong>.<\/p>"
+            "text": "<p>*With a sit-to-stand desk, you’re not just changing your posture, you’re <strong>upgrading the way you work</strong>.</p>"
           }
         }
       },
@@ -222,10 +224,10 @@
         "specId": "work_smarter",
         "title": "<p>WORK SMARTER MOVE FREELY</p>",
         "sub_title": "BENEFITS",
-        "description": "<p>✔ <strong>Eases strain<\/strong> on your back, neck, and joints<\/p><p>✔ <strong>Boosts circulation <\/strong>to sharpen focus and energy <\/p><p>✔ <strong>Adapts to you<\/strong> because no two people work the same way <\/p><p>✔ <strong>Supports long-term wellness<\/strong> by breaking the cycle of sedentary fatigue<\/p>",
+        "description": "<p>✔ <strong>Eases strain</strong> on your back, neck, and joints</p><p>✔ <strong>Boosts circulation </strong>to sharpen focus and energy </p><p>✔ <strong>Adapts to you</strong> because no two people work the same way </p><p>✔ <strong>Supports long-term wellness</strong> by breaking the cycle of sedentary fatigue</p>",
         "file_position": "right",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/WORK_SMARTER_MOVE_FREELY_atlas_desk.webp",
+        "file_image": "shopify://shop_images/WORK_SMARTER_MOVE_FREELY_atlas_desk.webp",
         "video_url": ""
       }
     },
@@ -240,13 +242,13 @@
         "specId": "",
         "title": "<p>4 SIZES 95% ACTUAL USAGE SPACE</p>",
         "sub_title": "WORK & GAME SPACE COMPATIBLE",
-        "description": "<p>Go wide and personalize your workspace without sacrificing usage area.<\/p>",
+        "description": "<p>Go wide and personalize your workspace without sacrificing usage area.</p>",
         "file_position": "bottom",
         "file_type": "video",
-        "file_image": "shopify:\/\/shop_images\/4_SIZES_95_ACTUAL_USAGE_SPACE_atlas_desk.webp",
-        "cover_image": "shopify:\/\/shop_images\/4_SIZES_95_ACTUAL_USAGE_SPACE_atlas_desk.webp",
+        "file_image": "shopify://shop_images/4_SIZES_95_ACTUAL_USAGE_SPACE_atlas_desk.webp",
+        "cover_image": "shopify://shop_images/4_SIZES_95_ACTUAL_USAGE_SPACE_atlas_desk.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/4 SIZES 95% ACTUAL USAGE SPACE atlas desk inch.webm"
+        "url_upload": "shopify://files/videos/4 SIZES 95% ACTUAL USAGE SPACE atlas desk inch.webm"
       }
     },
     "styles_simplicity_Jz6RyL": {
@@ -257,9 +259,9 @@
           "settings": {
             "color_name": "Obsidian Black",
             "color_value": "#202020",
-            "img_left": "shopify:\/\/shop_images\/atlas_desk_black_style_1.webp",
-            "img_right_top": "shopify:\/\/shop_images\/atlas_desk_black_style_2.webp",
-            "img_right_bottom": "shopify:\/\/shop_images\/atlas_desk_black_style_3.webp"
+            "img_left": "shopify://shop_images/atlas_desk_black_style_1.webp",
+            "img_right_top": "shopify://shop_images/atlas_desk_black_style_2.webp",
+            "img_right_bottom": "shopify://shop_images/atlas_desk_black_style_3.webp"
           }
         },
         "style_item_HYaNFL": {
@@ -267,9 +269,9 @@
           "settings": {
             "color_name": "Moonstone White",
             "color_value": "#ffffff",
-            "img_left": "shopify:\/\/shop_images\/atlas_desk_white_style_1.webp",
-            "img_right_top": "shopify:\/\/shop_images\/atlas_desk_white_style_2.webp",
-            "img_right_bottom": "shopify:\/\/shop_images\/atlas_desk_white_style_3.webp"
+            "img_left": "shopify://shop_images/atlas_desk_white_style_1.webp",
+            "img_right_top": "shopify://shop_images/atlas_desk_white_style_2.webp",
+            "img_right_bottom": "shopify://shop_images/atlas_desk_white_style_3.webp"
           }
         },
         "style_item_PbCUtU": {
@@ -277,9 +279,9 @@
           "settings": {
             "color_name": "Natural Oak",
             "color_value": "#ffd88f",
-            "img_left": "shopify:\/\/shop_images\/atlas_desk_wooden_style_1.webp",
-            "img_right_top": "shopify:\/\/shop_images\/atlas_desk_wooden_style_2.webp",
-            "img_right_bottom": "shopify:\/\/shop_images\/atlas_desk_wooden_style_3.webp"
+            "img_left": "shopify://shop_images/atlas_desk_wooden_style_1.webp",
+            "img_right_top": "shopify://shop_images/atlas_desk_wooden_style_2.webp",
+            "img_right_bottom": "shopify://shop_images/atlas_desk_wooden_style_3.webp"
           }
         }
       },
@@ -301,14 +303,14 @@
           "type": "appendInfo",
           "settings": {
             "subtitle": "Eco-friendly & Durable",
-            "text": "<p>Recycled wood fibre reduces the need to cutting down more trees, minimize waste, and, much more durable than bamboo material.<\/p>"
+            "text": "<p>Recycled wood fibre reduces the need to cutting down more trees, minimize waste, and, much more durable than bamboo material.</p>"
           }
         },
         "append_info_ndxKtJ": {
           "type": "appendInfo",
           "settings": {
             "subtitle": "Engineered to last",
-            "text": "<p>Supports up to 265 lbs effortlessly, making it perfect for setting up your workspace without sacrificing stabllity.<\/p>"
+            "text": "<p>Supports up to 265 lbs effortlessly, making it perfect for setting up your workspace without sacrificing stabllity.</p>"
           }
         }
       },
@@ -326,10 +328,10 @@
         "specId": "sturdy_stable",
         "title": "<p>STURDY STABLE <br>ECO-FRIENDLY</p>",
         "sub_title": "RECYCLED WOOD FIBRE DESKTOP",
-        "description": "<p>Our desktop features a sleek and ultra durable recycled woodfibre material, Work comfortable while reducing your carbon footprints.<\/p>",
+        "description": "<p>Our desktop features a sleek and ultra durable recycled woodfibre material, Work comfortable while reducing your carbon footprints.</p>",
         "file_position": "right",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/STURDY_STABLE_ECO-FRIENDLY_atlas_desk.webp",
+        "file_image": "shopify://shop_images/STURDY_STABLE_ECO-FRIENDLY_atlas_desk.webp",
         "video_url": ""
       }
     },
@@ -343,13 +345,13 @@
         "specId": "",
         "title": "<p>YOUR FAVOURITE POSITION <br>IN ONE TAP</p>",
         "sub_title": "4-MEMORY POSITION",
-        "description": "<p>The Atlas Lite comes with an adjustable height range of 27.5 ’’ 46 ’’. Move to you or your partner’s favorite position at ease with our programmable memory positions in one tap.  <\/p>",
+        "description": "<p>The Atlas Lite comes with an adjustable height range of 27.5 ’’ 46 ’’. Move to you or your partner’s favorite position at ease with our programmable memory positions in one tap.  </p>",
         "file_position": "bottom",
         "file_type": "video",
-        "file_image": "shopify:\/\/shop_images\/YOUR_FAVOURITE_POSITION_IN_ONE_TAP_atlas_desk.webp",
-        "cover_image": "shopify:\/\/shop_images\/YOUR_FAVOURITE_POSITION_IN_ONE_TAP_atlas_desk.webp",
+        "file_image": "shopify://shop_images/YOUR_FAVOURITE_POSITION_IN_ONE_TAP_atlas_desk.webp",
+        "cover_image": "shopify://shop_images/YOUR_FAVOURITE_POSITION_IN_ONE_TAP_atlas_desk.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/YOUR FAVOURITE POSITION IN ONE TAP atlas desk inch.webm"
+        "url_upload": "shopify://files/videos/YOUR FAVOURITE POSITION IN ONE TAP atlas desk inch.webm"
       }
     },
     "img_with_text_simplicity_qJhzrx": {
@@ -362,13 +364,13 @@
         "specId": "",
         "title": "<p>STABLE YET QUIET <br>PRECISE TO THE MILLIMETER</p>",
         "sub_title": "DUAL MOTOR",
-        "description": "<p>Tired of wobbly desks that threatens your coffee and adjustments that don’t match your optimal height? Our Dual Motor are engineered for rock solid stability so you can work at ease and focused, even at the heights point. Our industrial-grade steel frame supports up to 265lb.<\/p>",
+        "description": "<p>Tired of wobbly desks that threatens your coffee and adjustments that don’t match your optimal height? Our Dual Motor are engineered for rock solid stability so you can work at ease and focused, even at the heights point. Our industrial-grade steel frame supports up to 265lb.</p>",
         "file_position": "bottom",
         "file_type": "video",
-        "file_image": "shopify:\/\/shop_images\/STABLE_YET_QUIET_PRECISE_TO_THE_MILLIMETER_atlas_desk.webp",
-        "cover_image": "shopify:\/\/shop_images\/STABLE_YET_QUIET_PRECISE_TO_THE_MILLIMETER_atlas_desk.webp",
+        "file_image": "shopify://shop_images/STABLE_YET_QUIET_PRECISE_TO_THE_MILLIMETER_atlas_desk.webp",
+        "cover_image": "shopify://shop_images/STABLE_YET_QUIET_PRECISE_TO_THE_MILLIMETER_atlas_desk.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/STABLE YET QUIET PRECISE TO THE MILLIMETER atlas desk.webm"
+        "url_upload": "shopify://files/videos/STABLE YET QUIET PRECISE TO THE MILLIMETER atlas desk.webm"
       }
     },
     "img_with_text_simplicity_GcnqNM": {
@@ -381,13 +383,13 @@
         "specId": "",
         "title": "<p>LESS CABLES <br>MORE PRODUCTIVITY</p>",
         "sub_title": "CABLE MANAGEMENT BRACKET",
-        "description": "<p>Messy cable clutters taking up your work space? Our cable management tray are designed to conceal cables and save you the hassle of cable management. Don’t let your cables get in the way of your productivity.<\/p>",
+        "description": "<p>Messy cable clutters taking up your work space? Our cable management tray are designed to conceal cables and save you the hassle of cable management. Don’t let your cables get in the way of your productivity.</p>",
         "file_position": "bottom",
         "file_type": "image",
-        "file_image": "shopify:\/\/shop_images\/LESS_CABLES_MORE_PRODUCTIVITY_atlas_desk.webp",
-        "cover_image": "shopify:\/\/shop_images\/SNAP_SLIDE_RELAX_ADJUST_WITH_EASE_athena_series.webp",
+        "file_image": "shopify://shop_images/LESS_CABLES_MORE_PRODUCTIVITY_atlas_desk.webp",
+        "cover_image": "shopify://shop_images/SNAP_SLIDE_RELAX_ADJUST_WITH_EASE_athena_series.webp",
         "video_url": "",
-        "url_upload": "shopify:\/\/files\/videos\/SNAP SLIDE RELAX ADJUST WITH EASE athena series.webm"
+        "url_upload": "shopify://files/videos/SNAP SLIDE RELAX ADJUST WITH EASE athena series.webm"
       }
     },
     "desk_swiper_simplicity_rckwwC": {
@@ -396,13 +398,13 @@
         "swiper_item_gWkkEp": {
           "type": "swiperItem",
           "settings": {
-            "swiper_image": "shopify:\/\/shop_images\/atlas_desk_swiper_2.webp"
+            "swiper_image": "shopify://shop_images/atlas_desk_swiper_2.webp"
           }
         },
         "swiper_item_hEJCTn": {
           "type": "swiperItem",
           "settings": {
-            "swiper_image": "shopify:\/\/shop_images\/atlas_desk_swiper_1.webp"
+            "swiper_image": "shopify://shop_images/atlas_desk_swiper_1.webp"
           }
         }
       },
@@ -417,7 +419,7 @@
       "settings": {
         "title": "<p>HEAVY DUTY MATERIAL <br>UNPARALLED STABILITY</p>",
         "sub_title": "T-LEG FRAME",
-        "description": "<p>The Atlas Lite comes with a T-leg frame for unparralled stability even at the highest adjustment point. The legs are the heart of a standing desk and ours are engineered and primed to last the test of time.<\/p>"
+        "description": "<p>The Atlas Lite comes with a T-leg frame for unparralled stability even at the highest adjustment point. The legs are the heart of a standing desk and ours are engineered and primed to last the test of time.</p>"
       }
     },
     "confidence_simplicity_NtjJ3r": {
@@ -426,19 +428,19 @@
         "images_i3qb4N": {
           "type": "images",
           "settings": {
-            "file_image": "shopify:\/\/shop_images\/desk-confidence-1.webp"
+            "file_image": "shopify://shop_images/desk-confidence-1.webp"
           }
         },
         "images_cqbL6D": {
           "type": "images",
           "settings": {
-            "file_image": "shopify:\/\/shop_images\/desk-confidence-2.webp"
+            "file_image": "shopify://shop_images/desk-confidence-2.webp"
           }
         },
         "images_GN8WjY": {
           "type": "images",
           "settings": {
-            "file_image": "shopify:\/\/shop_images\/desk-confidence-3.webp"
+            "file_image": "shopify://shop_images/desk-confidence-3.webp"
           }
         },
         "textinfo_8nCPrF": {
@@ -487,9 +489,9 @@
             "sub_title": "",
             "description": "Our team of reliability experts put the rear hinged cover through 10,000 open and cycles to ensure that the hinge retains its resistance and smooth operation.",
             "file_type": "image",
-            "file_image": "shopify:\/\/shop_images\/Hinge_life_cycle_test_atlas_desk.webp",
+            "file_image": "shopify://shop_images/Hinge_life_cycle_test_atlas_desk.webp",
             "video_url": "",
-            "url_upload": "shopify:\/\/files\/videos\/athena 155° Backrest Recline.mp4"
+            "url_upload": "shopify://files/videos/athena 155° Backrest Recline.mp4"
           }
         },
         "file_with_text_inBCzK": {
@@ -499,9 +501,9 @@
             "sub_title": "",
             "description": "Up and down. For 20,000 cycles. Dual electric motors engineered to keep up with you, even if you never stay still.",
             "file_type": "image",
-            "file_image": "shopify:\/\/shop_images\/4X_mOTOR_LIFESPAN_TEST.webp",
+            "file_image": "shopify://shop_images/4X_mOTOR_LIFESPAN_TEST.webp",
             "video_url": "",
-            "url_upload": "shopify:\/\/files\/videos\/athena 13° Rocking Mode.mp4"
+            "url_upload": "shopify://files/videos/athena 13° Rocking Mode.mp4"
           }
         },
         "file_with_text_HXmhgR": {
@@ -511,9 +513,9 @@
             "sub_title": "",
             "description": "A distributed load of 118kg was placed on the desk to ensure that the standing desk is able to withstand even the most complex multi-monitor setups.",
             "file_type": "image",
-            "file_image": "shopify:\/\/shop_images\/DISTRIBUTED_FUNCTION_LOAD_TEST_atlas_desk.webp",
+            "file_image": "shopify://shop_images/DISTRIBUTED_FUNCTION_LOAD_TEST_atlas_desk.webp",
             "video_url": "",
-            "url_upload": "shopify:\/\/files\/videos\/athena 60 mm Height Adjustment.mp4"
+            "url_upload": "shopify://files/videos/athena 60 mm Height Adjustment.mp4"
           }
         }
       },
@@ -537,7 +539,7 @@
       "settings": {
         "title": "<p>Find your perfect chair</p>",
         "description": "",
-        "arrow_icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"6\" height=\"11\" viewbox=\"0 0 6 11\" fill=\"none\">\n<path d=\"M1.16016 1.5L5.16016 5.5L1.16016 9.5\" stroke=\"#5BA6F7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><\/path>\n<\/svg>",
+        "arrow_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"6\" height=\"11\" viewbox=\"0 0 6 11\" fill=\"none\">\n<path d=\"M1.16016 1.5L5.16016 5.5L1.16016 9.5\" stroke=\"#5BA6F7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
         "product": ""
       }
     },
@@ -563,7 +565,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "1. How do I track my order?",
-            "content": "<p>Once your order ships, you'll receive a shipping confirmation email and tracking number, so you can follow your package as it makes its way to you. However, tracking information can take up to 24 hours to update, so don’t worry if it doesn't show up immediately. We recommend tracking your order and ensuring that you’re home on the day of delivery to receive your order.<\/p>",
+            "content": "<p>Once your order ships, you'll receive a shipping confirmation email and tracking number, so you can follow your package as it makes its way to you. However, tracking information can take up to 24 hours to update, so don’t worry if it doesn't show up immediately. We recommend tracking your order and ensuring that you’re home on the day of delivery to receive your order.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -573,7 +575,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "2. When Will My Order be Shipped?",
-            "content": "<p>Inventory orders are typically shipped the next business day and will be delivered within 1-5 business days.  For more information, please check our Shipping and Return Policy.<\/p>",
+            "content": "<p>Inventory orders are typically shipped the next business day and will be delivered within 1-5 business days.  For more information, please check our Shipping and Return Policy.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -583,7 +585,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "3. My order has been shipped. Can I change or cancel my order?",
-            "content": "<p>Unfortunately, we’re unable to cancel your order once it ships.<\/p>",
+            "content": "<p>Unfortunately, we’re unable to cancel your order once it ships.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -593,7 +595,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "4. Can I exchange my Order？",
-            "content": "<p>For the most efficient resolution to obtain the item you desire, we recommend returning the original item. Once your return is approved, we encourage you to proceed with a separate purchase for the new item.  For more information, please check our Return & Refund Policy.<\/p>",
+            "content": "<p>For the most efficient resolution to obtain the item you desire, we recommend returning the original item. Once your return is approved, we encourage you to proceed with a separate purchase for the new item.  For more information, please check our Return & Refund Policy.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -603,7 +605,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "5. How will my order be delivered?",
-            "content": "<p>We deliver your order straight to your address via FedEx & UPS. You’ll receive an email with a tracking number when your order ships, so you can easily track your order. Please ensure that you’re home on the day of delivery to receive your order.<\/p>",
+            "content": "<p>We deliver your order straight to your address via FedEx & UPS. You’ll receive an email with a tracking number when your order ships, so you can easily track your order. Please ensure that you’re home on the day of delivery to receive your order.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -613,7 +615,7 @@
           "settings": {
             "header_title_before_iconSvg": "",
             "heading": "6. What do I do if I face an issue with my purchase?",
-            "content": "<p>In the unlikely event that you come across any damaged, defective or missing parts, please contact us at <a href=\"mailto:support@blacklyte.com\" title=\"mailto:support@blacklyte.com\">support@blacklyte.com <\/a>with a photo of the affected area and your order number. Our support specialists will do their best to assist you.<\/p>",
+            "content": "<p>In the unlikely event that you come across any damaged, defective or missing parts, please contact us at <a href=\"mailto:support@blacklyte.com\" title=\"mailto:support@blacklyte.com\">support@blacklyte.com </a>with a photo of the affected area and your order number. Our support specialists will do their best to assist you.</p>",
             "page": "",
             "show_header_title_before_icon": false
           }
@@ -674,16 +676,6 @@
     },
     "1743652201516533c4": {
       "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_98B9hP": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_98B9hP"
-      ],
       "settings": {
         "include_margins": false
       }
