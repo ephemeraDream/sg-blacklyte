@@ -234,12 +234,38 @@
         ".img_with_text_box_simplicity_maintitle {font-family: DIN-BlackItalic; font-weight: 500; letter-spacing: 0%; -webkit-text-fill-color: #fff; margin-bottom: 4.1145833vw;}",
         ".img_with_text_box_simplicity_filebox_image {border-radius: 0; aspect-ratio: 1.0285;}",
         ".img_with_text_box_simplicity_filebox {margin-bottom: 0.8854167vw;}",
-        "@media screen and (max-width: 768px) {.img_with_text_box_simplicity_maintitle{margin-bottom: 9.6vw; }}"
+        "@media screen and (max-width: 768px) {.img_with_text_box_simplicity_maintitle {margin-bottom: 9.6vw; }}"
       ],
       "name": "file box simplicity",
       "settings": {
         "main_title": "EFFORTLESS 3 STEP INSTALLATION",
         "mobile_display": "grid"
+      }
+    },
+    "desk_swiper_simplicity_MamcR8": {
+      "type": "desk-swiper-simplicity",
+      "blocks": {
+        "swiper_item_UMB8d3": {
+          "type": "swiperItem",
+          "settings": {
+            "swiper_image": "shopify://shop_images/atlas_desk_swiper_2.webp"
+          }
+        },
+        "swiper_item_RWAEaa": {
+          "type": "swiperItem",
+          "settings": {
+            "swiper_image": "shopify://shop_images/atlas_desk_swiper_1.webp"
+          }
+        }
+      },
+      "block_order": [
+        "swiper_item_UMB8d3",
+        "swiper_item_RWAEaa"
+      ],
+      "settings": {
+        "title": "<p>FULL RANGE MOTION</p>",
+        "sub_title": "",
+        "description": ""
       }
     },
     "collapsible_content_HyyPmn": {
@@ -424,6 +450,7 @@
     "img_with_text_simplicity_9Jaxgn",
     "image_compare_simplicity_RCqipK",
     "img_with_text_box_simplicity_LGfQrm",
+    "desk_swiper_simplicity_MamcR8",
     "collapsible_content_HyyPmn",
     "1743652201516533c4",
     "rich_text_VhDpg9",
