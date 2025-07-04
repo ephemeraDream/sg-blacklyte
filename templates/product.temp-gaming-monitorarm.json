@@ -248,19 +248,29 @@
         "swiper_item_UMB8d3": {
           "type": "swiperItem",
           "settings": {
-            "swiper_image": "shopify://shop_images/atlas_desk_swiper_2.webp"
+            "swiper_image": "shopify://shop_images/atlas_desk_swiper_2.webp",
+            "description": ""
           }
         },
         "swiper_item_RWAEaa": {
           "type": "swiperItem",
           "settings": {
-            "swiper_image": "shopify://shop_images/atlas_desk_swiper_1.webp"
+            "swiper_image": "shopify://shop_images/atlas_desk_swiper_1.webp",
+            "description": ""
+          }
+        },
+        "swiper_item_6jqy7W": {
+          "type": "swiperItem",
+          "settings": {
+            "swiper_image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
+            "description": ""
           }
         }
       },
       "block_order": [
         "swiper_item_UMB8d3",
-        "swiper_item_RWAEaa"
+        "swiper_item_RWAEaa",
+        "swiper_item_6jqy7W"
       ],
       "settings": {
         "title": "<p>FULL RANGE MOTION</p>",
