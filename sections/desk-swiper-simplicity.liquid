@@ -10,19 +10,20 @@
     <div class="swiper-wrapper">
       {% for item in section.blocks %}
         <div class="swiper-slide">
-          {% assign srcset_1x = item.settings.swiper_image | image_url: width: 1728 | append: ' 1x, ' %}
-          {% assign srcset_2x = item.settings.swiper_image | image_url: width: 670 | append: ' 2x, ' %}
-          {% assign srcset_3x = item.settings.swiper_image | image_url: width: 670 | append: ' 3x, ' %}
-          {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
-          {{-
-            item.settings.swiper_image
-            | image_url: width: item.settings.swiper_image.width
-            | image_tag:
-              sizes: '(min-width:769px) 45vw, 100vw',
-              srcset: srcset_init,
-              alt: section.settings.title,
-              class: 'desk_swiper_simplicity_swiper_image'
-          -}}
+          <div class="desk_swiper_simplicity_swiper_image">
+            {% assign srcset_1x = item.settings.swiper_image | image_url: width: 1728 | append: ' 1x, ' %}
+            {% assign srcset_2x = item.settings.swiper_image | image_url: width: 670 | append: ' 2x, ' %}
+            {% assign srcset_3x = item.settings.swiper_image | image_url: width: 670 | append: ' 3x, ' %}
+            {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+            {{-
+              item.settings.swiper_image
+              | image_url: width: item.settings.swiper_image.width
+              | image_tag: sizes: '(min-width:769px) 45vw, 100vw', srcset: srcset_init, alt: section.settings.title
+            -}}
+          </div>
+          {% if item.settings.description != blank %}
+            <div class="desk_swiper_simplicity_swiper_desc">{{ item.settings.description }}</div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -123,6 +124,11 @@
           "type": "image_picker",
           "id": "swiper_image",
           "label": "swiper image"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "description"
         }
       ]
     }
