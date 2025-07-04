@@ -140,91 +140,17 @@
         "custom_liquid": "<style>\n.imgwithtextbox_simple {\n  max-width: 75vw;\n  margin: 0 auto;\n  background-color: #000;\n  padding: 7.03125vw 8.33vw;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_title {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  font-style: Regular;\n  font-size: 36px;\n  leading-trim: NONE;\n  line-height: 48px;\n  letter-spacing: 0%;\n  vertical-align: middle;\n  text-transform: uppercase;\n  color: #fff;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_btn_box {\n  display: none;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_item_filebox,\n.imgwithtextbox_simple .imgwithtextbox_simple_item_filebox_image {\n  border-radius: 0;\n  height: 17.4479167vw;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_item_info{\npadding:0;\nborder-radius:0;\nbackground-color: inherit;\ntext-align:center;\nmargin-top:1.354167vw;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_item_desc{\nfont-family: Roboto;\nfont-weight: 400;\nfont-style: Medium;\nfont-size: 18px;\nleading-trim: NONE;\nline-height: 22px;\nletter-spacing: 0.32px;\nvertical-align: middle;\ncolor: rgba(255,255,255,.7);\n}\n@media screen and (max-width: 768px) {\n.imgwithtextbox_simple {\n  max-width: 100vw;\n  padding: 8.33vw 5.33vw;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_title{\nfont-size:26px;\nline-height:30px;\nmax-width: 70vw;\nmargin:0 auto;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_item_filebox,\n.imgwithtextbox_simple .imgwithtextbox_simple_item_filebox_image {\n  height: 53.33vw;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_item_desc{\nfont-size:16px;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_item_info{\nmargin-top: 5.33vw;\n}\n}\n</style>"
       }
     },
-    "img_with_text_simplicity_d8j7Cc": {
-      "type": "img-with-text-simplicity",
-      "custom_css": [
-        ".img_with_text_simplicity {padding: 2.65625vw 8.33vw 0 8.33vw;}",
-        ".img_with_text_simplicity_title {text-align: center;}",
-        ".img_with_text_simplicity_desc {text-align: center; max-width: 52.65625vw; margin: 0.9375vw auto;}",
-        "@media screen and (max-width: 768px) {.img_with_text_simplicity_desc {max-width: 100%; margin-top: 3.2vw; } .img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
-      ],
-      "name": "img with text simplicity",
-      "settings": {
-        "specId": "",
-        "title": "<p>PERSONAL,PLAYFUL,AND EXPRESSIVE</p>",
-        "sub_title": "",
-        "description": "<p>The Blacklyte Pixel Display naturally blends into your space, adding movement, color,and meaning wherever it lives. lt reflects your mood, fills quiet corners with personality.and transforms ordinary setups into something distinctly yours. Whether it's on yourgaming desk, beside your bed, or next to your speakers, it brings more than justdecoration-it brings presence, rhythm, and style.</p>",
-        "file_position": "bottom",
-        "file_type": "image",
-        "file_image": "shopify://shop_images/PERSONAL_PLAYFUL_AND_EXPRESSIVE.webp",
-        "video_url": ""
-      }
-    },
-    "img_with_text_simplicity_yT6bhP": {
-      "type": "img-with-text-simplicity",
-      "custom_css": [
-        ".img_with_text_simplicity {padding-top: 8.645833vw;}",
-        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
-      ],
-      "name": "img with text simplicity",
-      "settings": {
-        "specId": "",
-        "title": "<p>YOUR WORDS, YOUR WAY!</p>",
-        "sub_title": "CUSTOM TEXT EFFECTS",
-        "description": "<p>Shout it out, scroll it in, or make it dance! Type ANY message and bring it to life with dazzling fonts, colors, and animations. Perfect for birthdays, announcements, shops, or just saying \"Hi!\" in style. Make your mark, brilliantly!</p>",
-        "file_position": "right",
-        "file_type": "image",
-        "file_image": "shopify://shop_images/YOUR_WORDS_YOUR_WAY.webp",
-        "video_url": ""
-      }
-    },
-    "img_with_text_simplicity_wMzzfi": {
-      "type": "img-with-text-simplicity",
-      "custom_css": [
-        ".img_with_text_simplicity {padding-top: 8.33vw;}",
-        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
-      ],
-      "name": "img with text simplicity",
-      "settings": {
-        "specId": "",
-        "title": "<p>Instant Wow Factor</p>",
-        "sub_title": "100+ PRE-LOADED GlFS!",
-        "description": "<p>Dive into a treasure chest of fun! Instantly display 100+ eye-catching animated GIFs – from hilarious memes and cute animals to mesmerizing patterns and cool emojis. One tap = instant mood booster or party starter! Endless entertainment, zero effort! </p>",
-        "file_position": "left",
-        "file_type": "image",
-        "file_image": "shopify://shop_images/Instant_Wow_Factor.webp",
-        "video_url": ""
-      }
-    },
-    "img_with_text_simplicity_Mjn9fE": {
-      "type": "img-with-text-simplicity",
-      "custom_css": [
-        ".img_with_text_simplicity {padding-top: 8.33vw; padding-bottom: 8.645833vw;}",
-        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
-      ],
-      "name": "img with text simplicity",
-      "settings": {
-        "specId": "",
-        "title": "<p>Become an Animation Master</p>",
-        "sub_title": "DlY ANIMATION STUDIO!",
-        "description": "<p>Our easy-to-use editor lets YOU create custom animations frame-by-frame. Sketch ideas, design mini-movies, or build epic light shows. Your imagination is the only limit! Craft truly unique visuals no one else has. </p>",
-        "file_position": "right",
-        "file_type": "image",
-        "file_image": "shopify://shop_images/Become_an_Animation_Master.webp",
-        "video_url": ""
-      }
-    },
     "img_with_text_simplicity_byYNLU": {
       "type": "img-with-text-simplicity",
       "custom_css": [
-        ".img_with_text_simplicity {background-color: #0c0c0c; padding-top: 7.29167vw;}",
+        ".img_with_text_simplicity {padding-top: 1.25vw;}",
         "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
       ],
       "settings": {
         "specId": "",
-        "title": "<p>Turn Your World into LED Art</p>",
-        "sub_title": "IMAGE & VIDEO & CONVERSION!",
-        "description": "<p>See your favorite moments glow! Transformphotos, videos, or drawings into stunning64x64 LED displays. Showcase pet pics,vacation snaps, fan art, or live visualsmake your memories shine bright! Upload,convert,amaze!</p>",
+        "title": "<p>DYNAMIC FLEXIBILITY PRECISE ADJUSTMENTS</p>",
+        "sub_title": "ERGONOMIC BENEFITS",
+        "description": "<p>Unlike traditional monitor stands, monitor arms are quick to reposition to fit different task needs and precise adjustments, so your screen always meets you at your level. This promotes a neutral head, neck position, and ultimately minimizing cervics spine strains.</p>",
         "file_position": "bottom",
         "file_type": "image",
         "file_image": "shopify://shop_images/Turn_Your_World_into_LED_Art.webp",
@@ -234,34 +160,17 @@
     "img_with_text_simplicity_9Jaxgn": {
       "type": "img-with-text-simplicity",
       "custom_css": [
-        ".img_with_text_simplicity {background-color: #0c0c0c; padding-top: 10.833vw;}",
+        ".img_with_text_simplicity {padding-top: 8.33vw; padding-bottom: 8.33vw;}",
         "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
       ],
       "settings": {
         "specId": "",
-        "title": "<p>Feel the Beat</p>",
-        "sub_title": "PHONE-POWERED LIGHT SHOW!",
-        "description": "<p>Plug in your phone and watch your music explode into light! The displaydances exclusively to your device's audio - pulsing with bass, swirling with melodies, andlashing in perfect sync with every beat. Bass drop? Cue the LED fireworks! Transform¡ny space into a immersive audio-visual arena - powered entirely by your playlist.</p>",
+        "title": "<p>REDUCED MUSCLE FATIGUE & EYE STRAIN</p>",
+        "sub_title": "IMPROVED POSTURE",
+        "description": "<p>Gives you the freedom to tilt and swivel your screen to prevent awkward angles, greatly reducing strains in shoulders, back, and eyes. Monitor arms can position the screen at an optimal position, which encourages you to keep a straight and aligned sitting posture.</p>",
         "file_position": "bottom",
         "file_type": "image",
         "file_image": "shopify://shop_images/Feel_the_Beat.webp",
-        "video_url": ""
-      }
-    },
-    "img_with_text_simplicity_zGRi7R": {
-      "type": "img-with-text-simplicity",
-      "custom_css": [
-        ".img_with_text_simplicity {background-color: #0c0c0c; padding-top: 10.833vw; padding-bottom: 11.875vw;}",
-        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
-      ],
-      "settings": {
-        "specId": "",
-        "title": "<p>Time in Technicolor</p>",
-        "sub_title": "STYLISH CLOCK DISPLAY",
-        "description": "<p>Keep perfect time with a vibrant, customizable digital clock. Choose funky fonts, cool colors, and background effects to match your vibe. Functional, beautiful, and uniquely YOU!</p>",
-        "file_position": "bottom",
-        "file_type": "image",
-        "file_image": "shopify://shop_images/Time_in_Technicolor.webp",
         "video_url": ""
       }
     },
@@ -567,13 +476,8 @@
     "video_simplicity_ddxPrJ",
     "img_with_text_box_simple_Eb4LE9",
     "custom_liquid_LfMaL4",
-    "img_with_text_simplicity_d8j7Cc",
-    "img_with_text_simplicity_yT6bhP",
-    "img_with_text_simplicity_wMzzfi",
-    "img_with_text_simplicity_Mjn9fE",
     "img_with_text_simplicity_byYNLU",
     "img_with_text_simplicity_9Jaxgn",
-    "img_with_text_simplicity_zGRi7R",
     "swiper_simplicity_two_J6cWzz",
     "img_with_foldtext_jdqEDW",
     "compare_simplicity_hCGr9c",
