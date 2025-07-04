@@ -59,7 +59,7 @@
       "custom_css": [
         ".video_simplicity:after {display: none;}",
         ".video_simplicity {height: 42.2395833vw;}",
-        "@media screen and (max-width:768px) {.video_simplicity {height: auto;}}"
+        "@media screen and (max-width: 768px) {.video_simplicity {height: auto; }}"
       ],
       "settings": {
         "file_type": "image",
@@ -521,6 +521,7 @@
       "block_order": [
         "heading_rFxyzB"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "container": "container",
@@ -542,6 +543,7 @@
     },
     "custom_liquid_NV9eYk": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [
         "#stamped-main-widget {margin: 0;}"
       ],
