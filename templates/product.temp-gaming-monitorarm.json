@@ -123,11 +123,7 @@
         "item_EgNNMd",
         "item_EHXFQM"
       ],
-      "custom_css": [
-        ".imgwithtextbox_simple {max-width: 75vw; margin: 0 auto; background-color: #000; padding: 7.03125vw 8.33vw;}",
-        ".imgwithtextbox_simple_title {font-family: DIN-BlackItalic; font-weight: 500; font-style: Regular; font-size: 36px; leading-trim: NONE; line-height: 48px; letter-spacing: 0%; vertical-align: middle; text-transform: uppercase; color: #fff;}",
-        ".imgwithtextbox_simple_btn_box{display: none;}"
-      ],
+      "custom_css": [],
       "name": "imgwithtextbox simple",
       "settings": {
         "specId": "",
@@ -135,6 +131,13 @@
         "text": "",
         "link_text": "",
         "link": ""
+      }
+    },
+    "custom_liquid_LfMaL4": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n.imgwithtextbox_simple {\n  max-width: 75vw;\n  margin: 0 auto;\n  background-color: #000;\n  padding: 7.03125vw 8.33vw;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_title {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  font-style: Regular;\n  font-size: 36px;\n  leading-trim: NONE;\n  line-height: 48px;\n  letter-spacing: 0%;\n  vertical-align: middle;\n  text-transform: uppercase;\n  color: #fff;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_btn_box {\n  display: none;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_item_filebox,\n.imgwithtextbox_simple .imgwithtextbox_simple_item_filebox_image {\n  border-radius: 0;\n  height: 17.4479167vw;\n}\n.imgwithtextbox_simple .imgwithtextbox_simple_item_info{\npadding:0;\nborder-radius:0;\nbackground-color: inherit;\ntext-align:center;\n}\n</style>"
       }
     },
     "img_with_text_simplicity_d8j7Cc": {
@@ -563,6 +566,7 @@
     "product_information_simplicity_A8DKzG",
     "video_simplicity_ddxPrJ",
     "img_with_text_box_simple_Eb4LE9",
+    "custom_liquid_LfMaL4",
     "img_with_text_simplicity_d8j7Cc",
     "img_with_text_simplicity_yT6bhP",
     "img_with_text_simplicity_wMzzfi",
