@@ -1,0 +1,64 @@
+.image_compare_simplicity {
+  max-width: 75vw;
+  margin: 0 auto;
+  background-color: #000000;
+  padding: 0 2.0833vw;
+}
+
+.image_compare_simplicity .image_compare_simplicity_contain {
+  overflow: hidden;
+  position: relative;
+  height: 32.29167vw;
+}
+
+.image_compare_simplicity .image_compare_simplicity_wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.image_compare_simplicity .image_compare_simplicity_left {
+  left: 0;
+  clip-path: inset(0 50% 0 0);
+}
+
+.image_compare_simplicity .image_compare_simplicity_right {
+  right: 0;
+  clip-path: inset(0 0 0 50%);
+}
+
+.image_compare_simplicity .image_compare_simplicity_wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image_compare_simplicity .image_compare_simplicity_divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 0.4rem;
+  background: #BDFF00;
+  cursor: col-resize;
+  z-index: 10;
+}
+
+.image_compare_simplicity .image_compare_simplicity_divider svg {
+  width: 67px;
+  height: 67px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -33.5px;
+}
+
+@media screen and (max-width: 767px) {
+  .image_compare_simplicity {
+    height: 64vw;
+  }
+}
