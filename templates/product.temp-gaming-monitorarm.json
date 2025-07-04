@@ -176,6 +176,9 @@
     },
     "image_compare_simplicity_RCqipK": {
       "type": "image-compare-simplicity",
+      "custom_css": [
+        ".image_compare_simplicity{padding-bottom: 12.7604167vw;}"
+      ],
       "name": "Image Compare Simplicity",
       "settings": {
         "title": "<p>SPACE OPTIMIZATION</p>",
