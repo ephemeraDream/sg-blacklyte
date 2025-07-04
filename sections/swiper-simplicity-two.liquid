@@ -1,0 +1,97 @@
+{{ 'section-swiper-simplicity-two.css' | asset_url | stylesheet_tag }}
+
+<div class="swiper_simplicity_two">
+  <div class="swiper_simplicity_two_title">{{ section.settings.title }}</div>
+  <div class="swiper_simplicity_two_text">{{ section.settings.text }}</div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="swiper_simplicity_two_tab">
+    {% for block in section.blocks %}
+      <div class="swiper_simplicity_two_tab_item{% if forloop.first %} active{% endif %}">
+        {{ block.settings.title }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  (() => {
+    const tabItems = document.querySelectorAll('.swiper_simplicity_two_tab_item');
+
+    const swiper_simplicity_two_swiper = new Swiper('.swiper_simplicity_two .swiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      on: {
+        slideChange: function () {
+          tabItems.forEach((el, index) => {
+            el.classList.remove('active');
+            if (index === swiper_simplicity_two_swiper.realIndex) {
+              el.classList.add('active');
+            }
+          });
+        },
+      },
+    });
+
+    tabItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        tabItems.forEach((el) => el.classList.remove('active'));
+        item.classList.add('active');
+        swiper_simplicity_two_swiper.slideTo(index);
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "swiper simplicity two",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "swiper simplicity two"
+    }
+  ]
+}
+{% endschema %}
