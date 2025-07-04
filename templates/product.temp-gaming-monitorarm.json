@@ -276,7 +276,8 @@
         ".desk_swiper_simplicity {padding-top: 10vw; padding-left: 8.33vw;}",
         ".desk_swiper_simplicity_swiper {margin-top: 4.53125vw;}",
         ".swiper-slide {width: 28.125vw;}",
-        ".desk_swiper_simplicity_swiper_image {height: 18.229167vw;}"
+        ".desk_swiper_simplicity_swiper_image {height: 18.229167vw;}",
+        ".desk_swiper_simplicity_info{padding-right: 8.33vw;}"
       ],
       "settings": {
         "title": "<p>FULL RANGE MOTION</p>",
