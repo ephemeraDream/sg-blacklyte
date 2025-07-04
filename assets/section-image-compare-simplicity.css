@@ -72,6 +72,11 @@
 
 @media screen and (max-width: 767px) {
   .image_compare_simplicity {
+    max-width: 100vw;
+    padding: 8.33vw 5.33vw;
+  }
+
+  .image_compare_simplicity .image_compare_simplicity_contain {
     height: 64vw;
   }
 }
