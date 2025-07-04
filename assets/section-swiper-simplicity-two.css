@@ -91,8 +91,14 @@
   }
 
   .swiper_simplicity_two .swiper_simplicity_two_title {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 26px;
+    line-height: 30px;
+    width: 78vw;
+    margin: 0 auto;
+  }
+
+  .swiper_simplicity_two .swiper_simplicity_two_text {
+    margin-top: 2.67vw;
   }
 
   .swiper_simplicity_two .swiper-slide img {
