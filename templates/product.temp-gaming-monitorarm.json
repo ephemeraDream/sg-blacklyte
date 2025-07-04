@@ -126,7 +126,7 @@
       "custom_css": [],
       "name": "imgwithtextbox simple",
       "settings": {
-        "specId": "",
+        "specId": "imgwithtextbox_simple_one",
         "title": "<p>WHAT YOUR SETUP COULD LOOK LIKE</p>",
         "text": "",
         "link_text": "",
