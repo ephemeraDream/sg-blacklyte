@@ -231,7 +231,7 @@
       ],
       "custom_css": [
         ".img_with_text_box_simplicity {padding: 7.29167vw 8.33vw 8.33vw;}",
-        ".img_with_text_box_simplicity_maintitle {font-family: DIN-BlackItalic; font-weight: 500; font-style: Regular; font-size: 36px; leading-trim: NONE; line-height: 48px; letter-spacing: 0%; vertical-align: middle; text-transform: uppercase; color: #fff;}"
+        ".img_with_text_box_simplicity_maintitle {font-family: DIN-BlackItalic; font-weight: 500; letter-spacing: 0%; -webkit-text-fill-color:#fff;}"
       ],
       "name": "file box simplicity",
       "settings": {
