@@ -58,7 +58,8 @@
       "type": "video-simplicity",
       "custom_css": [
         ".video_simplicity:after {display: none;}",
-        ".video_simplicity {height: 42.2395833vw;}"
+        ".video_simplicity {height: 42.2395833vw;}",
+        "@media screen and (max-width:768px) {.video_simplicity {height: auto;}}"
       ],
       "settings": {
         "file_type": "image",
