@@ -178,7 +178,9 @@
       "type": "image-compare-simplicity",
       "name": "Image Compare Simplicity",
       "settings": {
-        "title": "<p>SPACE OPTIMIZATION</p>"
+        "title": "<p>SPACE OPTIMIZATION</p>",
+        "left_image": "shopify://shop_images/saleEvent-banner.webp",
+        "right_image": "shopify://shop_images/saleEvent-summer-banner.webp"
       }
     },
     "collapsible_content_HyyPmn": {
