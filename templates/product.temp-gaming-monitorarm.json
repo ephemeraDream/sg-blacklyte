@@ -125,7 +125,8 @@
       ],
       "custom_css": [
         ".imgwithtextbox_simple {max-width: 75vw; margin: 0 auto; background-color: #000; padding: 7.03125vw 8.33vw;}",
-        ".imgwithtextbox_simple_title {font-family: DIN-BlackItalic;font-weight: 500;font-style: Regular;font-size: 36px;leading-trim: NONE;line-height: 48px;letter-spacing: 0%;vertical-align: middle;text-transform: uppercase;color:#fff;}"
+        ".imgwithtextbox_simple_title {font-family: DIN-BlackItalic; font-weight: 500; font-style: Regular; font-size: 36px; leading-trim: NONE; line-height: 48px; letter-spacing: 0%; vertical-align: middle; text-transform: uppercase; color: #fff;}",
+        ".imgwithtextbox_simple_btn_box{display: none;}"
       ],
       "name": "imgwithtextbox simple",
       "settings": {
