@@ -84,4 +84,10 @@
   .image_compare_simplicity .image_compare_simplicity_contain {
     height: 64vw;
   }
+
+  .image_compare_simplicity .image_compare_simplicity_divider svg {
+    width: 27px;
+    height: 27px;
+    left: -13.5px;
+  }
 }
