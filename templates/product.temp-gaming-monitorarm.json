@@ -62,74 +62,74 @@
         "@media screen and (max-width: 768px) {.video_simplicity {height: auto; }}"
       ],
       "settings": {
-        "file_type": "image",
+        "file_type": "video",
         "style": "one",
         "cover_image": "shopify://shop_images/pixelscreen-cover-img.webp",
         "cover_image_mobile": "shopify://shop_images/pixelscreen-cover-img-mobile.webp",
         "video_url": "",
-        "title": "",
+        "url_upload": "shopify://files/videos/PRECISE ARM SUPPORT RELIEVE SHOULDER & ARM STRESS ultra.webm",
+        "title": "EXPERIENCE NEWFOUND FLEXIBILITY AND SPACE",
         "description": "",
         "autoplay": false
       }
     },
-    "icon_simplicity_ypETkA": {
-      "type": "icon-simplicity",
+    "img_with_text_box_simple_Eb4LE9": {
+      "type": "img-with-text-box-simple",
       "blocks": {
-        "item_rqJ39V": {
+        "item_mALtVV": {
           "type": "item",
           "settings": {
-            "text": "Pixel art",
-            "image": "shopify://shop_images/Pixel_art.webp"
+            "title": "",
+            "description": "<p>Single Monitor Setup (Landscape)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Time_in_Technicolor.webp",
+            "video_url": ""
           }
         },
-        "item_wCXEKG": {
+        "item_nXLyEz": {
           "type": "item",
           "settings": {
-            "text": "Rhythm of music",
-            "image": "shopify://shop_images/Rhythm_of_music.webp"
+            "title": "",
+            "description": "<p>Dual Monitor Setup (Landscape + Landscape)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Feel_the_Beat.webp",
+            "video_url": ""
           }
         },
-        "item_yEJWHD": {
+        "item_EgNNMd": {
           "type": "item",
           "settings": {
-            "text": "Creative animation",
-            "image": "shopify://shop_images/Creative_animation.webp"
+            "title": "",
+            "description": "<p>Dual Monitor Setup (Landscape + Portrait)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Turn_Your_World_into_LED_Art.webp",
+            "video_url": ""
           }
         },
-        "item_cpxnpR": {
+        "item_EHXFQM": {
           "type": "item",
           "settings": {
-            "text": "Picture library",
-            "image": "shopify://shop_images/Picture_library.webp"
-          }
-        },
-        "item_h4wPTe": {
-          "type": "item",
-          "settings": {
-            "text": "Text transmission",
-            "image": "shopify://shop_images/Text_transmission.webp"
-          }
-        },
-        "item_cDejV7": {
-          "type": "item",
-          "settings": {
-            "text": "Digital time display",
-            "image": "shopify://shop_images/Digital_time_display.webp"
+            "title": "",
+            "description": "<p>Ultrawide Setup</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Become_an_Animation_Master.webp",
+            "video_url": ""
           }
         }
       },
       "block_order": [
-        "item_rqJ39V",
-        "item_wCXEKG",
-        "item_yEJWHD",
-        "item_cpxnpR",
-        "item_h4wPTe",
-        "item_cDejV7"
+        "item_mALtVV",
+        "item_nXLyEz",
+        "item_EgNNMd",
+        "item_EHXFQM"
       ],
-      "name": "icon simplicity",
+      "name": "imgwithtextbox simple",
       "settings": {
-        "title": "",
-        "text": ""
+        "specId": "",
+        "title": "<p>WHAT YOUR SETUP COULD LOOK LIKE</p>",
+        "text": "",
+        "link_text": "",
+        "link": ""
       }
     },
     "img_with_text_simplicity_d8j7Cc": {
@@ -557,7 +557,7 @@
   "order": [
     "product_information_simplicity_A8DKzG",
     "video_simplicity_ddxPrJ",
-    "icon_simplicity_ypETkA",
+    "img_with_text_box_simple_Eb4LE9",
     "img_with_text_simplicity_d8j7Cc",
     "img_with_text_simplicity_yT6bhP",
     "img_with_text_simplicity_wMzzfi",
