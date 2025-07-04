@@ -177,7 +177,8 @@
     "image_compare_simplicity_RCqipK": {
       "type": "image-compare-simplicity",
       "custom_css": [
-        ".image_compare_simplicity{padding-bottom: 12.7604167vw;}"
+        ".image_compare_simplicity {padding-bottom: 12.7604167vw;}",
+        "@media screen and (max-width: 767px) {.image_compare_simplicity {padding-top: 8.33vw; padding-bottom: 22.67vw; }}"
       ],
       "name": "Image Compare Simplicity",
       "settings": {
