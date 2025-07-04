@@ -1,0 +1,577 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_information_simplicity_A8DKzG": {
+      "type": "product-information-simplicity",
+      "blocks": {
+        "star_block_a44E3P": {
+          "type": "starBlock",
+          "disabled": true,
+          "settings": {
+            "starHtml": "<img src=\"https://stamped.io/inc/image/badges.png?apikey=018cfac0-eb72-4dab-b25c-397d940dc0a6&amp;sId=349235&amp;type=badge2&amp;label1=&amp;label2=\">"
+          }
+        },
+        "product_extra_info_XCWwCD": {
+          "type": "productExtraInfo",
+          "settings": {
+            "text_one": "<div>\n      <p class=\"size_large\">[[activity_title]]: [[save_price]] OFF! </p>\n      <p>*Cannot be combined with other promo codes.</p>\n    </div>",
+            "enable_text_one": true,
+            "text_two": "<p>\n     30 Days Easy Return Policy: Changed your mind? Send it back within 30 days for refund. \n      <a id=\"refund_policy_btn\" title=\"Refund Policy\">View return Policy ></a>\n    </p>",
+            "text_thr": "<div>\n      <p class=\"size_large\">Shop with an Expert. We're here to help.</p>\n      <a class=\"chat_now\">Chat with our experts now ></a>\n    </div>"
+          }
+        },
+        "product_extra_info_bottom_YjDHHV": {
+          "type": "productExtraInfoBottom",
+          "settings": {
+            "text_one": "<div>\n      <p>Estimated dispatch within 2 business days</p>\n      <p>Free Shipping on All Orders</p>\n    </div>",
+            "text_two": "<div>\n      <p>30-Day Returns Policy</p>\n      <p>3-Year Warranty Protection</p>\n    </div>",
+            "text_thr": "<div class=\"flex_full\">Global Support </div>"
+          }
+        }
+      },
+      "block_order": [
+        "star_block_a44E3P",
+        "product_extra_info_XCWwCD",
+        "product_extra_info_bottom_YjDHHV"
+      ],
+      "custom_css": [
+        ".star-html {display: block; width: 15vw; margin: 1.5rem 0;}",
+        "@media (max-width: 767px) {.star-html {width: 60vw; }}"
+      ],
+      "settings": {
+        "show_compare": "false",
+        "spec_hidden": "false",
+        "show_degree": "false",
+        "product_type": "chair",
+        "img_show_type": "thumb"
+      }
+    },
+    "video_simplicity_ddxPrJ": {
+      "type": "video-simplicity",
+      "custom_css": [
+        ".video_simplicity:after {display: none;}",
+        ".video_simplicity {height: 42.2395833vw;}",
+        "@media screen and (max-width: 768px) {.video_simplicity {height: auto; }}"
+      ],
+      "settings": {
+        "file_type": "image",
+        "style": "one",
+        "cover_image": "shopify://shop_images/pixelscreen-cover-img.webp",
+        "cover_image_mobile": "shopify://shop_images/pixelscreen-cover-img-mobile.webp",
+        "video_url": "",
+        "title": "",
+        "description": "",
+        "autoplay": false
+      }
+    },
+    "icon_simplicity_ypETkA": {
+      "type": "icon-simplicity",
+      "blocks": {
+        "item_rqJ39V": {
+          "type": "item",
+          "settings": {
+            "text": "Pixel art",
+            "image": "shopify://shop_images/Pixel_art.webp"
+          }
+        },
+        "item_wCXEKG": {
+          "type": "item",
+          "settings": {
+            "text": "Rhythm of music",
+            "image": "shopify://shop_images/Rhythm_of_music.webp"
+          }
+        },
+        "item_yEJWHD": {
+          "type": "item",
+          "settings": {
+            "text": "Creative animation",
+            "image": "shopify://shop_images/Creative_animation.webp"
+          }
+        },
+        "item_cpxnpR": {
+          "type": "item",
+          "settings": {
+            "text": "Picture library",
+            "image": "shopify://shop_images/Picture_library.webp"
+          }
+        },
+        "item_h4wPTe": {
+          "type": "item",
+          "settings": {
+            "text": "Text transmission",
+            "image": "shopify://shop_images/Text_transmission.webp"
+          }
+        },
+        "item_cDejV7": {
+          "type": "item",
+          "settings": {
+            "text": "Digital time display",
+            "image": "shopify://shop_images/Digital_time_display.webp"
+          }
+        }
+      },
+      "block_order": [
+        "item_rqJ39V",
+        "item_wCXEKG",
+        "item_yEJWHD",
+        "item_cpxnpR",
+        "item_h4wPTe",
+        "item_cDejV7"
+      ],
+      "name": "icon simplicity",
+      "settings": {
+        "title": "",
+        "text": ""
+      }
+    },
+    "img_with_text_simplicity_d8j7Cc": {
+      "type": "img-with-text-simplicity",
+      "custom_css": [
+        ".img_with_text_simplicity {padding: 2.65625vw 8.33vw 0 8.33vw;}",
+        ".img_with_text_simplicity_title {text-align: center;}",
+        ".img_with_text_simplicity_desc {text-align: center; max-width: 52.65625vw; margin: 0.9375vw auto;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity_desc {max-width: 100%; margin-top: 3.2vw; } .img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "name": "img with text simplicity",
+      "settings": {
+        "specId": "",
+        "title": "<p>PERSONAL,PLAYFUL,AND EXPRESSIVE</p>",
+        "sub_title": "",
+        "description": "<p>The Blacklyte Pixel Display naturally blends into your space, adding movement, color,and meaning wherever it lives. lt reflects your mood, fills quiet corners with personality.and transforms ordinary setups into something distinctly yours. Whether it's on yourgaming desk, beside your bed, or next to your speakers, it brings more than justdecoration-it brings presence, rhythm, and style.</p>",
+        "file_position": "bottom",
+        "file_type": "image",
+        "file_image": "shopify://shop_images/PERSONAL_PLAYFUL_AND_EXPRESSIVE.webp",
+        "video_url": ""
+      }
+    },
+    "img_with_text_simplicity_yT6bhP": {
+      "type": "img-with-text-simplicity",
+      "custom_css": [
+        ".img_with_text_simplicity {padding-top: 8.645833vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "name": "img with text simplicity",
+      "settings": {
+        "specId": "",
+        "title": "<p>YOUR WORDS, YOUR WAY!</p>",
+        "sub_title": "CUSTOM TEXT EFFECTS",
+        "description": "<p>Shout it out, scroll it in, or make it dance! Type ANY message and bring it to life with dazzling fonts, colors, and animations. Perfect for birthdays, announcements, shops, or just saying \"Hi!\" in style. Make your mark, brilliantly!</p>",
+        "file_position": "right",
+        "file_type": "image",
+        "file_image": "shopify://shop_images/YOUR_WORDS_YOUR_WAY.webp",
+        "video_url": ""
+      }
+    },
+    "img_with_text_simplicity_wMzzfi": {
+      "type": "img-with-text-simplicity",
+      "custom_css": [
+        ".img_with_text_simplicity {padding-top: 8.33vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "name": "img with text simplicity",
+      "settings": {
+        "specId": "",
+        "title": "<p>Instant Wow Factor</p>",
+        "sub_title": "100+ PRE-LOADED GlFS!",
+        "description": "<p>Dive into a treasure chest of fun! Instantly display 100+ eye-catching animated GIFs – from hilarious memes and cute animals to mesmerizing patterns and cool emojis. One tap = instant mood booster or party starter! Endless entertainment, zero effort! </p>",
+        "file_position": "left",
+        "file_type": "image",
+        "file_image": "shopify://shop_images/Instant_Wow_Factor.webp",
+        "video_url": ""
+      }
+    },
+    "img_with_text_simplicity_Mjn9fE": {
+      "type": "img-with-text-simplicity",
+      "custom_css": [
+        ".img_with_text_simplicity {padding-top: 8.33vw; padding-bottom: 8.645833vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "name": "img with text simplicity",
+      "settings": {
+        "specId": "",
+        "title": "<p>Become an Animation Master</p>",
+        "sub_title": "DlY ANIMATION STUDIO!",
+        "description": "<p>Our easy-to-use editor lets YOU create custom animations frame-by-frame. Sketch ideas, design mini-movies, or build epic light shows. Your imagination is the only limit! Craft truly unique visuals no one else has. </p>",
+        "file_position": "right",
+        "file_type": "image",
+        "file_image": "shopify://shop_images/Become_an_Animation_Master.webp",
+        "video_url": ""
+      }
+    },
+    "img_with_text_simplicity_byYNLU": {
+      "type": "img-with-text-simplicity",
+      "custom_css": [
+        ".img_with_text_simplicity {background-color: #0c0c0c; padding-top: 7.29167vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "settings": {
+        "specId": "",
+        "title": "<p>Turn Your World into LED Art</p>",
+        "sub_title": "IMAGE & VIDEO & CONVERSION!",
+        "description": "<p>See your favorite moments glow! Transformphotos, videos, or drawings into stunning64x64 LED displays. Showcase pet pics,vacation snaps, fan art, or live visualsmake your memories shine bright! Upload,convert,amaze!</p>",
+        "file_position": "bottom",
+        "file_type": "image",
+        "file_image": "shopify://shop_images/Turn_Your_World_into_LED_Art.webp",
+        "video_url": ""
+      }
+    },
+    "img_with_text_simplicity_9Jaxgn": {
+      "type": "img-with-text-simplicity",
+      "custom_css": [
+        ".img_with_text_simplicity {background-color: #0c0c0c; padding-top: 10.833vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "settings": {
+        "specId": "",
+        "title": "<p>Feel the Beat</p>",
+        "sub_title": "PHONE-POWERED LIGHT SHOW!",
+        "description": "<p>Plug in your phone and watch your music explode into light! The displaydances exclusively to your device's audio - pulsing with bass, swirling with melodies, andlashing in perfect sync with every beat. Bass drop? Cue the LED fireworks! Transform¡ny space into a immersive audio-visual arena - powered entirely by your playlist.</p>",
+        "file_position": "bottom",
+        "file_type": "image",
+        "file_image": "shopify://shop_images/Feel_the_Beat.webp",
+        "video_url": ""
+      }
+    },
+    "img_with_text_simplicity_zGRi7R": {
+      "type": "img-with-text-simplicity",
+      "custom_css": [
+        ".img_with_text_simplicity {background-color: #0c0c0c; padding-top: 10.833vw; padding-bottom: 11.875vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "settings": {
+        "specId": "",
+        "title": "<p>Time in Technicolor</p>",
+        "sub_title": "STYLISH CLOCK DISPLAY",
+        "description": "<p>Keep perfect time with a vibrant, customizable digital clock. Choose funky fonts, cool colors, and background effects to match your vibe. Functional, beautiful, and uniquely YOU!</p>",
+        "file_position": "bottom",
+        "file_type": "image",
+        "file_image": "shopify://shop_images/Time_in_Technicolor.webp",
+        "video_url": ""
+      }
+    },
+    "swiper_simplicity_two_J6cWzz": {
+      "type": "swiper-simplicity-two",
+      "blocks": {
+        "item_Kx9cNt": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
+            "title": "Living Room"
+          }
+        },
+        "item_4nw97f": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
+            "title": "Bedroom"
+          }
+        },
+        "item_t3nRQp": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
+            "title": "Gaming Room"
+          }
+        },
+        "item_eeQ7pz": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
+            "title": "Home Office"
+          }
+        }
+      },
+      "block_order": [
+        "item_Kx9cNt",
+        "item_4nw97f",
+        "item_t3nRQp",
+        "item_eeQ7pz"
+      ],
+      "custom_css": [
+        ".swiper_simplicity_two {padding-top: 8.33vw;}"
+      ],
+      "name": "swiper simplicity two",
+      "settings": {
+        "title": "<p>Perfect for Every Corner of Your Home</p>",
+        "text": "<p>Suitable for any occasion</p>"
+      }
+    },
+    "img_with_foldtext_jdqEDW": {
+      "type": "img-with-foldtext",
+      "blocks": {
+        "foldtext_hnrmGd": {
+          "type": "foldtext",
+          "settings": {
+            "title": "<p>Wake Up to a Moment of Delight</p>",
+            "description": "<p>Start your day with a quiet burst of color. The Blacklyte Pixel Display can show you the date in vibrant pixel form, turning a simple glance into something playful and personal. It’s a small detail—but the kind that adds warmth and energy to your daily rhythm.</p>"
+          }
+        },
+        "foldtext_7iHCQ8": {
+          "type": "foldtext",
+          "settings": {
+            "title": "<p>Art That Breathes with You</p>",
+            "description": "<p>With every pixel, the Blacklyte Pixel Display brings life and movement into your space. You can upload custom animations or static designs to reflect your mood, your style, or the atmosphere you want to create. From setting a calm evening vibe to adding energy before a stream, the display becomes a visual extension of your identity—always shifting, always personal.</p>"
+          }
+        },
+        "foldtext_UWV3Kh": {
+          "type": "foldtext",
+          "settings": {
+            "title": "<p>Create, Animate, Repeat</p>",
+            "description": "<p>The Blacklyte app is built for artists, tinkerers, and everyone in between. Design original pixel visuals, animate your ideas, or remix community favorites. Whether it’s mood-based art or a statement piece scrolling across the screen, your creativity drives the experience.</p>"
+          }
+        },
+        "foldtext_Dgzbgj": {
+          "type": "foldtext",
+          "settings": {
+            "title": "<p>Visuals That Match Your Vibe</p>",
+            "description": "<p>Sync the display with movies, music, or gaming sessions for an immersive glow that fits the moment. Whether you're setting the tone for a late-night grind or just vibing with a playlist, the Blacklyte Pixel Display reacts in real time, turning your room into a living canvas.</p>"
+          }
+        },
+        "foldtext_XR4hPe": {
+          "type": "foldtext",
+          "settings": {
+            "title": "<p>Compact, Light, Built to Move</p>",
+            "description": "<p>The Blacklyte Pixel Display is slim, solid, and surprisingly portable. Whether it's propped up on a desk, mounted on a wall, or packed for a gaming event—it goes wherever your setup needs it. No fuss, no clutter—just pure visual personality, anywhere.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "foldtext_hnrmGd",
+        "foldtext_7iHCQ8",
+        "foldtext_UWV3Kh",
+        "foldtext_Dgzbgj",
+        "foldtext_XR4hPe"
+      ],
+      "custom_css": [
+        ".img_with_foldtext {padding-top: 8.33vw; padding-bottom: 8.854167vw;}"
+      ],
+      "name": "img with foldtext",
+      "settings": {
+        "spec_id": "feature_watch",
+        "title": "<p>Pixels with an Attitude </p><p>BLACKLYTE 64 x 64 Pixel Art LED Display</p>",
+        "image": "shopify://shop_images/Pixels_with_an_Attitude_BLACKLYTE_64_x_64_Pixel_Art_LED_Display.webp"
+      }
+    },
+    "compare_simplicity_hCGr9c": {
+      "type": "compare-simplicity",
+      "custom_css": [
+        ".compare_simplicity {background-color: #0c0c0c;}"
+      ],
+      "settings": {
+        "title": "<p>Find your perfect chair<p>",
+        "description": "",
+        "arrow_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"6\" height=\"11\" viewbox=\"0 0 6 11\" fill=\"none\">\n<path d=\"M1.16016 1.5L5.16016 5.5L1.16016 9.5\" stroke=\"#5BA6F7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+        "product": "",
+        "show_compare": false
+      }
+    },
+    "custom_liquid_VNrfUq": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"pixelscreen_specs\" id=\"specs\">\n<div class=\"pixelscreen_specs_title\">specs</div>\n<img src=\"https://cdn.shopify.com/s/files/1/0716/1341/5637/files/pixelscreen-specs.webp?v=1751358933\" class=\"pc_show\">\n<img src=\"https://cdn.shopify.com/s/files/1/0716/1341/5637/files/pixelscreen-specs-mobile.webp?v=1751362452\" class=\"pmd_show\">\n<div>\n<style>\n.pixelscreen_specs {\n  background-color: #0c0c0c;\n  padding: 2.4479167vw 4.5833vw 6.9270833vw;\n  max-width: 75vw;\n  margin: 0 auto;\n}\n.pixelscreen_specs .pixelscreen_specs_title {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  :italic ;\n  font-size: 66px;\n  line-height: 80px;\n  letter-spacing: 0.8px;\n  vertical-align: middle;\n  text-transform: uppercase;\n  background: linear-gradient(91.49deg, #1c5fee -15.55%, #9befff 122.08%);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  display: inline-block;\n  position: relative;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.pixelscreen_specs img{\nmargin-top: 4.0625vw;\n}\n.pixelscreen_specs .pmd_show{\ndisplay: none;\n}\n@media screen and (max-width: 768px) {\n.pixelscreen_specs{\nmax-width: 100vw;\npadding: 5.33vw\n}\n.pixelscreen_specs .pixelscreen_specs_title{\nfont-size: 26px;\n}\n.pixelscreen_specs .pmd_show{\ndisplay: block;\n}\n.pixelscreen_specs .pc_show{\ndisplay: none;\n}\n}\n</style>"
+      }
+    },
+    "collapsible_content_HyyPmn": {
+      "type": "collapsible-content",
+      "blocks": {
+        "content_pXDQLJ": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "1. How do I track my order?",
+            "content": "<p>Once your order ships, you'll receive a shipping confirmation email and tracking number, so you can follow your package as it makes its way to you. However, tracking information can take up to 24 hours to update, so don’t worry if it doesn't show up immediately. We recommend tracking your order and ensuring that you’re home on the day of delivery to receive your order.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_rYegYT": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "2. When Will My Order be Shipped?",
+            "content": "<p>Inventory orders are typically shipped the next business day and will be delivered within 1-5 business days.  For more information, please check our Shipping and Return Policy.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_wJ9yCq": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "3. My order has been shipped. Can I change or cancel my order?",
+            "content": "<p>Unfortunately, we’re unable to cancel your order once it ships.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_pq9pqX": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "4. Can I exchange my Order？",
+            "content": "<p>For the most efficient resolution to obtain the item you desire, we recommend returning the original item. Once your return is approved, we encourage you to proceed with a separate purchase for the new item.  For more information, please check our Return & Refund Policy.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_wPRCtf": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "5. How will my order be delivered?",
+            "content": "<p>We deliver your order straight to your address via FedEx & UPS. You’ll receive an email with a tracking number when your order ships, so you can easily track your order. Please ensure that you’re home on the day of delivery to receive your order.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_aLc9yn": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "6. What do I do if I face an issue with my purchase?",
+            "content": "<p>In the unlikely event that you come across any damaged, defective or missing parts, please contact us at <a href=\"mailto:support@blacklyte.com\" title=\"mailto:support@blacklyte.com\">support@blacklyte.com </a>with a photo of the affected area and your order number. Our support specialists will do their best to assist you.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "content_pXDQLJ",
+        "content_rYegYT",
+        "content_wJ9yCq",
+        "content_pq9pqX",
+        "content_wPRCtf",
+        "content_aLc9yn"
+      ],
+      "custom_css": [
+        ".faqs-item {border-top: 1px solid #e6e6e6; font-family: Roboto;}",
+        ".collapsible-grid__item {border-bottom: 1px solid #e6e6e6;}",
+        ".collapsible-content {width: 100%; padding: 0 18.75vw;}",
+        ".halo-block-header {padding: 0 18.75vw;}",
+        ".halo-block-header h3 {font-family: Roboto; font-weight: 700;}",
+        ".card-body {color: #646669; font-size: 14px;}",
+        "@media screen and (max-width: 768px) {.collapsible-content {padding: 0 5.33vw; } .halo-block-header {padding: 0 5.33vw; } .card-body {font-weight: 400; }}"
+      ],
+      "settings": {
+        "id_section": "faq",
+        "container": "fullwidth",
+        "padding_full_width": 50,
+        "mg_top_desktop": 100,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 40,
+        "mg_bottom_desktop": 100,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 40,
+        "collapsible_bg": "#ffffff",
+        "collapsible_bg_gradient": "",
+        "collapsible_title": "FAQ",
+        "color_title": "#000000",
+        "fontsize_title": 32,
+        "fontsize_title_mb": 24,
+        "collapsible_des": "",
+        "color_des": "#3c3c3c",
+        "fontsize_des": 16,
+        "fontsize_des_mb": 12,
+        "max_width_des": 700,
+        "title_align": "left",
+        "enable_image_right": false,
+        "bg_content_color": "#ffffff",
+        "title_color": "#000000",
+        "content_color": "#000000",
+        "icon_color": "#000000",
+        "border_color": "#000000",
+        "font-size_heading": 16,
+        "font-size_content": 16,
+        "font-size_content_line-height": 22,
+        "font-size_heading_mb": 16,
+        "font-size_content_mb": 12,
+        "font-size_content_line-height_mb": 18
+      }
+    },
+    "1743652201516533c4": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "rich_text_VhDpg9": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rFxyzB": {
+          "type": "heading",
+          "settings": {
+            "heading": "Customer Reviews",
+            "heading_size": 40,
+            "heading_size_mb": 24,
+            "heading_line_height": 1,
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_rFxyzB"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "rich_text_bg": "#ffffff",
+        "rich_text_bg_gradient": "",
+        "enable_column": false,
+        "content_align": "center"
+      }
+    },
+    "custom_liquid_NV9eYk": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [
+        "#stamped-main-widget {margin: 0;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div \nid=\"stamped-main-widget\"\nclass=\"stamped-main-widget\">    \n</div>"
+      }
+    }
+  },
+  "order": [
+    "product_information_simplicity_A8DKzG",
+    "video_simplicity_ddxPrJ",
+    "icon_simplicity_ypETkA",
+    "img_with_text_simplicity_d8j7Cc",
+    "img_with_text_simplicity_yT6bhP",
+    "img_with_text_simplicity_wMzzfi",
+    "img_with_text_simplicity_Mjn9fE",
+    "img_with_text_simplicity_byYNLU",
+    "img_with_text_simplicity_9Jaxgn",
+    "img_with_text_simplicity_zGRi7R",
+    "swiper_simplicity_two_J6cWzz",
+    "img_with_foldtext_jdqEDW",
+    "compare_simplicity_hCGr9c",
+    "custom_liquid_VNrfUq",
+    "collapsible_content_HyyPmn",
+    "1743652201516533c4",
+    "rich_text_VhDpg9",
+    "custom_liquid_NV9eYk"
+  ]
+}
