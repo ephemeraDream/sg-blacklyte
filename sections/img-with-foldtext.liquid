@@ -1,0 +1,98 @@
+{{ 'section-img-with-foldtext.css' | asset_url | stylesheet_tag }}
+
+<div class="img_with_foldtext" id="{{ section.settings.spec_id }}">
+  <div class="img_with_foldtext_title">{{ section.settings.title }}</div>
+  <div class="img_with_foldtext_contain">
+    {{-
+      section.settings.image
+      | image_url: width: section.settings.image.width
+      | image_tag: alt: section.settings.title
+    -}}
+    <div class="img_with_foldtext_contain_right">
+      {% for block in section.blocks %}
+        <div class="img_with_foldtext_item{% if forloop.first %} active{% endif %}">
+          <div class="img_with_foldtext_item_head">
+            <div class="img_with_foldtext_question">{{ block.settings.title }}</div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M1.14286 6.85714C0.511657 6.85714 0 7.3688 0 8C0 8.6312 0.511657 9.14286 1.14286 9.14286H6.85714V14.8571C6.85714 15.4883 7.3688 16 8 16C8.6312 16 9.14286 15.4883 9.14286 14.8571V9.14286H14.8571C15.4883 9.14286 16 8.6312 16 8C16 7.3688 15.4883 6.85714 14.8571 6.85714H9.14286V1.14286C9.14286 0.511675 8.6312 0 8 0C7.3688 0 6.85714 0.511675 6.85714 1.14286V6.85714H1.14286Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="img_with_foldtext_answer">{{ block.settings.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.img_with_foldtext_item');
+
+    faqItems.forEach((item) => {
+      const faqItem = item.querySelector('.img_with_foldtext_item_head');
+
+      faqItem.addEventListener('click', function () {
+        const isActive = item.classList.contains('active');
+
+        document.querySelectorAll('.img_with_foldtext_item').forEach((i) => {
+          i.classList.remove('active');
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "img with foldtext",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "spec_id",
+      "label": "specId"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "foldtext",
+      "name": "foldtext",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "img with foldtext"
+    }
+  ]
+}
+{% endschema %}
