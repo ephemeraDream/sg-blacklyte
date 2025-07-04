@@ -1,0 +1,56 @@
+{{ 'section-icon-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="icon_simplicity">
+  {% for block in section.blocks %}
+    <div class="icon_simplicity_item">
+      <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.text }}">
+      <div class="icon_simplicity_item_text">{{ block.settings.text }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "icon simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "icon simplicity"
+    }
+  ]
+}
+{% endschema %}
