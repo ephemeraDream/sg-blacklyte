@@ -695,19 +695,25 @@
         <div>
           <div class="product_infor_simplicity_right_buybox_goods_title">{{ product.title }}</div>
           {% if section.settings.product_type != 'peripheral' %}
-            <div class="product_infor_simplicity_right_buybox_goods_options">
+             <div class="product_infor_simplicity_right_buybox_goods_options">
               {% if product.options_by_name.Size.values.size > 1 %}
                 {{ product.selected_or_first_available_variant.options | join: ' | ' }}
               {% else %}
-                {% if product.title contains 'Blacklyte Atlas Desk' %}
+                {% if product.title contains 'Blacklyte Atlas Desk'
+                  or product.title contains 'Blacklyte Atlas Gaming Desk'
+                %}
                   {% assign size = product.metafields.custom.product_size.value | first %}
                   {{ size.name | append: ' | ' | append: size.size | replace: '\', '' }}
                 {% else %}
-                  {{
-                    product.selected_or_first_available_variant.option1
-                    | append: ' | '
-                    | append: product.selected_or_first_available_variant.option2
-                  }}
+                  {% if product.selected_or_first_available_variant.options.size > 1 %}
+                    {{
+                      product.selected_or_first_available_variant.option1
+                      | append: ' | '
+                      | append: product.selected_or_first_available_variant.option2
+                    }}
+                  {% else %}
+                    {{ product.selected_or_first_available_variant.option1 }}
+                  {% endif %}
                 {% endif %}
               {% endif %}
             </div>
