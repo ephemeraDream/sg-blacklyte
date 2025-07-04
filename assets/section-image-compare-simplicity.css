@@ -5,6 +5,20 @@
   padding: 0 2.0833vw;
 }
 
+.image_compare_simplicity .image_compare_simplicity_title {
+  font-family: DIN-BlackItalic;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: 36px;
+  leading-trim: NONE;
+  line-height: 48px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 2.5rem;
+}
+
 .image_compare_simplicity .image_compare_simplicity_contain {
   overflow: hidden;
   position: relative;
