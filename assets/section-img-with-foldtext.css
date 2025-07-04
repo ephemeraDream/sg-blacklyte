@@ -102,8 +102,10 @@
   }
 
   .img_with_foldtext .img_with_foldtext_title {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 26px;
+    line-height: 30px;
+    width: 78vw;
+    margin: 0 auto;
   }
 
   .img_with_foldtext .img_with_foldtext_contain {
