@@ -1,0 +1,122 @@
+.swiper_simplicity_two {
+  max-width: 75vw;
+  margin: 0 auto;
+  position: relative;
+  background-color: #000000;
+  padding: 0 8.33vw;
+}
+
+.swiper_simplicity_two .swiper_simplicity_two_title {
+  font-family: DIN-BlackItalic;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.swiper_simplicity_two .swiper_simplicity_two_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 0.3645833vw;
+}
+
+.swiper_simplicity_two .swiper {
+  width: 100%;
+  margin-top: 2.8645833vw;
+}
+
+.swiper_simplicity_two .swiper-slide img {
+  width: 100%;
+  height: 25vw;
+  border-radius: 1.25vw;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.swiper_simplicity_two .swiper_simplicity_two_tab {
+  border-bottom: 1px solid #454545;
+  padding: 2.03125vw 0 1.25vw 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 1.5625vw;
+}
+
+.swiper_simplicity_two .swiper_simplicity_two_tab_item {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, .7);
+  min-width: 7.65625vw;
+  position: relative;
+  cursor: pointer;
+}
+
+.swiper_simplicity_two .swiper_simplicity_two_tab_item.active {
+  color: #fff;
+}
+
+.swiper_simplicity_two .swiper_simplicity_two_tab_item.active::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  bottom: -1.25vw;
+  left: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .swiper_simplicity_two {
+    max-width: 100vw;
+    padding: 0 5.33vw;
+  }
+
+  .swiper_simplicity_two .swiper_simplicity_two_title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .swiper_simplicity_two .swiper-slide img {
+    height: 106.67vw;
+    border-radius: 3.2vw;
+  }
+
+  .swiper_simplicity_two .swiper {
+    margin-top: 5.33vw;
+  }
+
+  .swiper_simplicity_two .swiper_simplicity_two_tab {
+    padding: 5.33vw 0;
+    width: 100%;
+    overflow: scroll;
+    gap: 11.467vw;
+    justify-content: flex-start;
+  }
+
+  .swiper_simplicity_two .swiper_simplicity_two_tab_item {
+    flex: 0 0 auto;
+  }
+
+  .swiper_simplicity_two .swiper_simplicity_two_tab_item.active:before {
+    bottom: -5.33vw;
+  }
+}
