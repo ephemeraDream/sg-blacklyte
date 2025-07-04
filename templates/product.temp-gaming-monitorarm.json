@@ -123,6 +123,9 @@
         "item_EgNNMd",
         "item_EHXFQM"
       ],
+      "custom_css": [
+        ".imgwithtextbox_simple {max-width: 75vw; margin: 0 auto; background-color: #000; padding: 7.03125vw 8.33vw;}"
+      ],
       "name": "imgwithtextbox simple",
       "settings": {
         "specId": "",
