@@ -272,6 +272,12 @@
         "swiper_item_RWAEaa",
         "swiper_item_6jqy7W"
       ],
+      "custom_css": [
+        ".desk_swiper_simplicity {padding-top: 10vw; padding-left: 8.33vw;}",
+        ".desk_swiper_simplicity_swiper {margin-top: 4.53125vw;}",
+        ".swiper-slide {width: 28.125vw;}",
+        ".desk_swiper_simplicity_swiper_image {height: 18.229167vw;}"
+      ],
       "settings": {
         "title": "<p>FULL RANGE MOTION</p>",
         "sub_title": "",
