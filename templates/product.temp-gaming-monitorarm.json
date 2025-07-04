@@ -174,130 +174,6 @@
         "video_url": ""
       }
     },
-    "swiper_simplicity_two_J6cWzz": {
-      "type": "swiper-simplicity-two",
-      "blocks": {
-        "item_Kx9cNt": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
-            "title": "Living Room"
-          }
-        },
-        "item_4nw97f": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
-            "title": "Bedroom"
-          }
-        },
-        "item_t3nRQp": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
-            "title": "Gaming Room"
-          }
-        },
-        "item_eeQ7pz": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
-            "title": "Home Office"
-          }
-        }
-      },
-      "block_order": [
-        "item_Kx9cNt",
-        "item_4nw97f",
-        "item_t3nRQp",
-        "item_eeQ7pz"
-      ],
-      "custom_css": [
-        ".swiper_simplicity_two {padding-top: 8.33vw;}"
-      ],
-      "name": "swiper simplicity two",
-      "settings": {
-        "title": "<p>Perfect for Every Corner of Your Home</p>",
-        "text": "<p>Suitable for any occasion</p>"
-      }
-    },
-    "img_with_foldtext_jdqEDW": {
-      "type": "img-with-foldtext",
-      "blocks": {
-        "foldtext_hnrmGd": {
-          "type": "foldtext",
-          "settings": {
-            "title": "<p>Wake Up to a Moment of Delight</p>",
-            "description": "<p>Start your day with a quiet burst of color. The Blacklyte Pixel Display can show you the date in vibrant pixel form, turning a simple glance into something playful and personal. It’s a small detail—but the kind that adds warmth and energy to your daily rhythm.</p>"
-          }
-        },
-        "foldtext_7iHCQ8": {
-          "type": "foldtext",
-          "settings": {
-            "title": "<p>Art That Breathes with You</p>",
-            "description": "<p>With every pixel, the Blacklyte Pixel Display brings life and movement into your space. You can upload custom animations or static designs to reflect your mood, your style, or the atmosphere you want to create. From setting a calm evening vibe to adding energy before a stream, the display becomes a visual extension of your identity—always shifting, always personal.</p>"
-          }
-        },
-        "foldtext_UWV3Kh": {
-          "type": "foldtext",
-          "settings": {
-            "title": "<p>Create, Animate, Repeat</p>",
-            "description": "<p>The Blacklyte app is built for artists, tinkerers, and everyone in between. Design original pixel visuals, animate your ideas, or remix community favorites. Whether it’s mood-based art or a statement piece scrolling across the screen, your creativity drives the experience.</p>"
-          }
-        },
-        "foldtext_Dgzbgj": {
-          "type": "foldtext",
-          "settings": {
-            "title": "<p>Visuals That Match Your Vibe</p>",
-            "description": "<p>Sync the display with movies, music, or gaming sessions for an immersive glow that fits the moment. Whether you're setting the tone for a late-night grind or just vibing with a playlist, the Blacklyte Pixel Display reacts in real time, turning your room into a living canvas.</p>"
-          }
-        },
-        "foldtext_XR4hPe": {
-          "type": "foldtext",
-          "settings": {
-            "title": "<p>Compact, Light, Built to Move</p>",
-            "description": "<p>The Blacklyte Pixel Display is slim, solid, and surprisingly portable. Whether it's propped up on a desk, mounted on a wall, or packed for a gaming event—it goes wherever your setup needs it. No fuss, no clutter—just pure visual personality, anywhere.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "foldtext_hnrmGd",
-        "foldtext_7iHCQ8",
-        "foldtext_UWV3Kh",
-        "foldtext_Dgzbgj",
-        "foldtext_XR4hPe"
-      ],
-      "custom_css": [
-        ".img_with_foldtext {padding-top: 8.33vw; padding-bottom: 8.854167vw;}"
-      ],
-      "name": "img with foldtext",
-      "settings": {
-        "spec_id": "feature_watch",
-        "title": "<p>Pixels with an Attitude </p><p>BLACKLYTE 64 x 64 Pixel Art LED Display</p>",
-        "image": "shopify://shop_images/Pixels_with_an_Attitude_BLACKLYTE_64_x_64_Pixel_Art_LED_Display.webp"
-      }
-    },
-    "compare_simplicity_hCGr9c": {
-      "type": "compare-simplicity",
-      "custom_css": [
-        ".compare_simplicity {background-color: #0c0c0c;}"
-      ],
-      "settings": {
-        "title": "<p>Find your perfect chair<p>",
-        "description": "",
-        "arrow_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"6\" height=\"11\" viewbox=\"0 0 6 11\" fill=\"none\">\n<path d=\"M1.16016 1.5L5.16016 5.5L1.16016 9.5\" stroke=\"#5BA6F7\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
-        "product": "",
-        "show_compare": false
-      }
-    },
-    "custom_liquid_VNrfUq": {
-      "type": "custom-liquid",
-      "custom_css": [],
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<div class=\"pixelscreen_specs\" id=\"specs\">\n<div class=\"pixelscreen_specs_title\">specs</div>\n<img src=\"https://cdn.shopify.com/s/files/1/0716/1341/5637/files/pixelscreen-specs.webp?v=1751358933\" class=\"pc_show\">\n<img src=\"https://cdn.shopify.com/s/files/1/0716/1341/5637/files/pixelscreen-specs-mobile.webp?v=1751362452\" class=\"pmd_show\">\n<div>\n<style>\n.pixelscreen_specs {\n  background-color: #0c0c0c;\n  padding: 2.4479167vw 4.5833vw 6.9270833vw;\n  max-width: 75vw;\n  margin: 0 auto;\n}\n.pixelscreen_specs .pixelscreen_specs_title {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  :italic ;\n  font-size: 66px;\n  line-height: 80px;\n  letter-spacing: 0.8px;\n  vertical-align: middle;\n  text-transform: uppercase;\n  background: linear-gradient(91.49deg, #1c5fee -15.55%, #9befff 122.08%);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  display: inline-block;\n  position: relative;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.pixelscreen_specs img{\nmargin-top: 4.0625vw;\n}\n.pixelscreen_specs .pmd_show{\ndisplay: none;\n}\n@media screen and (max-width: 768px) {\n.pixelscreen_specs{\nmax-width: 100vw;\npadding: 5.33vw\n}\n.pixelscreen_specs .pixelscreen_specs_title{\nfont-size: 26px;\n}\n.pixelscreen_specs .pmd_show{\ndisplay: block;\n}\n.pixelscreen_specs .pc_show{\ndisplay: none;\n}\n}\n</style>"
-      }
-    },
     "collapsible_content_HyyPmn": {
       "type": "collapsible-content",
       "blocks": {
@@ -478,10 +354,6 @@
     "custom_liquid_LfMaL4",
     "img_with_text_simplicity_byYNLU",
     "img_with_text_simplicity_9Jaxgn",
-    "swiper_simplicity_two_J6cWzz",
-    "img_with_foldtext_jdqEDW",
-    "compare_simplicity_hCGr9c",
-    "custom_liquid_VNrfUq",
     "collapsible_content_HyyPmn",
     "1743652201516533c4",
     "rich_text_VhDpg9",
