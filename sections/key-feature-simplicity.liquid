@@ -1,0 +1,95 @@
+{{ 'section-key-feature-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="key_feature_simplicity">
+  <div class="key_feature_simplicity_title">{{ section.settings.title }}</div>
+  <div class="key_feature_simplicity_contain">
+    <div class="key_feature_simplicity_contain_left">
+      <div class="key_feature_simplicity_item">
+        {% assign first_item = section.blocks | first %}
+        {% assign image_mobile = first_item.settings.image_mobile | default: first_item.settings.image %}
+        <img src="{{ first_item.settings.image | image_url }}" alt="{{ first_item.settings.title }}" class="pc_show">
+        <img src="{{ image_mobile | image_url }}" alt="{{ first_item.settings.title }}" class="pmd_show">
+        <div class="key_feature_simplicity_info">
+          <div class="key_feature_simplicity_info_title">{{ first_item.settings.title }}</div>
+          <div class="key_feature_simplicity_info_text">{{ first_item.settings.text }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="key_feature_simplicity_contain_right">
+      {% for block in section.blocks %}
+        {% unless forloop.first %}
+          <div class="key_feature_simplicity_item">
+            {% assign image_mobile = block.settings.image_mobile | default: block.settings.image %}
+            <img
+              src="{{ block.settings.image | image_url }}"
+              alt="{{ block.settings.title }}"
+              class="pc_show"
+            >
+            <img src="{{ image_mobile | image_url }}" alt="{{ block.settings.title }}" class="pmd_show">
+            <div class="key_feature_simplicity_info">
+              <div class="key_feature_simplicity_info_title">{{ block.settings.title }}</div>
+              <div class="key_feature_simplicity_info_text">{{ block.settings.text }}</div>
+            </div>
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "key feature simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "image mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "key feature simplicity"
+    }
+  ]
+}
+{% endschema %}
