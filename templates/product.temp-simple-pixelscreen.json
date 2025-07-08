@@ -205,6 +205,7 @@
         "file_position": "right",
         "file_type": "image",
         "file_image": "shopify://shop_images/Become_an_Animation_Master.webp",
+        "file_image_mobile": "shopify://shop_images/Become_an_Animation_Master_mobile.webp",
         "video_url": ""
       }
     },
@@ -222,6 +223,7 @@
         "file_position": "bottom",
         "file_type": "image",
         "file_image": "shopify://shop_images/Turn_Your_World_into_LED_Art.webp",
+        "file_image_mobile": "shopify://shop_images/Turn_Your_World_into_LED_Art_mobile.webp",
         "video_url": ""
       }
     },
@@ -239,6 +241,7 @@
         "file_position": "bottom",
         "file_type": "image",
         "file_image": "shopify://shop_images/Feel_the_Beat.webp",
+        "file_image_mobile": "shopify://shop_images/Feel_the_Beat_mobile.webp",
         "video_url": ""
       }
     },
@@ -256,6 +259,7 @@
         "file_position": "bottom",
         "file_type": "image",
         "file_image": "shopify://shop_images/Time_in_Technicolor.webp",
+        "file_image_mobile": "shopify://shop_images/Time_in_Technicolor_mobile.webp",
         "video_url": ""
       }
     },
