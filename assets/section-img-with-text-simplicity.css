@@ -173,6 +173,10 @@
   opacity: 1;
 }
 
+.img_with_text_simplicity .pmd_show {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .img_with_text_simplicity {
     max-width: 100vw;
@@ -250,5 +254,13 @@
     position: relative;
     width: 100%;
     left: 0;
+  }
+
+  .img_with_text_simplicity .pc_show {
+    display: none;
+  }
+
+  .img_with_text_simplicity .pmd_show {
+    display: block;
   }
 }

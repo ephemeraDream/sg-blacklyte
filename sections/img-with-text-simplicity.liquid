@@ -23,27 +23,32 @@
     </div>
     <div class="img_with_text_simplicity_filebox">
       {% if section.settings.file_type == 'image' %}
-        {% assign srcset_1x = section.settings.file_image | image_url | append: ' 1x, ' %}
-        {% assign srcset_2x = section.settings.file_image | image_url: width: 670 | append: ' 2x, ' %}
-        {% assign srcset_3x = section.settings.file_image | image_url: width: 670 | append: ' 3x, ' %}
-        {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+        {% comment %}
+            {% assign srcset_1x = section.settings.file_image | image_url | append: ' 1x, ' %}
+            {% assign srcset_2x = section.settings.file_image | image_url: width: 670 | append: ' 2x, ' %}
+            {% assign srcset_3x = section.settings.file_image | image_url: width: 670 | append: ' 3x, ' %}
+            {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+          {{-
+            section.settings.file_image
+            | image_url: width: section.settings.file_image.width
+            | image_tag:
+              sizes: '(min-width:769px) 45vw, 100vw',
+              srcset: srcset_init,
+              alt: section.settings.title,
+              class: 'img_with_text_simplicity_filebox_image'
+          -}}
+        {% endcomment %}
         {{-
           section.settings.file_image
           | image_url: width: section.settings.file_image.width
-          | image_tag:
-            sizes: '(min-width:769px) 45vw, 100vw',
-            srcset: srcset_init,
-            alt: section.settings.title,
-            class: 'img_with_text_simplicity_filebox_image'
+          | image_tag: alt: section.settings.title, class: 'img_with_text_simplicity_filebox_image pc_show'
         -}}
-        {% comment %}
-          <img
-            class="img_with_text_simplicity_filebox_image"
-            src="{{ section.settings.file_image | image_url }}"
-            alt="{{ section.settings.title }}"
-            loading="lazy"
-          >
-        {% endcomment %}
+        {% assign file_image_mobile = section.settings.file_image_mobile | default: section.settings.file_image %}
+        {{-
+          file_image_mobile
+          | image_url: width: file_image_mobile.width
+          | image_tag: alt: section.settings.title, class: 'img_with_text_simplicity_filebox_image pmd_show'
+        -}}
       {% else %}
         {% assign poster_image = blank %}
         {% if section.settings.cover_image != blank %}
@@ -179,6 +184,11 @@
       "type": "image_picker",
       "id": "file_image",
       "label": "file image"
+    },
+    {
+      "type": "image_picker",
+      "id": "file_image_mobile",
+      "label": "file image mobile"
     },
     {
       "type": "image_picker",
