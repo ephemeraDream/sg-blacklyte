@@ -17,6 +17,7 @@
   vertical-align: middle;
   text-transform: uppercase;
   color: #fff;
+  text-align: center;
 }
 
 .key_feature_simplicity .key_feature_simplicity_contain {
@@ -92,4 +93,5 @@
 .key_feature_simplicity .key_feature_simplicity_contain_right .key_feature_simplicity_info {
   left: 1.5625vw;
   bottom: 1.67vw;
+  position: absolute;
 }
