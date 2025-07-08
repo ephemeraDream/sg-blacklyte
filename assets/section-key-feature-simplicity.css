@@ -36,6 +36,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .key_feature_simplicity .key_feature_simplicity_item img {
@@ -46,6 +47,7 @@
   left: 0;
   object-fit: cover;
   object-position: center center;
+  transition: transform .3s ease-in-out;
 }
 
 .key_feature_simplicity .key_feature_simplicity_contain_left .key_feature_simplicity_info {
@@ -94,4 +96,10 @@
   left: 1.5625vw;
   bottom: 1.67vw;
   position: absolute;
+}
+
+@media (hover: hover) {
+  .key_feature_simplicity .key_feature_simplicity_item img:hover {
+    transform: scale(1.2);
+  }
 }
