@@ -149,6 +149,7 @@
         "file_position": "bottom",
         "file_type": "image",
         "file_image": "shopify://shop_images/PERSONAL_PLAYFUL_AND_EXPRESSIVE.webp",
+        "file_image_mobile": "shopify://shop_images/PERSONAL_PLAYFUL_AND_EXPRESSIVE_mobile.webp",
         "video_url": ""
       }
     },
@@ -185,6 +186,7 @@
         "file_position": "left",
         "file_type": "image",
         "file_image": "shopify://shop_images/Instant_Wow_Factor.webp",
+        "file_image_mobile": "shopify://shop_images/Instant_Wow_Factor_mobile.webp",
         "video_url": ""
       }
     },
