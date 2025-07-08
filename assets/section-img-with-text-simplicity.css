@@ -60,7 +60,7 @@
   object-fit: cover;
   position: relative;
   border-radius: 1.25vw;
-  transition: transform .4s ease-in-out;
+  transition: transform .3s ease-in-out;
 }
 
 .img_with_text_simplicity .img_with_text_simplicity_filebox_image:hover {
