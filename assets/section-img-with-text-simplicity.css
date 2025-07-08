@@ -50,6 +50,7 @@
   margin-top: 1.5625vw;
   background-color: #121212;
   border-radius: 1.25vw;
+  overflow: hidden;
 }
 
 .img_with_text_simplicity .img_with_text_simplicity_filebox_video,
@@ -59,6 +60,11 @@
   object-fit: cover;
   position: relative;
   border-radius: 1.25vw;
+  transition: transform .4s ease-in-out;
+}
+
+.img_with_text_simplicity .img_with_text_simplicity_filebox_image:hover {
+  transform: scale(1.2);
 }
 
 .img_with_text_simplicity .img_with_text_simplicity_filebox_playicon svg {
