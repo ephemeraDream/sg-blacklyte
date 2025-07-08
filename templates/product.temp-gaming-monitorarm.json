@@ -277,12 +277,62 @@
         ".desk_swiper_simplicity_swiper {margin-top: 4.53125vw;}",
         ".swiper-slide {width: 28.125vw;}",
         ".desk_swiper_simplicity_swiper_image {height: 18.229167vw;}",
-        ".desk_swiper_simplicity_info{padding-right: 8.33vw;}"
+        ".desk_swiper_simplicity_info {padding-right: 8.33vw;}"
       ],
       "settings": {
         "title": "<p>FULL RANGE MOTION</p>",
         "sub_title": "",
         "description": ""
+      }
+    },
+    "key_feature_simplicity_CUybft": {
+      "type": "key-feature-simplicity",
+      "blocks": {
+        "item_AytbD6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1_mobile.webp",
+            "title": "<p>Cable Management</p>",
+            "text": "<p>Integrated cable management channel to </p><p>keep your setup neat and \"wireless\"</p>"
+          }
+        },
+        "item_g8yzAq": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_2.webp",
+            "title": "<p>VESA MIS-D Compatible</p>",
+            "text": "<p>(75mm x 75mm or 100mm x 100mm)</p>"
+          }
+        },
+        "item_f7r3w6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_3.webp",
+            "title": "<p>Tension Adjustment</p>",
+            "text": "<p>Lifts 19.9lbs by default, up to 44.1lbs</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_AytbD6",
+        "item_g8yzAq",
+        "item_f7r3w6"
+      ],
+      "name": "key feature simplicity",
+      "settings": {
+        "title": "<p>KEY FEATURES</p>",
+        "text": ""
+      }
+    },
+    "compare_simplicity_VGtrHd": {
+      "type": "compare-simplicity",
+      "name": "compare simplicity",
+      "settings": {
+        "title": "",
+        "description": "",
+        "arrow_icon": "",
+        "product": "",
+        "show_compare": false
       }
     },
     "collapsible_content_HyyPmn": {
@@ -468,6 +518,8 @@
     "image_compare_simplicity_RCqipK",
     "img_with_text_box_simplicity_LGfQrm",
     "desk_swiper_simplicity_MamcR8",
+    "key_feature_simplicity_CUybft",
+    "compare_simplicity_VGtrHd",
     "collapsible_content_HyyPmn",
     "1743652201516533c4",
     "rich_text_VhDpg9",
