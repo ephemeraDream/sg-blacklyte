@@ -34,9 +34,6 @@
 .swiper_simplicity_two .swiper {
   width: 100%;
   margin-top: 2.8645833vw;
-}
-
-.swiper_simplicity_two .swiper-slide {
   border-radius: 24px;
 }
 
@@ -117,6 +114,7 @@
 
   .swiper_simplicity_two .swiper {
     margin-top: 5.33vw;
+    border-radius: 12px;
   }
 
   .swiper_simplicity_two .swiper_simplicity_two_tab {
@@ -141,10 +139,6 @@
 
   .swiper_simplicity_two .pmd_show {
     display: block;
-  }
-
-  .swiper_simplicity_two .swiper-slide {
-    border-radius: 12px;
   }
 }
 
