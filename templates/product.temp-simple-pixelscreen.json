@@ -166,9 +166,9 @@
         "sub_title": "CUSTOM TEXT EFFECTS",
         "description": "<p>Shout it out, scroll it in, or make it dance! Type ANY message and bring it to life with dazzling fonts, colors, and animations. Perfect for birthdays, announcements, shops, or just saying \"Hi!\" in style. Make your mark, brilliantly!</p>",
         "file_position": "right",
-        "file_type": "image",
-        "file_image": "shopify://shop_images/YOUR_WORDS_YOUR_WAY.webp",
-        "video_url": ""
+        "file_type": "video",
+        "video_url": "",
+        "url_upload": "shopify://files/videos/YOUR WORDS, YOUR WAY!.webm"
       }
     },
     "img_with_text_simplicity_wMzzfi": {
