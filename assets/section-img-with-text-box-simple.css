@@ -43,6 +43,7 @@
   width: 100%;
   height: 14.5833vw;
   border-radius: 1.25vw 1.25vw 0 0;
+  overflow: hidden;
 }
 
 .imgwithtextbox_simple .imgwithtextbox_simple_item_filebox_image,
@@ -52,6 +53,7 @@
   object-fit: cover;
   object-position: center center;
   border-radius: 1.25vw 1.25vw 0 0;
+  transition: transform .3s ease-in-out;
 }
 
 .imgwithtextbox_simple .imgwithtextbox_simple_item_info {
@@ -147,5 +149,11 @@
 
   .imgwithtextbox_simple .imgwithtextbox_simple_btn {
     gap: 4.8vw;
+  }
+}
+
+@media (hover: hover) {
+  .imgwithtextbox_simple .imgwithtextbox_simple_item:hover .imgwithtextbox_simple_item_filebox_image {
+    transform: scale(1.2);
   }
 }
