@@ -42,6 +42,7 @@
   border-radius: 1.25vw;
   object-fit: cover;
   object-position: center center;
+  transition: transform .3s ease-in-out;
 }
 
 .swiper_simplicity_two .swiper_simplicity_two_tab {
@@ -136,5 +137,11 @@
 
   .swiper_simplicity_two .pmd_show {
     display: block;
+  }
+}
+
+@media (hover: hover) {
+  .swiper_simplicity_two .swiper-slide img:hover {
+    transform: scale(1.2);
   }
 }
