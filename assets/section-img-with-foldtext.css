@@ -115,6 +115,7 @@
   .img_with_foldtext .img_with_foldtext_contain img {
     width: 100%;
     height: 66.67vw;
+    border-radius: 3.2vw;
   }
 
   .img_with_foldtext .img_with_foldtext_item_head {
