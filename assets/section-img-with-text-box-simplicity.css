@@ -59,6 +59,7 @@
 .img_with_text_box_simplicity .img_with_text_box_simplicity_filebox {
   position: relative;
   margin-bottom: 1.77083vw;
+  overflow: hidden;
 }
 
 .img_with_text_box_simplicity .img_with_text_box_simplicity_filebox_video,
@@ -69,6 +70,7 @@
   position: relative;
   border-radius: 1.04167vw;
   aspect-ratio: 1.3185;
+  transition: transform .3s ease-in-out;
 }
 
 .img_with_text_box_simplicity .img_with_text_box_simplicity_filebox_playicon svg {
@@ -165,5 +167,11 @@
   .img_with_text_box_simplicity_contain_grid .swiper-wrapper {
     flex-wrap: wrap;
     gap: 10.67vw;
+  }
+}
+
+@media (hover: hover) {
+  .img_with_text_box_simplicity .img_with_text_box_simplicity_contain_item:hover .img_with_text_box_simplicity_filebox_image {
+    transform: scale(1.2);
   }
 }
