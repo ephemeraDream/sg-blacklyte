@@ -63,7 +63,7 @@
   transition: transform .3s ease-in-out;
 }
 
-.img_with_text_simplicity .img_with_text_simplicity_filebox_image:hover {
+.img_with_text_simplicity:hover .img_with_text_simplicity_filebox_image {
   transform: scale(1.2);
 }
 
