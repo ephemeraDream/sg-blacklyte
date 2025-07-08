@@ -270,27 +270,31 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
+            "image_mobile": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1_mobile.webp",
             "title": "Living Room"
           }
         },
         "item_4nw97f": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_2.webp",
+            "image_mobile": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_2_mobile.webp",
             "title": "Bedroom"
           }
         },
         "item_t3nRQp": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_3.webp",
+            "image_mobile": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_3_mobile.webp",
             "title": "Gaming Room"
           }
         },
         "item_eeQ7pz": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_1.webp",
+            "image": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_4.webp",
+            "image_mobile": "shopify://shop_images/Perfect_for_Every_Corner_of_Your_Home_4_mobile.webp",
             "title": "Home Office"
           }
         }
