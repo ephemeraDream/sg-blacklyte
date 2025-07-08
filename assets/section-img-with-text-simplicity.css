@@ -63,10 +63,6 @@
   transition: transform .3s ease-in-out;
 }
 
-.img_with_text_simplicity:hover .img_with_text_simplicity_filebox_image {
-  transform: scale(1.2);
-}
-
 .img_with_text_simplicity .img_with_text_simplicity_filebox_playicon svg {
   position: absolute;
   top: 50%;
@@ -127,10 +123,6 @@
 
 .img_with_text_simplicity .img_with_text_simplicity_append_desc a {
   color: inherit;
-}
-
-.img_with_text_simplicity .img_with_text_simplicity_append_desc a:hover {
-  color: #fff;
 }
 
 #sturdy_stable .img_with_text_simplicity {
@@ -268,5 +260,15 @@
 
   .img_with_text_simplicity .pmd_show {
     display: block;
+  }
+}
+
+@media (hover: hover) {
+  .img_with_text_simplicity:hover .img_with_text_simplicity_filebox_image {
+    transform: scale(1.2);
+  }
+
+  .img_with_text_simplicity .img_with_text_simplicity_append_desc a:hover {
+    color: #fff;
   }
 }
