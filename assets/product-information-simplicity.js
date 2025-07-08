@@ -690,7 +690,7 @@ function initBuybox() {
         return;
       }
 
-      value = Math.max(1, Math.min(10, parseInt(value, 10))); // 限制范围 1-10
+      value = Math.max(1, Math.min(20, parseInt(value, 10))); // 限制范围 1-10
       quantityInput.value = value;
 
       quantityBindPrice(value)
@@ -1095,7 +1095,7 @@ function initSelectAddson() {
             return;
           }
 
-          value = Math.max(1, Math.min(10, parseInt(value, 10))); // 限制范围 1-10
+          value = Math.max(1, Math.min(20, parseInt(value, 10))); // 限制范围 1-10
           quantityInput.value = value;
 
           selectAddsonItemQuantityBindPrice(value)
