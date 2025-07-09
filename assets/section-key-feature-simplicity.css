@@ -124,6 +124,11 @@
     flex: 0 0 100%;
     gap: 4.267vw;
   }
+
+  .key_feature_simplicity .key_feature_simplicity_contain_right .key_feature_simplicity_item {
+    flex: 0 0 100%;
+    height: 64vw;
+  }
 }
 
 @media (hover: hover) {
