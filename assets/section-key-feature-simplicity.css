@@ -134,6 +134,14 @@
     left: 5.6vw;
     bottom: 8vw;
   }
+
+  .key_feature_simplicity .key_feature_simplicity_info_title {
+    font-size: 20px;
+  }
+
+  .key_feature_simplicity .key_feature_simplicity_info_text {
+    font-size: 14px;
+  }
 }
 
 @media (hover: hover) {
