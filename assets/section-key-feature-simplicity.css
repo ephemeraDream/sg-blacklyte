@@ -114,6 +114,11 @@
     flex-wrap: wrap;
     gap: 5.33vw;
   }
+
+  .key_feature_simplicity .key_feature_simplicity_contain_left {
+    flex: 0 0 100%;
+    height: 104vw;
+  }
 }
 
 @media (hover: hover) {
