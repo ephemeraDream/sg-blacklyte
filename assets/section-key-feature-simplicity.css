@@ -126,8 +126,13 @@
   }
 
   .key_feature_simplicity .key_feature_simplicity_contain_right .key_feature_simplicity_item {
-    flex: 0 0 100%;
-    height: 64vw;
+    flex: 0 0 64vw;
+  }
+
+  .key_feature_simplicity .key_feature_simplicity_contain_left .key_feature_simplicity_info,
+  .key_feature_simplicity .key_feature_simplicity_contain_right .key_feature_simplicity_info {
+    left: 5.6vw;
+    bottom: 8vw;
   }
 }
 
