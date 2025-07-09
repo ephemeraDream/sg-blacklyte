@@ -98,6 +98,13 @@
   position: absolute;
 }
 
+@media screen and (max-width: 768px) {
+  .key_feature_simplicity {
+    max-width: 100vw;
+    padding: 8.33vw 5.33vw;
+  }
+}
+
 @media (hover: hover) {
   .key_feature_simplicity .key_feature_simplicity_item img:hover {
     transform: scale(1.2);
