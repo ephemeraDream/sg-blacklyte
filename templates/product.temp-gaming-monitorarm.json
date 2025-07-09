@@ -278,7 +278,7 @@
         ".swiper-slide {width: 28.125vw;}",
         ".desk_swiper_simplicity_swiper_image {height: 18.229167vw;}",
         ".desk_swiper_simplicity_info {padding-right: 8.33vw;}",
-        "@media screen and (max-width: 768px) {.desk_swiper_simplicity_info {padding-right: 0; } .desk_swiper_simplicity_swiper_image {height: 69.33vw; } .swiper-slide{height: auto }}"
+        "@media screen and (max-width: 768px) {.desk_swiper_simplicity_info {padding-right: 0; } .desk_swiper_simplicity_swiper_image {height: 69.33vw; } .swiper-slide {height: auto; } .desk_swiper_simplicity_swiper_desc{font-size: 16px; line-height: 20px }}"
       ],
       "settings": {
         "title": "<p>FULL RANGE MOTION</p>",
