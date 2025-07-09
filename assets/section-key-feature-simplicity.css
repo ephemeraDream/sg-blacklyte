@@ -108,6 +108,12 @@
     font-size: 26px;
     line-height: 30px;
   }
+
+  .key_feature_simplicity .key_feature_simplicity_contain {
+    margin-top: 5.33vw;
+    flex-wrap: wrap;
+    gap: 5.33vw;
+  }
 }
 
 @media (hover: hover) {
