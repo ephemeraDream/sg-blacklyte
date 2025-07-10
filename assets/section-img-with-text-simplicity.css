@@ -264,7 +264,7 @@
 }
 
 @media (hover: hover) {
-  .img_with_text_simplicity:hover .img_with_text_simplicity_filebox_image {
+  .img_with_text_simplicity .img_with_text_simplicity_filebox_image:hover {
     transform: scale(1.2);
   }
 
