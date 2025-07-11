@@ -1531,3 +1531,12 @@
 .parameter_comparison .parameter_comparison_product_series_name_sentinel {
   display: block;
 }
+
+.parameter_comparison .parameter_comparison_product:not(.parameter_comparison_product_showtitle) .parameter_comparison_product_label {
+  overflow: hidden;
+}
+
+.product_infor_simplicity .product_infor_simplicity_right_product_contain[data-type="Configuration"] .product_infor_simplicity_right_select_item {
+  height: 70px;
+  justify-content: space-between;
+}
