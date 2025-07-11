@@ -530,6 +530,32 @@
               </div>
             </div>
           {% endif %}
+        {% when 'Configuration' %}
+          <div class="product_infor_simplicity_right_product_contain" data-type="{{ option.name }}">
+            <div class="product_infor_simplicity_right_select_title">
+              {{ 'products.product.text.select' | t }}
+              {{ option.name }}
+            </div>
+            <div class="product_infor_simplicity_right_select_itembox">
+              {% for value in option.values %}
+                <div
+                  data-index="{{ forloop.index0 }}"
+                  data-id="{{ value.variant.id }}"
+                  data-value="{{ value }}"
+                  class="product_infor_simplicity_right_select_item{% unless value.available %} product_infor_simplicity_right_select_item_diasbled{% endunless %}{% if option.values.size == 1 %} product_infor_simplicity_right_select_item_onlyone{% endif %}{% if value.selected %} product_infor_simplicity_right_select_item_active{% endif %}"
+                >
+                  <div class="product_infor_simplicity_right_select_title">
+                    <span>
+                      {{ value }}
+                    </span>
+                    <span>
+                      {{ sale_price | money_without_trailing_zeros }}
+                    </span>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
       {%- endcase -%}
     {% endfor %}
     {% if product.metafields.custom.product_attach != blank
@@ -695,7 +721,7 @@
         <div>
           <div class="product_infor_simplicity_right_buybox_goods_title">{{ product.title }}</div>
           {% if section.settings.product_type != 'peripheral' %}
-             <div class="product_infor_simplicity_right_buybox_goods_options">
+            <div class="product_infor_simplicity_right_buybox_goods_options">
               {% if product.options_by_name.Size.values.size > 1 %}
                 {{ product.selected_or_first_available_variant.options | join: ' | ' }}
               {% else %}
