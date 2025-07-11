@@ -1538,5 +1538,10 @@
 
 .product_infor_simplicity .product_infor_simplicity_right_product_contain[data-type="Configuration"] .product_infor_simplicity_right_select_item {
   height: 70px;
+}
+
+.product_infor_simplicity .product_infor_simplicity_right_product_contain[data-type="Configuration"] .product_infor_simplicity_right_select_item .product_infor_simplicity_right_select_title {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
 }
