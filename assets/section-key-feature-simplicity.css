@@ -146,6 +146,6 @@
 
 @media (hover: hover) {
   .key_feature_simplicity .key_feature_simplicity_item img:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 }
