@@ -154,6 +154,6 @@
 
 @media (hover: hover) {
   .imgwithtextbox_simple .imgwithtextbox_simple_item:hover .imgwithtextbox_simple_item_filebox_image {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 }
