@@ -257,21 +257,21 @@
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_2.webp",
-            "description": "<p>Horizontal Adjustment Range</p>"
+            "description": "<p>Horizontal Adjustment Range</p><p>17.8’’</p>"
           }
         },
         "swiper_item_6jqy7W": {
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_3.webp",
-            "description": "<p>Extension</p>"
+            "description": "<p>Extension</p><p>20.7’’</p>"
           }
         },
         "swiper_item_FPhg3V": {
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_4.webp",
-            "description": "<p>Extension</p>"
+            "description": "<p>Screen Rotation</p><p>360°</p>"
           }
         }
       },
