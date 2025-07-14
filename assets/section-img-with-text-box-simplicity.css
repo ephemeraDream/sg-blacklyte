@@ -172,6 +172,6 @@
 
 @media (hover: hover) {
   .img_with_text_box_simplicity .img_with_text_box_simplicity_contain_item:hover .img_with_text_box_simplicity_filebox_image {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 }
