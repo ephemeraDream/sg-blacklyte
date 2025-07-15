@@ -292,9 +292,17 @@
       ],
       "custom_css": [],
       "settings": {
+        "specId": "full_range_motion",
         "title": "<p>FULL RANGE MOTION</p>",
         "sub_title": "",
         "description": ""
+      }
+    },
+    "custom_liquid_QRLPqV": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>#full_range_motion {\n  padding-top: 10vw;\n  padding-left: 8.33vw;\n  background-color: #F5F5F5;\n}\n\n#full_range_motion .desk_swiper_simplicity_swiper {\n  margin-top: 4.53125vw;\n}\n\n#full_range_motion .desk_swiper_simplicity_title {\n  color: #262629;\n}\n\n#full_range_motion .desk_swiper_simplicity_swiper_desc {\n  color: rgba(38, 38, 41, 0.7);\n}\n\n#full_range_motion .swiper-slide {\n  width: 28.125vw;\n}\n\n#full_range_motion .desk_swiper_simplicity_swiper_image {\n  height: 18.229167vw;\n}\n\n#full_range_motion .desk_swiper_simplicity_info {\n  padding-right: 8.33vw;\n}\n\n@media screen and (max-width: 768px) {\n  #full_range_motion .desk_swiper_simplicity_info {\n    padding-right: 0;\n  }\n\n  #full_range_motion .desk_swiper_simplicity_swiper_image {\n    height: 69.33vw;\n  }\n\n  #full_range_motion .swiper-slide {\n    height: auto;\n  }\n\n  #full_range_motion .desk_swiper_simplicity_swiper_desc {\n    font-size: 16px;\n    line-height: 20px;\n    margin-top: 6.13vw;\n  }\n}\n\n</style>"
       }
     },
     "key_feature_simplicity_CUybft": {
@@ -547,6 +555,7 @@
     "img_with_text_box_simplicity_LGfQrm",
     "custom_liquid_mHWLTV",
     "desk_swiper_simplicity_MamcR8",
+    "custom_liquid_QRLPqV",
     "key_feature_simplicity_CUybft",
     "compare_simplicity_VGtrHd",
     "specs_simplicity_Epndpn",
