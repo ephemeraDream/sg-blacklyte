@@ -2,7 +2,7 @@
 
 <div
   class="img_with_text_box_simplicity"
-  id="{{ section.id }}"
+  id="{{ section.settings.specId }}"
 >
   <div id="feature_watch">
     <div class="img_with_text_box_simplicity_maintitle">{{ section.settings.main_title }}</div>
@@ -206,6 +206,11 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
     {
       "type": "text",
       "id": "main_title",
