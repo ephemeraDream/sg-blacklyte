@@ -346,6 +346,14 @@
         "show_compare": false
       }
     },
+    "specs_simplicity_Epndpn": {
+      "type": "specs-simplicity",
+      "name": "specs simplicity",
+      "settings": {
+        "product": "",
+        "show_type": "one"
+      }
+    },
     "collapsible_content_HyyPmn": {
       "type": "collapsible-content",
       "blocks": {
@@ -531,6 +539,7 @@
     "desk_swiper_simplicity_MamcR8",
     "key_feature_simplicity_CUybft",
     "compare_simplicity_VGtrHd",
+    "specs_simplicity_Epndpn",
     "collapsible_content_HyyPmn",
     "1743652201516533c4",
     "rich_text_VhDpg9",
