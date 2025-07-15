@@ -340,7 +340,7 @@
       ],
       "custom_css": [
         ".key_feature_simplicity {background-color: #f5f5f5;}",
-        ".key_feature_simplicity_title {color:#262629;}"
+        ".key_feature_simplicity_title {color: #262629;}"
       ],
       "name": "key feature simplicity",
       "settings": {
@@ -350,11 +350,17 @@
     },
     "compare_simplicity_VGtrHd": {
       "type": "compare-simplicity",
+      "custom_css": [
+        ".compare_simplicity {background-color: #f5f5f5;}",
+        ".compare_simplicity_contact {background-color: #ffffff;}",
+        ".compare_simplicity_contact_title,.compare_simplicity_contact_box_item_text {color: #262629;}",
+        ".compare_simplicity_contact_box_item a {-webkit-text-fill-color: #262629;}"
+      ],
       "name": "compare simplicity",
       "settings": {
         "title": "",
         "description": "",
-        "arrow_icon": "",
+        "arrow_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"6\" height=\"11\" viewbox=\"0 0 6 11\" fill=\"none\">\n<path d=\"M1.16016 1.5L5.16016 5.5L1.16016 9.5\" stroke=\"#262629\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
         "product": "",
         "show_compare": false
       }
