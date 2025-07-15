@@ -29,27 +29,28 @@
 
     let isDragging = false;
 
-    // ✅ 使用 pointer 事件，统一处理鼠标和触摸
-    const startDrag = (e) => {
+    // ✅ 改为绑定在 container 上
+    container.addEventListener('pointerdown', (e) => {
+      // 判断是否点击的是 divider 区域（可选）
+      if (!e.target.closest('.image_compare_simplicity_divider')) return;
+
       isDragging = true;
       document.body.style.cursor = 'ew-resize';
       document.addEventListener('pointermove', onDrag);
       document.addEventListener('pointerup', endDrag);
-    };
+    });
 
-    const onDrag = (e) => {
+    function onDrag(e) {
       if (!isDragging) return;
       handleMove(e.clientX);
-    };
+    }
 
-    const endDrag = () => {
+    function endDrag() {
       isDragging = false;
       document.body.style.cursor = 'default';
       document.removeEventListener('pointermove', onDrag);
       document.removeEventListener('pointerup', endDrag);
-    };
-
-    divider.addEventListener('pointerdown', startDrag);
+    }
 
     function handleMove(clientX) {
       const rect = container.getBoundingClientRect();
