@@ -1,0 +1,556 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_information_simplicity_A8DKzG": {
+      "type": "product-information-simplicity",
+      "blocks": {
+        "star_block_a44E3P": {
+          "type": "starBlock",
+          "disabled": true,
+          "settings": {
+            "starHtml": "<img src=\"https://stamped.io/inc/image/badges.png?apikey=018cfac0-eb72-4dab-b25c-397d940dc0a6&amp;sId=349235&amp;type=badge2&amp;label1=&amp;label2=\">"
+          }
+        },
+        "product_extra_info_XCWwCD": {
+          "type": "productExtraInfo",
+          "settings": {
+            "text_one": "<div>\n      <p class=\"size_large\">[[activity_title]]: [[save_price]] OFF! </p>\n      <p>*Cannot be combined with other promo codes.</p>\n    </div>",
+            "enable_text_one": true,
+            "text_two": "<p>\n     30 Days Easy Return Policy: Changed your mind? Send it back within 30 days for refund. \n      <a id=\"refund_policy_btn\" title=\"Refund Policy\">View return Policy ></a>\n    </p>",
+            "text_thr": "<div>\n      <p class=\"size_large\">Shop with an Expert. We're here to help.</p>\n      <a class=\"chat_now\">Chat with our experts now ></a>\n    </div>"
+          }
+        },
+        "product_extra_info_bottom_YjDHHV": {
+          "type": "productExtraInfoBottom",
+          "settings": {
+            "text_one": "<div>\n      <p>Estimated dispatch within 2 business days</p>\n      <p>Free Shipping on All Orders</p>\n    </div>",
+            "text_two": "<div>\n      <p>30-Day Returns Policy</p>\n      <p>3-Year Warranty Protection</p>\n    </div>",
+            "text_thr": "<div class=\"flex_full\">Global Support </div>"
+          }
+        }
+      },
+      "block_order": [
+        "star_block_a44E3P",
+        "product_extra_info_XCWwCD",
+        "product_extra_info_bottom_YjDHHV"
+      ],
+      "custom_css": [
+        ".star-html {display: block; width: 15vw; margin: 1.5rem 0;}",
+        "@media (max-width: 767px) {.star-html {width: 60vw; }}"
+      ],
+      "settings": {
+        "show_compare": "false",
+        "spec_hidden": "false",
+        "show_degree": "false",
+        "product_type": "chair",
+        "img_show_type": "grid"
+      }
+    },
+    "video_simplicity_ddxPrJ": {
+      "type": "video-simplicity",
+      "custom_css": [
+        ".video_simplicity:after {display: none;}",
+        ".video_simplicity {height: 42.2395833vw;}",
+        "@media screen and (max-width: 768px) {.video_simplicity {height: auto; }}"
+      ],
+      "settings": {
+        "file_type": "video",
+        "style": "one",
+        "cover_image": "shopify://shop_images/gaming-monitorarm-video-cover.webp",
+        "cover_image_mobile": "shopify://shop_images/gaming-monitorarm-video-cover-mobile.webp",
+        "video_url": "",
+        "url_upload": "shopify://files/videos/PRECISE ARM SUPPORT RELIEVE SHOULDER & ARM STRESS ultra.webm",
+        "title": "EXPERIENCE NEWFOUND FLEXIBILITY AND SPACE",
+        "description": "",
+        "autoplay": false
+      }
+    },
+    "img_with_text_box_simple_Eb4LE9": {
+      "type": "img-with-text-box-simple",
+      "blocks": {
+        "item_mALtVV": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Single Monitor Setup (Landscape)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Single_Monitor_Setup_Landscape_gaming_monitorarm.webp",
+            "video_url": ""
+          }
+        },
+        "item_nXLyEz": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Dual Monitor Setup (Landscape + Landscape)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Dual_Monitor_Setup_Landscape_Landscape_gaming_monitorarm.webp",
+            "video_url": ""
+          }
+        },
+        "item_EgNNMd": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Dual Monitor Setup (Landscape + Portrait)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Dual_Monitor_Setup_Landscape_Portrait_gaming_monitorarm.webp",
+            "video_url": ""
+          }
+        },
+        "item_EHXFQM": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Ultrawide Setup</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Ultrawide_Setup_gaming_monitorarm.webp",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_mALtVV",
+        "item_nXLyEz",
+        "item_EgNNMd",
+        "item_EHXFQM"
+      ],
+      "custom_css": [],
+      "name": "imgwithtextbox simple",
+      "settings": {
+        "specId": "imgwithtextbox_simple_one",
+        "title": "<p>WHAT YOUR SETUP COULD LOOK LIKE</p>",
+        "text": "",
+        "link_text": "",
+        "link": ""
+      }
+    },
+    "custom_liquid_LfMaL4": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n#imgwithtextbox_simple_one {\n  max-width: 75vw;\n  margin: 0 auto;\n  background-color: #000;\n  padding: 7.03125vw 8.33vw;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_title {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  font-style: Regular;\n  font-size: 36px;\n  leading-trim: NONE;\n  line-height: 48px;\n  letter-spacing: 0%;\n  vertical-align: middle;\n  text-transform: uppercase;\n  color: #fff;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_btn_box {\n  display: none;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_item_filebox,\n#imgwithtextbox_simple_one .imgwithtextbox_simple_item_filebox_image {\n  border-radius: 0;\n  height: 17.4479167vw;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_item_info {\n  padding: 0;\n  border-radius: 0;\n  background-color: inherit;\n  text-align: center;\n  margin-top: 1.354167vw;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_item_desc {\n  font-family: Roboto;\n  font-weight: 400;\n  font-style: Medium;\n  font-size: 18px;\n  leading-trim: NONE;\n  line-height: 22px;\n  letter-spacing: 0.32px;\n  vertical-align: middle;\n  color: rgba(255, 255, 255, .7);\n}\n\n@media screen and (max-width: 768px) {\n  #imgwithtextbox_simple_one {\n    max-width: 100vw;\n    padding: 8.33vw 5.33vw;\n  }\n\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_title {\n    font-size: 26px;\n    line-height: 30px;\n    max-width: 70vw;\n    margin: 0 auto;\n  }\n\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_item_filebox,\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_item_filebox_image {\n    height: 53.33vw;\n  }\n\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_item_desc {\n    font-size: 16px;\n  }\n\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_item_info {\n    margin-top: 5.33vw;\n  }\n}\n</style>"
+      }
+    },
+    "img_with_text_simplicity_byYNLU": {
+      "type": "img-with-text-simplicity",
+      "disabled": true,
+      "custom_css": [
+        ".img_with_text_simplicity {padding-top: 1.25vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "settings": {
+        "specId": "",
+        "title": "<p>DYNAMIC FLEXIBILITY PRECISE ADJUSTMENTS</p>",
+        "sub_title": "ERGONOMIC BENEFITS",
+        "description": "<p>Unlike traditional monitor stands, monitor arms are quick to reposition to fit different task needs and precise adjustments, so your screen always meets you at your level. This promotes a neutral head, neck position, and ultimately minimizing cervics spine strains.</p>",
+        "file_position": "bottom",
+        "file_type": "image",
+        "file_image": "shopify://shop_images/DYNAMIC_FLEXIBILITY_PRECISE_ADJUSTMENTS_monitorarm.webp",
+        "video_url": ""
+      }
+    },
+    "img_with_text_simplicity_9Jaxgn": {
+      "type": "img-with-text-simplicity",
+      "custom_css": [
+        ".img_with_text_simplicity {/* padding-top: 8.33vw; */ padding-bottom: 8.33vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "settings": {
+        "specId": "",
+        "title": "<p>REDUCED MUSCLE FATIGUE & EYE STRAIN</p>",
+        "sub_title": "IMPROVED POSTURE",
+        "description": "<p>Gives you the freedom to tilt and swivel your screen to prevent awkward angles, greatly reducing strains in shoulders, back, and eyes. Monitor arms can position the screen at an optimal position, which encourages you to keep a straight and aligned sitting posture.</p>",
+        "file_position": "bottom",
+        "file_type": "video",
+        "cover_image": "shopify://shop_images/REDUCED_MUSCLE_FATIGUE_EYE_STRAIN_gaming_monitorarm.webp",
+        "video_url": "",
+        "url_upload": "shopify://files/videos/REDUCED MUSCLE FATIGUE & EYE STRAIN gaming monitorarm.webm"
+      }
+    },
+    "image_compare_simplicity_RCqipK": {
+      "type": "image-compare-simplicity",
+      "custom_css": [
+        ".image_compare_simplicity {padding-bottom: 12.7604167vw;}",
+        "@media screen and (max-width: 767px) {.image_compare_simplicity {padding-top: 8.33vw; padding-bottom: 22.67vw; }}"
+      ],
+      "name": "Image Compare Simplicity",
+      "settings": {
+        "title": "<p>SPACE OPTIMIZATION</p>",
+        "left_image": "shopify://shop_images/SPACE_OPTIMIZATION_gaming_monitorarm_1.webp",
+        "right_image": "shopify://shop_images/SPACE_OPTIMIZATION_gaming_monitorarm_2.webp"
+      }
+    },
+    "img_with_text_box_simplicity_LGfQrm": {
+      "type": "img-with-text-box-simplicity",
+      "blocks": {
+        "file_with_text_pL6CtT": {
+          "type": "file_with_text",
+          "settings": {
+            "title": "2-Step Mount",
+            "sub_title": "",
+            "description": "Position and tighten",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/2-Step_Mount_monitorarm.webp",
+            "video_url": ""
+          }
+        },
+        "file_with_text_tVtagM": {
+          "type": "file_with_text",
+          "settings": {
+            "title": "Pre-Installed Arm",
+            "sub_title": "",
+            "description": "Connect and screw",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Pre-Installed_Arm_monitorarm.webp",
+            "video_url": ""
+          }
+        },
+        "file_with_text_k3y4NQ": {
+          "type": "file_with_text",
+          "settings": {
+            "title": "Attach Monitor",
+            "sub_title": "",
+            "description": "Place VESA in place and secure",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Attach_Monitor_monitorarm.webp",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "file_with_text_pL6CtT",
+        "file_with_text_tVtagM",
+        "file_with_text_k3y4NQ"
+      ],
+      "custom_css": [
+        ".img_with_text_box_simplicity {padding: 7.29167vw 8.33vw 8.33vw;}",
+        ".img_with_text_box_simplicity_maintitle {font-family: DIN-BlackItalic; font-weight: 500; letter-spacing: 0%; -webkit-text-fill-color: #fff; margin-bottom: 4.1145833vw;}",
+        ".img_with_text_box_simplicity_filebox_image {border-radius: 0; aspect-ratio: 1.0285;}",
+        ".img_with_text_box_simplicity_filebox {margin-bottom: 0.8854167vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_box_simplicity_maintitle {margin-bottom: 9.6vw; }}"
+      ],
+      "name": "file box simplicity",
+      "settings": {
+        "main_title": "EFFORTLESS 3 STEP INSTALLATION",
+        "mobile_display": "grid"
+      }
+    },
+    "desk_swiper_simplicity_MamcR8": {
+      "type": "desk-swiper-simplicity",
+      "blocks": {
+        "swiper_item_UMB8d3": {
+          "type": "swiperItem",
+          "settings": {
+            "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_1.webp",
+            "description": "<p>Tilt Range: +55° to -55°</p><p>Height Adjustment Range:7.3\" to 18.7\"</p>"
+          }
+        },
+        "swiper_item_RWAEaa": {
+          "type": "swiperItem",
+          "settings": {
+            "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_2.webp",
+            "description": "<p>Horizontal Adjustment Range</p><p>17.8’’</p>"
+          }
+        },
+        "swiper_item_6jqy7W": {
+          "type": "swiperItem",
+          "settings": {
+            "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_3.webp",
+            "description": "<p>Extension</p><p>20.7’’</p>"
+          }
+        },
+        "swiper_item_FPhg3V": {
+          "type": "swiperItem",
+          "settings": {
+            "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_4.webp",
+            "description": "<p>Screen Rotation</p><p>360°</p>"
+          }
+        }
+      },
+      "block_order": [
+        "swiper_item_UMB8d3",
+        "swiper_item_RWAEaa",
+        "swiper_item_6jqy7W",
+        "swiper_item_FPhg3V"
+      ],
+      "custom_css": [
+        ".desk_swiper_simplicity {padding-top: 10vw; padding-left: 8.33vw;}",
+        ".desk_swiper_simplicity_swiper {margin-top: 4.53125vw;}",
+        ".swiper-slide {width: 28.125vw;}",
+        ".desk_swiper_simplicity_swiper_image {height: 18.229167vw;}",
+        ".desk_swiper_simplicity_info {padding-right: 8.33vw;}",
+        "@media screen and (max-width: 768px) {.desk_swiper_simplicity_info {padding-right: 0; } .desk_swiper_simplicity_swiper_image {height: 69.33vw; } .swiper-slide {height: auto; } .desk_swiper_simplicity_swiper_desc {font-size: 16px; line-height: 20px; margin-top: 6.13vw; }}"
+      ],
+      "settings": {
+        "title": "<p>FULL RANGE MOTION</p>",
+        "sub_title": "",
+        "description": ""
+      }
+    },
+    "key_feature_simplicity_CUybft": {
+      "type": "key-feature-simplicity",
+      "blocks": {
+        "item_AytbD6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Cable_Management_monitorarm.webp",
+            "title": "<p>Cable Management</p>",
+            "text": "<p>Integrated cable management channel to </p><p>keep your setup neat and \"wireless\"</p>"
+          }
+        },
+        "item_g8yzAq": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/VESA_MIS-D_Compatible_monitorarm.webp",
+            "title": "<p>VESA MIS-D Compatible</p>",
+            "text": "<p>(75mm x 75mm or 100mm x 100mm)</p>"
+          }
+        },
+        "item_f7r3w6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Tension_Adjustment_monitorarm.webp",
+            "title": "<p>Tension Adjustment</p>",
+            "text": "<p>Lifts 19.9lbs by default, up to 44.1lbs</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_AytbD6",
+        "item_g8yzAq",
+        "item_f7r3w6"
+      ],
+      "name": "key feature simplicity",
+      "settings": {
+        "title": "<p>KEY FEATURES</p>",
+        "text": ""
+      }
+    },
+    "compare_simplicity_VGtrHd": {
+      "type": "compare-simplicity",
+      "name": "compare simplicity",
+      "settings": {
+        "title": "",
+        "description": "",
+        "arrow_icon": "",
+        "product": "",
+        "show_compare": false
+      }
+    },
+    "specs_simplicity_Epndpn": {
+      "type": "specs-simplicity",
+      "custom_css": [
+        ".specs_simplicity_head {justify-content: center;}",
+        ".specs_simplicity_contain_left {width: 22.1354167vw;}",
+        ".specs_simplicity_contain_left img {height: 28.3854167vw;}",
+        ".specs_simplicity {padding: 4.167vw 5.78125vw 11.979166vw 9.6354167vw;}",
+        ".specs_simplicity_contain_right_item_info_line {margin-top: 1vw;}",
+        "@media screen and (max-width: 768px) {.specs_simplicity_contain_left {width: 100%; } .specs_simplicity_contain_left img {height: 68.8vw; } .specs_simplicity_contain_right_item_info_line{margin-top:3.2vw }}"
+      ],
+      "name": "specs simplicity",
+      "settings": {
+        "product": "",
+        "show_type": "one"
+      }
+    },
+    "collapsible_content_HyyPmn": {
+      "type": "collapsible-content",
+      "blocks": {
+        "content_pXDQLJ": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "1. How do I track my order?",
+            "content": "<p>Once your order ships, you'll receive a shipping confirmation email and tracking number, so you can follow your package as it makes its way to you. However, tracking information can take up to 24 hours to update, so don’t worry if it doesn't show up immediately. We recommend tracking your order and ensuring that you’re home on the day of delivery to receive your order.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_rYegYT": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "2. When Will My Order be Shipped?",
+            "content": "<p>Inventory orders are typically shipped the next business day and will be delivered within 1-5 business days.  For more information, please check our Shipping and Return Policy.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_wJ9yCq": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "3. My order has been shipped. Can I change or cancel my order?",
+            "content": "<p>Unfortunately, we’re unable to cancel your order once it ships.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_pq9pqX": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "4. Can I exchange my Order？",
+            "content": "<p>For the most efficient resolution to obtain the item you desire, we recommend returning the original item. Once your return is approved, we encourage you to proceed with a separate purchase for the new item.  For more information, please check our Return & Refund Policy.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_wPRCtf": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "5. How will my order be delivered?",
+            "content": "<p>We deliver your order straight to your address via FedEx & UPS. You’ll receive an email with a tracking number when your order ships, so you can easily track your order. Please ensure that you’re home on the day of delivery to receive your order.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_aLc9yn": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "6. What do I do if I face an issue with my purchase?",
+            "content": "<p>In the unlikely event that you come across any damaged, defective or missing parts, please contact us at <a href=\"mailto:support@blacklyte.com\" title=\"mailto:support@blacklyte.com\">support@blacklyte.com </a>with a photo of the affected area and your order number. Our support specialists will do their best to assist you.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "content_pXDQLJ",
+        "content_rYegYT",
+        "content_wJ9yCq",
+        "content_pq9pqX",
+        "content_wPRCtf",
+        "content_aLc9yn"
+      ],
+      "custom_css": [
+        ".faqs-item {border-top: 1px solid #e6e6e6; font-family: Roboto;}",
+        ".collapsible-grid__item {border-bottom: 1px solid #e6e6e6;}",
+        ".collapsible-content {width: 100%; padding: 0 18.75vw;}",
+        ".halo-block-header {padding: 0 18.75vw;}",
+        ".halo-block-header h3 {font-family: Roboto; font-weight: 700;}",
+        ".card-body {color: #646669; font-size: 14px;}",
+        "@media screen and (max-width: 768px) {.collapsible-content {padding: 0 5.33vw; } .halo-block-header {padding: 0 5.33vw; } .card-body {font-weight: 400; }}"
+      ],
+      "settings": {
+        "id_section": "faq",
+        "container": "fullwidth",
+        "padding_full_width": 50,
+        "mg_top_desktop": 100,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 40,
+        "mg_bottom_desktop": 100,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 40,
+        "collapsible_bg": "#ffffff",
+        "collapsible_bg_gradient": "",
+        "collapsible_title": "FAQ",
+        "color_title": "#000000",
+        "fontsize_title": 32,
+        "fontsize_title_mb": 24,
+        "collapsible_des": "",
+        "color_des": "#3c3c3c",
+        "fontsize_des": 16,
+        "fontsize_des_mb": 12,
+        "max_width_des": 700,
+        "title_align": "left",
+        "enable_image_right": false,
+        "bg_content_color": "#ffffff",
+        "title_color": "#000000",
+        "content_color": "#000000",
+        "icon_color": "#000000",
+        "border_color": "#000000",
+        "font-size_heading": 16,
+        "font-size_content": 16,
+        "font-size_content_line-height": 22,
+        "font-size_heading_mb": 16,
+        "font-size_content_mb": 12,
+        "font-size_content_line-height_mb": 18
+      }
+    },
+    "1743652201516533c4": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "rich_text_VhDpg9": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rFxyzB": {
+          "type": "heading",
+          "settings": {
+            "heading": "Customer Reviews",
+            "heading_size": 40,
+            "heading_size_mb": 24,
+            "heading_line_height": 1,
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_rFxyzB"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "rich_text_bg": "#ffffff",
+        "rich_text_bg_gradient": "",
+        "enable_column": false,
+        "content_align": "center"
+      }
+    },
+    "custom_liquid_NV9eYk": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [
+        "#stamped-main-widget {margin: 0;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div \nid=\"stamped-main-widget\"\nclass=\"stamped-main-widget\">    \n</div>"
+      }
+    }
+  },
+  "order": [
+    "product_information_simplicity_A8DKzG",
+    "video_simplicity_ddxPrJ",
+    "img_with_text_box_simple_Eb4LE9",
+    "custom_liquid_LfMaL4",
+    "img_with_text_simplicity_byYNLU",
+    "img_with_text_simplicity_9Jaxgn",
+    "image_compare_simplicity_RCqipK",
+    "img_with_text_box_simplicity_LGfQrm",
+    "desk_swiper_simplicity_MamcR8",
+    "key_feature_simplicity_CUybft",
+    "compare_simplicity_VGtrHd",
+    "specs_simplicity_Epndpn",
+    "collapsible_content_HyyPmn",
+    "1743652201516533c4",
+    "rich_text_VhDpg9",
+    "custom_liquid_NV9eYk"
+  ]
+}
