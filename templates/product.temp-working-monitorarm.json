@@ -338,6 +338,10 @@
         "item_g8yzAq",
         "item_f7r3w6"
       ],
+      "custom_css": [
+        ".key_feature_simplicity {background-color: #f5f5f5;}",
+        ".key_feature_simplicity_title {color:#262629;}"
+      ],
       "name": "key feature simplicity",
       "settings": {
         "title": "<p>KEY FEATURES</p>",
