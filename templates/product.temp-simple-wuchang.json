@@ -57,51 +57,6 @@
         "autoplay": false
       }
     },
-    "number_box_simplicity_xAMBUr": {
-      "type": "number-box-simplicity",
-      "blocks": {
-        "item_i7tRGb": {
-          "type": "item",
-          "settings": {
-            "number": 4,
-            "text": "Stitching Technique"
-          }
-        },
-        "item_BeUJ8w": {
-          "type": "item",
-          "settings": {
-            "number": 798760,
-            "text": "Stitches"
-          }
-        },
-        "item_FggqTV": {
-          "type": "item",
-          "settings": {
-            "number": 8,
-            "text": "Thread Combination"
-          }
-        },
-        "item_kDaEqK": {
-          "type": "item",
-          "settings": {
-            "number": 34,
-            "text": "Hour Per Chair"
-          }
-        }
-      },
-      "block_order": [
-        "item_i7tRGb",
-        "item_BeUJ8w",
-        "item_FggqTV",
-        "item_kDaEqK"
-      ],
-      "disabled": true,
-      "name": "number box simplicity",
-      "settings": {
-        "title": "<p>YOU ARE NOT JUST ANOTHER SPECTATOR</p>",
-        "subtitle": "#GAME ON"
-      }
-    },
     "img_with_text_simplicity_ViGkh6": {
       "type": "img-with-text-simplicity",
       "custom_css": [
@@ -435,7 +390,6 @@
   "order": [
     "product_information_simplicity_A8DKzG",
     "video_simplicity_ddxPrJ",
-    "number_box_simplicity_xAMBUr",
     "img_with_text_simplicity_ViGkh6",
     "img_with_text_simplicity_gCyxNE",
     "img_with_text_simplicity_y9w6bc",
