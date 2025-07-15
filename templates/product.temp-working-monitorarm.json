@@ -83,7 +83,7 @@
             "title": "",
             "description": "<p>Single Monitor Setup (Landscape)</p>",
             "file_type": "image",
-            "file_image": "shopify://shop_images/Single_Monitor_Setup_Landscape_gaming_monitorarm.webp",
+            "file_image": "shopify://shop_images/Single_Monitor_Setup_Landscape_working_monitorarm.webp",
             "video_url": ""
           }
         },
@@ -93,7 +93,7 @@
             "title": "",
             "description": "<p>Dual Monitor Setup (Landscape + Landscape)</p>",
             "file_type": "image",
-            "file_image": "shopify://shop_images/Dual_Monitor_Setup_Landscape_Landscape_gaming_monitorarm.webp",
+            "file_image": "shopify://shop_images/Dual_Monitor_Setup_Landscape_Landscape_working_monitorarm.webp",
             "video_url": ""
           }
         },
@@ -103,7 +103,7 @@
             "title": "",
             "description": "<p>Dual Monitor Setup (Landscape + Portrait)</p>",
             "file_type": "image",
-            "file_image": "shopify://shop_images/Dual_Monitor_Setup_Landscape_Portrait_gaming_monitorarm.webp",
+            "file_image": "shopify://shop_images/Dual_Monitor_Setup_Landscape_Portrait_working_monitorarm.webp",
             "video_url": ""
           }
         },
@@ -113,7 +113,7 @@
             "title": "",
             "description": "<p>Ultrawide Setup</p>",
             "file_type": "image",
-            "file_image": "shopify://shop_images/Ultrawide_Setup_gaming_monitorarm.webp",
+            "file_image": "shopify://shop_images/Ultrawide_Setup_working_monitorarm.webp",
             "video_url": ""
           }
         }
@@ -191,8 +191,8 @@
       "name": "Image Compare Simplicity",
       "settings": {
         "title": "<p>SPACE OPTIMIZATION</p>",
-        "left_image": "shopify://shop_images/SPACE_OPTIMIZATION_gaming_monitorarm_1.webp",
-        "right_image": "shopify://shop_images/SPACE_OPTIMIZATION_gaming_monitorarm_2.webp"
+        "left_image": "shopify://shop_images/SPACE_OPTIMIZATION_working_monitorarm_1.webp",
+        "right_image": "shopify://shop_images/SPACE_OPTIMIZATION_working_monitorarm_2.webp"
       }
     },
     "img_with_text_box_simplicity_LGfQrm": {
