@@ -58,16 +58,18 @@
   bottom: 0;
   left: 50%;
   cursor: col-resize;
+  width: 4px;
+  background-color: rgba(255, 255, 255, .7);
   z-index: 10;
 }
 
 .image_compare_simplicity .image_compare_simplicity_divider svg {
-  width: 67px;
-  height: 67px;
+  width: 32px;
+  height: 56px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: -33.5px;
+  left: -16px;
 }
 
 @media screen and (max-width: 767px) {
