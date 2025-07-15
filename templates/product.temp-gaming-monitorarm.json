@@ -353,7 +353,8 @@
         ".specs_simplicity_contain_left {width: 22.1354167vw;}",
         ".specs_simplicity_contain_left img {height: 28.3854167vw;}",
         ".specs_simplicity {padding: 4.167vw 5.78125vw 11.979166vw 9.6354167vw;}",
-        ".specs_simplicity_contain_right_item_info_line{margin-top: 1vw;}"
+        ".specs_simplicity_contain_right_item_info_line {margin-top: 1vw;}",
+        "@media screen and (max-width: 768px) {.specs_simplicity_contain_left {width: 100%; } .specs_simplicity_contain_left img {height: 68.8vw; } .specs_simplicity_contain_right_item_info_line{margin-top:3.2vw }}"
       ],
       "name": "specs simplicity",
       "settings": {
