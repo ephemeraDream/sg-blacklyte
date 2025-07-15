@@ -29,24 +29,26 @@
 
     let isDragging = false;
     let rafId = null;
-    let currentClientX = 0;
+    let startX = 0;
+    let offsetX = 0;
 
     container.addEventListener('pointerdown', (e) => {
-      if (!e.target.closest('.image_compare_simplicity_divider')) return;
+      const dividerRect = divider.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+
+      // ✅ 鼠标点击到 divider 的位置相对于其左边的偏移
+      offsetX = e.clientX - dividerRect.left;
 
       isDragging = true;
       document.body.style.cursor = 'ew-resize';
 
-      currentClientX = e.clientX;
-      requestUpdate(); // 初次拖动
       document.addEventListener('pointermove', onDrag);
       document.addEventListener('pointerup', endDrag);
     });
 
     function onDrag(e) {
       if (!isDragging) return;
-      currentClientX = e.clientX;
-      requestUpdate();
+      requestUpdate(e.clientX);
     }
 
     function endDrag() {
@@ -58,18 +60,21 @@
       document.removeEventListener('pointerup', endDrag);
     }
 
-    function requestUpdate() {
-      if (rafId) return; // 避免同一帧重复调用
+    function requestUpdate(clientX) {
+      if (rafId) return;
       rafId = requestAnimationFrame(() => {
-        handleMove(currentClientX);
-        rafId = null; // 下次才能继续 raf
+        handleMove(clientX);
+        rafId = null;
       });
     }
 
     function handleMove(clientX) {
       const rect = container.getBoundingClientRect();
-      const offsetX = clientX - rect.left;
-      const percentage = (offsetX / rect.width) * 100;
+
+      // ✅ 用鼠标位置减去 offset 确保跟拖动条同步
+      const effectiveX = clientX - offsetX;
+      const relativeX = effectiveX - rect.left;
+      const percentage = (relativeX / rect.width) * 100;
 
       if (percentage > 1 && percentage < 98) {
         leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
