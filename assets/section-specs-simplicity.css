@@ -78,7 +78,7 @@
   display: flex;
   /* flex-wrap: wrap; */
   gap: 1.875vw;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .specs_simplicity .specs_simplicity_contain_right_item_info_line+.specs_simplicity_contain_right_item_info_line {
