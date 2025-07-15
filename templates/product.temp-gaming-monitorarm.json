@@ -142,6 +142,7 @@
     },
     "img_with_text_simplicity_byYNLU": {
       "type": "img-with-text-simplicity",
+      "disabled": true,
       "custom_css": [
         ".img_with_text_simplicity {padding-top: 1.25vw;}",
         "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
@@ -170,9 +171,9 @@
         "description": "<p>Gives you the freedom to tilt and swivel your screen to prevent awkward angles, greatly reducing strains in shoulders, back, and eyes. Monitor arms can position the screen at an optimal position, which encourages you to keep a straight and aligned sitting posture.</p>",
         "file_position": "bottom",
         "file_type": "video",
-        "cover_image": "shopify://shop_images/REDUCED_MUSCLE_FATIGUE_EYE_STRAIN_monitorarm.webp",
+        "cover_image": "shopify://shop_images/REDUCED_MUSCLE_FATIGUE_EYE_STRAIN_gaming_monitorarm.webp",
         "video_url": "",
-        "url_upload": "shopify://files/videos/REDUCED MUSCLE FATIGUE & EYE STRAIN monitorarm.webm"
+        "url_upload": "shopify://files/videos/REDUCED MUSCLE FATIGUE & EYE STRAIN gaming monitorarm.webm"
       }
     },
     "image_compare_simplicity_RCqipK": {
