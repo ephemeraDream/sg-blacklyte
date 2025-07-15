@@ -300,4 +300,9 @@
   .specs_simplicity_spec .specs_simplicity_contain_left img {
     height: auto;
   }
+
+  .specs_simplicity .specs_simplicity_contain_right_item:first-child {
+    padding: 0;
+    margin: 0;
+  }
 }
