@@ -165,7 +165,7 @@
         ".img_with_text_simplicity {/* padding-top: 8.33vw; */ padding-bottom: 8.33vw;}",
         ".img_with_text_simplicity {background-color: #f5f5f5;}",
         ".img_with_text_simplicity_title {color: #262629;}",
-        ".img_with_text_simplicity_desc {color: rgba(38,38,41, .7);}",
+        ".img_with_text_simplicity_desc {color: rgba(38, 38, 41, 0.7);}",
         "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
       ],
       "settings": {
@@ -184,6 +184,8 @@
       "type": "image-compare-simplicity",
       "custom_css": [
         ".image_compare_simplicity {padding-bottom: 12.7604167vw;}",
+        ".image_compare_simplicity {background-color: #f5f5f5;}",
+        ".image_compare_simplicity_title {color: #262629;}",
         "@media screen and (max-width: 767px) {.image_compare_simplicity {padding-top: 8.33vw; padding-bottom: 22.67vw; }}"
       ],
       "name": "Image Compare Simplicity",
