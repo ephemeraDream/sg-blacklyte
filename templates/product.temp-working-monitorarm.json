@@ -290,14 +290,7 @@
         "swiper_item_6jqy7W",
         "swiper_item_FPhg3V"
       ],
-      "custom_css": [
-        ".desk_swiper_simplicity {padding-top: 10vw; padding-left: 8.33vw;}",
-        ".desk_swiper_simplicity_swiper {margin-top: 4.53125vw;}",
-        ".swiper-slide {width: 28.125vw;}",
-        ".desk_swiper_simplicity_swiper_image {height: 18.229167vw;}",
-        ".desk_swiper_simplicity_info {padding-right: 8.33vw;}",
-        "@media screen and (max-width: 768px) {.desk_swiper_simplicity_info {padding-right: 0; } .desk_swiper_simplicity_swiper_image {height: 69.33vw; } .swiper-slide {height: auto; } .desk_swiper_simplicity_swiper_desc {font-size: 16px; line-height: 20px; margin-top: 6.13vw; }}"
-      ],
+      "custom_css": [],
       "settings": {
         "title": "<p>FULL RANGE MOTION</p>",
         "sub_title": "",

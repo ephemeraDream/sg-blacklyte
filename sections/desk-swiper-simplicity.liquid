@@ -1,6 +1,6 @@
 {{ 'section-desk-swiper-simplicity.css' | asset_url | stylesheet_tag }}
 
-<div class="desk_swiper_simplicity">
+<div class="desk_swiper_simplicity" id="{{ section.settings.specId }}">
   <div class="desk_swiper_simplicity_info">
     <div class="desk_swiper_simplicity_subtitle">{{ section.settings.sub_title }}</div>
     <div class="desk_swiper_simplicity_title">{{ section.settings.title }}</div>
@@ -99,6 +99,11 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
     {
       "type": "richtext",
       "id": "title",
