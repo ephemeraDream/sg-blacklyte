@@ -56,39 +56,61 @@
         {% endfor %}
       </div>
       <div class="specs_simplicity_contain_right">
-        <div class="specs_simplicity_contain_right_item">
-          <div class="specs_simplicity_contain_right_item_title">
-            {{ 'products.product.text.recommended_size' | t }}
+        {% if product_specs.recommended_size.value != blank %}
+          <div class="specs_simplicity_contain_right_item">
+            <div class="specs_simplicity_contain_right_item_title">
+              {{ 'products.product.text.recommended_size' | t }}
+            </div>
+            <div class="specs_simplicity_contain_right_item_info">
+              {% for spec in product_specs.recommended_size.value.data %}
+                <div class="specs_simplicity_contain_right_item_info_line{% if spec.label == '' %} empty_label{% endif %}">
+                  <span>{{ spec.label }} :</span>
+                  <span>{{ spec.value }}</span>
+                </div>
+              {% endfor %}
+            </div>
           </div>
-          <div class="specs_simplicity_contain_right_item_info">
-            {% for spec in product_specs.recommended_size.value.data %}
-              <div class="specs_simplicity_contain_right_item_info_line{% if spec.label == '' %} empty_label{% endif %}">
-                <span>{{ spec.label }} :</span>
-                <span>{{ spec.value }}</span>
-              </div>
-            {% endfor %}
+        {% endif %}
+        {% if product_specs.main_components.value != blank %}
+          <div class="specs_simplicity_contain_right_item">
+            <div class="specs_simplicity_contain_right_item_title">
+              {{ 'products.product.text.main_components' | t }}
+            </div>
+            <div class="specs_simplicity_contain_right_item_info">
+              {% for spec in product_specs.main_components.value.data %}
+                <div class="specs_simplicity_contain_right_item_info_line">
+                  <span>{{ spec.label }} :</span><span>{{ spec.value }}</span>
+                </div>
+              {% endfor %}
+            </div>
           </div>
-        </div>
-        <div class="specs_simplicity_contain_right_item">
-          <div class="specs_simplicity_contain_right_item_title">{{ 'products.product.text.main_components' | t }}</div>
-          <div class="specs_simplicity_contain_right_item_info">
-            {% for spec in product_specs.main_components.value.data %}
-              <div class="specs_simplicity_contain_right_item_info_line">
-                <span>{{ spec.label }} :</span><span>{{ spec.value }}</span>
-              </div>
-            {% endfor %}
+        {% endif %}
+        {% if product_specs.packaging.value != blank %}
+          <div class="specs_simplicity_contain_right_item">
+            <div class="specs_simplicity_contain_right_item_title">{{ 'products.product.text.packaging' | t }}</div>
+            <div class="specs_simplicity_contain_right_item_info">
+              {% for spec in product_specs.packaging.value.data %}
+                <div class="specs_simplicity_contain_right_item_info_line">
+                  <span>{{ spec.label }} :</span><span>{{ spec.value }}</span>
+                </div>
+              {% endfor %}
+            </div>
           </div>
-        </div>
-        <div class="specs_simplicity_contain_right_item">
-          <div class="specs_simplicity_contain_right_item_title">{{ 'products.product.text.packaging' | t }}</div>
-          <div class="specs_simplicity_contain_right_item_info">
-            {% for spec in product_specs.packaging.value.data %}
-              <div class="specs_simplicity_contain_right_item_info_line">
-                <span>{{ spec.label }} :</span><span>{{ spec.value }}</span>
-              </div>
-            {% endfor %}
+        {% endif %}
+        {% if product_specs.size_load_and_adjusrmenbts.value != blank %}
+          <div class="specs_simplicity_contain_right_item">
+            <div class="specs_simplicity_contain_right_item_title">
+              {{ 'products.product.text.size_load_and_adjusrmenbts' | t }}
+            </div>
+            <div class="specs_simplicity_contain_right_item_info">
+              {% for spec in product_specs.size_load_and_adjusrmenbts.value.data %}
+                <div class="specs_simplicity_contain_right_item_info_line">
+                  <span>{{ spec.label }} :</span><span>{{ spec.value }}</span>
+                </div>
+              {% endfor %}
+            </div>
           </div>
-        </div>
+        {% endif %}
       </div>
     </div>
   {% else %}
