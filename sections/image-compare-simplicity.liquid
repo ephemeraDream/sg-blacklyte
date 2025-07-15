@@ -68,7 +68,7 @@
       const offsetX = clientX - rect.left;
       const percentage = (offsetX / rect.width) * 100;
 
-      if (percentage > 1 && percentage < 99) {
+      if (percentage > 1 && percentage < 98) {
         leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
         rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
         divider.style.left = `${percentage}%`;
