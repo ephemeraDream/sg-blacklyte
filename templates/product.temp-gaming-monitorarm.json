@@ -161,7 +161,7 @@
     "img_with_text_simplicity_9Jaxgn": {
       "type": "img-with-text-simplicity",
       "custom_css": [
-        ".img_with_text_simplicity {padding-top: 8.33vw; padding-bottom: 8.33vw;}",
+        ".img_with_text_simplicity {/* padding-top: 8.33vw; */ padding-bottom: 8.33vw;}",
         "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
       ],
       "settings": {
