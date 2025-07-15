@@ -50,7 +50,7 @@
         "show_compare": "false",
         "spec_hidden": "false",
         "show_degree": "false",
-        "product_type": "chair",
+        "product_type": "peripheral",
         "img_show_type": "grid"
       }
     },
@@ -240,6 +240,7 @@
       ],
       "name": "file box simplicity",
       "settings": {
+        "specId": "",
         "main_title": "EFFORTLESS 3 STEP INSTALLATION",
         "mobile_display": "grid"
       }
@@ -291,6 +292,7 @@
         "@media screen and (max-width: 768px) {.desk_swiper_simplicity_info {padding-right: 0; } .desk_swiper_simplicity_swiper_image {height: 69.33vw; } .swiper-slide {height: auto; } .desk_swiper_simplicity_swiper_desc {font-size: 16px; line-height: 20px; margin-top: 6.13vw; }}"
       ],
       "settings": {
+        "specId": "",
         "title": "<p>FULL RANGE MOTION</p>",
         "sub_title": "",
         "description": ""
@@ -354,7 +356,7 @@
         ".specs_simplicity_contain_left img {height: 28.3854167vw;}",
         ".specs_simplicity {padding: 4.167vw 5.78125vw 11.979166vw 9.6354167vw;}",
         ".specs_simplicity_contain_right_item_info_line {margin-top: 1vw;}",
-        "@media screen and (max-width: 768px) {.specs_simplicity_contain_left {width: 100%; } .specs_simplicity_contain_left img {height: 68.8vw; } .specs_simplicity_contain_right_item_info_line{margin-top:3.2vw }}"
+        "@media screen and (max-width: 768px) {.specs_simplicity_contain_left {width: 100%; } .specs_simplicity_contain_left img {height: 68.8vw; } .specs_simplicity_contain_right_item_info_line {margin-top: 3.2vw; }}"
       ],
       "name": "specs simplicity",
       "settings": {
