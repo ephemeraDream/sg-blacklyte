@@ -29,39 +29,27 @@
 
     let isDragging = false;
 
-    divider.addEventListener('mousedown', () => {
+    // ✅ 使用 pointer 事件，统一处理鼠标和触摸
+    const startDrag = (e) => {
       isDragging = true;
       document.body.style.cursor = 'ew-resize';
-    });
+      document.addEventListener('pointermove', onDrag);
+      document.addEventListener('pointerup', endDrag);
+    };
 
-    document.addEventListener('mousemove', (e) => {
+    const onDrag = (e) => {
       if (!isDragging) return;
       handleMove(e.clientX);
-    });
+    };
 
-    document.addEventListener('mouseup', () => {
+    const endDrag = () => {
       isDragging = false;
       document.body.style.cursor = 'default';
-    });
+      document.removeEventListener('pointermove', onDrag);
+      document.removeEventListener('pointerup', endDrag);
+    };
 
-    divider.addEventListener('touchstart', () => {
-      isDragging = true;
-    });
-
-    document.addEventListener(
-      'touchmove',
-      (e) => {
-        if (!isDragging) return;
-        if (e.touches.length > 0) {
-          handleMove(e.touches[0].clientX);
-        }
-      },
-      { passive: false }
-    );
-
-    document.addEventListener('touchend', () => {
-      isDragging = false;
-    });
+    divider.addEventListener('pointerdown', startDrag);
 
     function handleMove(clientX) {
       const rect = container.getBoundingClientRect();
