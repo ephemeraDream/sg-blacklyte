@@ -56,7 +56,7 @@
   <div class="compare_simplicity_contact{% if product_compare != blank and section.settings.show_compare %} compare_simplicity_contact_top{% endif %}">
     <div class="compare_simplicity_contact_logo">
       <img
-        src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/compare_chat_head.webp?v=1743671629"
+        src="{{ section.settings.customer_service_url | default: 'https://cdn.shopify.com/s/files/1/0663/6742/2695/files/compare_chat_head.webp?v=1743671629' }}"
         alt="customer service"
         loading="lazy"
       >
@@ -153,6 +153,11 @@
       "id": "show_compare",
       "label": "show compare",
       "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "customer_service_url",
+      "label": "customer service url"
     }
   ],
   "presets": [
