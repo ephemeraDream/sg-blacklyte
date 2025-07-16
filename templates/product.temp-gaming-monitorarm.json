@@ -67,10 +67,10 @@
         "cover_image": "shopify://shop_images/gaming-monitorarm-video-cover.webp",
         "cover_image_mobile": "shopify://shop_images/gaming-monitorarm-video-cover-mobile.webp",
         "video_url": "",
-        "url_upload": "shopify://files/videos/PRECISE ARM SUPPORT RELIEVE SHOULDER & ARM STRESS ultra.webm",
+        "url_upload": "shopify://files/videos/gaming-monitorarm-video.webm",
         "title": "EXPERIENCE NEWFOUND FLEXIBILITY AND SPACE",
         "description": "",
-        "autoplay": false
+        "autoplay": true
       }
     },
     "img_with_text_box_simple_Eb4LE9": {
@@ -345,7 +345,8 @@
         "description": "",
         "arrow_icon": "",
         "product": "",
-        "show_compare": false
+        "show_compare": false,
+        "customer_service_url": ""
       }
     },
     "specs_simplicity_Epndpn": {
