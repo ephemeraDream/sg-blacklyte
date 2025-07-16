@@ -231,18 +231,19 @@
         "file_with_text_tVtagM",
         "file_with_text_k3y4NQ"
       ],
-      "custom_css": [
-        ".img_with_text_box_simplicity {padding: 7.29167vw 8.33vw 8.33vw;}",
-        ".img_with_text_box_simplicity_maintitle {font-family: DIN-BlackItalic; font-weight: 500; letter-spacing: 0%; -webkit-text-fill-color: #fff; margin-bottom: 4.1145833vw;}",
-        ".img_with_text_box_simplicity_filebox_image {border-radius: 0; aspect-ratio: 1.0285;}",
-        ".img_with_text_box_simplicity_filebox {margin-bottom: 0.8854167vw;}",
-        "@media screen and (max-width: 768px) {.img_with_text_box_simplicity_maintitle {margin-bottom: 9.6vw; }}"
-      ],
+      "custom_css": [],
       "name": "file box simplicity",
       "settings": {
-        "specId": "",
+        "specId": "effortless_three_step_installation",
         "main_title": "EFFORTLESS 3 STEP INSTALLATION",
         "mobile_display": "grid"
+      }
+    },
+    "custom_liquid_gt9rUJ": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>#effortless_three_step_installation {\n  padding: 7.29167vw 8.33vw 8.33vw;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_maintitle {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  letter-spacing: 0%;\n  -webkit-text-fill-color: #fff;\n  margin-bottom: 4.1145833vw;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_filebox_image {\n  aspect-ratio: 1.0285;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_filebox {\n  border-radius: 1.25vw;\n  margin-bottom: 0.8854167vw;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_title {\n  color: #fff;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_desc {\n  font-size: 20px;\n  line-height: 24px;\n  font-weight: 500;\n  color: rgba(255, 255, 255, 0.7);\n}\n\n@media screen and (max-width: 768px) {\n  #effortless_three_step_installation .img_with_text_box_simplicity_maintitle {\n    margin-bottom: 9.6vw;\n  }\n\n  #effortless_three_step_installation .img_with_text_box_simplicity_filebox_image {\n    border-radius: 3.2vw;\n  }\n\n  #effortless_three_step_installation .img_with_text_box_simplicity_desc {\n    font-size: 16px;\n  }\n}\n\n</style>"
       }
     },
     "desk_swiper_simplicity_MamcR8": {
@@ -283,19 +284,19 @@
         "swiper_item_6jqy7W",
         "swiper_item_FPhg3V"
       ],
-      "custom_css": [
-        ".desk_swiper_simplicity {padding-top: 10vw; padding-left: 8.33vw;}",
-        ".desk_swiper_simplicity_swiper {margin-top: 4.53125vw;}",
-        ".swiper-slide {width: 28.125vw;}",
-        ".desk_swiper_simplicity_swiper_image {height: 18.229167vw;}",
-        ".desk_swiper_simplicity_info {padding-right: 8.33vw;}",
-        "@media screen and (max-width: 768px) {.desk_swiper_simplicity_info {padding-right: 0; } .desk_swiper_simplicity_swiper_image {height: 69.33vw; } .swiper-slide {height: auto; } .desk_swiper_simplicity_swiper_desc {font-size: 16px; line-height: 20px; margin-top: 6.13vw; }}"
-      ],
+      "custom_css": [],
       "settings": {
-        "specId": "",
+        "specId": "full_range_motion",
         "title": "<p>FULL RANGE MOTION</p>",
         "sub_title": "",
         "description": ""
+      }
+    },
+    "custom_liquid_6RH7H9": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>#full_range_motion {\n  padding-top: 8.33vw;\n  padding-left: 8.33vw;\n}\n\n#full_range_motion .desk_swiper_simplicity_swiper {\n  margin-top: 4.53125vw;\n}\n\n#full_range_motion .desk_swiper_simplicity_title {\n  color: #fff;\n}\n\n#full_range_motion .desk_swiper_simplicity_swiper_desc {\n  font-size: 24px;\n  line-height: 48px;\n  font-weight: 500;\n  color: rgba(255, 255, 255, 0.7);\n}\n\n#full_range_motion .swiper-slide {\n  width: 28.125vw;\n}\n\n#full_range_motion .desk_swiper_simplicity_swiper_image {\n  height: 18.229167vw;\n}\n\n#full_range_motion .desk_swiper_simplicity_info {\n  padding-right: 8.33vw;\n}\n\n#full_range_motion .desk_swiper_simplicity_swiper_navigation {\n  top: 9.1145833vw;\n}\n\n@media screen and (max-width: 768px) {\n  #full_range_motion .desk_swiper_simplicity_info {\n    padding-right: 0;\n  }\n\n  #full_range_motion .desk_swiper_simplicity_swiper_image {\n    height: 69.33vw;\n  }\n\n  #full_range_motion .swiper-slide {\n    height: auto;\n  }\n\n  #full_range_motion .desk_swiper_simplicity_swiper_desc {\n    font-size: 16px;\n    line-height: 20px;\n    margin-top: 6.13vw;\n  }\n\n  #full_range_motion .desk_swiper_simplicity_swiper_navigation {\n    top: 34.67vw;\n  }\n}\n\n</style>"
       }
     },
     "key_feature_simplicity_CUybft": {
@@ -547,7 +548,9 @@
     "img_with_text_simplicity_9Jaxgn",
     "image_compare_simplicity_RCqipK",
     "img_with_text_box_simplicity_LGfQrm",
+    "custom_liquid_gt9rUJ",
     "desk_swiper_simplicity_MamcR8",
+    "custom_liquid_6RH7H9",
     "key_feature_simplicity_CUybft",
     "compare_simplicity_VGtrHd",
     "specs_simplicity_Epndpn",
