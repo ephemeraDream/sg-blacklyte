@@ -28,7 +28,31 @@
     const rightImage = document.querySelector('.image_compare_simplicity_right');
 
     let isDragging = false;
+    let animationFrameId = null;
+    let latestClientX = 0;
 
+    function updatePosition() {
+      const rect = container.getBoundingClientRect();
+      const offsetX = latestClientX - rect.left;
+      const percentage = (offsetX / rect.width) * 100;
+
+      if (percentage > 1 && percentage < 98) {
+        leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+        rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+        divider.style.left = `${percentage}%`;
+      }
+
+      animationFrameId = null; // 清除 ID 以便下次触发
+    }
+
+    function requestUpdate(clientX) {
+      latestClientX = clientX;
+      if (animationFrameId === null) {
+        animationFrameId = requestAnimationFrame(updatePosition);
+      }
+    }
+
+    // PC
     divider.addEventListener('mousedown', () => {
       isDragging = true;
       document.body.style.cursor = 'ew-resize';
@@ -36,7 +60,7 @@
 
     document.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
-      handleMove(e.clientX);
+      requestUpdate(e.clientX);
     });
 
     document.addEventListener('mouseup', () => {
@@ -44,6 +68,7 @@
       document.body.style.cursor = 'default';
     });
 
+    // Mobile
     divider.addEventListener('touchstart', () => {
       isDragging = true;
     });
@@ -53,7 +78,7 @@
       (e) => {
         if (!isDragging) return;
         if (e.touches.length > 0) {
-          handleMove(e.touches[0].clientX);
+          requestUpdate(e.touches[0].clientX);
         }
       },
       { passive: false }
@@ -62,18 +87,6 @@
     document.addEventListener('touchend', () => {
       isDragging = false;
     });
-
-    function handleMove(clientX) {
-      const rect = container.getBoundingClientRect();
-      const offsetX = clientX - rect.left;
-      const percentage = (offsetX / rect.width) * 100;
-
-      if (percentage > 1 && percentage < 98) {
-        leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-        rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
-        divider.style.left = `${percentage}%`;
-      }
-    }
   });
 </script>
 
