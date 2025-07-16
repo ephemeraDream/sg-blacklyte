@@ -1334,13 +1334,13 @@
 
 /* .product_infor_simplicity .product_infor_simplicity_left_contain_grid_img:first-child {
   height: 38.020833vw;
-}
+} */
 
 .product_infor_simplicity .product_infor_simplicity_left_contain_grid_img:nth-child(2),
 .product_infor_simplicity .product_infor_simplicity_left_contain_grid_img:nth-child(3) {
   width: calc((100% - 1.04167vw) / 2);
-  height: 30.20833vw;
-} */
+  /* height: 30.20833vw; */
+}
 
 .product_infor_simplicity .product_infor_simplicity_right_select_title_box {
   display: flex;
