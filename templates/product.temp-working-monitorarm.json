@@ -71,7 +71,7 @@
         "url_upload": "shopify://files/videos/working-monitorarm-video.webm",
         "title": "EXPERIENCE NEWFOUND FLEXIBILITY AND SPACE",
         "description": "",
-        "autoplay": false
+        "autoplay": true
       }
     },
     "img_with_text_box_simple_Eb4LE9": {
