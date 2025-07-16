@@ -1327,11 +1327,12 @@
   object-fit: contain;
   object-position: center center;
   width: 100%;
-  height: 34.375vw;
+  /* height: 34.375vw; */
+  height: auto;
   background-color: #F9F9F9;
 }
 
-.product_infor_simplicity .product_infor_simplicity_left_contain_grid_img:first-child {
+/* .product_infor_simplicity .product_infor_simplicity_left_contain_grid_img:first-child {
   height: 38.020833vw;
 }
 
@@ -1339,7 +1340,7 @@
 .product_infor_simplicity .product_infor_simplicity_left_contain_grid_img:nth-child(3) {
   width: calc((100% - 1.04167vw) / 2);
   height: 30.20833vw;
-}
+} */
 
 .product_infor_simplicity .product_infor_simplicity_right_select_title_box {
   display: flex;
