@@ -50,8 +50,8 @@
       "settings": {
         "file_type": "image",
         "style": "one",
-        "cover_image": "shopify://shop_images/major_video_cover.webp",
-        "cover_image_mobile": "shopify://shop_images/gaming-monitorarm-video-cover-mobile.webp",
+        "cover_image": "shopify://shop_images/wuchang_video_cover.webp",
+        "cover_image_mobile": "shopify://shop_images/wuchang_video_cover_mobile.webp",
         "video_url": "",
         "title": "Seemlessly Fitting",
         "description": "Engineered for your comfort, designed for your style.",
