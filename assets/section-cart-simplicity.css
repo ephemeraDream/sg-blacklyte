@@ -28,6 +28,17 @@
   margin-top: 24px;
 }
 
+.cart-simplicity .cart-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.cart-simplicity .cart-header {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
