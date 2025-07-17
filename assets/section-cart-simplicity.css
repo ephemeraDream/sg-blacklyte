@@ -61,6 +61,7 @@
 .cart-simplicity .cart-item-block-left {
   flex: 0 0 80px;
   position: relative;
+  margin-right: 50px;
 }
 
 .cart-simplicity .cart-item-image::before {
@@ -97,6 +98,29 @@
 .cart-simplicity .cart-item-image:hover:before {
   opacity: 1;
   visibility: visible;
+}
+
+.cart-simplicity .cart-item-name a {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #262629;
+}
+
+.cart-simplicity .cart-item-option {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #76767F;
+  margin-top: 14px;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
