@@ -16,6 +16,11 @@
   color: #262629;
 }
 
+.cart-simplicity .empty_cart_icon {
+  width: 104px;
+  height: 96px;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
