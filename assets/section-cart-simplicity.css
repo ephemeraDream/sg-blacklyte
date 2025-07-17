@@ -39,8 +39,12 @@
   align-items: center;
 }
 
-.cart-simplicity #cart_list_container {
+.cart-simplicity .cart-content-item {
   flex: 1;
+}
+
+.cart-simplicity .cart-total {
+  flex: 0 0 400px;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
