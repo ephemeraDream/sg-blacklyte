@@ -539,10 +539,29 @@
 
 .cart-simplicity .cart-total-subtotal {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
   margin-top: 30px;
   border-bottom: 0.5px solid #C0C0C0;
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 18px;
+  letter-spacing: 0%;
+  color: #262629;
+}
+
+.cart-simplicity .cart-total-subtotal .cart-total-value .text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 18px;
+  letter-spacing: 0%;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
