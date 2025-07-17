@@ -487,6 +487,21 @@
   margin-top: 45px;
 }
 
+.cart-simplicity .cart-note.form-field {
+  margin-top: 42px;
+}
+
+.cart-simplicity .cart-note.form-field .form-label {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #262629;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
