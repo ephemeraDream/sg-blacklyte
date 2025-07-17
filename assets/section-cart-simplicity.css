@@ -426,13 +426,19 @@
   gap: 10px;
 }
 
-.cart-simplicity .shipping_time_title_icon {
+.cart-simplicity .shipping_time_title_icon,
+.cart-simplicity .shipping_time_title_right {
   display: flex;
 }
 
 .cart-simplicity .shipping_time_title_icon svg {
   width: 24px;
   height: 24px;
+}
+
+.cart-simplicity .shipping_time_title_right svg {
+  width: 20px;
+  height: 20px;
 }
 
 .cart-simplicity .shipping_time_title_text {
