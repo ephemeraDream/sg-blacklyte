@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "main-cart",
+      "disabled": true,
       "settings": {
         "show_breadcrumb": false,
         "breadcrumb_color": "#999999",
@@ -44,11 +45,32 @@
       "type": "cart-simplicity",
       "name": "cart simplicity",
       "settings": {
-        "show_compare": "true",
-        "spec_hidden": "false",
-        "show_degree": "true",
-        "product_type": "chair",
-        "img_show_type": "thumb"
+        "show_breadcrumb": false,
+        "breadcrumb_color": "",
+        "breadcrumb_alignment": "center",
+        "show_page_title": false,
+        "page_title_color": "",
+        "page_title_alignment": "center",
+        "container": "container",
+        "side_padding_full_width": 0,
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "show_vendor": false,
+        "image_ratio": "portrait",
+        "portrait_aspect_ratio": 148,
+        "show_cart_countdown": false,
+        "cart_countdown_time": 30,
+        "cart_countdown_text_item": "Please, hurry! Someone has placed an order on one of the items you have in the cart. We'll keep it for you for",
+        "cart_countdown_text_empty_1": "Please, hurry! The",
+        "cart_countdown_text_empty_2": "product is being sold at a shocking promotional price. We'll keep it for you for",
+        "cart_countdown_product": "",
+        "show_trust_image": true,
+        "continue_button_action": "1",
+        "custom_button_link": ""
       }
     }
   },
