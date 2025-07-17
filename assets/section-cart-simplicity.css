@@ -195,6 +195,11 @@
   top: 0;
 }
 
+.cart-simplicity .cart-item-qty .btn-quantity.plus {
+  right: 0;
+  left: auto;
+}
+
 .cart-simplicity .cart-item-qty .btn-quantity:before {
   content: "";
   position: absolute;
