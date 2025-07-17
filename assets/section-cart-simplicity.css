@@ -37,7 +37,7 @@
 .cart-simplicity .cart-header {
   display: flex;
   align-items: center;
-  padding: 23px 0 19px;
+  padding: 23px 73px 19px 32px;
   border-bottom: 0.5px solid #C0C0C0;
 }
 
