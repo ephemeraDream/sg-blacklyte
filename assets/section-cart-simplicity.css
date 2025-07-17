@@ -174,7 +174,6 @@
   text-align: center;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -263,7 +262,7 @@
   text-decoration-offset: 0%;
   text-decoration-thickness: 0%;
   color: #76767F;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
