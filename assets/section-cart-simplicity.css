@@ -694,7 +694,7 @@
 }
 
 .cart-simplicity .list-payment__item .icon {
-  width: 24px;
+  height: 24px;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
