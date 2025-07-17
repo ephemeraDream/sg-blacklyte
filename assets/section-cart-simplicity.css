@@ -234,6 +234,10 @@
   vertical-align: middle;
 }
 
+.cart-simplicity .cart-item-qty input[type=number] {
+  -moz-appearance: textfield;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
