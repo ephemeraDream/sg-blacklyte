@@ -314,19 +314,19 @@
   color: #76767F;
 }
 
-.cart-simplicity .cart-header-item.cart-item-price {
+.cart-simplicity .cart-header-item.cart-header-price {
   width: 100px;
 }
 
-.cart-simplicity .cart-header-item.cart-item-quantity {
+.cart-simplicity .cart-header-item.cart-header-quantity {
   width: 144px;
 }
 
-.cart-simplicity .cart-header-item.cart-item-total {
+.cart-simplicity .cart-header-item.cart-header-total {
   width: 80px;
 }
 
-.cart-simplicity .cart-header-item.cart-item-info {
+.cart-simplicity .cart-header-item.cart-header-info {
   flex: 1;
 }
 
