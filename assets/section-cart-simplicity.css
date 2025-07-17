@@ -320,14 +320,17 @@
 
 .cart-simplicity .cart-header-item.cart-header-quantity {
   width: 144px;
+  padding-left: 15px;
 }
 
 .cart-simplicity .cart-header-item.cart-header-total {
   width: 80px;
+  text-align: right;
 }
 
 .cart-simplicity .cart-header-item.cart-header-info {
   flex: 1;
+  padding-left: 130px;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
