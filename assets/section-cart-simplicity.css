@@ -47,6 +47,17 @@
   flex: 0 0 400px;
 }
 
+.cart-simplicity .cart-item {
+  display: flex;
+  margin-left: 32px;
+  border-bottom: 0.5px solid #C0C0C0;
+}
+
+.cart-simplicity .cart-item-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
