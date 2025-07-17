@@ -464,7 +464,7 @@
                       </div>
                     </div>
                     <!-- product Attach -->
-                    {% if product.metafields.custom.product_attach.value != blank %}
+                    {% if item.product.metafields.custom.product_attach.value != blank %}
                       {% render 'complementary-products-cart', product: item.product, productVariant: item.variant %}
                     {% endif %}
                   {%- endfor -%}
