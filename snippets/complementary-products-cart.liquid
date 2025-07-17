@@ -2,90 +2,94 @@
   在购物车显示赠送的配件
 {% endcomment %}
 {%- liquid
-   assign product = product
+  assign product = product
 -%}
-<style>
-  .cart-complementary-products {
-    width: calc(100% - (4vw + 25px));
-    margin-left: calc(4vw + 25px);
-    margin-bottom: 30px;
-  }
-  .cart-complementary-products .product-sku-attach-main {
-    display: flex;
-    align-items: center;
-  }
-  .cart-complementary-products .product-sku-attach-main:nth-of-type(1) {
-    border-top: 1px solid #999;
-  }
-  .cart-complementary-products .product-sku-attach-main .item-left {
-    width: 69px;
-    height: 69px;
-    margin-right: 20px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .cart-complementary-products .product-sku-attach-main .item-right {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex: 1;
-  }
-  .cart-complementary-products .product-sku-attach-main .item-right .item-container-right {
-    white-space: nowrap;
-  }
-  .cart-complementary-products .product-sku-attach-main .item-right .item-title,
-  .cart-complementary-products .product-sku-attach-main .item-right .item-price{
-    font-size: 12px;
-    line-height: 18px;
-    font-weight: 400;
-    color: #333333;
-  }
-  .cart-complementary-products .product-sku-attach-main .item-right .item-price {
-    margin-left: 4px;
-  }
-  .cart-complementary-products .product-sku-attach-main .item-right .item-container-right .item-container-right-icons svg {
-    fill: none;
-    stroke: none;
-    width: 35px;
-    height: 35px;
-    vertical-align: middle;
-  }
-  .cart-complementary-products .product-sku-attach-main .item-right .item-container-right .item-container-right-tags {
-    font-size: 16px;
-    font-weight: 500;
-    color: #333333;
-    vertical-align: middle;
-  }
-  @media(max-width: 767px) {
-    .cart-complementary-products .product-sku-attach-main .item-left {
-      width: 39px;
-      height: 39px;
-      margin-right: 8px;
-    }
-    .cart-complementary-products .product-sku-attach-main .item-right .item-container-right .item-container-right-icons svg {
-      width: 20px;
-      height: 20px;
-    }
-    .cart-complementary-products .product-sku-attach-main .item-right .item-container-right .item-container-right-tags {
-      font-size: 12px;
-    }
-    .cart-complementary-products .product-sku-attach-main .item-right .item-container-right {
-      padding-right: 0;
-      white-space: nowrap;
+{% comment %}
+  <style>
+    .cart-complementary-products {
+      width: calc(100% - (4vw + 25px));
+      margin-left: calc(4vw + 25px);
+      margin-bottom: 30px;
     }
     .cart-complementary-products .product-sku-attach-main {
-      padding-top: 20px;
+      display: flex;
+      align-items: center;
     }
-  }
-  @media (min-width: 1025px) and (max-width: 1900px) {
+    .cart-complementary-products .product-sku-attach-main:nth-of-type(1) {
+      border-top: 1px solid #999;
+    }
     .cart-complementary-products .product-sku-attach-main .item-left {
-      width: 50px;
-      height: 50px;
-      margin-right: 10px;
+      width: 69px;
+      height: 69px;
+      margin-right: 20px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
-  }
-</style>
+    .cart-complementary-products .product-sku-attach-main .item-right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex: 1;
+    }
+    .cart-complementary-products .product-sku-attach-main .item-right .item-container-right {
+      white-space: nowrap;
+    }
+    .cart-complementary-products .product-sku-attach-main .item-right .item-title,
+    .cart-complementary-products .product-sku-attach-main .item-right .item-price{
+      font-family: "Poppins";
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 400;
+      color: #333333;
+    }
+    .cart-complementary-products .product-sku-attach-main .item-right .item-price {
+      margin-left: 4px;
+    }
+    .cart-complementary-products .product-sku-attach-main .item-right .item-container-right .item-container-right-icons svg {
+      fill: none;
+      stroke: none;
+      width: 35px;
+      height: 35px;
+      vertical-align: middle;
+    }
+    .cart-complementary-products .product-sku-attach-main .item-right .item-container-right .item-container-right-tags {
+      font-family: "Poppins";
+      font-size: 16px;
+      font-weight: 500;
+      color: #333333;
+      vertical-align: middle;
+    }
+    @media(max-width: 767px) {
+      .cart-complementary-products .product-sku-attach-main .item-left {
+        width: 39px;
+        height: 39px;
+        margin-right: 8px;
+      }
+      .cart-complementary-products .product-sku-attach-main .item-right .item-container-right .item-container-right-icons svg {
+        width: 20px;
+        height: 20px;
+      }
+      .cart-complementary-products .product-sku-attach-main .item-right .item-container-right .item-container-right-tags {
+        font-size: 12px;
+      }
+      .cart-complementary-products .product-sku-attach-main .item-right .item-container-right {
+        padding-right: 0;
+        white-space: nowrap;
+      }
+      .cart-complementary-products .product-sku-attach-main {
+        padding-top: 20px;
+      }
+    }
+    @media (min-width: 1025px) and (max-width: 1900px) {
+      .cart-complementary-products .product-sku-attach-main .item-left {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+      }
+    }
+  </style>
+{% endcomment %}
 
 <!-- Product Attach -->
 <div class="cart-complementary-products">
@@ -95,12 +99,15 @@
         {% if productVariant.option2 == variant.option2 %}
           <div class="product-sku-attach-main oy-in" data-color="{{ variant.option2 }}">
             <div class="item-left">
-                <img width="" height="" src="{{ variant.featured_image | image_url  }}" alt="">
+              <img width="" height="" src="{{ variant.featured_image | image_url  }}" alt="">
             </div>
             <div class="item-right">
               <span class="item-title">
                 {{ item.title }}
-                <span class="item-price">worth({{ shop.money_format | split: '{{' | first }}{{ item.price | money_without_currency }})</span>
+                <span class="item-price"
+                  >worth({{ shop.money_format | split: '{{' | first -}}
+                  {{- item.price | money_without_currency }})</span
+                >
               </span>
               <span class="item-container-right">
                 <span class="item-container-right-icons">
@@ -116,12 +123,15 @@
       {% else %}
         <div class="product-sku-attach-main oy-in" data-color="{{ variant.option2 }}">
           <div class="item-left">
-              <img width="" height="" src="{{ variant.featured_image | image_url  }}" alt="">
+            <img width="" height="" src="{{ variant.featured_image | image_url  }}" alt="">
           </div>
           <div class="item-right">
             <span class="item-title">
               {{ item.title }}
-              <span class="item-price">worth({{ shop.money_format | split: '{{' | first }}{{ item.price | money_without_currency }})</span>
+              <span class="item-price"
+                >worth({{ shop.money_format | split: '{{' | first -}}
+                {{- item.price | money_without_currency }})</span
+              >
             </span>
             <span class="item-container-right">
               <span class="item-container-right-icons">
