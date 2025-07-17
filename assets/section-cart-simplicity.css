@@ -1,8 +1,5 @@
-.cart-simplicity {
-  background-color: #F8F9FC;
-}
-
 .cart-simplicity .container {
-  max-width: auto;
+  max-width: none;
   padding: 0 16%;
+  background-color: #F8F9FC;
 }
