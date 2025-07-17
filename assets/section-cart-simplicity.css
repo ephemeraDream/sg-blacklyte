@@ -537,7 +537,9 @@
   color: #262629;
 }
 
-.cart-simplicity .cart-total-subtotal {
+.cart-simplicity .cart-total-subtotal,
+.cart-simplicity .cart-total-savings,
+.cart-simplicity .cart-total-grandtotal {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -564,7 +566,7 @@
   letter-spacing: 0%;
 }
 
-.cart-simplicity .cart-total-label {
+.cart-simplicity .cart-coupon-code .cart-total-label {
   font-family: Roboto;
   font-weight: 500;
   font-style: Medium;
