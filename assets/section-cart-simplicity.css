@@ -653,8 +653,7 @@
 .cart-simplicity #cart-checkout {
   height: 50px;
   border-radius: 25px;
-  background: linear-gradient(0deg, #333333, #333333),
-    linear-gradient(270deg, #8DE0FC 0%, #2672EB 100%);
+  background: linear-gradient(270deg, #8DE0FC 0%, #2672EB 100%);
   display: flex;
   align-items: center;
   justify-content: center;
