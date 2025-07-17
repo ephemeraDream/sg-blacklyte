@@ -263,6 +263,7 @@
   text-decoration-offset: 0%;
   text-decoration-thickness: 0%;
   color: #76767F;
+  text-transform: uppercase;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
