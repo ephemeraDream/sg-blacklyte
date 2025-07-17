@@ -4,6 +4,19 @@
   background-color: #F8F9FC;
 }
 
+.cart-simplicity .page-header {
+  padding: 46px 0 33px;
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 30px;
+  leading-trim: NONE;
+  line-height: 58px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #262629;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
