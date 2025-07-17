@@ -594,6 +594,19 @@
   margin-top: 12px;
 }
 
+.cart-simplicity .cart-coupon-code .form-text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 21px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #76767F;
+  margin-top: 16px;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
