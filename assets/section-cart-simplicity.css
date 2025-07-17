@@ -538,8 +538,7 @@
 }
 
 .cart-simplicity .cart-total-subtotal,
-.cart-simplicity .cart-total-savings,
-.cart-simplicity .cart-total-grandtotal {
+.cart-simplicity .cart-total-savings {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -566,7 +565,7 @@
   letter-spacing: 0%;
 }
 
-.cart-simplicity .cart-coupon-code .cart-total-label {
+.cart-simplicity .cart-total-coupon .cart-total-label {
   font-family: Roboto;
   font-weight: 500;
   font-style: Medium;
@@ -607,6 +606,23 @@
   vertical-align: middle;
   color: #76767F;
   margin-top: 16px;
+}
+
+.cart-simplicity .cart-total-grandtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-top: 30px;
+  border-bottom: 0.5px solid #C0C0C0;
+  font-family: Roboto;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 18px;
+  letter-spacing: 0%;
+  color: #262629;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
