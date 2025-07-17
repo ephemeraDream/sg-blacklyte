@@ -135,6 +135,10 @@
   padding: 6px 0;
 }
 
+.cart-simplicity .cart-discounts .discounts__discount svg {
+  margin-right: 6px;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
