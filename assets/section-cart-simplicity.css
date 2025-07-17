@@ -123,6 +123,18 @@
   margin-top: 14px;
 }
 
+.cart-simplicity .cart-discounts .discounts__discount {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 13px;
+  leading-trim: NONE;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #262629;
+  padding: 6px 0;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
