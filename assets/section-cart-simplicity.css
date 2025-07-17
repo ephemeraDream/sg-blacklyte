@@ -334,6 +334,11 @@
   padding-left: 130px;
 }
 
+.cart-simplicity .product-sku-attach-main {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
