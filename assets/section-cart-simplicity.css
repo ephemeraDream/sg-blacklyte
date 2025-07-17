@@ -337,6 +337,12 @@
 .cart-simplicity .product-sku-attach-main {
   display: flex;
   align-items: center;
+  margin-left: 172px;
+}
+
+.cart-simplicity .product-sku-attach-main .item-left {
+  width: 69px;
+  height: 69px;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
