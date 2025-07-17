@@ -466,6 +466,14 @@
   margin-top: 10px;
 }
 
+.cart-simplicity .shipping_time_container .shipping_time_title .shipping_time_title_right {
+  transition: all .2s ease-in-out;
+}
+
+.cart-simplicity .shipping_time_container .shipping_time_title .shipping_time_title_right.active {
+  transform: rotate(-90deg);
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
