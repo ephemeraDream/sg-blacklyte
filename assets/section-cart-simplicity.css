@@ -334,10 +334,14 @@
   padding-left: 130px;
 }
 
+.cart-simplicity .cart-complementary-products {
+  margin-left: 172px;
+  border-top: 0.5px solid #C0C0C0;
+}
+
 .cart-simplicity .product-sku-attach-main {
   display: flex;
   align-items: center;
-  margin-left: 172px;
   padding: 10px 0;
   gap: 5px;
 }
@@ -345,6 +349,24 @@
 .cart-simplicity .product-sku-attach-main .item-left {
   width: 69px;
   height: 69px;
+}
+
+.cart-simplicity .product-sku-attach-main .item-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-simplicity .product-sku-attach-main .item-right .item-title {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 12px;
+  leading-trim: NONE;
+  line-height: 18px;
+  letter-spacing: 0%;
+  color: #262629;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
