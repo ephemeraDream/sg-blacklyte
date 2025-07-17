@@ -239,17 +239,17 @@
   vertical-align: middle;
 }
 
-.cart-simplicity .cart-item-qty input[type=number] {
-  -moz-appearance: textfield;
+.cart-simplicity .cart-item-qty input::-webkit-outer-spin-button,
+.cart-simplicity .cart-item-qty input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+  display: none;
 }
 
-.cart-simplicity .cart-item-qty input[type="number"]::-webkit-outer-spin-button,
-.cart-simplicity .cart-item-qty input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.cart-simplicity .cart-item-qty input[type=number] {
+  -moz-appearance: textfield;
 }
+
 
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
