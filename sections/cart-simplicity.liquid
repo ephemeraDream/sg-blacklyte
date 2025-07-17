@@ -910,9 +910,10 @@
     }
 
     // 如果是手机端，则默认收起 shipping_time_content
-    if (isMobile()) {
-      $('.shipping_time_content').hide();
-    }
+    // if (isMobile()) {
+    //   $('.shipping_time_content').hide();
+    // }
+    $('.shipping_time_content').hide();
 
     $('.shipping_time_title').on('click', function () {
       var container = $(this).closest('.shipping_time_container');
