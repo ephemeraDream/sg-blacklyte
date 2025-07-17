@@ -452,6 +452,19 @@
   color: #262629;
 }
 
+.cart-simplicity .shipping_time_content {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #76767F;
+  padding-top: 17px;
+  border-top: 0.5px solid #D4D4D4;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
