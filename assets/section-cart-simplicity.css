@@ -671,6 +671,19 @@
   border: none;
 }
 
+.cart-simplicity .payments_container {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 12px;
+  leading-trim: NONE;
+  line-height: 18px;
+  letter-spacing: 0%;
+  color: #262629;
+  text-align: center;
+  margin-top: 34px;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
