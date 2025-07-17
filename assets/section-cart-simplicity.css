@@ -63,7 +63,7 @@
   position: relative;
 }
 
-.cart-simplicity .cart-item-block-left::before {
+.cart-simplicity .cart-item-image::before {
   content: "";
   display: block;
   position: absolute;
@@ -93,8 +93,8 @@
   pointer-events: none;
 }
 
-.cart-simplicity .cart-item-block-left:hover .icon,
-.cart-simplicity .cart-item-block-left:hover:before {
+.cart-simplicity .cart-item-image:hover .icon,
+.cart-simplicity .cart-item-image:hover:before {
   opacity: 1;
   visibility: visible;
 }
