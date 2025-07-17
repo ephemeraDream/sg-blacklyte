@@ -244,6 +244,11 @@
   -webkit-appearance: none;
 }
 
+.cart-simplicity .cart-item-qty input[type="number"]::-webkit-outer-spin-button,
+.cart-simplicity .cart-item-qty input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
