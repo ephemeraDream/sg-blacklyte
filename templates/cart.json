@@ -51,7 +51,7 @@
         "show_page_title": true,
         "page_title_color": "#181818",
         "page_title_alignment": "center",
-        "container": "1570",
+        "container": "container",
         "side_padding_full_width": 0,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
