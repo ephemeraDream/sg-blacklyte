@@ -250,6 +250,20 @@
   -moz-appearance: textfield;
 }
 
+.cart-simplicity .cart-remove {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 12px;
+  leading-trim: NONE;
+  line-height: 12px;
+  letter-spacing: 0%;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-offset: 0%;
+  text-decoration-thickness: 0%;
+  color: #76767F;
+}
 
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
