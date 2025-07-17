@@ -684,12 +684,17 @@
   margin-top: 34px;
 }
 
-.cart-simplicity .payments_container .payments_container_title {
-  margin-bottom: 16px;
-}
-
 .cart-simplicity .list-payment__item {
   margin: 0;
+  margin-top: 16px;
+}
+
+.cart-simplicity .list-payment__item+.list-payment__item {
+  margin-left: 10px;
+}
+
+.cart-simplicity .list-payment__item .icon {
+  width: 24px;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
