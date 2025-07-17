@@ -240,7 +240,8 @@
 }
 
 .cart-simplicity .cart-item-qty input[type=number] {
-  appearance: textfield;
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
