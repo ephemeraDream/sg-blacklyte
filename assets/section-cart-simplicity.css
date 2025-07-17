@@ -403,6 +403,12 @@
   color: #262629;
 }
 
+.cart-simplicity .shipping_time_container {
+  background-color: #fff;
+  padding: 0 28px 0 21px;
+  border-radius: 10px;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
