@@ -502,6 +502,21 @@
   color: #262629;
 }
 
+.cart-simplicity .cart-note.form-field .form-input {
+  border: 1px solid #D7D7D7;
+  background-color: #fff;
+  padding: 14px 20px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 21px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #76767F;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
