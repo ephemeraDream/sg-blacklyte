@@ -43,6 +43,9 @@
 
 .cart-simplicity .cart-content-item {
   flex: 1;
+}
+
+.cart-simplicity #cart_list_container {
   background-color: #fff;
   border-radius: 10px;
 }
