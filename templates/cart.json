@@ -50,7 +50,7 @@
         "breadcrumb_alignment": "left",
         "show_page_title": true,
         "page_title_color": "#181818",
-        "page_title_alignment": "center",
+        "page_title_alignment": "left",
         "container": "container",
         "side_padding_full_width": 0,
         "mg_top_desktop": 0,
