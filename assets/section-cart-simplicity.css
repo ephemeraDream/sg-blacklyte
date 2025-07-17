@@ -282,17 +282,22 @@
 .cart-simplicity .cart-item-block.cart-item-price {
   width: 150px;
   text-align: left;
+  margin-top: 10px;
 }
 
-.cart-simplicity .cart-item-block,
-.cart-simplicity .cart-item-block.cart-item-price,
 .cart-simplicity .cart-item-block.cart-item-quantity {
   width: 144px;
+  margin-top: 10px;
 }
 
 .cart-simplicity .cart-item-block.cart-item-total {
   width: 80px;
+  margin-top: 10px;
   text-align: right;
+}
+
+.cart-simplicity .cart-item-info {
+  flex: 1;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
