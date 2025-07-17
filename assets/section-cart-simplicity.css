@@ -684,6 +684,14 @@
   margin-top: 34px;
 }
 
+.cart-simplicity .payments_container .payments_container_title {
+  margin-bottom: 16px;
+}
+
+.cart-simplicity .list-payment__item {
+  margin: 0;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
