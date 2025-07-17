@@ -2,7 +2,6 @@
   max-width: none;
   padding: 0 16%;
   background-color: #F8F9FC;
-  padding-bottom: 124px;
 }
 
 .cart-simplicity .page-header {
@@ -33,6 +32,7 @@
   display: flex;
   align-items: flex-start;
   gap: 30px;
+  padding-bottom: 124px;
 }
 
 .cart-simplicity .cart-header {
