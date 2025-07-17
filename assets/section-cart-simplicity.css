@@ -41,6 +41,7 @@
 
 .cart-simplicity .cart-content-item {
   flex: 1;
+  background-color: #fff;
 }
 
 .cart-simplicity .cart-total {
