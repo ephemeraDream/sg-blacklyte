@@ -58,6 +58,10 @@
   align-items: flex-start;
 }
 
+.cart-simplicity .cart-item-block-left {
+  flex: 0 0 80px;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
