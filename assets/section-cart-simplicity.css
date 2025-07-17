@@ -283,7 +283,7 @@
 }
 
 .cart-simplicity .cart-item-block.cart-item-price {
-  width: 150px;
+  width: 100px;
   text-align: left;
   margin-top: 10px;
 }
@@ -312,6 +312,22 @@
   line-height: 100%;
   letter-spacing: 0%;
   color: #76767F;
+}
+
+.cart-simplicity .cart-header-item.cart-item-price {
+  width: 100px;
+}
+
+.cart-simplicity .cart-header-item.cart-item-quantity {
+  width: 144px;
+}
+
+.cart-simplicity .cart-header-item.cart-item-total {
+  width: 80px;
+}
+
+.cart-simplicity .cart-header-item.cart-item-info {
+  flex: 1;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
