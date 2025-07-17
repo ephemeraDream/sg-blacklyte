@@ -3,3 +3,10 @@
   padding: 0 16%;
   background-color: #F8F9FC;
 }
+
+@media (min-width: 1025px) and (max-width: 1480px) {
+  .cart-simplicity .container {
+    padding-left: var(--padding-left-1);
+    padding-right: var(--padding-right-1);
+  }
+}
