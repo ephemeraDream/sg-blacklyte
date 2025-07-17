@@ -133,10 +133,16 @@
   letter-spacing: 0%;
   color: #262629;
   padding: 6px 0;
+  display: flex;
+  align-items: center;
 }
 
 .cart-simplicity .cart-discounts .discounts__discount svg {
   margin-right: 6px;
+}
+
+.cart-simplicity .small-screen-visible {
+  display: none;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
