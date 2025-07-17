@@ -341,12 +341,12 @@
 .cart-simplicity .cart-complementary-products {
   margin-left: 172px;
   border-top: 0.5px solid #C0C0C0;
+  padding: 10px 0;
 }
 
 .cart-simplicity .product-sku-attach-main {
   display: flex;
   align-items: center;
-  padding: 10px 0;
   gap: 5px;
 }
 
