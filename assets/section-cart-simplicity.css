@@ -16,9 +16,16 @@
   color: #262629;
 }
 
-.cart-simplicity .empty_cart_icon svg{
+.cart-simplicity .empty_cart_icon svg {
   width: 104px;
   height: 96px;
+}
+
+.cart-simplicity .cart-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
