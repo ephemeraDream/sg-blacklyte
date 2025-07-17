@@ -154,9 +154,10 @@
   line-height: 100%;
   letter-spacing: 0%;
   color: #262629;
+  justify-content: flex-start;
 }
 
-.cart-simplicity .cart-item__old-price {
+.cart-simplicity .cart-item__price-wrapper .cart-item__old-price {
   font-family: Roboto;
   font-weight: 400;
   font-style: Regular;
