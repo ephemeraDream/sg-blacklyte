@@ -265,6 +265,17 @@
   text-transform: capitalize;
 }
 
+.cart-simplicity .cart-item-value {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #262629;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
