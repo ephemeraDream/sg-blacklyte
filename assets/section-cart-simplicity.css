@@ -287,7 +287,6 @@
 
 .cart-simplicity .cart-item-block.cart-item-quantity {
   width: 144px;
-  margin-top: 10px;
 }
 
 .cart-simplicity .cart-item-block.cart-item-total {
@@ -298,6 +297,7 @@
 
 .cart-simplicity .cart-item-info {
   flex: 1;
+  margin-top: 10px;
 }
 
 @media (min-width: 1025px) and (max-width: 1480px) {
