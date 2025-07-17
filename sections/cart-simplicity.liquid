@@ -913,14 +913,13 @@
     // if (isMobile()) {
     //   $('.shipping_time_content').hide();
     // }
-    $('.shipping_time_content').forEach((item, index) => {
+    $('.shipping_time_content').each(function (index) {
       if (index !== 0) {
-        item.hide();
-        const container = item.closest('.shipping_time_container');
+        $(this).hide();
+        const container = $(this).closest('.shipping_time_container');
         container.find('.shipping_time_title_right').toggleClass('active');
       }
     });
-
     $('.shipping_time_title').on('click', function () {
       var container = $(this).closest('.shipping_time_container');
       var content = container.find('.shipping_time_content');
