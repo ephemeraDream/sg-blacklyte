@@ -520,6 +520,11 @@
   margin-top: 20px;
 }
 
+.cart-simplicity .cart-content-item form {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
