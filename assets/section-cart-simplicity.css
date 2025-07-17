@@ -356,6 +356,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-right: 73px;
 }
 
 .cart-simplicity .product-sku-attach-main .item-right .item-title {
@@ -365,6 +366,32 @@
   font-size: 12px;
   leading-trim: NONE;
   line-height: 18px;
+  letter-spacing: 0%;
+  color: #262629;
+}
+
+.cart-simplicity .item-container-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cart-simplicity .item-container-right-icons {
+  display: flex;
+}
+
+.cart-simplicity .item-container-right-icons svg {
+  width: 35px;
+  height: 35px;
+}
+
+.cart-simplicity .item-container-right-tags {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 100%;
   letter-spacing: 0%;
   color: #262629;
 }
