@@ -39,6 +39,10 @@
   align-items: center;
 }
 
+.cart-simplicity #cart_list_container {
+  flex: 1;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
