@@ -167,23 +167,26 @@
                             {%- if item.product.variants.size != 0 -%}
                               {%- unless item.variant.title contains 'Default' -%}
                                 <div class="cart-item-option">
-                                  {%- assign variant_parts = item.variant.title | split: ' / ' %}
-                                  {%- for part in variant_parts -%}
-                                    <span class="previewCartItem-variant">{{ part }}</span>
-                                  {%- endfor -%}
-                                  <a
-                                    href="javascript:void(0);"
-                                    class="cart-item-edit"
-                                    data-open-edit-cart
-                                    data-edit-cart-url="{{ item.url }}&view=ajax_edit_cart"
-                                    data-edit-cart-id="{{ item.id }}"
-                                    data-edit-cart-quantity="{{ item.quantity }}"
-                                    data-line="{{ item.key }}"
-                                    data-index="{{ item.index | plus: 1 }}"
-                                    aria-label="{{ 'sections.cart.edit_title' | t: title: item.variant.title }}"
-                                  >
-                                    {%- render 'icon-edit' -%}
-                                  </a>
+                                  {{ item.variant.title }}
+                                  {% comment %}
+                                    {%- assign variant_parts = item.variant.title | split: ' / ' %}
+                                    {%- for part in variant_parts -%}
+                                      <span class="previewCartItem-variant">{{ part }}</span>
+                                    {%- endfor -%}
+                                    <a
+                                      href="javascript:void(0);"
+                                      class="cart-item-edit"
+                                      data-open-edit-cart
+                                      data-edit-cart-url="{{ item.url }}&view=ajax_edit_cart"
+                                      data-edit-cart-id="{{ item.id }}"
+                                      data-edit-cart-quantity="{{ item.quantity }}"
+                                      data-line="{{ item.key }}"
+                                      data-index="{{ item.index | plus: 1 }}"
+                                      aria-label="{{ 'sections.cart.edit_title' | t: title: item.variant.title }}"
+                                    >
+                                      {%- render 'icon-edit' -%}
+                                    </a>
+                                  {% endcomment %}
                                 </div>
                               {%- endunless -%}
                             {%- endif -%}
