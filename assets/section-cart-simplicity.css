@@ -64,6 +64,7 @@
 .cart-simplicity .cart-item-block-left {
   flex: 0 0 80px;
   position: relative;
+  top: -20px;
   margin-right: 50px;
 }
 
