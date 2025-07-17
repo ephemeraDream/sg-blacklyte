@@ -338,6 +338,8 @@
   display: flex;
   align-items: center;
   margin-left: 172px;
+  padding: 10px 0;
+  gap: 5px;
 }
 
 .cart-simplicity .product-sku-attach-main .item-left {
