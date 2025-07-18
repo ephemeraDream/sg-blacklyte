@@ -33,6 +33,7 @@
   align-items: flex-start;
   gap: 30px;
   padding-bottom: 124px;
+  flex-wrap: wrap;
 }
 
 .cart-simplicity .cart-header {
@@ -366,7 +367,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 73px;
 }
 
 .cart-simplicity .product-sku-attach-main .item-right .item-title {
@@ -733,10 +733,6 @@
 
   .cart-simplicity .pc_show {
     display: none;
-  }
-
-  .cart-simplicity .cart-content-wrapper {
-    flex-wrap: wrap;
   }
 
   .cart-simplicity .cart-total.cart-content-item {
