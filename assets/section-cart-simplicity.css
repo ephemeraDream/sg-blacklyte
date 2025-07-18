@@ -860,4 +860,8 @@
   .cart-simplicity .shipTotal .form-text {
     margin-top: 35px;
   }
+
+  .cart-simplicity .shipping_time_container {
+    background-color: #F8F9FC;
+  }
 }
