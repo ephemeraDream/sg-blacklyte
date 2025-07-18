@@ -677,7 +677,8 @@
                   {% render 'cart-email-subscription' %}
                 </li>
               {%- endif -%}
-              <form action="{{ routes.cart_url }}" method="post" novalidate>
+              <div class="cart_mobilebar_sentinel"></div>
+              <form action="{{ routes.cart_url }}" method="post" novalidate class="cart_form">
                 <ul class="cart-totals list-unstyled">
                   <div class="cart--totals-title">{{ 'general.cart.order_summary' | t }}</div>
                   <li class="cart-total cart-total-subtotal" id="cart_subtotal_container">
@@ -1100,6 +1101,23 @@
     // if (isMobile()) {
     //   $('.shipping_time_content').hide();
     // }
+    if (isMobile()) {
+      const stickyEl = document.querySelector('.cart_form');
+      const sentinel = document.querySelector('.cart_mobilebar_sentinel');
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) {
+            stickyEl.classList.add('is_fixed');
+          } else {
+            stickyEl.classList.add('is_fixed');
+          }
+        },
+        { root: null, threshold: 0.1 }
+      );
+
+      observer.observe(sentinel);
+    }
     $('.shipping_time_content').each(function (index) {
       if (index !== 0) {
         $(this).hide();
