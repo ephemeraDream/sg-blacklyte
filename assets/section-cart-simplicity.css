@@ -830,4 +830,18 @@
     left: -17px;
     top: -22px;
   }
+
+  .cart-simplicity .product-sku-attach-main .item-right {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .cart-simplicity .product-sku-attach-main .item-right .item-title {
+    margin-left: -4px;
+  }
+
+  .cart-simplicity .item-container-right {
+    flex: 1;
+    justify-content: flex-end;
+  }
 }
