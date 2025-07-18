@@ -706,3 +706,10 @@
     padding-right: var(--padding-right-1);
   }
 }
+
+@media (max-width: 1024px) {
+  .cart-simplicity .container {
+    padding-left: 5.33vw;
+    padding-right: 5.33vw;
+  }
+}
