@@ -712,4 +712,9 @@
     padding-left: 5.33vw;
     padding-right: 5.33vw;
   }
+
+  .cart-simplicity .page-header {
+    text-align: center;
+    padding: 22px 0 16px;
+  }
 }
