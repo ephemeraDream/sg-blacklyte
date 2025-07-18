@@ -868,4 +868,8 @@
   .cart-simplicity .cart-note.form-field {
     margin-bottom: 42px;
   }
+
+  .cart-simplicity .cart_mobilebar_sentinel {
+    display: block;
+  }
 }
