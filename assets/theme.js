@@ -3666,7 +3666,6 @@
                 }
 
                 if (quantity > 20) {
-                    $target.value = 20
                     quantity = 20
                 }
 
