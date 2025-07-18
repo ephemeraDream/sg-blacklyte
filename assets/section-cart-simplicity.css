@@ -754,7 +754,8 @@
   }
 
   .cart-simplicity .cart-complementary-products {
-    margin-left: 0;
+    margin-left: 83px;
+    border: none;
   }
 
   .cart-simplicity .cart-item {
@@ -808,6 +809,7 @@
 
   .cart-simplicity .cart-item__discounted-prices {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    gap: 10px;
   }
 }
