@@ -756,6 +756,7 @@
   .cart-simplicity .cart-complementary-products {
     margin-left: 83px;
     border: none;
+    padding: 0;
   }
 
   .cart-simplicity .cart-item {
@@ -817,9 +818,16 @@
     padding-top: 22px;
     border-top: 1px solid #EDEFF2;
     margin-top: 30px;
+    align-items: flex-start;
   }
 
   .cart-simplicity .product-sku-attach-main+.product-sku-attach-main {
     margin-top: 18px;
+  }
+
+  .cart-simplicity .product-sku-attach-main .item-left {
+    position: relative;
+    left: -17px;
+    top: -22px;
   }
 }
