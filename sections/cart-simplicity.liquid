@@ -235,57 +235,7 @@
                               </ul>
                             {%- endif -%}
                             {% comment %} adding-block {% endcomment %}
-                            <div class="cart-item-block cart-item-price small-screen-visible">
-                              <div class="cart-item__price-wrapper">
-                                {%- assign current_variant = item.variant -%}
-                                {%- if item.original_price != item.final_price -%}
-                                  <dl class="cart-item__discounted-prices">
-                                    <dt class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</dt>
-                                    <dd class="price price--end" data-item-final-price-display>
-                                      {{ item.final_price | money }}
-                                    </dd>
-                                    <dt class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</dt>
-                                    <dd>
-                                      <s class="cart-item__old-price price price--end" data-item-original-price-display>
-                                        {{- item.original_price | money -}}
-                                      </s>
-                                    </dd>
-                                  </dl>
-                                  {%- if item.variant.available and item.unit_price_measurement -%}
-                                    <div class="unit-price caption">
-                                      <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
-                                      {{ item.variant.unit_price | money }}
-                                      <span aria-hidden="true">/</span>
-                                      <span class="visually-hidden"
-                                        >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
-                                      >
-                                      {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
-                                        {{- item.variant.unit_price_measurement.reference_value -}}
-                                      {%- endif -%}
-                                      {{ item.variant.unit_price_measurement.reference_unit }}
-                                    </div>
-                                  {%- endif -%}
-                                {%- elsif current_variant.compare_at_price > current_variant.price -%}
-                                  <dl class="cart-item__discounted-prices">
-                                    <dt class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</dt>
-                                    <dd class="price price--end" data-item-final-price-display>
-                                      {{ current_variant.price | money }}
-                                    </dd>
-                                    <dt class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</dt>
-                                    <dd>
-                                      <s class="cart-item__old-price price price--end" data-item-original-price-display>
-                                        {{- current_variant.compare_at_price | money -}}
-                                      </s>
-                                    </dd>
-                                  </dl>
-                                {%- else -%}
-                                  <span class="price price--end" data-item-final-price-display>
-                                    {{- item.original_price | money -}}
-                                  </span>
-                                {%- endif -%}
-                              </div>
-                            </div>
-                            <div class="cart-item-blocks small-screen-visible">
+                            <div class="cart-item-blocks small-screen-visible pmd_show">
                               <div class="cart-item-blocks-left">
                                 <div class="cart-item-block cart-item-quantity small-screen-visible">
                                   <cart-update-quantity data-product="{{ item.product_id }}" class="cart-item-qty">
@@ -351,10 +301,60 @@
                                 </a>
                               </div>
                             </div>
+                            <div class="cart-item-block cart-item-price small-screen-visible pmd_show">
+                              <div class="cart-item__price-wrapper">
+                                {%- assign current_variant = item.variant -%}
+                                {%- if item.original_price != item.final_price -%}
+                                  <dl class="cart-item__discounted-prices">
+                                    <dt class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</dt>
+                                    <dd class="price price--end" data-item-final-price-display>
+                                      {{ item.final_price | money }}
+                                    </dd>
+                                    <dt class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</dt>
+                                    <dd>
+                                      <s class="cart-item__old-price price price--end" data-item-original-price-display>
+                                        {{- item.original_price | money -}}
+                                      </s>
+                                    </dd>
+                                  </dl>
+                                  {%- if item.variant.available and item.unit_price_measurement -%}
+                                    <div class="unit-price caption">
+                                      <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                      {{ item.variant.unit_price | money }}
+                                      <span aria-hidden="true">/</span>
+                                      <span class="visually-hidden"
+                                        >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
+                                      >
+                                      {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                                        {{- item.variant.unit_price_measurement.reference_value -}}
+                                      {%- endif -%}
+                                      {{ item.variant.unit_price_measurement.reference_unit }}
+                                    </div>
+                                  {%- endif -%}
+                                {%- elsif current_variant.compare_at_price > current_variant.price -%}
+                                  <dl class="cart-item__discounted-prices">
+                                    <dt class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</dt>
+                                    <dd class="price price--end" data-item-final-price-display>
+                                      {{ current_variant.price | money }}
+                                    </dd>
+                                    <dt class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</dt>
+                                    <dd>
+                                      <s class="cart-item__old-price price price--end" data-item-original-price-display>
+                                        {{- current_variant.compare_at_price | money -}}
+                                      </s>
+                                    </dd>
+                                  </dl>
+                                {%- else -%}
+                                  <span class="price price--end" data-item-final-price-display>
+                                    {{- item.original_price | money -}}
+                                  </span>
+                                {%- endif -%}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="cart-item-block cart-item-price">
+                      <div class="cart-item-block cart-item-price pc_show">
                         <div class="cart-item__price-wrapper">
                           {%- assign current_variant = item.variant -%}
                           {%- if item.original_price != item.final_price -%}
@@ -404,7 +404,7 @@
                           {%- endif -%}
                         </div>
                       </div>
-                      <div class="cart-item-block cart-item-quantity">
+                      <div class="cart-item-block cart-item-quantity pc_show">
                         <cart-update-quantity
                           class="cart-item-qty"
                           data-product="{{ item.product_id }}"
@@ -454,7 +454,7 @@
                         endif
                       -%}
                       <div
-                        class="cart-item-block cart-item-total"
+                        class="cart-item-block cart-item-total pc_show"
                         data-price="{{ price_to_display }}"
                         data-original-price="{{ item.original_price }}"
                       >
