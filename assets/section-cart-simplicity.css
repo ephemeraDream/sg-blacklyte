@@ -734,4 +734,17 @@
   .cart-simplicity .pc_show {
     display: none;
   }
+
+  .cart-simplicity .cart-content-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .cart-simplicity .cart-total.cart-content-item {
+    flex: 1;
+  }
+
+  .cart-simplicity .cart-item,
+  .cart-simplicity .cart-complementary-products {
+    background-color: #F8F9FC;
+  }
 }
