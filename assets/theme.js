@@ -3667,7 +3667,7 @@
 
                 if (quantity > 20) {
                     $target.value = 20
-                    return
+                    quantity = 20
                 }
 
                 Shopify.changeItem(productLine, quantity, index, (cart) => {
