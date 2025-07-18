@@ -3655,6 +3655,14 @@
                     index = $target.data('index');
                 let enoughInStock = true;
 
+                if (isNaN(quantity) || quantity <= 0) {
+                    quantity = 1;
+                    $target.val(quantity);
+                } else if (quantity > 20) {
+                    quantity = 20;
+                    $target.val(quantity);
+                }
+
                 if (stock < quantity && stock > 0) {
                     var arrayInVarName = `cart_selling_array_${event.currentTarget.closest('cart-update-quantity').dataset.product}`,
                         itemInArray = window[arrayInVarName],
@@ -3663,10 +3671,6 @@
                         quantity = stock;
                         enoughInStock = false;
                     }
-                }
-
-                if (quantity > 20) {
-                    quantity = 20
                 }
 
                 Shopify.changeItem(productLine, quantity, index, (cart) => {
