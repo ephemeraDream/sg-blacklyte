@@ -753,4 +753,12 @@
     border: none;
     margin-top: 14px;
   }
+
+  .cart-simplicity .cart-complementary-products {
+    margin-left: 0;
+  }
+
+  .cart-simplicity .cart-item {
+    margin-left: 0;
+  }
 }
