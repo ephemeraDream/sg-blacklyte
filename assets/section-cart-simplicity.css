@@ -872,4 +872,13 @@
   .cart-simplicity .cart_mobilebar_sentinel {
     display: block;
   }
+
+  .cart-simplicity .cart_form.is_fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+  }
 }
