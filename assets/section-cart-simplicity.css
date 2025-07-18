@@ -864,4 +864,8 @@
   .cart-simplicity .shipping_time_container {
     background-color: #F8F9FC;
   }
+
+  .cart-simplicity .cart-note.form-field {
+    margin-bottom: 42px;
+  }
 }
