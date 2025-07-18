@@ -794,4 +794,14 @@
   .cart-simplicity .form-input.quantity {
     background-color: #fff;
   }
+
+  .cart-simplicity .cart-item-block.cart-item-quantity {
+    width: auto;
+  }
+
+  .cart-simplicity .cart-item-name a,
+  .cart-simplicity .cart-item-option,
+  .cart-simplicity .cart-discounts.list-unstyled {
+    padding-left: 6px;
+  }
 }
