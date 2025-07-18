@@ -735,7 +735,7 @@
   }
 
   .cart-simplicity .pc_show {
-    display: none;
+    display: none !important;
   }
 
   .cart-simplicity .cart-total.cart-content-item {
