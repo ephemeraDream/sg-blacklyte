@@ -747,4 +747,10 @@
   .cart-simplicity .cart-complementary-products {
     background-color: #F8F9FC;
   }
+
+  .cart-simplicity .cart-item+.cart-item,
+  .cart-simplicity .cart-complementary-products+.cart-item {
+    border: none;
+    margin-top: 14px;
+  }
 }
