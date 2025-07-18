@@ -850,4 +850,13 @@
   .cart-simplicity .cart-content-item form {
     padding: 30px 0 0;
   }
+
+  .cart-simplicity .cart-coupon-code .form-text,
+  .cart-simplicity .shipTotal .form-text {
+    text-align: center;
+  }
+
+  .cart-simplicity .shipTotal .form-text {
+    margin-top: 35px;
+  }
 }
