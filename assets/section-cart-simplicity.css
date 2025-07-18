@@ -770,5 +770,28 @@
   .cart-simplicity .cart-item-block-left {
     flex: 0 0 68px;
     margin-right: 14px;
+    top: -12px;
+  }
+
+  .cart-simplicity .cart-item-option {
+    margin-top: 6px;
+  }
+
+  .cart-simplicity .cart-discounts .discounts__discount {
+    padding: 2px 0;
+  }
+
+  .cart-simplicity .cart-item-blocks.small-screen-visible.pmd_show {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .cart-simplicity .cart-item-qty {
+    padding-bottom: 0;
+  }
+
+  .cart-simplicity .form-input.quantity {
+    background-color: #fff;
   }
 }
