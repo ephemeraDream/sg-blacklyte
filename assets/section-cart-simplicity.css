@@ -785,6 +785,7 @@
     display: flex;
     align-items: center;
     gap: 13px;
+    margin-top: 15px;
   }
 
   .cart-simplicity .cart-item-qty {
