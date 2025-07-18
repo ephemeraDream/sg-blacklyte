@@ -53,6 +53,8 @@
 
 .cart-simplicity .cart-total {
   flex: 0 0 400px;
+  position: sticky;
+  top: 100px;
 }
 
 .cart-simplicity .cart-item {
