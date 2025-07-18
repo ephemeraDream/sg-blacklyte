@@ -759,6 +759,8 @@
 
   .cart-simplicity .cart-item {
     margin-left: 0;
+    border-radius: 12px;
+    padding: 24px 16.5px 27px 17px;
   }
 
   .cart-simplicity .cart-content-wrapper {
