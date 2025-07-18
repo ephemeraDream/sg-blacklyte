@@ -462,11 +462,11 @@
                           {{- price_to_display | times: item.quantity | money -}}
                         </span>
                       </div>
+                      <!-- product Attach -->
+                      {% if item.product.metafields.custom.product_attach.value != blank %}
+                        {% render 'complementary-products-cart', product: item.product, productVariant: item.variant %}
+                      {% endif %}
                     </div>
-                    <!-- product Attach -->
-                    {% if item.product.metafields.custom.product_attach.value != blank %}
-                      {% render 'complementary-products-cart', product: item.product, productVariant: item.variant %}
-                    {% endif %}
                   {%- endfor -%}
                 </div>
               </div>
