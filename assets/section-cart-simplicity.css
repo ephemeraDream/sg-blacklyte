@@ -700,6 +700,10 @@
   height: 24px;
 }
 
+.cart-simplicity .pmd_show {
+  display: none;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
@@ -720,6 +724,14 @@
   }
 
   .cart-simplicity .cart-header {
+    display: none;
+  }
+
+  .cart-simplicity .pmd_show {
+    display: block;
+  }
+
+  .cart-simplicity .pc_show {
     display: none;
   }
 }

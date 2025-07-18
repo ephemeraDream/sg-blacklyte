@@ -470,6 +470,155 @@
                   {%- endfor -%}
                 </div>
               </div>
+
+              <div class="cart-content-item cart-total pmd_show" data-cart-total style="border-radius: 4px;">
+                {%- if show_email_subscripe -%}
+                  <li class="cart-total cart-total-shipping" id="email_container">
+                    <div class="cart-total-label" style="margin-left: 25px;">
+                      <span class="text">{{ 'general.cart.email' | t }}</span>
+                    </div>
+                    <div class="cart-total-value" style="display: none;"></div>
+                    {% render 'cart-email-subscription' %}
+                  </li>
+                {%- endif -%}
+                <form action="{{ routes.cart_url }}" method="post" novalidate>
+                  <ul class="cart-totals list-unstyled">
+                    <div class="cart--totals-title">{{ 'general.cart.order_summary' | t }}</div>
+                    <li class="cart-total cart-total-subtotal" id="cart_subtotal_container">
+                      <div class="cart-total-label">
+                        <span class="text">{{ 'general.cart.subtotal' | t }}</span>
+                      </div>
+                      <div class="cart-total-value">
+                        <span class="text">{{ cart.original_total_price | money }}</span>
+                      </div>
+                    </li>
+                    {%- if show_shipping_rate_calculator -%}
+                      <li class="cart-total cart-total-shipping">
+                        <div class="cart-total-label">
+                          <span class="text">{{ 'general.cart.shipping' | t }}</span>
+                        </div>
+                        <div class="cart-total-value" style="display: none;"></div>
+                        {% render 'shipping-rates-calculator' %}
+                      </li>
+                    {%- endif -%}
+                    {%- if show_coupon_code -%}
+                      <li class="cart-total cart-total-coupon">
+                        <div class="cart-total-label">
+                          <span class="text">{{ 'general.cart.coupon_code' | t }}</span>
+                        </div>
+                        <div class="cart-total-value" style="display: none;"></div>
+                        <div class="cart-coupon-code form-field discount-code-field">
+                          <label class="form-label hiddenLabels" for="cart-coupon-code">
+                            {{- 'general.cart.coupon_code' | t -}}
+                          </label>
+                          <input
+                            class="form-input"
+                            autocomplete="off"
+                            type="text"
+                            name="discount"
+                            id="cart-coupon-code"
+                            placeholder="{{'general.cart.enter_coupo_code' | t }}"
+                          >
+                          <p class="form-text">{{ 'general.cart.coupon_code_text' | t }}</p>
+                        </div>
+                      </li>
+                    {%- endif -%}
+                    <li
+                      class="cart-discount cart-total-savings"
+                      {% if cart.total_discount == 0 %}
+                        style="display: none;"
+                      {% endif %}
+                      data-saved-discount-display
+                      data-dis="{{ cart.total_discount }}"
+                    >
+                      <div class="cart-total-label">
+                        <span class="text">{{ 'general.cart.are_saving' | t }}</span>
+                      </div>
+                      <div class="cart-total-value">
+                        <span class="text" data-saved-discount-value>
+                          {%- if cart.cart_level_discount_applications != blank -%}
+                            {%- for discount in cart.cart_level_discount_applications -%}
+                              {%- render 'icon-discount' -%}
+                              {{ discount.title }}
+                              (-{{ discount.total_allocated_amount | money }})
+                            {%- endfor -%}
+                          {%- else -%}
+                            {{ cart.total_discount | money | prepend: '-' }}
+                          {%- endif -%}
+                        </span>
+                      </div>
+                    </li>
+                    <li class="cart-total cart-total-grandtotal">
+                      <div class="cart-total-label">
+                        <span class="text">{{ 'general.cart.total' | t }}</span>
+                      </div>
+                      <div class="cart-total-value" data-cart-total-value="{{ cart.total_price }}">
+                        <span class="text">{{ cart.total_price | money }}</span>
+                      </div>
+                    </li>
+                    {%- if settings.show_shipping_note -%}
+                      <li class="shipTotal">
+                        <p class="cart-total-value form-text">
+                          {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                        </p>
+                      </li>
+                    {%- endif -%}
+                  </ul>
+                  <div class="cart-actions">
+                    {%- if settings.show_global_checkbox -%}
+                      <div class="cart-checkbox global-checkbox">
+                        <input
+                          class="global-checkbox--input"
+                          type="checkbox"
+                          name="conditions"
+                          id="cart_conditions"
+                          data-target="#cart-checkout"
+                        >
+                        <label class="global-checkbox--label form-label--checkbox" for="cart_conditions">
+                          {{- settings.global_checkbox_text -}}
+                        </label>
+                        {%- if settings.global_checkbox_link_text != blank -%}
+                          <a href="javascript:void(0)" data-term-condition>
+                            {{- settings.global_checkbox_link_text | escape -}}
+                          </a>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                    <div class="action-group">
+                      <button
+                        class="button button-1 button-checkout"
+                        {% if settings.show_global_checkbox %}
+                          disabled="disabled"
+                        {% endif %}
+                        id="cart-checkout"
+                        data-href="{{ routes.cart_url | split: '/cart' | first }}/checkout"
+                      >
+                        {{ 'sections.cart.checkout' | t }}
+                      </button>
+                      <!-- 购物车有商品的情况下, 是否显示继续购物按钮 -->
+                      <!--
+                        {%- if continue_button_action == "1" -%}
+                            <a class="button button-2 button-continue"{% if custom_button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ custom_button_link }}"{% endif %} role="button">{{ 'general.continue_shopping' | t }}</a>
+                        {%- else -%}
+                            <a class="button button-2 button-continue" role="link" aria-disabled="true" onclick="window.history.back();" role="button" id="cart-previous-page-btn">{{ 'general.back_to_previous_page' | t }}</a>
+                        {%- endif -%}
+                      -->
+                    </div>
+                  </div>
+                </form>
+                <!-- payments icons -->
+                <div class="payments_container">
+                  <span class="payments_container_title">{{ 'general.cart.accept_text' | t }}</span>
+                  <div>
+                    {%- for type in shop.enabled_payment_types -%}
+                      <span class="list-payment__item">
+                        {{- type | payment_type_svg_tag: class: 'icon icon--full-color' -}}
+                      </span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              </div>
+
               {% if show_gift_card and product != null and product != blank %}
                 <div id="is-a-gift" class="gift-card-container" data-id="{{ id }}" style="display: none;">
                   {% render 'icon-cart-gift' %}
@@ -677,7 +826,7 @@
                 </div>
               {%- endif -%}
             </div>
-            <div class="cart-content-item cart-total" data-cart-total style="border-radius: 4px;">
+            <div class="cart-content-item cart-total pc_show" data-cart-total style="border-radius: 4px;">
               {%- if show_email_subscripe -%}
                 <li class="cart-total cart-total-shipping" id="email_container">
                   <div class="cart-total-label" style="margin-left: 25px;">
