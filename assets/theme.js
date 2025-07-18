@@ -3666,7 +3666,7 @@
                 }
 
                 if (quantity > 20) {
-                    $target.val() = 20
+                    $target.value = 20
                     return
                 }
 
