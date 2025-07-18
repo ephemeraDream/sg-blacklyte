@@ -766,4 +766,9 @@
   .cart-simplicity .cart-content-wrapper {
     flex-wrap: wrap;
   }
+
+  .cart-simplicity .cart-item-block-left {
+    flex: 0 0 68px;
+    margin-right: 14px;
+  }
 }
