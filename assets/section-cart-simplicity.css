@@ -711,10 +711,15 @@
   .cart-simplicity .container {
     padding-left: 5.33vw;
     padding-right: 5.33vw;
+    background-color: #fff;
   }
 
   .cart-simplicity .page-header {
     text-align: center;
     padding: 22px 0 16px;
+  }
+
+  .cart-simplicity .cart-header {
+    display: none;
   }
 }
