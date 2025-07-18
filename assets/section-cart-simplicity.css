@@ -51,7 +51,7 @@
   border-radius: 10px;
 }
 
-.cart-simplicity .cart-total {
+.cart-simplicity .cart-total.cart-content-item {
   flex: 0 0 400px;
   position: sticky;
   top: 100px;
