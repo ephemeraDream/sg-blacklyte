@@ -740,6 +740,7 @@
 
   .cart-simplicity .cart-total.cart-content-item {
     flex: 1;
+    border-top: 0.5px solid #C0C0C0;
   }
 
   .cart-simplicity .cart-item,
@@ -767,6 +768,7 @@
 
   .cart-simplicity .cart-content-wrapper {
     flex-wrap: wrap;
+    gap: 40px;
   }
 
   .cart-simplicity .cart-item-block-left {
@@ -843,5 +845,9 @@
   .cart-simplicity .item-container-right {
     flex: 1;
     justify-content: flex-end;
+  }
+
+  .cart-simplicity .cart-content-item form {
+    padding: 30px 0 0;
   }
 }
