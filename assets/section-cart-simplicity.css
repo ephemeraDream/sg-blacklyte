@@ -678,7 +678,7 @@
 }
 
 .cart-simplicity .button-checkout:hover {
-  background: inherit;
+  background: linear-gradient(270deg, #8DE0FC 0%, #2672EB 100%);
 }
 
 .cart-simplicity .payments_container {
