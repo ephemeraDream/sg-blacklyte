@@ -677,6 +677,10 @@
   border: none;
 }
 
+.cart-simplicity .button-checkout:hover {
+  background: inherit;
+}
+
 .cart-simplicity .payments_container {
   font-family: Roboto;
   font-weight: 400;
