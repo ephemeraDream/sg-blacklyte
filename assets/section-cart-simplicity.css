@@ -990,7 +990,7 @@
     bottom: 182px !important;
   }
 
-  .cart-simplicity .cart_form.is_fixed .open .cart-totals-fold {
+  .cart-simplicity .cart_form.is_fixed.open .cart-totals-fold {
     display: block;
   }
 }
