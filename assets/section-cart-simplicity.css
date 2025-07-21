@@ -643,6 +643,10 @@
   color: #262629;
 }
 
+.cart-simplicity .cart-total-grandtotal svg {
+  display: none;
+}
+
 .cart-simplicity .shipTotal .form-text {
   font-family: Roboto;
   font-weight: 400;
@@ -952,7 +956,7 @@
     height: 100%;
   }
 
-  .cart-simplicity .cart--totals-title {
+  cart-total-grandtotal .cart-simplicity .cart--totals-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -964,5 +968,17 @@
 
   .cart-simplicity .cart_form.is_fixed .cart-totals-fold {
     display: none;
+  }
+
+  .cart-simplicity .cart_form.is_fixed .cart-total-grandtotal svg {
+    display: block;
+    width: 12px;
+    height: 8px;
+  }
+
+  .cart-simplicity .cart_form.is_fixed .cart-total-grandtotal .cart-total-value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 }
