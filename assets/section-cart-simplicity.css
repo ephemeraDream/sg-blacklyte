@@ -890,4 +890,8 @@
     position: relative;
     z-index: 2;
   }
+
+  .cart-simplicity .cart_form.is_fixed {
+    padding: 5.33vw;
+  }
 }
