@@ -903,7 +903,7 @@
 
   .cart-simplicity .cart_form.is_fixed {
     padding: 5.33vw;
-    border-radius: 12px 12px 0 0;
+    /* border-radius: 12px 12px 0 0; */
   }
 
   .cart-simplicity .cart_form.is_fixed .cart-total-label {
@@ -987,6 +987,10 @@
   }
 
   .halo-recently-viewed-popup {
-    bottom: 182px;
+    bottom: 182px !important;
+  }
+
+  .cart-simplicity .cart_form.is_fixed .open .cart-totals-fold {
+    display: block;
   }
 }
