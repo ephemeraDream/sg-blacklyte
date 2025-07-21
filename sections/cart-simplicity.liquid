@@ -1132,7 +1132,7 @@
       observer.observe(sentinel);
 
       document.querySelector('.cart-total-grandtotal').addEventListener('click', (e) => {
-        const parent = e.target.closest('.cart-totals.list-unstyled');
+        const parent = e.target.closest('.cart_form.is_fixed');
         parent.classList.toggle('open');
       });
     }
