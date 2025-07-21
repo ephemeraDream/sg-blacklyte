@@ -1134,9 +1134,11 @@
 
       document.querySelector('.cart-total-grandtotal').addEventListener('click', (e) => {
         const parent = e.target.closest('.cart_form.is_fixed');
-        parent.classList.toggle('open');
-        document.querySelector('.cart_mobilebar_mask').classList.toggle('hidden');
-        document.body.classList.toggle('modal_show');
+        if (parent) {
+          parent.classList.toggle('open');
+          document.querySelector('.cart_mobilebar_mask').classList.toggle('hidden');
+          document.body.classList.toggle('modal_show');
+        }
       });
 
       document.querySelector('.cart--totals-title-close').addEventListener('click', (e) => {
