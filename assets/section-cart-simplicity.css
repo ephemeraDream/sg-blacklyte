@@ -898,12 +898,17 @@
 
   cart-coupon-discount {
     position: relative;
-    z-index: 10;
+    z-index: 200;
   }
 
   .cart-simplicity .cart_form.is_fixed {
     padding: 5.33vw;
-    /* border-radius: 12px 12px 0 0; */
+    box-shadow: 0px -2px 4px 0px #00000014;
+    border-radius: 0;
+  }
+
+  .cart-simplicity .cart_form.is_fixed.open {
+    border-radius: 12px 12px 0 0;
   }
 
   .cart-simplicity .cart_form.is_fixed .cart-total-label {
