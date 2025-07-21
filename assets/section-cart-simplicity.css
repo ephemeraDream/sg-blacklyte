@@ -711,6 +711,12 @@
   display: none;
 }
 
+.cart-simplicity .cart--totals-title-close {
+  display: none;
+  width: 13px;
+  height: 13px;
+}
+
 @media (min-width: 1025px) and (max-width: 1480px) {
   .cart-simplicity .container {
     padding-left: var(--padding-left-1);
@@ -934,5 +940,10 @@
 
   .cart-simplicity .cart_form.is_fixed .shipTotal .form-text {
     display: none;
+  }
+
+  .cart-simplicity .cart_form.is_fixed .cart--totals-title-close {
+    display: block;
+    cursor: pointer;
   }
 }
