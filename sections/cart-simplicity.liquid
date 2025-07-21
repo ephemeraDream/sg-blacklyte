@@ -1130,6 +1130,11 @@
       );
 
       observer.observe(sentinel);
+
+      document.querySelector('.cart-total-grandtotal').addEventListener('click', (e) => {
+        const parent = e.target.closest('.cart-totals.list-unstyled');
+        parent.classList.toggle('open');
+      });
     }
     $('.shipping_time_content').each(function (index) {
       if (index !== 0) {
