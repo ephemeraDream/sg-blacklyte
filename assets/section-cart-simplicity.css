@@ -993,4 +993,14 @@
   .cart-simplicity .cart_form.is_fixed.open .cart-totals-fold {
     display: block;
   }
+
+  .cart-simplicity .cart_form.is_fixed.open::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+  }
 }
