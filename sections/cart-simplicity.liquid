@@ -678,6 +678,7 @@
                 </li>
               {%- endif -%}
               <div class="cart_mobilebar_sentinel"></div>
+              <div class="cart_mobilebar_mask hidden"></div>
               <form action="{{ routes.cart_url }}" method="post" novalidate class="cart_form">
                 <ul class="cart-totals list-unstyled">
                   <div class="cart-totals-fold">
@@ -1134,6 +1135,7 @@
       document.querySelector('.cart-total-grandtotal').addEventListener('click', (e) => {
         const parent = e.target.closest('.cart_form.is_fixed');
         parent.classList.toggle('open');
+        document.querySelector(".cart_mobilebar_mask").classList.toggle(".hidden")
       });
     }
     $('.shipping_time_content').each(function (index) {
