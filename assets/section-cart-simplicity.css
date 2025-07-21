@@ -917,6 +917,7 @@
     line-height: 18px;
     letter-spacing: 0%;
     color: #262629;
+    margin-top: 12px;
   }
 
   .cart-simplicity .cart_form.is_fixed .cart-total-grandtotal {
@@ -928,6 +929,7 @@
     line-height: 100%;
     letter-spacing: 0%;
     color: #262629;
+    margin-top: 12px;
   }
 
   .cart-simplicity .cart_form.is_fixed .shipTotal .form-text {
