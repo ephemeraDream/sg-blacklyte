@@ -893,5 +893,17 @@
 
   .cart-simplicity .cart_form.is_fixed {
     padding: 5.33vw;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .cart-simplicity .cart_form.is_fixed .cart-total-label {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 18px;
+    letter-spacing: 0%;
+    color: #262629;
   }
 }
