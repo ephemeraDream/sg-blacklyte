@@ -956,7 +956,7 @@
     height: 100%;
   }
 
-  cart-total-grandtotal .cart-simplicity .cart--totals-title {
+  .cart-simplicity .cart--totals-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
