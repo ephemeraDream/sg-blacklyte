@@ -981,4 +981,12 @@
     align-items: center;
     gap: 8px;
   }
+
+  #conversation-badge {
+    bottom: 142px;
+  }
+
+  .halo-recently-viewed-popup {
+    bottom: 182px;
+  }
 }
