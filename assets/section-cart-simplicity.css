@@ -1016,4 +1016,9 @@
     left: 0;
     background-color: rgba(0, 0, 0, .5);
   }
+
+  body.modal_show {
+    overflow: hidden;
+    padding-inline-end: 0;
+  }
 }
