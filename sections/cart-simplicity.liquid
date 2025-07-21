@@ -680,79 +680,81 @@
               <div class="cart_mobilebar_sentinel"></div>
               <form action="{{ routes.cart_url }}" method="post" novalidate class="cart_form">
                 <ul class="cart-totals list-unstyled">
-                  <div class="cart--totals-title">
-                    {{ 'general.cart.order_summary' | t }}
-                    <div class="cart--totals-title-close">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
-                        <path d="M1 1L14.0697 14.0697" stroke="#76767F" stroke-width="2"/>
-                        <path d="M14.0703 1L1.00064 14.0697" stroke="#76767F" stroke-width="2"/>
-                      </svg>
+                  <div class="cart-totals-fold">
+                    <div class="cart--totals-title">
+                      {{ 'general.cart.order_summary' | t }}
+                      <div class="cart--totals-title-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                          <path d="M1 1L14.0697 14.0697" stroke="#76767F" stroke-width="2"/>
+                          <path d="M14.0703 1L1.00064 14.0697" stroke="#76767F" stroke-width="2"/>
+                        </svg>
+                      </div>
                     </div>
+                    <li class="cart-total cart-total-subtotal" id="cart_subtotal_container">
+                      <div class="cart-total-label">
+                        <span class="text">{{ 'general.cart.subtotal' | t }}</span>
+                      </div>
+                      <div class="cart-total-value">
+                        <span class="text">{{ cart.original_total_price | money }}</span>
+                      </div>
+                    </li>
+                    {%- if show_shipping_rate_calculator -%}
+                      <li class="cart-total cart-total-shipping">
+                        <div class="cart-total-label">
+                          <span class="text">{{ 'general.cart.shipping' | t }}</span>
+                        </div>
+                        <div class="cart-total-value" style="display: none;"></div>
+                        {% render 'shipping-rates-calculator' %}
+                      </li>
+                    {%- endif -%}
+                    {%- if show_coupon_code -%}
+                      <li class="cart-total cart-total-coupon">
+                        <div class="cart-total-label">
+                          <span class="text">{{ 'general.cart.coupon_code' | t }}</span>
+                        </div>
+                        <div class="cart-total-value" style="display: none;"></div>
+                        <div class="cart-coupon-code form-field discount-code-field">
+                          <label class="form-label hiddenLabels" for="cart-coupon-code">
+                            {{- 'general.cart.coupon_code' | t -}}
+                          </label>
+                          <input
+                            class="form-input"
+                            autocomplete="off"
+                            type="text"
+                            name="discount"
+                            id="cart-coupon-code"
+                            placeholder="{{'general.cart.enter_coupo_code' | t }}"
+                          >
+                          <p class="form-text">{{ 'general.cart.coupon_code_text' | t }}</p>
+                        </div>
+                      </li>
+                    {%- endif -%}
+                    <li
+                      class="cart-discount cart-total-savings"
+                      {% if cart.total_discount == 0 %}
+                        style="display: none;"
+                      {% endif %}
+                      data-saved-discount-display
+                      data-dis="{{ cart.total_discount }}"
+                    >
+                      <div class="cart-total-label">
+                        <span class="text">{{ 'general.cart.are_saving' | t }}</span>
+                      </div>
+                      <div class="cart-total-value">
+                        <span class="text" data-saved-discount-value>
+                          {%- if cart.cart_level_discount_applications != blank -%}
+                            {%- for discount in cart.cart_level_discount_applications -%}
+                              {%- render 'icon-discount' -%}
+                              {{ discount.title }}
+                              (-{{ discount.total_allocated_amount | money }})
+                            {%- endfor -%}
+                          {%- else -%}
+                            {{ cart.total_discount | money | prepend: '-' }}
+                          {%- endif -%}
+                        </span>
+                      </div>
+                    </li>
                   </div>
-                  <li class="cart-total cart-total-subtotal" id="cart_subtotal_container">
-                    <div class="cart-total-label">
-                      <span class="text">{{ 'general.cart.subtotal' | t }}</span>
-                    </div>
-                    <div class="cart-total-value">
-                      <span class="text">{{ cart.original_total_price | money }}</span>
-                    </div>
-                  </li>
-                  {%- if show_shipping_rate_calculator -%}
-                    <li class="cart-total cart-total-shipping">
-                      <div class="cart-total-label">
-                        <span class="text">{{ 'general.cart.shipping' | t }}</span>
-                      </div>
-                      <div class="cart-total-value" style="display: none;"></div>
-                      {% render 'shipping-rates-calculator' %}
-                    </li>
-                  {%- endif -%}
-                  {%- if show_coupon_code -%}
-                    <li class="cart-total cart-total-coupon">
-                      <div class="cart-total-label">
-                        <span class="text">{{ 'general.cart.coupon_code' | t }}</span>
-                      </div>
-                      <div class="cart-total-value" style="display: none;"></div>
-                      <div class="cart-coupon-code form-field discount-code-field">
-                        <label class="form-label hiddenLabels" for="cart-coupon-code">
-                          {{- 'general.cart.coupon_code' | t -}}
-                        </label>
-                        <input
-                          class="form-input"
-                          autocomplete="off"
-                          type="text"
-                          name="discount"
-                          id="cart-coupon-code"
-                          placeholder="{{'general.cart.enter_coupo_code' | t }}"
-                        >
-                        <p class="form-text">{{ 'general.cart.coupon_code_text' | t }}</p>
-                      </div>
-                    </li>
-                  {%- endif -%}
-                  <li
-                    class="cart-discount cart-total-savings"
-                    {% if cart.total_discount == 0 %}
-                      style="display: none;"
-                    {% endif %}
-                    data-saved-discount-display
-                    data-dis="{{ cart.total_discount }}"
-                  >
-                    <div class="cart-total-label">
-                      <span class="text">{{ 'general.cart.are_saving' | t }}</span>
-                    </div>
-                    <div class="cart-total-value">
-                      <span class="text" data-saved-discount-value>
-                        {%- if cart.cart_level_discount_applications != blank -%}
-                          {%- for discount in cart.cart_level_discount_applications -%}
-                            {%- render 'icon-discount' -%}
-                            {{ discount.title }}
-                            (-{{ discount.total_allocated_amount | money }})
-                          {%- endfor -%}
-                        {%- else -%}
-                          {{ cart.total_discount | money | prepend: '-' }}
-                        {%- endif -%}
-                      </span>
-                    </div>
-                  </li>
                   <li class="cart-total cart-total-grandtotal">
                     <div class="cart-total-label">
                       <span class="text">{{ 'general.cart.total' | t }}</span>
