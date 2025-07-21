@@ -994,8 +994,7 @@
     display: block;
   }
 
-  .cart-simplicity .cart_form.is_fixed.open::before {
-    content: "";
+  .cart-simplicity .cart_mobilebar_mask {
     width: 100%;
     height: 100%;
     position: fixed;
