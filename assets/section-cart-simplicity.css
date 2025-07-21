@@ -957,4 +957,12 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .cart-simplicity .cart_form.is_fixed .button-checkout {
+    margin-top: 12px;
+  }
+
+  .cart-simplicity .cart_form.is_fixed .cart-totals-fold {
+    display: none;
+  }
 }
