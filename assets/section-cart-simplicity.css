@@ -656,7 +656,7 @@
   margin-top: 50px;
 }
 
-.cart-simplicity #cart-checkout {
+.cart-simplicity .button-checkout {
   height: 50px;
   border-radius: 25px;
   background: linear-gradient(270deg, #8DE0FC 0%, #2672EB 100%);
