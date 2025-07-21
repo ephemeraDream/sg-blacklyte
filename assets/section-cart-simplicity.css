@@ -929,4 +929,8 @@
     letter-spacing: 0%;
     color: #262629;
   }
+
+  .cart-simplicity .cart_form.is_fixed .shipTotal .form-text {
+    display: none;
+  }
 }
