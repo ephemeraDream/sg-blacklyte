@@ -1145,6 +1145,13 @@
         document.querySelector('.cart_mobilebar_mask').classList.toggle('hidden');
         document.body.classList.toggle('modal_show');
       });
+
+      document.querySelector('.cart_mobilebar_mask').addEventListener('click', (e) => {
+        const cart_form = document.querySelector('.cart_form.is_fixed');
+        cart_form.classList.toggle('open');
+        document.querySelector('.cart_mobilebar_mask').classList.toggle('hidden');
+        document.body.classList.toggle('modal_show');
+      });
     }
     $('.shipping_time_content').each(function (index) {
       if (index !== 0) {
