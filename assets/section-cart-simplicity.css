@@ -906,4 +906,15 @@
     letter-spacing: 0%;
     color: #262629;
   }
+
+  .cart-simplicity .cart_form.is_fixed .cart-total-subtotal .cart-total-value .text {
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 18px;
+    letter-spacing: 0%;
+    color: #262629;
+  }
 }
