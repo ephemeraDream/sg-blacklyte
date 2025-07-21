@@ -944,6 +944,10 @@
     line-height: 100%;
     letter-spacing: 0%;
     color: #262629;
+    margin-top: 0px;
+  }
+
+  .cart-simplicity .cart_form.is_fixed.open .cart-total-grandtotal {
     margin-top: 12px;
   }
 
@@ -997,6 +1001,10 @@
 
   .cart-simplicity .cart_form.is_fixed.open .cart-totals-fold {
     display: block;
+  }
+
+  .cart-simplicity .cart_form.is_fixed.open .cart-total-grandtotal svg {
+    display: none;
   }
 
   .cart-simplicity .cart_mobilebar_mask {
