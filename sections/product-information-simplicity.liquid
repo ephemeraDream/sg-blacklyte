@@ -271,7 +271,7 @@
         </div>
       </div>
       {% if section.settings.img_show_type == 'grid' %}
-        {{product.selected_or_first_available_variant.metafields.custom.multiple_images.value }}
+        {{product.selected_or_first_available_variant.metafields.custom.multiple_images.value | json }}
         <div class="product_infor_simplicity_left_contain_grid pc_show{% if product.selected_or_first_available_variant.metafields.custom.multiple_images.value.size > 4 %} product_infor_simplicity_left_contain_grid_more{% endif %}">
           {% for image in product.selected_or_first_available_variant.metafields.custom.multiple_images.value %}
             {% assign srcset_1x = image | image_url: width: 2240 | append: ' 1x, ' %}
