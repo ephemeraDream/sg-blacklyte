@@ -2,7 +2,10 @@
 
 <div class="video_simplicity{% if section.settings.style == "two" %} video_simplicity_two{% endif %}" id="feature">
   {% assign poster_image = section.settings.cover_image | image_url %}
-  {% assign poster_image_mobile = section.settings.cover_image_mobile | image_url %}
+  {% assign poster_image_mobile = section.settings.cover_image_mobile
+    | default: section.settings.cover_image
+    | image_url
+  %}
 
   {% if section.settings.file_type == 'image' %}
     <img src="{{ poster_image }}" class="video_simplicity_img pc_show">
