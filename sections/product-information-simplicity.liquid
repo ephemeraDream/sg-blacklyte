@@ -38,6 +38,11 @@
   endif
 
   assign athena_pro_condition = false
+  if product.title contains 'Blacklyte Athena Pro Gaming Chair'
+    if product.selected_or_first_available_variant.options[1] == 'Black' or product.selected_or_first_available_variant.options[1] == 'Yellow'
+      assign athena_pro_condition = true
+    endif
+  endif
 
   assign athena_condition = false
   if product.title contains 'Blacklyte Athena Gaming Chair' and product.selected_or_first_available_variant.options[1] == 'Black'
@@ -64,16 +69,6 @@
   assign major_chair_condition = false
   if product.title contains 'Blacklyte Athena Pro Austin Major Edition'
     assign major_chair_condition = true
-  endif
-
-  assign pixelscreen_condition = false
-  if product.title contains 'Pixel Art LED Display'
-    assign pixelscreen_condition = true
-  endif
-
-  assign spirit_chair_condition = false
-  if product.title contains 'Blacklyte Athena Pro Spirit Edition'
-    assign spirit_chair_condition = true
   endif
 
   assign sale_price = product.selected_or_first_available_variant.price
@@ -121,7 +116,7 @@
   endif
 
   if atlas_desk_condition
-    assign save_price = 20000
+    assign save_price = 30000
 
     assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
   endif
@@ -132,20 +127,8 @@
     assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
   endif
 
-  if pixelscreen_condition
-    assign save_price = 5000
-
-    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
-  endif
-
-  if spirit_chair_condition
-    assign save_price = 10000
-
-    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
-  endif
-
   assign show_sale_info = false
-  if kraken_condition or athena_pro_condition or athena_condition or athena_x_pink_condition or atlas_lite_desk_condition or kraken_pro_condition or atlas_desk_condition or major_chair_condition or pixelscreen_condition or spirit_chair_condition
+  if kraken_condition or athena_pro_condition or athena_condition or athena_x_pink_condition or atlas_lite_desk_condition or kraken_pro_condition or atlas_desk_condition or major_chair_condition
     assign show_sale_info = true
   endif
 -%}
@@ -271,8 +254,7 @@
         </div>
       </div>
       {% if section.settings.img_show_type == 'grid' %}
-        {{product.selected_or_first_available_variant.metafields.custom.multiple_images.value | json }}
-        <div class="product_infor_simplicity_left_contain_grid pc_show{% if product.selected_or_first_available_variant.metafields.custom.multiple_images.value.size > 4 %} product_infor_simplicity_left_contain_grid_more{% endif %}">
+        <div class="product_infor_simplicity_left_contain_grid pc_show">
           {% for image in product.selected_or_first_available_variant.metafields.custom.multiple_images.value %}
             {% assign srcset_1x = image | image_url: width: 2240 | append: ' 1x, ' %}
             {% assign srcset_2x = image | image_url: width: 1536 | append: ' 2x, ' %}
@@ -328,7 +310,7 @@
       is_pmd_show: true,
       is_preorder: is_preorder
     %}
-
+    {% render 'countdown-card' %}
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when 'productExtraInfo' -%}
@@ -461,13 +443,11 @@
                     {% endif %}
                   {% endfor %}
                   {% assign pass_product = false %}
-                  {% comment %}
-                    {% if product.title contains 'Blacklyte Athena Pro Gaming Chair'
-                      or product.title contains 'Blacklyte Athena Gaming Chair'
-                    %}
-                      {% assign pass_product = true %}
-                    {% endif %}
-                  {% endcomment %}
+                  {% if product.title contains 'Blacklyte Athena Pro Gaming Chair'
+                    or product.title contains 'Blacklyte Athena Gaming Chair'
+                  %}
+                    {% assign pass_product = true %}
+                  {% endif %}
                   {% unless value.variant.available == blank and available_variant.size == 0 and pass_product %}
                     <div
                       data-id="{{ variant.id }}"
@@ -728,6 +708,10 @@
     {% endif %}
     {% render 'recommended-products', product: product, currency_symbol: currency_symbol %}
 
+    {% if product.title contains 'Athena Pro Austin Major' %}
+      {% render 'sale-progress', product: product %}
+    {% endif %}
+
     <div class="product_infor_simplicity_right_buybox">
       <div class="product_infor_simplicity_right_buybox_goods">
         <img
@@ -843,7 +827,7 @@
         <button
           data-type="buy_it_now"
           type="submit"
-          class="product_infor_simplicity_right_buybox_btns_btn"
+          class="product_infor_simplicity_right_buybox_btns_btn an-horizontal-shaking"
           {% if product.selected_or_first_available_variant.available == false
             or product.selected_or_first_available_variant == null
           %}
