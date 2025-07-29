@@ -70,7 +70,7 @@
         "cart_countdown_product": "",
         "show_trust_image": false,
         "continue_button_action": "1",
-        "custom_button_link": "shopify://collections"
+        "custom_button_link": "/pages/collections"
       }
     }
   },
