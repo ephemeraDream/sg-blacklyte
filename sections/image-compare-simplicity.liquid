@@ -21,73 +21,78 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const container = document.querySelector('.image_compare_simplicity');
-    const divider = document.querySelector('.image_compare_simplicity_divider');
-    const leftImage = document.querySelector('.image_compare_simplicity_left');
-    const rightImage = document.querySelector('.image_compare_simplicity_right');
+  (() => {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.image_compare_simplicity').forEach((container) => {
+        if (container.dataset.initialized === 'true') return; // 已初始化则跳过
+        container.dataset.initialized = 'true'; // 标记已初始化
 
-    let isDragging = false;
-    let animationFrameId = null;
-    let latestClientX = 0;
+        const divider = container.querySelector('.image_compare_simplicity_divider');
+        const leftImage = container.querySelector('.image_compare_simplicity_left');
+        const rightImage = container.querySelector('.image_compare_simplicity_right');
 
-    function updatePosition() {
-      const rect = container.getBoundingClientRect();
-      const offsetX = latestClientX - rect.left;
-      const percentage = (offsetX / rect.width) * 100;
+        let isDragging = false;
+        let animationFrameId = null;
+        let latestClientX = 0;
 
-      if (percentage > 1 && percentage < 98) {
-        leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-        rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
-        divider.style.left = `${percentage}%`;
-      }
+        function updatePosition() {
+          const rect = container.getBoundingClientRect();
+          const offsetX = latestClientX - rect.left;
+          const percentage = (offsetX / rect.width) * 100;
 
-      animationFrameId = null; // 清除 ID 以便下次触发
-    }
-
-    function requestUpdate(clientX) {
-      latestClientX = clientX;
-      if (animationFrameId === null) {
-        animationFrameId = requestAnimationFrame(updatePosition);
-      }
-    }
-
-    // PC
-    divider.addEventListener('mousedown', () => {
-      isDragging = true;
-      document.body.style.cursor = 'ew-resize';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      requestUpdate(e.clientX);
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      document.body.style.cursor = 'default';
-    });
-
-    // Mobile
-    divider.addEventListener('touchstart', () => {
-      isDragging = true;
-    });
-
-    document.addEventListener(
-      'touchmove',
-      (e) => {
-        if (!isDragging) return;
-        if (e.touches.length > 0) {
-          requestUpdate(e.touches[0].clientX);
+          if (percentage > 1 && percentage < 98) {
+            leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+            divider.style.left = `${percentage}%`;
+          }
+          animationFrameId = null;
         }
-      },
-      { passive: false }
-    );
 
-    document.addEventListener('touchend', () => {
-      isDragging = false;
+        function requestUpdate(clientX) {
+          latestClientX = clientX;
+          if (animationFrameId === null) {
+            animationFrameId = requestAnimationFrame(updatePosition);
+          }
+        }
+
+        // PC
+        divider.addEventListener('mousedown', () => {
+          isDragging = true;
+          document.body.style.cursor = 'ew-resize';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          requestUpdate(e.clientX);
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          document.body.style.cursor = 'default';
+        });
+
+        // Mobile
+        divider.addEventListener('touchstart', () => {
+          isDragging = true;
+        });
+
+        document.addEventListener(
+          'touchmove',
+          (e) => {
+            if (!isDragging) return;
+            if (e.touches.length > 0) {
+              requestUpdate(e.touches[0].clientX);
+            }
+          },
+          { passive: false }
+        );
+
+        document.addEventListener('touchend', () => {
+          isDragging = false;
+        });
+      });
     });
-  });
+  })();
 </script>
 
 {% schema %}
