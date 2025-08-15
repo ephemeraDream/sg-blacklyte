@@ -54,6 +54,20 @@
         "img_show_type": "grid"
       }
     },
+    "custom_liquid_tbCmzX": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .space_switch {\n    background-color: #fff;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 9.375vw;\n    padding: 3.28125vw 0 2.96875vw 0;\n  }\n\n  .space_switch_item {\n    font-family: DIN-BlackItalic;\n    font-weight: 500;\n    font-style: Regular;\n    font-size: 36px;\n    leading-trim: NONE;\n    line-height: 48px;\n    letter-spacing: 0%;\n    vertical-align: middle;\n    text-transform: uppercase;\n    color: rgba(38, 38, 41, 0.7);\n    cursor: pointer;\n  }\n\n  .space_switch_item:hover {\n    color: #262629;\n  }\n\n  .space_switch_item.active {\n    color: #262629;\n    text-decoration: underline;\n    text-underline-offset: 1.25vw;\n    text-decoration-thickness: 4px;\n  }\n</style>\n\n<div class=\"space_switch\">\n  <div class=\"space_switch_item active\" data-value=\"work\">Work Space</div>\n  <div class=\"space_switch_item\" data-value=\"game\">Game Space</div>\n</div>\n\n<script>\n  (() => {\n    document.addEventListener(\"DOMContentLoaded\", function () {\n      const work_space_start = document\n        .querySelector(\".work_space_start\")\n        ?.closest(\".shopify-section.spaced-section\");\n      const work_space_end = document\n        .querySelector(\".work_space_end\")\n        ?.closest(\".shopify-section.spaced-section\");\n      const game_space_start = document\n        .querySelector(\".game_space_start\")\n        ?.closest(\".shopify-section.spaced-section\");\n      const game_space_end = document\n        .querySelector(\".game_space_end\")\n        ?.closest(\".shopify-section.spaced-section\");\n\n      // 获取 start 到 end 之间的所有 section\n      const getSectionsBetween = (start, end) => {\n        const sections = [];\n        if (!start || !end) return sections;\n\n        let current = start;\n        while (current) {\n          sections.push(current);\n          if (current === end) break;\n          current = current.nextElementSibling;\n        }\n        return sections;\n      };\n\n      const workSections = getSectionsBetween(work_space_start, work_space_end);\n      const gameSections = getSectionsBetween(game_space_start, game_space_end);\n\n      // 初始隐藏 game space\n      gameSections.forEach((sec) => sec.classList.add(\"hidden\"));\n\n      // 切换逻辑\n      document.querySelectorAll(\".space_switch_item\").forEach((btn) => {\n        btn.addEventListener(\"click\", () => {\n          // 按钮样式\n          document\n            .querySelectorAll(\".space_switch_item\")\n            .forEach((b) => b.classList.remove(\"active\"));\n          btn.classList.add(\"active\");\n\n          const type = btn.dataset.value;\n          if (type === \"work\") {\n            workSections.forEach((sec) => sec.classList.remove(\"hidden\"));\n            gameSections.forEach((sec) => sec.classList.add(\"hidden\"));\n          } else {\n            gameSections.forEach((sec) => sec.classList.remove(\"hidden\"));\n            workSections.forEach((sec) => sec.classList.add(\"hidden\"));\n          }\n        });\n      });\n    });\n  })();\n</script>"
+      }
+    },
+    "custom_liquid_fkpTAQ": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"work_space_start\"></div>"
+      }
+    },
     "video_simplicity_ddxPrJ": {
       "type": "video-simplicity",
       "custom_css": [
@@ -141,24 +155,6 @@
         "custom_liquid": "<style>\n#imgwithtextbox_simple_one {\n  max-width: 75vw;\n  margin: 0 auto;\n  background-color: #F5F5F5;\n  padding: 7.03125vw 8.33vw;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_title {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  font-style: Regular;\n  font-size: 36px;\n  leading-trim: NONE;\n  line-height: 48px;\n  letter-spacing: 0%;\n  vertical-align: middle;\n  text-transform: uppercase;\n  color: #262629;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_btn_box {\n  display: none;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_item_filebox,\n#imgwithtextbox_simple_one .imgwithtextbox_simple_item_filebox_image {\n  border-radius: 1.25vw;\n  height: 17.4479167vw;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_item_info {\n  padding: 0;\n  border-radius: 0;\n  background-color: inherit;\n  text-align: center;\n  margin-top: 1.354167vw;\n}\n\n#imgwithtextbox_simple_one .imgwithtextbox_simple_item_desc {\n  font-family: Roboto;\n  font-weight: 500;\n  font-style: Medium;\n  font-size: 20px;\n  leading-trim: NONE;\n  line-height: 24px;\n  letter-spacing: 0.32px;\n  vertical-align: middle;\n  color: rgba(38,38,41, .7);\nmargin-top: 0;\n}\n\n@media screen and (max-width: 768px) {\n  #imgwithtextbox_simple_one {\n    max-width: 100vw;\n    padding: 8.33vw 5.33vw;\n  }\n\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_title {\n    font-size: 26px;\n    line-height: 30px;\n    max-width: 70vw;\n    margin: 0 auto;\n  }\n\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_item_filebox,\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_item_filebox_image {\n    height: 53.33vw;\n    border-radius: 3.2vw;\n  }\n\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_item_desc {\n    font-size: 16px;\n  }\n\n  #imgwithtextbox_simple_one .imgwithtextbox_simple_item_info {\n    margin-top: 5.33vw;\n  }\n}\n</style>"
       }
     },
-    "img_with_text_simplicity_byYNLU": {
-      "type": "img-with-text-simplicity",
-      "disabled": true,
-      "custom_css": [
-        ".img_with_text_simplicity {padding-top: 1.25vw;}",
-        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
-      ],
-      "settings": {
-        "specId": "",
-        "title": "<p>DYNAMIC FLEXIBILITY PRECISE ADJUSTMENTS</p>",
-        "sub_title": "ERGONOMIC BENEFITS",
-        "description": "<p>Unlike traditional monitor stands, monitor arms are quick to reposition to fit different task needs and precise adjustments, so your screen always meets you at your level. This promotes a neutral head, neck position, and ultimately minimizing cervics spine strains.</p>",
-        "file_position": "bottom",
-        "file_type": "image",
-        "file_image": "shopify://shop_images/DYNAMIC_FLEXIBILITY_PRECISE_ADJUSTMENTS_monitorarm.webp",
-        "video_url": ""
-      }
-    },
     "img_with_text_simplicity_9Jaxgn": {
       "type": "img-with-text-simplicity",
       "custom_css": [
@@ -193,6 +189,143 @@
         "title": "<p>SPACE OPTIMIZATION</p>",
         "left_image": "shopify://shop_images/SPACE_OPTIMIZATION_working_monitorarm_1.webp",
         "right_image": "shopify://shop_images/SPACE_OPTIMIZATION_working_monitorarm_2.webp"
+      }
+    },
+    "custom_liquid_4BeBQd": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"work_space_end\"></div>"
+      }
+    },
+    "custom_liquid_FVhDTi": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"game_space_start\"></div>"
+      }
+    },
+    "video_simplicity_3N3JX4": {
+      "type": "video-simplicity",
+      "custom_css": [
+        ".video_simplicity:after {display: none;}",
+        ".video_simplicity {height: 42.2395833vw;}",
+        "@media screen and (max-width: 768px) {.video_simplicity {height: auto; }}"
+      ],
+      "settings": {
+        "file_type": "video",
+        "style": "one",
+        "cover_image": "shopify://shop_images/gaming-monitorarm-video-cover.webp",
+        "cover_image_mobile": "shopify://shop_images/gaming-monitorarm-video-cover-mobile.webp",
+        "video_url": "",
+        "url_upload": "shopify://files/videos/gaming-monitorarm-video.webm",
+        "title": "EXPERIENCE NEWFOUND FLEXIBILITY AND SPACE",
+        "description": "",
+        "autoplay": true
+      }
+    },
+    "img_with_text_box_simple_7Mh9ka": {
+      "type": "img-with-text-box-simple",
+      "blocks": {
+        "item_gdhUDX": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Single Monitor Setup (Landscape)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Single_Monitor_Setup_Landscape_gaming_monitorarm.webp",
+            "video_url": ""
+          }
+        },
+        "item_TaCFaR": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Dual Monitor Setup (Landscape + Landscape)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Dual_Monitor_Setup_Landscape_Landscape_gaming_monitorarm.webp",
+            "video_url": ""
+          }
+        },
+        "item_qiC8pp": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Dual Monitor Setup (Landscape + Portrait)</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Dual_Monitor_Setup_Landscape_Portrait_gaming_monitorarm.webp",
+            "video_url": ""
+          }
+        },
+        "item_imCwqe": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "description": "<p>Ultrawide Setup</p>",
+            "file_type": "image",
+            "file_image": "shopify://shop_images/Ultrawide_Setup_gaming_monitorarm.webp",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_gdhUDX",
+        "item_TaCFaR",
+        "item_qiC8pp",
+        "item_imCwqe"
+      ],
+      "name": "imgwithtextbox simple",
+      "settings": {
+        "specId": "imgwithtextbox_simple_two",
+        "title": "<p>WHAT YOUR SETUP COULD LOOK LIKE</p>",
+        "text": "",
+        "link_text": "",
+        "link": ""
+      }
+    },
+    "custom_liquid_UdTAUx": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>#imgwithtextbox_simple_two {\n  max-width: 75vw;\n  margin: 0 auto;\n  background-color: #000;\n  padding: 7.03125vw 8.33vw;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_title {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  font-style: Regular;\n  font-size: 36px;\n  leading-trim: NONE;\n  line-height: 48px;\n  letter-spacing: 0%;\n  vertical-align: middle;\n  text-transform: uppercase;\n  color: #fff;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_btn_box {\n  display: none;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_item_filebox,\n#imgwithtextbox_simple_two .imgwithtextbox_simple_item_filebox_image {\n  border-radius: 1.25vw;\n  height: 17.4479167vw;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_item_info {\n  padding: 0;\n  border-radius: 0;\n  background-color: inherit;\n  text-align: center;\n  margin-top: 1.354167vw;\n}\n\n#imgwithtextbox_simple_two .imgwithtextbox_simple_item_desc {\n  font-family: Roboto;\n  font-weight: 500;\n  font-style: Medium;\n  font-size: 20px;\n  leading-trim: NONE;\n  line-height: 24px;\n  letter-spacing: 0.32px;\n  vertical-align: middle;\n  color: rgba(255, 255, 255, .7);\n  margin-top: 0;\n}\n\n@media screen and (max-width: 768px) {\n  #imgwithtextbox_simple_two {\n    max-width: 100vw;\n    padding: 8.33vw 5.33vw;\n  }\n\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_title {\n    font-size: 26px;\n    line-height: 30px;\n    max-width: 70vw;\n    margin: 0 auto;\n  }\n\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_item_filebox,\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_item_filebox_image {\n    height: 53.33vw;\n    border-radius: 3.2vw;\n  }\n\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_item_desc {\n    font-size: 16px;\n  }\n\n  #imgwithtextbox_simple_two .imgwithtextbox_simple_item_info {\n    margin-top: 5.33vw;\n  }\n}\n\n</style>"
+      }
+    },
+    "img_with_text_simplicity_DPiCqF": {
+      "type": "img-with-text-simplicity",
+      "custom_css": [
+        ".img_with_text_simplicity {/* padding-top: 8.33vw; */ padding-bottom: 8.33vw;}",
+        "@media screen and (max-width: 768px) {.img_with_text_simplicity {flex-direction: column; padding-top: 5.33vw !important; padding-bottom: 5.33vw !important; }}"
+      ],
+      "settings": {
+        "specId": "",
+        "title": "<p>REDUCED MUSCLE FATIGUE & EYE STRAIN</p>",
+        "sub_title": "IMPROVED POSTURE",
+        "description": "<p>Gives you the freedom to tilt and swivel your screen to prevent awkward angles, greatly reducing strains in shoulders, back, and eyes. Monitor arms can position the screen at an optimal position, which encourages you to keep a straight and aligned sitting posture.</p>",
+        "file_position": "bottom",
+        "file_type": "video",
+        "cover_image": "shopify://shop_images/REDUCED_MUSCLE_FATIGUE_EYE_STRAIN_gaming_monitorarm.webp",
+        "video_url": "",
+        "url_upload": "shopify://files/videos/REDUCED MUSCLE FATIGUE & EYE STRAIN gaming monitorarm.webm"
+      }
+    },
+    "image_compare_simplicity_TMgit3": {
+      "type": "image-compare-simplicity",
+      "custom_css": [
+        ".image_compare_simplicity {padding-bottom: 8.33vw;}",
+        "@media screen and (max-width: 767px) {.image_compare_simplicity {padding-top: 8.33vw; padding-bottom: 22.67vw; }}"
+      ],
+      "name": "Image Compare Simplicity",
+      "settings": {
+        "title": "<p>SPACE OPTIMIZATION</p>",
+        "left_image": "shopify://shop_images/SPACE_OPTIMIZATION_gaming_monitorarm_1.webp",
+        "right_image": "shopify://shop_images/SPACE_OPTIMIZATION_gaming_monitorarm_2.webp"
+      }
+    },
+    "custom_liquid_KbCckp": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"game_space_end\"></div>"
       }
     },
     "img_with_text_box_simplicity_LGfQrm": {
@@ -252,31 +385,31 @@
         "custom_liquid": "<style>#effortless_three_step_installation {\n  padding: 7.29167vw 8.33vw 8.33vw;\n  background-color: #fff;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_maintitle {\n  font-family: DIN-BlackItalic;\n  font-weight: 500;\n  letter-spacing: 0%;\n  -webkit-text-fill-color: #262629;\n  margin-bottom: 4.1145833vw;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_filebox_image {\n  aspect-ratio: 1.0285;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_filebox {\n  border-radius: 1.25vw;\n  margin-bottom: 0.8854167vw;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_title {\n  color: #262629;\n}\n\n#effortless_three_step_installation .img_with_text_box_simplicity_desc {\nfont-size: 20px;\nline-height:24px;\nfont-weight: 500;\n  color: rgba(38, 38, 41, 0.7);\n}\n\n@media screen and (max-width: 768px) {\n  #effortless_three_step_installation .img_with_text_box_simplicity_maintitle {\n    margin-bottom: 9.6vw;\n  }\n\n  #effortless_three_step_installation .img_with_text_box_simplicity_filebox_image {\n    border-radius: 3.2vw;\n  }\n#effortless_three_step_installation .img_with_text_box_simplicity_desc{\nfont-size: 16px;\n}\n}\n\n</style>"
       }
     },
-    "desk_swiper_simplicity_MamcR8": {
+    "desk_swiper_simplicity_tBqgdk": {
       "type": "desk-swiper-simplicity",
       "blocks": {
-        "swiper_item_UMB8d3": {
+        "swiper_item_YxQf3C": {
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_1.webp",
             "description": "<p>Tilt Range: +55° to -55°</p><p>Height Adjustment Range:7.3\" to 18.7\"</p>"
           }
         },
-        "swiper_item_RWAEaa": {
+        "swiper_item_gfYjHc": {
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_2.webp",
             "description": "<p>Horizontal Adjustment Range</p><p>17.8’’</p>"
           }
         },
-        "swiper_item_6jqy7W": {
+        "swiper_item_rxGpQn": {
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_3.webp",
             "description": "<p>Extension</p><p>20.7’’</p>"
           }
         },
-        "swiper_item_FPhg3V": {
+        "swiper_item_DDEna8": {
           "type": "swiperItem",
           "settings": {
             "swiper_image": "shopify://shop_images/FULL_RANGE_MOTION_4.webp",
@@ -285,12 +418,11 @@
         }
       },
       "block_order": [
-        "swiper_item_UMB8d3",
-        "swiper_item_RWAEaa",
-        "swiper_item_6jqy7W",
-        "swiper_item_FPhg3V"
+        "swiper_item_YxQf3C",
+        "swiper_item_gfYjHc",
+        "swiper_item_rxGpQn",
+        "swiper_item_DDEna8"
       ],
-      "custom_css": [],
       "settings": {
         "specId": "full_range_motion",
         "title": "<p>FULL RANGE MOTION</p>",
@@ -498,82 +630,33 @@
         "font-size_content_mb": 12,
         "font-size_content_line-height_mb": 18
       }
-    },
-    "1743652201516533c4": {
-      "type": "apps",
-      "disabled": true,
-      "settings": {
-        "include_margins": false
-      }
-    },
-    "rich_text_VhDpg9": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_rFxyzB": {
-          "type": "heading",
-          "settings": {
-            "heading": "Customer Reviews",
-            "heading_size": 40,
-            "heading_size_mb": 24,
-            "heading_line_height": 1,
-            "heading_color": "#000000"
-          }
-        }
-      },
-      "block_order": [
-        "heading_rFxyzB"
-      ],
-      "disabled": true,
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "container": "container",
-        "padding_full_width": 0,
-        "enable_border_top": false,
-        "enable_border_bottom": false,
-        "color_border_bottom": "#e8e8e8",
-        "mg_top_desktop": 50,
-        "mg_top_tablet": 50,
-        "mg_top_mobile": 50,
-        "mg_bottom_desktop": 50,
-        "mg_bottom_tablet": 50,
-        "mg_bottom_mobile": 50,
-        "rich_text_bg": "#ffffff",
-        "rich_text_bg_gradient": "",
-        "enable_column": false,
-        "content_align": "center"
-      }
-    },
-    "custom_liquid_NV9eYk": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "custom_css": [
-        "#stamped-main-widget {margin: 0;}"
-      ],
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<div \nid=\"stamped-main-widget\"\nclass=\"stamped-main-widget\">    \n</div>"
-      }
     }
   },
   "order": [
     "product_information_simplicity_A8DKzG",
+    "custom_liquid_tbCmzX",
+    "custom_liquid_fkpTAQ",
     "video_simplicity_ddxPrJ",
     "img_with_text_box_simple_Eb4LE9",
     "custom_liquid_LfMaL4",
-    "img_with_text_simplicity_byYNLU",
     "img_with_text_simplicity_9Jaxgn",
     "image_compare_simplicity_RCqipK",
+    "custom_liquid_4BeBQd",
+    "custom_liquid_FVhDTi",
+    "video_simplicity_3N3JX4",
+    "img_with_text_box_simple_7Mh9ka",
+    "custom_liquid_UdTAUx",
+    "img_with_text_simplicity_DPiCqF",
+    "image_compare_simplicity_TMgit3",
+    "custom_liquid_KbCckp",
     "img_with_text_box_simplicity_LGfQrm",
     "custom_liquid_mHWLTV",
-    "desk_swiper_simplicity_MamcR8",
+    "desk_swiper_simplicity_tBqgdk",
     "custom_liquid_QRLPqV",
     "key_feature_simplicity_CUybft",
     "compare_simplicity_VGtrHd",
     "specs_simplicity_Epndpn",
     "custom_liquid_W6DWzU",
-    "collapsible_content_HyyPmn",
-    "1743652201516533c4",
-    "rich_text_VhDpg9",
-    "custom_liquid_NV9eYk"
+    "collapsible_content_HyyPmn"
   ]
 }
